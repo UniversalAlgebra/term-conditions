@@ -1,0 +1,206 @@
+\newcommand{\etaR}{\ensuremath{\tilde{\eta}}}
+\newcommand{\hto}{\ensuremath{\rightharpoonup}}
+\newcommand{\bool}{\ensuremath{\mathtt{Bool}}}
+\newcommand{\true}{\ensuremath{\mathtt{true}}}
+\newcommand{\false}{\ensuremath{\mathtt{false}}}
+\newcommand{\ar}{\ensuremath{\operatorname{ar}}}
+\newcommand{\CSP}{\ensuremath{\operatorname{CSP}}}
+\newcommand{\dom}{\ensuremath{\operatorname{dom}}}
+\newcommand{\cod}{\ensuremath{\operatorname{cod}}}
+\newcommand{\im}{\ensuremath{\operatorname{im}}}
+\newcommand{\slt}{\ensuremath{\mathbf S_2}}
+\newcommand{\mas}{mass\xspace}
+\newcommand{\masses}{masses\xspace}
+%% \newcommand{\mas}{\acs{MA}\xspace}
+%% \newcommand{\masses}{\acsp{MA}\xspace}
+\newcommand{\mfA}{\ensuremath{\mathfrak{A}}}
+\newcommand{\mfX}{\ensuremath{\mathfrak{X}}}
+\newcommand{\lb}{\ensuremath{\llbracket}}
+\newcommand{\rb}{\ensuremath{\rrbracket}}
+\newcommand{\id}{\ensuremath{\operatorname{id}}}
+\newcommand{\fin}{\ensuremath{\operatorname{fin}}}
+\newcommand{\Eq}{\ensuremath{\operatorname{Eq}}}
+\newcommand{\Rel}{\ensuremath{\operatorname{Rel}}}
+\newcommand{\Proj}{\ensuremath{\operatorname{Proj}}}
+\newcommand{\arity}{\ensuremath{\operatorname{arity}}}
+\newcommand{\Op}{\ensuremath{\operatorname{Op}}}
+\newcommand{\alg}[1]{\ensuremath{\mathbf{#1}}}
+\newcommand{\Sub}{\ensuremath{\operatorname{Sub}}}
+\newcommand{\Con}{\ensuremath{\operatorname{Con}}}
+\newcommand{\Cg}{\ensuremath{\operatorname{Cg}}}
+\newcommand{\Clo}{\ensuremath{\operatorname{\mathsf{Clo}}}}
+\newcommand{\typ}{\ensuremath{\operatorname{typ}}}
+\newcommand{\Pol}{\ensuremath{\operatorname{Pol}}}
+\newcommand{\Poly}{\ensuremath{\operatorname{Poly}}}
+\newcommand{\V}{\ensuremath{\operatorname{V}}}
+\newcommand{\sdp}{\ensuremath{\leq_{\mathrm{sd}}}}
+%\newcommand{\defn}[1]{{\bf #1}}
+\newcommand{\defn}[1]{\textit{#1}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\SDwedge}{\ensuremath{\mbox{SD}_\wedge}}
+\newcommand{\<}{\ensuremath{\langle}}
+\renewcommand{\>}{\ensuremath{\rangle}}
+\newcommand{\bR}{\ensuremath{\mathbf{R}}}
+\newcommand{\bn}{\ensuremath{\mathbf{n}}}
+\newcommand{\sansA}{\ensuremath{\mathsf{A}}}
+\newcommand{\sansComp}{\ensuremath{\mathsf{comp}}}
+\newcommand{\sansC}{\ensuremath{\mathsf{C}}}
+\newcommand{\sansH}{\ensuremath{\mathsf{H}}}
+\newcommand{\sansO}{\ensuremath{\mathsf{O}}} % ALL FINITARY OPERATIONS
+\newcommand{\sansP}{\ensuremath{\mathsf{P}}}
+\newcommand{\sansPoly}{\ensuremath{\mathsf{Pol}}}
+\newcommand{\sansPol}{\ensuremath{\mathsf{Pol}}}
+\newcommand{\sansRel}{\ensuremath{\mathsf{Inv}}}
+\newcommand{\sansInv}{\ensuremath{\mathsf{Inv}}}
+\newcommand{\sansClo}{\ensuremath{\operatorname{\mathsf{Clo}}}}
+\newcommand{\sansR}{\ensuremath{\mathsf{R}}} % ALL FINITARY RELATIONS
+\newcommand{\sansS}{\ensuremath{\mathsf{S}}}
+\newcommand{\sansT}{\ensuremath{\mathsf{T}}}
+\newcommand{\bA}{\ensuremath{\mathbf{A}}}
+\newcommand{\bQ}{\ensuremath{\mathbf{Q}}}
+\newcommand{\bT}{\ensuremath{\mathbf{T}}}
+\newcommand{\ba}{\ensuremath{\mathbf{a}}}
+\newcommand{\bb}{\ensuremath{\mathbf{b}}}
+\newcommand{\bt}{\ensuremath{\mathbf{t}}}
+\newcommand{\bu}{\ensuremath{\mathbf{u}}}
+\newcommand{\bv}{\ensuremath{\mathbf{v}}}
+\newcommand{\bw}{\ensuremath{\mathbf{w}}}
+\newcommand{\vf}{\ensuremath{\mathbf{f}}}
+\newcommand{\onlyif}{\ensuremath{\Longrightarrow}}
+\newcommand{\bC}{\ensuremath{\mathbf{C}}}
+\newcommand{\bD}{\ensuremath{\mathbf{D}}}
+\newcommand{\bF}{\ensuremath{\mathbf{F}}}
+\newcommand{\bP}{\ensuremath{\mathbf{P}}}
+\newcommand{\br}{\ensuremath{\mathbf{r}}}
+\newcommand\ubA{\ensuremath{\underline{\mathbf{A}}}}
+\newcommand\uA{\ensuremath{\underline{A}}}
+\newcommand{\bbA}{\ensuremath{\mathbb{A}}}
+\newcommand{\bbB}{\ensuremath{\mathbb{B}}}
+\newcommand{\bbC}{\ensuremath{\mathbb{C}}}
+\newcommand{\bbD}{\ensuremath{\mathbb{D}}}
+\newcommand{\bbS}{\ensuremath{\mathbb{S}}}
+\newcommand{\bbV}{\ensuremath{\mathbb{V}}}
+\newcommand{\bs}{\ensuremath{\mathbf{s}}}
+\newcommand{\bB}{\ensuremath{\mathbf{B}}}
+\newcommand{\bc}{\ensuremath{\mathbf{c}}}
+
+\newcommand{\nn}{\ensuremath{\underline{n}}}
+\newcommand{\mm}{\ensuremath{\underline{m}}}
+\newcommand{\pp}{\ensuremath{\underline{p}}}
+\newcommand{\kk}{\ensuremath{\underline{k}}}
+\newcommand{\ul}{\ensuremath{\underline{\ell}}}
+%% \newcommand{\vzero}{\ensuremath{\mathbf{0}}}
+\newcommand{\vzero}{\ensuremath{\eta}}
+\newcommand{\uzero}{\ensuremath{\underline{0}}}
+\newcommand{\uone}{\ensuremath{\underline{1}}}
+\newcommand{\utwo}{\ensuremath{\underline{2}}}
+\newcommand{\uthree}{\ensuremath{\underline{3}}}
+
+\newcommand{\sA}{\ensuremath{\mathcal{A}}}
+\newcommand{\sV}{\ensuremath{\mathcal{V}}}
+\newcommand{\sB}{\ensuremath{\mathcal{B}}}
+\newcommand{\sS}{\ensuremath{\mathcal{S}}}
+\newcommand{\cC}{\ensuremath{\mathcal{C}}}
+\newcommand{\cS}{\ensuremath{\mathcal{S}}}
+\newcommand{\sC}{\ensuremath{\mathcal{C}}}
+\newcommand{\sI}{\ensuremath{\mathcal{I}}}
+\newcommand{\sK}{\ensuremath{\mathcal{K}}}
+\newcommand{\sM}{\ensuremath{\mathcal{M}}}
+\newcommand{\sW}{\ensuremath{\mathcal{W}}}
+\newcommand{\sR}{\ensuremath{\mathcal{R}}}
+\newcommand{\sF}{\ensuremath{\mathcal{F}}}
+\newcommand{\bS}{\ensuremath{\mathbf{S}}}
+\newcommand{\bx}{\ensuremath{\mathbf{x}}}
+\newcommand{\by}{\ensuremath{\mathbf{y}}}
+\newcommand{\bz}{\ensuremath{\mathbf{z}}}
+\newcommand{\power}[1]{\ensuremath{\mathscr{P}(#1)}}
+%% \newcommand{\sP}{\ensuremath{\power{P}}}
+\newcommand{\sP}{\ensuremath{\mathcal{P}}}
+\newcommand{\balpha}{\ensuremath{\boldsymbol{\alpha}}}
+\newcommand{\bbeta}{\ensuremath{\boldsymbol{\beta}}}
+\newcommand{\bgamma}{\ensuremath{\boldsymbol{\gamma}}}
+\newcommand{\bdelta}{\ensuremath{\boldsymbol{\delta}}}
+\newcommand{\bepsilon}{\ensuremath{\boldsymbol{\epsilon}}}
+\newcommand{\AAn}{\ensuremath{A^{(A^n)}}}
+\newcommand{\AAm}{\ensuremath{A^{(A^m)}}}
+\newcommand{\AAk}{\ensuremath{A^{(A^k)}}}
+\newcommand{\meet}{\ensuremath{\wedge}}
+\newcommand{\Meet}{\ensuremath{\bigwedge}}
+\renewcommand{\Join}{\ensuremath{\bigvee}}
+\newcommand{\join}{\ensuremath{\vee}}
+\newcommand{\onto}{\ensuremath{\twoheadrightarrow}}
+\newcommand{\into}{\ensuremath{\rightarrowtail}}
+\newcommand{\fst}{\ensuremath{\operatorname{fst}}}
+\newcommand{\snd}{\ensuremath{\operatorname{snd}}}
+\newcommand{\absorbing}{\ensuremath{\mathrel{\triangleleft}}}
+\newcommand{\minabsorbing}{\ensuremath{\mathrel{\triangleleft\triangleleft}}}
+%% \newcommand{\myprod}{\ensuremath{\prod}}
+\newcommand{\myprod}{\ensuremath{\Pi}}
+
+%% \newcommand\map{\ensuremath{\operatorname{map}}}
+\newcommand\map{\ensuremath{map}}
+%% wjd: can we surround GAP code with \code{ } to make it small typewriter font?
+\newcommand{\code}[1]{{\small {\tt #1}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Acronyms
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \usepackage[acronym, shortcuts]{glossaries}
+%\usepackage[smaller]{acro}
+\usepackage[smaller]{acronym}
+\usepackage{xspace}
+
+%% \acs{CSP} -- short version of the acronym\\
+%% \acl{CSP} -- expanded acronym without mentioning the acronym.\\
+%% \acp{CSP} -- plurals.\\
+%% \acfp{CSP} -- long forms into plurals.\\
+%% \acsp{CSP} -- short form into a plural.\\
+%% \aclp{CSP} -- long form into a plural.\\
+%% \acfi{CSP} -- Full Name acronym in italics and abbreviated form in upshape.\\
+%% \acsu{CSP} -- short form of the acronym and marks it as used.\\
+%% \aclu{CSP} -- Prints the long form of the acronym and marks it as used.\\
+
+\acrodef{sat}[SAT]{satisfiability}
+\newcommand{\sat}{\acs{sat}\xspace}
+
+\acrodef{nae}[NAE]{not-all-equal}
+\newcommand{\nae}{\acs{nae}\xspace}
+
+\acrodef{ctb}[CTB]{cube term blocker}
+\newcommand{\ctb}{\acs{ctb}\xspace}
+
+\acrodef{tct}[TCT]{tame congruence theory}
+\newcommand{\tct}{\acs{tct}\xspace}
+
+\acrodef{cm}[CM]{congruence modular}
+\newcommand{\cm}{\acs{cm}\xspace}
+
+\acrodef{cd}[CD]{congruence distributive}
+\newcommand{\cd}{\acs{cd}\xspace}
+
+\acrodef{wnu}[WNU]{weak near-unanimity}
+\newcommand{\wnu}{\acs{wnu}\xspace}
+
+\acrodef{CSP}[CSP]{constraint satisfaction problem}
+\newcommand{\csp}{\acs{CSP}\xspace}
+\newcommand{\csps}{\acsp{CSP}\xspace}
+
+\acrodef{sd}[SD]{semidistributive}
+\newcommand{\sd}{\acs{sd}\xspace}
+
+\acrodef{NP}[NP]{nondeterministic polynomial time}
+\newcommand{\NP}{\acs{NP}\xspace}
+
+\acrodef{P}[P]{polynomial time}
+\renewcommand{\P}{\acs{P}\xspace}
+
+\acrodef{PeqNP}[P $ = $ NP]{P is NP}
+\newcommand{\PeqNP}{\acs{PeqNP}\xspace}
+
+\acrodef{PneqNP}[P $ \neq $ NP]{P is not NP}
+\newcommand{\PneqNP}{\acs{PneqNP}\xspace}
+
+\newcommand{\NPcomplete}{\acs{NP}-complete\xspace}
+%% \newcommand{\mas}{\acs{MAS}\xspace}
+
