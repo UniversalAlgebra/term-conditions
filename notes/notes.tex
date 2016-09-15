@@ -1,0 +1,509 @@
+%% FILE: math_notes_template.tex
+%% AUTHOR: William DeMeo
+%% DATE: 25 July 2016
+%% COPYRIGHT: (C) 2016 William DeMeo,
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                         BIBLIOGRAPHY FILE            %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The `filecontents` command will crete a file in the inputs directory called 
+%% refs.bib containing the references in the document, in case this file does 
+%% not exist already.
+%% If you want to add a BibTeX entry, please don't add it directly to the
+%% refs.bib file.  Instead, add it in this file between the
+%% \begin{filecontents*}{refs.bib} and \end{filecontents*} lines
+%% then delete the existing refs.bib file so it will be automatically generated 
+%% again with your new entry the next time you run pdfaltex.
+\begin{filecontents*}{inputs/refs.bib}
+@book {MR2839398,
+    AUTHOR = {Bergman, Clifford},
+     TITLE = {Universal algebra},
+    SERIES = {Pure and Applied Mathematics (Boca Raton)},
+    VOLUME = {301},
+      NOTE = {Fundamentals and selected topics},
+ PUBLISHER = {CRC Press, Boca Raton, FL},
+      YEAR = {2012},
+     PAGES = {xii+308},
+      ISBN = {978-1-4398-5129-6},
+   MRCLASS = {08-02 (06-02 08A40 08B05 08B10 08B26)},
+  MRNUMBER = {2839398 (2012k:08001)},
+MRREVIEWER = {Konrad P. Pi{\'o}ro},
+}
+@article {MR0434928,
+    AUTHOR = {Taylor, Walter},
+     TITLE = {Varieties obeying homotopy laws},
+   JOURNAL = {Canad. J. Math.},
+  FJOURNAL = {Canadian Journal of Mathematics. Journal Canadien de
+              Math\'ematiques},
+    VOLUME = {29},
+      YEAR = {1977},
+    NUMBER = {3},
+     PAGES = {498--527},
+      ISSN = {0008-414X},
+   MRCLASS = {08A25},
+  MRNUMBER = {0434928 (55 \#7891)},
+MRREVIEWER = {James B. Nation},
+}
+  @BOOK{HM:1988,
+    AUTHOR = {Hobby, David and McKenzie, Ralph},
+    TITLE = {The structure of finite algebras},
+    SERIES = {Contemporary Mathematics},
+    VOLUME = {76},
+    PUBLISHER = {American Mathematical Society},
+    ADDRESS = {Providence, RI},
+    YEAR = {1988},
+    PAGES = {xii+203},
+    ISBN = {0-8218-5073-3},
+    MRCLASS = {08A05 (03C05 08-02 08B05)},
+    MRNUMBER = {958685 (89m:08001)},
+    MRREVIEWER = {Joel Berman},
+    note = {Available from:
+      \href{http://math.hawaii.edu/~ralph/Classes/619/HobbyMcKenzie-FiniteAlgebras.pdf}{math.hawaii.edu}}
+  }
+  @article {Freese:2009,
+    AUTHOR = {Freese, Ralph and Valeriote, Matthew A.},
+    TITLE = {On the complexity of some {M}altsev conditions},
+    JOURNAL = {Internat. J. Algebra Comput.},
+    FJOURNAL = {International Journal of Algebra and Computation},
+    VOLUME = {19},
+    YEAR = {2009},
+    NUMBER = {1},
+    PAGES = {41--77},
+    ISSN = {0218-1967},
+    MRCLASS = {08B05 (03C05 08B10 68Q25)},
+    MRNUMBER = {2494469 (2010a:08008)},
+    MRREVIEWER = {Clifford H. Bergman},
+    DOI = {10.1142/S0218196709004956},
+    URL = {http://dx.doi.org/10.1142/S0218196709004956}
+  }
+@article {MR3076179,
+    AUTHOR = {Kearnes, Keith A. and Kiss, Emil W.},
+     TITLE = {The shape of congruence lattices},
+   JOURNAL = {Mem. Amer. Math. Soc.},
+  FJOURNAL = {Memoirs of the American Mathematical Society},
+    VOLUME = {222},
+      YEAR = {2013},
+    NUMBER = {1046},
+     PAGES = {viii+169},
+      ISSN = {0065-9266},
+      ISBN = {978-0-8218-8323-5},
+   MRCLASS = {08B05 (08B10)},
+  MRNUMBER = {3076179},
+MRREVIEWER = {James B. Nation},
+       DOI = {10.1090/S0065-9266-2012-00667-8},
+       URL = {http://dx.doi.org/10.1090/S0065-9266-2012-00667-8},
+}
+@incollection {MR1404955,
+    AUTHOR = {Kearnes, Keith A.},
+     TITLE = {Idempotent simple algebras},
+ BOOKTITLE = {Logic and algebra ({P}ontignano, 1994)},
+    SERIES = {Lecture Notes in Pure and Appl. Math.},
+    VOLUME = {180},
+     PAGES = {529--572},
+ PUBLISHER = {Dekker, New York},
+      YEAR = {1996},
+   MRCLASS = {08B05 (06F25 08A05 08A30)},
+  MRNUMBER = {1404955 (97k:08004)},
+MRREVIEWER = {E. W. Kiss},
+}
+@misc{william_demeo_2016_53936,
+  author       = {William DeMeo and
+                  Ralph Freese},
+  title        = {AlgebraFiles v1.0.1},
+  month        = May,
+  year         = 2016,
+  doi          = {10.5281/zenodo.53936},
+  url          = {http://dx.doi.org/10.5281/zenodo.53936}
+}
+@article{FreeseMcKenzie2016,
+	Author = {Freese, R. and McKenzie, R.},
+	Date-Added = {2016-08-22 19:43:56 +0000},
+	Date-Modified = {2016-08-22 19:45:50 +0000},
+	Journal = {Algebra Universalis},
+	Title = {Maltsev families of varieties closed under join or Maltsev product},
+	Year = {to appear}
+}
+@article {MR2333368,
+    AUTHOR = {Kearnes, Keith A. and Tschantz, Steven T.},
+     TITLE = {Automorphism groups of squares and of free algebras},
+   JOURNAL = {Internat. J. Algebra Comput.},
+  FJOURNAL = {International Journal of Algebra and Computation},
+    VOLUME = {17},
+      YEAR = {2007},
+    NUMBER = {3},
+     PAGES = {461--505},
+      ISSN = {0218-1967},
+   MRCLASS = {08A35 (08B20 20B25)},
+  MRNUMBER = {2333368},
+MRREVIEWER = {Giovanni Ferrero},
+       DOI = {10.1142/S0218196707003615},
+       URL = {http://dx.doi.org/10.1142/S0218196707003615},
+}
+@article {MR2504025,
+    AUTHOR = {Valeriote, Matthew A.},
+     TITLE = {A subalgebra intersection property for congruence distributive
+              varieties},
+   JOURNAL = {Canad. J. Math.},
+  FJOURNAL = {Canadian Journal of Mathematics. Journal Canadien de
+              Math\'ematiques},
+    VOLUME = {61},
+      YEAR = {2009},
+    NUMBER = {2},
+     PAGES = {451--464},
+      ISSN = {0008-414X},
+     CODEN = {CJMAAB},
+   MRCLASS = {08B10 (08A30 08B05)},
+  MRNUMBER = {2504025},
+MRREVIEWER = {Jarom{\'{\i}}r Duda},
+       DOI = {10.4153/CJM-2009-023-2},
+       URL = {http://dx.doi.org/10.4153/CJM-2009-023-2},
+}
+@misc{UACalc,
+	Author = {Ralph Freese and Emil Kiss and Matthew Valeriote},
+	Date-Added = {2014-11-20 01:52:20 +0000},
+	Date-Modified = {2014-11-20 01:52:20 +0000},
+	Note = {Available at: {\verb+www.uacalc.org+}},
+	Title = {Universal {A}lgebra {C}alculator},
+	Year = {2011}
+}
+@article{Freese2008,
+	Author = {Freese, R.},
+	Date-Added = {2016-08-29 01:31:23 +0000},
+	Date-Modified = {2016-08-29 01:32:09 +0000},
+	Journal = {Alg. Univ.},
+	Pages = {337--343},
+	Title = {Computing congruences efficiently},
+	Volume = {59},
+	Year = {2008}
+}	
+@incollection {MR1191235,
+    AUTHOR = {Szendrei, {\'A}.},
+     TITLE = {A survey on strictly simple algebras and minimal varieties},
+ BOOKTITLE = {Universal algebra and quasigroup theory ({J}adwisin, 1989)},
+    SERIES = {Res. Exp. Math.},
+    VOLUME = {19},
+     PAGES = {209--239},
+ PUBLISHER = {Heldermann, Berlin},
+      YEAR = {1992},
+   MRCLASS = {08-02 (08A40 08B05)},
+  MRNUMBER = {1191235 (93h:08001)},
+MRREVIEWER = {Ivan Chajda},
+}
+\end{filecontents*}
+%:biblio
+\documentclass[11pt]{amsart}
+% The following \documentclass options may be useful:
+% preprint      Remove this option only once the paper is in final form.
+% 10pt          To set in 10-point type instead of 9-point.
+% 11pt          To set in 11-point type instead of 9-point.
+% numbers       To obtain numeric citation style instead of author/year.
+
+%% \usepackage{setspace}\onehalfspacing
+
+\usepackage{amsmath}
+\usepackage{amscd,amssymb,amsthm} %, amsmath are included by default
+\usepackage{latexsym,stmaryrd,mathrsfs,enumerate,scalefnt,ifthen}
+\usepackage{mathtools}
+\usepackage[mathcal]{euscript}
+\usepackage[colorlinks=true,urlcolor=black,linkcolor=black,citecolor=black]{hyperref}
+\usepackage{url}
+\usepackage{scalefnt}
+\usepackage{tikz}
+\usepackage{color}
+\usepackage[margin=1in]{geometry}
+\usepackage{scrextend}
+
+%%////////////////////////////////////////////////////////////////////////////////
+%% Theorem styles
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{prop}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{Fact}[theorem]{Fact}
+\newtheorem*{fact}{Fact}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{examples}[theorem]{Examples}
+\newtheorem{exercise}{Exercise}
+\newtheorem*{lem}{Lemma}
+\newtheorem*{cor}{Corollary}
+\newtheorem*{remark}{Remark}
+\newtheorem*{remarks}{Remarks}
+\newtheorem*{obs}{Observation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{inputs/proof-dashed}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Put new macros in the macros.sty file
+\usepackage{inputs/macros}
+
+\usepackage[backend=bibtex]{biblatex}
+\bibliography{inputs/refs.bib}
+
+\begin{document}
+
+\title[Difference Terms and Semilattice Terms]{%
+  Notes on Deciding Existence of \\ Difference Terms and Semilattice Terms}
+\date{\today}
+\author[wjd]{DeMeo}
+\address{University of Hawaii}
+\email{williamdemeo@gmail.com}
+\author[rsf]{Freese}
+\email{ralph@math.hawaii.edu}
+\author[ag]{Guillen}
+\email{guillena@math.hawaii.edu}
+\author[th]{Holmes}
+\email{tristanh@hawaii.edu}
+\author[wal]{Lampe}
+\email{bill@math.hawaii.edu}
+\author[jbn]{Nation}
+\email{jb@math.hawaii.edu}
+
+
+%% \thanks{The authors would like to extend special thanks to...}
+
+\maketitle
+
+%% \begin{abstract}\end{abstract}
+
+\section{Introduction}
+\label{sec:introduction}
+The question motivating this effort is the following:
+\begin{quote}
+{\bf Problem 1:} Is there a polynomial-time algorithm to decide for a finite,
+idempotent algebra $\bA$ if $V(\bA)$ has a difference term.
+\end{quote}
+
+Having a difference term is equivalent to $V(\bA)$ having a Taylor term
+and no type-2 tails. Briefly: no 1's and no type-2 tails.
+No 1's is poly-time decidable by Valeriote's subtype theorem.
+Consider an analogous problem:
+\begin{quote}
+  {\bf Problem 2:}
+  Is there a polynomial-time algorithm to decide for a finite,
+  idempotent algebra $\bA$ if $V(\bA)$ is \ac{cm}?
+\end{quote}
+In~\cite{Freese:2009}, Freese and Valeriote showed that the answer is yes.
+Congruence modularity is characterized by no 1's, no 5's and no tails.
+Again no 1's and no 5's can be decided by the subtype theorem,
+and in~\cite{Freese:2009} the authors prove that if there is
+a tail in $V(\bA)$, there is a tail ``near the bottom.''
+More precisely, if $\bA$ is finite and idempotent, and $V(\bA)$ has no
+1's or 5's and has tails, then there is a tail in a 3-generated subalgebra of $\bA^2$.
+Using this we see that deciding \cm is polynomial-time.
+
+But the proof of the no tails part uses that in a variety with no 1's or 5's,
+the congruence lattice modulo the solvability congruence is (join) semidistributive.
+Now, restricting to just testing no type-2 tails (vs no tails of any type) is
+not a problem. So, for example, there is a poly-time algorithm for testing if
+$V(\bA)$ has no 1's, no 5's and no type-2 tails.  
+
+Here is a related problem:
+\begin{quote}
+  {\bf Problem 3:}
+  Is there an $\bA$, idempotent and having a Taylor term, no type-2 tail in 
+  subalgebras of $\bA^k$, for $k < n$, but having a type-2 tail in a subalgebra
+  of $\bA^n$. 
+\end{quote}
+Perhaps we can construct such an algebra using congruence lattice
+representation techniques. 
+
+%% Hobby and McKenzie give some info about the types in a $D_2$
+%% embedded in $\Con (\bA)$. (See~\cite[Lemma 6.3]{HM:1988}).
+%% Exercise 7 of that section considers 4-element
+%% algebras whose congruence lattice is the concrete embedding of $D_2$
+%% in $\Eq(4)$; the one with coatoms $01|23$, $02|13$, and $0|123$, and with atoms
+%% $0|1|23$ and $0|2|13$. By~\cite[Lemma 6.3]{HM:1988}, the middle-top
+%% interval must be type 5 (assuming a Taylor term). But all the others can be 5's,
+%% or all the others can be 4's, or all the others can be 3's.
+%% One might attempt to find an example where they are all 2's, but that not possible
+%% since otherwise $0|123$ would be a solvable congruence,
+%% which would imply the two atoms would permute.
+
+
+\section{Background, definitions, and notations}
+\label{sec:defin-notat}
+Our starting point is the set of lemmas at the beginning of Section 3 in
+the Freese-Valeriote paper~\cite{Freese:2009}.
+We first review some of the basic \ac{tct}
+that comes up in the proofs in that paper.
+The main reference for \tct is of course the book by Hobby and McKenzie
+\cite{HM:1988} which taught us that, for each covering 
+$\alpha \prec \beta$ in the congruence lattice of a finite algebra
+$\bA$, the local behaviour of the $\beta$-classes is captured by the
+so-called $(\alpha, \beta)$-traces~\cite[Definition 2.15]{HM:1988};
+modulo $\alpha$, the induced structure on the traces is limited to one
+of five possible types:
+
+\begin{enumerate}[(1)]
+\item unary algebra whose basic operations are all permutations (unary type);
+\item one-dimensional vector space over some finite field (affine type);
+\item 2-element boolean algebra (boolean type);
+\item 2-element lattice (lattice type);
+\item 2-element semilattice (semilattice type).
+\end{enumerate}
+
+Thus to each covering $\alpha \prec \beta$
+corresponds a type in $\{1,2,3,4,5\}$ (see~\cite[Definition 5.1]{HM:1988}),
+denote $\typ(\alpha, \beta)$.
+The set of all types that are realized by covering pairs of congruences of a
+finite algebra $\bA$ is denoted by $\typ\{\bA\}$, and if $\sK$ is a class of algebras,
+then $\typ\{\sK\}$ denotes the union of the typesets of all finite algebras in $\sK$.
+The set of types is ordered by the lattice of types given here:
+
+\newcommand{\dotsize}{0.8pt}
+%% To create nodes of lattices in a uniform and consistent way, we define
+\tikzstyle{lat} = [circle,draw,inner sep=\dotsize]
+% To scale all diagrams uniformly, change this setting:
+\begin{center}
+  
+\newcommand{\figscale}{.8}
+\begin{tikzpicture}[scale=\figscale]
+  \node[lat] (1) at (0,0) {};
+  \node[lat] (2) at (-1,1.5) {};
+  \node[lat] (3) at (0,3) {};
+  \node[lat] (4) at (.8,2.1) {};
+  \node[lat] (5) at (.8,.9) {};
+  \draw (1) node [below] {$1$};
+  \draw (2) node [left] {$2$};
+  \draw (3) node [above] {$3$};
+  \draw (4) node [right] {$4$};
+  \draw (5) node [right] {$5$};
+  \draw[semithick] 
+  (1) -- (2) -- (3) -- (4) -- (5) -- (1);
+\end{tikzpicture}
+
+\end{center}
+
+The following results demonstrate that, for a finite idempotent algebra $\bA$,
+whether or not $V(\bA)$ omits one of the order ideals of the lattice of types can be
+determined locally. An algebra is strictly simple if it is simple (i.e. has no non-trivial
+congruences) and has no non-trivial subalgebras (i.e. has no proper subalgebras with
+more than one element).
+
+\begin{prop}[Proposition 2.1~\cite{Freese:2009}]
+If A is a finite idempotent algebra and $i \in \typ(V(\bA))$ then there
+is a finite strictly simple algebra $\bS$ of type $j$ for some $j \leq i$ in $\sansH \sansS (\bA)$.
+If
+\begin{enumerate}[(1)]
+\item 
+  $j = 1$ then $\bS$ is term equivalent to a 2-element set;
+\item
+  $j = 2$ then $\bS$ is term equivalent to the idempotent reduct of a module;
+\item
+  $j = 3$ then $\bS$ is functionally complete;
+\item
+  $j = 4$ then $\bS$ is polynomially equivalent to a 2-element lattice;
+\item
+  $j = 5$ then $\bS$ is term equivalent to a 2-element semilattice.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+  This is a combination of~\cite[Proposition 3.1]{MR2504025} and~\cite[Theorem 6.1]{MR1191235}.
+\end{proof}
+
+\begin{corollary}[Corollary 2.2~\cite{Freese:2009}]
+  \label{cor:2.2}
+  Let $\bA$ be a finite idempotent algebra and $T$ an order ideal in the
+  lattice of types. Then $V(\bA)$ omits $T$ if and only if $\sansS(\bA)$ does.
+  In particular, $V(\bA)$ omits 1 and 2 if and only if $S(\bA)$ omits 1 and 2.
+\end{corollary}
+
+%% The following lemma ties in with the previous proposition and will be used
+%% in Sec. 6.
+%% \begin{lemma}[Lemma 2.3~\cite{Freese:2009}] 
+%%   Let $\bA$ be a finite idempotent algebra and let $\bS \in \sansH \sansS(\bA)$
+%%   be strictly simple. Then there are elements $a, b \in A$ such that, if
+%%   $\bB = \Sg^{\bA} (a, b)$, then $1_B = \Cg^{\bB} (a, b)$ and is join irreducible
+%%   with unique lower cover $\rho$ such that $\bS = \bB/\rho$.
+%% \end{lemma}
+%% \begin{proof}
+%%   Choose $\bB \in \sansS (\bA)$ as small as possible having $\bS$ as a homomorphic image,
+%%   say $\bS = \bB/\rho$. We claim that if $a, b \in B$ with
+%%   $(a, b) \in \notin \rho$ then they generate $\bB$. To
+%%   see this, let $\bB'= \Sg^{\bB} (a, b)$ and let $h$ be the quotient map from B to S with kernel
+%%   ρ. Then h(B  ) is a non-trivial subuniverse of S and so must equal S. Thus B  = B.
+%%   Now let a, b ∈ B with (a, b) ∈
+%%   / ρ. Since the block of Cg B (a, b) containing a
+%%   and b is a subuniverse of B then from the previous paragraph, we conclude that
+%%   Cg B (a, b) = 1 B and that ρ is its unique lower cover.
+%% \end{proof}
+
+Corollary~\ref{cor:2.2} is the starting point of the development in~\cite{Freese:2009}
+of a polynomial-time algorithm that determines if a given finite idempotent algebra
+generates a \cm variety. According to the characterization
+in~\cite[Chapter 8]{HM:1988} of locally finite congruence modular (distributive) varieties,
+a finite algebra $\bA$ generates a congruence modular (distributive) variety $\sV$ if and
+only if the typeset of $\sV$ is contained in $\{2, 3, 4\}$ ($\{3, 4\}$) and all
+minimal sets of prime quotients of finite algebras in $\sV$ have empty
+tails~\cite[Definition 2.15]{HM:1988}. Note that in the \cd
+case the empty tails condition is equivalent to the minimal sets all having exactly
+two elements.
+It follows from Corollary~\ref{cor:2.2} that if $\bA$ is idempotent then one can
+test the first condition, on omitting types 1 and 5 (or 1, 2, and 5) by searching
+for a 2-generated subalgebra of $\bA$ whose typeset is not contained in
+$\{2, 3, 4\}$ ($\{3, 4\}$). In~\cite[Sec. 6]{Freese:2009}, the authors prove that this
+test can be performed in polynomial time, as a function of the size of $\bA$.
+The following sequence of lemmas establishes that when A is finite, idempotent
+and $\sV = V (\bA)$ omits types 1 and 5, then to test for the existence of tails in
+$\sV$ we need only look for them in the 3-generated subalgebras of $\bA^2$.
+
+Throughout the remainder of this section, let $\sS$ be a finite set of finite,
+similar, idempotent algebras closed under the taking of subalgebras such that
+$\sV = V (\sS)$ omits 1 and 5. We will suppose that some finite algebra
+$\bB$ in $\sV$ has a prime quotient whose minimal sets have non-empty tails
+and show that there is a 3-generated subalgebra of the product of two members
+of $\sS$ with this property. Since $\sS$ is closed under the taking of subalgebras,
+we may assume that the algebra $\bB$ from the previous paragraph is a subdirect
+product of a finite number of members of $\sS$. Choose $n$ minimal such that for
+some $\bA_i \in \sS$, the product $\prod_{i\leq n} \bA_i$
+has a subdirect product $\bB$ that has a prime quotient with non-empty tails.
+Under the assumption that $n > 1$ we will prove that $n = 2$.
+
+For this $n$, select the $\bA_i$ and $\bB$ so that $|B|$ is as small as possible.
+Let $\alpha \prec \beta$ be a prime quotient of $\bB$ with non-empty tails and choose
+$\beta$ minimal with this property.
+Let $U$ be an $(\alpha, \beta)$-minimal set and let $N$ be an
+ $(\alpha, \beta)$-trace of $U$. Let 0 and 1 be
+two distinct members of $N$ with $(0, 1) \notin \alpha$.
+
+\begin{lemma}[Lemma 3.1~\cite{Freese:2009}]
+Let $t$ be a member of the tail of $U$. Then $\beta$ is the congruence of $\bB$
+generated by the pair $(0, 1)$ and $\bB$ is generated by $\{0, 1, t\}$.
+\end{lemma}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%% \appendix
+%% \section{Appendix Title}
+%% This is the text of the appendix, if you need one.
+
+%\bibliographystyle{amsplain} %% or amsalpha
+%% \bibliographystyle{plain-url}
+\printbibliography
+
+
+\end{document}
