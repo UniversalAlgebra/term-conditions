@@ -15,6 +15,23 @@
 %% then delete the existing refs.bib file so it will be automatically generated 
 %% again with your new entry the next time you run pdfaltex.
 \begin{filecontents*}{inputs/refs.bib}
+@article {MR1358491,
+    AUTHOR = {Kearnes, Keith A.},
+     TITLE = {Varieties with a difference term},
+   JOURNAL = {J. Algebra},
+  FJOURNAL = {Journal of Algebra},
+    VOLUME = {177},
+      YEAR = {1995},
+    NUMBER = {3},
+     PAGES = {926--960},
+      ISSN = {0021-8693},
+     CODEN = {JALGA4},
+   MRCLASS = {08B10 (08B05)},
+  MRNUMBER = {1358491},
+MRREVIEWER = {H. Peter Gumm},
+       DOI = {10.1006/jabr.1995.1334},
+       URL = {http://dx.doi.org/10.1006/jabr.1995.1334},
+}
 @book {MR2839398,
     AUTHOR = {Bergman, Clifford},
      TITLE = {Universal algebra},
@@ -107,8 +124,7 @@ MRREVIEWER = {James B. Nation},
 MRREVIEWER = {E. W. Kiss},
 }
 @misc{william_demeo_2016_53936,
-  author       = {William DeMeo and
-                  Ralph Freese},
+  author       = {DeMeo, William and Freese, Ralph},
   title        = {AlgebraFiles v1.0.1},
   month        = May,
   year         = 2016,
@@ -116,7 +132,7 @@ MRREVIEWER = {E. W. Kiss},
   url          = {http://dx.doi.org/10.5281/zenodo.53936}
 }
 @article{FreeseMcKenzie2016,
-	Author = {Freese, R. and McKenzie, R.},
+	Author = {Freese, Ralph and McKenzie, Ralph},
 	Date-Added = {2016-08-22 19:43:56 +0000},
 	Date-Modified = {2016-08-22 19:45:50 +0000},
 	Journal = {Algebra Universalis},
@@ -167,7 +183,7 @@ MRREVIEWER = {Jarom{\'{\i}}r Duda},
 	Year = {2011}
 }
 @article{Freese2008,
-	Author = {Freese, R.},
+	Author = {Freese, Ralph},
 	Date-Added = {2016-08-29 01:31:23 +0000},
 	Date-Modified = {2016-08-29 01:32:09 +0000},
 	Journal = {Alg. Univ.},
@@ -177,7 +193,7 @@ MRREVIEWER = {Jarom{\'{\i}}r Duda},
 	Year = {2008}
 }	
 @incollection {MR1191235,
-    AUTHOR = {Szendrei, {\'A}.},
+    AUTHOR = {Szendrei, {\'A}gnes.},
      TITLE = {A survey on strictly simple algebras and minimal varieties},
  BOOKTITLE = {Universal algebra and quasigroup theory ({J}adwisin, 1989)},
     SERIES = {Res. Exp. Math.},
@@ -189,17 +205,25 @@ MRREVIEWER = {Jarom{\'{\i}}r Duda},
   MRNUMBER = {1191235 (93h:08001)},
 MRREVIEWER = {Ivan Chajda},
 }
+@unpublished{Bergman-DeMeo,
+    AUTHOR = {Bergman, Clifford and DeMeo, William},
+    TITLE = {Universal Algebraic Methods for Constraint Satisfaction Problems:
+      with applications to commutative idempotent binars},
+    YEAR = {2016},
+    NOTE = {unpublished notes; soon to be available online},
+    URL = {https://github.com/UniversalAlgebra/algebraic-csp}
+}
 \end{filecontents*}
 %:biblio
-\documentclass[11pt]{amsart}
+\documentclass[12pt]{amsart}
 % The following \documentclass options may be useful:
 % preprint      Remove this option only once the paper is in final form.
 % 10pt          To set in 10-point type instead of 9-point.
 % 11pt          To set in 11-point type instead of 9-point.
 % numbers       To obtain numeric citation style instead of author/year.
 
-%% \usepackage{setspace}\onehalfspacing
-
+\usepackage{setspace}\onehalfspacing
+\usepackage[normalem]{ulem} % for \sout (strikeout)
 \usepackage{amsmath}
 \usepackage{amscd,amssymb,amsthm} %, amsmath are included by default
 \usepackage{latexsym,stmaryrd,mathrsfs,enumerate,scalefnt,ifthen}
@@ -227,6 +251,7 @@ MRREVIEWER = {Ivan Chajda},
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{notation}[theorem]{Notation}
 \newtheorem{Fact}[theorem]{Fact}
+\newtheorem{question}{Question}
 \newtheorem*{fact}{Fact}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{examples}[theorem]{Examples}
@@ -254,20 +279,20 @@ MRREVIEWER = {Ivan Chajda},
 \begin{document}
 
 \title[Difference Terms and Semilattice Terms]{%
-  Notes on Deciding Existence of \\ Difference Terms and Semilattice Terms}
+  Notes on Complexity of Deciding Existence of \\ Difference Terms and Semilattice Terms}
 \date{\today}
-\author[wjd]{DeMeo}
+\author{DeMeo}
 \address{University of Hawaii}
 \email{williamdemeo@gmail.com}
-\author[rsf]{Freese}
+\author{Freese}
 \email{ralph@math.hawaii.edu}
-\author[ag]{Guillen}
+\author{Guillen}
 \email{guillena@math.hawaii.edu}
-\author[th]{Holmes}
+\author{Holmes}
 \email{tristanh@hawaii.edu}
-\author[wal]{Lampe}
+\author{Lampe}
 \email{bill@math.hawaii.edu}
-\author[jbn]{Nation}
+\author{Nation}
 \email{jb@math.hawaii.edu}
 
 
@@ -280,43 +305,42 @@ MRREVIEWER = {Ivan Chajda},
 \section{Introduction}
 \label{sec:introduction}
 The question motivating this effort is the following:
-\begin{quote}
-{\bf Problem 1:} Is there a polynomial-time algorithm to decide for a finite,
+\begin{question}
+Is there a polynomial-time algorithm to decide for a finite,
 idempotent algebra $\bA$ if $V(\bA)$ has a difference term.
-\end{quote}
-
-Having a difference term is equivalent to $V(\bA)$ having a Taylor term
-and no type-2 tails. Briefly: no 1's and no type-2 tails.
+\end{question}
+Kearnes proved in~\cite{MR1358491} that $\bA$ has a difference term iff
+$V(\bA)$ has a Taylor term and no type-2 tails
+(equivalently, $V(\bA)$ has no 1's and no type-2 tails).
 No 1's is poly-time decidable by Valeriote's subtype theorem.
-Consider an analogous problem:
-\begin{quote}
-  {\bf Problem 2:}
+In~\cite{Freese:2009}, Freese and Valeriote solved an analogous problem, by
+giving a positive answer to the following
+\begin{question}
   Is there a polynomial-time algorithm to decide for a finite,
   idempotent algebra $\bA$ if $V(\bA)$ is \ac{cm}?
-\end{quote}
-In~\cite{Freese:2009}, Freese and Valeriote showed that the answer is yes.
+\end{question}
 Congruence modularity is characterized by no 1's, no 5's and no tails.
 Again no 1's and no 5's can be decided by the subtype theorem,
 and in~\cite{Freese:2009} the authors prove that if there is
 a tail in $V(\bA)$, there is a tail ``near the bottom.''
 More precisely, if $\bA$ is finite and idempotent, and $V(\bA)$ has no
 1's or 5's and has tails, then there is a tail in a 3-generated subalgebra of $\bA^2$.
-Using this we see that deciding \cm is polynomial-time.
+Using this it is proved that deciding \cm is polynomial-time.
 
 But the proof of the no tails part uses that in a variety with no 1's or 5's,
-the congruence lattice modulo the solvability congruence is (join) semidistributive.
+the congruence lattice modulo the {\it solvability congruence} (defined below)
+is (join) semidistributive.
 Now, restricting to just testing no type-2 tails (vs no tails of any type) is
 not a problem. So, for example, there is a poly-time algorithm for testing if
 $V(\bA)$ has no 1's, no 5's and no type-2 tails.  
 
-Here is a related problem:
-\begin{quote}
-  {\bf Problem 3:}
+Here is a related problem.
+\begin{question}
   Is there an $\bA$, idempotent and having a Taylor term, no type-2 tail in 
   subalgebras of $\bA^k$, for $k < n$, but having a type-2 tail in a subalgebra
   of $\bA^n$. 
-\end{quote}
-Perhaps we can construct such an algebra using congruence lattice
+\end{question}
+Perhaps we could construct such an algebra using congruence lattice
 representation techniques. 
 
 %% Hobby and McKenzie give some info about the types in a $D_2$
@@ -337,13 +361,16 @@ representation techniques.
 Our starting point is the set of lemmas at the beginning of Section 3 in
 the Freese-Valeriote paper~\cite{Freese:2009}.
 We first review some of the basic \ac{tct}
-that comes up in the proofs in that paper.
-The main reference for \tct is of course the book by Hobby and McKenzie
-\cite{HM:1988} which taught us that, for each covering 
-$\alpha \prec \beta$ in the congruence lattice of a finite algebra
-$\bA$, the local behaviour of the $\beta$-classes is captured by the
-so-called $(\alpha, \beta)$-traces~\cite[Definition 2.15]{HM:1988};
-modulo $\alpha$, the induced structure on the traces is limited to one
+that comes up in the proofs in that paper. (In fact, most of this section 
+is copied from the nice presentation of \tct background that appears
+in~\cite[Sec.~2]{Freese:2009}.)
+
+The reference for \tct is the book by Hobby and McKenzie
+\cite{HM:1988}, according to which,
+for each covering $\alpha \prec \beta$ in the congruence lattice of a finite
+algebra $\bA$, the local behaviour of the $\beta$-classes is captured by the
+so-called $(\alpha, \beta)$-traces~\cite[Def.~2.15]{HM:1988}.
+Modulo $\alpha$, the induced structure on the traces is limited to one
 of five possible types:
 
 \begin{enumerate}[(1)]
@@ -355,8 +382,8 @@ of five possible types:
 \end{enumerate}
 
 Thus to each covering $\alpha \prec \beta$
-corresponds a type in $\{1,2,3,4,5\}$ (see~\cite[Definition 5.1]{HM:1988}),
-denote $\typ(\alpha, \beta)$.
+corresponds a type in $\{1,2,3,4,5\}$ (see~\cite[Def.~5.1]{HM:1988}),
+denoted by $\typ(\alpha, \beta)$.
 The set of all types that are realized by covering pairs of congruences of a
 finite algebra $\bA$ is denoted by $\typ\{\bA\}$, and if $\sK$ is a class of algebras,
 then $\typ\{\sK\}$ denotes the union of the typesets of all finite algebras in $\sK$.
@@ -392,7 +419,7 @@ determined locally. An algebra is strictly simple if it is simple (i.e. has no n
 congruences) and has no non-trivial subalgebras (i.e. has no proper subalgebras with
 more than one element).
 
-\begin{prop}[Proposition 2.1~\cite{Freese:2009}]
+\begin{prop}[Prop.~2.1~\cite{Freese:2009}]
 If A is a finite idempotent algebra and $i \in \typ(V(\bA))$ then there
 is a finite strictly simple algebra $\bS$ of type $j$ for some $j \leq i$ in $\sansH \sansS (\bA)$.
 If
@@ -410,10 +437,10 @@ If
 \end{enumerate}
 \end{prop}
 \begin{proof}
-  This is a combination of~\cite[Proposition 3.1]{MR2504025} and~\cite[Theorem 6.1]{MR1191235}.
+  This is a combination of~\cite[Prop.~3.1]{MR2504025} and~\cite[Thm.~6.1]{MR1191235}.
 \end{proof}
 
-\begin{corollary}[Corollary 2.2~\cite{Freese:2009}]
+\begin{corollary}[Cor.~2.2~\cite{Freese:2009}]
   \label{cor:2.2}
   Let $\bA$ be a finite idempotent algebra and $T$ an order ideal in the
   lattice of types. Then $V(\bA)$ omits $T$ if and only if $\sansS(\bA)$ does.
@@ -440,14 +467,15 @@ If
 %%   Cg B (a, b) = 1 B and that ρ is its unique lower cover.
 %% \end{proof}
 
-Corollary~\ref{cor:2.2} is the starting point of the development in~\cite{Freese:2009}
-of a polynomial-time algorithm that determines if a given finite idempotent algebra
-generates a \cm variety. According to the characterization
-in~\cite[Chapter 8]{HM:1988} of locally finite congruence modular (distributive) varieties,
-a finite algebra $\bA$ generates a congruence modular (distributive) variety $\sV$ if and
-only if the typeset of $\sV$ is contained in $\{2, 3, 4\}$ ($\{3, 4\}$) and all
-minimal sets of prime quotients of finite algebras in $\sV$ have empty
-tails~\cite[Definition 2.15]{HM:1988}. Note that in the \cd
+In~\cite{Freese:2009}, Corollary~\ref{cor:2.2} is the starting point of the
+development of a polynomial-time algorithm that determines if a given finite
+idempotent algebra generates a \cm variety. According to the characterization
+in~\cite[Ch.~8]{HM:1988} of locally finite congruence modular (resp.,
+distributive) varieties, a finite algebra $\bA$ generates a congruence modular
+(resp., distributive) variety $\sV$ if and only if the typeset of $\sV$ is
+contained in $\{2, 3, 4\}$ (resp., $\{3, 4\}$) and all minimal sets of prime
+quotients of finite algebras in $\sV$ have empty
+tails~\cite[Def.~2.15]{HM:1988}. Note that in the distributive 
 case the empty tails condition is equivalent to the minimal sets all having exactly
 two elements.
 It follows from Corollary~\ref{cor:2.2} that if $\bA$ is idempotent then one can
@@ -455,50 +483,464 @@ test the first condition, on omitting types 1 and 5 (or 1, 2, and 5) by searchin
 for a 2-generated subalgebra of $\bA$ whose typeset is not contained in
 $\{2, 3, 4\}$ ($\{3, 4\}$). In~\cite[Sec. 6]{Freese:2009}, the authors prove that this
 test can be performed in polynomial time, as a function of the size of $\bA$.
-The following sequence of lemmas establishes that when A is finite, idempotent
-and $\sV = V (\bA)$ omits types 1 and 5, then to test for the existence of tails in
-$\sV$ we need only look for them in the 3-generated subalgebras of $\bA^2$.
+They use the following sequence of lemmas to establish that,
+if $\bA$ is finite and idempotent, and if $\sV = V (\bA)$ omits types 1 and 5,
+then to test for the existence of tails in $\sV$ it suffices to look for them
+in the 3-generated subalgebras of $\bA^2$.
+
+\section{The Freese-Valeriote Lemmas Revisited}
+We take the previous section, which is essentially lifted directly
+from~\cite{Freese:2009}, as our starting point.  From here we will
+revisit each of the lemmas of \cite[Sec.~3]{Freese:2009}, and consider
+whether they can be proved under modified hypotheses.
+Specifically, Freese and Valeriote assume
+that the type set of $V(\bA)$ contains no 1's and no 5's, and under this
+assumption they prove that (non-empty) tails either do not occur in $V(\bA)$, or they occur
+in 3-generated subalgebras of $\bA^2$.  We will assume
+that the type set of $V(\bA)$ contains no 1's, and then prove that
+either there are no type-2 tails in $V(\bA)$, or else type-2 tails can be
+found ``quickly,'' say, in 3-generated subalgebras of $\bA^2$.
+Thus, we continue to quote~\cite[Sec.~3]{Freese:2009} (verbatim
+when possible), while modifying the assumptions and adjusting the arguments
+as necessary.
 
 Throughout the remainder of this section, let $\sS$ be a finite set of finite,
 similar, idempotent algebras closed under the taking of subalgebras such that
-$\sV = V (\sS)$ omits 1 and 5. We will suppose that some finite algebra
-$\bB$ in $\sV$ has a prime quotient whose minimal sets have non-empty tails
-and show that there is a 3-generated subalgebra of the product of two members
-of $\sS$ with this property. Since $\sS$ is closed under the taking of subalgebras,
+$\sV = V (\sS)$ omits 1 \sout{and 5}. We will suppose that some finite algebra
+$\bB$ in $\sV$ has a prime quotient whose minimal sets have non-empty
+\emph{type-2} tails and show that there is a 3-generated subalgebra of the
+product of two members of $\sS$ with this property.
+
+Since $\sS$ is closed under the taking of subalgebras,
 we may assume that the algebra $\bB$ from the previous paragraph is a subdirect
 product of a finite number of members of $\sS$. Choose $n$ minimal such that for
 some $\bA_i \in \sS$, the product $\prod_{i\leq n} \bA_i$
-has a subdirect product $\bB$ that has a prime quotient with non-empty tails.
-Under the assumption that $n > 1$ we will prove that $n = 2$.
+has a subdirect product $\bB$ that has a prime quotient with non-empty
+\emph{type-2} tails. Under the assumption that $n > 1$ we will prove that $n = 2$.
 
 For this $n$, select the $\bA_i$ and $\bB$ so that $|B|$ is as small as possible.
-Let $\alpha \prec \beta$ be a prime quotient of $\bB$ with non-empty tails and choose
-$\beta$ minimal with this property.
+Let $\alpha \prec \beta$ be a prime quotient of $\bB$ with non-empty
+\emph{type-2} tails and choose $\beta$ minimal with this property.
 Let $U$ be an $(\alpha, \beta)$-minimal set and let $N$ be an
  $(\alpha, \beta)$-trace of $U$. Let 0 and 1 be
 two distinct members of $N$ with $(0, 1) \notin \alpha$.
 
-\begin{lemma}[Lemma 3.1~\cite{Freese:2009}]
+\begin{lemma}[Lem.~3.1~\cite{Freese:2009}]
 Let $t$ be a member of the tail of $U$. Then $\beta$ is the congruence of $\bB$
 generated by the pair $(0, 1)$ and $\bB$ is generated by $\{0, 1, t\}$.
 \end{lemma}
 
+For $i \leq n$, let $\pi_i$ be the projection homomorphism from $\bB$ onto
+$\bA_i$ and let $\rho_i$ be the kernel of $\pi_i$. By the minimality of $n$ we
+know that the intersection of any  proper subset of the
+$\rho_i$, $1 \leq i \leq n$ is strictly above $0_B$.
+
+\begin{lemma}[Lem.~3.2~\cite{Freese:2009}]
+Let $\rho$ be the intersection of a proper subset of the $\rho_i$, $1 \leq i \leq n$.
+Either $\beta \leq \rho$ or $\alpha \join \rho = 1_B$.
+\end{lemma}
+
+\begin{lemma}[Lem.~3.3~\cite{Freese:2009}]
+  $\alpha \join \rho_i < 1_B$ for at least one $i$ and $\alpha \join \rho_j = 1_B$
+  for at least one $j$.  
+\end{lemma}
+
+\begin{theorem}[Thm.~3.4~\cite{Freese:2009}]
+  Let $\sV$ be the variety generated by some finite set $\sS$ of finite,
+  idempotent algebras that is closed under taking subalgebras. If $\sV$
+  omits type 1 \sout{and 5} and some finite member of $\sV$ has a prime quotient
+  whose minimal sets have non-empty \emph{type-2} tails then there is some
+  3-generated algebra B with this property that belongs to $\sS$ or is a subdirect
+  product of two algebras from $\sS$. 
+\end{theorem}
+
+\section{Some Useful Tools}
+This section presents some lemmas about congruences, centralizers, and abelian
+algebras that we have recently found very useful (see~\cite{Bergman-DeMeo}).
+They seem relevant and perhaps useful for the purpose of proving some of the
+results in the previous section.
+
+In previous work, nonabelian algebras played the following useful role:
+a theorem would begin with the assumption that a particular algebra $\bA$ is
+nonabelian and then proceed to show that if the result to be proved were false,
+then $\bA$ would have to be abelian.
+Such arguments employ some basic facts about abelian algebras that we now review.
+%% (Much of the notation we adopt here is similar to that used
+%% in~\cite{MR3076179}.)
+
+\subsection{Definitions} %: tolerance, centralizing, abelian}
+Let $\bA = \<A, F^{\bA}\>$ be an algebra.
+A reflexive, symmetric, compatible binary relation $T\subseteq A^2$ is called a
+\defn{tolerance of $\bA$}.  
+As a compatible binary relation, a tolerance is a subuniverse of $\bA^2$.
+If $T$ is a tolerance of $\bA$, and if $(\bu, \bv) \in A^m\times A^m$
+is a pair of $m$-tuples of $A$, then we write 
+$\bu \mathrel{\bT} \bv$ just in case $\bu(i) \mathrel{T} \bv(i)$ for all $i\in \mm$. 
+(Here we have surreptitiously introduced another very convenient notation, namely,
+$\mm := \{0, 1, 2, \dots, m-1\}$.)
+
+Suppose $S$ and $T$ are tolerances on $\bA$.  An \defn{$S,T$-matrix} 
+is a $2\times 2$ array of the form
+\[
+\begin{bmatrix*}[r] t(\ba,\bu) & t(\ba,\bv)\\ t(\bb,\bu)&t(\bb,\bv)\end{bmatrix*},
+\]
+where $t$, $\ba$, $\bb$, $\bu$, $\bv$ have the following properties:
+\begin{enumerate}[(i)]
+\item $t\in \Clo_{\ell + m}(\bA)$,
+\item $(\ba, \bb)\in A^\ell\times A^\ell$ and $\ba \mathrel{\bS} \bb$,
+\item $(\bu, \bv)\in A^m\times A^m$ and $\bu \mathrel{\bT} \bv$.
+\end{enumerate}
+Let $\delta$ be a congruence relation of $\bA$.
+If the entries of every $S,T$-matrix satisfy
+\begin{equation}
+  \label{eq:22}
+t(\ba,\bu) \mathrel{\delta} t(\ba,\bv)\quad \iff \quad t(\bb,\bu) \mathrel{\delta} t(\bb,\bv),
+\end{equation}
+then we say that $S$ \defn{centralizes $T$ modulo} $\delta$ and we write 
+$\sansC(S, T; \delta)$.
+That is, $\sansC(S, T; \delta)$ holds iff 
+(\ref{eq:22}) holds \emph{for all}
+$\ell$, $m$, $t$, $\ba$, $\bb$, $\bu$, $\bv$ satisfying properties (i)--(iii).
+The condition $\sansC(S, T; 0_{A})$ is sometimes called the 
+\defn{$S, T$-term condition}, and when it holds we say  that
+$S$ \defn{centralizes} $T$, and write
+$\sansC(S, T)$.
+%% REMOVING THIS since I don't think we ever use the commutator notation again.
+%% The \defn{commutator} of $\bS$ and $\bT$, denoted by $[\bS, \bT]$,
+%% is the least congruence $\delta$ such that $\sansC(\bS, \bT; \delta)$ 
+%% holds.  
+
+A tolerance $T$ is called \defn{abelian} if
+$\sansC(T, T)$. %(i.e., $[\bT, \bT] = 0_A$).  
+An algebra $\bA$ is called \defn{abelian} if $1_A$ is abelian.
+%% (i.e., $[1_A, 1_A] = 0_A$).
+%% The \defn{centralizer of $\bT$ modulo $\delta$}, denoted by
+%% $(\delta : \bT )$, is the largest congruence $\alpha$ on $\bA$ such that 
+%% $\sansC(\alpha, \bT ; \delta)$ holds.
+
+\begin{remark}
+An algebra $\bA$ is abelian iff $\sansC(1_A, 1_A)$ iff
+\[
+\forall \ell \in \{0,1,2,\dots \}, 
+\quad \forall m \in  \{1,2,\dots \},
+\quad \forall t\in \Clo_{\ell + m}(\bA),
+\quad \forall (a, b)\in A^\ell\times A^\ell,
+\]
+\[
+\ker t(a, \cdot)=\ker t(b, \cdot).
+\]
+\end{remark}
+
+\subsection{Alternative development}
+Here is the development of similar notions from Hobby and McKenzie~\cite[Ch.~3]{HM:1988}.
+Let $\alpha$, $\beta$, $\delta$ be congruences of an algebra $\bA$.
+We use the formula $\sansC(\alpha, \beta; \delta)$
+(in words, $\alpha$ centralizes $\beta$ modulo $\delta$) as an abbreviation for the
+following property: For every $n > 1$, for every $f \in \Pol_n(\bA)$,
+for all $(u,v)\in \alpha$, and for all $(x_i, y_i)\in \beta$ $(1< i<n)$, 
+the following equivalence holds:
+\begin{equation}
+  \label{eq:1}
+  f(u, x_1, \dots, x_{n-1}) \mathrel{\delta}  f(u, y_1, \dots, y_{n-1})
+  \quad \iff \quad
+  f(v, x_1, \dots, x_{n-1}) \mathrel{\delta}  f(v, y_1, \dots, y_{n-1}).
+\end{equation}
 
 
+\subsection{Facts}
+We now collect some useful facts about centralizers of congruence relations.
+These facts are well-known and not very hard to prove. (See, for
+example,~\cite{MR3076179}.)
 
+\noindent [{\it wjd: I'm not sure about item
+    (\ref{fact:dual_monotone_centralizers}) in the next lemma.}]
 
+\begin{lemma}
+\label{lem:centralizers}
+Let $\bA$ be an algebra with congruences 
+$\alpha, \beta, \gamma, \alpha', \beta' \in \Con(\bA)$, and let 
+$\bB$ be a subalgebra of $\bA$. Then,
+\begin{enumerate}
+\item \label{fact:centralizing_over_meet}
+  $\sansC(\alpha, \beta; \alpha \meet \beta)$;
+\item \label{fact:centralizing_over_meet2}
+  if $\sansC(\alpha, \beta; \gamma)$ and $\sansC(\alpha, \beta; \gamma')$, then
+  $\sansC(\alpha, \beta; \gamma \meet \gamma')$;
+\item \label{fact:centralizing_over_join1}
+  if $\sansC(\alpha, \beta; \gamma)$ and $\sansC(\alpha', \beta; \gamma)$, then
+  $\sansC(\alpha \join \alpha', \beta; \gamma)$;
+%% \item \label{fact:centralizing_over_join2}
+%%   if $\sansC(\alpha, \beta; \gamma)$ and $\sansC(\alpha, \beta'; \gamma)$, then
+%%   $\sansC(\alpha, \beta \join \beta'; \gamma)$;
+\item \label{fact:monotone_centralizers1}
+  if $\sansC(\alpha, \beta; \gamma)$ and $\alpha' \leq \alpha$, then 
+  $\sansC(\alpha', \beta; \gamma)$;
+\item \label{fact:monotone_centralizers2}
+  if $\sansC(\alpha, \beta; \gamma)$ and $\beta' \leq \beta$, then
+  $\sansC(\alpha, \beta'; \gamma)$;
+\item \label{fact:dual_monotone_centralizers}
+  if $\sansC(\alpha, \beta; \gamma)$ and $\gamma \leq \gamma'$, then
+  $\sansC(\alpha, \beta; \gamma')$;
+\item \label{item:subalg}
+  if $\sansC(\alpha, \beta; \delta)$ holds in $\bA$, 
+  then $\sansC(\alpha\cap B^2, \beta\cap B^2;\delta\cap B^2)$ holds in $\bB$;
+\item \label{item:factors}
+  if $\delta' \leq \delta$, then $\sansC(\alpha, \beta; \delta)$ holds 
+  in $\bA$ if and only if $\sansC(\alpha/\delta', \beta/\delta'; \delta/\delta')$
+  holds in $\bA/\delta'$.
+\end{enumerate}
+\end{lemma}
 
+\noindent [{\it wjd: I don't remember what made me think (\ref{fact:dual_monotone_centralizers})
+is true. Maybe it holds in the \cm case?}]
 
+\begin{remark}
+By (\ref{fact:centralizing_over_meet}), 
+if $\alpha \meet \beta = 0_{\bA}$,  
+then $\sansC(\beta, \alpha)$ and $\sansC(\alpha, \beta)$.
+By (\ref{fact:dual_monotone_centralizers}),
+if an algebra $\bA$ is abelian, 
+then $\sansC(1_A, 1_A; \theta)$ for all $\theta \in \Con(\bA)$, so
+in this case (\ref{item:factors}) implies that %$\sansC(1_{\bA/\theta}, 1_{\bA/\theta})$ 
+$\bA/\theta$ is abelian for every $\theta \in \Con(\bA)$.
+\end{remark}
 
+We close this section with a collection of lemmas that can be useful for showing 
+that an algebra is abelian.  Proofs of these facts appear in Appendix
+Section~\ref{sec:proofs-elem-facts}.
 
+We denote the diagonal of $A$ by $D(A) := \{(a,a): a \in A\}$. 
+\begin{lemma}
+\label{lem:diagonal}
+An algebra $\bA$ is abelian if and only if there is some $\theta \in \Con (\bA^2)$ that has
+the diagonal set $D(A)$ as a congruence class.
+\end{lemma}
 
+Lemma~\ref{lem:diagonal} can be used to prove the next result
+which states that if there is a congruence of $\bA_1 \times \bA_2$ that has the
+graph of a bijection between $A_1$ and $A_2$ as a block, then both $\bA_1$ and
+$\bA_2$ are abelian algebras.
 
+\begin{lemma}
+  \label{lem:bijection_abelian}
+Suppose $\rho \colon A_0 \to A_1$ is a bijection and suppose the graph
+$\{(x, \rho x) \mid x \in A_0\}$ is a block of some congruence
+$\beta \in \Con (A_0 \times A_1)$.  Then both $\bA_0$ and $\bA_1$ are abelian.
+\end{lemma}
 
+\begin{lemma}
+\label{lem:triv-clone-implies-abelian}
+If $\Clo(\bA)$ is trivial (i.e., generated by the projections),
+then $\bA$ is abelian.
+\end{lemma}
 
+\begin{lemma}\label{lem:M3-abelian}
+If $\alpha_1$, $\alpha_2$, $\alpha_3 \in \Con(\bA)$ are pairwise complements,
+then $\sansC(1_A, \alpha_i)$ for each $i=1,2,3$.  If, in addition, $\bA$ is
+idempotent and has a Taylor term operation, then $\sansC(1_A, 1_A)$; that is, $\bA$ is abelian.
+\end{lemma}
 
+The last lemma is okay, but we can do better.  Here are is a refinement.
 
-%% \appendix
-%% \section{Appendix Title}
+\newpage
+
+\appendix
+\section{Omitted Proofs}
+
+\subsection{Facts about centralizers and abelian algebras}
+\label{sec:proofs-elem-facts}
+
+\begin{lemma}[Lemma~\ref{lem:triv-clone-implies-abelian}]
+If $\Clo(\bA)$ is trivial (i.e., generated by the projections),
+then $\bA$ is abelian.
+\end{lemma}
+In fact, it can be shown that $\bA$ is \emph{strongly abelian} in this case, but
+we won't prove this stronger result. The proof that $\bA$ is abelian is
+elementary is a nice and easy example of a standard proof technique---induction on
+term height.\footnote{This proof would be a good one to try in a proof assistant
+  like Coq, since such tools excel at inductive arguments like this one.}
+\begin{proof}
+We want to show $\sansC(1_A, 1_A)$.  Equivalently, we must show
+that for all $t\in \Clo(\bA)$ (say, $(\ell+m)$-ary) 
+and all $a, b \in A^\ell$, we have $\ker t(a,\cdot)=\ker t(b,\cdot)$.
+We prove this by induction on the height of the term $t$.  Height-one terms are
+projections and the result is obvious for these.  Let $n>1$ and assume the result
+holds for all terms  of height less than
+$n$.  Let $t$ be a term of height $n$, say, $k$-ary.  Then for some terms 
+$g_1, \dots, q_k$ of height less than $n$ and for some $j\leq k$, we have
+$t = p^k_j [q_1, q_2, \dots, q_k] = q_j$ and since $q_j$ has height less than
+$n$, we have
+\[
+\ker t(a,\cdot)=\ker g_j(a,\cdot) = \ker g_j(b,\cdot)=\ker t(b,\cdot).
+\]\end{proof}
+
+\begin{lemma}[Lemma \ref{lem:M3-abelian}]
+If $\alpha_1$, $\alpha_2$, $\alpha_3 \in \Con(\bA)$ are pairwise complements,
+then $\sansC(1_A, \alpha_i)$ for each $i=1,2,3$.  If, in addition, $\bA$ is
+idempotent and has a Taylor term operation, then $\sansC(1_A, 1_A)$; that is, $\bA$ is abelian.
+\end{lemma}
+\begin{proof}
+  The goal is to prove $\sansC(1_A, 1_A)$.
+  By Lemma~\ref{lem:centralizers}~(\ref{fact:centralizing_over_meet}), we have
+  $\sansC(\alpha_1, \alpha_2; \alpha_1 \meet \alpha_2)$.  
+  Since $\alpha_1 \meet \alpha_2= 0_A$, this means
+  $\sansC(\alpha_1, \alpha_2)$.
+  Similarly, $\sansC(\alpha_3, \alpha_2)$.  Therefore, by 
+  Lemma~\ref{lem:centralizers}~(\ref{fact:centralizing_over_join1}), we have
+  $\sansC(\alpha_1 \join \alpha_3, \alpha_2)$. This is equivalent to 
+  $\sansC(1_A, \alpha_2)$, since $\alpha_1 \join \alpha_3 = 1_A$. 
+  The same argument \emph{mutatis-mutandis} yields
+  $\sansC(1_A,\alpha_1)$ and $\sansC(1_A,\alpha_3)$. 
+  Before proceeding, note that $\sansC(\alpha_1, \alpha_1)$, by 
+  Lemma~\ref{lem:centralizers}~(\ref{fact:monotone_centralizers1}).
+  Now, if $\bA$ is idempotent and has a Taylor term operation, then
+  by \ref{thm:kearnes-kiss-3.27} we have 
+  $\sansC(\alpha_1 \join \alpha_2,\alpha_1 \join \alpha_2; \alpha_2)$.
+  That is, $\sansC(1_A,1_A; \alpha_2)$.
+  Similarly, $\sansC(1_A,1_A; \alpha_3)$.
+  By~\ref{lem:centralizers}~(\ref{fact:centralizing_over_meet2}) then, 
+  $\sansC(1_A,1_A; \alpha_2 \meet\alpha_3)$. 
+  That is, $\sansC(1_A,1_A)$.
+\end{proof}
+
+\begin{lemma}[Lemma \ref{lem:diagonal}]
+ An algebra $\bA$ is abelian if and only if there is some 
+ $\theta \in \Con (\bA^2)$ that has the diagonal $D(A):= \{(a,a): a \in A\}$ 
+ as a congruence class.
+\end{lemma}
+\begin{proof}
+($\Leftarrow$) Assume $\Theta$ is such a congruence.  Fix 
+  $k<\omega$,
+  $t^{\bA}\in \Clo_{k+1}(\bA)$, 
+  $u, v \in A$, and
+  $\bx, \by \in A^k$.
+  We will prove the implication~(\ref{eq:22}), which in the present context is
+\begin{equation*}
+t^\bA(\bx,u) = t^\bA(\by,u) \quad \Longrightarrow \quad 
+t^{\bA}(\bx,v) = t^{\bA}(\by,v).
+\end{equation*}
+Since $D(A)$ is a class of $\Theta$, we have 
+  $(u,u) \mathrel{\Theta} (v,v)$, and since $\Theta$ is a reflexive relation, we have
+  $(x_i,y_i)  \mathrel{\Theta} (x_i,y_i)$ for all $i$.  Therefore,
+\begin{equation}
+  \label{eq:9}  
+  t^{\bA\times \bA}((x_1,y_1), \dots, (x_k,y_k), (u,u))
+  \mathrel{\Theta}
+  t^{\bA\times \bA}((x_1,y_1), \dots, (x_k,y_k), (v,v)).
+\end{equation}
+  since $t^{\bA \times \bA}$ is a term operation of $\bA\times \bA$.
+  Note that~(\ref{eq:9}) is equivalent to
+  \begin{equation}
+    \label{eq:13}
+    (t^{\bA}(\bx, u), t^{\bA}(\by,u))
+    \mathrel{\Theta}
+    (t^{\bA}(\bx, v), t^{\bA}(\by, v)).
+  \end{equation}
+  If $t^{\bA}(\bx, u)= t^{\bA}(\by, u)$ then 
+  the first pair in~(\ref{eq:13}) belongs to the $\Theta$-class
+  $D(A)$, so the second pair must also belong this $\Theta$-class.
+  That is, $t^{\bA}(\bx, v)= t^{\bA}(\by, v)$, as desired.
+
+  \vskip2mm
+
+  \noindent ($\Rightarrow$) Assume $\bA$ is abelian. We show
+  $\Cg^{\bA^2}(D(A)^2)$ has $D(A)$ as a block.  Assume
+  \begin{equation}
+    \label{eq:16}
+  ((x,x), (c,c')) \in \Cg^{\bA^2}(D(A)^2).
+  \end{equation}
+  It suffices to prove that $c=c'$.  Recall, Mal'tsev's congruence generation
+  theorem states that (\ref{eq:16}) holds iff
+  %$(x,x) \theta (c,c') \in \Cg^{\bA^2}(D(A)^2)$ iff %% for $0\leq i \leq n$ and 
+  %% $0\leq j \leq n-1$, there exist
+  \begin{align*}
+  \exists \,& (z_0,z_0'), (z_1,z_1'), \dots, (z_n,z_n') \in A^2\\
+    \exists \,& ((x_0,x_0'), (y_0,y_0')), ((x_1,x_1'), (y_1,y_1')), \dots, 
+    ((x_{n-1},x_{n-1}'), (y_{n-1},y_{n-1}')) \in D(A)^2\\
+    \exists \, & f_0, f_1, \dots, f_{n-1}\in F^*_{\bA^2}
+  \end{align*}
+  %% \begin{align*}
+  %% (z_i,z_i') &\in A^2\\
+  %% ((x_j,x_j'), (y_j,y_j')) &\in D(A)^2\\
+  %% f_j &\in F^*_{\bA^2}
+  %% \end{align*}
+  such that 
+  \begin{align}
+    \label{eq:7}
+    \{(x, x),(z_1,z_1')\} &= \{f_0(x_0,x_0'), f_0(y_0,y_0')\}\\
+\nonumber
+     \{(z_1,z_1'),(z_2,z_2')\} &= \{f_1(x_1,x_1'), f_1(y_1,y_1')\}\\
+\nonumber
+     & \vdots\\
+    \label{eq:8}
+     \{(z_{n-1},z_{n-1}'),(c, c')\} &= \{f_{n-1}(x_{n-1},x_{n-1}'), f_{n-1}(y_{n-1},y_{n-1}')\}
+ \end{align}
+The notation $f_i\in F^*_{\bA^2}$ means 
+\begin{align*}
+f_i(x, x') &= g_i^{\bA^2}((a_1, a_1'), (a_2, a_2'), \dots, (a_k, a_k'), (x, x'))\\
+&= (g_i^{\bA}(a_1, a_2, \dots, a_k, x), g_i^{\bA}(a_1', a_2', \dots, a_k', x')),
+\end{align*}
+for some $g_i^{\bA} \in \Clo_{k+1}(\bA)$ and some constants 
+$\ba = (a_1, \dots, a_k)$ and $\ba' = (a_1', \dots, a_k')$ in $A^k$. 
+Now, $((x_i,x_i'), (y_i,y_i'))\in D(A)^2$ implies 
+$x_i=x_i'$, and $y_i=y_i'$, so in fact we have 
+\[
+     \{(z_i,z_i'),(z_{i+1},z_{i+1}')\} = \{f_i(x_i,x_i), f_i(y_i,y_i)\} \quad (0\leq i < n).
+\]
+Therefore, by Equation~(\ref{eq:7}) we have either 
+\[
+     (x,x)= (g_i^{\bA}(\ba, x_0), g_i^{\bA}(\ba', x_0)) \quad \text{ or } \quad 
+     (x,x)= (g_i^{\bA}(\ba, y_0), g_i^{\bA}(\ba', y_0)).
+\]
+Thus, either $g_i^{\bA}(\ba, x_0) =  g_i^{\bA}(\ba', x_0)$ %\quad \text{ or } \quad 
+or $g_i^{\bA}(\ba, y_0) =  g_i^{\bA}(\ba', y_0)$.
+By the abelian assumption, if one of these equations holds, then so does the
+other. This and and Equation (\ref{eq:7}) imply $z_1 = z_1'$.  Applying the same
+argument inductively, we find that $z_i = z_i'$ for all $1\leq i < n$ and so, by
+(\ref{eq:8}) and the abelian property, we have $c= c'$.
+\end{proof}
+
+\begin{lemma}[Lemma~\ref{lem:bijection_abelian}]
+Suppose $\rho\colon A_1 \to A_2$ is a bijection and suppose the graph
+$\{(x, \rho x) \mid x \in A_1\}$ is a block of some congruence
+$\beta \in \Con (A_1 \times A_2)$.  Then both $\bA_1$ and $\bA_2$ are abelian.
+\end{lemma}
+\begin{proof}
+  Define the relation $\alpha\subseteq (A_1\times A_1)^2$ as follows: for
+  $((a,a'), (b,b')) \in (A_1\times A_1)^2$,
+  \[
+  (a,a')\mathrel{\alpha} (b,b')
+  \quad \iff \quad
+  (a, \rho a') \mathrel{\beta} (b, \rho b')
+  \]
+  We prove that the diagonal $D(A_1)$ is a block of $\alpha$ by showing that
+  $(a, a) \mathrel{\alpha} (b,b')$ implies $b = b'$.
+  Indeed, if $(a, a) \mathrel{\alpha} (b,b')$, then
+  $(a, \rho a) \mathrel{\beta} (b, \rho b')$, which means that
+  $(b, \rho b')$ belongs to the block and
+  $(a, \rho a)/\beta = \{(x, \rho x): x\in A_1\}$.  Therefore,
+  $\rho b  = \rho b'$, so $b = b'$ since $\rho$ is injective.
+  This proves that $\bA_1$ is abelian.
+
+  To prove $\bA_2$ is abelian, we reverse the roles of $A_1$ and $A_2$ in the
+  foregoing argument.  
+  If $\{(x, \rho x) \mid x \in A_1\}$ is a block of $\beta$,
+  then 
+  $\{(\rho^{-1}(\rho x), \rho x) \mid \rho x \in A_2\}$ is a block of $\beta$; that
+  is, $\{(\rho^{-1} y, y) \mid y \in A_2\}$ is a block of $\beta$.  Define 
+  the relation $\alpha\subseteq (A_2\times A_2)^2$ as follows: for
+  $((a,a'), (b,b')) \in (A_2\times A_2)^2$,
+  \[
+  (a,a')\mathrel{\alpha} (b,b')
+  \quad \iff \quad
+  (\rho^{-1}a, \rho a') \mathrel{\beta} (\rho^{-1}b, \rho b').
+  \]
+  As above, we can prove that the diagonal $D(A_2)$ is a block of $\alpha$
+  by using the injectivity of $\rho^{-1}$ to show that $(a, a) \mathrel{\alpha}
+  (b,b')$
+  implies $b = b'$.
+\end{proof}
+
 %% This is the text of the appendix, if you need one.
 
 %\bibliographystyle{amsplain} %% or amsalpha
