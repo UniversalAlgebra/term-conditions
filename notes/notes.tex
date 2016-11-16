@@ -569,7 +569,9 @@ tails can be found ``quickly,'' (e.g., in a 3-generated subalgebra of $\bA^2$).
 We continue to quote~\cite{Freese:2009} where possible,
 while modifying the assumptions and adjusting the arguments as necessary.
 
-Throughout the remainder of this section, let $\sS$ be a finite set of finite,
+
+Throughout, we let $\nn$ denote the set $\{0,1,\dots, n-1\}$ and 
+(at least for the rest of this section) we let $\sS$ be a finite set of finite,
 similar, idempotent algebras, closed under the taking of subalgebras, such that
 $\sV = \bbV(\sS)$ omits 1 (but may include type 5).
 We will suppose that some finite algebra
@@ -580,9 +582,10 @@ product of two members of $\sS$ with this property.
 Since $\sS$ is closed under the taking of subalgebras,
 we may assume that the algebra $\bB$ from the previous paragraph is a subdirect
 product of a finite number of members of $\sS$. Choose $n$ minimal such that for
-some $\bA_i \in \sS$, the product $\prod_{i\leq n} \bA_i$
-has a subdirect product $\bB$ that has a prime quotient with non-empty
-type-2 tails. Under the assumption that $n > 1$ we will attempt to prove that $n = 2$.
+some $\bA_0$, $\bA_1$, $\dots$, $\bA_{n-1}$ in $\sS$, there is a subdirect
+product $\bB \sdp \prod_{\nn} \bA_i$
+that has a prime quotient with non-empty type-2 tails.
+Under the assumption that $n > 1$ we will attempt to prove that $n = 2$.
 
 For this $n$, select the $\bA_i$ and $\bB$ so that $|B|$ is as small as possible.
 Let $\alpha \prec \beta$ be a prime quotient of $\bB$ with non-empty
@@ -610,8 +613,7 @@ For $i \leq n$, %% let $\pi_i$ be the projection homomorphism from $\bB$ onto
 %% $\bA_i$ and
 let $\rho_i$ denote the kernel of the projection of $\bB$ onto $\bA_i$,
 so $\bB \cong \bA_i/\rho_i$.
-Let $\nn$ denote the set $\{0,1,\dots, n-1\}$ and,
-for a subset $\sigma \subseteq \nn$, define
+For a subset $\sigma \subseteq \nn$, define
 \[
 \rho_\sigma := \bigwedge_{j\in \sigma} \rho_j.
 \]
