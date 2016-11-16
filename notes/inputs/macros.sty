@@ -1,3 +1,5 @@
+\newcommand{\CC}[3]{\ensuremath{\sansC(#1, #2; #3)}} % \CC{a}{b}{c}  for  C(a, b; c)
+\newcommand{\C}[2]{\ensuremath{\sansC(#1, #2)}}      % \C{a}{b}      for  C(a, b)
 \newcommand{\etaR}{\ensuremath{\tilde{\eta}}}
 \newcommand{\hto}{\ensuremath{\rightharpoonup}}
 \newcommand{\bool}{\ensuremath{\mathtt{Bool}}}
@@ -79,7 +81,13 @@
 \newcommand{\bbC}{\ensuremath{\mathbb{C}}}
 \newcommand{\bbD}{\ensuremath{\mathbb{D}}}
 \newcommand{\bbS}{\ensuremath{\mathbb{S}}}
-\newcommand{\bbV}{\ensuremath{\mathbb{V}}}
+%% \newcommand{\bbV}{\ensuremath{\mathbb{V}}}
+\newcommand{\bbV}{\ensuremath{\operatorname{\mathbb{V}}}}
+\newcommand{\malcev}{Mal'tsev\xspace}
+\newcommand{\var}[1]{\ensuremath{\mathcal{#1}}}
+
+
+
 \newcommand{\bs}{\ensuremath{\mathbf{s}}}
 \newcommand{\bB}{\ensuremath{\mathbf{B}}}
 \newcommand{\bc}{\ensuremath{\mathbf{c}}}
@@ -204,3 +212,4 @@
 \newcommand{\NPcomplete}{\acs{NP}-complete\xspace}
 %% \newcommand{\mas}{\acs{MAS}\xspace}
 
+\renewcommand{\subsetneq}{\ensuremath{\subsetneqq}}
