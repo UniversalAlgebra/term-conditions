@@ -251,7 +251,9 @@ MRREVIEWER = {Ivan Chajda},
 \usepackage{scalefnt}
 \usepackage{tikz}
 \usepackage{color}
-\usepackage[margin=1in]{geometry}
+%% \usepackage[margin=1in]{geometry}
+\usepackage{geometry}
+\usepackage{marginnote}
 \usepackage{scrextend}
 
 %%////////////////////////////////////////////////////////////////////////////////
@@ -344,7 +346,7 @@ Again no 1's and no 5's can be decided by the subtype theorem,
 and in~\cite{Freese:2009} the authors prove that if there is
 a tail in $\bbV(\bA)$, there is a tail ``near the bottom.''
 More precisely, if $\bA$ is finite and idempotent, and $\bbV(\bA)$ has no
-1's or 5's and has tails, then there is a tail in a 3-generated subalgebra of $\bA^2$.
+1's and no 5's and has tails, then there is a tail in a 3-generated subalgebra of $\bA^2$.
 Using this it is proved that deciding \cm is polynomial-time.
 
 But the proof of the no tails part uses that in a variety with no 1's or 5's,
@@ -403,12 +405,12 @@ of five possible types:
 \end{enumerate}
 
 Thus to each covering $\alpha \prec \beta$
-corresponds a type in $\{1,2,3,4,5\}$ (see~\cite[Def.~5.1]{HM:1988}),
-denoted by $\typ(\alpha, \beta)$.
-The set of all types that are realized by covering pairs of congruences of a
+corresponds a ``\tct type'' in $\{1,2,3,4,5\}$ (see~\cite[Def.~5.1]{HM:1988}),
+denoted by $\typ(\alpha, \beta)$, called the \emph{typeset} of $\bA$.
+The set of all \tct types that are realized by covering pairs of congruences of a
 finite algebra $\bA$ is denoted by $\typ\{\bA\}$, and if $\sK$ is a class of algebras,
 then $\typ\{\sK\}$ denotes the union of the typesets of all finite algebras in $\sK$.
-The set of types is ordered according to the following ``lattice of types:''
+\tct types are ordered according to the following ``lattice of types:''
 
 \newcommand{\dotsize}{0.8pt}
 %% To create nodes of lattices in a uniform and consistent way, we define
@@ -432,7 +434,7 @@ The set of types is ordered according to the following ``lattice of types:''
   (1) -- (2) -- (3) -- (4) -- (5) -- (1);
 \end{tikzpicture}
 \end{center}
-Then whether or not $\bbV(\bA)$ omits one of the order ideals of the lattice of types can be
+Whether or not $\bbV(\bA)$ omits one of the order ideals of the lattice of types can be
 determined locally.  This is spelled out for us in the next proposition.
 (A \defn{strictly simple} algebra is a simple
 algebra with no non-trivial subalgebras.)
@@ -441,6 +443,7 @@ algebra with no non-trivial subalgebras.)
 
 
 \begin{prop}[Prop.~2.1~\cite{Freese:2009}]
+  \label{prop:2.1}
 If A is a finite idempotent algebra and $i \in \typ(\bbV(\bA))$ then there
 is a finite strictly simple algebra $\bS$ of type $j$ for some $j \leq i$ in $\sansH \sansS (\bA)$.
 If
@@ -471,35 +474,115 @@ omitting types.
       \hline
       Omitting Class &  Equivalent Property\\
       \hline
-      $\sM_{1}$ & satisfies a nontrivial idempotent \malcev condition \\
+      $\sM_{\{1\}}$ & satisfies a nontrivial idempotent \malcev condition \\
       \hline
-      $\sM_{1,5}$ & satisfies a nontrivial congruence identity\\ % (see~\cite{MR3076179})\\
+      $\sM_{\{1,5\}}$ & satisfies a nontrivial congruence identity\\ % (see~\cite{MR3076179})\\
       \hline
-      $\sM_{1,4,5}$ & congruence n-permutable, for some $n > 1$ \\
+      $\sM_{\{1,4,5\}}$ & congruence n-permutable, for some $n > 1$ \\
       \hline
-      $\sM_{1,2}$ & congruence meet semidistributive \\
+      $\sM_{\{1,2\}}$ & congruence meet semidistributive \\
       \hline
-      $\sM_{1,2,5}$ & congruence join semidistributive\\ % (see~\cite{MR3076179})\\
+      $\sM_{\{1,2,5\}}$ & congruence join semidistributive\\ % (see~\cite{MR3076179})\\
       \hline
-      $\sM_{1,2,4,5}$ & congruence $n$-permutable for some $n$ and\\
+      $\sM_{\{1,2,4,5\}}$ & congruence $n$-permutable for some $n$ and\\
       &congruence join semidistributive\\
       \hline
     \end{tabular}
   \end{table}
 \end{center}
 
-
-
-\section{The Freese-Valeriote Lemmas Revisited}
-In~\cite{Freese:2009}, the following corollary is the starting point of the
-development of a polynomial-time algorithm that determines if a given finite
-idempotent algebra generates a \cm variety. 
+In Section~\ref{sec:freese-valer-lemm}, the following result will be useful.
 \begin{cor}[Cor.~2.2~\cite{Freese:2009}]
   \label{cor:2.2}
   Let $\bA$ be a finite idempotent algebra and $T$ an order ideal in the
   lattice of types. Then $\bbV(\bA)$ omits $T$ if and only if $\sansS(\bA)$ does.
-  In particular, $\bbV(\bA)$ omits 1 and 2 if and only if $S(\bA)$ omits 1 and 2.
+  %% In particular, $\bbV(\bA)$ omits 1 and 2 if and only if $\sansS(\bA)$ omits 1 and 2.
 \end{cor}
+
+\subsection{Equivalent conditions for existence of a difference term}
+%% Let $\sV$ be a variety.  
+In~\cite{MR1358491} Kearnes proved that
+a locally finite variety has a difference term
+iff it has a Taylor term and no type-2 tails.
+Let $\sV$ be a variety and let $\bF = \bF_{\sV}(2)$ denote the 2-generated
+free algebra in $\sV$.
+Then the assumption that $\sV$ be locally finite can be weakened
+to the hypothesis that $\bF$ is finite. This was observed in~\cite{MR1358491} 
+by showing that $\sV$ has a difference term if and only if $\sansH \sansS \sansP(\bF)$
+has a difference term.
+The forward implication of this claim is trivial. 
+The argument for the converse goes as follows:
+assume that $d(x, y, z)$ is a difference term for $\sansH \sansS \sansP(\bF)$.
+Choose $\bA \in \sV$ and $a, b \in A$. Let $\bB = \Sg^{\bA} (\{a, b\})$.
+Since $\bB$ is 2-generated, $B \in \sansH \sansS \sansP (\bF)$.
+Hence $d(x, y, z)$ interprets as a difference term in $\bB$. This means that
+$d^{\bA} (a, a, b) = d^{\bB} (a, a, b) = b$.
+Furthermore,
+\[
+d^{\bA} (a, b, b) = d^{\bB} (a, b, b) \mathrel{[\Cg^{\bB} (a, b), \Cg^{\bB} (a, b)]} a.
+\]
+But $[\Cg^{\bB} (a, b), \Cg^{\bB} (a,b)]\subseteq [\theta, \theta]$ for any congruence
+$\theta \in \Con \bA$ for which $(a, b) \in \theta$. Consequently
+$d^{\bA} (a, b, b) \mathrel{[\theta, \theta]} a$ as desired.
+
+For the purposes of the present project,
+it would be helpful if we could extend this observation and
+prove that the existence (or nonexistence) of a difference term in $\sV$
+is equivalent to the  existence (or nonexistence) of a difference term
+operation for a specific algebra in $\sV$.  In fact, this is possible, as we
+now demonstrate.
+
+\begin{thm}
+  \label{thm:F}
+Let $\sV$ be a variety and $\bF = \bF_{\sV}(2)$ the 2-generated
+free algebra in $\sV$. The following are equivalent:
+\begin{enumerate}[(i)]
+\item \label{item:1}
+  $\sV$ has a difference term;
+\item \label{item:2}
+  $\sansH \sansS \sansP (\bF)$ has a difference term;
+\item \label{item:3}
+  $\bF$ has a difference term operation.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+  The implications
+  (\ref{item:1}) $\Rightarrow$  (\ref{item:2}) $\Rightarrow$  (\ref{item:3}) are
+  obvious. We prove
+  (\ref{item:3}) $\Rightarrow$  (\ref{item:1}) by contraposition.
+  Suppose $\sV$ has no difference term. (We show $\bF$ has no difference term
+  operation.)
+  Let $d(x,y,z)$ be a ternary term of $\sV$.  Let $\bA\in \sV$ be such that
+  $d^{\bA}(x,y,z)$ is not a difference term operation in $\bA$.
+  Choose $a, b \in A$ witnessing this fact.  Then either
+  \begin{enumerate}
+  \item\label{item:4} $d^{\bA}(a,a,b) \neq b$, or
+  \item\label{item:5} $(d^{\bA}(a,b,b), a) \notin [\Cg^{\bA} (a, b), \Cg^{\bA} (a,b)]$.
+  \end{enumerate}
+  Let $\bB = \Sg^{\bA} (\{a, b\})$.  In case
+  (\ref{item:4}), 
+  $d^{\bB}(a,a,b) = d^{\bA}(a,a,b) \neq b$, so $d^{\bB}(x,y,z)$ is not a difference
+  term operation for $\bB$.
+  In case (\ref{item:5}), observe that
+  the pair $(d^{\bB}(a,b,b), a)$ is equal to the pair $(d^{\bA}(a,b,b), a)$ which
+  does not belong to $[\Cg^{\bA} (a, b), \Cg^{\bA} (a,b)]$.
+  But 
+  $[\Cg^{\bB} (a, b), \Cg^{\bB} (a,b)] \subseteq[\Cg^{\bA} (a, b), \Cg^{\bA} (a,b)]$, so
+  \[(d^{\bB}(a,b,b), a) \notin [\Cg^{\bB} (a, b), \Cg^{\bB} (a,b)],\]
+  and again we conclude that $d^{\bB}(x,y,z)$ is not a difference term operation for $\bB$.
+  Now, since there is a surjective homomorphism from $\bF$ to $\bB$,
+  it follows that $d^{\bF}(x,y,z)$ cannot be a difference term operation for $\bF$.
+  Finally, recall that $d(x,y,z)$ was an arbitrary ternary term of $\sV$, so
+  $\bF$ has no difference term operation whatsoever.
+  %% , as we set out to prove.
+\end{proof}
+
+
+\section{The Freese-Valeriote Lemmas Revisited}
+\label{sec:freese-valer-lemm}
+In~\cite{Freese:2009}, Corollary~\ref{cor:2.2} is the starting point of the
+development of a polynomial-time algorithm that determines if a given finite
+idempotent algebra generates a \cm variety. 
 
 %% The following lemma ties in with the previous proposition and will be used
 %% in Sec. 6.
@@ -531,7 +614,8 @@ tails~\cite[Def.~2.15]{HM:1988}. Note that in the distributive
 case the empty tails condition is equivalent to the minimal sets all having exactly
 two elements.
 
-It follows from Corollary~\ref{cor:2.2} that if $\bA$ is idempotent then one can
+It follows from Corollary~\ref{cor:2.2} and Proposiiton~\ref{prop:2.1}
+that if $\bA$ is idempotent then one can
 test the first condition, on omitting types 1 and 5 (or 1, 2, and 5) by searching
 for a 2-generated subalgebra of $\bA$ whose typeset is not contained in
 $\{2, 3, 4\}$ ($\{3, 4\}$). It is proved in~\cite[Sec.~6]{Freese:2009} that this
@@ -620,6 +704,7 @@ For a subset $\sigma \subseteq \nn$, define
 %% If $\sigma$ is a singleton, say, $\sigma= \{j\}$, then
 %% we write $\rho_j$ instead of $\rho_{\{j\}}$.
 Consequently,
+\marginnote{wjd: I don't see why join in (3.1) is $1_B$... it's probably wrong.}[3cm]
 \begin{equation}
   \label{eq:2}
  \rho_{\nn} = \bigwedge_{j\in \nn}\rho_j = 0_{B}
