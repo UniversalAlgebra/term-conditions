@@ -264,6 +264,13 @@ MRREVIEWER = {Ivan Chajda},
 \newcommand\draftbreak{\ifthenelse{\boolean{draftpagebreak}}{\newpage}{}}
 
 
+\newboolean{draftsecskip}
+\setboolean{draftsecskip}{true}
+%% \setboolean{draftpagebreak}{false}
+
+\newcommand\draftsecskip{\ifthenelse{\boolean{draftsecskip}}{\medskip}{}}
+
+
 
 
 
@@ -418,9 +425,9 @@ representation techniques.
 %% since otherwise $0|123$ would be a solvable congruence,
 %% which would imply the two atoms would permute.
 
-\draftbreak
+%% \draftbreak
 
-\section{Background, definitions, and notations}
+\section{Background, definitions, and notation}
 \label{sec:defin-notat}
 Our starting point is the set of lemmas at the beginning of Section 3 in
 the Freese-Valeriote paper~\cite{Freese:2009}.
@@ -540,91 +547,16 @@ In Section~\ref{sec:freese-valer-lemm}, the following result will be useful.
   %% In particular, $\bbV(\bA)$ omits 1 and 2 if and only if $\sansS(\bA)$ omits 1 and 2.
 \end{cor}
 
-\subsection{Equivalent conditions for existence of a difference term}
-%% Let $\sV$ be a variety.  
-In~\cite{MR1358491} Kearnes proved that
-a locally finite variety has a difference term
-iff it has a Taylor term and no type-2 tails.
-Let $\sV$ be a variety and let $\bF = \bF_{\sV}(2)$ denote the 2-generated
-free algebra in $\sV$.
-Then the assumption that $\sV$ be locally finite can be weakened
-to the hypothesis that $\bF$ is finite. This was observed in~\cite{MR1358491} 
-by showing that $\sV$ has a difference term if and only if $\sansH \sansS \sansP(\bF)$
-has a difference term.
-The forward implication of this claim is trivial. 
-The argument for the converse goes as follows:
-assume that $d(x, y, z)$ is a difference term for $\sansH \sansS \sansP(\bF)$.
-Choose $\bA \in \sV$ and $a, b \in A$. Let $\bB = \Sg^{\bA} (\{a, b\})$.
-Since $\bB$ is 2-generated, $B \in \sansH \sansS \sansP (\bF)$.
-Hence $d(x, y, z)$ interprets as a difference term in $\bB$. This means that
-$d^{\bA} (a, a, b) = d^{\bB} (a, a, b) = b$.
-Furthermore,
-\[
-d^{\bA} (a, b, b) = d^{\bB} (a, b, b) \mathrel{[\Cg^{\bB} (a, b), \Cg^{\bB} (a, b)]} a.
-\]
-But $[\Cg^{\bB} (a, b), \Cg^{\bB} (a,b)]\subseteq [\theta, \theta]$ for any congruence
-$\theta \in \Con \bA$ for which $(a, b) \in \theta$. Consequently
-$d^{\bA} (a, b, b) \mathrel{[\theta, \theta]} a$ as desired.
 
-For the purposes of the present project,
-it would be helpful if we could extend this observation and
-prove that the existence (or nonexistence) of a difference term in $\sV$
-is equivalent to the  existence (or nonexistence) of a difference term
-operation for a specific algebra in $\sV$.  In fact, this is possible, as we
-now demonstrate.
 
-\begin{thm}
-  \label{thm:F}
-Let $\sV$ be a variety and $\bF = \bF_{\sV}(2)$ the 2-generated
-free algebra in $\sV$. The following are equivalent:
-\begin{enumerate}[(i)]
-\item \label{item:1}
-  $\sV$ has a difference term;
-\item \label{item:2}
-  $\sansH \sansS \sansP (\bF)$ has a difference term;
-\item \label{item:3}
-  $\bF$ has a difference term operation.
-\end{enumerate}
-\end{thm}
-\begin{proof}
-  The implications
-  (\ref{item:1}) $\Rightarrow$  (\ref{item:2}) $\Rightarrow$  (\ref{item:3}) are
-  obvious. We prove
-  (\ref{item:3}) $\Rightarrow$  (\ref{item:1}) by contraposition.
-  Suppose $\sV$ has no difference term. (We show $\bF$ has no difference term
-  operation.)
-  Let $d(x,y,z)$ be a ternary term of $\sV$.  Let $\bA\in \sV$ be such that
-  $d^{\bA}(x,y,z)$ is not a difference term operation in $\bA$.
-  Choose $a, b \in A$ witnessing this fact.  Then either
-  \begin{enumerate}
-  \item\label{item:4} $d^{\bA}(a,a,b) \neq b$, or
-  \item\label{item:5} $(d^{\bA}(a,b,b), a) \notin [\Cg^{\bA} (a, b), \Cg^{\bA} (a,b)]$.
-  \end{enumerate}
-  Let $\bB = \Sg^{\bA} (\{a, b\})$.  In case
-  (\ref{item:4}), 
-  $d^{\bB}(a,a,b) = d^{\bA}(a,a,b) \neq b$, so $d^{\bB}(x,y,z)$ is not a difference
-  term operation for $\bB$.
-  In case (\ref{item:5}), observe that
-  the pair $(d^{\bB}(a,b,b), a)$ is equal to the pair $(d^{\bA}(a,b,b), a)$ which
-  does not belong to $[\Cg^{\bA} (a, b), \Cg^{\bA} (a,b)]$.
-  But 
-  $[\Cg^{\bB} (a, b), \Cg^{\bB} (a,b)] \subseteq[\Cg^{\bA} (a, b), \Cg^{\bA} (a,b)]$, so
-  \[(d^{\bB}(a,b,b), a) \notin [\Cg^{\bB} (a, b), \Cg^{\bB} (a,b)],\]
-  and again we conclude that $d^{\bB}(x,y,z)$ is not a difference term operation for $\bB$.
-  Now, since there is a surjective homomorphism from $\bF$ to $\bB$,
-  it follows that $d^{\bF}(x,y,z)$ cannot be a difference term operation for $\bF$.
-  Finally, recall that $d(x,y,z)$ was an arbitrary ternary term of $\sV$, so
-  $\bF$ has no difference term operation whatsoever.
-  %% , as we set out to prove.
-\end{proof}
+\draftsecskip
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Definitions and other useful tools}
-Before proceeding, we harvest some facts about the commutator which may be
-useful for reasoning about difference terms.
-Specifically, we review some properties of congruences, centralizers, and abelian
-algebras that we have recently found very useful (see~\cite{Bergman-DeMeo}).
-
-In previous work, nonabelian algebras played the following useful role:
+\subsection{The centralizer, term condition, and abelian congruences}
+We review some useful properties of centralizers and abelian
+algebras. In our previous work 
+nonabelian algebras played the following role
+(see, e.g., \cite{Bergman-DeMeo}):
 a theorem would begin with the assumption that a particular algebra $\bA$ is
 nonabelian and then proceed to show that if the result to be proved were false,
 then $\bA$ would have to be abelian.
@@ -669,14 +601,15 @@ holds.
 Note that $\CC{S}{T}{0_A}$ is equivalent to $[S,T] = 0_A$, and this
 is sometimes called the \defn{$S, T$-term condition};
 when it holds we say  that
-$S$ \defn{centralizes} $T$, and write $\C{S}{T}$.
+$S$ \defn{centralizes} $T$. %% , and write $\C{S}{T}$.
 A tolerance $T$ is called \defn{abelian} if
-$\C{T}{T}$ (i.e., $[T, T] = 0_A$).  
+%% $\C{T}{T}$ (i.e., $[T, T] = 0_A$).  
+$[T, T] = 0_A$.  
 An algebra $\bA$ is called \defn{abelian} if $1_A$ is abelian
-(i.e., $\C{1_A}{1_A}$).
+(i.e., $[1_A,1_A] = 0_A$).
 
 \begin{rem}
-  An algebra $\bA$ is abelian iff $\C{1_A}{1_A}$ iff
+  An algebra $\bA$ is abelian iff %$\C{1_A}{1_A}$ iff
   \[
   \forall \ell, m \in \N,
   \quad \forall t\in \sansClo_{\ell + m}(\bA),
@@ -687,10 +620,17 @@ An algebra $\bA$ is called \defn{abelian} if $1_A$ is abelian
   \]
 \end{rem}
 
-\subsubsection{Facts about centralizers and abelian congruences}
-\label{sec:facts-about-centr}
-%% We now collect some useful facts about centralizers of congruence relations.
-We begin with a list of properties %% of the centralizer relation
+It is sometimes useful to iterate the commutator, for example,
+$[[\alpha, \alpha], [\alpha, \alpha]]$, and for this purpose
+we define $[\alpha]^n$ recursively as
+follows:
+$[\alpha]^0 = \alpha$ and
+$[\alpha]^{n+1} = [[\alpha]^n, [\alpha]^n]$.  A congruence $\alpha$ of $\bA$
+is called \defn{solvable} if $[\alpha]^n = 0_A$ for some $n$.
+
+%% \subsubsection{Facts about centralizers and abelian congruences}
+%% \label{sec:facts-about-centr}
+Here are some properties of the centralizer relation
 that are well-known and not too hard to prove
 (see \cite[Prop~3.4]{HM:1988} or~\cite[Thm~2.19]{MR3076179}).
 \begin{lem}
@@ -699,7 +639,7 @@ Let $\bA$ be an algebra and suppose
 $\bB$ is a subalgebra of $\bA$. 
 Let $\alpha$, $\beta$, $\gamma$, $\delta$, $\alpha_i$
 $\beta_j$, $\gamma_k$
-be congruences of $\bA$, for some 
+be congruences of $\bA$, for all 
 $i \in I$, $j\in J$, $k \in K$. Then the following hold:
 \begin{enumerate}
 \item \label{centralizing_over_meet}
@@ -730,7 +670,8 @@ $i \in I$, $j\in J$, $k \in K$. Then the following hold:
 \begin{rem}
 By (\ref{centralizing_over_meet}), 
 if $\alpha \meet \beta = 0_{A}$,  
-then $\C{\beta}{\alpha}$ and $\C{\alpha}{\beta}$.
+then %$\C{\beta}{\alpha}$ and $\C{\alpha}{\beta}$.
+$[\beta, \alpha] = 0_A = [\alpha, \beta]$.
 \end{rem}
 
 The next two lemmas turn out to be very useful.
@@ -791,39 +732,77 @@ with a result of Keith Kearnes and Emil Kiss.
   abelian. (See~\cite[Cor~7.28]{MR2839398} for more details). 
 \end{rem}
 
-\subsubsection{Facts about the commutator}
+
+
+\draftsecskip
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The commutator}
 \label{sec:facts-about-comm}
+Before proceeding, we collect some facts about the commutator that may be
+useful for reasoning about difference terms.
+
 
 \begin{lem}
+  \label{lem:monotone-comm}
+  Let $\bA$ be an algebra
+  with congruences
+  $\alpha$, $\alpha'$, $\beta$, $\beta'$ satisfying
+  $\alpha\leq \alpha'$ and $\beta \leq \beta'$.
+  Then $\comm \alpha \beta {\leq} \comm {\alpha'} {\beta'}$.
+\end{lem}
+\begin{proof}
+  For every $\delta \in \Con\bA$, $\CC{\alpha'}{\beta'}{\delta}$ implies
+  $\CC{\alpha}{\beta}{\delta}$, since $\alpha\leq \alpha'$ and $\beta \leq \beta'$.
+  In particular, $\CC{\alpha'}{\beta'}{[\alpha', \beta']}$ implies
+  $\CC{\alpha}{\beta}{[\alpha', \beta']}$, so
+  $\comm \alpha \beta {\leq} \comm {\alpha'} {\beta'}$.
+\end{proof}
+
+
+
+\begin{lem}
+  \label{lem:complete-meet-join-monotone}
 Let $\bA$ be an algebra with congruences
-$\alpha$, $\alpha'$, $\beta$, $\beta'$,
-$\gamma$, $\delta$, $\alpha_i$
-$\beta_j$ %% $\gamma_k$
+$\alpha_i$ and 
+$\beta_i$ %% $\gamma_k$
 %% are congruences of $\bA$, 
-for some  $i \in I$, and suppose
-$\alpha\leq \alpha'$ and $\beta \leq \beta'$.
-Then the following hold:
-\begin{enumerate}
-\item \label{monotone-comm}
-  %% if $\alpha' \leq \alpha$ and $\beta' \leq \beta$,
-  %% then 
-  $\comm \alpha \beta {\leq} \comm {\alpha'} {\beta'}$;
-\item
-  $\comm {\alpha \meet \gamma} {\beta \meet \delta} {\leq}
-  \comm \alpha \beta \meet \comm \gamma \delta$ and 
-  $\comm \alpha \beta \join \comm \gamma \delta {\leq}
-  \comm {\alpha \join \gamma} {\beta \join \delta}$; more generally,
-\item 
-  $\comm {\Meet \alpha_i} {\Meet \beta_i} {\leq}
-  \Meet \comm {\alpha_i} {\beta_i}$
-        and 
-  $\Join \comm {\alpha_i} {\beta_i}
-        {\leq}
-        \comm {\Join \alpha_i} {\Join \beta_i}$. 
-\end{enumerate}
+for all $i \in I$.
+Then
+\[
+\comm {\Meet \alpha_i} {\Meet \beta_i} {\leq}
+\Meet \comm {\alpha_i} {\beta_i}
+\quad \text{ and } \quad
+\Join \comm {\alpha_i} {\beta_i} {\leq}
+\comm {\Join \alpha_i} {\Join \beta_i}.
+\]
 \end{lem}
 
-\begin{lem}
+\begin{proof}
+  By Lemma~\ref{lem:monotone-comm}, $\comm {\Meet \alpha_i} {\Meet \beta_i} {\leq}
+  \comm {\alpha_i} {\beta_i} {\leq} \comm {\Join \alpha_i} {\Join \beta_i}$,
+  for all $i \in I$.
+\end{proof}
+
+We will apply the preceeding result in a simple special case involving
+just four congruences; we record this version of the result for convenience.
+%% (delete the corollary later)
+\begin{cor}
+  \label{cor:facts-about-comm-1}
+Let $\bA$ be an algebra with congruences
+$\alpha$, $\beta$, $\gamma$, $\delta$.  Then,
+\[
+\comm {\alpha \meet \gamma} {\beta \meet \delta} {\leq}
+\comm \alpha \beta \meet \comm \gamma \delta
+\quad \text{ and } \quad
+\comm \alpha \beta \join \comm \gamma \delta {\leq}
+\comm {\alpha \join \gamma} {\beta \join \delta}.
+\]
+\end{cor}
+
+
+
+\begin{lem}[\protect{\cite[Theorem 2.10]{MR1358491}}]
   Let $\bA$ and $\bB$ be algebras of the same signature and suppose
   $\phi: \bA \to \bB$ is a surjective homomorphism.  If
   $\alpha, \beta \in \Con \bA$, then
@@ -837,6 +816,209 @@ Then the following hold:
   = [\rho, \sigma]
   \]
 \end{lem}
+
+
+\draftsecskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Necessary conditions for existence of difference terms}
+
+In this subsection we recall some well known results about varieties that have
+difference terms.
+
+\begin{lem}[\protect{\cite[Lemma 2.2]{MR1358491}}]
+  If $\sV$ has a difference term, $\bA \in \sV$ and
+  $\alpha, \beta \in \Con \bA$, then $[\alpha, \beta] = [\beta, \alpha]$.
+\end{lem}
+
+\begin{lem}[\protect{\cite[Lemma 2.8]{MR1358491}}]
+  \label{lem:dt-complete-join-preserving}
+  If $\sV$ has a difference term, $\bA \in \sV$ and
+  $\alpha_i \in \Con\bA$ for $i \in I$, then
+  \[
+  %% \comm {\Meet \alpha_i} {\Meet \beta_i} {\leq}
+  %% \Meet \comm {\alpha_i} {\beta_i}
+  %% \quad \text{ and } \quad
+  \Join \comm {\alpha_i} {\alpha_i} {=}
+  \comm {\Join \alpha_i} {\Join \alpha_i}.
+  \]
+\end{lem}
+
+\medskip
+
+\noindent {\bf Questions:}
+  Does the analog of Lemma~\ref{lem:dt-complete-join-preserving} hold for complete
+  meets?
+  Does Lemma~\ref{lem:dt-complete-join-preserving} hold 
+  for ``mixed congruences?'' That is, 
+  assuming also that $\beta_i\in \Con \bA$, do we have
+  \[
+  %% \comm {\Meet \alpha_i} {\Meet \beta_i} {\leq}
+  %% \Meet \comm {\alpha_i} {\beta_i}
+  %% \quad \text{ and } \quad
+  \Join \comm {\alpha_i} {\beta_i} {=}
+  \comm {\Join \alpha_i} {\Join \beta_i}\; ?
+  \]
+
+\begin{lem}[\protect{\cite[Lemma 2.9]{MR1358491}}]
+  \label{lem:malcev-hom}
+Assume $\sV$ has a difference term $d$, that $\bA \in \sV$ and
+$\alpha \in \Con\bA$.  Then $[\alpha, \alpha] = 0_A$ iff
+\begin{enumerate}[(i)]
+\item $d(b,b,a) = d(a,b,b) = a$ for all $(a,b) \in \alpha$ and
+\item $d: \bA \times_\alpha\bA \times_\alpha \bA \to \bA$ is a homomorphism.
+\end{enumerate}
+\end{lem}
+
+\newcommand\solrel{\ensuremath{\stackrel{s}{\sim}}}
+If $\alpha$ and $\beta$ are congruences of $\bA$,
+then we write $\alpha \solrel \beta$ and say that $\alpha$ and $\beta$ are
+\defn{solvably related} if 
+$[\alpha \join \beta]^n \leq \alpha \meet \beta$
+for some $n$.
+For varieties with a difference term our
+definition of ``solvably related'' means that
+$\alpha \solrel \beta$ iff $(\alpha \join \beta)/(\alpha \meet \beta)$
+is a solvable congruence of $A/(\alpha\meet \beta)$. (See \cite[Section 3]{MR1358491}.)
+
+\begin{lem}[\protect{\cite[Lemma 3.2]{MR1358491}}]
+  \label{lem:perm-sd-meet}
+Assume $\sV$ has a difference term and $\bA \in \sV$. Then,
+\begin{enumerate}[(i)]
+\item $\solrel$ is a congruence of $\Con \bA$.
+\item if $\delta \leq \alpha, \beta$ then $\alpha \solrel \beta$ iff
+  $\alpha/\delta \solrel \beta/\delta$ in $\Con\bA/\delta$.
+\item $\solrel$-classes are convex sublattices of permuting congruences.
+\item $\Con\bA/\solrel$ is meet-semidistributive.
+\end{enumerate}
+\end{lem}
+Lemma~\ref{lem:perm-sd-meet} (ii) says that $\solrel$ is
+preserved under homomorphisms.
+
+Call a congruence $\alpha \in \Con \bA$ \defn{neutral relative to $\delta$} if
+$[\alpha, \alpha]_\delta = \alpha$.  (Recall
+$[\alpha, \alpha]_\delta$ denotes the smallest congruence $\theta \geq \delta$  such
+that $\CC{\alpha}{\alpha}{\theta}$.)
+Call an interval $\lb \delta, \theta \rb$ in a congruence lattice a
+\defn{neutral interval} if every $\alpha \in \lb \delta, \theta \rb$ is neutral
+relative to $\delta$.
+This is equivalent to asserting that
+$[\alpha, \beta]_\delta = \alpha \meet \beta$ holds for all
+$\alpha, \beta \in \lb \delta, \theta \rb$.
+In particular, if
+$\alpha, \beta$ are solvably related congruences in a neutral interval 
+then $\alpha = \beta$.
+
+\newcommand\neurel{\ensuremath{\stackrel{n}{\sim}}}
+We write $\alpha \neurel \beta$ and say that $\alpha$ and $\beta$ are
+\defn{neutrally related} if the interval $\lb \alpha \meet \beta, \alpha
+\join \beta\rb$ is neutral. 
+
+\begin{lem}[\protect{\cite[Lemma 3.6]{MR1358491}}]
+  \label{lem:mod-sd-meet}
+Assume that $\sV$ has a difference term and $\bA \in \sV$. Then
+\begin{enumerate}[(i)]
+\item $\neurel$ is a congruence of $\Con\bA$.
+\item If $\delta \leq \alpha, \beta$, then $\alpha \neurel \beta$
+  iff $\alpha/\delta \neurel \beta/\delta$ in $\Con\bA/\delta$.
+\item $\neurel$-classes are convex, meet-semidistributive sublattices.
+\item $\Con\bA/\neurel$ is modular.
+\end{enumerate}
+Hence $\Con\bA$ is a subdirect product of of a modular lattice and a
+meet-semidistributive lattice.
+\end{lem}
+
+\subsection{Equivalent conditions for existence of a difference term}
+In this subsection we give an improved version of a well known result
+(Theorem~\ref{thm:F}).
+
+%% Let $\sV$ be a variety.  
+In~\cite{MR1358491} Kearnes proved that
+a locally finite variety has a difference term
+iff it has a Taylor term and no type-2 tails.
+Let $\sV$ be a variety and let $\bF = \bF_{\sV}(2)$ denote the 2-generated
+free algebra in $\sV$.
+Then the assumption that $\sV$ be locally finite can be weakened
+to the hypothesis that $\bF$ is finite. This was observed in~\cite{MR1358491} 
+by showing that $\sV$ has a difference term if and only if $\sansH \sansS \sansP(\bF)$
+has a difference term.
+The forward implication of this claim is trivial. 
+The argument for the converse goes as follows:
+assume that $d(x, y, z)$ is a difference term for $\sansH \sansS \sansP(\bF)$.
+Choose $\bA \in \sV$ and $a, b \in A$. Let $\bB = \Sg^{\bA} (\{a, b\})$.
+Since $\bB$ is 2-generated, $B \in \sansH \sansS \sansP (\bF)$.
+Hence $d(x, y, z)$ interprets as a difference term in $\bB$. This means that
+$d^{\bA} (a, a, b) = d^{\bB} (a, a, b) = b$.
+Furthermore,
+\[
+d^{\bA} (a, b, b) = d^{\bB} (a, b, b) \mathrel{[\Cg^{\bB} (a, b), \Cg^{\bB} (a, b)]} a.
+\]
+But $[\Cg^{\bB} (a, b), \Cg^{\bB} (a,b)]\subseteq [\theta, \theta]$ for any congruence
+$\theta \in \Con \bA$ for which $(a, b) \in \theta$. Consequently
+$d^{\bA} (a, b, b) \mathrel{[\theta, \theta]} a$ as desired.
+
+For the purposes of the present project,
+it would be helpful if we could extend this observation and
+prove that the existence (or nonexistence) of a difference term in $\sV$
+is equivalent to the  existence (or nonexistence) of a difference term
+operation for a specific algebra in $\sV$.  In fact, this is possible, as we
+now demonstrate.
+
+\begin{thm}
+  \label{thm:F}
+Let $\sV$ be a variety and $\bF = \bF_{\sV}(2)$, the 2-generated
+free algebra in $\sV$. The following are equivalent:
+\begin{enumerate}[(i)]
+\item \label{item:1}
+  $\sV$ has a difference term;
+\item \label{item:2}
+  $\sansH \sansS \sansP (\bF)$ has a difference term;
+\item \label{item:3}
+  $\bF$ has a difference term operation.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+  The implications
+  (\ref{item:1}) $\Rightarrow$  (\ref{item:2}) $\Rightarrow$  (\ref{item:3}) are
+  obvious. We prove
+  (\ref{item:3}) $\Rightarrow$  (\ref{item:1}) by contraposition.
+  Suppose $\sV$ has no difference term. (We show $\bF$ has no difference term
+  operation.)
+  Let $d(x,y,z)$ be a ternary term of $\sV$.  Let $\bA\in \sV$ be such that
+  $d^{\bA}(x,y,z)$ is not a difference term operation in $\bA$.
+  Choose $a, b \in A$ witnessing this fact.  Then either
+  \begin{enumerate}
+  \item\label{item:4} $d^{\bA}(a,a,b) \neq b$, or
+  \item\label{item:5} $(d^{\bA}(a,b,b), a) \notin [\Cg^{\bA} (a, b), \Cg^{\bA} (a,b)]$.
+  \end{enumerate}
+  Let $\bB = \Sg^{\bA} (\{a, b\})$.  In case
+  (\ref{item:4}), 
+  $d^{\bB}(a,a,b) = d^{\bA}(a,a,b) \neq b$, so $d^{\bB}(x,y,z)$ is not a difference
+  term operation for $\bB$.
+  In case (\ref{item:5}), observe that
+  the pair $(d^{\bB}(a,b,b), a)$ is equal to the pair $(d^{\bA}(a,b,b), a)$ which
+  does not belong to $[\Cg^{\bA} (a, b), \Cg^{\bA} (a,b)]$.
+  But 
+  $[\Cg^{\bB} (a, b), \Cg^{\bB} (a,b)] \subseteq[\Cg^{\bA} (a, b), \Cg^{\bA} (a,b)]$, so
+  \[(d^{\bB}(a,b,b), a) \notin [\Cg^{\bB} (a, b), \Cg^{\bB} (a,b)],\]
+  and again we conclude that $d^{\bB}(x,y,z)$ is not a difference term operation for $\bB$.
+  Now, since there is a surjective homomorphism from $\bF$ to $\bB$,
+  it follows that $d^{\bF}(x,y,z)$ cannot be a difference term operation for $\bF$.
+  Finally, recall that $d(x,y,z)$ was an arbitrary ternary term of $\sV$, so
+  $\bF$ has no difference term operation whatsoever.
+  %% , as we set out to prove.
+\end{proof}
+
+
+
+
+
+
+
+
+
 
 
 
