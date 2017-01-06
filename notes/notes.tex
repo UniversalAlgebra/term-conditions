@@ -256,6 +256,17 @@ MRREVIEWER = {Ivan Chajda},
 \usepackage{marginnote}
 \usepackage{scrextend}
 
+
+\newboolean{draftpagebreak}
+\setboolean{draftpagebreak}{true}
+%% \setboolean{draftpagebreak}{false}
+
+\newcommand\draftbreak{\ifthenelse{\boolean{draftpagebreak}}{\newpage}{}}
+
+
+
+
+
 %%////////////////////////////////////////////////////////////////////////////////
 %% Theorem styles
 \numberwithin{equation}{section}
@@ -407,6 +418,7 @@ representation techniques.
 %% since otherwise $0|123$ would be a solvable congruence,
 %% which would imply the two atoms would permute.
 
+\draftbreak
 
 \section{Background, definitions, and notations}
 \label{sec:defin-notat}
@@ -825,9 +837,10 @@ Then the following hold:
   = [\rho, \sigma]
   \]
 \end{lem}
-\newpage
 
 
+
+\draftbreak
 
 \section{The Freese-Valeriote Lemmas Revisited}
 \label{sec:freese-valer-lemm}
@@ -1002,8 +1015,8 @@ $\emptyset \subset \sigma\subset \nn$.
   {\bf TODO:} fill in proof of Theorem~\ref{thm:fv_3-4}.
 \end{proof}
 
-\newpage
 
+\draftbreak
 
 \appendix
 
