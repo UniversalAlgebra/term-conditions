@@ -1,0 +1,171 @@
+\documentclass[11pt]{amsart}
+% The following \documentclass options may be useful:
+% preprint      Remove this option only once the paper is in final form.
+% 10pt          To set in 10-point type instead of 9-point.
+% 11pt          To set in 11-point type instead of 9-point.
+% numbers       To obtain numeric citation style instead of author/year.
+
+%% \usepackage{setspace}\onehalfspacing
+
+\usepackage{amsmath}
+\usepackage{amscd,amssymb,amsthm} %, amsmath are included by default
+\usepackage{latexsym,stmaryrd,mathrsfs,enumerate,scalefnt,ifthen}
+\usepackage{mathtools}
+\usepackage[mathcal]{euscript}
+\usepackage[colorlinks=true,urlcolor=black,linkcolor=black,citecolor=black]{hyperref}
+\usepackage{url}
+\usepackage{scalefnt}
+\usepackage{tikz}
+\usepackage{color}
+\usepackage[margin=1in]{geometry}
+\usepackage{scrextend}
+
+%%////////////////////////////////////////////////////////////////////////////////
+%% Theorem styles
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{prop}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{Fact}[theorem]{Fact}
+\newtheorem*{fact}{Fact}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{examples}[theorem]{Examples}
+\newtheorem{exercise}{Exercise}
+\newtheorem*{lem}{Lemma}
+\newtheorem*{cor}{Corollary}
+\newtheorem*{remark}{Remark}
+\newtheorem*{remarks}{Remarks}
+\newtheorem*{obs}{Observation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Acronyms
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \usepackage[acronym, shortcuts]{glossaries}
+%\usepackage[smaller]{acro}
+\usepackage[smaller]{acronym}
+\usepackage{xspace}
+
+%% \acs{CSP} -- short version of the acronym\\
+%% \acl{CSP} -- expanded acronym without mentioning the acronym.\\
+%% \acp{CSP} -- plurals.\\
+%% \acfp{CSP} -- long forms into plurals.\\
+%% \acsp{CSP} -- short form into a plural.\\
+%% \aclp{CSP} -- long form into a plural.\\
+%% \acfi{CSP} -- Full Name acronym in italics and abbreviated form in upshape.\\
+%% \acsu{CSP} -- short form of the acronym and marks it as used.\\
+%% \aclu{CSP} -- Prints the long form of the acronym and marks it as used.\\
+
+\acrodef{lics}[LICS]{Logic in Computer Science}
+\acrodef{sat}[SAT]{satisfiability}
+\acrodef{nae}[NAE]{not-all-equal}
+\acrodef{ctb}[CTB]{cube term blocker}
+\acrodef{tct}[TCT]{tame congruence theory}
+\acrodef{wnu}[WNU]{weak near-unanimity}
+\acrodef{CSP}[CSP]{constraint satisfaction problem}
+\acrodef{MAS}[MAS]{minimal absorbing subuniverse}
+\acrodef{MA}[MA]{minimal absorbing}
+\acrodef{cib}[CIB]{commutative idempotent binar}
+\acrodef{sd}[SD]{semidistributive}
+\acrodef{NP}[NP]{nondeterministic polynomial time}
+\acrodef{P}[P]{polynomial time}
+\acrodef{PeqNP}[P $ = $ NP]{P is NP}
+\acrodef{PneqNP}[P $ \neq $ NP]{P is not NP}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{inputs/proof-dashed}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Put new macros in the macros.sty file
+\usepackage{inputs/macros}
+
+\usepackage[backend=bibtex]{biblatex}
+\bibliography{inputs/refs.bib}
+
+\begin{document}
+
+\title{Local Difference Terms}
+\date{\today}
+%% \author[W.~DeMeo]{William DeMeo}
+\address{University of Hawaii}
+\email{ralph@math.hawaii.edu}
+\email{williamdemeo@gmail.com}
+
+%% \thanks{The authors would like to extend special thanks to...}
+
+\maketitle
+
+%% \begin{abstract}\end{abstract}
+
+
+%% \section{Local difference terms}
+Let $\bp = (p_0, p_1, \dots, p_n)$ be an $(n+1)$-tuple of ternary terms, where
+$p_0(x,y,z) \approx x$ and $p_n(x,y,z) \approx z$, the first and third
+ternary projections, respectively. 
+Let $\bA=\< A, \dots\>$ be an algebra.
+Following Willard and Valeriote, we define an \defn{$\bA$-triple for $\bp$}
+to be a triple $(a,b,i)$ such that $a, b \in A$ and
+$p_i(a,b,b) = p_{i+1}(a,a,b)$.
+
+Below we will use  $\pi^3_0$ and $\pi^3_2$
+to denote the first and third ternary projections; that is,
+$\pi^3_0(x,y,z) \approx x$ and $\pi^3_2(x,y,z) \approx z$.
+
+Consider the following modification of this idea.  Let $\bp = (p_0, p_1, p_2)$
+be triple of ternary terms. Define an
+\defn{$\bA$-difference-triple for
+$(p_0, p_1, p_2)$} %(or more simply for $p$)
+  %% $(\pi^3_0, p, \pi^3_2)$} (or more simply for $p$)
+to be a triple $(a,b,i)$ where $i$ is either 0 or 1 and 
+\begin{align}
+\text{ if $i=0$, then } & p_0(a,b,b) \comm{\Cg(a,b)}{\Cg(a,b)} p_1(a,b,b); \label{eq:diff-trip-1}\\
+\text{ if $i=1$, then } &p_1(a,a,b) = p_2(a,a,b). \label{eq:diff-trip-2}
+\end{align}
+We intend to apply this definition in the special case where
+$p_0 = \pi^3_0$ and
+$p_2 = \pi^3_2$ are the first and third projections, respectively, in which case
+the conditions (\ref{eq:diff-trip-1}) and (\ref{eq:diff-trip-2}) become
+\begin{align*}
+\text{ if $i=0$, then } &a \comm{\Cg(a,b)}{\Cg(a,b)} p(a,b,b); \\
+\text{ if $i=1$, then } &p(a,a,b) =b.
+\end{align*}
+
+Let $\sS$ denote the set of all 2-element sets of triples of the form
+$\{(a_0, b_0, \chi_0), (a_1, b_1, \chi_1)\}$, such that
+$a_i, b_i \in A$ and $\chi_i \in \{0,1\}$.
+That is,
+\[
+\sS= \{\{(a_0, b_0, \chi_0), (a_1, b_1, \chi_1)\} \mid
+a_i, b_i \in A \; \text{ and } \; \chi_i \in \{0,1\}\}.
+\]
+Suppose that for each
+$S = \{(a_0, b_0, \chi_0), (a_1, b_1, \chi_1)\} \in \sS$ there exists a term $p$
+for which $S$ is a pair of $\bA$-difference-triples. That is, 
+\begin{align*}
+\text{ if $\chi_i=0$, then } &a_i \comm{\Cg(a_i,b_i)}{\Cg(a_i,b_i)} p(a_i,b_i,b_i); \\
+\text{ if $\chi_i=1$, then } &p(a_i,a_i,b_i) =b_i.
+\end{align*}
+We prove that under this hypothesis, for any set
+$S = \{(a_0, b_0, \chi_0), (a_1, b_1, \chi_1), \dots, (a_{n-1}, b_{n-1},\chi_{n-1})\}$
+such that $a_i, b_i \in A$ and $\chi_i \in \{0,1\}$, there exists a term $p$
+such that every member of $S$ is an $\bA$-difference-triple for $p$.
+%% \appendix
+%% \section{Appendix Title}
+%% This is the text of the appendix, if you need one.
+
+%\bibliographystyle{amsplain} %% or amsalpha
+%% \bibliographystyle{plain-url}
+\printbibliography
+
+
+\end{document}
