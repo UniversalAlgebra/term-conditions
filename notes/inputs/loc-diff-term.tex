@@ -199,3 +199,16 @@ d(a_j,a_j,b_j) =
 \end{equation*}
 as desired.
 \end{proof}
+
+\begin{cor}
+  Let $\bA$ be a finite idempotent algebra and suppose every pair
+  $((a,b,i), (a',b',i'))$ in $(A\times A \times \{0,1\})^2$ has a local
+  difference term.  Then $\bA$ has a difference term operation.
+\end{cor}
+\begin{proof}
+  By the Theorem, the whole set $(A\times A \times \{0,1\})^2$ has a single local difference
+  term, $d$, and this is a difference term operation for $\bA$.  Indeed,
+  for all $a, b \in A$, $d$ is a local difference term for $(a,b,0)$, so
+  $a \comm{\Cg(a,b)}{\Cg(a,b)} d(a,b,b)$, and $d$ is also a local difference term for
+  $(a,b,1)$, so $d(a,a,b) = b$.
+\end{proof}
