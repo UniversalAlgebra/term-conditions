@@ -15,6 +15,44 @@
 %% then delete the existing refs.bib file so it will be automatically generated 
 %% again with your new entry the next time you run pdfaltex.
 \begin{filecontents*}{inputs/refs.bib}
+@article {MR3449235,
+    AUTHOR = {Kearnes, Keith and Szendrei, {\'A}gnes and Willard, Ross},
+     TITLE = {A finite basis theorem for difference-term varieties with a
+              finite residual bound},
+   JOURNAL = {Trans. Amer. Math. Soc.},
+  FJOURNAL = {Transactions of the American Mathematical Society},
+    VOLUME = {368},
+      YEAR = {2016},
+    NUMBER = {3},
+     PAGES = {2115--2143},
+      ISSN = {0002-9947},
+   MRCLASS = {03C05 (08B05 08B10)},
+  MRNUMBER = {3449235},
+       DOI = {10.1090/tran/6509},
+       URL = {http://dx.doi.org/10.1090/tran/6509},
+}
+@article {MR1663558,
+    AUTHOR = {Kearnes, Keith A. and Szendrei, {\'A}gnes},
+     TITLE = {The relationship between two commutators},
+   JOURNAL = {Internat. J. Algebra Comput.},
+  FJOURNAL = {International Journal of Algebra and Computation},
+    VOLUME = {8},
+      YEAR = {1998},
+    NUMBER = {4},
+     PAGES = {497--531},
+      ISSN = {0218-1967},
+   MRCLASS = {08A05 (08A30)},
+  MRNUMBER = {1663558},
+MRREVIEWER = {M. G. Stone},
+       DOI = {10.1142/S0218196798000247},
+       URL = {http://dx.doi.org/10.1142/S0218196798000247},
+}
+@article{KSW,
+title = {Simpler maltsev conditions for (weak) difference terms in locally finite varieties},
+author = {Kearnes, Keith and Szendrei, \'{A}gnes and Willard, Ross},
+note = {to appear}
+}
+
 @article {MR3239624,
     AUTHOR = {Valeriote, M. and Willard, R.},
      TITLE = {Idempotent {$n$}-permutable varieties},
@@ -377,15 +415,33 @@ and $[\cdot, \cdot]$ denotes the \defn{commutator}
 (see Section~\ref{sec:definitions}). % of $\theta$ with itself.
 When the relations in (\ref{eq:3}) hold we call $d^{\bA}$
 a \defn{difference term operation} for $\bA$.
-Roughly speaking, having a difference term is slightly stronger than having
-a Taylor term and slightly weaker than having a Mal'cev term.  Note that if
+
+Difference terms are studied extensively in the general algebra literature.
+(See, for example, \cite{MR1358491,MR1663558,MR3076179,KSW,MR3449235}.)
+There are many reasons to study difference terms, but
+one obvious reason is because if we know that a variety 
+has a difference term, this fact allows us to deduce many useful
+properties of the algebras inhabiting that variety.
+Very roughly speaking, having a difference term is slightly stronger than having
+a Taylor term and slightly weaker than having a Mal'cev term.
+(Note that if
 $\bA$ is an \defn{abelian} algebra, which means that $[1_A, 1_A] = 0_A$, then, by
 the monotonicity of the commutator,
 $[\theta, \theta] = 0_A$ for all $\theta \in \Con \bA$, in which case
-(\ref{eq:3}) says that $d^{\bA}$ is a Mal'cev term operation.
+(\ref{eq:3}) says that $d^{\bA}$ is a Mal'tsev term operation.)
 
+Digital computers have turned out to be invaluable tools for exploring and
+understanding algebras and the varieties they inhabit, and this is largely due
+to the fact that, over the last three decades,
+researchers have found ingenious ways to get computers to
+solve challenging abstract decision problems---such as whether a variety is
+congruence $n$-permutable (\cite{MR3239624}), or
+congruence modular (\cite{Freese:2009})---and to do so very quickly.
+This paper contributes to this effort by finding an efficient
+algorithm for deciding whether a locally finite idempotent variety has a
+difference term.
 
-The question motivating this effort is the following:
+The central question motivating this project is the following:
 \begin{prob}
   \label{prob:1}
   Is there a polynomial-time algorithm to decide for a finite,
