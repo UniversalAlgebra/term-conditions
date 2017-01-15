@@ -1,0 +1,266 @@
+The methods from the previous section can be lifted
+up to subuniverses, as we now describe.
+Let $\sV$ be a variety, let $\bA = \<A, \dots\>$ and $\bB = \<B, \dots\>$ be algebras in
+$\sV$, and let $i\in \{0,1\}$.
+We call a term $d$ a \defn{global-local difference term for $(A, B, i)$}
+provided for all $a, a'\in A$ and $b, b' \in B$ we have
+\begin{align}
+\text{ if $i=0$, then } & a \comm{\theta(a,a')}{\theta(a,a')} d^{\bA}(a,a',a');
+\label{eq:global-diff-triple}\\
+\text{ if $i=1$, then } &
+d^{\bB}(b,b,b') = b'. 
+\end{align}
+Let $\Sub(\bA)$ denote the set of all
+subuniverses of $\bA$. In the next theorem we will use the following notation and terminology:
+$\sS(\bA):= \Sub(\bA) \times \Sub(\bA) \times \{0,1\}$, and for any
+sequence
+\[S = ((A_0, B_0, \chi_0), (A_1, B_1, \chi_1), \dots,
+(A_{n-1},B_{n-1},\chi_{n-1})) \in \sS(\bA)^n,
+\]
+a term $d$ is a \defn{global-local difference term for $S$}
+if $d$ is a global-local difference term for every triple in $S$.
+
+Throughout this section $|S|$ denotes the \emph{length of the
+sequence $S$}.
+
+\begin{thm}[\protect{cf.~\cite[Theorem 2.2]{MR3239624}}]
+  \label{thm:glob-loc-diff-terms}
+  Let $\sV$ be an idempotent variety and
+  $\bA \in \sV$. 
+  If every pair
+  $((A_0, B_0, \chi_0), (A_1, B_1, \chi_1)) \in \sS(\bA) \times \sS(\bA)$
+  has a global-local difference term,
+  then, for all $n\geq 2$, every sequence $S \in \sS(\bA)^n$
+  has a global-local difference term.
+\end{thm}
+\begin{proof}
+The proof is by induction on $|S|$, the length of the sequence
+$S$.
+
+In the base case, $|S| = 2$, the claim holds by assumption.
+Fix $n\geq 2$ and assume that every sequence in $\sS(\bA)^k$ of length $2\leq k \leq n$ has
+a global-local difference term. Let
+$S = ((A_0, B_0, \chi_0), (A_1, B_1, \chi_1), \dots, (A_{n}, B_{n},\chi_{n})) \in \sS(\bA)^{n+1}$.
+%% so that $|S| = n+1$.  
+We will prove that $S$ has a global-local difference term.
+
+Since $|S| \geq 3$ and $\chi_i \in \{0,1\}$ for all $i$, there must exist
+indices $i\neq j$ such that $\chi_i = \chi_j$. Assume without loss of generality
+that one of these indices is $j=0$.  Define the subsequence
+$S' = ((A_1, B_1, \chi_1), \dots,(A_{n}, B_{n},\chi_{n}))$ of $S$. %% \in \sS(\bA)^{n}$
+Since $|S'| = n$, the sequence $S'$ has a global-local difference term $p$.
+Thus, for all $1\leq i \leq n$,
+for all $a, a'\in A_i$ and $b, b' \in B_i$ we have
+\begin{align*}
+  \text{ if $\chi_i=0$, then } &
+  a \comm{\theta(a,a')}{\theta(a,a')} d^{\bA_i}(a,a',a');\\
+  \text{ if $\chi_i=1$, then } &
+  d^{\bB_i}(b,b,b') = b'.
+\end{align*}
+
+We split the remainder of the proof into two cases.%%  In the first case
+%% $\chi_0 = 0$ and in the second
+%% $\chi_0 = 1$.
+
+\vskip3mm
+
+%--------------------------------------
+\noindent \underline{Case $\chi_0 = 0$:}
+Without loss of generality, suppose that
+$\chi_1 = \chi_2 = \cdots =\chi_k = 1$,
+and
+$\chi_{k+1} = \chi_{k+2} = \cdots = \chi_{n} = 0$.
+Define
+%% the set
+%% \[P_0 = \{p(b, b', b')  \in B_0 \mid b, b' \in B_0\},\]
+%% and let
+\[
+T = ((A_0, B_0, 0), (A_1, B_1, 1), (A_2, B_2, 1), \dots, (A_k, B_k, 1)).
+\]
+Note that $|T| < |S|$.
+Let $t$ be a global-local difference term for $T$.
+We will prove that the term $d(x,y,z) = t(x, p(x,y,y), p(x,y,z))$
+is a global-local difference term for the sequence $S$.
+
+The first triple in $S$ is $(A_0, B_0, 0)$, so we need to show for all $a$, $a' \in A_0$
+that
+\[
+d^{\bA_0}(a,a',a') \comm{\theta(a,a')}{\theta(a,a')} a.
+\]
+Fix $a, a' \in A_0$.
+By definition of $d$, and since
+$t$ is a global-local difference term for $(A_0, B_0,0)$, we have
+\begin{equation}
+  \label{eq:100100}
+  d^{\bA_0}(a,a',a') 
+  =t^{\bA_0}(a, a'', a'')\comm{\theta(a, a'')}{\theta(a, a'')} a,
+\end{equation}
+where $a'' = p^{\bA_0}(a,a',a')$.
+Now,
+$(a, a'') = (p^{\bA_0}(a,a,a), p^{\bA_0}(a,a',a')) \in \theta(a, a')$, therefore,
+$\theta(a, a'') \leq \theta(a,a')$.
+It follows from this and monotonicity of the commutator that
+$\comm{\theta(a, a'')}{\theta(a, a'')} {\leq} \comm{\theta(a,a')}{\theta(a,a')}$,
+This and~(\ref{eq:100100}) imply
+$d^{\bA_0}(a,a',a')\comm{\theta(a,a')}{\theta(a,a')} a$,
+as desired.
+
+For indices $1\leq i \leq k$ we have $\chi_i =1$, so we wish to prove
+that for all $b$, $b' \in B_i$ we have
+$d^{\bA_i}(b,b,b') = b'$.
+Fix $b, b' \in B_i$ and observe that
+\begin{align}
+  d^{\bB_i}(b,b,b') &=
+  t(b, p^{\bB_i}(b,b,b), p^{\bB_i}(b,b,b')) \label{eq:210200}\\
+  &=t^{\bB_i}(b, b, b') \label{eq:220201}\\
+  &=b'. \label{eq:230202}
+\end{align}
+Equation~(\ref{eq:210200}) holds by definition of $d$,~(\ref{eq:220201})
+because $p$ is an idempotent global-local difference term for
+$S'$, and~(\ref{eq:230202}) because $t$ is a global-local difference term for $T$.
+
+The remaining triples in our original sequence $S$
+have indices satisfying $k<j\leq n$ and $\chi_j = 0$.
+Thus, for these triples we prove
+for all $a, a' \in A_j$ that
+$d^{\bA_j}(a,a',a')\comm{\theta(a,a')}{\theta(a,a')} a$.
+Fix $a, a' \in A_j$.
+By definition,
+\begin{equation}
+  \label{eq:451}
+d^{\bA_j}(a,a',a') =t^{\bA_j}(a, p^{\bA_j}(a,a',a'), p^{\bA_j}(a,a',a')).  
+\end{equation}
+Also, $p^{\bA_j}(a,a',a') \comm{\theta(a,a')}{\theta(a,a')} a$,
+since $p$ is a global-local difference term for $S'$.
+%% $(p^{\bA_j}(a,a',a'), a)\in [\theta(a,a'), \theta(a,a')]$.
+This and (\ref{eq:451}) imply
+that
+%% $(d^{\bA_j}(a, a',a'), t^{\bA_j}(a,a,a))$ belongs to $\comm{\theta(a,a')}{\theta(a,a')}$.
+$d^{\bA_j}(a, a',a') \comm{\theta(a,a')}{\theta(a,a')} t^{\bA_j}(a,a,a))$.
+Finally, by idempotence of $t$ we have
+$d^{\bA_j}(a,a',a')\comm{\theta(a,a')}{\theta(a,a')} a$,
+as desired.
+\\[6pt]
+%--------------------------------------
+\underline{Case $\chi_0 = 1$:}
+Without loss of generality, suppose $\chi_1 = \chi_2 =\cdots =\chi_k = 0$,
+and $\chi_{k+1} = \chi_{k+2} = \cdots = \chi_{n} = 1$.
+%% Define the set
+%% \[P_1 = \{p(b, b', b')  \in B_0 \mid b, b' \in B_0\},\]
+Define
+\[T = ((A_0, B_0, 1), (A_0, B_1, 0), (A_2, B_2, 0), \dots, (A_k, B_k, 0)),
+\]
+and note that $|T| < |S|$, so $T$ has a global-local difference term $t$.
+We will prove that the term $d(x,y,z) = t(p(x,y,z), p(y,y,z), z)$
+is a global-local difference term for the  sequence $S$.
+
+The first triple in $S$ is $(A_0, B_0, 1)$, so we want to show for all $b$, $b' \in B_0$ that
+$d(b,b,b') = b'$.
+Fix $b$, $b' \in B_0$. By definition of $d$,
+%% \begin{equation*}  d(b,b,b') = t(p(b,b,b'), p(b,b,b'), b') =b'.\end{equation*}
+we have $d^{\bB_0}(b,b,b') = t^{\bB_0}(p^{\bB_0}(b,b,b'), p^{\bB_0}(b,b,b'), b') =b'$.
+The last equality holds since $t$ is a global-local difference term for $T$, thus,
+for $(A_0, B_0, 1)$.
+
+If $1\leq i \leq k$, then $\chi_i =0$, so for these indices we want
+for all $a, a' \in A_i$ that
+\[
+d^{\bA_i}(a,a',a') \comm{\theta(a,a')}{\theta(a,a')} a.
+\]
+Fix $a, a'\in A_i$.
+By definition of $d$ and idempotence of $p$, we have
+\begin{align}
+  d^{\bA_i}(a,a',a') &=
+  t^{\bA_i}(p^{\bA_i}(a,a',a'), p^{\bA_i}(a',a',a'), a')   \label{eq:444}\\
+  &=t^{\bA_i}(p^{\bA_i}(a,a',a'), a', a'). \nonumber
+\end{align}
+Next, since $p$ is a global-local difference term for $S'$, we have
+\begin{equation}
+  \label{eq:555}
+  t^{\bA_i}(p^{\bA_i}(a,a',a'), a', a')
+ \comm{\theta(a,a')}{\theta(a,a')}
+ t^{\bA_i}(a, a', a').
+\end{equation}
+Finally, since $t$ is a global-local difference term for $T$, hence for
+$(a, a', a')$,  %% $(1\leq i \leq k)$,
+we have 
+\[
+t^{\bA_i}(a, a', a') \comm{\theta(a,a')}{\theta(a,a')} a.
+\]
+Combining this with (\ref{eq:444}) and (\ref{eq:555}) yields
+$d^{\bA_i}(a,a',a') \comm{\theta(a,a')}{\theta(a,a')} a$,
+as desired.
+
+The remaining elements of our original sequence $S$
+have indices $j$ satisfying $k<j\leq n$ and $\chi_j = 1$.
+For these we want to prove for all $b, b'\in B_j$ that $d^{\bB_j}(b,b,b') = b'$.
+Fix $b, b'\in B_j$. Since $p$ is a global-local difference term for $S'$, we have
+$p^{\bB_j}(b,b,b') = b'$, and this along with idempotence of $t$ yields
+%%\[ d(b,b,b') =  t(p(b,b,b'), p(b,b,b'), b')=  t(b', b', b') =b',\]
+%% \begin{align*}
+%% d^{\bB_j}(b,b,b') &=
+%% t^{\bB_j}(p^{\bB_j}(b,b,b'), p^{\bB_j}(b,b,b'), b')\\
+%% &=t^{\bB_j}(b', b', b') =b',
+%% \end{align*}
+\[
+d^{\bB_j}(b,b,b') =
+t^{\bB_j}(p^{\bB_j}(b,b,b'), p^{\bB_j}(b,b,b'), b')
+=t^{\bB_j}(b', b', b') =b'\]
+as desired.
+\end{proof}
+
+If $\sA$ be a collection of similar algebras, we will use the notation
+$\Sub(\sA)$ to denote the collection of all subuniverses of all algebras in
+$\sA$.
+That is,
+\[
+\Sub(\sA) = \bigcup_{\bA \in \sA} \Sub(\bA).
+\]
+By further abuse of notation, we let
+\[
+\sS(\sA) = \Sub(\sA) \times \Sub(\sA) \times \{0,1\},
+\]
+so $(A, B, i)\in \sS(\sA)$ indicates that
+$A$ is a subuniverse of some algebra in $\sA$,
+and $B$ is a subuniverse of some (possibly different) algebra in $\sA$,
+and $i\in \{0,1\}$.
+\begin{cor}
+  \label{cor:glob-loc-diff-term}
+  Let $\sV$ be a variety.  Let $\sA$ be a collection of finite idempotent
+  algebras in $\sV$ that is closed under the taking of subalgebras.
+  Then there exists a term $d$ that is a difference term operation for every
+  algebra in $\sA$ if and only if every
+  $((A,B,i), (A',B',i')) \in \sS(\sA)^2$ has a global-local
+  difference term.
+\end{cor}
+\begin{proof}
+  One direction is clear, since a difference term for all of $\sA$ is
+  obviously a global-local difference term for the whole set $\sS(\sA)$.
+  For the converse, suppose
+  each pair in $\sS(\sA)^2$ has a global-local
+  difference term. Then, by Theorem~\ref{thm:glob-loc-diff-terms},
+  there is a single global-local difference term for the whole set
+  $\sS(\sA)$
+  and this is a difference term for all of $\sA$.  Indeed, suppose $d$ is a
+  global-local difference term for $\sS(\sA)$ and fix $\bA \in \sA$. We show
+  that $d$ is a difference term operation for $\bA$. Indeed,
+  %% $d$ is a global-local difference term for $((A, A, 0), (A,A,1)$,
+  so for all  $a, a' \in A$ we have 
+  $a \comm{\Cg(a,a')}{\Cg(a,a')} d(a,a',a')$,
+  since $d$ is a global-local difference term for $(A,A,0)$, and we have
+  $d(a,a,a') = a'$, since $d$ is a global-local difference term for
+  $(A,A,1)$.
+\end{proof}
+
+
+\subsection{Algorithm 2: existence of difference terms}
+In this subsection we prove the following
+\begin{cor}
+  There is a polynomial-time algorithm that takes as input
+  any finite idempotent algebra $\bA$ and decides whether
+  the variety $\bbV(\bA)$ that it generates
+  has a difference term operation.
+\end{cor}
+\begin{proof}
+  TODO: fill in proof!!!
+\end{proof}
