@@ -1588,6 +1588,52 @@ and $i\in \{0,1\}$.
   TODO: fill in proof!!!
 \end{proof}
 
+\section{Local and global-local minority terms}
+Let $\sV$ be a variety.  A term $m$ in the language of $\sV$
+is called a \defn{minority term} if for every $\bA \in \sV$ and
+all $a, b \in A$ it is the case that 
+\[
+m(a,b,b) =m(b,a,b) = m(b,b,a) = a.
+\]
+Let $\bA = \<A, \dots\>$ be an algebra in a variety $\sV$, let $t$ be a term
+of $\sV$. We call $t$ a \defn{local minority term} for the triple
+$(a,b,i) \in A\times A \times \{0,1,2\}$ provided
+\begin{align}
+\text{ if $i=0$, then } & t(a, b, b)= a\label{eq:2}\\
+\text{ if $i=1$, then } & t(b,a,b) = a\label{eq:4}\\
+\text{ if $i=2$, then } & t(b,b,a) = a\label{eq:5}. 
+\end{align}
+If $\sA$ is a collection of algebras in a variety $\sV$, and $t$ is a term of
+$\sV$, then we call $t$ a \defn{global-local minority term} for 
+$(A,i) \in \sA \times \{0,1,2\}$ provided for all $a, b \in A$ the
+conditions~\ref{eq:2},~\ref{eq:4}, and~\ref{eq:5} hold. 
+
+Suppose
+$S = ((A_0, \chi_0), (A_1, \chi_1), \dots, (A_{n-1}, \chi_{n-1})$
+is a sequence of pairs $(A_i, \chi_i) \in \sA \times \{0,1,2\}$.
+We call a term $t$ a local minority term for $S$
+
+
+\section{Global-local minority terms}
+Let $\sV$ be a variety.  A term $m$ is called a minority term for $\sV$ if for
+every $\bA \in \sV$ and all $a, b \in A$ it is the case that
+\[
+m(a,b,b) =m(b,a,b) = m(b,b,a) = a.
+\]
+Let $\bA = \<A, \dots\>$ be an algebra, let $t$ be a term in the language of
+$\bA$, and let $i\in \{0,1,2\}$.
+We call $t$ a \defn{local minority term} for $(A, i)$ provided for all
+$a, b\in A$ we have
+\begin{align*}
+\text{ if $i=0$, then } & t(a, b, b)= a\\
+\text{ if $i=1$, then } & t(b,a,b) = a\\
+\text{ if $i=2$, then } & t(b,b,a) = a. 
+\end{align*}
+Let $\sA$ be a collection of algebras and suppose
+\[S = ((A_0, \chi_0), (A_1, \chi_1), \dots, (A_{n-1}, \chi_{n-1})
+\]
+is a sequence of pairs $(A_i, \chi_i) \in \sA \times \{0,1,2\}$.
+We call a term $t$ a local minority term for $S$
 
 \section*{Acknowledgments}
 This research was supported by the National Science 
