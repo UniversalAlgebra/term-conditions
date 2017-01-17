@@ -523,7 +523,7 @@ MRREVIEWER = {Ivan Chajda},
 
 \begin{document}
 
-\markboth{W~DeMeo and R.~Freese}
+\markboth{W.~DeMeo and R.~Freese}
 {Existence of Difference Terms}
 
 %%%%%%%%%%%%%%%%%%%%% Publisher's Area please ignore %%%%%%%%%%%%%%%
@@ -1023,19 +1023,14 @@ Let $\bA=\< A, \dots\>$ be an algebra, fix $a, b \in A$ and
 $i \in \{0,1\}$.
 %% An \defn{$\bA$-local difference term for
 A \defn{local difference term for
-  $(a,b,i)$} is a ternary term $p$ satisfying the following:
+  $(a,b,i)$} is a ternary term $d$ satisfying the following:
 \begin{align}
-%% \text{ if $i=0$, then } & a \comm{\Cg^{\bA}(a,b)}{\Cg^{\bA}(a,b)} p(a,b,b); \label{eq:diff-triple}\\
-\text{ if $i=0$, then } & a \comm{\Cg(a,b)}{\Cg(a,b)} p(a,b,b); \label{eq:diff-triple}\\
-\text{ if $i=1$, then } &p(a,a,b) = b. \nonumber
+%% \text{ if $i=0$, then } & a \comm{\Cg^{\bA}(a,b)}{\Cg^{\bA}(a,b)} d(a,b,b); \label{eq:diff-triple}\\
+\text{ if $i=0$, then } & a \comm{\Cg(a,b)}{\Cg(a,b)} d(a,b,b); \label{eq:diff-triple}\\
+\text{ if $i=1$, then } &d(a,a,b) = b. \nonumber
 \end{align}
-%% We often drop the
-%% $\bA$ when the algebra is clear from context.
-%% For example, we write $\Cg$ in place of $\Cg^{\bA}$, and 
-%% call the term $p$ above a local difference term for 
-%% $(a,b,i)$.
-If $p$ satisfies~(\ref{eq:diff-triple}) for all triples
-in some subset $S\subseteq A \times A \times \{0,1\}$, then we call $p$
+If $d$ satisfies~(\ref{eq:diff-triple}) for all triples
+in some subset $S\subseteq A \times A \times \{0,1\}$, then we call $d$
 a \defn{local difference term for $S$}.
 
 Let 
@@ -1044,16 +1039,16 @@ suppose that every pair
 $((a_0, b_0, \chi_0), (a_1, b_1, \chi_1))$
 in $\sS^2$ has a local difference term.
 That is, for each pair $((a_0, b_0, \chi_0), (a_1, b_1, \chi_1))$, there exists
-$p$ such that for each $i \in \{0,1\}$ we have
+$d$ such that for each $i \in \{0,1\}$ we have
 \begin{align}
-  a_i \comm{\Cg(a_i,b_i)}{\Cg(a_i,b_i)} p(a_i,b_i,b_i), & \;
+  a_i \comm{\Cg(a_i,b_i)}{\Cg(a_i,b_i)} d(a_i,b_i,b_i), & \;
   \text{ if $\chi_i=0$, and }  \label{eq:d-trip-i1}\\
-  p(a_i,a_i,b_i) =b_i, & \;
+  d(a_i,a_i,b_i) =b_i, & \;
   \text{ if $\chi_i=1$.}\label{eq:d-trip-i2} %\\\nonumber
 \end{align}
 Under these hypothesis we will prove that every subset $S\subseteq \sS$
 has a local difference term.
-That is, there is a single term $p$ that works (i.e., satisfies
+That is, there is a single term $d$ that works (i.e., satisfies
 (\ref{eq:d-trip-i1}) and (\ref{eq:d-trip-i2})) for all $(a_i, b_i, \chi_i) \in S$.
 The statement and proof of this new result follows.
 
