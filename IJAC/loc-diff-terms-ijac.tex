@@ -1262,6 +1262,7 @@ as desired.
 %% In this subsection we prove the following:
 \subsection*{Algorithm 1: existence of a difference term operation}
 \begin{cor}
+  \label{cor:algor-1}
   There is a polynomial-time algorithm that takes as input
   any finite idempotent algebra $\bA$ and decides whether
   %% the variety $\bbV(\bA)$ that it generates
@@ -1529,12 +1530,12 @@ of Corollary~\ref{cor:loc-diff-term}.
   $((A_i, \chi_i), (A_j, \chi_j)) \in  \scS(\scA)^2$,
   and let $\sU  = (A_i^2 + A_j^2)\times \{0,1\}$.
   By Theorem~\ref{thm:mixed-local-diff-terms},
-  to prove that every sequence $S \in \sU^n$,
-  has a local difference term, it suffice to check that every pair
+  to prove that every sequence $S \in \sU^n$
+  has a local difference term, it suffices to check that every pair
   $\bigl( (\<(a, b), i\>, \chi), (\<(a', b'), i'\>, \chi')\bigr) \in \sU^2$
   has a local difference term. It follows from the argument given 
-  in the proof of Corollary~\ref{cor:algor-2} that the number of 
-  operations required is to check whether
+  in the proof of Corollary~\ref{cor:algor-1} that the number of 
+  operations required to check whether
   $\bigl( (\<(a, b), i\>, \chi), (\<(a', b'), i'\>, \chi')\bigr)$
   has a local difference term is bounded by a
   polynomial in $|A_i||A_j|\leq |A|^2$.  Since there are 
