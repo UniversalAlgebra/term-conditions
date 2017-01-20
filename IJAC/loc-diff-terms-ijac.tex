@@ -1349,50 +1349,52 @@ More details on the complexity of operations carried out by the algorithm, as we
 \label{sec:mixed-local-diff}
 In this section, we observe that the proofs in the previous section
 did not hinge on the fact that we only considered a single algebra.  
-To wit, let $\sV$ be a variety and let $\bA_0=\< A_0, \dots\>$ and  $\bA_1=\< A_1, \dots\>$ be
-algebras in $\sV$.  Fix $a_0, b_0 \in A_0$,  $a_1, b_1 \in A_i$,  and
-$\chi_i \in \{0,1\}$.
-%% An \defn{$\bA$-local difference term for
-Then a ``mixed'' local difference term for the pair
-$((a_0, b_0,\chi_0), (a_1, b_1,\chi_1))$
-is a ternary term $d$ satisfying, for each $i \in \{0,1\}$,
+Let $\sV$ be a variety and let $\bA_0=\< A_0, \dots\>$ and  $\bA_1=\< A_1, \dots\>$ be
+algebras in $\sV$.
+The direct sum (or coproduct) of $\bA_0$ and
+$\bA_1$ is denoted by $\bA_0 + \bA_1$
+(or by $\coprod_{i=0}^1 \bA_i$, especially when there are more than two
+factors).
+An element of (the universe of)
+$\bA_0 + \bA_1$ is often denoted by $\<a, i\>$,
+where $i\in \{0,1\}$ and $a \in A_i$.
+The (universe of the) coproduct %% $\coprod_{i=0}^1 (\bA_i\times \bA_i)$ has elements
+$\bA_0^2 + \bA_1^2$ has elements
+$\<(a,b), i\>$ where $i\in \{0,1\}$ and $(a,b) \in A_i^2$.
+An element of  the set $(A_0^2 + A_1^2) \times \{0,1\}$---and
+now the notation has already become a bit unweildy---has
+the form $(\<(a,b), i\>, \chi)$, where $i\in \{0,1\}$, $(a,b) \in A_i^2$,
+and $\chi\in \{0,1\}$. 
+
+Fix two elements $(\<(a, b),i\>, \chi)$ and $(\<(a', b'),i'\>, \chi')$ of the
+set $(A_0^2 + A_1^2) \times \{0,1\}$.
+By a \defn{mixed local difference term} for this pair
+we mean a ternary term $d$ satisfying both
 \begin{align}
-%% \text{ if $i=0$, then } & a \comm{\Cg^{\bA}(a,b)}{\Cg^{\bA}(a,b)} d(a,b,b); \label{eq:diff-triple}\\
-\text{ if $\chi_i=0$, then } & a_i \comm{\Cg^{\bA_i}(a_i,b_i)}{\Cg^{\bA_i}(a_i,b_i)} d^{\bA_i}(a_i,b_i); \label{eq:mixed-diff-triple}\\
-\text{ if $\chi_i=1$, then } &d^{\bA_i}(a_i,a_i,b_i) = b_i. \nonumber
+\text{ if $\chi=0$, then } & a \comm{\Cg^{\bA_i}(a,b)}{\Cg^{\bA_i}(a,b)} d^{\bA_i}(a,b,b); \label{eq:mixed-diff-triple}\\
+\text{ if $\chi=1$, then } &d^{\bA_i}(a,a,b) = b; \nonumber
 \end{align}
-If $d$ satisfies~(\ref{eq:mixed-diff-triple}) for all triples
-in some subset $S$ of the disjoint union
+and the same set of relations with $a$, $b$, $i$, $\chi$ replaced 
+by $a'$, $b'$, $i'$, $\chi'$, respectively.
+
+Let $S$ be a sequence of triples drawn from the set
 \[
-\sU(A_0, A_1)  := (A_0 \times A_0 \times \{0,1\}) + (A_1\times A_1 \times \{0,1\}),
+\sU(A_0, A_1)  := (A_0^2 + A_1^2) \times \{0,1\}.
 \]
-%% $(A_0^2 \times \{0,1\}) + (A_1^2 \times \{0,1\})$,
-then $d$ is a mixed local difference term for $S$.
-Elements of the disjoint union $\sU(A_0, A_1)$ will be denoted by
-$\<(a, b, \chi), 0\>$ if $a, b \in A_0$ and
-$\<(a, b, \chi), 1\>$ if $a, b \in A_1$.
-We may use $\sU$ in place of $\sU(A_0, A_1)$ when the context renders the
+If $d$ satisfies~(\ref{eq:mixed-diff-triple}) for all triples in $S$.
+then we call $d$ is a \defn{mixed local difference term for $S$}.
+We may use $\sU$ to denote the set $\sU(A_0, A_1)$ when the context renders the
 universes involved obvious or immaterial.
 
 Now, suppose that all pairs of triples 
 in $\sU$ have mixed local difference terms.
-%% That is, for each pair
-%% $(\<(a, b, \chi), i\>, \<(a', b', \chi'), i'\>)$
-%% there exists a term $d$ such that % for each $i \in \{0,1\}$ we have
-%% \begin{align}
-%%   a \comm{\Cg^{\bA_i}(a,b)}{\Cg^{\bA_i}(a,b)} d^{\bA_i}(a,b,b), & \;
-%%   \text{ if $\chi_i=0$, and }  \label{eq:d-trip-i1}\\
-%%   d^{\bA_i}(a,a,b) =b, & \;
-%%   \text{ if $\chi_i=1$,}\label{eq:d-trip-i2} %\\\nonumber
-%% \end{align}
-%% and such that similar relations hold for $\<(a', b', \chi'), i'\>$.
 Under this hypothesis the same argument that we used to prove
-Theorem~\ref{thm:local-diff-terms} above can be used to prove that every subset
-$S\subseteq \sU$ has a mixed local difference term.
+Theorem~\ref{thm:local-diff-terms} above can be used to prove that, for every $n$,
+%% and every sequence $S\in \sU^n$, there is a term $d$ that is a mixed local
+%% difference term for $S$.
+every sequence $S\in \sU^n$ has a mixed local difference term.
 That is, there is a single term $d$ that works (i.e., satisfies
-%% (\ref{eq:mixed-trip-i1}) and (\ref{eq:mixed-trip-i2})) for all $\<(a, b, \chi), i\> \in S$.
-the relations (\ref{eq:mixed-diff-triple})) for all $\<(a, b, \chi), i\> \in S$.
-%% The statement and proof of this result follows.
+the relations (\ref{eq:mixed-diff-triple})) for all $(\<(a, b), i\>,\chi)$ in $S$.
 Here is the full statement of this slightly more general version of
 Theorem~\ref{thm:local-diff-terms}.
 From now on we drop the ``mixed'' qualifier since
@@ -1402,25 +1404,36 @@ it is inconsequential.
   \label{thm:mixed-local-diff-terms}
   Let $\sV$ be an idempotent variety and let
   $\bA_0 = \<A_0, \dots\>$ and   $\bA_1 = \<A_1, \dots\>$ be algebras in $\sV$. Define
-  $\sU  = (A_0^2 \times \{0,1\}) + (A_1^2\times \{0,1\})$
+  $\sU  = (A_0^2 + A_1^2)\times \{0,1\}$
   and suppose that every pair
-  $(\<(a, b, \chi), i\>, \<(a', b', \chi'), i'\>) \in \sU^2$
-  has a local difference term. Then every tuple $S \subseteq \sU^n$
+  $((\<(a, b), i\>, \chi), (\<(a', b'), i'\>\chi')) \in \sU^2$
+  has a local difference term. Then, for every $n$, every sequence $S \in \sU^n$
   has a local difference term.
 \end{thm}
 
 Corollary~\ref{cor:loc-diff-term} also generalizes, as follows:
 \begin{cor}
   \label{cor:mix-loc-diff-term}
-  Let $\scA = \{\<A_i, \dots\> \mid i \in I\}$ be a collection of finite
-  idempotent algebras. Then there exists a term $d$ that interprets as a
-  difference term operation in every $\<A_i, \dots\> \in \scA$ if and only if each pair
-  $(\<(a_i,b_i,\chi_i),\iota_i\>,  \<(a_j,b_j,\chi_j),\iota_j\>)$ in  the square
-  of the disjoint union, $\bigl(\coprod_{i \in I} (A_i^2\times \{0,1\})\bigr)^2$
-  % \[\bigl(\coprod_{i \in I} (A_i^2\times \{0,1\})\bigr)
-  %   \times \bigl(\coprod_{i \in I} (A_i^2\times \{0,1\})\bigr),\]
-  has a local difference term.
+  Let $\sV$ be an idempotent variety and let
+  $\bA_0 = \<A_0, \dots\>$ and   $\bA_1 = \<A_1, \dots\>$ be algebras in $\sV$. Define
+  $\sU  = (A_0^2 + A_1^2)\times \{0,1\}$
+  and suppose that every pair
+  $((\<(a, b), i\>, \chi), (\<(a', b'), i'\>\chi')) \in \sU^2$
+  has a local difference term. Then, there is a term $d$ that iterprets as a
+  difference term operation for both $\bA_0$ and $\bA_1$.
 \end{cor}
+%% Corollary~\ref{cor:loc-diff-term} also generalizes, as follows:
+%% \begin{cor}
+%%   \label{cor:mix-loc-diff-term}
+%%   Let $\scA = \{\<A_i, \dots\> \mid i \in I\}$ be a collection of finite
+%%   idempotent algebras. Then there exists a term $d$ that interprets as a
+%%   difference term operation in every $\<A_i, \dots\> \in \scA$ if and only if each pair
+%%   $((\<(a_i,b_i),\iota_i\>,\chi_i),  (\<(a_j,b_j),\iota_j\>,\chi_j))$ in
+%%   $\bigl(\coprod_{i \in I} A_i^2\times \{0,1\}\bigr)^2$
+%%   % \[\bigl(\coprod_{i \in I} (A_i^2\times \{0,1\})\bigr)
+%%   %   \times \bigl(\coprod_{i \in I} (A_i^2\times \{0,1\})\bigr),\]
+%%   has a local difference term.
+%% \end{cor}
 
 
 
@@ -1470,10 +1483,6 @@ We relegate the proof of Theorem~\ref{thm:glob-loc-diff-terms}
 to the appendix (see Section~\ref{sec:proof-thm:glob}), since the argument 
 is nearly identical to the one used to prove Theorem~\ref{thm:local-diff-terms}. 
 
-% Recall, if $\scA$ is a collection of algebras belonging to a variety $\sV$,
-% we let
-% \[\scS(\scA) = \{(A, i) \mid \<A, \dots\> \in \scA \text{ and } i \in
-% \{0,1\}\}.\]
 \begin{cor}
   \label{cor:glob-loc-diff-term}
   Let $\sV$ be a variety.  Let $\scA$ be a collection of finite idempotent
@@ -1483,25 +1492,10 @@ is nearly identical to the one used to prove Theorem~\ref{thm:local-diff-terms}.
   if and only if each pair $((A,i), (B,j)) \in \scS(\scA)^2$ has a \glocal
   difference term.
 \end{cor}
-\begin{proof}
-  One direction is clear, since a term that is a difference term operation for
-  every $\bA \in \scA$ is obviously a \glocal difference term for
-  every $(A, i) \in \scS(\scA)$.
-  For the converse, suppose
-  each pair in $\scS(\scA)^2$ has a \glocal
-  difference term. Then, by Theorem~\ref{thm:glob-loc-diff-terms},
-  there is a single term $d$ that is a \glocal difference term for every 
-  $(A, i) \in \scS(\scA)$, 
-  and therefore $d$ interprets as a difference term operation in every $\bA \in \scA$.
-  To see this, choose an arbitrary $\bA = \<A, \dots\> \in \scA$ and fix $a, b \in A$. 
-  Then $a \comm{\Cg(a,b)}{\Cg(a,b)} d^{\bA}(a,b,b)$,
-  since $d$ is a \glocal difference term for $(A,0)$,
-  and $d^{\bA}(a,a,b) = b$, since $d$ is a \glocal
-  difference term for $(A,1)$. 
-  %% Since $a, b$ were arbitrary elements of $A$, we conclude that
-  %% $d$ is a difference term operation for $\bA$.
-\end{proof}
-
+A proof of Corollary~\ref{cor:glob-loc-diff-term}
+appears in the appendix (see Section~\ref{sec:proof-cor:glob}),
+since it is also very easy and similar to the proof
+of Corollary~\ref{cor:loc-diff-term}.
 
 \subsection*{Algorithm 2: existence of a difference term}
 %% \subsection{Algorithm 2: existence of difference terms}
@@ -1520,41 +1514,56 @@ is nearly identical to the one used to prove Theorem~\ref{thm:local-diff-terms}.
   By Theorem~\ref{thm:F}, deciding whether $\sV$ has a difference term is equivalent to 
   deciding whether $\bF$ has a difference term operation.
   We can assume $\bF$ is a subdirect product of
-  $\bA_0 \times \bA_1 \times \cdots \times \bA_{n-1}$, where $n\leq |A|^2$.
+  $\bA_0 \times \bA_1 \times \cdots \times \bA_{n-1}$, where $n\leq |A|^2$ and
+  where each $\bA_0$ is a 2-generated subalgebra of $\bA$..
   Let $\scA = \{A_0, A_1, \dots, A_{n-1}\}$ and (as above) let $\scS(\scA)$ denote 
   all pairs $(A, i)$ such that $\bA = \<A, \dots\> \in \scA$ and $i\in \{0,1\}$.
 
-  Our strategy is to prove that there is a term $d$ that 
-  is a difference term for every subset of the product 
-  $A_0 \times A_1 \times \cdots \times A_{n-1}$.
+  We begin by proving that we can check in polynomial time (in $|A|$)
+  whether or not the product
+  $\bA_0 \times \bA_1 \times \cdots \times \bA_{n-1}$ has a difference term operation.
   By Corollary~\ref{cor:glob-loc-diff-term}, it suffices to check that each of the
-  %% $\binom{n}{2}$
-  %% $\begin{pmatrix} n \\ 2 \end{pmatrix}$
   $n^2$ pairs  in 
-  % $((A_i, \chi_i), (A_j, \chi_j)) \in 
   $\scS(\scA)^2$ has a \glocal
   difference term.  Fix a pair
   $((A_i, \chi_i), (A_j, \chi_j)) \in  \scS(\scA)^2$,
-  and let $\sU  = (A_i^2 \times \{0,1\}) + (A_j^2\times \{0,1\})$.
+  and let $\sU  = (A_i^2 + A_j^2)\times \{0,1\}$.
   By Theorem~\ref{thm:mixed-local-diff-terms},
-  to prove that every subset $S \subseteq \sU$,
+  to prove that every sequence $S \in \sU^n$,
   has a local difference term, it suffice to check that every pair
-  $(\<(a, b, \chi), i\>, \<(a', b', \chi'), i'\>) \in \sU^2$
+  $\bigl( (\<(a, b), i\>, \chi), (\<(a', b'), i'\>, \chi')\bigr) \in \sU^2$
   has a local difference term. It follows from the argument given 
   in the proof of Corollary~\ref{cor:algor-2} that the number of 
-  operations required is to check whether $(\<(a, b, \chi), i\>, \<(a', b',
-  \chi'), i'\>)$ has a local difference term is bounded by a
-  polynomial in $|A_i||A_j|$.  Since there are 
-  $4|A_i|^2|A_j|^2$ pairs in $\sU^2$, 
-  it still takes only a polynomial in $|A_i||A_j|$ number of steps to test whether
+  operations required is to check whether
+  $\bigl( (\<(a, b), i\>, \chi), (\<(a', b'), i'\>, \chi')\bigr)$
+  has a local difference term is bounded by a
+  polynomial in $|A_i||A_j|\leq |A|^2$.  Since there are 
+  $4|A_i|^2|A_j|^2 \leq 4|A|^4$ pairs in $\sU^2$, 
+  it still takes only a polynomial in $|A|$ number of steps to test whether
   the pair $((A_i, \chi_i), (A_j, \chi_j))$ has a glocal difference term.
-  There are $n^2 \leq |A|^4$ such pairs to test.  If
-  $m = \max\{|A_i| \mid 0\leq i < n\}$, then the number of steps required to 
-  test whether $\bF$ has a difference term operation is bounded by a constant times a
-  power of $m|A|$.
+  There are $n^2 \leq |A|^4$ such pairs to test, so the number of steps required to 
+  test whether
+  $\bA_0 \times \bA_1 \times \cdots \times \bA_{n-1}$ has a difference term
+  operation is bounded by a constant times a power of $|A|$.
 \end{proof}
 
 \draftsecskip
+
+
+
+\section*{Acknowledgments}
+This research was supported by the National Science 
+Foundation under Grant No. 1500235.
+
+%% \renewcommand{\Cg}{\ensuremath{\operatorname{Cg}}}
+%% \bibliographystyle{spmpsci}
+%% \bibliographystyle{alphaurl}
+\bibliographystyle{ws-ijac}
+\bibliography{inputs/refs}
+
+
+\draftsecskip
+
 
 
 \appendix
@@ -1752,18 +1761,37 @@ this, along with idempotence of $t$, yields
 $d(a,a,b) =t(p(a,a,b), p(a,a,b), b)=t(b, b, b) =b$.
 \end{proof}
 
-
-
-\section*{Acknowledgments}
-This research was supported by the National Science 
-Foundation under Grant No. 1500235.
-
-%% \renewcommand{\Cg}{\ensuremath{\operatorname{Cg}}}
-
-%% \bibliographystyle{spmpsci}
-%% \bibliographystyle{alphaurl}
-\bibliographystyle{ws-ijac}
-\bibliography{inputs/refs}
+\subsection{Proof of Corollary~\ref{cor:glob-loc-diff-term}}
+\label{sec:proof-cor:glob}
+\begin{corollary}[\ref{cor:glob-loc-diff-term}]
+  Let $\sV$ be a variety.  Let $\scA$ be a collection of finite idempotent
+  algebras in $\sV$. %% that is closed under the taking of subalgebras.
+  Then there exists a term $d$ that interprets as a difference term operation
+  in every algebra in $\scA$
+  if and only if each pair $((A,i), (B,j)) \in \scS(\scA)^2$ has a \glocal
+  difference term.
+\end{corollary}
+The proof of this result is also easy and very similar to the proof
+of~\ref{cor:loc-diff-term}; nevertheless, it appears in the appendix
+(see Section~\ref{sec:proof-thm:glob}).
+\begin{proof}
+  One direction is clear, since a term that is a difference term operation for
+  every $\bA \in \scA$ is obviously a \glocal difference term for
+  every $(A, i) \in \scS(\scA)$.
+  For the converse, suppose
+  each pair in $\scS(\scA)^2$ has a \glocal
+  difference term. Then, by Theorem~\ref{thm:glob-loc-diff-terms},
+  there is a single term $d$ that is a \glocal difference term for every 
+  $(A, i) \in \scS(\scA)$, 
+  and therefore $d$ interprets as a difference term operation in every $\bA \in \scA$.
+  To see this, choose an arbitrary $\bA = \<A, \dots\> \in \scA$ and fix $a, b \in A$. 
+  Then $a \comm{\Cg(a,b)}{\Cg(a,b)} d^{\bA}(a,b,b)$,
+  since $d$ is a \glocal difference term for $(A,0)$,
+  and $d^{\bA}(a,a,b) = b$, since $d$ is a \glocal
+  difference term for $(A,1)$. 
+  %% Since $a, b$ were arbitrary elements of $A$, we conclude that
+  %% $d$ is a difference term operation for $\bA$.
+\end{proof}
 
 \end{document}
 
