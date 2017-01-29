@@ -1,0 +1,430 @@
+%% FILE: alg-csp-cib.tex
+%% AUTHORS: Clifford Bergman, William DeMeo
+%% DATE: 25 July 2016
+%% COPYRIGHT: (C) 2016 Clifford Bergman, William DeMeo,
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                         BIBLIOGRAPHY FILE                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The `filecontents` command will crete a file in the inputs directory called 
+%% refs.bib containing the references in the document, in case this file does 
+%% not exist already.
+%% If you want to add a BibTeX entry, please don't add it directly to the
+%% refs.bib file.  Instead, add it in this file between the
+%% \begin{filecontents*}{refs.bib} and \end{filecontents*} lines
+%% then delete the existing refs.bib file so it will be automatically generated 
+%% again with your new entry the next time you run pdfaltex.
+\begin{filecontents*}{inputs/refs2.bib}
+  @article {MR2893395,
+    AUTHOR = {Barto, Libor and Kozik, Marcin},
+    TITLE = {Absorbing subalgebras, cyclic terms, and the constraint
+      satisfaction problem},
+    JOURNAL = {Log. Methods Comput. Sci.},
+    FJOURNAL = {Logical Methods in Computer Science},
+    VOLUME = {8},
+    YEAR = {2012},
+    NUMBER = {1},
+    PAGES = {1:07, 27},
+    ISSN = {1860-5974},
+    MRCLASS = {68Q17 (08A70)},
+    MRNUMBER = {2893395},
+    DOI = {10.2168/LMCS-8(1:7)2012},
+    URL = {http://dx.doi.org/10.2168/LMCS-8(1:7)2012}
+  }
+  @article {MR3374664,
+    AUTHOR = {Barto, Libor and Kozik, Marcin and Stanovsk{\'y}, David},
+    TITLE = {Mal'tsev conditions, lack of absorption, and solvability},
+    JOURNAL = {Algebra Universalis},
+    FJOURNAL = {Algebra Universalis},
+    VOLUME = {74},
+    YEAR = {2015},
+    NUMBER = {1-2},
+    PAGES = {185--206},
+    ISSN = {0002-5240},
+    MRCLASS = {08B05 (08A05)},
+    MRNUMBER = {3374664},
+    DOI = {10.1007/s00012-015-0338-z},
+    URL = {http://dx.doi.org/10.1007/s00012-015-0338-z},
+  }  
+}
+\end{filecontents*}
+%:biblio
+\documentclass[11pt]{amsart}
+% The following \documentclass options may be useful:
+% preprint      Remove this option only once the paper is in final form.
+% 10pt          To set in 10-point type instead of 9-point.
+% 11pt          To set in 11-point type instead of 9-point.
+% numbers       To obtain numeric citation style instead of author/year.
+
+%% \usepackage{setspace}\onehalfspacing
+
+\usepackage{amsmath}
+\usepackage{amscd,amssymb,amsthm} %, amsmath are included by default
+\usepackage{latexsym,stmaryrd,mathrsfs,enumerate,scalefnt,ifthen}
+\usepackage{mathtools}
+\usepackage[mathcal]{euscript}
+\usepackage[colorlinks=true,urlcolor=black,linkcolor=black,citecolor=black]{hyperref}
+\usepackage{url}
+\usepackage{scalefnt}
+\usepackage{tikz}
+\usepackage{color}
+\usepackage[margin=1in]{geometry}
+\usepackage{scrextend}
+
+%%////////////////////////////////////////////////////////////////////////////////
+%% Theorem styles
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{prop}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{Fact}[theorem]{Fact}
+\newtheorem*{fact}{Fact}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{examples}[theorem]{Examples}
+\newtheorem{exercise}{Exercise}
+\newtheorem*{lem}{Lemma}
+\newtheorem*{cor}{Corollary}
+\newtheorem*{remark}{Remark}
+\newtheorem*{remarks}{Remarks}
+\newtheorem*{obs}{Observation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Acronyms
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \usepackage[acronym, shortcuts]{glossaries}
+%\usepackage[smaller]{acro}
+\usepackage[smaller]{acronym}
+\usepackage{xspace}
+
+%% \acs{CSP} -- short version of the acronym\\
+%% \acl{CSP} -- expanded acronym without mentioning the acronym.\\
+%% \acp{CSP} -- plurals.\\
+%% \acfp{CSP} -- long forms into plurals.\\
+%% \acsp{CSP} -- short form into a plural.\\
+%% \aclp{CSP} -- long form into a plural.\\
+%% \acfi{CSP} -- Full Name acronym in italics and abbreviated form in upshape.\\
+%% \acsu{CSP} -- short form of the acronym and marks it as used.\\
+%% \aclu{CSP} -- Prints the long form of the acronym and marks it as used.\\
+
+\acrodef{lics}[LICS]{Logic in Computer Science}
+\acrodef{sat}[SAT]{satisfiability}
+\acrodef{nae}[NAE]{not-all-equal}
+\acrodef{ctb}[CTB]{cube term blocker}
+\acrodef{tct}[TCT]{tame congruence theory}
+\acrodef{wnu}[WNU]{weak near-unanimity}
+\acrodef{CSP}[CSP]{constraint satisfaction problem}
+\acrodef{MAS}[MAS]{minimal absorbing subuniverse}
+\acrodef{MA}[MA]{minimal absorbing}
+\acrodef{cib}[CIB]{commutative idempotent binar}
+\acrodef{sd}[SD]{semidistributive}
+\acrodef{NP}[NP]{nondeterministic polynomial time}
+\acrodef{P}[P]{polynomial time}
+\acrodef{PeqNP}[P $ = $ NP]{P is NP}
+\acrodef{PneqNP}[P $ \neq $ NP]{P is not NP}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% \usepackage{inputs/proof-dashed}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Put new macros in the macros.sty file
+\usepackage{inputs/macros}
+
+\begin{document}
+
+\title[Product Congruences]{Product Congruences in Idempotent Varieties}
+\date{\today}
+%% \author[W.~DeMeo]{William DeMeo}
+\address{University of Hawaii}
+\email{williamdemeo@gmail.com}
+
+%% \thanks{The authors would like to extend special thanks to...}
+
+\maketitle
+
+%% \begin{abstract}\end{abstract}
+
+%% \section{Introduction}
+%% \label{sec:introduction}
+\section{Skew congruences of idempotent algebras}
+Let $\sV$ be a variety and let $\bA$ and $\bB$ be idempotent
+algebras in $\sV$.
+Recall the following standard notation:
+if $\alpha \in \Con(\bA)$ and $\beta \in \Con(\bB)$, then
+$\alpha \times \beta$ denotes the set of pairs $((a,b),(a',b'))$ satisfying
+$a \mathrel{\alpha} a'$ and $b \mathrel{\beta} b'$.  The relation 
+$\alpha \times \beta$ is clearly a congruence of $\bA \times \bB$.
+
+Fix $(a, b)$ and $(a', b')$ in $A \times B$.
+We claim that
+\[\Cg^{\bA}(a,a') \times \Cg^{\bB}(b,b')
+=\Cg^{\bA \times \bB}((a, b), (a', b')).\]
+
+Let $\tau := \Cg^{\bA}(a,a') \times \Cg^{\bB}(b,b')$  %%  \in \Con(\bA \times \bB)$
+and $\theta:= \Cg^{\bA \times \bB}((a, b), (a', b'))$.
+First note that $\tau$ is a product of a congruence
+of $\bA$ with a congruence of $\bB$, so $\tau$
+is a congruence of $\bA\times \bB$.
+Moreoever, the pair $((a,b), (a',b'))$ clearly belongs to $\tau$, so
+$\theta\leq \tau$.  We must prove that $\tau \leq \theta$.
+
+Fix $((x,y),(x'y')) \in \tau$. This means that
+$(x,x') \in \Cg^{\bA}(a,a')$ and $(y,y')\in \Cg^{\bB}(b,b')$.
+Therefore, there exist $n>0$, $m>0$, 
+%% $(c_0, c_0'), (c_1, c_1'), \dots, (c_n, c_n')$ in $,  
+$c_0$, $c_1$, $\dots$, $c_n$ $\in A$, $f_0$, $f_1$, $\dots$,
+$f_{n-1} \in \Pol_1(\bA)$, $d_0$, $d_1$, $\dots$, $d_n\in B$, and $g_0$, $g_1$, $\dots$,
+$g_{n-1} \in \Pol_1(\bB)$ such that 
+\begin{align*}
+  x = c_0, \; c_n=x', \text{ and } \; \{c_i, c_{i+1}\} &= \{f_i(a), f_i(a')\},
+  \text{ for all $0\leq i < n$, and}\\
+  y = d_0, \; d_n=y',  \text{ and }  
+  \{d_i, d_{i+1}\} &= \{g_i(b), g_i(b')\}, \text{ for all $0\leq i < m$.}
+\end{align*}
+We can assume without loss of generality that $n=m$, since we can insert dummy
+terms to extend the shorter of the two sequences.
+
+We wish to prove $((x,y),(x'y')) \in \theta:= \Cg^{\bA \times \bB}((a, b), (a', b'))$,
+which is equivalent to the following: there exist $n>0$, 
+$(e_0, e_0')$, $(e_1,e_1')$, $\dots$, $(e_n, e_n') \in A\times B$, 
+$h_0$, $h_1$, $\dots$, $h_{n-1} \in \Pol_1(\bA\times \bB)$ such that
+\begin{align*}
+  (x,y) = (e_0,e_0'), \; (e_n, e_n') &=(x',y'), \text{ and for all $0\leq i < n$, } \\
+  \{(e_i, e_i'), (e_{i+1}, e_{i+1}')\} &= \{h_i(a,b), h_i(a',b')\}.
+\end{align*}
+
+
+Let $f = f_0$.  Since $f\in \Pol_1(\bA)$, for some $\ell>0$ there
+exist a term $s^{\bA} \in \Clo_{\ell+1}(\bA)$ and $a_0, a_1, \dots, a_\ell$ in $A$ such that
+\[
+f^{\bA}(x) = s^{\bA}(a_0, \dots, a_{i-1}, x, a_{i+1}, \dots, a_\ell), \text{ for some $i$.}
+\]
+Similarly, letting $g = g_0$, for some $k>0$ there
+exist a term $t^{\bB} \in \Clo_{k+1}(\bB)$ and $b_0, b_1, \dots, b_k$ in $B$ such that
+\[
+g^{\bB}(y) = t^{\bB}(b_0, \dots, b_{j-1}, y, b_{j+1}, \dots, b_k), \text{ for some $j$.}
+\]
+Without loss of generality, we can assume $j=i$. (check this)
+
+%% Now, for
+%% $\ba  = (a_0, a_1, \dots, a_{\ell})\in A^{\ell+1}$ and
+%% $\bb  = (b_0, b_1, \dots, b_{\ell})\in B^{\ell+1}$, we have
+%% \[
+%% s^{\bA \times \bB}((a_0, b_0), \dots, (a_{\ell}, b_{\ell}))
+%% = (s^{\bA}(\ba), s^{\bB}(\bb)).
+%% \]
+Consider the polynomial $p \in \Pol_1(\bA\times \bB)$ defined via
+$s$ as follows:
+\begin{align*}
+p(x,y) &= s^{\bA \times \bB}((a_0, b), (a_1, b), \dots, (a_{i-1}, b),(x,y),
+(a_{i+1}, b), \dots, (a_{\ell}, b))\\
+&= (s^{\bA} (a_0, a_1,\dots, a_{i-1}, x, a_{i+1}, \dots, a_{\ell}), 
+s^{\bB}(b, \dots, b, y, b,\dots, b))\\
+&= (f^{\bA} (x), 
+s^{\bB}(b, \dots, b, y, b,\dots, b)).
+\end{align*}
+Consider the polynomial $q \in \Pol_1(\bA\times \bB)$ defined via
+$t$ as follows:
+\begin{align*}
+q(x,y) &= t^{\bA \times \bB}((f^{\bA}(a), b_0), (f^{\bA}(a), b_1), \dots, (f^{\bA}(a), b_{i-1}),(x,y),
+(f^{\bA}(a), b_{i+1}), \dots, (f^{\bA}(a), b_{\ell}))\\
+&= (t^{\bA} (f^{\bA}(a), \dots, f^{\bA}(a), x, f^{\bA}(a), \dots, f^{\bA}(a)), 
+t^{\bB}(b_0, \dots, b_{i-1}, y, b_{i+1},\dots, b_{\ell}))\\
+&= (t^{\bA} (f^{\bA}(a), \dots, f^{\bA}(a), x, f^{\bA}(a), \dots, f^{\bA}(a)), 
+g^{\bB}(y)).
+\end{align*}
+Then $p(a,b) = (f^{\bA}(a), b)$ and $q(f^{\bA}(a), b) = (f^{\bA}(a),g^{\bB}(b))$.
+Therefore,
+\[
+(q\circ p)^{\bA\times \bB} (a,b) =
+(f^{\bA} (a), g^{\bB} (b)).
+\]
+We can carry out this construction for each pair $(f_i, g_i)$, $0\leq i < n$,
+arriving at a sequence $q_i \circ p_i$ of polynomials in
+$\Pol_1(\bA \times \bB)$ such that
+\[
+(q_i\circ p_i)^{\bA\times \bB} (a,b) =
+(f_i^{\bA} (a), g_i^{\bB} (b)).
+\]
+Unfortunately, evaluating this polynomial at $(a',b')$ yields the less
+desirable result:
+\[
+(q_i\circ p_i)(a',b')=
+(t_i^{\bA}(f_i^{\bA} (a), \dots, f_i^{\bA} (a), f_i^{\bA} (a'),f_i^{\bA} (a), \dots, f_i^{\bA} (a)),
+g_i(s_i^{\bB}(b, \dots, b, b', b,\dots, b))).
+\]
+So we try again...
+
+\bigskip
+%% \[
+%% d_i(x,y) = d^{\bA\times \bB}((a_i,b),(a_i,b),(a_i,y)) = (d^{\bA}(a_i,a_i,a_i),
+%% d^{\bB}(b,b,y)) = (a_i, d^{\bB}(b,b,y))
+%% \]
+Consider the polynomial $p \in \Pol_1(\bA\times \bB)$ defined via
+$s$ as follows:
+\begin{align*}
+p(x,y) &= s^{\bA \times \bB}((a_0, y), \dots, (a_{i-1}, y), (x, y), (a_{i+1}, y), \dots, (a_{\ell}, y))\\
+&= (s^{\bA} (a_0, \dots, a_{i-1}, x, a_{i+1}, \dots, a_{\ell}), 
+s^{\bB}(y, \dots, y))\\
+&= (f^{\bA} (x), y).
+\end{align*}
+Consider the polynomial $q \in \Pol_1(\bA\times \bB)$ defined via
+$t$ as follows:
+\begin{align*}
+  q(x,y) &= t^{\bA \times \bB}(p(x,b_0),
+  \dots, p(x, b_{i-1}),p(x,y),
+  p(x, b_{i+1}), \dots, p(x, b_{\ell}))\\
+  &= t^{\bA \times \bB}((f^{\bA}(x), b_0), \dots, (f^{\bA}(x), b_{i-1}),(f^{\bA}(x),y),
+(f^{\bA}(x), b_{i+1}), \dots, (f^{\bA}(x), b_{\ell}))\\
+%% &= (t^{\bA} (f^{\bA}(x), \dots, f^{\bA}(x), x, f^{\bA}(x), \dots, f^{\bA}(x)), 
+%% g^{\bB}(y)).
+&= (f^{\bA}(x), g^{\bB}(y)).
+\end{align*}
+Then $p(a,b) = (f^{\bA}(a), b)$ and $q(f^{\bA}(a), b) = (f^{\bA}(a),g^{\bB}(b))$.
+Therefore,
+\[
+(q\circ p)^{\bA\times \bB} (a,b) =
+(f^{\bA} (a), g^{\bB} (b)).
+\]
+We can carry out this construction for each pair $(f_i, g_i)$, $0\leq i < n$,
+arriving at a sequence $q_i \circ p_i$ of polynomials in
+$\Pol_1(\bA \times \bB)$ such that
+\[
+(q_i\circ p_i)^{\bA\times \bB} (a,b) =
+(f_i^{\bA} (a), g_i^{\bB} (b)).
+\]
+Unfortunately, evaluating this polynomial at $(a',b')$ yields the less
+desirable result:
+\[
+(q_i\circ p_i)(a',b')=
+(t_i^{\bA}(f_i^{\bA} (a), \dots, f_i^{\bA} (a), f_i^{\bA} (a'),f_i^{\bA} (a), \dots, f_i^{\bA} (a)),
+g_i(s_i^{\bB}(b, \dots, b, b', b,\dots, b))).
+\]
+
+
+
+
+\newpage
+
+\bigskip
+
+\begin{align*}
+  f^{\bB}(y) &= s^{\bB}(d(b,b,y), \dots, d(b,b,y), y, d(b,b,y), \dots, d(b,b,y)), \; \text{ and }\\
+  g^{\bA}(x) &= t^{\bA}(f^{\bA}(a), \dots, f^{\bA}(a), x, f^{\bA}(a), \dots, f^{\bA}(a)).
+\end{align*}
+Then
+\[
+f^{\bA\times \bB} (a,b) =
+(f^{\bA} (a), f^{\bB}(b)) = (f^{\bA} (a), s^{\bB}(b, \dots, b, )) = (f^{\bA} (a), b),
+\]
+and 
+\[
+g^{\bA\times \bB} (f^{\bA} (a), b) =
+(g^{\bA} (f^{\bA} (a)), g^{\bB}(b))=
+(t^{\bA}(f^{\bA}(a), \dots, f^{\bA}(a)),g^{\bB}(b))=
+(f^{\bA} (a), g^{\bB} (b)).
+\]
+Therefore,
+\[
+(g^{\bA\times \bB}\circ f^{\bA\times \bB}) (a,b) =
+(f^{\bA} (a), g^{\bB} (b)).
+\]
+
+But now what happens when we evaluate 
+$(g^{\bA\times \bB}\circ f^{\bA\times \bB}) (a',b')$?
+We have
+\begin{align*}
+  f^{\bA\times \bB} (a',b') &=
+  (f^{\bA} (a'), f^{\bB}(b')) \\&= \bigl(f^{\bA} (a'), s^{\bB}(d(b,b,b'), \dots,
+  d(b,b,b'), b', d(b,b,b'),\dots, d(b,b,b'))\bigr)\\
+  &= \bigl(f^{\bA} (a'), s^{\bB}(b', \dots, b')\bigr)= \bigl(f^{\bA} (a'), b'\bigr).
+\end{align*}
+
+
+\section{Absorption Theorem of BK and Theorem 3.2 of BKS}
+Recall,
+\begin{theorem}[Absorption Theorem \protect{\cite[Thm~2.3]{MR2893395}}]
+\label{thm:absorption}
+%% If $\var{V}$ is an idempotent locally finite variety, then the following are equivalent:
+%% \begin{itemize}
+%% \item $\var{V}$ is a Taylor variety;
+%% \item if $\bA_0, \bA_1 \in \var{V}$ are finite absorption-free algebras, 
+%%   and if $\bR \sdp \bA_0 \times \bA_1$ is linked, then $\bR = \bA_0 \times \bA_1$.
+%% \end{itemize}
+Let $\bA$ and $\bB$ be finite
+idempotent algebras with Taylor terms; let $R$ be a subdirect subuniverse of
+$\bA \times \bB$, and let $\eta_A$ ($\eta_B$, resp.) be the kernel of the
+projection $R \to A$ ($R \to B$, resp.).
+If $\eta_A \join \eta_B = 1_R$, then either $R = A \times B$, or
+$\bA$ has a proper absorbing subuniverse, or $\bB$ has a proper absorbing subuniverse.
+\end{theorem}
+
+
+\begin{theorem}[\protect{\cite[Theorem 3.2]{MR3374664}}]
+  Let $\sV$ be a locally finite variety generated by a set $\sA$ of
+  idempotent ``hereditarily absorption free'' algebras.
+  If $\sV$ has a Taylor term, then it has a Mal'tsev term.
+\end{theorem}
+\begin{proof}
+  Let $\bF = \bF_{\sV}(x,y)$ be the 2-generated free algebra
+  %% , with generators $x, y$, 
+  in the variety $\sV$. Since it is
+  finite, $\bF$ lies in the pseudovariety generated by $\sA$, and thus it is
+  absorption-free (see \cite[Proposition 2.1.(1)]{MR3374664}).
+  Let $\bR$ be the subalgebra of $\bF^2$ generated by
+  $(x, y), (x, x), (y, x)$. It is subdirect in $\bF^2$.
+  Since $\bF$ is idempotent, $\eta_A \join \eta_B = 1_R$
+  (as explained in the remark %% Remark~\ref{rem:absorpt-theor-bk}
+  below).
+  Consequently, by Theorem~\ref{thm:absorption},
+  $\bR = \bF^2$, and there is a term $m$ witnessing
+  that $(y, y) \in R$, i.e., a term $m$ satisfying
+  $m((x, y), (x, x), (y, x)) = (y, y)$. This
+  term is a Mal'tsev term for $\sV$.
+\end{proof}
+
+\begin{remark}
+  \label{rem:absorpt-theor-bk}
+  Let $\pi_A$ and $\pi_B$ be the first and second projections of $\bR$ onto $\bF$.
+  Since $\bF$ is idempotent, $\{x\}$ is a subalgebra of $\bF$, hence the inverse
+  image of $\{x\}$ under $\pi_A$ is a subuniverse of $\bR$, call it $S_A$.
+  Since $(x,y)$ and $(x,x)$ lie in $S_A$, and $\{x,y\}$
+  generates $\bF$, we see that $\{x\}\times F$ is contained in $S_A$.
+  In particular, for every $a_2$, the pair $(x,a_2)$ must lie in $R$.
+  Similarly, there is a subalgebra $S_B$ containing
+  $F\times \{x\}$. %% Note that the kernels of $\pi_A$ and $\pi_B$ are $\eta_A$ and $\eta_B$. 
+  Finally, for any $(a_1,a_2)$ and $(b_1,b_2)$ in R we have
+  \[
+  (a_1,a_2) \mathrel{\eta_B} (x,a_2) \mathrel{\eta_A} (x,x)
+  \mathrel{\eta_B} (b_1,x) \mathrel{\eta_A} (b_1,b_2).
+  \]
+  %% Cliff: You and I talked about whether Theorem 3.2 required idempotence.
+  %%        Apparently it does. Is the idempotent reduct of an abelian algebra still abelian?
+\end{remark}
+
+%% \section{Definitions and Notations}
+%% \label{sec:defin-notat}
+
+%% Cliff's book~\cite{MR2839398}.
+%% My GitHub repo~\cite{overalgebras-github}.
+%% \appendix
+%% \section{Appendix Title}
+%% This is the text of the appendix, if you need one.
+
+%\bibliographystyle{amsplain} %% or amsalpha
+%% \bibliographystyle{plain-url}
+
+\bibliographystyle{alphaurl}
+\bibliography{inputs/refs2.bib}
+
+\end{document}
