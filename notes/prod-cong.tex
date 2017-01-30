@@ -316,6 +316,117 @@ g_i(s_i^{\bB}(b, \dots, b, b', b,\dots, b))).
 
 \newpage
 
+  Let $\sV$ be an idempotent variety and suppose $\bF = \<F, \dots\> = \bF_{\sV}(x,y)$ is finite.
+  Below it will turn out to be convenient to have indexed copies of $\bF$, viz.,
+  we let $\bF_i \cong \bF$ denote the ``$i$-th copy'' of $\bF$. 
+
+
+\begin{lemma}
+  \label{lem:absorpt-theor-bk}
+  Let $\sV$ be an idempotent variety and suppose
+  $\bF = \bF_{\sV}(x,y)$ is finite.
+  %% Assume $\bF \sdp \bA \times \bB$.
+  Let $\bF_0 \times \bF_1$ be the product of two copies of $\bF$.
+  Let $\bR = \<R, \dots\>  \sdp \bF_0 \times \bF_1$ be the subalgebra generated
+  by the set $\{(x, y), (x, x), (y, x)\}$, and let $\eta_i$ be the kernel of the
+  $i$-th projection $\pi_i: \bR \onto \bF_i$.  Then 
+  $\eta_0 \join \eta_1 = 1_R = \eta_0 \circ \eta_1 \circ \eta_0 = 
+  \eta_1 \circ \eta_0 \circ \eta_1$.
+\end{lemma}
+\begin{proof}
+  %% Let $\pi_0$ and $\pi_1$ be the first and second projections of $\bR$ onto $\bF$.
+  Since $\bF$ is idempotent, $\{x\}$ is a subuniverse of $\bF$, hence the inverse
+  image of $\{x\}$ under the first projection $\pi_0$ is a subuniverse of $\bR$,
+  call it $S_0 = \{(a,b) \in R \mid a = x\}$.
+  Since $(x,y)$ and $(x,x)$ lie in $S_0$, and $\{x,y\}$
+  generates $\bF$, we have that $\{x\}\times F \subseteq S_0$.
+  In particular, for every $b \in F$ the pair $(x,b)$ lies in $R$.
+  Similarly, 
+  $S_1= \{(a,b) \in R \mid b = x\}$ is
+  the inverse image of $\{x\}$ under the second
+  projection $\pi_1$, which is a subuniverse of $\bR$
+  that contains $(x,x)$ and $(y,x)$. Therefore, $F\times \{x\} \subseteq S_1$, 
+  so for every $a\in F$ the pair $(a,x)$ lies in $R$.
+  %% Note that the kernels of $\pi_A$ and $\pi_B$ are $\eta_A$ and $\eta_B$. 
+
+  It follows from these observations that $\eta_0$ and $\eta_1$ 3-permute:
+  \[
+  \eta_0 \circ \eta_1 \circ \eta_0 = 
+  \eta_1 \circ \eta_0 \circ \eta_1 =
+  \eta_0 \join \eta_1 = 1_R.
+  \]
+  Indeed, if $(a,b)$ and $(a',b')$ are arbitrary pairs in $R$, then
+  %% \[
+  %% (a_1,a_2) \mathrel{\eta_B} (x,a_2) \mathrel{\eta_A} (x,x) \mathrel{\eta_B} (b_1,x) \mathrel{\eta_A} (b_1,b_2).
+  %% \]
+  \[
+  (a,b) \mathrel{\eta_0} (a,x) \mathrel{\eta_1} (a',x) \mathrel{\eta_0} (a',b').
+  \]
+  and
+  \[
+  (a,b) \mathrel{\eta_1} (x,b) \mathrel{\eta_0} (x,b') \mathrel{\eta_1} (a',b').
+  \]
+\end{proof}
+
+Our goal is to prove the following
+
+\begin{theorem}
+Let $\bA = \<A, \dots\>$ be a finite idempotent algebra and $\sV = \bbV(\bA)$ the
+variety it generates.  If $\bA$ has a difference term operation, then
+$\bF = \bF_{\sV}(x,y)$ has a difference term operation.
+%% Assume $\bF \sdp \bA \times \bB$.
+\end{theorem}
+\begin{proof}
+  
+We prove this by 
+letting $\bF_0 \times \bF_1$ be the product of two copies of $\bF$,
+letting $\bR = \<R, \dots\>  \sdp \bF_0 \times \bF_1$ be the subalgebra generated
+by the set $\{(x, y), (x, x), (y, x)\}$ (as above), and then showing that
+$R \cap \bigl(\{y\} \times y/\com{\Cg^{\bF}(x,y)}\bigr)$ is non-empty.  For if the latter is
+non-empty, then there is a term $t$ satisfying
+\[
+t^{\bF^2}((x,y),(x,x),(y,x)) \in  \{y\} \times y/\com{\Cg^{\bF}(x,y)}.
+\]
+In other words,
+\begin{align}
+t^{\bF}(x,x,y) &= y, \; \text{ and }\label{eq:dt1}\\
+t^{\bF}(y,x,x) &\comr{\Cg^{\bF}(x,y)} y, \label{eq:dt2}
+\end{align}
+which means that $t^{\bF}$ is a difference term operation for $\bF$.
+
+Recall $x/\Cg^{F}(x,y)$ denotes the congruence class of $\Cg^{F}(x,y)$
+containing $x$. This class obviously contains both $x$ and $y$.
+
+\bigskip
+
+Now, consider $\com{\Cg^{\bF}(x,y)}$, the commutator of $\Cg^{F}(x,y)$ with itself.
+Obviously, $\com{\Cg^{\bF}(x,y)} \leq \Cg^{F}(x,y)$.  
+Equally obviously, every idempotent term $t$ satisfies
+\[
+t^{\bF}(y,x,x) \mathrel{\Cg^{\bF}(x,y)} t^{\bF}(y,y,y) = y.
+\]
+Therefore,
+if $\com{\Cg^{\bF}(x,y)} = \Cg^{F}(x,y)$  
+every term  $t^{\bF}$ satisfies relation~(\ref{eq:dt2}) above.
+Moreover, if the term $d$ interprets as a difference term of $\bA$, then we
+have...  TODO: fill in details
+
+\bigskip
+
+%% $t^{\bF}(y,x,x) \comr{\Cg^{\bF}(x,y)} y$, which means that $t^{\bF}$ is a difference term...
+
+%% \bigskip
+
+\[
+\bigl( \{x\} \times F\bigr) \cup \bigl(F \times \{x\}\bigr) \subseteq R
+\]
+
+\end{proof}
+
+\newpage
+
+
+
 \bigskip
 
 \begin{align*}
@@ -395,18 +506,20 @@ $\bA$ has a proper absorbing subuniverse, or $\bB$ has a proper absorbing subuni
 
 \begin{remark}
   \label{rem:absorpt-theor-bk}
-  Let $\pi_A$ and $\pi_B$ be the first and second projections of $\bR$ onto $\bF$.
+  Let $\pi_0$ and $\pi_1$ be the first and second projections of $\bR$ onto $\bF$.
   Since $\bF$ is idempotent, $\{x\}$ is a subalgebra of $\bF$, hence the inverse
-  image of $\{x\}$ under $\pi_A$ is a subuniverse of $\bR$, call it $S_A$.
-  Since $(x,y)$ and $(x,x)$ lie in $S_A$, and $\{x,y\}$
-  generates $\bF$, we see that $\{x\}\times F$ is contained in $S_A$.
-  In particular, for every $a_2$, the pair $(x,a_2)$ must lie in $R$.
-  Similarly, there is a subalgebra $S_B$ containing
+  image of $\{x\}$ under $\pi_0$ is a subuniverse of $\bR$, call it $S_0$.
+  Since $(x,y)$ and $(x,x)$ lie in $S_0$, and $\{x,y\}$
+  generates $\bF$, we see that $\{x\}\times F$ is contained in $S_0$.
+  In particular, for every $a_1$, the pair $(x,a_1)$ must lie in $R$.
+  Similarly, there is a subalgebra $S_1$ containing
   $F\times \{x\}$. %% Note that the kernels of $\pi_A$ and $\pi_B$ are $\eta_A$ and $\eta_B$. 
-  Finally, for any $(a_1,a_2)$ and $(b_1,b_2)$ in R we have
+  Finally, for any $(a_0,a_1)$ and $(a_0',a_1')$ in $R$ we have
+  %% \[
+  %% (a_1,a_2) \mathrel{\eta_B} (x,a_2) \mathrel{\eta_A} (x,x) \mathrel{\eta_B} (b_1,x) \mathrel{\eta_A} (b_1,b_2).
+  %% \]
   \[
-  (a_1,a_2) \mathrel{\eta_B} (x,a_2) \mathrel{\eta_A} (x,x)
-  \mathrel{\eta_B} (b_1,x) \mathrel{\eta_A} (b_1,b_2).
+  (a_0,a_1) \mathrel{\eta_1} (x,a_1) \mathrel{\eta_0} (x,a_1') \mathrel{\eta_1} (a_0',a_1').
   \]
   %% Cliff: You and I talked about whether Theorem 3.2 required idempotence.
   %%        Apparently it does. Is the idempotent reduct of an abelian algebra still abelian?
