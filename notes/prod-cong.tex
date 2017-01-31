@@ -328,45 +328,111 @@ g_i(s_i^{\bB}(b, \dots, b, b', b,\dots, b))).
   %% Assume $\bF \sdp \bA \times \bB$.
   Let $\bF_0 \times \bF_1$ be the product of two copies of $\bF$.
   Let $\bR = \<R, \dots\>  \sdp \bF_0 \times \bF_1$ be the subalgebra generated
-  by the set $\{(x, y), (x, x), (y, x)\}$, and let $\eta_i$ be the kernel of the
+  %% by the set $\{(x, y), (x, x), (y, x)\}$, and let $\eta_i$ be the kernel of the
+     by the set $\{(x, x), (x, y), (y, y)\}$, and let $\eta_i$ be the kernel of the
   $i$-th projection $\pi_i: \bR \onto \bF_i$.  Then 
   $\eta_0 \join \eta_1 = 1_R = \eta_0 \circ \eta_1 \circ \eta_0 = 
   \eta_1 \circ \eta_0 \circ \eta_1$.
 \end{lemma}
 \begin{proof}
-  %% Let $\pi_0$ and $\pi_1$ be the first and second projections of $\bR$ onto $\bF$.
-  Since $\bF$ is idempotent, $\{x\}$ is a subuniverse of $\bF$, hence the inverse
-  image of $\{x\}$ under the first projection $\pi_0$ is a subuniverse of $\bR$,
-  call it $S_0 = \{(a,b) \in R \mid a = x\}$.
-  Since $(x,y)$ and $(x,x)$ lie in $S_0$, and $\{x,y\}$
-  generates $\bF$, we have that $\{x\}\times F \subseteq S_0$.
-  In particular, for every $b \in F$ the pair $(x,b)$ lies in $R$.
-  Similarly, 
-  $S_1= \{(a,b) \in R \mid b = x\}$ is
-  the inverse image of $\{x\}$ under the second
-  projection $\pi_1$, which is a subuniverse of $\bR$
-  that contains $(x,x)$ and $(y,x)$. Therefore, $F\times \{x\} \subseteq S_1$, 
-  so for every $a\in F$ the pair $(a,x)$ lies in $R$.
-  %% Note that the kernels of $\pi_A$ and $\pi_B$ are $\eta_A$ and $\eta_B$. 
+  %% OLD PROOF:
+  %% Since $\bF$ is idempotent, $\{x\}$ is a subuniverse of $\bF$, hence the inverse
+  %% image of $\{x\}$ under the first projection $\pi_0$ is a subuniverse of $\bR$,
+  %% call it $S_0 = \{(a,b) \in R \mid a = x\}$.
+  %% Since $(x,y)$ and $(x,x)$ lie in $S_0$, and $\{x,y\}$
+  %% generates $\bF$, we have that $\{x\}\times F \subseteq S_0$.
+  %% In particular, for every $b \in F$ the pair $(x,b)$ lies in $R$.
+  %% Similarly, 
+  %% $S_1= \{(a,b) \in R \mid b = x\}$ is
+  %% the inverse image of $\{x\}$ under the second
+  %% projection $\pi_1$, which is a subuniverse of $\bR$
+  %% that contains $(x,x)$ and $(y,x)$. Therefore, $F\times \{x\} \subseteq S_1$, 
+  %% so for every $a\in F$ the pair $(a,x)$ lies in $R$.
 
-  It follows from these observations that $\eta_0$ and $\eta_1$ 3-permute:
+  %% NEW PROOF:
+  %% Since $\bF$ is idempotent, $\{x\}$ is a subuniverse of $\bF$, and since
+  %% $\{x, y\}$ generates $\bF$, we see that
+  %% $\{x\} \times \bF \leq \Sg^{\bF^2}\{(x,x), (x,y)\}\leq \bR$.
+  %% Similarly, $\bF\times \{x\} \leq \Sg^{\bF^2}\{(x,x), (y,x)\}\leq \bR$.
+  %% Therefore,
+  %% \[
+  %% \{x\} \times \bF \cup \bF \times \{x\} \subseteq \bR.
+  %% \]
+  %% In particular, for every $b \in F$ the pair $(x,b)$ lies in $R$, and for every
+  %% $a\in F$ the pair $(a,x)$ lies in $R$.
+
+  %% NEW NEW PROOF:
+  Since $\bF$ is idempotent, $\{x\}$ is a subuniverse of $\bF$, and since
+  $\{x, y\}$ generates $\bF$, we see that
+  $\{x\} \times \bF \leq \Sg^{\bF^2}\{(x,x), (x,y)\}\leq \bR$.
+  Similarly, $\bF\times \{y\} \leq \Sg^{\bF^2}\{(x,y), (y,y)\}\leq \bR$.
+  Therefore,
+  \[
+  \bigl(\{x\} \times \bF\bigr) \cup \bigl(\bF \times \{y\}\bigr) \subseteq \bR.
+  \]
+  In particular, for every $b \in F$ the pair $(x,b)$ lies in $R$, and for every
+  $a\in F$ the pair $(a,y)$ lies in $R$.
+  It follows that the projection kernels $\eta_0$ and $\eta_1$ 3-permute:
   \[
   \eta_0 \circ \eta_1 \circ \eta_0 = 
   \eta_1 \circ \eta_0 \circ \eta_1 =
   \eta_0 \join \eta_1 = 1_R.
   \]
   Indeed, if $(a,b)$ and $(a',b')$ are arbitrary pairs in $R$, then
-  %% \[
-  %% (a_1,a_2) \mathrel{\eta_B} (x,a_2) \mathrel{\eta_A} (x,x) \mathrel{\eta_B} (b_1,x) \mathrel{\eta_A} (b_1,b_2).
-  %% \]
-  \[
-  (a,b) \mathrel{\eta_0} (a,x) \mathrel{\eta_1} (a',x) \mathrel{\eta_0} (a',b').
-  \]
+  %% OLD PROOF:
+  %% \[ (a,b) \mathrel{\eta_0} (a,x) \mathrel{\eta_1} (a',x) \mathrel{\eta_0} (a',b'). \]
+  %% \[ (a,b) \mathrel{\eta_1} (x,b) \mathrel{\eta_0} (x,b') \mathrel{\eta_1} (a',b'). \]
+  %% NEW PROOF:
+  \[ (a,b) \mathrel{\eta_0} (a,y) \mathrel{\eta_1} (a',y) \mathrel{\eta_0} (a',b'). \]
   and
-  \[
-  (a,b) \mathrel{\eta_1} (x,b) \mathrel{\eta_0} (x,b') \mathrel{\eta_1} (a',b').
-  \]
+  \[ (a,b) \mathrel{\eta_1} (x,b) \mathrel{\eta_0} (x,b') \mathrel{\eta_1} (a',b'). \]
 \end{proof}
+
+To state the next lemma requires some new vocabulary.
+We call $\Cg^{\bF}(x,y)$ a \emph{neutral congruence}
+provided $\com{\Cg^{\bF}(x,y)} = \Cg^{\bF}(x,y)$.  
+
+\begin{lemma}
+\label{lem:cong-neut}  
+Let $\bA = \<A, \dots\>$ be a finite idempotent algebra and $\sV = \bbV(\bA)$ the
+variety it generates.  If $\bA$ has a difference term operation
+and if $\Cg^{\bF}(x,y)$ is a \emph{neutral congruence}, then
+$\bF = \bF_{\sV}(x,y)$ has a difference term operation.
+\end{lemma}
+\begin{proof}
+  By idempotence, every term
+  $t$ satisfies $t^{\bF}(x,y,y) \mathrel{\Cg^{\bF}(x,y)} t^{\bF}(x,x,x) = x$.
+  Therefore, if $\com{\Cg^{\bF}(x,y)} = \Cg^{\bF}(x,y)$, then every term
+  satisfies $t^{\bF}(x,y,y) \comr{\Cg^{\bF}(x,y)} x$.
+  This applies, in particular, to the term $d$ that interprets in $\bA$ as a
+  difference term operation.
+  It is easy to see that
+  $d^{\bF}(x,x,y) = y$ (see remark below). Therefore,
+  $d^{\bF}$ is a difference term operation for $\bF$.
+\end{proof}
+\begin{remark}
+  In the proof above we claimed that if $d$ is a difference term operation for $\bA$,
+  then $d^{\bF}(x,x,y) = y$.  One way to see this is to note that $\bF$ is a
+  subdirect product of some finite number of 2-generated subalgebras of $\bA$,
+  say, $\bF \sdp \bA_0 \times \cdots \times \bA_{n-1}$. Also, when interpreted
+  in the subalgebra $\bA_i \leq \bA$, the term $d$ at least obeys
+  the Malcev part of the difference term conditions that it satisfies when
+  interpreted in $\bA$.
+  That is,   $d^{\bA_i}(a_i, a_i, b_i) = b_i$ for all $a_i, b_i \in A_i$.
+  Therefore, if $x = (a_0, \dots, a_{n-1})$
+  and $y = (b_0, \dots, b_{n-1})$, then we have
+  \[
+  d^{\bF}(x,x,y) = 
+  (d^{\bA_0}(a_0, a_0, b_0), \dots,d^{\bA_{n-1}}(a_{n-1}, a_{n-1}, b_{n-1}))
+  = (b_0, \dots, b_{n-1}) = y.\]
+\end{remark}
+  %% Fix $a, b\in A$ and suppose $\phi: \bF \to \bA$ is a homomorphism with
+  %% $\phi(x) = a$ and $\phi(y) = b$.  Then
+  %% we have
+  %% $\phi(d^{\bF}(x,x,y)) = d^{\bA}(\phi(x),\phi(x),\phi(y)) = d^{\bA}(a,a,b) = b$,
+  %% so
+  %% $(d^{\bF}(x,x,y), y) \in \ker \phi$. Therefore, we must have
+  %% $d^{\bF}(x,x,y) = y$, so $d^{\bF}$ is a difference term operation for $\bF$.
 
 Our goal is to prove the following
 
@@ -381,45 +447,41 @@ $\bF = \bF_{\sV}(x,y)$ has a difference term operation.
 We prove this by 
 letting $\bF_0 \times \bF_1$ be the product of two copies of $\bF$,
 letting $\bR = \<R, \dots\>  \sdp \bF_0 \times \bF_1$ be the subalgebra generated
-by the set $\{(x, y), (x, x), (y, x)\}$ (as above), and then showing that
-$R \cap \bigl(\{y\} \times y/\com{\Cg^{\bF}(x,y)}\bigr)$ is non-empty.  For if the latter is
+by the set $\{(x, x), (x, y), (y, y)\}$ (as above), and then showing that
+$R \cap \bigl(\{y\} \times (x/\com{\Cg^{\bF}(x,y)})\bigr)$ is non-empty.  For if the latter is
 non-empty, then there is a term $t$ satisfying
 \[
-t^{\bF^2}((x,y),(x,x),(y,x)) \in  \{y\} \times y/\com{\Cg^{\bF}(x,y)}.
+t^{\bF^2}((x,x),(x,y),(y,y)) =\bigl(t^{\bF}(x,x,y), t^{\bF}(x,y,y)\bigr) \in
+\{y\} \times \bigl(x/\com{\Cg^{\bF}(x,y)}\bigr).
 \]
 In other words,
 \begin{align}
 t^{\bF}(x,x,y) &= y, \; \text{ and }\label{eq:dt1}\\
-t^{\bF}(y,x,x) &\comr{\Cg^{\bF}(x,y)} y, \label{eq:dt2}
+t^{\bF}(x,y,y) &\comr{\Cg^{\bF}(x,y)} x, \label{eq:dt2}
 \end{align}
 which means that $t^{\bF}$ is a difference term operation for $\bF$.
 
-Recall $x/\Cg^{F}(x,y)$ denotes the congruence class of $\Cg^{F}(x,y)$
-containing $x$. This class obviously contains both $x$ and $y$.
+%% Recall $x/\Cg^{\bF}(x,y)$ denotes the congruence class of $\Cg^{\bF}(x,y)$
+%% containing $x$. This class obviously contains both $x$ and $y$.
+%% %% Now, consider $\com{\Cg^{\bF}(x,y)}$, the commutator of $\Cg^{\bF}(x,y)$ with itself.
+Of course, $\com{\Cg^{\bF}(x,y)} \leq \Cg^{\bF}(x,y)$ and  
+%% Equally clear, every idempotent term $t$ satisfies
+%% \[t^{\bF}(y,x,x) \mathrel{\Cg^{\bF}(x,y)} t^{\bF}(y,y,y) = y.\]
+Lemma~\ref{lem:cong-neut} handles the congruence neutral case in which these
+conruences are equal. %% $\com{\Cg^{\bF}(x,y)} = \Cg^{\bF}(x,y)$. 
+Assume
+$\com{\Cg^{\bF}(x,y)} < \Cg^{\bF}(x,y)$. In particular,
+$(x,y) \notin \com{\Cg^{\bF}(x,y)}$.
 
-\bigskip
-
-Now, consider $\com{\Cg^{\bF}(x,y)}$, the commutator of $\Cg^{F}(x,y)$ with itself.
-Obviously, $\com{\Cg^{\bF}(x,y)} \leq \Cg^{F}(x,y)$.  
-Equally obviously, every idempotent term $t$ satisfies
-\[
-t^{\bF}(y,x,x) \mathrel{\Cg^{\bF}(x,y)} t^{\bF}(y,y,y) = y.
-\]
-Therefore,
-if $\com{\Cg^{\bF}(x,y)} = \Cg^{F}(x,y)$  
-every term  $t^{\bF}$ satisfies relation~(\ref{eq:dt2}) above.
-Moreover, if the term $d$ interprets as a difference term of $\bA$, then we
-have...  TODO: fill in details
+Now $\com{\Cg^{\bF}(x,y)}$ and $\Cg^{\bF}(x,y)$ are both subalgebras of $\bF^2$
+and by idempotence, every class of these congruences is a subalgebra of $\bF$.
 
 \bigskip
 
 %% $t^{\bF}(y,x,x) \comr{\Cg^{\bF}(x,y)} y$, which means that $t^{\bF}$ is a difference term...
 
 %% \bigskip
-
-\[
-\bigl( \{x\} \times F\bigr) \cup \bigl(F \times \{x\}\bigr) \subseteq R
-\]
+\[\bigl( \{x\} \times F\bigr) \cup \bigl(F \times \{x\}\bigr) \subseteq R\]
 
 \end{proof}
 
