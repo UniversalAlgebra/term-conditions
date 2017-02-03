@@ -15,6 +15,39 @@
 %% then delete the existing refs.bib file so it will be automatically generated 
 %% again with your new entry the next time you run pdfaltex.
 \begin{filecontents*}{inputs/refs2.bib}
+  @BOOK{HM:1988,
+    AUTHOR = {Hobby, David and McKenzie, Ralph},
+    TITLE = {The structure of finite algebras},
+    SERIES = {Contemporary Mathematics},
+    VOLUME = {76},
+    PUBLISHER = {American Mathematical Society},
+    ADDRESS = {Providence, RI},
+    YEAR = {1988},
+    PAGES = {xii+203},
+    ISBN = {0-8218-5073-3},
+    MRCLASS = {08A05 (03C05 08-02 08B05)},
+    MRNUMBER = {958685 (89m:08001)},
+    MRREVIEWER = {Joel Berman},
+    note = {Available from:
+      \href{http://math.hawaii.edu/~ralph/Classes/619/HobbyMcKenzie-FiniteAlgebras.pdf}{math.hawaii.edu}}
+  }
+@article {MR3076179,
+    AUTHOR = {Kearnes, Keith A. and Kiss, Emil W.},
+     TITLE = {The shape of congruence lattices},
+   JOURNAL = {Mem. Amer. Math. Soc.},
+  FJOURNAL = {Memoirs of the American Mathematical Society},
+    VOLUME = {222},
+      YEAR = {2013},
+    NUMBER = {1046},
+     PAGES = {viii+169},
+      ISSN = {0065-9266},
+      ISBN = {978-0-8218-8323-5},
+   MRCLASS = {08B05 (08B10)},
+  MRNUMBER = {3076179},
+MRREVIEWER = {James B. Nation},
+       DOI = {10.1090/S0065-9266-2012-00667-8},
+       URL = {http://dx.doi.org/10.1090/S0065-9266-2012-00667-8},
+}
   @article {MR2893395,
     AUTHOR = {Barto, Libor and Kozik, Marcin},
     TITLE = {Absorbing subalgebras, cyclic terms, and the constraint
@@ -160,12 +193,51 @@ difference term operation, then the 2-generated free algebra in $\bbV(\bA)$ has
 a difference term operation.  
 \end{abstract}
 
-\section{Preliminary Facts}
+\section{Definitions and Preliminary Facts}
 \label{sec:facts}
-We start out by collecting in Lemma~\ref{lem:preliminary-facts} 
+
+Let $\sV$ be a variety (equational class) of algebras.
+A ternary term $d$ in the language of $\sV$ is called 
+a \defn{difference term for $\sV$} if it satisfies the following:
+for all $\bA = \<A, \dots \> \in \sV$ and $a, b \in A$ we have
+\begin{equation}
+  \label{dt-rel}
+  a \comm \theta \theta d^{\bA}(a,b,b), \; \text{ and }
+\end{equation}
+\begin{equation}
+  \label{dt-id}
+d^{\bA}(a,a,b) = b, 
+\end{equation}
+where $\theta$ is any congruence of $\bA$
+containing $(a,b)$
+and $[\cdot, \cdot]$ denotes the (term condition) commutator
+%% defined in Section~\ref{sec:definitions} below
+(see also~\cite{HM:1988} or~\cite{MR3076179}).
+Note that part of
+the definition of a difference term involves one of
+the identities satisfied by a Malcev term, namely
+(\ref{dt-id}). Below we refer to this as the ``strong (difference term) identity,''
+and we refer to (\ref{dt-rel}) as the ``weak (difference term) relation.''
+We refer to (\ref{dt-rel}) and (\ref{dt-id}) collectively as the ``difference term
+realtions.''
+When a term $d$ satisfies the difference term relations, we call $d^{\bA}$
+a \defn{difference term operation} for $\bA$.
+
+If $d$ is idempotent, it may be convenient to present the difference term
+relations as follows:
+\begin{equation}
+  \label{dt-rel-idemp}
+  d^{\bA}(a,a,a) \comm \theta \theta d^{\bA}(a,b,b), \; \text{ and }
+\end{equation}
+\begin{equation}
+  \label{dt-id-idemp}
+d^{\bA}(a,a,b) =   d^{\bA}(b,b,b).
+\end{equation}
+
+In Lemma~\ref{lem:preliminary-facts} we gather
 some easy facts that will be useful below.
 We use $\com{\theta}$ as a convenient shorthand for 
-$[\theta,\theta]$ (= the term condition commutator of $\theta$ with itself).
+$[\theta,\theta]$. %% (= the term condition commutator of $\theta$ with itself).
 It will also be convenient to have indexed copies of $\bF$, viz.,
 let $\bF_i \cong \bF$ denote the ``$i$-th copy'' of $\bF$. 
 \begin{lemma}
@@ -178,11 +250,17 @@ Let $\bR = \<R, \dots\> = \Sg^{\bF^2}\{(x, x), (x, y), (y, y)\}$.
 Then the following hold:
 \begin{enumerate}
 \item \label{item:1}
-$\Cg^{\bF}(x,y) = 1_F$.
+  $\Cg^{\bF}(x,y) = 1_F$.
+
+  \smallskip
+\item \label{item:2}
+The algebra $\bF/\com{\Cg^{\bF}(x,y)} = \bF/[1_F, 1_F]$ is abelian.
 
 \smallskip
-\item \label{item:2}
-The algebra $\bF/\com{\Cg^{\bF}(x,y)}$ is abelian.
+\item \label{item:1.5}
+  If $[1_F, 1_F] = 1_F$ (i.e., $1_F$ is ``neutral''), then
+  $\bF$ has a difference term operation.
+
 
 \smallskip
 \item \label{item:3}
@@ -218,11 +296,16 @@ $\etaR_0 \join \etaR_1 = 1_R$ and
   $c \mathrel{\Cg^{\bF}(x,y)} b\mathrel{\Cg^{\bF}(x,y)} a \mathrel{\Cg^{\bF}(x,y)} d$,
   as desired.
 
+  \item If $[1_F,1_F] = \com{\Cg^{\bF}(x,y)} = \Cg^{\bF}(x,y) = 1_F$, then every term
+  trivially satisfies the condition
+  $t^{\bF}(x,y,y) \comr{\Cg^{\bF}(x,y)} x$.  Therefore, the third projection
+  $d^{\bF}(x,y,z) = z$ is a difference term operation for $\bF$.
 
 \item  This holds because, by (\ref{item:1}),
   $\com{\Cg^{\bF}(x,y)} = \comm{1_F}{1_F}$ and $\CC{1_F}{1_F}{\comm{1_F}{1_F}}$
-  implies $\CC{1_{F/\delta}}{1_{F/\delta}}{0_{F/\delta}}$, where
-  $\delta := \comm{1_F}{1_F}$.
+  implies that if
+  $\delta := \comm{1_F}{1_F}$, then $\CC{1_{F/\delta}}{1_{F/\delta}}{0_{F/\delta}}$.
+  
 
 
 \item It is obvious. 
@@ -323,31 +406,13 @@ $\etaR_0 \join \etaR_1 = 1_R$ and
 \section{Main Result}
 Our goal is to prove Theorem~\ref{thm:main-result}. 
 (I believe we are nearly there.)
-But first we require some more vocabulary.
-We call $\Cg^{\bF}(x,y)$ a \emph{neutral congruence}
-provided $\com{\Cg^{\bF}(x,y)} = \Cg^{\bF}(x,y)$.  
 
 \begin{lemma}
-\label{lem:cong-neut}  
-Let $\bA = \<A, \dots\>$ be a finite idempotent algebra and $\sV = \bbV(\bA)$ the
-variety it generates.  If $\bA$ has a difference term operation
-and if $\Cg^{\bF}(x,y)$ is a neutral congruence, then
-$\bF = \bF_{\sV}(x,y)$ has a difference term operation.
+  If $d$ is a difference term operation for $\bA$,
+  then when $d$ is interpreted in $\bF$ it satisfies $d^{\bF}(x,x,y) = y$.
 \end{lemma}
 \begin{proof}
-  By idempotence, every term
-  $t$ satisfies $t^{\bF}(x,y,y) \mathrel{\Cg^{\bF}(x,y)} t^{\bF}(x,x,x) = x$.
-  Therefore, if $\com{\Cg^{\bF}(x,y)} = \Cg^{\bF}(x,y)$, then every term
-  satisfies $t^{\bF}(x,y,y) \comr{\Cg^{\bF}(x,y)} x$.
-  This applies, in particular, to the term $d$ that interprets in $\bA$ as a
-  difference term operation.
-  It is easy to see that
-  $d^{\bF}(x,x,y) = y$ (see remark below). Therefore,
-  $d^{\bF}$ is a difference term operation for $\bF$.
-\end{proof}
-\begin{remark}
-  In the proof above we claimed that if $d$ is a difference term operation for $\bA$,
-  then $d^{\bF}(x,x,y) = y$.  One way to see this is to note that $\bF$ is a
+One way to see this is to note that $\bF$ is a
   subdirect product of some finite number of 2-generated subalgebras of $\bA$,
   say, $\bF \sdp \bA_0 \times \cdots \times \bA_{n-1}$. Also, when interpreted
   in the subalgebra $\bA_i \leq \bA$, the term $d$ at least obeys
@@ -360,7 +425,7 @@ $\bF = \bF_{\sV}(x,y)$ has a difference term operation.
   d^{\bF}(x,x,y) = 
   (d^{\bA_0}(a_0, a_0, b_0), \dots,d^{\bA_{n-1}}(a_{n-1}, a_{n-1}, b_{n-1}))
   = (b_0, \dots, b_{n-1}) = y.\]
-\end{remark}
+\end{proof}
   %% Fix $a, b\in A$ and suppose $\phi: \bF \to \bA$ is a homomorphism with
   %% $\phi(x) = a$ and $\phi(y) = b$.  Then
   %% we have
@@ -368,6 +433,20 @@ $\bF = \bF_{\sV}(x,y)$ has a difference term operation.
   %% so
   %% $(d^{\bF}(x,x,y), y) \in \ker \phi$. Therefore, we must have
   %% $d^{\bF}(x,x,y) = y$, so $d^{\bF}$ is a difference term operation for $\bF$.
+
+Before proving the next result, it will be helpful to review some standard
+notation that is useful when dealing with products of quotients.  If $\alpha$
+and $\beta$ are congruences of $\bA$ and 
+$\bB$ (or, more generally, equivalence relations on $A$ and $B$), then
+for all $a\in A$ and $b\in B$, we let
+\[
+(a,b)/\alpha \times \beta = \{(a', b') \in A\times B \mid a\mathrel{\alpha} a'
+b\mathrel{\beta} b'\} = a/\alpha \times b/\beta.
+\]
+\[
+(A\times B)/\alpha \times \beta = \{(a, b)/\alpha \times \beta \mid a\in A,\, b \in B\}
+ = 
+\]
 
 
 \begin{theorem}
@@ -393,21 +472,25 @@ t^{\bF^2}((x,x),(x,y),(y,y)) =\bigl(t^{\bF}(x,x,y), t^{\bF}(x,y,y)\bigr) \in
 \{y\} \times \bigl(x/\com{\Cg^{\bF}(x,y)}\bigr).
 \]
 In other words,
-\begin{align}
-t^{\bF}(x,x,y) &= y, \; \text{ and }\label{eq:dt1}\\
-t^{\bF}(x,y,y) &\comr{\Cg^{\bF}(x,y)} x, \label{eq:dt2}
-\end{align}
+\begin{equation}
+  \label{eq:dt2}
+  x \comr{\Cg^{\bF}(x,y)} t^{\bF}(x,y,y), \;  \text{ and }
+\end{equation}
+\begin{equation}
+  \label{eq:dt2}
+t^{\bF}(x,x,y) = y.
+\end{equation}
+%% \begin{align}
+%% x \comr{\Cg^{\bF}(x,y)} t^{\bF}(x,y,y), \label{eq:dt2}\\
+%% t^{\bF}(x,x,y) &= y, \; \text{ and }\label{eq:dt1}
+%% \end{align}
 which means that $t^{\bF}$ is a difference term operation for $\bF$.
 
-%% Recall $x/\Cg^{\bF}(x,y)$ denotes the congruence class of $\Cg^{\bF}(x,y)$
-%% containing $x$. This class obviously contains both $x$ and $y$.
-%% %% Now, consider $\com{\Cg^{\bF}(x,y)}$, the commutator of $\Cg^{\bF}(x,y)$ with itself.
-Of course, $\com{\Cg^{\bF}(x,y)} \leq \Cg^{\bF}(x,y)$ and  
-%% Equally clear, every idempotent term $t$ satisfies
-%% \[t^{\bF}(y,x,x) \mathrel{\Cg^{\bF}(x,y)} t^{\bF}(y,y,y) = y.\]
-Lemma~\ref{lem:cong-neut} handles the congruence neutral case in which these
-congruences are equal. %% $\com{\Cg^{\bF}(x,y)} = \Cg^{\bF}(x,y)$. 
-Assume
+Of course, $\com{\Cg^{\bF}(x,y)} \leq \Cg^{\bF}(x,y)$ and
+Lemma~\ref{lem:preliminary-facts}~(\ref{item:1.5}) dispenses with
+the case in which these congruences are equal.
+So, % $\com{\Cg^{\bF}(x,y)} = \Cg^{\bF}(x,y)$. 
+assume
 $\com{\Cg^{\bF}(x,y)} < \Cg^{\bF}(x,y)$. In particular,
 $(x,y) \notin \com{\Cg^{\bF}(x,y)}$.
 
@@ -417,7 +500,7 @@ By Lemma~\ref{lem:preliminary-facts}~(\ref{item:1}) we have
 $\Cg^{\bF}(x,y) = 1_F$ and $\com{\Cg^{\bF}(x,y)} = [1_F,1_F]$, so our assumption
 is that $[1_F,1_F]< 1_F$.  Also, as we noted in
 Lemma~\ref{lem:preliminary-facts}~(\ref{item:2}), the interval from 
-$[1_F, 1_F]$ up to $1_F$ is abelian, thus the algebra
+$[1_F, 1_F]$ up to $1_F$ is abelian, thus the
 algebra $\bF/[1_F, 1_F]$ is abelian.
 
 Now $\bR/\etaR_i \cong \bF_i$.  Let $\rho_i \in \Con(\bR)$ be the congruence
