@@ -178,7 +178,7 @@ MRREVIEWER = {James B. Nation},
 \title[Difference Term Operation for $\bF_{\sV}(2)$]
 {Difference term operations for finite 2-generated idempotent free algebras}
 \date{\today}
-\author[W.~DeMeo]{William DeMeo}
+% \author[W.~DeMeo]{William DeMeo}
 \address{University of Hawaii}
 \email{williamdemeo@gmail.com}
 
@@ -253,13 +253,13 @@ Then the following hold:
   $\Cg^{\bF}(x,y) = 1_F$.
 
   \smallskip
-\item \label{item:2}
-The algebra $\bF/\com{\Cg^{\bF}(x,y)} = \bF/[1_F, 1_F]$ is abelian.
-
-\smallskip
 \item \label{item:1.5}
   If $[1_F, 1_F] = 1_F$ (i.e., $1_F$ is ``neutral''), then
   $\bF$ has a difference term operation.
+
+\smallskip
+\item \label{item:2}
+$\bF/\com{\Cg^{\bF}(x,y)}$ is abelian.
 
 
 \smallskip
@@ -281,6 +281,9 @@ $\etaR_0 \join \etaR_1 = 1_R$ and
 \]
 \end{enumerate}
 \end{lemma}
+
+\pagebreak  
+
 \begin{proof}\
   \begin{enumerate}
   \item 
@@ -301,12 +304,10 @@ $\etaR_0 \join \etaR_1 = 1_R$ and
   $t^{\bF}(x,y,y) \comr{\Cg^{\bF}(x,y)} x$.  Therefore, the third projection
   $d^{\bF}(x,y,z) = z$ is a difference term operation for $\bF$.
 
-\item  This holds because, by (\ref{item:1}),
+\item  This holds because %, by (\ref{item:1}),
   $\com{\Cg^{\bF}(x,y)} = \comm{1_F}{1_F}$ and $\CC{1_F}{1_F}{\comm{1_F}{1_F}}$
-  implies that if
-  $\delta := \comm{1_F}{1_F}$, then $\CC{1_{F/\delta}}{1_{F/\delta}}{0_{F/\delta}}$.
-  
-
+  implies $\CC{1_{F/\delta}}{1_{F/\delta}}{0_{F/\delta}}$, where
+  $\delta := \comm{1_F}{1_F}$.
 
 \item It is obvious. 
 (We denote this by $\bR \sdp \bF_0 \times \bF_1$.)
@@ -421,32 +422,33 @@ One way to see this is to note that $\bF$ is a
   That is,   $d^{\bA_i}(a_i, a_i, b_i) = b_i$ for all $a_i, b_i \in A_i$.
   Therefore, if $x = (a_0, \dots, a_{n-1})$
   and $y = (b_0, \dots, b_{n-1})$, then we have
-  \[
-  d^{\bF}(x,x,y) = 
+  \[d^{\bF}(x,x,y) = 
   (d^{\bA_0}(a_0, a_0, b_0), \dots,d^{\bA_{n-1}}(a_{n-1}, a_{n-1}, b_{n-1}))
   = (b_0, \dots, b_{n-1}) = y.\]
 \end{proof}
-  %% Fix $a, b\in A$ and suppose $\phi: \bF \to \bA$ is a homomorphism with
-  %% $\phi(x) = a$ and $\phi(y) = b$.  Then
-  %% we have
-  %% $\phi(d^{\bF}(x,x,y)) = d^{\bA}(\phi(x),\phi(x),\phi(y)) = d^{\bA}(a,a,b) = b$,
-  %% so
-  %% $(d^{\bF}(x,x,y), y) \in \ker \phi$. Therefore, we must have
-  %% $d^{\bF}(x,x,y) = y$, so $d^{\bF}$ is a difference term operation for $\bF$.
+  % Fix $a, b\in A$ and suppose $\phi: \bF \to \bA$ is a homomorphism with
+  % $\phi(x) = a$ and $\phi(y) = b$.  Then
+  % we have
+  % $\phi(d^{\bF}(x,x,y)) = d^{\bA}(\phi(x),\phi(x),\phi(y)) = d^{\bA}(a,a,b) = b$,
+  % so
+  % $(d^{\bF}(x,x,y), y) \in \ker \phi$. Therefore, we must have
+  % $d^{\bF}(x,x,y) = y$, so $d^{\bF}$ is a difference term operation for $\bF$.
 
-Before proving the next result, it will be helpful to review some standard
-notation that is useful when dealing with products of quotients.  If $\alpha$
-and $\beta$ are congruences of $\bA$ and 
-$\bB$ (or, more generally, equivalence relations on $A$ and $B$), then
-for all $a\in A$ and $b\in B$, we let
-\[
-(a,b)/\alpha \times \beta = \{(a', b') \in A\times B \mid a\mathrel{\alpha} a'
-b\mathrel{\beta} b'\} = a/\alpha \times b/\beta.
-\]
-\[
-(A\times B)/\alpha \times \beta = \{(a, b)/\alpha \times \beta \mid a\in A,\, b \in B\}
- = 
-\]
+
+%% NEW STUFF
+% Before proving the next result, it will be helpful to review some standard
+% notation that is useful when dealing with products of quotients.  If $\alpha$
+% and $\beta$ are congruences of $\bA$ and 
+% $\bB$ (or, more generally, equivalence relations on $A$ and $B$), then
+% for all $a\in A$ and $b\in B$, we let
+% \[
+% (a,b)/\alpha \times \beta = \{(a', b') \in A\times B \mid a\mathrel{\alpha} a', \;
+% b\mathrel{\beta} b'\} = a/\alpha \times b/\beta.
+% \]
+% \[
+% (A\times B)/\alpha \times \beta = \{(a, b)/\alpha \times \beta \mid a\in A,\, b \in B\}
+%  = ...
+% \]
 
 
 \begin{theorem}
@@ -473,11 +475,11 @@ t^{\bF^2}((x,x),(x,y),(y,y)) =\bigl(t^{\bF}(x,x,y), t^{\bF}(x,y,y)\bigr) \in
 \]
 In other words,
 \begin{equation}
-  \label{eq:dt2}
+  \label{dt2-rel}
   x \comr{\Cg^{\bF}(x,y)} t^{\bF}(x,y,y), \;  \text{ and }
 \end{equation}
 \begin{equation}
-  \label{eq:dt2}
+  \label{dt2-id}
 t^{\bF}(x,x,y) = y.
 \end{equation}
 %% \begin{align}
@@ -514,8 +516,13 @@ $\bF_1/[1_{F_1}, 1_{F_1}]$.  That is
 \]
 Next observe that if $\tau_i$ denotes the kernel of the projection of 
 $\bR/(\rho_0\meet \rho_1)$ onto $\bF_i/[1_{F_i}, 1_{F_i}]$, then 
-$\tau_0\join \tau_1 = 1_{R/(\rho_0\meet \rho_1)}$. To see this... (TODO:
-insert details!!!)
+$\tau_0\join \tau_1 = 1_{R/(\rho_0\meet \rho_1)}$. To see this... 
+
+\bigskip
+
+\noindent TODO: insert details!!!
+
+\vfill
 
 Since $\bF_i/[1_{F_i}, 1_{F_i}]$ is abelian, it is absorption free, so
 by Theorem~\ref{thm:absorption} below we have,
@@ -524,11 +531,16 @@ by Theorem~\ref{thm:absorption} below we have,
 R/(\rho_0\meet \rho_1) = F_0/[1_{F_0}, 1_{F_0}] \times 
 F_1/[1_{F_1}, 1_{F_1}].
 \end{equation}
-TODO: finish proof!!!
+
+\bigskip
+
+\noindent TODO: finish proof!!!
 
 \vfill
 
 \end{proof}
+
+\pagebreak
 
 \bibliographystyle{alphaurl}
 \bibliography{inputs/refs2.bib}
