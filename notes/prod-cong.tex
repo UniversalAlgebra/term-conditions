@@ -15,6 +15,17 @@
 %% then delete the existing refs.bib file so it will be automatically generated 
 %% again with your new entry the next time you run pdfaltex.
 \begin{filecontents*}{inputs/refs2.bib}
+@article{Bergman-DeMeo-2016,
+  author    = {Clifford Bergman and William DeMeo},
+  title     = {Universal Algebraic Methods for Constraint Satisfaction Problems},
+  journal   = {CoRR},
+  volume    = {abs/1611.02867},
+  year      = {2016},
+  url       = {http://arxiv.org/abs/1611.02867},
+  timestamp = {Thu, 01 Dec 2016 19:32:08 +0100},
+  biburl    = {http://dblp.uni-trier.de/rec/bib/journals/corr/BergmanD16},
+  bibsource = {dblp computer science bibliography, http://dblp.org}
+}
   @BOOK{HM:1988,
     AUTHOR = {Hobby, David and McKenzie, Ralph},
     TITLE = {The structure of finite algebras},
@@ -186,6 +197,8 @@ MRREVIEWER = {James B. Nation},
 
 \maketitle
 
+\renewcommand{\etaR}{\ensuremath{\eta}}
+
 \begin{abstract}
 This note provides some tools that should enable us to prove
 the following: if $\bA$ is a finite idempotent algebra with a
@@ -259,7 +272,7 @@ Then the following hold:
 
 \smallskip
 \item \label{item:2}
-$\bF/\com{\Cg^{\bF}(x,y)}$ is abelian.
+The quotient algebra $\bF/\com{\Cg^{\bF}(x,y)} = \bF/[1_F,1_F]$ is abelian.
 
 
 \smallskip
@@ -338,32 +351,6 @@ $\etaR_0 \join \etaR_1 = 1_R$ and
   \end{enumerate}
 \end{proof}
 
-% \begin{lemma}
-%   Let $\sV$ be an idempotent variety and suppose
-%   $\bF = \bF_{\sV}(x,y)$ is finite.
-%   %% Assume $\bF \sdp \bA \times \bB$.
-%   Let $\bF_0 \times \bF_1$ be the product of two copies of $\bF$.
-%   Let $\bR = \<R, \dots\>  \sdp \bF_0 \times \bF_1$ be the subalgebra generated
-%   %% by the set $\{(x, y), (x, x), (y, x)\}$, and let $\eta_i$ be the kernel of the
-%      by the set $\{(x, x), (x, y), (y, y)\}$, and let $\eta_i$ be the kernel of the
-%   $i$-th projection $\pi_i: \bR \onto \bF_i$.  Then 
-%   $\eta_0 \join \eta_1 = 1_R = \eta_0 \circ \eta_1 \circ \eta_0 = 
-%   \eta_1 \circ \eta_0 \circ \eta_1$.
-% \end{lemma}
-% \begin{proof}
-  %% OLD PROOF:
-  %% Since $\bF$ is idempotent, $\{x\}$ is a subuniverse of $\bF$, hence the inverse
-  %% image of $\{x\}$ under the first projection $\pi_0$ is a subuniverse of $\bR$,
-  %% call it $S_0 = \{(a,b) \in R \mid a = x\}$.
-  %% Since $(x,y)$ and $(x,x)$ lie in $S_0$, and $\{x,y\}$
-  %% generates $\bF$, we have that $\{x\}\times F \subseteq S_0$.
-  %% In particular, for every $b \in F$ the pair $(x,b)$ lies in $R$.
-  %% Similarly, 
-  %% $S_1= \{(a,b) \in R \mid b = x\}$ is
-  %% the inverse image of $\{x\}$ under the second
-  %% projection $\pi_1$, which is a subuniverse of $\bR$
-  %% that contains $(x,x)$ and $(y,x)$. Therefore, $F\times \{x\} \subseteq S_1$, 
-  %% so for every $a\in F$ the pair $(a,x)$ lies in $R$.
 
   %% NEW PROOF:
   %% Since $\bF$ is idempotent, $\{x\}$ is a subuniverse of $\bF$, and since
@@ -467,72 +454,142 @@ Then $\bF = \bF_{\sV}(x,y)$ has a difference term operation.
 We prove this by 
 letting $\bF_0 \times \bF_1$ be the product of two copies of $\bF$,
 letting $\bR = \<R, \dots\>  \sdp \bF_0 \times \bF_1$ be the subalgebra generated
-by the set $\{(x, x), (x, y), (y, y)\}$ (as above), and then showing that
-$R \cap \bigl(\{y\} \times (x/\com{\Cg^{\bF}(x,y)})\bigr)$ is non-empty.  For if the latter is
-non-empty, then there is a term $t$ satisfying
+by the set $\{(x, x), (x, y), (y, y)\}$ (as above), and then showing
+\begin{equation}
+  \label{eq:1}
+%% R \cap \bigl(\{y\} \times (x/\com{\Cg^{\bF_1}(x,y)})\bigr) \neq \emptyset.
+R \cap \bigl(\{y\} \times (x/[1_{F_1},1_{F_1}])\bigr) \neq \emptyset.
+\end{equation}
+Recall from Lemma~\ref{lem:preliminary-facts}~(\ref{item:1}) that
+$\com{\Cg^{\bF}(x,y)} = [1_{F},1_{F}]$, so~(\ref{eq:1})
+implies there is a term $t$ satisfying
 \[
 t^{\bF^2}((x,x),(x,y),(y,y)) =\bigl(t^{\bF}(x,x,y), t^{\bF}(x,y,y)\bigr) \in
 \{y\} \times \bigl(x/\com{\Cg^{\bF}(x,y)}\bigr).
+%% \{y\} \times \bigl(x/[1_{F_1},1_{F_1}]\bigr).
 \]
 In other words,
-\begin{equation}
-  \label{dt2-rel}
-  x \comr{\Cg^{\bF}(x,y)} t^{\bF}(x,y,y), \;  \text{ and }
-\end{equation}
-\begin{equation}
-  \label{dt2-id}
-t^{\bF}(x,x,y) = y.
-\end{equation}
-%% \begin{align}
-%% x \comr{\Cg^{\bF}(x,y)} t^{\bF}(x,y,y), \label{eq:dt2}\\
-%% t^{\bF}(x,x,y) &= y, \; \text{ and }\label{eq:dt1}
-%% \end{align}
-which means that $t^{\bF}$ is a difference term operation for $\bF$.
+%% \begin{equation}
+%%   \label{dt2-rel}
+%%   x \comr{\Cg^{\bF}(x,y)} t^{\bF}(x,y,y), \;  \text{ and }
+%% \end{equation}
+%% \begin{equation}
+%%   \label{dt2-id}
+%% t^{\bF}(x,x,y) = y.
+%% \end{equation}
+$x \comr{\Cg^{\bF}(x,y)} t^{\bF}(x,y,y)$ and
+$t^{\bF}(x,x,y) = y$, which means that $t$ is a difference term operation when
+interpreted in $\bF$. 
 
-Of course, $\com{\Cg^{\bF}(x,y)} \leq \Cg^{\bF}(x,y)$ and
+%% Of course, $\com{\Cg^{\bF}(x,y)} \leq \Cg^{\bF}(x,y)$ and
+Of course, $[1_F, 1_F]\leq 1_F$ and
 Lemma~\ref{lem:preliminary-facts}~(\ref{item:1.5}) dispenses with
 the case in which these congruences are equal.
 So, % $\com{\Cg^{\bF}(x,y)} = \Cg^{\bF}(x,y)$. 
 assume
-$\com{\Cg^{\bF}(x,y)} < \Cg^{\bF}(x,y)$. In particular,
-$(x,y) \notin \com{\Cg^{\bF}(x,y)}$.
+%% $\com{\Cg^{\bF}(x,y)} < \Cg^{\bF}(x,y)$.
+$[1_F, 1_F]< 1_F$.
+In particular, $(x,y) \notin [1_F, 1_F]$.
 
-Now $\com{\Cg^{\bF}(x,y)}$ and $\Cg^{\bF}(x,y)$ are both subalgebras of $\bF^2$
-and by idempotence, every class of these congruences is a subalgebra of $\bF$.
-By Lemma~\ref{lem:preliminary-facts}~(\ref{item:1}) we have 
-$\Cg^{\bF}(x,y) = 1_F$ and $\com{\Cg^{\bF}(x,y)} = [1_F,1_F]$, so our assumption
-is that $[1_F,1_F]< 1_F$.  Also, as we noted in
-Lemma~\ref{lem:preliminary-facts}~(\ref{item:2}), the interval from 
-$[1_F, 1_F]$ up to $1_F$ is abelian, thus the
+%% Now $\com{\Cg^{\bF}(x,y)}$ and $\Cg^{\bF}(x,y)$ are both subalgebras of $\bF^2$
+%% and by idempotence, each class of each of these congruences is a subalgebra of $\bF$.
+%% By Lemma~\ref{lem:preliminary-facts}~(\ref{item:1}) we have 
+%% $\Cg^{\bF}(x,y) = 1_F$ and $\com{\Cg^{\bF}(x,y)} = [1_F,1_F]$, so our assumption
+%% is $[1_F,1_F]< 1_F$.  
+Also, recall from
+Lemma~\ref{lem:preliminary-facts}~(\ref{item:2}) that the
+%% interval from  $[1_F, 1_F]$ up to $1_F$ is abelian, thus the
 algebra $\bF/[1_F, 1_F]$ is abelian.
 
-Now $\bR/\etaR_i \cong \bF_i$.  Let $\rho_i \in \Con(\bR)$ be the congruence
-(above $\etaR_i$) that is mapped to $[1_{F_i}, 1_{F_i}]$ under the projection 
-$\bR \onto \bF_i$.  Then $\bR/\rho_i \cong \bF_i/[1_{F_i}, 1_{F_i}]$ is abelian.
-Then $\bR/(\rho_0\meet \rho_1)$ is a subdirect product of $\bF_0/[1_{F_0}, 1_{F_0}]$ and 
-$\bF_1/[1_{F_1}, 1_{F_1}]$.  That is
+Now $\bR/\etaR_i \cong \bF_i$ for $i \in \{0,1\}$.
+Let $\rho_1 \in \Con(\bR)$ be the congruence
+(above $\etaR_1$) corresponding to $[1_{F_1}, 1_{F_1}]$ via the projection
+homomorphism $\bR \onto \bF_1$.  Then
 \[
-\bR/(\rho_0\meet \rho_1) \sdp \bF_0/[1_{F_0}, 1_{F_0}] \times 
-\bF_1/[1_{F_1}, 1_{F_1}].
+\bR/\rho_1 \cong (\bR/\etaR_1)/(\rho_1/\etaR_1) \cong \bF_1/[1_{F_1}, 1_{F_1}],
 \]
-Next observe that if $\tau_i$ denotes the kernel of the projection of 
-$\bR/(\rho_0\meet \rho_1)$ onto $\bF_i/[1_{F_i}, 1_{F_i}]$, then 
-$\tau_0\join \tau_1 = 1_{R/(\rho_0\meet \rho_1)}$. To see this... 
+so, by Lemma~\ref{lem:preliminary-facts}~(\ref{item:2}),
+$\bR/\rho_1$ is abelian.  Moreover, $\bR/(\etaR_0\meet \rho_1)$ is a subdirect
+product of $\bR/\etaR_0 \cong \bF_0$ and  
+$\bR/\rho_1 \cong \bF_1/[1_{F_1}, 1_{F_1}]$.  That is,
+\[
+\bR/(\etaR_0\meet \rho_1) \sdp \bF_0\times 
+\bigl(\bF_1/[1_{F_1}, 1_{F_1}]\bigr).
+\]
+Of course, $\tau_0 := \etaR_0/(\etaR_0\meet \rho_1)$ is the kernel of the
+projection of $\bR/(\etaR_0\meet \rho_1)$ onto $\bF_0$, so
+\[
+\bigl(\bR/(\etaR_0\meet \rho_1)\bigr)\bigl(\etaR_0/(\etaR_0\meet \rho_1)\bigr)
+\cong \bR/\etaR_0 \cong \bF_0,
+\]
+and $\tau_1 := \rho_1/(\etaR_0\meet \rho_1)$ is the kernel of the
+projection of $\bR/(\etaR_0\meet \rho_1)$ onto $\bF_1/[1_{F_1},1_{F_1}]$, so
+\[
+\bigl(\bR/(\etaR_0\meet \rho_1)\bigr)/\bigl(\rho_1/(\etaR_0\meet \rho_1)\bigr)
+\cong \bR/\rho_1 \cong \bF_1/[1_{F_1},1_{F_1}].
+\]
+Next observe that
+%% Then $\bR/(\rho_0\meet \rho_1)$ is a subdirect product of $\bF_0/[1_{F_0}, 1_{F_0}]$ and 
+%% $\bF_1/[1_{F_1}, 1_{F_1}]$.  That is
+%% \[
+%% \bR/(\rho_0\meet \rho_1) \sdp \bF_0/[1_{F_0}, 1_{F_0}] \times 
+%% \bF_1/[1_{F_1}, 1_{F_1}].
+%% \]
+%% Next observe that if $\tau_i$ denotes the kernel of the projection of 
+%% $\bR/(\rho_0\meet \rho_1)$ onto $\bF_i/[1_{F_i}, 1_{F_i}]$, then 
+$\tau_0\join \tau_1 = 1_{R/(\etaR_0\meet \rho_1)}$. (This is clear since
+$\rho_1\geq \eta_1$, so  $\eta_0 \join \rho_1 \geq \eta_0 \join \eta_1 = 1_R$.)
+Thus, by the Absorption Theorem (Theorem~\ref{thm:absorption} below),
+exactly one of the following holds:
+\begin{enumerate}
+\item \label{item:6} $\bR/(\eta_0\meet \rho_1) =\bF_0 \times \bigl(\bF_1/[1_{F_1}, 1_{F_1}]\bigr)$;
+\item \label{item:7} $\bF_0$ has a proper nontrivial minimal absorbing subuniverse;
+\item \label{item:8} $\bF_1/[1_{F_1}, 1_{F_1}]$ has a proper
+  nontrivial minimal absorbing subuniverse.
+\end{enumerate}
+If~(\ref{item:6}), then we're done since, in that case,
+$(y, x/[1_{F_1},1_{F_1}]) \in R/(\etaR_0 \meet \rho_1)$,
+which implies $(y, z) \in R$ for some $z \comm{1_{F_1}}{1_{F_1}} x$.
+That is, (\ref{eq:1}) holds.
+We can rule out case~(\ref{item:8}) because $\bF_1/[1_{F_1}, 1_{F_1}]$ is abelian and
+is therefore absorption free. (See~\cite{MR3374664}.)  %% and~\cite{Bergman-DeMeo}.)
+So the minimal absorbing subuniverse of $\bF_1/[1_{F_1}, 1_{F_1}]$ is 
+$F_1/[1_{F_1}, 1_{F_1}]$ itself.
+
+We are left with case~(\ref{item:7}).
+Let $B_0$ be a minimal absorbing subuniverse of $\bF_0$.
+Then the product algebra $\bB_0\times \bF_1/[1_{F_1}, 1_{F_1}]$ is
+absorbtion free.
+Since $\bR/(\etaR_0 \meet \rho_1)$ is subdirect,
+$\bR/(\etaR_0 \meet \rho_1) \cap \bB_0 \times F_1/[1_{F_1}, 1_{F_1}]$ is
+non-empty. Therefore,
+\begin{equation}
+  \label{eq:2}
+\bR/(\etaR_0 \meet \rho_1) \cap \bB_0 \times F_1/[1_{F_1}, 1_{F_1}]
+= \bB_0 \times F_1/[1_{F_1}, 1_{F_1}].
+\end{equation}
+This follows from 
+the Absorption Theorem (Theorem~\ref{thm:absorption} below)
+together with~\cite[Lemmas~4.7, 4.9, 4.11, 4.12]{Bergman-DeMeo-2016}.
+We split into two subcases.\\
+\\
+\noindent \underline{Subcase 1: $y\in B_0$.}\\[5pt]
+In this case we're done, since (\ref{eq:2}) implies
+$\bB_0 \times F_1/[1_{F_1}, 1_{F_1}] \subseteq \bR/(\etaR_0 \meet \rho_1)$,
+so ${y} \times \bigl(x/[1_{F_1}, 1_{F_1}]\bigr) \in \bR$.
+
+
 
 \bigskip
 
-\noindent TODO: insert details!!!
+\bigskip
 
-\vfill
-
-Since $\bF_i/[1_{F_i}, 1_{F_i}]$ is abelian, it is absorption free, so
-by Theorem~\ref{thm:absorption} below we have,
-\begin{equation}
-  \label{eq:101010}
-R/(\rho_0\meet \rho_1) = F_0/[1_{F_0}, 1_{F_0}] \times 
-F_1/[1_{F_1}, 1_{F_1}].
-\end{equation}
-
+That $\bR/\rho_1 \cong \bF_1/[1_{F_1},1_{F_1}]$ is abelian means
+$\CC{1_{R/\rho_1}}{1_{R/\rho_1}}{0_{R/\rho_1}}$ holds, and this is equivalent to
+$\CC{1_R}{1_R}{\rho_1}$. By a result of Kearnes and Kiss
+(Theorem~\ref{thm:kearnes-kiss-3.27} below), the latter
+holds if and only if $\CC{\etaR_0}{\etaR_0}{\etaR_0\meet \rho_1}$.
+It follows that $[\etaR_0, \etaR_0]\leq \etaR_0 \meet \rho_1$.
 \bigskip
 
 \noindent TODO: finish proof!!!
@@ -549,7 +606,10 @@ F_1/[1_{F_1}, 1_{F_1}].
 % \newpage
 \appendix
 
-\section{Absorption Theorem of Barto and Kozik}
+\section{Miscellaneous Theorems}
+We collect here some well known results that were used above.
+
+\subsection{Absorption Theorem of Barto and Kozik}
 % K and Theorem 3.2 of BKS}
 % First we recall the Absorption Theorem  of Barto and Kozik.
 \begin{theorem}[Absorption Theorem \protect{\cite[Thm~2.3]{MR2893395}}]
@@ -567,6 +627,14 @@ projection $\bR \onto \bA$ ($\bR \onto \bB$, resp.).
 If $\etaR_A \join \etaR_B = 1_R$, then either $\bR = \bA \times \bB$, or
 $\bA$ has a proper absorbing subuniverse, or $\bB$ has a proper absorbing subuniverse.
 \end{theorem}
+
+\subsection{A Projectivity Theorem of Kearnes and Kiss}
+  \begin{theorem}[\protect{\cite[Thm~3.27]{MR3076179}}] 
+    \label{thm:kearnes-kiss-3.27}
+    Suppose $\alpha$ and $\beta$ are congruences of a Taylor algebra. Then
+    $\CC{\alpha}{ \alpha}{ \alpha \meet \beta}$ if and only if
+    $\CC{\alpha \join \beta}{ \alpha \join \beta}{ \beta}$.
+  \end{theorem}
 
 
 % \begin{theorem}[\protect{\cite[Theorem 3.2]{MR3374664}}]
