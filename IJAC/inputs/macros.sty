@@ -134,6 +134,9 @@
 \newcommand{\power}[1]{\ensuremath{\mathscr{P}(#1)}}
 %% \newcommand{\sP}{\ensuremath{\power{P}}}
 \newcommand{\sP}{\ensuremath{\mathcal{P}}}
+\newcommand{\ralpha}{\ensuremath{\mathrel{\alpha}}}
+\newcommand{\rbeta}{\ensuremath{\mathrel{\beta}}}
+\newcommand{\rdelta}{\ensuremath{\mathrel{\delta}}}
 \newcommand{\balpha}{\ensuremath{\boldsymbol{\alpha}}}
 \newcommand{\bbeta}{\ensuremath{\boldsymbol{\beta}}}
 \newcommand{\bgamma}{\ensuremath{\boldsymbol{\gamma}}}
@@ -223,3 +226,12 @@
 %% \newcommand{\mas}{\acs{MAS}\xspace}
 
 \renewcommand{\subsetneq}{\ensuremath{\subsetneqq}}
+
+%% Restriction to a subset of a domain
+%% Usage: \restr{f}{A}
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}

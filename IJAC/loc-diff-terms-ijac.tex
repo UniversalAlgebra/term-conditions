@@ -994,9 +994,65 @@ to begin by trying to prove that the existence of a difference term for
 operation for a specific algebra in $\sV$.  This is achieved in
 Theorem~\ref{thm:F}, which will play a key role
 in our main complexity argument in Section~\ref{sec:glob-local-diff}.
+First, a lemma the forms the core of our proof of 
+Theorem~\ref{thm:F} is the following:
+
+\begin{lemma}
+  \label{lem:equiv-cond-exist-1}
+  Let $\bA$ be an algebra, let $t(x,y,z)$ be a ternary term in the langauge
+  of $\bA$, and let $\bF := \bF_{\bbV(\bA)}(x,y)$. Consider the following statements:
+  \begin{enumerate}[(A)]
+  \item \label{item:6} $t^{\bA}$ is not a difference term operation for $\bA$.
+  \item \label{item:7} There exists a 2-generated subalgebra $\bB \leq \bA$
+    such that $t^{\bB}$ is not a difference term operation for $\bB$.
+  \item \label{item:8} $t^{\bF}$ is not a difference term operation for $\bF$.
+  \end{enumerate}
+  Then (\ref{item:6}) implies (\ref{item:7}) and (\ref{item:7}) implies (\ref{item:8}).
+\end{lemma}
+\begin{proof}
+  (\ref{item:6}) $\Rightarrow $ (\ref{item:7}):
+  Suppose  $t^{\bA}$ fails to be a difference term operation for $\bA$ and let $a, b \in
+  A$ witness this failure. That is, either
+  \begin{enumerate}
+  \item\label{item:9} $d^{\bA}(a,a,b) \neq b$, or
+  \item\label{item:10} $(d^{\bA}(a,b,b), a) \notin \com{\Cg^{\bA} (a, b)}$.
+  \end{enumerate}
+  Let $\bB = \Sg^{\bA} (\{a, b\})$.  In case
+  (\ref{item:9}), 
+  $d^{\bB}(a,a,b) = d^{\bA}(a,a,b) \neq b$, so $d^{\bB}(x,y,z)$ is not a difference
+  term operation for $\bB$.
+  In case (\ref{item:10}), observe that
+  $(d^{\bB}(a,b,b), a) = (d^{\bA}(a,b,b), a)\notin \com{\Cg^{\bA} (a, b)}$.
+  Therefore, if
+  \begin{equation}
+    \label{eq:6}
+    \com{\Cg^{\bB} (a, b)} \subseteq \com{\Cg^{\bA} (a, b)},
+  \end{equation}
+  then it will follow that $(d^{\bB}(a,b,b), a) \notin \com{\Cg^{\bB} (a, b)}$,
+  whence $d^{\bB}(x,y,z)$ is not a difference term operation for $\bB$.
+  %% \begin{equation}
+  %%   \label{eq:6}
+  %%   by observing that $\com{\Cg^{\bB} (a, b)} \subseteq \com{\Cg^{\bA} (a, b)}$.
+  %%   (d^{\bB}(a,b,b), a) \notin \com{\Cg^{\bB} (a, b)}
+  %% \end{equation}
+  Inclusion~(\ref{eq:6}) holds because 
+  $\CC{\beta}{\beta}{\delta}$ holds when
+  $\beta := \Cg^{\bB} (a, b)$ and
+  %% $\delta:=\restr{\com{\Cg^{\bA} (a, b)}}{B^2}$,
+  $\delta:=\com{\Cg^{\bA} (a, b)} \cap B^2$.
+  (See Appendix~\ref{sec:details-omitted-from} for details.)\\[5pt]
+  (\ref{item:7}) $\Rightarrow$ (\ref{item:8}):
+  Since there is a surjective homomorphism from $\bF$ to $\bB$,
+  Lemma~\ref{lem:hom-image-diff-term} implies that $d^{\bF}(x,y,z)$ 
+  is not a difference term operation for $\bF$.
+\end{proof}
 
 \smallskip
 
+%% Cliff's comment:
+%% F is a subalgebra of A^n for some n. We can assume that V is neither congruence
+%% modular nor meet-semidistributive. Can we use that fact to put a  bound on n?
+%% (On the face of it, all we know is that n < a^2 where a is the cardinality of A.) 
 
 %{sec:algor-2:-exist}.
 %% by establishing the equivalence of item (iii) in the following theorem.
@@ -1020,33 +1076,14 @@ free algebra in $\sV$. The following are equivalent:
   (\ref{item:1}) $\Rightarrow$  (\ref{item:2}) $\Rightarrow$  (\ref{item:3}) are
   obvious. We prove
   (\ref{item:3}) $\Rightarrow$  (\ref{item:1}) by contraposition.
-  Suppose $\sV$ has no difference term. (We show $\bF$ has no difference term
-  operation.)
-  Let $d(x,y,z)$ be a ternary term of $\sV$.  Let $\bA\in \sV$ be such that
-  $d^{\bA}(x,y,z)$ is not a difference term operation for $\bA$.
-  Choose $a, b \in A$ witnessing this fact.  Then either
-  \begin{enumerate}
-  \item\label{item:4} $d^{\bA}(a,a,b) \neq b$, or
-  \item\label{item:5} $(d^{\bA}(a,b,b), a) \notin \com{\Cg^{\bA} (a, b)}$. %, \Cg^{\bA} (a,b)]$.
-  \end{enumerate}
-  Let $\bB = \Sg^{\bA} (\{a, b\})$.  In case
-  (\ref{item:4}), 
-  $d^{\bB}(a,a,b) = d^{\bA}(a,a,b) \neq b$, so $d^{\bB}(x,y,z)$ is not a difference
-  term operation for $\bB$.
-  In case (\ref{item:5}), observe that
-  the pair $(d^{\bB}(a,b,b), a)$ is equal to the pair $(d^{\bA}(a,b,b), a)$ which
-  does not belong to $\com{\Cg^{\bA} (a, b)}$.
-  But 
-  $\com{\Cg^{\bB} (a, b)} \subseteq \com{\Cg^{\bA} (a, b)}$, so
-  \[(
-  d^{\bB}(a,b,b), a) \notin \com{\Cg^{\bB} (a, b)},
-  \]
-  and again we conclude that $d^{\bB}(x,y,z)$ is not a difference term operation for $\bB$.
-  Now, since there is a surjective homomorphism from $\bF$ to $\bB$,
-  Lemma~\ref{lem:hom-image-diff-term} implies that $d^{\bF}(x,y,z)$ 
+  Suppose $\sV$ has no difference term and let
+  %% (We show $\bF$ has no difference term operation.)
+  $d(x,y,z)$ be an arbitrary ternary term in the language of $\sV$.
+  Let $\bA\in \sV$ be such that $d^{\bA}(x,y,z)$ is not a difference term
+  operation for $\bA$. Then by Lemma~\ref{lem:equiv-cond-exist-1}, $d^{\bF}(x,y,z)$ 
   is not a difference term operation for $\bF$.
-  Finally, recall that we chose $d(x,y,z)$ to be an arbitrary ternary term of $\sV$, so
-  $\bF$ has no difference term operation whatsoever.
+  %% Since $d(x,y,z)$ is arbitrary, it follows that
+  %% $\bF$ has no difference term operation whatsoever.
   %% , as we set out to prove.
 \end{proof}
 
@@ -1758,6 +1795,36 @@ Foundation under Grant No. 1500235.
 
 \appendix
 \section{Proofs}
+\subsection{Details omitted from proof of Lemma~\ref{lem:equiv-cond-exist-1}}
+\label{sec:details-omitted-from}
+We have $\bB \leq \bA$, $a, b \in B$, and we wish to prove
+\begin{equation}
+    \label{eq:6-app}
+    \com{\Cg^{\bB} (a, b)} \subseteq \com{\Cg^{\bA} (a, b)}.
+\end{equation}
+Let $\alpha := \Cg^{\bA} (a, b)$, $\beta := \Cg^{\bB} (a, b)$ and
+$\delta:=\com{\Cg^{\bA} (a, b)} \cap B^2$. 
+To check~(\ref{eq:6-app}) we verify that $\CC{\beta}{\beta}{\delta}$.
+Let $\bu$, $\bv \in B^{k}$, and $\br$, $\bs \in B^{\ell}$, and
+$t\in \Clo_{k+\ell}(\bB)$.  Assume
+$u_i \rbeta v_i$ and $r_i \rbeta s_i$
+and $t(\bu, \br) \rdelta t(\bu, \bs)$.
+We establish~(\ref{eq:6-app}) by proving that
+$t(\bv, \br) \rdelta t(\bv, \bs)$.
+Clearly,
+$\beta \subseteq \alpha$, so 
+$u_i \rbeta v_i$ and $r_i \rbeta s_i$ imply
+$u_i \ralpha v_i$ and $r_i \ralpha s_i$.  Moreover,
+\[
+(t(\bu, \br), t(\bu, \bs)) \in
+\delta \subseteq \alpha \quad \Rightarrow \quad
+(t(\bv, \br), t(\bv, \bs)) \in \alpha.
+\]
+Finally, 
+$(t(\bv, \br), t(\bv, \bs)) \in B^2$. Altogether, we have
+$(t(\bv, \br), t(\bv, \bs)) \in \delta$, as desired.
+
+
 \subsection{Proof of Theorem~\ref{thm:glob-loc-diff-terms}}
 \label{sec:proof-thm:glob}
 \begin{theorem}[\ref{thm:glob-loc-diff-terms}]
