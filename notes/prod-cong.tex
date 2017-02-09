@@ -546,36 +546,51 @@ exactly one of the following holds:
 \item \label{item:8} $\bF_1/[1_{F_1}, 1_{F_1}]$ has a proper
   nontrivial minimal absorbing subuniverse.
 \end{enumerate}
+
+From this point on, we drop the subscript from $\bF_1$, since it is no longer
+needed to distinguish between the first and second factors of the product.
+
+%% \newcommand{\Fone}{\ensuremath{F_1}}
+%% \newcommand{\bFone}{\ensuremath{\mathbf{F}_1}}
+\newcommand{\Fone}{\ensuremath{F}}
+\newcommand{\bFone}{\ensuremath{\mathbf{F}}}
+
 If~(\ref{item:6}), then we're done since, in that case,
-$(y, x/[1_{F_1},1_{F_1}]) \in R/(\etaR_0 \meet \rho_1)$,
-which implies $(y, z) \in R$ for some $z \comm{1_{F_1}}{1_{F_1}} x$.
+$(y, x/[1_{\Fone},1_{\Fone}]) \in R/(\etaR_0 \meet \rho_1)$,
+which implies $(y, z) \in R$ for some $z \comm{1_{\Fone}}{1_{\Fone}} x$.
 That is, (\ref{eq:1}) holds.
-We can rule out case~(\ref{item:8}) because $\bF_1/[1_{F_1}, 1_{F_1}]$ is abelian and
-is therefore absorption free. (See~\cite{MR3374664}.)  %% and~\cite{Bergman-DeMeo}.)
-So the minimal absorbing subuniverse of $\bF_1/[1_{F_1}, 1_{F_1}]$ is 
-$F_1/[1_{F_1}, 1_{F_1}]$ itself.
+We can rule out case~(\ref{item:8}) because $\bFone/[1_{\Fone}, 1_{\Fone}]$ is abelian and
+is therefore absorption free (see~\cite{MR3374664}),  %% and~\cite{Bergman-DeMeo}.)
+so $\Fone/[1_{\Fone}, 1_{\Fone}]$ is the minimal absorbing subuniverse of $\bFone/[1_{\Fone}, 1_{\Fone}]$.
+
 
 We are left with case~(\ref{item:7}).
 Let $B_0$ be a minimal absorbing subuniverse of $\bF_0$.
-Then the product algebra $\bB_0\times \bF_1/[1_{F_1}, 1_{F_1}]$ is
+Then the product algebra $\bB_0\times \bigl(\bFone/[1_{\Fone}, 1_{\Fone}]\bigr)$ is
 absorbtion free.
-Since $\bR/(\etaR_0 \meet \rho_1)$ is subdirect,
-$\bR/(\etaR_0 \meet \rho_1) \cap \bB_0 \times F_1/[1_{F_1}, 1_{F_1}]$ is
-non-empty. Therefore,
+Since $\bR/(\etaR_0 \meet \rho_1)$ is subdirect, the intersection
+$R/(\etaR_0 \meet \rho_1) \cap \bigl(B_0 \times (\Fone/[1_{\Fone}, 1_{\Fone}])\bigr)$ is
+non-empty. Therefore, by the Absorption Theorem (Thm.~\ref{thm:absorption}
+below), together with~\cite[Lemmas~4.7, 4.9, 4.11, 4.12]{Bergman-DeMeo-2016},
+we have
 \begin{equation}
   \label{eq:2}
-\bR/(\etaR_0 \meet \rho_1) \cap \bB_0 \times F_1/[1_{F_1}, 1_{F_1}]
-= \bB_0 \times F_1/[1_{F_1}, 1_{F_1}].
+%% \bR/(\etaR_0 \meet \rho_1) \cap \bB_0 \times \Fone/[1_{\Fone}, 1_{\Fone}]
+  %% = \bB_0 \times \Fone/[1_{\Fone}, 1_{\Fone}].
+B_0 \times \bigl(\Fone/[1_{\Fone}, 1_{\Fone}]\bigr) \subseteq R/(\etaR_0 \meet \rho_1).
+%% R/(\etaR_0 \meet \rho_1) \cap B_0 \times \Fone/[1_{\Fone}, 1_{\Fone}]
+%% = \bB_0 \times \Fone/[1_{\Fone}, 1_{\Fone}].
 \end{equation}
-This follows from 
-the Absorption Theorem (Theorem~\ref{thm:absorption} below)
-together with~\cite[Lemmas~4.7, 4.9, 4.11, 4.12]{Bergman-DeMeo-2016}.
-We split into two subcases.\\
+%% This follows from 
+
+We split the remainder of the proof into two subcases.\\
 \\
-\noindent \underline{Subcase 1: $y\in B_0$.}\\[5pt]
-In this case we're done, since (\ref{eq:2}) implies
-$\bB_0 \times F_1/[1_{F_1}, 1_{F_1}] \subseteq \bR/(\etaR_0 \meet \rho_1)$,
-so ${y} \times \bigl(x/[1_{F_1}, 1_{F_1}]\bigr) \in \bR$.
+\noindent \underline{Subcase 1: $y\in B_0$}\\[5pt]
+In this case we're done, since $y\in B_0$ together with (\ref{eq:2}) imply
+%% $\bB_0 \times \Fone/[1_{\Fone}, 1_{\Fone}] \subseteq \bR/(\etaR_0 \meet \rho_1)$,
+${y} \times \bigl(x/[1_{\Fone}, 1_{\Fone}]\bigr) \in R$.\\
+\\
+\noindent \underline{Subcase 2: $y\notin B_0$}\\[5pt]
 
 
 
@@ -583,10 +598,10 @@ so ${y} \times \bigl(x/[1_{F_1}, 1_{F_1}]\bigr) \in \bR$.
 
 \bigskip
 
-That $\bR/\rho_1 \cong \bF_1/[1_{F_1},1_{F_1}]$ is abelian means
+That $\bR/\rho_1 \cong \bFone/[1_{\Fone},1_{\Fone}]$ is abelian means
 $\CC{1_{R/\rho_1}}{1_{R/\rho_1}}{0_{R/\rho_1}}$ holds, and this is equivalent to
 $\CC{1_R}{1_R}{\rho_1}$. By a result of Kearnes and Kiss
-(Theorem~\ref{thm:kearnes-kiss-3.27} below), the latter
+(Thm.~\ref{thm:kearnes-kiss-3.27} below), the latter
 holds if and only if $\CC{\etaR_0}{\etaR_0}{\etaR_0\meet \rho_1}$.
 It follows that $[\etaR_0, \etaR_0]\leq \etaR_0 \meet \rho_1$.
 \bigskip
