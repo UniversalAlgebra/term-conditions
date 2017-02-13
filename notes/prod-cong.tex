@@ -308,14 +308,14 @@ $\etaR_0 \join \etaR_1 = 1_R$ and
 
 \begin{proof}\
   \begin{enumerate}
-  \item  This is obvious.  In fact, $\Cg^{\bB}(a,b)=1_B$ holds for every
-    2-generated idempotent algebra $\bB = \Sg^{\bB}(a,b)$ (with generators
-    $a$ and $b$).  If $(c,d) \in B^2$, then there are terms $s$ and $t$
+  \item  In fact, $\Cg^{\bB}(a,b)=1_B$ holds for every
+    2-generated idempotent algebra, $\bB = \Sg^{\bB}(a,b)$, with generators
+    $a$ and $b$.  If $(c,d) \in B^2$, then there are terms $s$ and $t$
     such that $s(a,b) = c$ and $t(a,b) = d$.  Therefore, 
     $(c,b) = (s(a,b), s(b,b))$ belongs to $\Cg^{\bB}(a,b)$; likewise
     $(a,d) = (t(a,a), t(a,b))$ belongs to $\Cg^{\bB}(a,b)$, so
     $c \mathrel{\Cg^{\bF}(x,y)} b\mathrel{\Cg^{\bF}(x,y)} a \mathrel{\Cg^{\bF}(x,y)} d$,
-    as desired.\\
+    as desired.
     %% NEW PROOF: (finish this later if necessary)\\
     %% Consider the homomorphism from $\bF:= \bF_{\sV}(x,y)$ onto the 1-generated free
     %% algebra $\bF_{\sV}(z)$ that maps both $x$ and $y$ to $z$.  The kernel
@@ -437,19 +437,36 @@ Our goal is to prove Theorem~\ref{thm:main-result} below.\footnote{(I believe we
 
 %% NEW STUFF
 Before proving the next result, it will be helpful to review some standard
-notation that is useful when dealing with products of quotients.  If $\alpha$
-and $\beta$ are congruences of $\bA$ and 
-$\bB$ (or, more generally, equivalence relations on $A$ and $B$), then
-for all $a\in A$ and $b\in B$, we let
-\[
-(a,b)/\alpha \times \beta = \{(a', b') \in A\times B \mid a\mathrel{\alpha} a', \;
-b\mathrel{\beta} b'\} = a/\alpha \times b/\beta.
-\]
-\[
-(A\times B)/\alpha \times \beta = \{(a, b)/\alpha \times \beta \mid a\in A,\, b \in B\}
- = ...
-\]
-
+notation that is useful when dealing with products of quotients.  
+Let $A$ and $B$ be sets and let $\alpha$ and $\beta$ be equivalence relations on
+$A$ and $B$, respectively.
+% Let $\alpha\in \Con\bA$
+% and $\beta$ be congruences of $\bA$ and 
+% $\bB$ (or, more generally, equivalence relations on $A$ and $B$).
+% Let $a\in A$ and $b\in B$.
+\begin{enumerate}[(1)]
+\item \label{item:9}
+  $\alpha \times \beta = \{\bigl((a, b), (a', b')\bigr) 
+  \in (A\times B)^2 \mid a\mathrel{\alpha} a', \, b\mathrel{\beta} b'\}$.
+  \smallskip
+\item \label{item:10}
+  For all $a\in A$, $b\in B$, 
+  \[(a,b)/(\alpha \times \beta) = a/\alpha \times b/\beta= 
+    \{(a', b') \in A\times B \mid a\mathrel{\alpha} a', \, b\mathrel{\beta} b'\}.
+  \]
+\item \label{item:11}
+  $(A\times B)/(\alpha \times \beta) = \{(a, b)/\alpha \times \beta \mid a\in A,\,b \in B\}$.
+\end{enumerate}
+\begin{remarks}\
+  \begin{enumerate}
+  \item The equivalence relations $\alpha$ and $\beta$ are subsets
+    of $A^2$ and $B^2$, respectively, so it might seem more natural to interpret 
+    $\alpha \times \beta$ as a subset of $A^2 \times B^2$. Nonetheless, in this 
+    context it is usually more convenient to arrange the coordinates 
+    so that $\alpha \times \beta \subseteq (A \times B)^2$, as in
+    item~(\ref{item:9}).
+  \end{enumerate}
+\end{remarks}
 \newpage
 
 \begin{theorem}
