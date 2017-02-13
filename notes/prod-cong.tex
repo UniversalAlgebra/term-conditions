@@ -217,7 +217,7 @@ for all $\bA = \<A, \dots \> \in \sV$, for all $a, b \in A$, for every
 congruence $\theta\in \Con\bA$ containing $(a,b)$, we have
 \begin{equation}
   \label{dt-rel}
-  a \comm \theta \theta d^{\bA}(a,b,b), \; \text{ and }
+  a \comr{\theta} d^{\bA}(a,b,b), \; \text{ and }
 \end{equation}
 \begin{equation}
   \label{dt-id}
@@ -249,7 +249,7 @@ If $d$ is idempotent, it may be convenient to present the difference term
 relations as follows:
 \begin{equation}
   \label{dt-rel-idemp}
-  d^{\bA}(a,a,a) \comm \theta \theta d^{\bA}(a,b,b), \; \text{ and }
+  d^{\bA}(a,a,a) \comr{\theta} d^{\bA}(a,b,b), \; \text{ and }
 \end{equation}
 \begin{equation}
   \label{dt-id-idemp}
@@ -258,7 +258,7 @@ d^{\bA}(a,a,b) =   d^{\bA}(b,b,b).
 
 In Lemma~\ref{lem:preliminary-facts} we gather
 some easy facts that will be useful below.
-We use $\com{\theta}$ as a convenient shorthand for 
+We use $\Com{\theta}$ as a convenient shorthand for 
 $[\theta,\theta]$. %% (= the term condition commutator of $\theta$ with itself).
 It will also be convenient to have indexed copies of $\bF$, viz.,
 let $\bF_i \cong \bF$ denote the ``$i$-th copy'' of $\bF$. 
@@ -281,7 +281,7 @@ Then the following hold:
 
 \smallskip
 \item \label{item:2}
-The quotient algebra $\bF/\com{\Cg^{\bF}(x,y)} = \bF/[1_F,1_F]$ is abelian.
+The quotient algebra $\bF/\Com{\Cg^{\bF}(x,y)} = \bF/[1_F,1_F]$ is abelian.
 
 
 \smallskip
@@ -323,15 +323,15 @@ $\etaR_0 \join \etaR_1 = 1_R$ and
     %% $\Cg^{\bF}(x,y)\leq \theta$.... 
     
     
-  \item If $[1_F,1_F] = \com{\Cg^{\bF}(x,y)} = \Cg^{\bF}(x,y) = 1_F$, then every term
+  \item If $[1_F,1_F] = \Com{\Cg^{\bF}(x,y)} = \Cg^{\bF}(x,y) = 1_F$, then every term
   trivially satisfies the condition
-  $t^{\bF}(x,y,y) \comr{\Cg^{\bF}(x,y)} x$.  Therefore, the third projection
+  $t^{\bF}(x,y,y) \Comr{\Cg^{\bF}(x,y)} x$.  Therefore, the third projection
   $d^{\bF}(x,y,z) = z$ is a difference term operation for $\bF$.
 
 \item  This holds because %, by (\ref{item:1}),
-  $\com{\Cg^{\bF}(x,y)} = \comm{1_F}{1_F}$ and $\CC{1_F}{1_F}{\comm{1_F}{1_F}}$
+  $\Com{\Cg^{\bF}(x,y)} = \com{1_F}$ and $\CC{1_F}{1_F}{\com{1_F}}$
   implies $\CC{1_{F/\delta}}{1_{F/\delta}}{0_{F/\delta}}$, where
-  $\delta := \comm{1_F}{1_F}$.
+  $\delta := \com{1_F}$.
 
 \item It is obvious. 
 (We denote this by $\bR \sdp \bF_0 \times \bF_1$.)
@@ -484,30 +484,30 @@ Let $\bF_0 \times \bF_1$ be the product of two copies of $\bF$,
 and let $\bR = \<R, \dots\>  \sdp \bF_0 \times \bF_1$ be the subalgebra generated
 by the set $\{(x, x), (x, y), (y, y)\}$ (as above).
 Recall from Lemma~\ref{lem:preliminary-facts}~(\ref{item:1}) that
-$\com{\Cg^{\bF}(x,y)} = [1_{F},1_{F}]$.  Therefore, if we can prove 
+$\Com{\Cg^{\bF}(x,y)} = [1_{F},1_{F}]$.  Therefore, if we can prove 
 \begin{equation}
   \label{eq:1}
-%% R \cap \bigl(\{y\} \times (x/\com{\Cg^{\bF_1}(x,y)})\bigr) \neq \emptyset.
+%% R \cap \bigl(\{y\} \times (x/\Com{\Cg^{\bF_1}(x,y)})\bigr) \neq \emptyset.
 R \cap \bigl(\{y\} \times (x/[1_{F_1},1_{F_1}])\bigr) \neq \emptyset,
 \end{equation}
-then there is a term $t$ satisfying
+then it will follow that there is a term $t$ satisfying
 \[
 t^{\bF^2}((x,x),(x,y),(y,y)) =\bigl(t^{\bF}(x,x,y), t^{\bF}(x,y,y)\bigr) \in
-\{y\} \times \bigl(x/\com{\Cg^{\bF}(x,y)}\bigr).
+\{y\} \times \bigl(x/\Com{\Cg^{\bF}(x,y)}\bigr).
 %% \{y\} \times \bigl(x/[1_{F_1},1_{F_1}]\bigr).
 \]
-In other words,
+In other terms,
 %% \begin{equation}
 %%   \label{dt2-rel}
-%%   x \comr{\Cg^{\bF}(x,y)} t^{\bF}(x,y,y), \;  \text{ and }
+%%   x \Comr{\Cg^{\bF}(x,y)} t^{\bF}(x,y,y), \;  \text{ and }
 %% \end{equation}
 %% \begin{equation}
 %%   \label{dt2-id}
 %% t^{\bF}(x,x,y) = y.
 %% \end{equation}
-$x \comr{\Cg^{\bF}(x,y)} t^{\bF}(x,y,y)$ and
-$t^{\bF}(x,x,y) = y$, which means that $t$ is a difference term operation when
-interpreted in $\bF$.  So it suffices to prove~(\ref{eq:1}). 
+$(t^{\bF}(x,y,y),x) \in \Com{\Cg^{\bF}(x,y)}$ and
+$t^{\bF}(x,x,y) = y$, which means that $t^{\bF}$ is a difference term operation 
+for $\bF$.  In short, to prove the theorem it suffices to establish~(\ref{eq:1}). 
 
 %% Of course, $[1_F, 1_F]\leq 1_F$ and
 %% Lemma~\ref{lem:preliminary-facts}~(\ref{item:1.5}) dispenses with 
@@ -515,40 +515,42 @@ interpreted in $\bF$.  So it suffices to prove~(\ref{eq:1}).
 %% So, assume $[1_F, 1_F]< 1_F$.
 %% In particular, $(x,y) \notin [1_F, 1_F]$.
 
-%% Now $\com{\Cg^{\bF}(x,y)}$ and $\Cg^{\bF}(x,y)$ are both subalgebras of $\bF^2$
+%% Now $\Com{\Cg^{\bF}(x,y)}$ and $\Cg^{\bF}(x,y)$ are both subalgebras of $\bF^2$
 %% and by idempotence, each class of each of these congruences is a subalgebra of $\bF$.
 %% By Lemma~\ref{lem:preliminary-facts}~(\ref{item:1}) we have 
-%% $\Cg^{\bF}(x,y) = 1_F$ and $\com{\Cg^{\bF}(x,y)} = [1_F,1_F]$, so our assumption
+%% $\Cg^{\bF}(x,y) = 1_F$ and $\Com{\Cg^{\bF}(x,y)} = [1_F,1_F]$, so our assumption
 %% is $[1_F,1_F]< 1_F$.  
 %% Recall from Lemma~\ref{lem:preliminary-facts}~(\ref{item:2}) that the
 %% algebra $\bF/[1_F, 1_F]$ is abelian.
 Observe that $\bR/\etaR_i \cong \bF_i$ for $i \in \{0,1\}$.
 Let $\rho_1 \in \Con(\bR)$ be the congruence
 (above $\etaR_1$) corresponding to $[1_{F_1}, 1_{F_1}]$ via the projection
-homomorphism $\bR \onto \bF_1$.  Then
+homomorphism $\bR \onto \bF_1$.  Thus,
 \[
 \bR/\rho_1 \cong (\bR/\etaR_1)/(\rho_1/\etaR_1) \cong \bF_1/[1_{F_1}, 1_{F_1}],
 \]
-so, by Lemma~\ref{lem:preliminary-facts}~(\ref{item:2}),
-$\bR/\rho_1$ is abelian.  Moreover, $\bR/(\etaR_0\meet \rho_1)$ is a subdirect
+so $\bR/\rho_1$ is abelian
+(by Lemma~\ref{lem:preliminary-facts}~(\ref{item:2})).
+Moreover, $\bR/(\etaR_0\meet \rho_1)$ is a subdirect
 product of $\bR/\etaR_0 \cong \bF_0$ and  
 $\bR/\rho_1 \cong \bF_1/[1_{F_1}, 1_{F_1}]$.  That is,
 \[
 \bR/(\etaR_0\meet \rho_1) \sdp \bF_0\times 
 \bigl(\bF_1/[1_{F_1}, 1_{F_1}]\bigr).
 \]
-Of course, $\tau_0 := \etaR_0/(\etaR_0\meet \rho_1)$ is the kernel of the
-projection of $\bR/(\etaR_0\meet \rho_1)$ onto $\bF_0$, so
-\[
-\bigl(\bR/(\etaR_0\meet \rho_1)\bigr)\bigl(\etaR_0/(\etaR_0\meet \rho_1)\bigr)
-\cong \bR/\etaR_0 \cong \bF_0,
-\]
-and $\tau_1 := \rho_1/(\etaR_0\meet \rho_1)$ is the kernel of the
-projection of $\bR/(\etaR_0\meet \rho_1)$ onto $\bF_1/[1_{F_1},1_{F_1}]$, so
-\[
+Let  $\tau_0 := \etaR_0/(\etaR_0\meet \rho_1)$ be the kernel of the
+projection of $\bR/(\etaR_0\meet \rho_1)$ onto $\bF_0$, and 
+$\tau_1 := \rho_1/(\etaR_0\meet \rho_1)$ the kernel of the
+projection of $\bR/(\etaR_0\meet \rho_1)$ onto $\bF_1/[1_{F_1},1_{F_1}]$.
+Then,
+\begin{align*}
+\bigl(\bR/(\etaR_0\meet \rho_1)\bigr)/\tau_0&=
+\bigl(\bR/(\etaR_0\meet \rho_1)\bigr)/\bigl(\etaR_0/(\etaR_0\meet \rho_1)\bigr)
+\cong \bR/\etaR_0 \cong \bF_0\\
+\bigl(\bR/(\etaR_0\meet \rho_1)\bigr)/\tau_1&=
 \bigl(\bR/(\etaR_0\meet \rho_1)\bigr)/\bigl(\rho_1/(\etaR_0\meet \rho_1)\bigr)
 \cong \bR/\rho_1 \cong \bF_1/[1_{F_1},1_{F_1}].
-\]
+\end{align*}
 Next observe that
 %% Then $\bR/(\rho_0\meet \rho_1)$ is a subdirect product of $\bF_0/[1_{F_0}, 1_{F_0}]$ and 
 %% $\bF_1/[1_{F_1}, 1_{F_1}]$.  That is
@@ -560,40 +562,36 @@ Next observe that
 %% $\bR/(\rho_0\meet \rho_1)$ onto $\bF_i/[1_{F_i}, 1_{F_i}]$, then 
 $\tau_0\join \tau_1 = 1_{R/(\etaR_0\meet \rho_1)}$. (This is clear since
 $\rho_1\geq \eta_1$, so  $\eta_0 \join \rho_1 \geq \eta_0 \join \eta_1 = 1_R$.)
-Thus, by the Absorption Theorem (Theorem~\ref{thm:absorption} below),
+Thus, by the Absorption Theorem (Thm.~\ref{thm:absorption} below),
 exactly one of the following holds:
 \begin{enumerate}
-\item \label{item:6} $\bR/(\eta_0\meet \rho_1) =\bF_0 \times \bigl(\bF_1/[1_{F_1}, 1_{F_1}]\bigr)$;
-\item \label{item:7} $\bF_0$ has a proper nontrivial minimal absorbing subuniverse;
-\item \label{item:8} $\bF_1/[1_{F_1}, 1_{F_1}]$ has a proper
-  nontrivial minimal absorbing subuniverse.
+\item \label{item:7} $\bF_0$ has a proper minimal absorbing subuniverse;
+\item \label{item:8} $\bF_1/[1_{F_1}, 1_{F_1}]$ has a proper minimal
+  absorbing subuniverse; 
+\item \label{item:6} $\bR/(\eta_0\meet \rho_1) =\bF_0 \times \bigl(\bF_1/[1_{F_1}, 1_{F_1}]\bigr)$.
 \end{enumerate}
 
-From this point on, we drop the subscript from $\bF_1$, since it is no longer
-needed to distinguish between the first and second factors of the product.
+From now on we drop the subscript on $\bF_1$, since distinguishing between the
+first and second factors of the product is no longer helpful. 
 
-%% \newcommand{\Fone}{\ensuremath{F_1}}
-%% \newcommand{\bFone}{\ensuremath{\mathbf{F}_1}}
-\newcommand{\Fone}{\ensuremath{F}}
-\newcommand{\bFone}{\ensuremath{\mathbf{F}}}
 
-If~(\ref{item:6}), then we're done since, in that case,
+If~(\ref{item:6}) holds, then we're done since in that case
 $(y, x/[1_{\Fone},1_{\Fone}]) \in R/(\etaR_0 \meet \rho_1)$,
-which implies $(y, z) \in R$ for some $z \comm{1_{\Fone}}{1_{\Fone}} x$.
+which implies $(y, z) \in R$ for some $z \comr{1_{\Fone}} x$.
 That is, (\ref{eq:1}) holds.
 We can rule out case~(\ref{item:8}) because $\bFone/[1_{\Fone}, 1_{\Fone}]$ is abelian and
-is therefore absorption free (see~\cite{MR3374664}),  %% and~\cite{Bergman-DeMeo}.)
-so $\Fone/[1_{\Fone}, 1_{\Fone}]$ is the minimal absorbing subuniverse of $\bFone/[1_{\Fone}, 1_{\Fone}]$.
+is therefore absorption free (see~\cite{MR3374664}).  %% and~\cite{Bergman-DeMeo}.)
+%% so $\Fone/[1_{\Fone}, 1_{\Fone}]$ is the minimal absorbing subuniverse of $\bFone/[1_{\Fone}, 1_{\Fone}]$.
 
 
 We are left with case~(\ref{item:7}).
-Let $B_0$ be a minimal absorbing subuniverse of $\bF_0$.
+Let $B_0$ be a proper minimal absorbing subuniverse of $\bF_0$.
 Then the product algebra $\bB_0\times \bigl(\bFone/[1_{\Fone}, 1_{\Fone}]\bigr)$ is
 absorbtion free.
 Since $\bR/(\etaR_0 \meet \rho_1)$ is subdirect, the intersection
 $R/(\etaR_0 \meet \rho_1) \cap \bigl(B_0 \times (\Fone/[1_{\Fone}, 1_{\Fone}])\bigr)$ is
-non-empty. Therefore, by the Absorption Theorem (Thm.~\ref{thm:absorption}
-below), together with~\cite[Lemmas~4.7, 4.9, 4.11, 4.12]{Bergman-DeMeo-2016},
+non-empty. Therefore, by the Absorption Theorem (Thm.~\ref{thm:absorption}),
+together with~\cite[Lemmas~4.7, 4.9, 4.11, 4.12]{Bergman-DeMeo-2016},
 we have
 \begin{equation}
   \label{eq:2}
@@ -608,24 +606,12 @@ B_0 \times \bigl(\Fone/[1_{\Fone}, 1_{\Fone}]\bigr) \subseteq R/(\etaR_0 \meet \
 We split the remainder of the proof into two subcases.\\
 \\
 \noindent \underline{Subcase 1: $y\in B_0$}\\[5pt]
-In this case we're done, since $y\in B_0$ together with (\ref{eq:2}) imply
+In this case we're done, since (\ref{eq:2}) implies
 %% $\bB_0 \times \Fone/[1_{\Fone}, 1_{\Fone}] \subseteq \bR/(\etaR_0 \meet \rho_1)$,
 ${y} \times \bigl(x/[1_{\Fone}, 1_{\Fone}]\bigr) \in R$.\\
 \\
 \noindent \underline{Subcase 2: $y\notin B_0$}\\[5pt]
 
-
-
-\bigskip
-
-\bigskip
-
-That $\bR/\rho_1 \cong \bFone/[1_{\Fone},1_{\Fone}]$ is abelian means
-$\CC{1_{R/\rho_1}}{1_{R/\rho_1}}{0_{R/\rho_1}}$ holds, and this is equivalent to
-$\CC{1_R}{1_R}{\rho_1}$. By a result of Kearnes and Kiss
-(Thm.~\ref{thm:kearnes-kiss-3.27} below), the latter
-holds if and only if $\CC{\etaR_0}{\etaR_0}{\etaR_0\meet \rho_1}$.
-It follows that $[\etaR_0, \etaR_0]\leq \etaR_0 \meet \rho_1$.
 \bigskip
 
 \noindent TODO: finish proof!!!
@@ -633,8 +619,100 @@ It follows that $[\etaR_0, \etaR_0]\leq \etaR_0 \meet \rho_1$.
 \vfill
 
 \end{proof}
+\newpage
 
-\pagebreak
+\subsection{Other observations that might be helpful}
+That $\bR/\rho_1 \cong \bFone /[1_{\Fone},1_{\Fone}]$ is abelian means
+$\CC{1_{R/\rho_1}}{1_{R/\rho_1}}{0_{R/\rho_1}}$ holds, and this is equivalent to
+$\CC{1_R}{1_R}{\rho_1}$. By a result of Kearnes and Kiss
+(Thm.~\ref{thm:kearnes-kiss-3.27} below), the latter
+holds if and only if $\CC{\etaR_0}{\etaR_0}{\etaR_0\meet \rho_1}$.
+It follows that $[\etaR_0, \etaR_0]\leq \etaR_0 \meet \rho_1$.
+\bigskip
+
+Let's see if we can at least prove something useful in the following special
+case: Suppose
+\[
+\bF:= \bF_{\bbV(\bA)}(x,y) \sdp \bA_0 \times \bA_1 \times \bA_2
+\]
+where $\bA_i = \Sg^{\bA}(a_i, b_i)$ for each $i\in \{0,1,2\}$.
+Suppose also that $d$ is a
+difference term operation when interpreted in $\bA_i$ for each 
+$i\in \{0,1,2\}$, and $d$ is also a difference term operation when interpreted in
+$\bA_i\times \bA_j$ for all $i \neq j$ in $\{0,1,2\}$.
+Under these conditions, we will try to prove that $d$ is a difference term when
+interpreted in $\bF$.
+
+Let $\bx = (a_0,a_1,a_2)$ and $\by = (b_0,b_1,b_2)$ be the generators of $\bF$.
+Then (I think) we can assume without loss of generality that $a_i$ and $b_i$ are
+the generators of $\bA_i$ (TODO: check this!).
+
+\bigskip
+
+Recall from Lemma~\ref{lem:preliminary-facts}~(\ref{item:1}) that
+$\Cg^{\bF}(\bx, \by) = F\times F = 1_F$ and
+$\Cg^{\bA_i}(a_i, b_i) = A_i \times A_i = 1_{A_i}$.
+It's clear that $d^{\bF}$ satisfies the strong difference term identity, so 
+our goal is to prove that $d^{\bF}$ also satisfies the weak difference term relation,
+\begin{equation}
+  \label{eq:3}  
+  d^{\bF}(\bx, \by, \by) \comr{1_F} \bx.
+\end{equation}
+This is equivalent to the relation
+\begin{equation}
+  \label{eq:4}
+\bigl(d^{\bA_0}(a_0, b_0, b_0), d^{\bA_1}(a_1, b_1, b_1), d^{\bA_2}(a_2, b_2, b_2)\bigr)
+ \comr{1_F} (a_0, a_1, a_2)
+\end{equation}
+Note that~(\ref{eq:4}) is stronger than the relation 
+\begin{equation}
+  \label{eq:5}
+\bigl(d^{\bA_0}(a_0, b_0, b_0), d^{\bA_1}(a_1, b_1, b_1), d^{\bA_2}(a_2, b_2, b_2)\bigr)
+\comr{1_{A_0\times A_1\times A_2}} (a_0, a_1, a_2)
+\end{equation}
+because $\bF$ is  a subalgebra of $\bA_0\times \bA_1 \times \bA_2$, so 
+$\com{1_F} \subseteq \com{1_{A_0\times A_1\times A_2}}$.
+Certainly, if (\ref{eq:5}) fails to hold, then so does (\ref{eq:4}),
+equivalently (\ref{eq:3}). Hence
+(\ref{eq:5}) is a necessary but not sufficient condition for (\ref{eq:3}).
+\bigskip
+
+By assumption, 
+$d^{\bA_i}(a_i, b_i, b_i) \comr{1_{A_i}} a_i$,
+for each $i \in \{0,1,2\}$.
+We also assumed that
+\[
+\bigl(d^{\bA_i}(a_i, b_i, b_i), d^{\bA_j}(a_j, b_j, b_j)\bigr)
+=d^{\bA_i\times \bA_j}\bigl((a_i, a_j), (b_i,b_j), (b_i, b_j)\bigr)
+\comr{1_{A_i\times A_j}} (a_i, a_j).
+\]
+for all $i\neq j$ in $\{0,1,2\}$.
+Therefore,
+\[
+\bigl(d^{\bA_0\times \bA_1}((a_0, a_1), (b_0,b_1), (b_0, b_1)),
+d^{\bA_2}(a_2, b_2,b_2)\bigr)
+\mathrel{\com{1_{A_0\times A_1}} \times \com{1_{A_2}}}
+\bigl((a_0, a_1),a_2\bigr).
+\]
+and 
+\[
+\bigl(d^{\bA_0}(a_0, b_0, b_0), d^{\bA_1\times \bA_2}((a_1, a_2), (b_1,b_2), (b_1, b_2))\bigr)
+\mathrel{\com{1_{A_0}} \times \com{1_{A_1\times A_2}}} \bigl(a_0, (a_1, a_2)\bigr).
+\]
+
+\bigskip
+\renewcommand{\phi}{\ensuremath{\varphi}}
+For each $i\in \{0,1,2\}$, let $\etaR_i = \ker(\bF \onto \bA_i)$ be the kernel of
+the projection of $\bF$ onto the $i$-th coordinate.  Then
+$\bF/\etaR_i \cong \bA_i$ and by the correspondence theorem there exists
+$\phi_i\in \Con\bF$ corresponding to $\com{1_{A_i}} \in \Con \bA_i$
+such that 
+\[
+\bF/\phi_i \cong
+\bigl(\bF/\etaR_i\bigr)\bigl(\phi_i/\etaR_i\bigr)
+\cong \bA_i/\com{1_{A_i}}.
+\]
+\newpage
 
 \bibliographystyle{alphaurl}
 \bibliography{inputs/refs2.bib}
