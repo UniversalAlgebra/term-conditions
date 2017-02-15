@@ -1,0 +1,173 @@
+%% FILE: com-fix-poi.tex
+%% AUTHORS: William DeMeo
+%% DATE: 14 Feb 2017
+%% COPYRIGHT: (C) 2017 William DeMeo
+\documentclass[11pt]{amsart}
+% The following \documentclass options may be useful:
+% preprint      Remove this option only once the paper is in final form.
+% 10pt          To set in 10-point type instead of 9-point.
+% 11pt          To set in 11-point type instead of 9-point.
+% numbers       To obtain numeric citation style instead of author/year.
+
+%% \usepackage{setspace}\onehalfspacing
+
+\usepackage{amsmath}
+\usepackage{amscd,amssymb,amsthm} %, amsmath are included by default
+\usepackage{latexsym,stmaryrd,mathrsfs,enumerate,scalefnt,ifthen}
+\usepackage{mathtools}
+\usepackage[mathcal]{euscript}
+\usepackage[colorlinks=true,urlcolor=black,linkcolor=black,citecolor=black]{hyperref}
+\usepackage{url}
+\usepackage{scalefnt}
+\usepackage{tikz}
+\usepackage{color}
+\usepackage[margin=1in]{geometry}
+\usepackage{scrextend}
+
+%%////////////////////////////////////////////////////////////////////////////////
+%% Theorem styles
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{prop}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{Fact}[theorem]{Fact}
+\newtheorem*{fact}{Fact}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{examples}[theorem]{Examples}
+\newtheorem{exercise}{Exercise}
+\newtheorem*{lem}{Lemma}
+\newtheorem*{cor}{Corollary}
+\newtheorem*{remark}{Remark}
+\newtheorem*{remarks}{Remarks}
+\newtheorem*{obs}{Observation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Acronyms
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \usepackage[acronym, shortcuts]{glossaries}
+%\usepackage[smaller]{acro}
+\usepackage[smaller]{acronym}
+\usepackage{xspace}
+
+%% \acs{CSP} -- short version of the acronym\\
+%% \acl{CSP} -- expanded acronym without mentioning the acronym.\\
+%% \acp{CSP} -- plurals.\\
+%% \acfp{CSP} -- long forms into plurals.\\
+%% \acsp{CSP} -- short form into a plural.\\
+%% \aclp{CSP} -- long form into a plural.\\
+%% \acfi{CSP} -- Full Name acronym in italics and abbreviated form in upshape.\\
+%% \acsu{CSP} -- short form of the acronym and marks it as used.\\
+%% \aclu{CSP} -- Prints the long form of the acronym and marks it as used.\\
+
+\acrodef{lics}[LICS]{Logic in Computer Science}
+\acrodef{sat}[SAT]{satisfiability}
+\acrodef{nae}[NAE]{not-all-equal}
+\acrodef{ctb}[CTB]{cube term blocker}
+\acrodef{tct}[TCT]{tame congruence theory}
+\acrodef{wnu}[WNU]{weak near-unanimity}
+\acrodef{CSP}[CSP]{constraint satisfaction problem}
+\acrodef{MAS}[MAS]{minimal absorbing subuniverse}
+\acrodef{MA}[MA]{minimal absorbing}
+\acrodef{cib}[CIB]{commutative idempotent binar}
+\acrodef{sd}[SD]{semidistributive}
+\acrodef{NP}[NP]{nondeterministic polynomial time}
+\acrodef{P}[P]{polynomial time}
+\acrodef{PeqNP}[P $ = $ NP]{P is NP}
+\acrodef{PneqNP}[P $ \neq $ NP]{P is not NP}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% \usepackage{inputs/proof-dashed}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Put new macros in the macros.sty file
+\usepackage{inputs/macros}
+
+\begin{document}
+
+\title[Commutator as Fixed Point]{The Commutator as Fixed Point of a Closure Operator}
+\date{\today}
+% \author[W.~DeMeo]{William DeMeo}
+\address{University of Hawaii}
+\email{williamdemeo@gmail.com}
+
+%% \thanks{The authors would like to extend special thanks to...}
+
+\maketitle
+
+\renewcommand{\etaR}{\ensuremath{\eta}}
+
+%% \begin{abstract}
+%% This note provides some tools that should enable us to prove
+%% the following: if $\bA$ is a finite idempotent algebra with a
+%% difference term operation, then the 2-generated free algebra in $\bbV(\bA)$ has
+%% a difference term operation.  
+%% \end{abstract}
+
+\section{Definitions}
+\label{sec:defs}
+For an algebra $\bA$ with congruence relations $\alpha$, $\beta\in \Con\bA$, we 
+let $\bA \times_\beta \bA$ denote the set $\beta$ when we wish to emphasize
+the fact that $\beta$ is a subalgebra of $\bA\times \bA$.
+Let $D = \{(a,a) \mid a\in A\}$ and let
+\[\Delta_{\beta, \alpha} = \Cg^{\bA\times_\beta \bA}\{((a,a),(b,b))\in D^2 \mid a \alphar b\}.\]
+Let $\Phi_{\beta, \alpha} \colon \sP(A\times A) \to \sP(A\times A)$ be defined as
+follows: for every $G \subseteq A\times A$,
+\begin{equation}
+  \label{eq:6}
+\Phi_{\beta, \alpha}(G) = \{(x,y) \in A^2 \mid  (\exists (c,d) \in G) \;
+(x,x) \mathrel{\Delta_{\beta, \alpha}} (c,c) \text{ and }
+(d,d) \mathrel{\Delta_{\beta, \alpha}} (y,y)\}.
+\end{equation}
+%% \newcommand{\Phiba}{\ensuremath{\Phi_{\beta, \alpha}}}
+\newcommand{\Phiba}{\ensuremath{\Phi}}
+\section{Fixed Point Lemma}
+\begin{lemma} Let $\bA$ be an algebra with $\alpha$, $\beta\in \Con(\bA)$.
+  If $\Phi:=\Phi_{\beta, \alpha}$ is defined as in~(\ref{eq:6}), then 
+  \begin{enumerate}[(i)]
+  \item $\Phiba$ is a closure operator on $\sP(A\times A)$;
+  \item $[\alpha, \beta]$ is the least fixed point of $\Phiba$.
+  \end{enumerate}
+\end{lemma}
+\begin{proof}\ 
+  \begin{enumerate}[(i)]
+  \item Fix $G \subseteq A \times A$. We must prove the following:
+    (a) $G \subseteq \Phiba(G)$;    
+    (b) $G \subseteq H  \Rightarrow \Phiba(G) \subseteq \Phiba(H)$;    
+    and (c) $\Phiba(\Phiba(G))  = \Phiba(G)$.    
+    If $(a,b) \in G$, then $(a,b) \in \Phiba(G)$ since
+    $(a,a) \mathrel{\Delta_{\beta, \alpha}} (a,a)$ and
+    $(b,b) \mathrel{\Delta_{\beta, \alpha}} (b,b)$. Thus (a) holds.
+    %% Thus, $G \subseteq \Phiba(G)$ proving~(\ref{item:1}).
+    As for (b), if $(x,y) \in \Phiba(G)$, then there exists
+    $(c,d) \in G \subseteq H$ such that $(x,x) \mathrel{\Delta_{\beta, \alpha}} (c,c)$
+    and $(d,d) \mathrel{\Delta_{\beta, \alpha}} (y,y)$. Since
+    $(c,d)$ also belongs to $H$ we have $(x,y) \in \Phiba(H)$ as well.
+    Finally, (c) is obvious since
+    $\Delta_{\beta, \alpha} \circ \Delta_{\beta, \alpha} = \Delta_{\beta, \alpha}$.
+
+    \bigskip
+
+  \item ???
+    
+  \end{enumerate}
+
+  \vfill
+  
+\end{proof}
+\end{document}
+
+\bibliographystyle{alphaurl}
+\bibliography{inputs/refs2.bib}
+
+\end{document}
