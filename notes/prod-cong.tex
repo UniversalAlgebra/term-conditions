@@ -121,7 +121,7 @@ MRREVIEWER = {James B. Nation},
 
 \usepackage{amsmath}
 \usepackage{amscd,amssymb,amsthm} %, amsmath are included by default
-\usepackage{latexsym,mathrsfs,enumerate,scalefnt,ifthen}
+\usepackage{latexsym,mathrsfs,enumerate,ifthen}
 \usepackage{stmaryrd}
 \SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
 \usepackage{mathtools}
@@ -131,8 +131,10 @@ MRREVIEWER = {James B. Nation},
 \usepackage{scalefnt}
 \usepackage{tikz}
 \usepackage{color}
+\usetikzlibrary{calc}
 \usepackage[margin=1in]{geometry}
 \usepackage{scrextend}
+\usepackage{comment}
 
 %%////////////////////////////////////////////////////////////////////////////////
 %% Theorem styles
@@ -695,9 +697,9 @@ ${y} \times \bigl(x/[1_{\Fone}, 1_{\Fone}]\bigr) \in R$.\\
 %-------------------------------------------------
 \subsection{A special case}
 Let $\bA$ be a finite idempotent algebra, let $\sV = \bbV(\bA)$, and let
-\[\bF:= \bF_{\sV}(\bx,\by) \sdp \bA_0 \times \bA_1 \times \cdots \times \bA_{n-1},\]
+\[\bF= \bF_{\sV}(\bx,\by) \sdp \bA_0 \times \bA_1 \times \cdots \times \bA_{n-1},\]
 where $n \leq |A|^2$ and each $\bA_i$ is a 2-generated subalgebra of $\bA$.
-Let $\bR := \Sg^{\bF^2} \{(\bx, \bx), (\bx, \by), (\by, \by)\}$,
+Let $\bR = \Sg^{\bF^2} \{(\bx, \bx), (\bx, \by), (\by, \by)\}$,
 and recall that $\bR$ is a subdirect product of $\bF \times \bF$.
 
 Let's see what we can prove under the following
@@ -948,6 +950,186 @@ such that
 
 % \newpage
 \appendix
+
+\section{Product Congruences}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% include file
+It is important, especially in this section, to be clear about what we mean
+by the product of two equivalence relations.
+Let $A$ and $B$ be sets and let $\alpha \in \Eq(A)$ and $\beta \in \Eq(B)$
+be equivalence relations on $A$ and $B$, respectively.
+We denote by $\alpha \otimes \beta$ the \emph{pairwise product} relation,
+which we define as follows:
+\begin{equation}
+\label{eq:pair-product}
+\alpha \otimes \beta = \{\bigl((a, b), (a', b')\bigr) 
+\in (A\times B)^2 \mid a\mathrel{\alpha} a', \, b\mathrel{\beta} b'\}.
+\end{equation}
+In contrast, the Cartesian product of $\alpha$ and $\beta$ is 
+\begin{equation}
+\label{eq:set-product}
+\alpha \times \beta = \{\bigl((a, a'), (b, b')\bigr) 
+\in A^2\times B^2 \mid a\mathrel{\alpha} a', \, b\mathrel{\beta} b'\}.
+\end{equation}
+
+Notice that $\alpha \otimes \beta$ defines an equivalence relation on the set
+$A\times B$, whereas $\alpha\times \beta$ is generally
+not even a binary relation on a set.
+The equivalence class of $\alpha \otimes \beta$ containing the pair
+$(a, b)$ is % \in A\times B$ is
+  \[(a,b)/(\alpha \otimes \beta) = a/\alpha \times b/\beta= 
+    \{(a', b') \in A\times B \mid a\mathrel{\alpha} a', \, b\mathrel{\beta} b'\},
+    \]
+This is simply the Cartesian product of the sets $a/\alpha$ and $b/\beta$.
+The collection of all such equivalence classes is also a Cartesian product, namely,
+\[
+(A\times B)/(\alpha \otimes \beta) =
+A/\alpha \times B/\beta  = \{(a, b)/(\alpha \otimes \beta) \mid a\in A,\,b \in B\}.\]
+%% \begin{remarks}\
+%%   \begin{enumerate}
+%%   \item The equivalence relations $\alpha$ and $\beta$ are subsets
+%%     of $A^2$ and $B^2$, respectively, so it might seem more natural to interpret 
+%%     $\alpha \times \beta$ as a subset of $A^2 \times B^2$. Nonetheless, in this 
+%%     context it is usually more convenient to arrange the coordinates 
+%%     so that $\alpha \times \beta \subseteq (A \times B)^2$, as in
+%%     item~(\ref{item:9}).
+%%   \end{enumerate}
+%% \end{remarks}
+
+\bigskip
+
+
+Let $\alg{L}$ be a sublattice of the lattice $\Eq(A)$ of all
+equivalence relations on a finite set $A$.  Fix $\alpha \in L$ and consider 
+the lattice $\Eq(\alpha)$ of equivalence relations on
+$\alpha\subseteq A^2$.  The bottom and top elements of $\Eq(\alpha)$
+are, respectively, 
+\[
+0_\alpha = \{\bigl((x, y), (x, y)\bigr) \mid x \mathrel{\alpha} y \},
+%% 0_\alpha = \{\bigl((a_0, a_1), (a_0, a_1)\bigr) \mid a_0 \mathrel{\alpha} a_1 \},
+\quad
+%% 1_\alpha = \{\bigl((a_0, a_1), (a_0', a_1')\bigr) \mid a_0 \mathrel{\alpha} a_1, \, 
+%% a_0' \mathrel{\alpha} a_1' \} = \alpha \times \alpha.
+1_\alpha = \{\bigl((u, v), (x, y)\bigr) \mid u \mathrel{\alpha} v, \, 
+x \mathrel{\alpha} y \} = \alpha \times \alpha.
+\]
+%% The latter is simply the cartesian square of $\alpha$,
+%% \[
+%% \alpha^2 = \{((x, y), (u, v)) \in A^2 \times A^2: x \mathrel{\alpha} y \text{ and } u \mathrel{\alpha} v \}.
+%% \]
+
+\noindent For each $\beta \in L$, define the following equivalence relations on $\alpha$:
+\[
+\beta_0 = \{\bigl((u, v), (x, y)\bigr) \in \alpha\times \alpha \mid u \betar x\}
+= \{\bigl((u, v), (x, y)) \mid v\mathrel{\alpha} u \mathrel{\beta} x \mathrel{\alpha} y\};
+\]
+\[
+\beta_1 = \{\bigl((u, v), (x, y)\bigr) \in \alpha\times \alpha \mid v \betar y\}
+= \{\bigl((u, v), (x, y)\bigr) \mid u\mathrel{\alpha} v \mathrel{\beta} y \mathrel{\alpha} x\}.
+\]
+We make the following important exception to these notational conventions:
+when it comes to the least equivalence relation, $0_A = \{(a,a)\mid a\in A\}$,
+instead of writing $(0_A)_0$ and $(0_A)_1$ for the first and second projection kernels,
+we will denote these realtions by $\eta_0$ and $\eta_1$, respectively; that is, 
+\[
+\eta_0 = \{ \bigl((u, v), (x, y)\bigr) \in \alpha \times \alpha \mid u = x\} = 
+\{ \bigl((u,v), (x,y)\bigr) \mid v \mathrel{\alpha} u = x \mathrel{\alpha} y\};
+\]
+\[
+\eta_1 = \{ \bigl((u, v), (x, y)\bigr) \in \alpha \times \alpha \mid v = y\} = 
+\{ \bigl((u, v), (x, y)\bigr) \mid u \mathrel{\alpha} v = y \mathrel{\alpha} x\}.
+\]
+
+Notice that $\alpha_0 = \alpha_1$ since
+%% \begin{align*}
+%% \alpha_0 &= \{((x,y), (u,v)) \in \alpha^2 : (x, u) \in \alpha\}\\
+%% &= \{((x,y), (u,v)) : y \mathrel{\alpha} x \mathrel{\alpha} u \mathrel{\alpha} v\}\\
+%% & = \{((x,y), (u,v)) : x \mathrel{\alpha} y \mathrel{\alpha} v \mathrel{\alpha} u\} = \alpha_1.
+%% \end{align*}
+\[
+\alpha_0  
+= \{\bigl((u,v), (x,y)\bigr) \mid v \mathrel{\alpha} u \mathrel{\alpha} x \mathrel{\alpha} y\}
+ = \{\bigl((u,v), (x,y)\bigr) \mid u \mathrel{\alpha} v \mathrel{\alpha} y \mathrel{\alpha} x\} = \alpha_1.
+\]
+In fact, for each $\gamma \geq \alpha$ we have  $\gamma_0 = \gamma_1$. Indeed,
+\begin{align*}
+\gamma_0 &= \{\bigl((u,v), (x,y)\bigr) \in \alpha\times \alpha \mid u \gammar x\}
+= \{\bigl((u,v), (x,y)\bigr) \mid y \alphar x \gammar u \alphar v\}\\
+&= \{\bigl((u,v), (x,y)\bigr) \in \alpha \times \alpha \mid v \gammar u \gammar x \gammar y\} 
+\qquad \text{(assuming $\gamma \geq \alpha$)}\\
+& = \{\bigl((u,v),(x,y)\bigr) \in \alpha\times \alpha \mid v \gammar y \} = \gamma_1.
+\end{align*}
+
+\medskip
+
+\noindent Let $\alg{K}_\alpha$ be the sublattice of $\Eq(\alpha)$ generated by the set 
+$X = \{\beta_i \mid \beta \in L, i = 0, 1\}$.
+%% of all such $\beta_i$'s.
+In $X$ there is a pair $\beta_0$, $\beta_1$ for each $\beta \in L$.
+
+\begin{figure}[h!]
+  \centering
+{\scalefont{1}
+\begin{tikzpicture}[scale=0.5]
+  \node (eta0) at (-4,0) [fill,circle,inner sep=1.2pt] {};
+  \node (eta1) at (4,0) [fill,circle,inner sep=1.2pt] {};
+  \node (alpha2) at (0,3) [fill,circle,inner sep=1.2pt] {};
+  \node (1) at (0,6) [fill,circle,inner sep=1.2pt] {};
+  \node (K0) at (-4,3) [fill,circle,inner sep=1.2pt] {};
+  \node (K1) at (4,3) [fill,circle,inner sep=1.2pt] {};
+  \node (0) at (0,-3) [fill,circle,inner sep=1.2pt] {};
+%\draw (eta0) node [left] {$\eta_0$};
+\draw (eta0) node [left] {$\eta_0$};
+%\draw (eta1) node [right] {$\eta_1$};
+\draw (eta1) node [right] {$\eta_1$};
+\draw (K0) node [left] {$\beta_0$};
+\draw (K1) node [right] {$\beta_1$};
+\draw (1) node [above] {$1_\alpha$};
+\draw (0) node [below] {$0_\alpha$};
+\draw (alpha2) node [below] {$\alpha_0 = \alpha_1$};
+
+\draw[dotted]
+  (eta0) to (K0) to (1) to (K1) to (eta1);
+\draw[dotted]
+  (alpha2) to (1);
+\draw[dotted]
+  (0) to (eta0) to (alpha2) to (eta1) to (0);
+
+\end{tikzpicture}
+}
+\caption{Some relations in the lattice $\Eq(\alpha)$.}
+\label{fig:1}
+\end{figure}
+
+
+\medskip
+
+
+\begin{prop}
+Let $\alg{A}$ be a finite algebra with
+congruence lattice $\alg{L}$, and let $\alpha \in L$.
+In the sublattice $\alg{K}_\alpha \leq \Eq(\alpha)$ described above, 
+the intervals $\lb \eta_0, 1_\alpha\rb$ and
+$\lb \eta_1, 1_\alpha\rb$ are isomorphic to $\alg{L}$.
+\end{prop}
+
+\begin{proof}
+Let $\alg{A}$ be an algebra on $A$ with congruence
+lattice $\alg{L}$. 
+Recall that $\alg{L} = \Eq(A) \cap \Sub(\alg{A}^2)$, so each $\alpha\in L$ is, in
+particular, a subalgebra of $\alg{A}^2$.  
+
+Fix $\alpha \in L$, and define the function
+$\varphi:\alpha \rightarrow A$ by $\varphi((x, y)) = x$, for all 
+$(x,y) \in \alpha$. Then, $\varphi$ is clearly an epimorphism from $\balpha$ to
+$\alg{A}$ with kernel $\eta_0$, so the correspondence theorem yields
+$\operatorname{Con}(\balpha/\eta_0) \cong \alg{L}$.
+Finally, note that $\operatorname{Con}(\balpha/\eta_0)$ is precisely the interval
+above $\eta_0$ in the sublattice $\alg{K}_\alpha$ of $\Eq(\alpha)$.
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% end include
+
 
 \section{Miscellaneous Theorems}
 We collect here the statement and proofs of results that we used above but whose
@@ -1421,39 +1603,6 @@ $\bA$ has a proper absorbing subuniverse, or $\bB$ has a proper absorbing subuni
 \bigskip
 
 \section{Odds and Ends}
-Before proving the next result, it will be helpful to review some standard
-notation that is useful when dealing with products of quotients.  
-Let $A$ and $B$ be sets and let $\alpha$ and $\beta$ be equivalence relations on
-$A$ and $B$, respectively.
-% Let $\alpha\in \Con\bA$
-% and $\beta$ be congruences of $\bA$ and 
-% $\bB$ (or, more generally, equivalence relations on $A$ and $B$).
-% Let $a\in A$ and $b\in B$.
-\begin{enumerate}[(1)]
-\item \label{item:9}
-  $\alpha \times \beta = \{\bigl((a, b), (a', b')\bigr) 
-  \in (A\times B)^2 \mid a\mathrel{\alpha} a', \, b\mathrel{\beta} b'\}$.
-  \smallskip
-\item \label{item:10}
-  For all $a\in A$, $b\in B$, 
-  \[(a,b)/(\alpha \times \beta) = a/\alpha \times b/\beta= 
-    \{(a', b') \in A\times B \mid a\mathrel{\alpha} a', \, b\mathrel{\beta} b'\}.
-  \]
-\item \label{item:11}
-  $(A\times B)/(\alpha \times \beta) = \{(a, b)/\alpha \times \beta \mid a\in A,\,b \in B\}$.
-\end{enumerate}
-\begin{remarks}\
-  \begin{enumerate}
-  \item The equivalence relations $\alpha$ and $\beta$ are subsets
-    of $A^2$ and $B^2$, respectively, so it might seem more natural to interpret 
-    $\alpha \times \beta$ as a subset of $A^2 \times B^2$. Nonetheless, in this 
-    context it is usually more convenient to arrange the coordinates 
-    so that $\alpha \times \beta \subseteq (A \times B)^2$, as in
-    item~(\ref{item:9}).
-  \end{enumerate}
-\end{remarks}
-
-\bigskip
 
 \subsection{Skew congruences of idempotent algebras}
 Let $\sV$ be a variety and let $\bA$ and $\bB$ be idempotent
