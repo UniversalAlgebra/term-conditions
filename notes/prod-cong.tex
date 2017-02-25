@@ -652,36 +652,83 @@ is therefore absorption free
 
 
 We are left with case~(\ref{item:7}).
-Let $B_0$ be a proper minimal absorbing subuniverse of $\bF_0$.
-Then the product algebra $\bB_0\times \bigl(\bFone/[1_{\Fone}, 1_{\Fone}]\bigr)$ is
+Let $B$ be a proper minimal absorbing subuniverse of $\bF_0$.
+Then the product algebra $\bB\times \bigl(\bFone/[1_{\Fone}, 1_{\Fone}]\bigr)$ is
 absorbtion free.
 Since $\bR/(\etaR_0 \meet \rho_1)$ is subdirect, the intersection
-$R/(\etaR_0 \meet \rho_1) \cap \bigl(B_0 \times (\Fone/[1_{\Fone}, 1_{\Fone}])\bigr)$ is
+$R/(\etaR_0 \meet \rho_1) \cap \bigl(B \times (\Fone/[1_{\Fone}, 1_{\Fone}])\bigr)$ is
 non-empty. Therefore, by the Absorption Theorem (Thm.~\ref{thm:absorption}),
 together with~\cite[Lemmas~4.7, 4.9, 4.11, 4.12]{Bergman-DeMeo-2016},
 we have
 \begin{equation}
   \label{eq:2}
-%% \bR/(\etaR_0 \meet \rho_1) \cap \bB_0 \times \Fone/[1_{\Fone}, 1_{\Fone}]
-  %% = \bB_0 \times \Fone/[1_{\Fone}, 1_{\Fone}].
-B_0 \times \bigl(\Fone/[1_{\Fone}, 1_{\Fone}]\bigr) \subseteq R/(\etaR_0 \meet \rho_1).
-%% R/(\etaR_0 \meet \rho_1) \cap B_0 \times \Fone/[1_{\Fone}, 1_{\Fone}]
-%% = \bB_0 \times \Fone/[1_{\Fone}, 1_{\Fone}].
+%% \bR/(\etaR_0 \meet \rho_1) \cap \bB \times \Fone/[1_{\Fone}, 1_{\Fone}]
+  %% = \bB \times \Fone/[1_{\Fone}, 1_{\Fone}].
+B \times \bigl(\Fone/[1_{\Fone}, 1_{\Fone}]\bigr) \subseteq R/(\etaR_0 \meet \rho_1).
+%% R/(\etaR_0 \meet \rho_1) \cap B \times \Fone/[1_{\Fone}, 1_{\Fone}]
+%% = \bB \times \Fone/[1_{\Fone}, 1_{\Fone}].
 \end{equation}
 %% This follows from 
 
 We split the remainder of the proof into two subcases.\\
 \\
-\noindent \underline{Subcase 1: $y\in B_0$}\\[5pt]
+\noindent \underline{Subcase 1:} ($y\in B$)\\[5pt]
 In this case we're done, since (\ref{eq:2}) implies
-%% $\bB_0 \times \Fone/[1_{\Fone}, 1_{\Fone}] \subseteq \bR/(\etaR_0 \meet \rho_1)$,
+%% $\bB \times \Fone/[1_{\Fone}, 1_{\Fone}] \subseteq \bR/(\etaR_0 \meet \rho_1)$,
 ${y} \times \bigl(x/[1_{\Fone}, 1_{\Fone}]\bigr) \in R$.\\
 \\
-\noindent \underline{Subcase 2: $y\notin B_0$}\\[5pt]
+\noindent \underline{Subcase 2:} ($x\in B$)\\[5pt]
+In this case, we have $x \in B \minabsorbing \bF$, so instead of $\bR$ we
+consider $\bR' = \Sg^{\bF^2}\{(y,y), (y,x), (x,x)\}$. We wish to show that there
+is a term $t$ satisfying
+\[
+t^{\bR'}\bigl((y,y), (y,x), (x,x)\bigr) =
+\bigl(t^{\bF}(y,y,x), t^{\bF}(y,x,x)\bigr) \in \{x\} \times \bigl(y/[1_F, 1_F]\bigr).
+\]
+Applying (\ref{eq:2}) again, we have
+${x} \times \bigl(y/[1_{\Fone}, 1_{\Fone}]\bigr) \in R'$.\\
+%% Or, consider
+%% \[
+%% d^{\bR'}\bigl((x,x), (y,x), (y,y)\bigr) =
+%% \bigl(d^{\bF}(x,y,y), d^{\bF}(x,x,y)\bigr) \in x/[1_F, 1_F] \times \{y\}.
+%% \]
 
-\bigskip
+\noindent \underline{Subcase 3:} ($x\notin B$ and $y\notin B$)\\[5pt]
+\vskip1cm
 
 \noindent TODO: finish proof!!!
+
+  \tikzstyle{lat} = [circle,draw,inner sep=0.8pt]
+  \begin{center}
+  \begin{figure}
+    \caption{The subdirect product $\mathbf R = \Sg^{\bF^2}\{(x,x), (x,y), (y,y)\}$.}
+  \begin{tikzpicture}[scale=1]
+    \draw (0,.5) ellipse (4mm and 12mm);
+    \draw (2,.5) ellipse (4mm and 12mm);
+    %% \draw (4,.5) ellipse (4mm and 12mm);
+    \node[lat] (00) at (0,0) {};
+    \node[lat] (01) at (0,1) {};
+    \node[lat] (10) at (2,0) {};
+    \node[lat] (11) at (2,1) {};
+    %% \node[lat] (20) at (4,0) {};
+    %% \node[lat] (21) at (4,1) {};
+    \draw (00) node [below]{$x$};
+    \draw (01) node [above]{$y$};
+    \draw (10) node [below]{$x$};
+    \draw (11) node [above]{$y$};
+    %% \draw (20) node [below]{$0$};
+    %% \draw (21) node [above]{$1$};
+    \draw[red,thick] (00) -- (10); % -- (20);
+    \draw[blue,thick] (00) -- (11); % -- (21);
+    %% \draw[green,thick] (01) -- (10); % -- (21);
+    \draw[yellow,thick] (01) -- (11); % -- (20);
+    \draw (1,-1) node {(lines represent generators of $R$)};
+  \end{tikzpicture}
+  %% \nopagebreak[4]
+  \end{figure}
+  \end{center}
+\bigskip
+
 
 \vfill
 
