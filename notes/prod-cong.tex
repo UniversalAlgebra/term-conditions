@@ -689,265 +689,6 @@ ${y} \times \bigl(x/[1_{\Fone}, 1_{\Fone}]\bigr) \in R$.\\
 \newpage
 
 
-\section{Other potentially useful observations}
-
-%-------------------------------------------------
-\renewcommand\bx{\ensuremath{x}}
-\renewcommand\by{\ensuremath{y}}
-%-------------------------------------------------
-\subsection{A special case}
-Let $\bA$ be a finite idempotent algebra, let $\sV = \bbV(\bA)$, and let
-\[\bF= \bF_{\sV}(\bx,\by) \sdp \bA_0 \times \bA_1 \times \cdots \times \bA_{n-1},\]
-where $n \leq |A|^2$ and each $\bA_i$ is a 2-generated subalgebra of $\bA$.
-Let $\bR = \Sg^{\bF^2} \{(\bx, \bx), (\bx, \by), (\by, \by)\}$,
-and recall that $\bR$ is a subdirect product of $\bF \times \bF$.
-
-Let's see what we can prove under the following
-simplifying assumptions:
-\begin{enumerate}
-\item Assume $\bF \sdp \bA_0 \times \bA_1 \times \bA_2$,
-\item For each $i\in \{0,1,2\}$ assume $\bA_i = \Sg^{\bA}(a_i, b_i)$ where
-  $\bx = (a_0,a_1,a_2)$ and $\by = (b_0,b_1,b_2)$ are the generators of $\bF$.
-\item Let $d$ be a difference term operation when interpreted in
-  each of the following algebras:
-\begin{enumerate}
-  \item \label{item:13} $\bA_i$ for each $i\in \{0,1,2\}$;
-  \item \label{item:14}$\bA_i\times \bA_j$ for all $i \neq j$ in $\{0,1,2\}$;
-  \item \label{item:15} $\bA_0\times \bA_1 \times \bA_2$.
-\end{enumerate}
-\end{enumerate}
-
-Recall from Lemma~\ref{lem:preliminary-facts}~(\ref{item:1}) that
-$\Cg^{\bF}(\bx, \by) = F\times F = 1_F$ and
-$\Cg^{\bA_i}(a_i, b_i) = A_i \times A_i = 1_{A_i}$.
-It's clear that $d^{\bF}$ satisfies the strong difference term identity, so 
-our goal is to prove that $d^{\bF}$ also satisfies the weak difference term relation,
-\begin{equation}
-  \label{eq:3}  
-  d^{\bF}(\bx, \by, \by) \comr{1_F} \bx.
-\end{equation}
-This is equivalent to $d^{\bA_0\times \bA_1 \times \bA_2}\bigl((a_0, a_1, a_2), (b_0, b_1, b_2), (b_0, b_1, b_2)\bigr) \comr{1_{F}} (a_0, a_1, a_2)$.
-Equivalently, %to prove (\ref{eq:3}) we must show
-\begin{equation*}
-\bigl(d^{\bA_0}(a_0, b_0, b_0), d^{\bA_1}(a_1, b_1, b_1), d^{\bA_2}(a_2, b_2, b_2)\bigr)
- \comr{1_F} (a_0, a_1, a_2).
-\end{equation*}
-Assumption~(\ref{item:15}) says
-$d^{\bA_0\times \bA_1 \times \bA_2}$ is a difference term operation for 
-$\bA_0\times \bA_1 \times \bA_2$, so
-\begin{equation}
-    \label{eq:5}
-  d^{\bA_0\times \bA_1 \times \bA_2}\bigl((a_0, a_1, a_2), (b_0, b_1, b_2), (b_0, b_1, b_2)\bigr)
-  \comr{1_{A_0\times A_1\times A_2}} (a_0, a_1, a_2).
-\end{equation}
-Observe that~(\ref{eq:3}) is still stronger than~(\ref{eq:5})
-because $\bF$ is a subalgebra of $\bA_0\times \bA_1 \times \bA_2$, so 
-$F \times F = 1_F$ is a subuniverse of
-$(\bA_0 \times \bA_1 \times \bA_2)^2$.  The latter has universe
-$1_{A_0 \times A_1 \times A_2}$, so
-$1_F \subseteq 1_{A_0 \times A_1 \times A_2}$, so by monotonicity of the commutator,
-$\com{1_F} \subseteq \com{1_{A_0\times A_1\times A_2}}$ holds.
-
-Our goal is to prove~(\ref{eq:3}), namely,
-  $d^{\bF}(\bx, \by, \by) \comr{1_F} \bx$. To do so, we will exploit the
-alternate description of the commutator from
-Section~\ref{sec:altern-descr-comm}.
-In the present context, $\bbeta$ is represented by 
-$1_F$, the universe of the algebra $\bF\times \bF$.
-Let %% $D = \{(x,x) \mid x\in F\}$ and 
-\[
-D = \{(x,x) \mid x\in F\}, \quad
-D^2_{1_F} = \{\bigl((a,a), (b,b)\bigr) \in D^2 \mid a, b \in F\}, \quad
-\Delta = \Delta_{1_F, 1_F} = \Cg^{\bF^2}(D_{1_F}^2). %= \Cg^{\bF^2}(D^2).  
-\]
-%% \begin{align*}
-%% \nonumber D &= \{(x,x) \mid x\in F\}\\
-%%   \nonumber D^2_{1_F} &= \{\bigl((a,a), (b,b)\bigr) \in D^2 \mid a, b \in F\}
-%% \text{ and }\\
-%% %  = D\times D, \text{ and }\\
-%% \nonumber \Delta &= \Delta_{1_F, 1_F} = \Cg^{\bF^2}(D_{1_F}^2). %= \Cg^{\bF^2}(D^2).  
-%% \end{align*}
-%% \[
-%%   D^2_{1_F} := \{\bigl((a,a), (b,b)\bigr) \in D^2 \mid a, b \in F\}
-%% \quad \text{ and }\quad 
-%% \Delta := \Delta_{1_F, 1_F} = \Cg^{\bF^2}(D_{1_F}^2). %= \Cg^{\bF^2}(D^2).  
-%% \]
-Then $D^2_{1_F} = D\times D$, so $\Delta = \Cg^{\bF^2}(D\times D)$.
-%% That is, here $D^2_{1_F}$ is simply the square of the diagonal set, that is, 
-%% \begin{equation*}
-%%   %% \label{eq:10}
-%%   D^2_{1_F}  =  D\times D = \{\bigl((x,x), (y,y)\bigr) \mid x, y \in F\}.
-%% \end{equation*}
-
-By Lemma~\ref{lem:diagonal-cong-class},
-$\bF$ is abelian iff $\Con(\bF\times \bF)$
-contains a congruence
-%% there is a congruence $\theta \in \Con(\bF\times \bF)$
-that has the diagonal set $D$ as a class.
-For example, suppose for all $a$, $b$, $b'\in F$ that 
-%% $\bigl((a,a), (b,b')\bigr) \in \Delta$ iff
-$(a,a)\mathrel{\Delta} (b,b')$ iff $b = b'$.
-Then $D$ is a class of $\Delta$ and $\bF$ is abelian.
-In that case, $\bF$ is absorption free
-(see Lemma~\ref{lem:abelian-AF}) and the Absorption Theorem implies
-$\bR  = \bF \times \bF$.
-Our earlier goal~(\ref{eq:0000001}) is
-trivially satisfied in this case. Therefore, we proceed under the assumption that $\bF$ is
-nonabelian, or equivalently, that no congruence of $\bF^2$ has a class that is
-exactly the diagonal set, $D = \{(x,x) \mid x\in F\}$.
-
-Let $\Phi \colon \sP(F \times F) \to \sP(F\times F)$ be the function that
-takes each $B \subseteq F\times F$ to
-\begin{equation}
-  \label{eq:666}
-  \Phi(B) = \bigcup_{(b,b')\in B} (b,b')/\Delta
-\end{equation}
-We now prove that
-$\bigl(d^{\bF}(\bx, \by, \by), \bx \bigr) \in  \Phi \com{1_F}$.
-This will complete the proof of (\ref{eq:3}), since
-$\Phi \com{1_F} \subseteq \com{1_F}$ by
-Lemma~\ref{lem:fixed-point-comm}.
-By (\ref{eq:666}), 
-$(d^{\bF}(\bx, \by, \by), \bx ) \in  \Phi \com{1_F}$ iff
-$(d^{\bF}(\bx, \by, \by), \bx ) \mathrel{\Delta} (b, b')$
-for some $(b, b') \in \com{1_F}$.
-%-------------------------------------------------
-\renewcommand\bx{\ensuremath{\mathbf{x}}}
-\renewcommand\by{\ensuremath{\mathbf{y}}}
-%-------------------------------------------------
-
-\medskip
-To be continued...
-
-\bigskip
-
-\subsection{Observation about commutator in subalgebras}
-~
-
-\noindent By assumption~(\ref{item:13}) $d^{\bA_i}(a_i, b_i, b_i) \comr{1_{A_i}} a_i$ for
-each $i \in \{0,1,2\}$, so
-\begin{equation}
-  \label{eq:4}
-\bigl(d^{\bA_0}(a_0, b_0, b_0), d^{\bA_1}(a_1, b_1, b_1), d^{\bA_2}(a_2, b_2, b_2)\bigr)
- \mathrel{\com{1_{A_0}} \times  \com{1_{A_1}} \times \com{1_{A_2}}} (a_0, a_1, a_2),
-\end{equation}
-but we can do better.
-Indeed, by assumption~(\ref{item:14}),
-\[
-\bigl(d^{\bA_i}(a_i, b_i, b_i), d^{\bA_j}(a_j, b_j, b_j)\bigr)
-=d^{\bA_i\times \bA_j}\bigl((a_i, a_j), (b_i,b_j), (b_i, b_j)\bigr)
-\comr{1_{A_i\times A_j}} (a_i, a_j)
-\]
-for all $i\neq j$ in $\{0,1,2\}$.
-Combining this with assumption~(\ref{item:13}) we have
-\[
-\bigl(d^{\bA_0\times \bA_1}((a_0, a_1), (b_0,b_1), (b_0, b_1)),
-d^{\bA_2}(a_2, b_2,b_2)\bigr)
-\mathrel{\com{1_{A_0\times A_1}} \times \com{1_{A_2}}}
-\bigl((a_0, a_1),a_2\bigr).
-\]
-and 
-\[
-\bigl(d^{\bA_0}(a_0, b_0, b_0), d^{\bA_1\times \bA_2}((a_1, a_2), (b_1,b_2), (b_1, b_2))\bigr)
-\mathrel{\com{1_{A_0}} \times \com{1_{A_1\times A_2}}} \bigl(a_0, (a_1, a_2)\bigr).
-\]
-This improves upon~(\ref{eq:4}), but we still haven't made full use of our
-assumptions.
-Indeed,~(\ref{item:15}) says
-$d^{\bA_0\times \bA_1 \times \bA_2}$ is a difference term operation for 
-$\bA_0\times \bA_1 \times \bA_2$, so
-\begin{equation}
-    \label{eq:555}
-  d^{\bA_0\times \bA_1 \times \bA_2}\bigl((a_0, a_1, a_2), (b_0, b_1, b_2), (b_0, b_1, b_2)\bigr)
-  \comr{1_{A_0\times A_1\times A_2}} (a_0, a_1, a_2).
-\end{equation}
-Observe that~(\ref{eq:3}) is still stronger than~(\ref{eq:555})
-because $\bF$ is a subalgebra of $\bA_0\times \bA_1 \times \bA_2$, so 
-$F \times F = 1_F$ is a subuniverse of
-$(\bA_0 \times \bA_1 \times \bA_2)^2$.  The latter has universe
-$1_{A_0 \times A_1 \times A_2}$, so
-$1_F \subseteq 1_{A_0 \times A_1 \times A_2}$, so by monotonicity of the commutator,
-$\com{1_F} \subseteq \com{1_{A_0\times A_1\times A_2}}$ holds.
-
-
-
-\noindent {\bf Question.} How do the following congruence relations compare?
-\begin{enumerate}
-\item $\com{1_{A_0}} \times \com{1_{A_1\times A_2}}$
-\item $\com{1_{A_0\times A_1}} \times \com{1_{A_2}}$
-\item $\com{1_{A_0\times A_1\times A_2}}$
-\item $\com{1_F}$
-\end{enumerate}
-
-\medskip
-
-\[
-\Com{1_{A_0}} \times \Com{1_{A_1\times A_2}} = 
-\{(\bx, \by) \mid x_0 \Comr{1_{A_0}} y_0 \, \text{ and } \, 
-(x_1, x_2) \Comr{1_{A_1\times A_2}} (y_1, y_2)\}.
-\]
-\[
-\Com{1_{A_0\times A_1}} \times\Com{1_{A_2}} = 
-\{(\bx, \by) \mid  
-(x_0, x_1) \Comr{1_{A_0\times A_1}} (y_0, y_1)\, \text{ and } \, x_2 \Comr{1_{A_2}} y_2 
-\}.
-\]
-
-\bigskip
-%% The relation $\com{1_{A_0}} \times \com{1_{A_1\times A_2}}$ has elements 
-%% \{((x_0, x_1, x_2), (y_0, y_1, y_2))  \mid x_0 \comr{1_{A_0}} y_0 \; \text{ and } \; 
-%% (x_1, x_2) \comr{1_{A_1\times A_2}} (y_1, y_2)\}.
-%% \[
-%% \com{1_{A_0}} \times \com{1_{A_1\times A_2}} = 
-%% \{(\bx, \by) \mid x_0 \comr{1_{A_0}} y_0 \, \text{ and } \, 
-%% (x_1, x_2) \comr{1_{A_1\times A_2}} (y_1, y_2)\}.
-%% \]
-%% \[
-%% \com{1_{A_0\times A_1}} \times\com{1_{A_2}} = 
-%% \{(\bx, \by) \mid  
-%% (x_0, x_1) \comr{1_{A_0\times A_1}} (y_0, y_1)\, \text{ and } \, x_2 \comr{1_{A_2}} y_2 
-%% \}.
-%% \]
-
-\bigskip
-
-\section{More potentially useful observations}
-A very useful result of Kearnes and Kiss that holds in varieties that satisfy a
-nontrivial idempotent \malcev condition is the following:
-\begin{theorem}[\protect{\cite[Thm~3.27]{MR3076179}}] 
-  \label{thm:kearnes-kiss-3.27}
-  Suppose $\alpha$ and $\beta$ are congruences of a Taylor algebra. Then
-  $\CC{\alpha}{ \alpha}{ \alpha \meet \beta}$ if and only if
-  $\CC{\alpha \join \beta}{ \alpha \join \beta}{ \beta}$.
-\end{theorem}
-
-\subsection*{Observation 1}
-That $\bR/\rho_1 \cong \bFone /[1_{\Fone},1_{\Fone}]$ is abelian means
-$\CC{1_{R/\rho_1}}{1_{R/\rho_1}}{0_{R/\rho_1}}$ holds, and this is equivalent to
-$\CC{1_R}{1_R}{\rho_1}$. By Theorem~\ref{thm:kearnes-kiss-3.27} below, the latter
-holds if and only if $\CC{\etaR_0}{\etaR_0}{\etaR_0\meet \rho_1}$.
-It follows that $[\etaR_0, \etaR_0]\leq \etaR_0 \meet \rho_1$.
-
-
-\subsection*{Observation 2}
-\renewcommand{\phi}{\ensuremath{\varphi}}
-For each $i\in \{0,1,2\}$, let $\etaR_i = \ker(\bF \onto \bA_i)$ be the kernel of
-the projection of $\bF$ onto the $i$-th coordinate.  Then
-$\bF/\etaR_i \cong \bA_i$ and by the correspondence theorem there exists
-$\phi_i\in \Con\bF$ corresponding to $\com{1_{A_i}} \in \Con \bA_i$
-such that 
-\[
-\bF/\phi_i \cong
-\bigl(\bF/\etaR_i\bigr)\bigl(\phi_i/\etaR_i\bigr)
-\cong \bA_i/\com{1_{A_i}}.
-\]
-
-\bigskip
-
-
-\vfill
-
-
 % \newpage
 \appendix
 
@@ -1130,6 +871,455 @@ above $\eta_0$ in the sublattice $\alg{K}_\alpha$ of $\Eq(\alpha)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% end include
 
+% \section{Other potentially useful observations}
+
+%-------------------------------------------------
+\renewcommand\bx{\ensuremath{x}}
+\renewcommand\by{\ensuremath{y}}
+%-------------------------------------------------
+\subsection{A special case}
+Let $\bA$ be a finite idempotent algebra, let $\sV = \bbV(\bA)$, and let
+\[\bF= \bF_{\sV}(\bx,\by) \sdp \bA_0 \times \bA_1 \times \cdots \times \bA_{n-1},\]
+where $n \leq |A|^2$ and each $\bA_i$ is a 2-generated subalgebra of $\bA$.
+Let $\bR = \Sg^{\bF^2} \{(\bx, \bx), (\bx, \by), (\by, \by)\}$,
+and recall that $\bR$ is a subdirect product of $\bF \times \bF$.
+
+Let's see what we can prove under the following
+simplifying assumptions:
+\begin{enumerate}
+\item Assume $\bF \sdp \bA_0 \times \bA_1 \times \bA_2$,
+\item For each $i\in \{0,1,2\}$ assume $\bA_i = \Sg^{\bA}(a_i, b_i)$ where
+  $\bx = (a_0,a_1,a_2)$ and $\by = (b_0,b_1,b_2)$ are the generators of $\bF$.
+\item Let $d$ be a difference term operation when interpreted in
+  each of the following algebras:
+\begin{enumerate}
+  \item \label{item:13} $\bA_i$ for each $i\in \{0,1,2\}$;
+  \item \label{item:14}$\bA_i\times \bA_j$ for all $i \neq j$ in $\{0,1,2\}$;
+  \item \label{item:15} $\bA_0\times \bA_1 \times \bA_2$.
+\end{enumerate}
+\end{enumerate}
+
+Recall from Lemma~\ref{lem:preliminary-facts}~(\ref{item:1}) that
+$\Cg^{\bF}(\bx, \by) = F\times F = 1_F$ and
+$\Cg^{\bA_i}(a_i, b_i) = A_i \times A_i = 1_{A_i}$.
+It's clear that $d^{\bF}$ satisfies the strong difference term identity, so 
+our goal is to prove that $d^{\bF}$ also satisfies the weak difference term relation,
+\begin{equation}
+  \label{eq:3}  
+  d^{\bF}(\bx, \by, \by) \comr{1_F} \bx.
+\end{equation}
+This is equivalent to $d^{\bA_0\times \bA_1 \times \bA_2}\bigl((a_0, a_1, a_2), (b_0, b_1, b_2), (b_0, b_1, b_2)\bigr) \comr{1_{F}} (a_0, a_1, a_2)$.
+Equivalently, %to prove (\ref{eq:3}) we must show
+\begin{equation*}
+\bigl(d^{\bA_0}(a_0, b_0, b_0), d^{\bA_1}(a_1, b_1, b_1), d^{\bA_2}(a_2, b_2, b_2)\bigr)
+ \comr{1_F} (a_0, a_1, a_2).
+\end{equation*}
+Assumption~(\ref{item:15}) says
+$d^{\bA_0\times \bA_1 \times \bA_2}$ is a difference term operation for 
+$\bA_0\times \bA_1 \times \bA_2$, so
+\begin{equation}
+    \label{eq:5}
+  d^{\bA_0\times \bA_1 \times \bA_2}\bigl((a_0, a_1, a_2), (b_0, b_1, b_2), (b_0, b_1, b_2)\bigr)
+  \comr{1_{A_0\times A_1\times A_2}} (a_0, a_1, a_2).
+\end{equation}
+Observe that~(\ref{eq:3}) is still stronger than~(\ref{eq:5})
+because $\bF$ is a subalgebra of $\bA_0\times \bA_1 \times \bA_2$, so 
+$F \times F = 1_F$ is a subuniverse of
+$(\bA_0 \times \bA_1 \times \bA_2)^2$.  The latter has universe
+$1_{A_0 \times A_1 \times A_2}$, so
+$1_F \subseteq 1_{A_0 \times A_1 \times A_2}$, so by monotonicity of the commutator,
+$\com{1_F} \subseteq \com{1_{A_0\times A_1\times A_2}}$ holds.
+
+Our goal is to prove~(\ref{eq:3}), namely,
+  $d^{\bF}(\bx, \by, \by) \comr{1_F} \bx$. To do so, we will exploit the
+alternate description of the commutator from
+Section~\ref{sec:altern-descr-comm}.
+In the present context, $\bbeta$ is represented by 
+$1_F$, the universe of the algebra $\bF\times \bF$.
+Let %% $D = \{(x,x) \mid x\in F\}$ and 
+\[
+D = \{(x,x) \mid x\in F\}, \quad
+D^2_{1_F} = \{\bigl((a,a), (b,b)\bigr) \in D^2 \mid a, b \in F\}, \quad
+\Delta = \Delta_{1_F, 1_F} = \Cg^{\bF^2}(D_{1_F}^2). %= \Cg^{\bF^2}(D^2).  
+\]
+%% \begin{align*}
+%% \nonumber D &= \{(x,x) \mid x\in F\}\\
+%%   \nonumber D^2_{1_F} &= \{\bigl((a,a), (b,b)\bigr) \in D^2 \mid a, b \in F\}
+%% \text{ and }\\
+%% %  = D\times D, \text{ and }\\
+%% \nonumber \Delta &= \Delta_{1_F, 1_F} = \Cg^{\bF^2}(D_{1_F}^2). %= \Cg^{\bF^2}(D^2).  
+%% \end{align*}
+%% \[
+%%   D^2_{1_F} := \{\bigl((a,a), (b,b)\bigr) \in D^2 \mid a, b \in F\}
+%% \quad \text{ and }\quad 
+%% \Delta := \Delta_{1_F, 1_F} = \Cg^{\bF^2}(D_{1_F}^2). %= \Cg^{\bF^2}(D^2).  
+%% \]
+Then $D^2_{1_F} = D\times D$, so $\Delta = \Cg^{\bF^2}(D\times D)$.
+%% That is, here $D^2_{1_F}$ is simply the square of the diagonal set, that is, 
+%% \begin{equation*}
+%%   %% \label{eq:10}
+%%   D^2_{1_F}  =  D\times D = \{\bigl((x,x), (y,y)\bigr) \mid x, y \in F\}.
+%% \end{equation*}
+
+By Lemma~\ref{lem:diagonal-cong-class},
+$\bF$ is abelian iff $\Con(\bF\times \bF)$
+contains a congruence
+%% there is a congruence $\theta \in \Con(\bF\times \bF)$
+that has the diagonal set $D$ as a class.
+For example, suppose for all $a$, $b$, $b'\in F$ that 
+%% $\bigl((a,a), (b,b')\bigr) \in \Delta$ iff
+$(a,a)\mathrel{\Delta} (b,b')$ iff $b = b'$.
+Then $D$ is a class of $\Delta$ and $\bF$ is abelian.
+In that case, $\bF$ is absorption free
+(see Lemma~\ref{lem:abelian-AF}) and the Absorption Theorem implies
+$\bR  = \bF \times \bF$.
+Our earlier goal~(\ref{eq:0000001}) is
+trivially satisfied in this case. Therefore, we proceed under the assumption that $\bF$ is
+nonabelian, or equivalently, that no congruence of $\bF^2$ has a class that is
+exactly the diagonal set, $D = \{(x,x) \mid x\in F\}$.
+
+Let $\Phi \colon \sP(F \times F) \to \sP(F\times F)$ be the function that
+takes each $B \subseteq F\times F$ to
+\begin{equation}
+  \label{eq:666}
+  \Phi(B) = \bigcup_{(b,b')\in B} (b,b')/\Delta
+\end{equation}
+We now prove that
+$\bigl(d^{\bF}(\bx, \by, \by), \bx \bigr) \in  \Phi \com{1_F}$.
+This will complete the proof of (\ref{eq:3}), since
+$\Phi \com{1_F} \subseteq \com{1_F}$ by
+Lemma~\ref{lem:fixed-point-comm}.
+By (\ref{eq:666}), 
+$(d^{\bF}(\bx, \by, \by), \bx ) \in  \Phi \com{1_F}$ iff
+$(d^{\bF}(\bx, \by, \by), \bx ) \mathrel{\Delta} (b, b')$
+for some $(b, b') \in \com{1_F}$.
+%-------------------------------------------------
+\renewcommand\bx{\ensuremath{\mathbf{x}}}
+\renewcommand\by{\ensuremath{\mathbf{y}}}
+%-------------------------------------------------
+
+\medskip
+To be continued...
+
+\subsection{Observation about commutator in subalgebras}
+~
+
+\noindent By assumption~(\ref{item:13}) above, 
+$d^{\bA_i}(a_i, b_i, b_i) \comr{1_{A_i}} a_i$ for
+each $i \in \{0,1,2\}$, so
+\begin{equation*}
+  % \label{eq:4}
+\bigl(d^{\bA_0}(a_0, b_0, b_0), d^{\bA_1}(a_1, b_1, b_1), d^{\bA_2}(a_2, b_2, b_2)\bigr)
+ \mathrel{\com{1_{A_0}} \otimes  \com{1_{A_1}} \otimes \com{1_{A_2}}} (a_0, a_1, a_2),
+\end{equation*}
+but we can do better.
+Indeed, by assumption~(\ref{item:14}),
+\[
+\bigl(d^{\bA_i}(a_i, b_i, b_i), d^{\bA_j}(a_j, b_j, b_j)\bigr)
+=d^{\bA_i\times \bA_j}\bigl((a_i, a_j), (b_i,b_j), (b_i, b_j)\bigr)
+\comr{1_{A_i\times A_j}} (a_i, a_j)
+\]
+for all $i\neq j$ in $\{0,1,2\}$.
+Combining this with assumption~(\ref{item:13}) we have
+\[
+\bigl(d^{\bA_0\times \bA_1}((a_0, a_1), (b_0,b_1), (b_0, b_1)),
+d^{\bA_2}(a_2, b_2,b_2)\bigr)
+\mathrel{\com{1_{A_0\times A_1}} \otimes \com{1_{A_2}}}
+\bigl((a_0, a_1),a_2\bigr).
+\]
+and 
+\[
+\bigl(d^{\bA_0}(a_0, b_0, b_0), d^{\bA_1\times \bA_2}((a_1, a_2), (b_1,b_2), (b_1, b_2))\bigr)
+\mathrel{\com{1_{A_0}} \otimes \com{1_{A_1\times A_2}}} \bigl(a_0, (a_1, a_2)\bigr).
+\]
+This is an improvement, % improves upon~(\ref{eq:4}), 
+but we still haven't made full use of our assumptions.
+Indeed,~(\ref{item:15}) says
+$d^{\bA_0\times \bA_1 \times \bA_2}$ is a difference term operation for 
+$\bA_0\times \bA_1 \times \bA_2$, so
+\begin{equation}
+    \label{eq:555}
+  d^{\bA_0\times \bA_1 \times \bA_2}\bigl((a_0, a_1, a_2), (b_0, b_1, b_2), (b_0, b_1, b_2)\bigr)
+  \comr{1_{A_0\times A_1\times A_2}} (a_0, a_1, a_2).
+\end{equation}
+Observe that~(\ref{eq:3}) is still stronger than~(\ref{eq:555})
+because $\bF$ is a subalgebra of $\bA_0\times \bA_1 \times \bA_2$, so 
+$F \times F = 1_F$ is a subuniverse of
+$(\bA_0 \times \bA_1 \times \bA_2)^2$.  The latter has universe
+$1_{A_0 \times A_1 \times A_2}$, so
+$1_F \subseteq 1_{A_0 \times A_1 \times A_2}$, so by monotonicity of the commutator,
+$\com{1_F} \subseteq \com{1_{A_0\times A_1\times A_2}}$ holds.
+\\[4pt]
+{\bf Question.} How do the following congruence relations compare?
+\begin{enumerate}
+\item $\com{1_{A_0}} \otimes \com{1_{A_1\times A_2}}$
+\item $\com{1_{A_0\times A_1}} \otimes \com{1_{A_2}}$
+\item $\com{1_{A_0\times A_1\times A_2}}$
+\item $\com{1_F}$
+\end{enumerate}
+
+\medskip
+
+\[
+\Com{1_{A_0}} \otimes \Com{1_{A_1\times A_2}} = 
+\{(\bx, \by) \mid x_0 \Comr{1_{A_0}} y_0 \, \text{ and } \, 
+(x_1, x_2) \Comr{1_{A_1\times A_2}} (y_1, y_2)\}.
+\]
+\[
+\Com{1_{A_0\times A_1}} \otimes\Com{1_{A_2}} = 
+\{(\bx, \by) \mid  
+(x_0, x_1) \Comr{1_{A_0\times A_1}} (y_0, y_1)\, \text{ and } \, x_2 \Comr{1_{A_2}} y_2 
+\}.
+\]
+
+\bigskip
+%% The relation $\com{1_{A_0}} \times \com{1_{A_1\times A_2}}$ has elements 
+%% \{((x_0, x_1, x_2), (y_0, y_1, y_2))  \mid x_0 \comr{1_{A_0}} y_0 \; \text{ and } \; 
+%% (x_1, x_2) \comr{1_{A_1\times A_2}} (y_1, y_2)\}.
+%% \[
+%% \com{1_{A_0}} \times \com{1_{A_1\times A_2}} = 
+%% \{(\bx, \by) \mid x_0 \comr{1_{A_0}} y_0 \, \text{ and } \, 
+%% (x_1, x_2) \comr{1_{A_1\times A_2}} (y_1, y_2)\}.
+%% \]
+%% \[
+%% \com{1_{A_0\times A_1}} \times\com{1_{A_2}} = 
+%% \{(\bx, \by) \mid  
+%% (x_0, x_1) \comr{1_{A_0\times A_1}} (y_0, y_1)\, \text{ and } \, x_2 \comr{1_{A_2}} y_2 
+%% \}.
+%% \]
+
+
+
+
+\bigskip
+\subsection{Other potentially useful observations}
+A very useful result of Kearnes and Kiss that holds in varieties that satisfy a
+nontrivial idempotent \malcev condition is the following:
+\begin{theorem}[\protect{\cite[Thm~3.27]{MR3076179}}] 
+  \label{thm:kearnes-kiss-3.27}
+  Suppose $\alpha$ and $\beta$ are congruences of a Taylor algebra. Then
+  $\CC{\alpha}{ \alpha}{ \alpha \meet \beta}$ if and only if
+  $\CC{\alpha \join \beta}{ \alpha \join \beta}{ \beta}$.
+\end{theorem}
+
+\subsection*{Observation 1}
+That $\bR/\rho_1 \cong \bFone /[1_{\Fone},1_{\Fone}]$ is abelian means
+$\CC{1_{R/\rho_1}}{1_{R/\rho_1}}{0_{R/\rho_1}}$ holds, and this is equivalent to
+$\CC{1_R}{1_R}{\rho_1}$. By Theorem~\ref{thm:kearnes-kiss-3.27} below, the latter
+holds if and only if $\CC{\etaR_0}{\etaR_0}{\etaR_0\meet \rho_1}$.
+It follows that $[\etaR_0, \etaR_0]\leq \etaR_0 \meet \rho_1$.
+
+
+
+\subsection*{Observation 2}
+\renewcommand{\phi}{\ensuremath{\varphi}}
+For each $i\in \{0,1,2\}$, let $\etaR_i = \ker(\bF \onto \bA_i)$ be the kernel of
+the projection of $\bF$ onto the $i$-th coordinate.  Then
+$\bF/\etaR_i \cong \bA_i$ and by the correspondence theorem there exists
+$\phi_i\in \Con\bF$ corresponding to $\com{1_{A_i}} \in \Con \bA_i$
+such that 
+\[
+\bF/\phi_i \cong
+\bigl(\bF/\etaR_i\bigr)\bigl(\phi_i/\etaR_i\bigr)
+\cong \bA_i/\com{1_{A_i}}.
+\]
+
+\bigskip
+
+\subsection{Skew congruences of idempotent algebras}
+Let $\sV$ be a variety and let $\bA$ and $\bB$ be idempotent
+algebras in $\sV$.
+Recall the following standard notation:
+if $\alpha \in \Con(\bA)$ and $\beta \in \Con(\bB)$, then
+$\alpha \otimes \beta$ denotes the set of pairs $((a,b),(a',b'))$ satisfying
+$a \mathrel{\alpha} a'$ and $b \mathrel{\beta} b'$.  The relation 
+$\alpha \otimes \beta$ is clearly a congruence of $\bA \times \bB$.
+
+Fix $(a, b)$ and $(a', b')$ in $A \times B$, and consider the claim 
+\begin{equation}
+  \label{eq:999}
+\Cg^{\bA}(a,a') \otimes \Cg^{\bB}(b,b')
+=\Cg^{\bA \times \bB}((a, b), (a', b')).
+\end{equation}
+
+Let $\tau := \Cg^{\bA}(a,a') \otimes \Cg^{\bB}(b,b')$  %%  \in \Con(\bA \times \bB)$
+and $\theta:= \Cg^{\bA \times \bB}((a, b), (a', b'))$.
+First note that $\tau$ is a (pairwise) product of a congruence
+of $\bA$ with a congruence of $\bB$, so $\tau$ is a congruence of $\bA\times \bB$.
+Moreover, the pair $((a,b), (a',b'))$ clearly belongs to $\tau$, so
+$\theta\leq \tau$.  Thus, to prove~(\ref{eq:999}) it would suffice to show $\tau \leq \theta$.
+
+Fix $((x,y),(x'y')) \in \tau$. This means that
+$(x,x') \in \Cg^{\bA}(a,a')$ and $(y,y')\in \Cg^{\bB}(b,b')$.
+Therefore, there exist $n>0$, $m>0$, 
+%% $(c_0, c_0'), (c_1, c_1'), \dots, (c_n, c_n')$ in $,  
+$c_0$, $c_1$, $\dots$, $c_n$ $\in A$, $f_0$, $f_1$, $\dots$,
+$f_{n-1} \in \Pol_1(\bA)$, $d_0$, $d_1$, $\dots$, $d_n\in B$, and $g_0$, $g_1$, $\dots$,
+$g_{n-1} \in \Pol_1(\bB)$ such that 
+\begin{align*}
+  x = c_0, \; c_n=x', \text{ and } \; \{c_i, c_{i+1}\} &= \{f_i(a), f_i(a')\},
+  \text{ for all $0\leq i < n$, and}\\
+  y = d_0, \; d_n=y',  \text{ and }  
+  \{d_i, d_{i+1}\} &= \{g_i(b), g_i(b')\}, \text{ for all $0\leq i < m$.}
+\end{align*}
+We can assume without loss of generality that $n=m$, since we can insert dummy
+terms to extend the shorter of the two sequences.
+We wish to prove $((x,y),(x'y')) \in \theta:= \Cg^{\bA \times \bB}((a, b), (a', b'))$,
+which is equivalent to the following: there exist $n>0$, 
+$(e_0, e_0')$, $(e_1,e_1')$, $\dots$, $(e_n, e_n') \in A\times B$, 
+$h_0$, $h_1$, $\dots$, $h_{n-1} \in \Pol_1(\bA\times \bB)$ such that
+\begin{align*}
+  (x,y) = (e_0,e_0'), \; (e_n, e_n') &=(x',y'), \text{ and for all $0\leq i < n$, } \\
+  \{(e_i, e_i'), (e_{i+1}, e_{i+1}')\} &= \{h_i(a,b), h_i(a',b')\}.
+\end{align*}
+
+
+Let $f = f_0$.  Since $f\in \Pol_1(\bA)$, for some $\ell>0$ there
+exist a term $s^{\bA} \in \Clo_{\ell+1}(\bA)$ and $a_0, a_1, \dots, a_\ell$ in $A$ such that
+\[
+f^{\bA}(x) = s^{\bA}(a_0, \dots, a_{i-1}, x, a_{i+1}, \dots, a_\ell), \text{ for some $i$.}
+\]
+Similarly, letting $g = g_0$, for some $k>0$ there
+exist a term $t^{\bB} \in \Clo_{k+1}(\bB)$ and $b_0, b_1, \dots, b_k$ in $B$ such that
+\[
+g^{\bB}(y) = t^{\bB}(b_0, \dots, b_{j-1}, y, b_{j+1}, \dots, b_k), \text{ for some $j$.}
+\]
+Without loss of generality, we can assume $j=i$. (check this)
+
+%% Now, for
+%% $\ba  = (a_0, a_1, \dots, a_{\ell})\in A^{\ell+1}$ and
+%% $\bb  = (b_0, b_1, \dots, b_{\ell})\in B^{\ell+1}$, we have
+%% \[
+%% s^{\bA \times \bB}((a_0, b_0), \dots, (a_{\ell}, b_{\ell}))
+%% = (s^{\bA}(\ba), s^{\bB}(\bb)).
+%% \]
+Consider the polynomial $p \in \Pol_1(\bA\times \bB)$ defined via
+$s$ as follows:
+\begin{align*}
+p(x,y) &= s^{\bA \times \bB}((a_0, b), (a_1, b), \dots, (a_{i-1}, b),(x,y),
+(a_{i+1}, b), \dots, (a_{\ell}, b))\\
+&= (s^{\bA} (a_0, a_1,\dots, a_{i-1}, x, a_{i+1}, \dots, a_{\ell}), 
+s^{\bB}(b, \dots, b, y, b,\dots, b))\\
+&= (f^{\bA} (x), 
+s^{\bB}(b, \dots, b, y, b,\dots, b)).
+\end{align*}
+Consider the polynomial $q \in \Pol_1(\bA\times \bB)$ defined via
+$t$ as follows:
+\begin{align*}
+q(x,y) &= t^{\bA \times \bB}((f^{\bA}(a), b_0), (f^{\bA}(a), b_1), \dots, (f^{\bA}(a), b_{i-1}),(x,y),
+(f^{\bA}(a), b_{i+1}), \dots, (f^{\bA}(a), b_{\ell}))\\
+&= (t^{\bA} (f^{\bA}(a), \dots, f^{\bA}(a), x, f^{\bA}(a), \dots, f^{\bA}(a)), 
+t^{\bB}(b_0, \dots, b_{i-1}, y, b_{i+1},\dots, b_{\ell}))\\
+&= (t^{\bA} (f^{\bA}(a), \dots, f^{\bA}(a), x, f^{\bA}(a), \dots, f^{\bA}(a)), 
+g^{\bB}(y)).
+\end{align*}
+Then $p(a,b) = (f^{\bA}(a), b)$ and $q(f^{\bA}(a), b) = (f^{\bA}(a),g^{\bB}(b))$.
+Therefore,
+\[
+(q\circ p)^{\bA\times \bB} (a,b) =
+(f^{\bA} (a), g^{\bB} (b)).
+\]
+We can carry out this construction for each pair $(f_i, g_i)$, $0\leq i < n$,
+arriving at a sequence $q_i \circ p_i$ of polynomials in
+$\Pol_1(\bA \times \bB)$ such that
+\[
+(q_i\circ p_i)^{\bA\times \bB} (a,b) =
+(f_i^{\bA} (a), g_i^{\bB} (b)).
+\]
+Unfortunately, evaluating this polynomial at $(a',b')$ yields the less
+desirable result:
+\[
+(q_i\circ p_i)(a',b')=
+(t_i^{\bA}(f_i^{\bA} (a), \dots, f_i^{\bA} (a), f_i^{\bA} (a'),f_i^{\bA} (a), \dots, f_i^{\bA} (a)),
+g_i(s_i^{\bB}(b, \dots, b, b', b,\dots, b))).
+\]
+So we try again...
+
+\bigskip
+%% \[
+%% d_i(x,y) = d^{\bA\times \bB}((a_i,b),(a_i,b),(a_i,y)) = (d^{\bA}(a_i,a_i,a_i),
+%% d^{\bB}(b,b,y)) = (a_i, d^{\bB}(b,b,y))
+%% \]
+Consider the polynomial $p \in \Pol_1(\bA\times \bB)$ defined via
+$s$ as follows:
+\begin{align*}
+p(x,y) &= s^{\bA \times \bB}((a_0, y), \dots, (a_{i-1}, y), (x, y), (a_{i+1}, y), \dots, (a_{\ell}, y))\\
+&= (s^{\bA} (a_0, \dots, a_{i-1}, x, a_{i+1}, \dots, a_{\ell}), 
+s^{\bB}(y, \dots, y))\\
+&= (f^{\bA} (x), y).
+\end{align*}
+Consider the polynomial $q \in \Pol_1(\bA\times \bB)$ defined via
+$t$ as follows:
+\begin{align*}
+  q(x,y) &= t^{\bA \times \bB}(p(x,b_0),
+  \dots, p(x, b_{i-1}),p(x,y),
+  p(x, b_{i+1}), \dots, p(x, b_{\ell}))\\
+  &= t^{\bA \times \bB}((f^{\bA}(x), b_0), \dots, (f^{\bA}(x), b_{i-1}),(f^{\bA}(x),y),
+(f^{\bA}(x), b_{i+1}), \dots, (f^{\bA}(x), b_{\ell}))\\
+%% &= (t^{\bA} (f^{\bA}(x), \dots, f^{\bA}(x), x, f^{\bA}(x), \dots, f^{\bA}(x)), 
+%% g^{\bB}(y)).
+&= (f^{\bA}(x), g^{\bB}(y)).
+\end{align*}
+Then $p(a,b) = (f^{\bA}(a), b)$ and $q(f^{\bA}(a), b) = (f^{\bA}(a),g^{\bB}(b))$.
+Therefore,
+\[
+(q\circ p)^{\bA\times \bB} (a,b) =
+(f^{\bA} (a), g^{\bB} (b)).
+\]
+We can carry out this construction for each pair $(f_i, g_i)$, $0\leq i < n$,
+arriving at a sequence $q_i \circ p_i$ of polynomials in
+$\Pol_1(\bA \times \bB)$ such that
+\[
+(q_i\circ p_i)^{\bA\times \bB} (a,b) =
+(f_i^{\bA} (a), g_i^{\bB} (b)).
+\]
+% Unfortunately, evaluating this polynomial at $(a',b')$ yields the less
+% desirable result:
+% \[
+% (q_i\circ p_i)(a',b')=
+% (t_i^{\bA}(f_i^{\bA} (a), \dots, f_i^{\bA} (a), f_i^{\bA} (a'),f_i^{\bA} (a), \dots, f_i^{\bA} (a)),
+% g_i(s_i^{\bB}(b, \dots, b, b', b,\dots, b))).
+% \]
+
+% \bigskip
+
+% \hrule
+
+% \bigskip
+
+% \begin{align*}
+%   f^{\bB}(y) &= s^{\bB}(d(b,b,y), \dots, d(b,b,y), y, d(b,b,y), \dots, d(b,b,y)), \; \text{ and }\\
+%   g^{\bA}(x) &= t^{\bA}(f^{\bA}(a), \dots, f^{\bA}(a), x, f^{\bA}(a), \dots, f^{\bA}(a)).
+% \end{align*}
+% Then
+% \[
+% f^{\bA\times \bB} (a,b) =
+% (f^{\bA} (a), f^{\bB}(b)) = (f^{\bA} (a), s^{\bB}(b, \dots, b, )) = (f^{\bA} (a), b),
+% \]
+% and 
+% \[
+% g^{\bA\times \bB} (f^{\bA} (a), b) =
+% (g^{\bA} (f^{\bA} (a)), g^{\bB}(b))=
+% (t^{\bA}(f^{\bA}(a), \dots, f^{\bA}(a)),g^{\bB}(b))=
+% (f^{\bA} (a), g^{\bB} (b)).
+% \]
+% Therefore,
+% \[
+% (g^{\bA\times \bB}\circ f^{\bA\times \bB}) (a,b) =
+% (f^{\bA} (a), g^{\bB} (b)).
+% \]
+
+% But now what happens when we evaluate 
+% $(g^{\bA\times \bB}\circ f^{\bA\times \bB}) (a',b')$?
+% We have
+% \begin{align*}
+%   f^{\bA\times \bB} (a',b') &=
+%   (f^{\bA} (a'), f^{\bB}(b')) \\&= \bigl(f^{\bA} (a'), s^{\bB}(d(b,b,b'), \dots,
+%   d(b,b,b'), b', d(b,b,b'),\dots, d(b,b,b'))\bigr)\\
+%   &= \bigl(f^{\bA} (a'), s^{\bB}(b', \dots, b')\bigr)= \bigl(f^{\bA} (a'), b'\bigr).
+% \end{align*}
+
+\newpage
 
 \section{Miscellaneous Theorems}
 We collect here the statement and proofs of results that we used above but whose
@@ -1602,200 +1792,6 @@ $\bA$ has a proper absorbing subuniverse, or $\bB$ has a proper absorbing subuni
 
 \bigskip
 
-\section{Odds and Ends}
-
-\subsection{Skew congruences of idempotent algebras}
-Let $\sV$ be a variety and let $\bA$ and $\bB$ be idempotent
-algebras in $\sV$.
-Recall the following standard notation:
-if $\alpha \in \Con(\bA)$ and $\beta \in \Con(\bB)$, then
-$\alpha \times \beta$ denotes the set of pairs $((a,b),(a',b'))$ satisfying
-$a \mathrel{\alpha} a'$ and $b \mathrel{\beta} b'$.  The relation 
-$\alpha \times \beta$ is clearly a congruence of $\bA \times \bB$.
-
-Fix $(a, b)$ and $(a', b')$ in $A \times B$.
-We claim that
-\[\Cg^{\bA}(a,a') \times \Cg^{\bB}(b,b')
-=\Cg^{\bA \times \bB}((a, b), (a', b')).\]
-
-Let $\tau := \Cg^{\bA}(a,a') \times \Cg^{\bB}(b,b')$  %%  \in \Con(\bA \times \bB)$
-and $\theta:= \Cg^{\bA \times \bB}((a, b), (a', b'))$.
-First note that $\tau$ is a product of a congruence
-of $\bA$ with a congruence of $\bB$, so $\tau$
-is a congruence of $\bA\times \bB$.
-Moreover, the pair $((a,b), (a',b'))$ clearly belongs to $\tau$, so
-$\theta\leq \tau$.  We must prove that $\tau \leq \theta$.
-
-Fix $((x,y),(x'y')) \in \tau$. This means that
-$(x,x') \in \Cg^{\bA}(a,a')$ and $(y,y')\in \Cg^{\bB}(b,b')$.
-Therefore, there exist $n>0$, $m>0$, 
-%% $(c_0, c_0'), (c_1, c_1'), \dots, (c_n, c_n')$ in $,  
-$c_0$, $c_1$, $\dots$, $c_n$ $\in A$, $f_0$, $f_1$, $\dots$,
-$f_{n-1} \in \Pol_1(\bA)$, $d_0$, $d_1$, $\dots$, $d_n\in B$, and $g_0$, $g_1$, $\dots$,
-$g_{n-1} \in \Pol_1(\bB)$ such that 
-\begin{align*}
-  x = c_0, \; c_n=x', \text{ and } \; \{c_i, c_{i+1}\} &= \{f_i(a), f_i(a')\},
-  \text{ for all $0\leq i < n$, and}\\
-  y = d_0, \; d_n=y',  \text{ and }  
-  \{d_i, d_{i+1}\} &= \{g_i(b), g_i(b')\}, \text{ for all $0\leq i < m$.}
-\end{align*}
-We can assume without loss of generality that $n=m$, since we can insert dummy
-terms to extend the shorter of the two sequences.
-
-We wish to prove $((x,y),(x'y')) \in \theta:= \Cg^{\bA \times \bB}((a, b), (a', b'))$,
-which is equivalent to the following: there exist $n>0$, 
-$(e_0, e_0')$, $(e_1,e_1')$, $\dots$, $(e_n, e_n') \in A\times B$, 
-$h_0$, $h_1$, $\dots$, $h_{n-1} \in \Pol_1(\bA\times \bB)$ such that
-\begin{align*}
-  (x,y) = (e_0,e_0'), \; (e_n, e_n') &=(x',y'), \text{ and for all $0\leq i < n$, } \\
-  \{(e_i, e_i'), (e_{i+1}, e_{i+1}')\} &= \{h_i(a,b), h_i(a',b')\}.
-\end{align*}
-
-
-Let $f = f_0$.  Since $f\in \Pol_1(\bA)$, for some $\ell>0$ there
-exist a term $s^{\bA} \in \Clo_{\ell+1}(\bA)$ and $a_0, a_1, \dots, a_\ell$ in $A$ such that
-\[
-f^{\bA}(x) = s^{\bA}(a_0, \dots, a_{i-1}, x, a_{i+1}, \dots, a_\ell), \text{ for some $i$.}
-\]
-Similarly, letting $g = g_0$, for some $k>0$ there
-exist a term $t^{\bB} \in \Clo_{k+1}(\bB)$ and $b_0, b_1, \dots, b_k$ in $B$ such that
-\[
-g^{\bB}(y) = t^{\bB}(b_0, \dots, b_{j-1}, y, b_{j+1}, \dots, b_k), \text{ for some $j$.}
-\]
-Without loss of generality, we can assume $j=i$. (check this)
-
-%% Now, for
-%% $\ba  = (a_0, a_1, \dots, a_{\ell})\in A^{\ell+1}$ and
-%% $\bb  = (b_0, b_1, \dots, b_{\ell})\in B^{\ell+1}$, we have
-%% \[
-%% s^{\bA \times \bB}((a_0, b_0), \dots, (a_{\ell}, b_{\ell}))
-%% = (s^{\bA}(\ba), s^{\bB}(\bb)).
-%% \]
-Consider the polynomial $p \in \Pol_1(\bA\times \bB)$ defined via
-$s$ as follows:
-\begin{align*}
-p(x,y) &= s^{\bA \times \bB}((a_0, b), (a_1, b), \dots, (a_{i-1}, b),(x,y),
-(a_{i+1}, b), \dots, (a_{\ell}, b))\\
-&= (s^{\bA} (a_0, a_1,\dots, a_{i-1}, x, a_{i+1}, \dots, a_{\ell}), 
-s^{\bB}(b, \dots, b, y, b,\dots, b))\\
-&= (f^{\bA} (x), 
-s^{\bB}(b, \dots, b, y, b,\dots, b)).
-\end{align*}
-Consider the polynomial $q \in \Pol_1(\bA\times \bB)$ defined via
-$t$ as follows:
-\begin{align*}
-q(x,y) &= t^{\bA \times \bB}((f^{\bA}(a), b_0), (f^{\bA}(a), b_1), \dots, (f^{\bA}(a), b_{i-1}),(x,y),
-(f^{\bA}(a), b_{i+1}), \dots, (f^{\bA}(a), b_{\ell}))\\
-&= (t^{\bA} (f^{\bA}(a), \dots, f^{\bA}(a), x, f^{\bA}(a), \dots, f^{\bA}(a)), 
-t^{\bB}(b_0, \dots, b_{i-1}, y, b_{i+1},\dots, b_{\ell}))\\
-&= (t^{\bA} (f^{\bA}(a), \dots, f^{\bA}(a), x, f^{\bA}(a), \dots, f^{\bA}(a)), 
-g^{\bB}(y)).
-\end{align*}
-Then $p(a,b) = (f^{\bA}(a), b)$ and $q(f^{\bA}(a), b) = (f^{\bA}(a),g^{\bB}(b))$.
-Therefore,
-\[
-(q\circ p)^{\bA\times \bB} (a,b) =
-(f^{\bA} (a), g^{\bB} (b)).
-\]
-We can carry out this construction for each pair $(f_i, g_i)$, $0\leq i < n$,
-arriving at a sequence $q_i \circ p_i$ of polynomials in
-$\Pol_1(\bA \times \bB)$ such that
-\[
-(q_i\circ p_i)^{\bA\times \bB} (a,b) =
-(f_i^{\bA} (a), g_i^{\bB} (b)).
-\]
-Unfortunately, evaluating this polynomial at $(a',b')$ yields the less
-desirable result:
-\[
-(q_i\circ p_i)(a',b')=
-(t_i^{\bA}(f_i^{\bA} (a), \dots, f_i^{\bA} (a), f_i^{\bA} (a'),f_i^{\bA} (a), \dots, f_i^{\bA} (a)),
-g_i(s_i^{\bB}(b, \dots, b, b', b,\dots, b))).
-\]
-So we try again...
-
-\bigskip
-%% \[
-%% d_i(x,y) = d^{\bA\times \bB}((a_i,b),(a_i,b),(a_i,y)) = (d^{\bA}(a_i,a_i,a_i),
-%% d^{\bB}(b,b,y)) = (a_i, d^{\bB}(b,b,y))
-%% \]
-Consider the polynomial $p \in \Pol_1(\bA\times \bB)$ defined via
-$s$ as follows:
-\begin{align*}
-p(x,y) &= s^{\bA \times \bB}((a_0, y), \dots, (a_{i-1}, y), (x, y), (a_{i+1}, y), \dots, (a_{\ell}, y))\\
-&= (s^{\bA} (a_0, \dots, a_{i-1}, x, a_{i+1}, \dots, a_{\ell}), 
-s^{\bB}(y, \dots, y))\\
-&= (f^{\bA} (x), y).
-\end{align*}
-Consider the polynomial $q \in \Pol_1(\bA\times \bB)$ defined via
-$t$ as follows:
-\begin{align*}
-  q(x,y) &= t^{\bA \times \bB}(p(x,b_0),
-  \dots, p(x, b_{i-1}),p(x,y),
-  p(x, b_{i+1}), \dots, p(x, b_{\ell}))\\
-  &= t^{\bA \times \bB}((f^{\bA}(x), b_0), \dots, (f^{\bA}(x), b_{i-1}),(f^{\bA}(x),y),
-(f^{\bA}(x), b_{i+1}), \dots, (f^{\bA}(x), b_{\ell}))\\
-%% &= (t^{\bA} (f^{\bA}(x), \dots, f^{\bA}(x), x, f^{\bA}(x), \dots, f^{\bA}(x)), 
-%% g^{\bB}(y)).
-&= (f^{\bA}(x), g^{\bB}(y)).
-\end{align*}
-Then $p(a,b) = (f^{\bA}(a), b)$ and $q(f^{\bA}(a), b) = (f^{\bA}(a),g^{\bB}(b))$.
-Therefore,
-\[
-(q\circ p)^{\bA\times \bB} (a,b) =
-(f^{\bA} (a), g^{\bB} (b)).
-\]
-We can carry out this construction for each pair $(f_i, g_i)$, $0\leq i < n$,
-arriving at a sequence $q_i \circ p_i$ of polynomials in
-$\Pol_1(\bA \times \bB)$ such that
-\[
-(q_i\circ p_i)^{\bA\times \bB} (a,b) =
-(f_i^{\bA} (a), g_i^{\bB} (b)).
-\]
-% Unfortunately, evaluating this polynomial at $(a',b')$ yields the less
-% desirable result:
-% \[
-% (q_i\circ p_i)(a',b')=
-% (t_i^{\bA}(f_i^{\bA} (a), \dots, f_i^{\bA} (a), f_i^{\bA} (a'),f_i^{\bA} (a), \dots, f_i^{\bA} (a)),
-% g_i(s_i^{\bB}(b, \dots, b, b', b,\dots, b))).
-% \]
-
-% \bigskip
-
-% \hrule
-
-% \bigskip
-
-% \begin{align*}
-%   f^{\bB}(y) &= s^{\bB}(d(b,b,y), \dots, d(b,b,y), y, d(b,b,y), \dots, d(b,b,y)), \; \text{ and }\\
-%   g^{\bA}(x) &= t^{\bA}(f^{\bA}(a), \dots, f^{\bA}(a), x, f^{\bA}(a), \dots, f^{\bA}(a)).
-% \end{align*}
-% Then
-% \[
-% f^{\bA\times \bB} (a,b) =
-% (f^{\bA} (a), f^{\bB}(b)) = (f^{\bA} (a), s^{\bB}(b, \dots, b, )) = (f^{\bA} (a), b),
-% \]
-% and 
-% \[
-% g^{\bA\times \bB} (f^{\bA} (a), b) =
-% (g^{\bA} (f^{\bA} (a)), g^{\bB}(b))=
-% (t^{\bA}(f^{\bA}(a), \dots, f^{\bA}(a)),g^{\bB}(b))=
-% (f^{\bA} (a), g^{\bB} (b)).
-% \]
-% Therefore,
-% \[
-% (g^{\bA\times \bB}\circ f^{\bA\times \bB}) (a,b) =
-% (f^{\bA} (a), g^{\bB} (b)).
-% \]
-
-% But now what happens when we evaluate 
-% $(g^{\bA\times \bB}\circ f^{\bA\times \bB}) (a',b')$?
-% We have
-% \begin{align*}
-%   f^{\bA\times \bB} (a',b') &=
-%   (f^{\bA} (a'), f^{\bB}(b')) \\&= \bigl(f^{\bA} (a'), s^{\bB}(d(b,b,b'), \dots,
-%   d(b,b,b'), b', d(b,b,b'),\dots, d(b,b,b'))\bigr)\\
-%   &= \bigl(f^{\bA} (a'), s^{\bB}(b', \dots, b')\bigr)= \bigl(f^{\bA} (a'), b'\bigr).
-% \end{align*}
 
 \bibliographystyle{alphaurl}
 \bibliography{inputs/refs2.bib}
