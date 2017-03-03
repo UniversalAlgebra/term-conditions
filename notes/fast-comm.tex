@@ -126,7 +126,7 @@ MRREVIEWER = {H. Peter Gumm},
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% \usepackage{inputs/proof-dashed}
+\usepackage{inputs/proof-dashed}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -330,7 +330,38 @@ Thus,
 %% %% \newcommand{\Phiba}{\ensuremath{\Phi_{\beta, \alpha}}}
 %% %% \newcommand{\Phiba}{\ensuremath{\Phi}}
 
-
+The term condition $\CC{\alpha}{\beta}{\gamma}$ is the following:
+for all $a \alphar b$, for all $u_i \betar v_i$, for all 
+$t\in \Pol_{n+1}(\bA)$ we have
+%	Example:
+%		If you want to write
+%       	       	    B C
+%		 	   -----
+%		       A     D
+%		      ----------
+%			  E
+%	use
+%		\infer{E}{
+%			A
+%			&
+%			\infer{D}{B & C}
+%		}
+%
+\[
+\infer={t(b,\bu) \mathrel{[\alpha, \beta]} t(b, \bv)}{t(a,\bu) \mathrel{[\alpha, \beta]} t(a, \bv)}\]
+Therefore, 
+\[
+\infer{\begin{bmatrix} t(b,\bu) \\ t(b,\bu)  \end{bmatrix}
+  \mathrel{[\alpha, \beta]^2} 
+  \begin{bmatrix} t(b,\bv) \\ t(b,\bv)  \end{bmatrix}}
+{\begin{bmatrix} t(b,\bu) \\ t(b,\bu)  \end{bmatrix}
+  \mathrel{\Delta_{\alpha, \beta}}
+  \begin{bmatrix} t(a,\bu) \\ t(a,\bu)  \end{bmatrix}
+  \mathrel{[\alpha, \beta]^2} 
+  \begin{bmatrix} t(a,\bv) \\ t(a,\bv)  \end{bmatrix}
+  \mathrel{\Delta_{\alpha, \beta}}
+  \begin{bmatrix} t(b,\bv) \\ t(b,\bv)  \end{bmatrix}}
+\]
 \section{Fixed Point Lemma}
 \begin{lemma}
   \label{lem:fixed-point-comm}
