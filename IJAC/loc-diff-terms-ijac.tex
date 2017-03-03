@@ -1640,19 +1640,19 @@ $\alpha \times \beta$ is clearly a congruence of $\bA \times \bB$.
   \subseteq \com{\pi_A\bigl(\Cg^{\bA \times \bB}((a, b), (a', b'))\bigr)}.
   \]
   Next, observe that 
-  $\Cg^{\bA}(a,a') \times \Cg^{\bB}(b,b')$  %%  \in \Con(\bA \times \bB)$
+  $\Cg^{\bA}(a,a') \otimes \Cg^{\bB}(b,b')$  %%  \in \Con(\bA \times \bB)$
   is a product of two congruences, one in $\Con(\bA)$ and the
   other in $\Con(\bB)$, so it is a congruence of $\bA\times \bB$.
   Moreover, it contains the pair $((a,b), (a',b'))$, so
   %% belongs to $\Cg^{\bA}(a,a') \times \Cg^{\bB}(b,b')$, 
   \[
-  \Cg^{\bA \times \bB}((a, b), (a', b'))\leq \Cg^{\bA}(a,a') \times \Cg^{\bB}(b,b').
+  \Cg^{\bA \times \bB}((a, b), (a', b'))\leq \Cg^{\bA}(a,a') \otimes \Cg^{\bB}(b,b').
   \]
   Therefore, 
   \[
   \pi_A\bigl(\Cg^{\bA \times \bB}((a, b), (a', b'))\bigr)
   \leq
-  \pi_A\bigl(\Cg^{\bA}(a,a') \times \Cg^{\bB}(b,b')\bigr) = 
+  \pi_A\bigl(\Cg^{\bA}(a,a') \otimes \Cg^{\bB}(b,b')\bigr) = 
   \Cg^{\bA}(a,a').
   \]
   Pulling all of these observations together and applying monotonicity of the
@@ -1697,24 +1697,24 @@ The converse of Lemma~\ref{lem:products} is harder to prove.
   to the relation
   \[
   \com{\Cg^{\bA}(a,a')}
-  \times
+  \otimes
   \com{\Cg^{\bB}(b,b')}.
   \]
   We claim that the latter is equal to
-  $\com{\Cg^{\bA}(a,a') \times \Cg^{\bB}(b,b')}$.
+  $\com{\Cg^{\bA}(a,a') \otimes \Cg^{\bB}(b,b')}$.
   Recall from above that
   \[
   \Cg^{\bA \times \bB}((a, b), (a', b'))\leq \Cg^{\bA}(a,a') \times \Cg^{\bB}(b,b').
   \]
   Therefore, if we prove that
   \[
-  \com{\Cg^{\bA}(a,a')}  \times  \com{\Cg^{\bB}(b,b')} = 
-  \com{\Cg^{\bA}(a,a') \times \Cg^{\bB}(b,b')},
+  \com{\Cg^{\bA}(a,a')}  \otimes  \com{\Cg^{\bB}(b,b')} = 
+  \com{\Cg^{\bA}(a,a') \otimes \Cg^{\bB}(b,b')},
   \]
   then we could complete the proof by showing that
   \begin{equation}
     \label{eq:655}    
-  \Cg^{\bA \times \bB}((a, b), (a', b'))\geq \Cg^{\bA}(a,a') \times \Cg^{\bB}(b,b').
+  \Cg^{\bA \times \bB}((a, b), (a', b'))\geq \Cg^{\bA}(a,a') \otimes \Cg^{\bB}(b,b').
   \end{equation}
 
   \smallskip
