@@ -416,6 +416,32 @@ using the function $\Psiba$ instead.}
 \end{equation}
 Here $\Delta_{\beta, \alpha}$ is defined exactly as 
 in Section~\ref{sec:altern-descr} above.
+\begin{remark}
+  Since $\Psiba$ is clearly a monotone increasing function on the (complete) sublattice
+  $\downbeta \leq \Eq(A)$, it is guaranteed to have a least fixed
+  point---that is, there is a point $\nu\in \downbeta$ such that $\Psiba(\nu) = \nu$
+  and $\nu \leq \theta$, for every $\theta\in \Eq(\beta)$
+  that satisfies $\Psiba(\theta) = \theta$.
+  Here are two ways the least fixed point can be computed:
+  \begin{equation}
+    \label{eq:4}
+  \nu = \Meet \{ \theta \in \Eq(A) \mid \Psiba(\theta) \subseteq \theta\}
+  \quad \text{ and } \quad
+  \nu = \bigcup_{k\geq 0} \Psiba^{k}(0_A).
+  \end{equation}
+  %(See, for example,~\cite{MR3012378}.)
+
+  %% Recall, if $f$ is a monotone increasing function defined on a
+  %%   complete poset $\<P, \leq\>$, then the least fixed point of $f$
+  %%   is $\Meet \{ p\in P \mid f p \leq p\}$. %(See, for example,~\cite{MR3012378}.)
+  %%   Thus,
+  %%   Lemma~\ref{lem:fixed-point-comm}~(\ref{item:2}) asserts that
+  %%   \begin{equation}
+  %%     \label{eq:2}
+  %%           [\alpha, \beta] =\Meet \{ B \subseteq \beta \mid \Psiba(B) \subseteq B\}.
+  %%   \end{equation}
+\end{remark}
+
 
 \subsubsection{Fixed Point Lemma}
 \begin{lemma}
@@ -448,7 +474,9 @@ in Section~\ref{sec:altern-descr} above.
 
   \medskip
 
-  \noindent (ii)
+  \noindent (ii) We could confirm that
+  $[\alpha, \beta]$ is the least fixed point of $\Psiba$ by using one of the
+  formulas in~(\ref{eq:4}).  Instead, we will prove (ii) directly.
   Since $[\alpha, \beta] \in \Eq(A)$,
   we have $[\alpha, \beta] \leq \Psiba([\alpha, \beta])$
   by~(\ref{item:1}).
@@ -568,32 +596,10 @@ in Section~\ref{sec:altern-descr} above.
     with~(\ref{item:4}) and~(\ref{item:5})---proves the pair
     $\bigl((p(a, \bc), p(a, \bc')), (p(a', \bc), p(a', \bc'))\bigr)$
     belongs to  $\mathrel{\Delta_{\beta, \alpha}}$.
-    Since  $(p(a, \bc), p(a, \bc')) \in \theta$, this proves
+    Since  $(p(a, \bc), p(a, \bc')) \in \theta$, we have
     $(p(a', \bc), p(a', \bc')) \in \Psiba(\theta)$, completing the proof.
   \end{proof}
 
-\begin{remark}
-  Since $\Psiba$ is clearly a monotone increasing function on the (complete) sublattice
-  $\downbeta \leq \Eq(A)$, it is guaranteed to have a least fixed point.
-  That is, there exists $\nu\in \downbeta$ such that $\Psiba(\nu) = \nu$
-  and $\nu \leq \theta$ for every $\theta\in \Eq(\beta)$
-  satisfying $\Psiba(\theta) = \theta$.
-
-  There are at least two ways to describe the least fixed point, namely,
-  \[\bigcup_{k\geq 0} \Psiba^{k}(0_A) = [\alpha, \beta]  
-  = \Meet \{ \theta \in \Eq(A) \mid \Psiba(\theta) \subseteq \theta\}.\]
-  %(See, for example,~\cite{MR3012378}.)
-
-  %% Recall, if $f$ is a monotone increasing function defined on a
-  %%   complete poset $\<P, \leq\>$, then the least fixed point of $f$
-  %%   is $\Meet \{ p\in P \mid f p \leq p\}$. %(See, for example,~\cite{MR3012378}.)
-  %%   Thus,
-  %%   Lemma~\ref{lem:fixed-point-comm}~(\ref{item:2}) asserts that
-  %%   \begin{equation}
-  %%     \label{eq:2}
-  %%           [\alpha, \beta] =\Meet \{ B \subseteq \beta \mid \Psiba(B) \subseteq B\}.
-  %%   \end{equation}
-\end{remark}
 
 
 \bibliographystyle{alphaurl}
