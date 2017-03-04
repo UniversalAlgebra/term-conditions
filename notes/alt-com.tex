@@ -425,9 +425,9 @@ in Section~\ref{sec:altern-descr} above.
   Here are two ways the least fixed point can be computed:
   \begin{equation}
     \label{eq:4}
-  \nu = \Meet \{ \theta \in \Eq(A) \mid \Psiba(\theta) \subseteq \theta\}
+  \nu = \Meet \{ \theta \in \Eq(A) \mid \Psiba(\theta) \leq \theta\}
   \quad \text{ and } \quad
-  \nu = \bigcup_{k\geq 0} \Psiba^{k}(0_A).
+  \nu = \Join_{k\geq 0} \Psiba^{k}(0_A).
   \end{equation}
   %(See, for example,~\cite{MR3012378}.)
 
