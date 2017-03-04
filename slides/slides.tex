@@ -220,6 +220,186 @@ We solve an the following easier problem:
 \end{problem}
 \end{frame}
 
+\begin{frame}
+  \frametitle{A Useful Lemma}
+  
+\begin{lemma}
+  \label{lem:equiv-cond-exist-1}
+  Let $\bA$ be an algebra, $t(x,y,z)$ a ternary term,
+  $\bF := \bF_{\bbV(\bA)}(x,y)$. 
+
+  Consider the following statements:
+  \begin{enumerate}[(A)]
+  \item \label{item:6} $t^{\bA}$ is not a difference term operation for $\bA$.
+  \item \label{item:7} There exists a 2-generated subalgebra $\bB \leq \bA$
+    such that $t^{\bB}$ is not a difference term operation for $\bB$.
+  \item \label{item:8} $t^{\bF}$ is not a difference term operation for $\bF$.
+  \end{enumerate}
+  Then (\ref{item:6}) $\Rightarrow$ (\ref{item:7}) and (\ref{item:7})  $\Rightarrow$ (\ref{item:8}).
+\end{lemma}
+\end{frame}
+
+
+\begin{frame}[shrink=25]{Proof sketch}
+  (\ref{item:6}) $\Rightarrow $ (\ref{item:7}):
+  Suppose  $t^{\bA}$ fails to be a difference term operation for $\bA$ and let $a, b \in
+  A$ witness this failure. Then either
+  \begin{enumerate}
+  \item[1.]\label{item:9} $d^{\bA}(a,a,b) \neq b$, or
+  \item[2.]\label{item:10} $(d^{\bA}(a,b,b), a) \notin \com{\Cg^{\bA} (a, b)}$.
+  \end{enumerate}
+
+  \vskip2mm
+  \pause 
+  Let $\bB = \Sg^{\bA} (a, b)$.  
+
+  \vskip2mm
+  In case 1,
+  $d^{\bB}(a,a,b) = d^{\bA}(a,a,b) \neq b$, so $d^{\bB}(x,y,z)$ is not a difference
+  term operation for $\bB$.
+  
+\vskip2mm
+\pause
+In case 2,
+  $(d^{\bB}(a,b,b), a) = (d^{\bA}(a,b,b), a)$ is not in $\com{\Cg^{\bA} (a, b)}$.
+  So, assuming 
+  \[\com{\Cg^{\bB} (a, b)} \subseteq \com{\Cg^{\bA} (a, b)},\]
+  we have $(d^{\bB}(a,b,b), a) \notin \com{\Cg^{\bB} (a, b)}$, so
+  $d^{\bB}(x,y,z)$ is not a difference term for $\bB$.
+\note{  Inclusion~(\ref{eq:6}) holds because 
+  $\CC{\beta}{\beta}{\delta}$ holds when
+  $\beta := \Cg^{\bB} (a, b)$ and
+  $\delta:=\com{\Cg^{\bA} (a, b)} \cap B^2$.}
+  % (See Appendix~\ref{sec:details-omitted-from} for details.)\\[5pt]
+  % (\ref{item:7}) $\Rightarrow$ (\ref{item:8}):
+
+  Since there is a homomorphism from $\bF$ to $\bB$,
+  % Lemma~\ref{lem:hom-image-diff-term} implies that 
+  $d^{\bF}(x,y,z)$ is not a difference term operation for $\bF$.
+
+\end{frame}
+
+\begin{frame}[shrink=25]{A useful theorem}
+\begin{theorem}
+  \label{thm:F}
+  Let $\sV$ be a variety, and $\bF = \bF_{\sV}(2)$ the 2-generated
+  free algebra in $\sV$. The following are equivalent:
+  \begin{enumerate}[(i)]
+  \item \label{item:1}
+    $\sV$ has a difference term;
+  \item \label{item:2}
+    $\sansH \sansS \sansP (\bF)$ has a difference term;
+  \item \label{item:3}
+    $\bF$ has a difference term operation.
+  \end{enumerate}
+\end{theorem}
+  The implications
+  (\ref{item:1}) $\Rightarrow$  (\ref{item:2}) $\Rightarrow$  (\ref{item:3}) are
+  obvious. 
+
+  \vskip2mm
+  \pause 
+  We prove
+  (\ref{item:3}) $\Rightarrow$  (\ref{item:1}) by contraposition.
+  Suppose $\sV$ has no difference term. 
+
+  \vskip2mm
+  Let $d(x,y,z)$ be an arbitrary ternary term.
+  
+  \vskip2mm
+  Let $\bA\in \sV$ be such that $d^{\bA}(x,y,z)$ is not a difference term
+  operation. 
+
+  \vskip2mm
+  By the previous lemma % Lemma~\ref{lem:equiv-cond-exist-1},
+  $d^{\bF}(x,y,z)$ is not a difference term operation for $\bF$.
+  %% Since $d(x,y,z)$ is arbitrary, it follows that
+  %% $\bF$ has no difference term operation whatsoever.
+  %% , as we set out to prove.
+\end{frame}
+
+\begin{frame}{Local difference terms}
+
+% In~\cite{MR3239624},
+% M.~Valeriote and R.~Willard, Idempotent {$n$}-permutable varieties, {\em Bull.
+%   Lond. Math. Soc.} {\bf 46}(4)  (2014)  870--880.
+Valeriote and Willard recently defined %% an \defn{$\bA$-triple for $\bp$}
+%% to be a triple $(a,b,i)$ such that $a, b \in A$ and
+%% $p_i(a,b,b) = p_{i+1}(a,a,b)$. They use this to define 
+a ``local Hagemann-Mitschke sequence'' that they use for
+efficiently deciding, for a given $n$, whether an idempotent
+variety is $n$-permutable. 
+
+  \bigskip
+
+  Inspired by that work, we devise a similar construct, called
+  a ``local difference term,'' that we use to develop a polynomial-time
+  algorithm for deciding the existence of a difference term operation.
+
+\end{frame}
+\begin{frame}{Local difference terms}
+
+  Let $\bA=\< A, \dots\>$ be an algebra, fix $a, b \in A$ and
+  $i \in \{0,1\}$.
+  A \defn{local difference term for
+    $(a,b,i)$} is a ternary term $d$ satisfying the following:
+  \begin{align}
+    %% \text{ if $i=0$, then } & a \comm{\Cg^{\bA}(a,b)}{\Cg^{\bA}(a,b)} d(a,b,b); \label{eq:diff-triple}\\
+    \text{ if $i=0$, then } & a \comr{\Cg(a,b)} d(a,b,b); \label{eq:diff-triple}\\
+    \text{ if $i=1$, then } &d(a,a,b) = b. \nonumber
+  \end{align}
+
+  \bigpause
+  If $d$ satisfies~(\ref{eq:diff-triple}) for all triples
+  in some subset $S\subseteq A \times A \times \{0,1\}$, then we call $d$
+  a \defn{local difference term for $S$}.
+\end{frame}
+
+\begin{frame}{Local difference terms}
+  Let 
+  $\sS = A \times A \times \{0,1\}$ and
+  suppose that every pair
+  $((a_0, b_0, \chi_0), (a_1, b_1, \chi_1))$
+  in $\sS^2$ has a local difference term.
+
+  \bigpause
+  That is, for each pair $((a_0, b_0, \chi_0), (a_1, b_1, \chi_1))$, there exists
+  $d$ such that for each $i \in \{0,1\}$ we have
+  \begin{align}
+    a_i \comr{\Cg(a_i,b_i)} d(a_i,b_i,b_i), & \;
+  \text{ if $\chi_i=0$, and }  \label{eq:d-trip-i1}\\
+  d(a_i,a_i,b_i) =b_i, & \;
+  \text{ if $\chi_i=1$.}\label{eq:d-trip-i2} %\\\nonumber
+  \end{align}
+  
+  \bigpause
+  Under these hypothesis we prove that every subset $S\subseteq \sS$
+  has a local difference term.
+
+  \vskip2mm
+  In other words, $\exists$ a single term $d$ that works 
+  for all $(a_i, b_i, \chi_i) \in S$.
+\end{frame}
+
+\begin{frame}{Main Results}
+
+%% \subsection{Main Results}
+\begin{theorem} %[\protect{cf.~\cite[Theorem 2.2]{MR3239624}}]
+  \label{thm:local-diff-terms}
+  Let $\sV$ be an idempotent variety and
+  $\bA \in \sV$. Define
+  $\sS= A \times A \times \{0,1\}$
+  and suppose that every pair
+  $((a_0, b_0, \chi_0), (a_1, b_1, \chi_1)) \in \sS^2$
+  has a local difference term.
+  Then every subset $S \subseteq \sS$
+  has a local difference term.
+\end{theorem}
+
+
+\end{frame}
+
+
 \end{document}
 
 
