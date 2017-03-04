@@ -49,7 +49,7 @@ MRREVIEWER = {H. Peter Gumm},
        URL = {http://dx.doi.org/10.1006/jabr.1995.1334},
 }
 \end{filecontents*}
-\documentclass[12pt]{amsart}
+\documentclass[12pt,reqno]{amsart}
 % The following \documentclass options may be useful:
 % preprint      Remove this option only once the paper is in final form.
 % 10pt          To set in 10-point type instead of 9-point.
@@ -171,8 +171,12 @@ MRREVIEWER = {H. Peter Gumm},
 %% \renewcommand{\bbeta}{\ensuremath{\ubar{\boldsymbol{\beta}}}}
 
 \begin{abstract}
-  This note is an attempt to understand the alternate description of the commutator 
-  found in Kearnes~\cite[p.~930]{MR1358491}.
+  The goal of this note is two-fold: first, we attempt to explain and improve upon
+  the alternate description of the commutator given by Kearnes
+  in~\cite[p.~930]{MR1358491}; second, we present another
+  description of the commutator that we believe could form
+  the basis of an easy and efficient (polynomial-time) algorithm for computing the commutator.
+  
   %% (here $\beta$ is a congruence of $\bA$ and $\bA \times_\beta \bA$ denotes the subalgebra of
   %% $\bA^2$ with universe $\beta$):
   %% \begin{quote}
@@ -334,11 +338,13 @@ $\bigl((x,y),(x',y')\bigr) \in \Delta_{\alpha, \beta} \circ (\theta\ast \theta)
 \circ \Delta_{\alpha, \beta}$
 implies $(x,x') \in \theta$ and $(y,y') \in \theta$.
 
-In~\cite[p.~930]{MR1358491} there seems to be a description of the
+In~\cite[p.~930]{MR1358491}, Kearnes describes the 
 commutator as the least $\gamma\in \Con (\bA)$ that is ``$\Delta_{\beta,\alpha}$-closed.''
 %% $\Delta_{\alpha, \beta} \circ \gamma^2 \circ \Delta_{\alpha, \beta}$; that is, closed under the following relation:
-The justification for this description
-is based on the fact that the term condition $\CC{\alpha}{\beta}{\gamma}$ implies
+Although there is no proof in~\cite[p.~930]{MR1358491} demonstrating that this
+is an apt description of the commutator, the justification probably uses
+the fact that the term condition
+$\CC{\alpha}{\beta}{\gamma}$ implies 
 the following derivation\footnote{In this notation, the stuff below the horizontal line
   is a consequence of the stuff above the horizontal line.}
 %% \[
@@ -359,12 +365,12 @@ the following derivation\footnote{In this notation, the stuff below the horizont
 %% $\CC{\alpha}{\beta}{\gamma}$ holds iff is the following:Therefore, 
 \[
 \infer{\begin{bmatrix} t(b,\bu) \\ t(b,\bu)  \end{bmatrix}
-  \mathrel{\gamma^2} %% \mathrel{[\alpha, \beta]^2} 
+  \mathrel{(\gamma \ast \gamma)} %% \mathrel{[\alpha, \beta]^2} 
   \begin{bmatrix} t(b,\bv) \\ t(b,\bv)  \end{bmatrix}}
 {\begin{bmatrix} t(b,\bu) \\ t(b,\bu)  \end{bmatrix}
   \mathrel{\Delta_{\alpha, \beta}}
   \begin{bmatrix} t(a,\bu) \\ t(a,\bu)  \end{bmatrix}
-  \mathrel{\gamma^2}  %% \mathrel{[\alpha, \beta]^2} 
+  \mathrel{(\gamma \ast \gamma)}  %% \mathrel{[\alpha, \beta]^2} 
   \begin{bmatrix} t(a,\bv) \\ t(a,\bv)  \end{bmatrix}
   \mathrel{\Delta_{\alpha, \beta}}
   \begin{bmatrix} t(b,\bv) \\ t(b,\bv)  \end{bmatrix}}
@@ -387,14 +393,16 @@ for each $0_A \leq \theta \leq \beta$ as follows:
 \end{equation}
 It seems to me the statement ``$\gamma$ is
 $\Delta_{\beta, \alpha}$-closed'' is equivalent to 
-$\Phi_{\beta,\alpha}(\gamma)\subseteq \gamma$. It's not clear to me
-that the commutator satisfies
+$\Phi_{\beta,\alpha}(\gamma)\subseteq \gamma$. However, it's not clear to me
+that the commutator should
+satisfy
 $\Phi_{\beta,\alpha}\bigl([\alpha, \beta]\bigr) \subseteq [\alpha, \beta]$.
 
 \subsection{Second Attempt}
-In~\cite{com-fix-poi} is an alternative alternate description of the commutator
-as the least fixed point of a certain closure operator.
-This section presents an improved version of that alternative.
+In~\cite{com-fix-poi} we gave another description of the commutator
+as the least fixed point of a certain closure operator that is closely related
+to the one described by Kearnes.
+This section presents an improved version of our earlier proposal.
 Specifically, we prove below that the commutator $[\alpha, \beta]$ is the least fixed
 point of the function
 $\Psi_{\beta, \alpha} \colon \downbeta\to \downbeta$
@@ -405,7 +413,7 @@ I define %$\Phi_{\beta, \alpha} \colon \sP(\beta) \to \sP(\beta)$ as follows:
 \end{equation*}
 and allegedly proved that the commutator $[\alpha, \beta]$ is the least fixed point
 of $\Phi_{\beta, \alpha}$.  I haven't found a mistake in that proof, but I have found reasons to
-suspect a problem with it.  This is why I have revised the claim in the present note
+suspect a problem with it.  This is why I revised the claim in the present note
 using the function $\Psiba$ instead.}
 \begin{equation}
   \label{eq:7}
@@ -416,19 +424,37 @@ using the function $\Psiba$ instead.}
 \end{equation}
 Here $\Delta_{\beta, \alpha}$ is defined exactly as 
 in Section~\ref{sec:altern-descr} above.
-\begin{remark}
+
+\pagebreak
+
+\begin{remarks}\
+  \begin{enumerate}
+  \item 
   Since $\Psiba$ is clearly a monotone increasing function on the (complete) sublattice
   $\downbeta \leq \Eq(A)$, it is guaranteed to have a least fixed
   point---that is, there is a point $\nu\in \downbeta$ such that $\Psiba(\nu) = \nu$
   and $\nu \leq \theta$, for every $\theta\in \Eq(\beta)$
   that satisfies $\Psiba(\theta) = \theta$.
-  Here are two ways the least fixed point can be computed:
+\item
+  Here are two ways the least fixed point described above could be computed:
   \begin{equation}
     \label{eq:4}
   \nu = \Meet \{ \theta \in \Eq(A) \mid \Psiba(\theta) \leq \theta\}
   \quad \text{ and } \quad
-  \nu = \Join_{k\geq 0} \Psiba^{k}(0_A).
+     \nu = \Join_{k\geq 0} \Psiba^{k}(0_A).
   \end{equation}
+  The goal of the Fixed Point Lemma below (Lem.~\ref{lem:fixed-point-comm})
+  is to show that the least
+  fixed point in this case is, in fact, the commutator;
+  that is, $\nu = [\alpha, \beta]$.  Therefore, either
+  expression in~(\ref{eq:4}) could potentially be used to compute the
+  commutator, but the second will be especially easy to
+  compute.  Thus, the following equation could be used as the basis for a
+  (polynomial-time?)\footnote{Check this!!!} algorithm for computing the commutator:
+  \[
+  [\alpha, \beta] = \Join_{k\geq 0} \Psiba^{k}(0_A).
+  \]
+  \end{enumerate}
   %(See, for example,~\cite{MR3012378}.)
 
   %% Recall, if $f$ is a monotone increasing function defined on a
@@ -440,7 +466,7 @@ in Section~\ref{sec:altern-descr} above.
   %%     \label{eq:2}
   %%           [\alpha, \beta] =\Meet \{ B \subseteq \beta \mid \Psiba(B) \subseteq B\}.
   %%   \end{equation}
-\end{remark}
+\end{remarks}
 
 
 \subsubsection{Fixed Point Lemma}
