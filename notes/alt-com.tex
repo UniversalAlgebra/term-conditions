@@ -98,6 +98,8 @@ MRREVIEWER = {H. Peter Gumm},
 
 \newcommand{\Phiba}{\ensuremath{\Phi_{\beta, \alpha}}}
 \newcommand{\Psiba}{\ensuremath{\Psi_{\beta, \alpha}}}
+\newcommand{\Deltaba}{\ensuremath{\Delta_{\beta, \alpha}}}
+\newcommand{\Deltabar}{\ensuremath{\mathrel{\Delta_{\beta, \alpha}}}}
 %% \newcommand{\Phiba}{\ensuremath{\Phi}}
 %% \newcommand{\Psiba}{\ensuremath{\Psi}}
 \newcommand{\thetaba}{\ensuremath{\theta_{\beta, \alpha}}}
@@ -465,13 +467,28 @@ point of $\Psiba$.
   fixed point of $\Psiba$ is, in fact, the commutator;
   that is, $\nu = [\alpha, \beta]$.  Therefore, either
   expression in~(\ref{eq:4}) could potentially be used to compute the
-  commutator, but the second ought to be especially easy to
-  compute.  In other words, the following equation could be used as the basis for a
-  (polynomial-time?)\footnote{Check this!!!} algorithm for computing the commutator:
+  commutator.
+  In other words, the following equation could be used as the basis for an
+  %% (polynomial-time?)\footnote{Check this!!!} 
+  algorithm for computing the commutator:
   \begin{equation}
     \label{eq:5}
           [\alpha, \beta] = \Join_{k\geq 0} \Psiba^{k}(0_A).
   \end{equation}
+  However, as we establish in Lemma~\ref{lem:fixed-point-comm} below,
+  $\Psiba$ is a closure operator, so idempotent. In particular,
+  $\Psiba^{k}(0_A) = \Psiba(0_A)$ for all $k$, so~(\ref{eq:5}) reduces
+  to the following simple description of the commutator:
+  \begin{align*}
+    %% \label{eq:55}
+          [\alpha, \beta] =
+          \Psiba(0_A)
+          &= \{ (x,y) \in A\times A \mid
+          \bigl(\exists\, (a,b) \in 0_A\big)\, (a,b) \mathrel{\Delta_{\beta, \alpha}} (x,y)\}\\
+          &= \{ (x,y) \in A\times A \mid
+          \bigl(\exists a \in A\bigr)\, (a,a) \mathrel{\Delta_{\beta, \alpha}} (x,y)\}.
+  \end{align*}
+
   %(See, for example,~\cite{MR3012378}.)
 
   %% Recall, if $f$ is a monotone increasing function defined on a
@@ -502,39 +519,130 @@ point of $\Psiba$.
   \item 
   In fact, $\Psi_{\beta, \alpha}$ is a closure operator on all
   of $\Tol(A)$.
-  Indeed, as we now prove, for a fixed $\theta \in \Tol(A)$, the following hold:
+  Indeed, as we now prove, for each $T \in \Tol(A)$, the following hold:
   \begin{enumerate}[(c.1)]
-  \item \label{item:c1} $\theta \leq \Psiba(\theta)$;     
-  \item \label{item:c2} $\theta \leq \gamma  \Rightarrow \Psiba(\theta) \leq \Psiba(\gamma)$;    
-  \item \label{item:c3} $\Psiba(\Psiba(\theta))  = \Psiba(\theta)$. 
+  \item \label{item:c1} $T  \leq \Psiba(T )$;     
+  \item \label{item:c2} $T  \leq T'  \Rightarrow \Psiba(T) \leq \Psiba(T')$;    
+  \item \label{item:c3} $\Psiba(\Psiba(T))  = \Psiba(T)$. 
   \end{enumerate}
-  To check~(c.\ref{item:c2}) note that $(a,b) \in \theta$
-  implies $(a,b) \in \Psiba(\theta)$ because $(a,b)\mathrel{\Delta_{\beta, \alpha}} (a,b)$.
+  To check~(c.\ref{item:c2}) note that $(a,b) \in T $
+  implies $(a,b) \in \Psiba(T )$ because $(a,b)\mathrel{\Delta_{\beta, \alpha}} (a,b)$.
   %% this proves~(c.\ref{item:c1}).
-  That~(c.\ref{item:c2}) holds is clear since since $(x,y) \in \Psiba(\theta)$ iff there exists
-  $(a,b) \in \theta \leq \gamma$ such that
-  $(a,b) \mathrel{\Delta_{\beta, \alpha}} (x,y)$; this and $(a,b) \in \gamma$ implies
-  $(x,y) \in \Psiba(\gamma)$.
-  Finally,~(c.\ref{item:c3}) is obvious by transitivity of $\Delta_{\beta, \alpha}$.
+  That~(c.\ref{item:c2}) holds is clear since since $(x,y) \in \Psiba(T )$ iff there exists
+  $(a,b) \in T  \leq T'$ such that
+  $(a,b) \mathrel{\Delta_{\beta, \alpha}} (x,y)$; this and $(a,b) \in T'$ implies
+  $(x,y) \in \Psiba(T')$.
+  Finally,~(c.\ref{item:c3}) holds by transitivity of
+  $\Delta_{\beta, \alpha}$. Indeed, $(x,y) \in \Psiba(\Psiba(T))$ if and only if
+  there exists $(a,b) \in \Psiba(T)$ such that
+  $(a,b) \Deltabar (x,y)$, and $(a,b) \in \Psiba(T)$ is in turn equivalent to 
+  the existence of $(c,d) \in T $ such that
+  $(c,d) \Deltabar (a,b)$. By transitivity of $\Deltaba$, we have that
+  $(c,d) \Deltabar (a,b) \Deltabar (x,y)$ implies
+  $(c,d) \Deltabar (x,y)$, proving that there exists $(c,d) \in T $ such that
+  $(c,d) \Deltabar (x,y)$; equivalently, $(x,y) \in T $.
 
   \medskip
 
 \item
   %% \noindent (ii) 
-  We will show that $[\alpha, \beta]$ is the least fixed point of $\Psiba$ by
-  verifying equation (\ref{eq:5}).
+  As remarked above, from part (i) follows 
+  $\Psiba^{k}(0_A) = \Psiba(0_A)$ for all $k$, so the least fixed point of
+  $\Psiba$ that appears in the formula on the right in~(\ref{eq:4}) reduces
+  to $\nu = \Psiba(0_A)$.  Therefore, to complete the proof it suffices to show
+  $[\alpha, \beta] = \Psiba(0_A)$.
   %% An alternative direct proof using
   %% \malcev's congruence generation theorem appears in the appendix Section
   %% below.
   %% [\alpha, \beta] = \Join_{k\geq 0} \Psiba^{k}(0_A).
-  We first prove 
-  \begin{equation}
-    \label{eq:8}
-  \Join_{k\geq 0} \Psiba^{k}(0_A)\leq   [\alpha, \beta].
-  \end{equation}
-  Since $\Psiba$ is
+  We first prove $\Psiba(0_A)\leq   [\alpha, \beta]$.
+  %% \begin{equation}
+  %%   \label{eq:8}
+  %% \Join_{k\geq 0} \Psiba^{k}(0_A)\leq   [\alpha, \beta].
+  %% \end{equation}
+  If $(x,y)\in \Psiba(0_A)$ then there exists $a \in A$ such that 
+    \begin{equation}
+      \label{eq:1100}
+     (a,a) \mathrel{\Delta_{\beta, \alpha}} (x,y).
+    \end{equation}
+    From the definition of $\Delta_{\beta, \alpha}$ and 
+    \malcev's congruence generation theorem,~(\ref{eq:1100})
+    holds if and only if for there exist
+    $(z_i, z_i') \in \beta$, $(u_i, v_i) \in \alpha$, 
+    $f_i \in \Pol_1(\bbeta)$ (for $0\leq i \leq n$) such that $(a, a) = (z_0,z_0')$, $(x, y)=(z_n,z_n')$, and
+    \begin{align}
+      \label{eq:001}
+      \{(a, a),(z_1,z_1')\} &= \{f_0(u_0,u_0), f_0(v_0,v_0)\},\\
+      \label{eq:011}
+      \{(z_1,z_1'),(z_2,z_2')\} &= \{f_1(u_1,u_1), f_1(v_1,v_1)\},\\
+      \nonumber
+      &\; \; \vdots\\
+      %% \label{eq:n-1}
+      \nonumber
+      %% \{(z_{n-2},z_{n-2}'),(z_{n-1},z_{n-1}')\} &= \{f_{n-2}(u_{n-2},u_{n-2}), f_{n-2}(v_{n-2},v_{n-2})\}, \text{ and }\\
+      %% \nonumber
+      \{(z_{n-1},z_{n-1}'),(x, y)\} &= \{f_{n-1}(u_{n-1},u_{n-1}), f_{n-1}(v_{n-1},v_{n-1})\}.
+    \end{align}
+    Now $f_i \in \Pol_1(\bbeta)$ for all $i$, so
+    \newcommand\gA{\ensuremath{g^{\bA}}}%
+    %% \begin{align*}
+    \[      f_i(c, c') = g_i^{\bbeta}((c, c'), (b_1, b_1'), \dots, (b_k, b_k') )
+      %% &= (g_i^{\bA}(x, a_1, a_2, \dots, a_k), g_i^{\bA}(x, a_1', a_2', \dots, a_k')),%
+      = (\gA_i(c, \bb), \gA_i(c', \bb')),%
+      %% \end{align*}%
+      \]%
+    \renewcommand\gA{\ensuremath{g}}%
+    for some $k$, some $(k+1)$-ary term $\gA_i$, and some constants
+    $\bb = (b_1, \dots, b_k)$ and $\bb' = (b_1', \dots, b_k')$ satisfying
+    $b_i \betar b_i'$ ($1\leq i\leq k$). 
+    By~(\ref{eq:001}), either
+    \[
+    (a, a) = \bigl(\gA_0(u_0, \bb), \gA_0(u_0, \bb')\bigr)
+    \quad \text{ and } \quad 
+    (z_1,z_1')= \bigl(\gA_0(v_0, \bb), \gA_0(v_0, \bb')\bigr),
+    \]
+    or vice-versa. %Of course $(a, a) \in \comm{\alpha}{\beta}$,
+    We assumed $u_0 \alphar v_0$ and $b_i \betar b_i'$ ($1\leq i\leq k$),
+    so the $\alpha,\beta$-term condition entails
+    \[
+    \gA_0(u_0, \bb) \commr{\alpha}{\beta} \gA_0(u_0, \bb')
+    \quad \Longleftrightarrow \quad 
+    \gA_0(v_0, \bb) \commr{\alpha}{\beta} \gA_0(v_0, \bb').
+    \]
+    This and~(\ref{eq:001}) yield
+    $(a,a)\in [\alpha, \beta]$ iff
+    $(z_1,z_1')\in [\alpha, \beta]$.
+    Similarly~(\ref{eq:011}) and $u_1 \alphar u_1$ imply
+    $(z_1,z_1')\in [\alpha, \beta]$ iff
+    $(z_2,z_2')\in [\alpha, \beta]$.  Inductively, and by transitivity of
+    $[\alpha, \beta]$, we arrive at $(a,a)\in [\alpha, \beta]$ iff
+    $(x,y)\in [\alpha, \beta]$.
+    Of course 
+    $(a,a)\in [\alpha, \beta]$, so $(x,y)\in [\alpha, \beta]$, as desired.
+
+    We now prove $[\alpha, \beta]\leq \Psiba(0_A)$.
+    Let $(x,y)\in [\alpha, \beta]$. We will prove
+    $(a,a) \Deltabar (x,y)$ for some $a\in A$.
+
+    \bigskip
+
+    \bigskip
+
+    We have thus proved $[\alpha, \beta]$ is a fixed point of $\Psiba$.
+    %% Recall that the lattice order on $\Con \bA$ is complete, so t
+    In other words, 
+    $[\alpha, \beta]$ is ``$\Psiba$-closed.''
+    %% (A set $B\subseteq \beta$ is called \defn{$\Psiba$-closed} provided
+    %% $\Psiba(B) \subseteq B$.)
+
+
+
+    
+    Since $\Psiba$ is
   monotone increasing, we have
-  $0_A \leq \Psiba(0_A) \leq \Psiba^{2}(0_A) \leq \cdots$.
+  $0_A \leq \Psiba(0_A)$.% \leq \Psiba^{2}(0_A) \leq \cdots$.
+  
+
   Thus, for each $n< \omega$,
   $\Join_{0\leq k\leq n} \Psiba^{k}(0_A) = \Psiba^{n}(0_A)$ and
   $\Join_{k\geq 0} \Psiba^{k}(0_A) = \lim_k \Psiba^{k}(0_A)$.
