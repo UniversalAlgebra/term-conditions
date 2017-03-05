@@ -171,7 +171,7 @@ MRREVIEWER = {H. Peter Gumm},
 %% \renewcommand{\bbeta}{\ensuremath{\ubar{\boldsymbol{\beta}}}}
 
 \begin{abstract}
-  The goal of this note is two-fold: first, we attempt to explain and improve upon
+  The goal of this note is two-fold: first, we attempt to explain 
   the alternate description of the commutator given by Kearnes
   in~\cite[p.~930]{MR1358491}; second, we present another
   description of the commutator that we believe could form
@@ -378,11 +378,7 @@ the following derivation\footnote{In this notation, the stuff below the horizont
 
 
 \renewcommand{\downbeta}{\ensuremath{\lb 0_A, \beta\rb}}
-Now, let $\downbeta$ denote the set of equivalence relations on $A$ that are contained
-in $\beta$; that is, 
- $\downbeta:= \{\theta \in \Eq(A) \mid 0_A \leq \theta \leq \beta\}$. 
-Let $\Phi_{\beta, \alpha} \colon \downbeta\to \downbeta$ be the function defined
-for each $0_A \leq \theta \leq \beta$ as follows:
+Define
 \begin{equation}
   \label{eq:6}
   \Phi_{\beta, \alpha}(\theta)
@@ -400,61 +396,82 @@ $\Phi_{\beta,\alpha}\bigl([\alpha, \beta]\bigr) \subseteq [\alpha, \beta]$.
 
 \subsection{Second Attempt}
 In~\cite{com-fix-poi} we gave another description of the commutator
-as the least fixed point of a certain closure operator that is closely related
+as the least fixed point of a certain closure operator similar 
 to the one described by Kearnes.
 This section presents an improved version of our earlier proposal.
-Specifically, we prove below that the commutator $[\alpha, \beta]$ is the least fixed
-point of the function
-$\Psi_{\beta, \alpha} \colon \downbeta\to \downbeta$
-defined for each $0_A \leq \theta \leq \beta$ by\footnote{Actually, in~\cite{com-fix-poi}
-I define %$\Phi_{\beta, \alpha} \colon \sP(\beta) \to \sP(\beta)$ as follows:
-\begin{equation*}
-  \Phi_{\beta, \alpha}(B) = \bigcup_{(b,b')\in B} (b,b')/\Delta_{\beta, \alpha},
-\end{equation*}
-and allegedly proved that the commutator $[\alpha, \beta]$ is the least fixed point
-of $\Phi_{\beta, \alpha}$.  I haven't found a mistake in that proof, but I have found reasons to
-suspect a problem with it.  This is why I revised the claim in the present note
-using the function $\Psiba$ instead.}
+Let $\Tol(A)$ denote the collection of all tolerances (reflexive symmetric relations)
+on the set $A$,\footnote{Actually, a
+  \emph{tolerance} of the algebra $\bA = \<A, \dots\>$
+  is a reflexive symmetric subalgebra of $\bA \times \bA$.
+  Therefore, the set of all tolerances of $\bA$ forms an
+  algebraic, hence complete lattice.
+  (Of course, if $\bA = \<A, \emptyset\> = A$ is a set, then a tolerance is
+  simply a reflexive symmetric binary relation.) 
+}
+and let $\downbeta$ denote the set $\{\theta \in \Tol(A) \mid 0_A \leq \theta \leq \beta\}$ 
+of the tolerances on $A$ contained in $\beta$.
+Let $\Psi_{\beta, \alpha} \colon \downbeta\to \downbeta$ be the function defined
+for each $0_A \leq \theta \leq \beta$ as
+follows:
+%% \footnote{Actually, in~\cite{com-fix-poi}
+%% I define %$\Phi_{\beta, \alpha} \colon \sP(\beta) \to \sP(\beta)$ as follows:
+%% \begin{equation*}
+%%   \Phi_{\beta, \alpha}(B) = \bigcup_{(b,b')\in B} (b,b')/\Delta_{\beta, \alpha},
+%% \end{equation*}
+%% and allegedly proved that the commutator $[\alpha, \beta]$ is the least fixed point
+%% of $\Phi_{\beta, \alpha}$.
+%% I haven't found a mistake in that proof, but I have found reasons to
+%% suspect a problem with it.  This is why I revised the claim in the present note
+%% using the function $\Psiba$ instead.}
 \begin{equation}
   \label{eq:7}
   \Psi_{\beta, \alpha}(\theta)
-  = \{ (x,y) \in A^2 \mid
+  = \{ (x,y) \in A\times A \mid
   \bigl(\exists\, (a,b) \in \theta\big)\,
- (a,b) \mathrel{\Delta_{\beta, \alpha}} (x,y)\}.
+ (a,b) \mathrel{\Delta_{\beta, \alpha}} (x,y)\},
 \end{equation}
-Here $\Delta_{\beta, \alpha}$ is defined exactly as 
+where $\Delta_{\beta, \alpha}$ is defined as 
 in Section~\ref{sec:altern-descr} above.
+We prove below that the commutator $[\alpha, \beta]$ is the least fixed
+point of $\Psiba$.
+%% Since $\Psiba$ is clearly monotone increasing and since the collection of tolerances
+%% of $A$ is an algebraic (hence complete) lattice,
+%% $\Psiba$ has a least fixed point.
 
 \pagebreak
 
 \begin{remarks}\
   \begin{enumerate}
+\item
+  It is not hard to show that $\Psiba (\theta)$ is reflexive and symmetric
+  whenever $\theta$ has these properties; that is, $\Psiba$ maps tolerances
+  to tolerances. (See appendix below.)
   \item 
   Since $\Psiba$ is clearly a monotone increasing function on the (complete) sublattice
-  $\downbeta \leq \Eq(A)$, it is guaranteed to have a least fixed
+  $\downbeta \leq \Tol(A)$, it is guaranteed to have a least fixed
   point---that is, there is a point $\nu\in \downbeta$ such that $\Psiba(\nu) = \nu$
-  and $\nu \leq \theta$, for every $\theta\in \Eq(\beta)$
-  that satisfies $\Psiba(\theta) = \theta$.
+  and $\nu \leq \theta$, for every $\theta\in \Tol(\beta)$
+  satisfying $\Psiba(\theta) = \theta$.
 \item
-  Here are two ways the least fixed point described above could be computed:
+  Here are two ways the least fixed point of $\Psiba$ could be computed:
   \begin{equation}
     \label{eq:4}
-  \nu = \Meet \{ \theta \in \Eq(A) \mid \Psiba(\theta) \leq \theta\}
+  \nu = \Meet \{ \theta \in \Tol(A) \mid \Psiba(\theta) \leq \theta\}
   \quad \text{ and } \quad
      \nu = \Join_{k\geq 0} \Psiba^{k}(0_A).
   \end{equation}
-  The goal of the Fixed Point Lemma below (Lem.~\ref{lem:fixed-point-comm})
-  is to show that the least
-  fixed point in this case is, in fact, the commutator;
+  The Fixed Point Lemma below (Lem.~\ref{lem:fixed-point-comm})
+  will show that the least
+  fixed point of $\Psiba$ is, in fact, the commutator;
   that is, $\nu = [\alpha, \beta]$.  Therefore, either
   expression in~(\ref{eq:4}) could potentially be used to compute the
-  commutator, but the second will be especially easy to
-  compute.  Thus, the following equation could be used as the basis for a
+  commutator, but the second ought to be especially easy to
+  compute.  In other words, the following equation could be used as the basis for a
   (polynomial-time?)\footnote{Check this!!!} algorithm for computing the commutator:
-  \[
-  [\alpha, \beta] = \Join_{k\geq 0} \Psiba^{k}(0_A).
-  \]
-  \end{enumerate}
+  \begin{equation}
+    \label{eq:5}
+          [\alpha, \beta] = \Join_{k\geq 0} \Psiba^{k}(0_A).
+  \end{equation}
   %(See, for example,~\cite{MR3012378}.)
 
   %% Recall, if $f$ is a monotone increasing function defined on a
@@ -466,6 +483,7 @@ in Section~\ref{sec:altern-descr} above.
   %%     \label{eq:2}
   %%           [\alpha, \beta] =\Meet \{ B \subseteq \beta \mid \Psiba(B) \subseteq B\}.
   %%   \end{equation}
+  \end{enumerate}
 \end{remarks}
 
 
@@ -480,30 +498,57 @@ in Section~\ref{sec:altern-descr} above.
   \end{enumerate}
 \end{lemma}
 \begin{proof}\
-  %% \begin{enumerate}[(i)]
-  %% \item 
-  \noindent (i) Fix $\theta \in \Eq(A)$.
-  \noindent  We prove
+  \begin{enumerate}[(i)]
+  \item 
+  In fact, $\Psi_{\beta, \alpha}$ is a closure operator on all
+  of $\Tol(A)$.
+  Indeed, as we now prove, for a fixed $\theta \in \Tol(A)$, the following hold:
   \begin{enumerate}[(c.1)]
   \item \label{item:c1} $\theta \leq \Psiba(\theta)$;     
   \item \label{item:c2} $\theta \leq \gamma  \Rightarrow \Psiba(\theta) \leq \Psiba(\gamma)$;    
   \item \label{item:c3} $\Psiba(\Psiba(\theta))  = \Psiba(\theta)$. 
   \end{enumerate}
-  If $(a,b) \in \theta$
-  then $(a,b) \in \Psiba(\theta)$ since $(a,b)\mathrel{\Delta_{\beta, \alpha}} (a,b)$.
+  To check~(c.\ref{item:c2}) note that $(a,b) \in \theta$
+  implies $(a,b) \in \Psiba(\theta)$ because $(a,b)\mathrel{\Delta_{\beta, \alpha}} (a,b)$.
   %% this proves~(c.\ref{item:c1}).
   That~(c.\ref{item:c2}) holds is clear since since $(x,y) \in \Psiba(\theta)$ iff there exists
   $(a,b) \in \theta \leq \gamma$ such that
-  $(a,b) \mathrel{\Delta_{\beta, \alpha}} (x,y)$, which holds
-  only if $(x,y) \in \Psiba(\gamma)$.
+  $(a,b) \mathrel{\Delta_{\beta, \alpha}} (x,y)$; this and $(a,b) \in \gamma$ implies
+  $(x,y) \in \Psiba(\gamma)$.
   Finally,~(c.\ref{item:c3}) is obvious by transitivity of $\Delta_{\beta, \alpha}$.
 
   \medskip
 
-  \noindent (ii) We could confirm that
-  $[\alpha, \beta]$ is the least fixed point of $\Psiba$ by using one of the
-  formulas in~(\ref{eq:4}).  Instead, we will prove (ii) directly.
-  Since $[\alpha, \beta] \in \Eq(A)$,
+\item
+  %% \noindent (ii) 
+  We will show that $[\alpha, \beta]$ is the least fixed point of $\Psiba$ by
+  verifying equation (\ref{eq:5}).
+  %% An alternative direct proof using
+  %% \malcev's congruence generation theorem appears in the appendix Section
+  %% below.
+  %% [\alpha, \beta] = \Join_{k\geq 0} \Psiba^{k}(0_A).
+  We first prove 
+  \begin{equation}
+    \label{eq:8}
+  \Join_{k\geq 0} \Psiba^{k}(0_A)\leq   [\alpha, \beta].
+  \end{equation}
+  Since $\Psiba$ is
+  monotone increasing, we have
+  $0_A \leq \Psiba(0_A) \leq \Psiba^{2}(0_A) \leq \cdots$.
+  Thus, for each $n< \omega$,
+  $\Join_{0\leq k\leq n} \Psiba^{k}(0_A) = \Psiba^{n}(0_A)$ and
+  $\Join_{k\geq 0} \Psiba^{k}(0_A) = \lim_k \Psiba^{k}(0_A)$.
+  Therefore, to prove~(\ref{eq:8}) it suffices to check that
+  $\Psiba^{k}(0_A) \leq [\alpha, \beta]$ for all $k$.
+  We prove this by induction on $k$.
+  \end{enumerate}
+\end{proof}
+
+\appendix
+\section{Appendix}
+\subsection{Direct proof that commutator is a fixed point}
+
+  Since $[\alpha, \beta] \in \Tol(A)$,
   we have $[\alpha, \beta] \leq \Psiba([\alpha, \beta])$
   by~(\ref{item:1}).
   We prove the reverse inclusion.
@@ -624,8 +669,6 @@ in Section~\ref{sec:altern-descr} above.
     belongs to  $\mathrel{\Delta_{\beta, \alpha}}$.
     Since  $(p(a, \bc), p(a, \bc')) \in \theta$, we have
     $(p(a', \bc), p(a', \bc')) \in \Psiba(\theta)$, completing the proof.
-  \end{proof}
-
 
 
 \bibliographystyle{alphaurl}
