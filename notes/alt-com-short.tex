@@ -61,7 +61,9 @@ MRREVIEWER = {H. Peter Gumm},
 \usepackage{amsmath}
 %% \usepackage{wasysym}
 \usepackage{amscd,amssymb,amsthm} %, amsmath are included by default
-\usepackage{latexsym,stmaryrd,mathrsfs,enumerate,scalefnt,ifthen}
+\usepackage{latexsym,mathrsfs,enumerate,scalefnt,ifthen}
+\usepackage{stmaryrd}
+\SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
 \usepackage{mathtools}
 \usepackage[mathcal]{euscript}
 \usepackage[colorlinks=true,urlcolor=black,linkcolor=black,citecolor=black]{hyperref}
@@ -160,8 +162,6 @@ MRREVIEWER = {H. Peter Gumm},
 
 %% \thanks{The authors would like to extend special thanks to...}
 
-\maketitle
-
 \renewcommand{\etaR}{\ensuremath{\eta}}
 
 %% \begin{abstract}
@@ -196,6 +196,8 @@ MRREVIEWER = {H. Peter Gumm},
   %% \end{quote}
 \end{abstract}
 
+\maketitle
+
 %% \renewcommand\otimes{\ensuremath{\mathrel{\bullet}}}
 \renewcommand\otimes{\ensuremath{\ast}}
 \section{Introduction}
@@ -220,14 +222,14 @@ We define
 the \emph{pairwise product} of $\alpha$ and $\beta$ by
 \begin{equation}
 \label{eq:pair-product}
-\alpha \otimes \beta = \{\bigl((a, b), (a', b')\bigr) 
+\alpha \otimes \beta = \{((a, b), (a', b')) 
 \in (A\times B)^2 \mid a\mathrel{\alpha} a'\, \text{ and } \,  b\mathrel{\beta} b'\},
 \end{equation}
 and we let $\alpha \times \beta$ denote the usual Cartesian product of sets; that is,
 %% of the sets $\alpha$ and $\beta$, that is,
 \begin{equation}
 \label{eq:set-product}
-\alpha \times \beta = \{\bigl((a, a'), (b, b')\bigr) 
+\alpha \times \beta = \{((a, a'), (b, b')) 
 \in A^2\times B^2 \mid a\mathrel{\alpha} a' \, \text{ and } \, b\mathrel{\beta} b'\}.
 \end{equation}
 Notice that $\alpha \otimes \beta$ defines an equivalence relation on
@@ -310,7 +312,7 @@ Where convenient we will resort to denoting pairs, and pairs of pairs, using arr
 \[
 \begin{bmatrix} x \\ y \end{bmatrix} = (x,y) \quad
 \text{ and } \quad 
-\begin{bmatrix} x & x'\\y & y' \end{bmatrix} = \bigl((x,y), (x', y')\bigr).
+\begin{bmatrix} x & x'\\y & y' \end{bmatrix} = ((x,y), (x', y')).
 \]
 
 
@@ -331,7 +333,7 @@ Where convenient we will resort to denoting pairs, and pairs of pairs, using arr
   %% \begin{pmatrix} x'\\y' \end{pmatrix}
   %% \right)
   \,\middle|\,
-  \bigl(\exists a, b, a', b'\bigr) \,
+  (\exists a, b, a', b') \,
   \begin{bmatrix} x\\y \end{bmatrix}
   \mathrel{\Delta_{\alpha, \beta}}
   \begin{bmatrix} a\\b \end{bmatrix}
@@ -343,7 +345,7 @@ Where convenient we will resort to denoting pairs, and pairs of pairs, using arr
 We call an equivalence relation $\theta\in \Eq(A)$ ``$\Delta_{\beta,\alpha}$-closed'' if
 it is closed with respect to the relation~(\ref{eq:3}).
 More precisely, we will say that $\theta$ is \emph{$\Delta_{\beta,\alpha}$-closed} if
-$\bigl((x,y),(x',y')\bigr) \in \Delta_{\alpha, \beta} \circ (\theta\ast \theta)
+$((x,y),(x',y')) \in \Delta_{\alpha, \beta} \circ (\theta\ast \theta)
 \circ \Delta_{\alpha, \beta}$
 implies $(x,x') \in \theta$ and $(y,y') \in \theta$.
 
@@ -391,7 +393,7 @@ Define
   \label{eq:6}
   \Phi_{\beta, \alpha}(\theta)
   = \{ (x,y) \in A^2 \mid
-  \bigl(\exists\, (a,b) \in \theta\big)\,
+  (\exists\, (a,b) \in \theta)\,
 \bigl(  (x,x) \mathrel{\Delta_{\beta, \alpha}} (a,a) \text{ and }
   (b,b) \mathrel{\Delta_{\beta, \alpha}} (y,y)\bigr)\}.
 \end{equation}
@@ -450,7 +452,7 @@ for each $T \in  \Tol(A)$ follows:
   \label{eq:7}
   \Psi_{\beta, \alpha}(T)
   = \{ (x,y) \in A\times A \mid
-  \bigl(\exists\, (a,b) \in T\big)\,
+  (\exists\, (a,b) \in T)\,
  (a,b) \mathrel{\Delta_{\beta, \alpha}} (x,y)\},
 \end{equation}
 Recall,
@@ -503,9 +505,9 @@ point of $\Psiba$.
           [\alpha, \beta] =
           \Psiba(0_A)
           &= \{ (x,y) \in A\times A \mid
-          \bigl(\exists\, (a,b) \in 0_A\big)\, (a,b) \mathrel{\Delta_{\beta, \alpha}} (x,y)\}\\
+          (\exists\, (a,b) \in 0_A)\, (a,b) \mathrel{\Delta_{\beta, \alpha}} (x,y)\}\\
           &= \{ (x,y) \in A\times A \mid
-          \bigl(\exists a \in A\bigr)\, (a,a) \mathrel{\Delta_{\beta, \alpha}} (x,y)\}.
+          (\exists a \in A)\, (a,a) \mathrel{\Delta_{\beta, \alpha}} (x,y)\}.
   \end{align*}
 
   %(See, for example,~\cite{MR3012378}.)
@@ -686,7 +688,7 @@ point of $\Psiba$.
 \noindent {\bf Algorithm}
 \begin{enumerate}[Step 1.]
 \item Compute the congruence relation
-  $\Deltaba = \Cg^{\bbeta}\{\bigl((a,a), (b,b)\bigr) \mid a \alphar b \}$.
+  $\Deltaba = \Cg^{\bbeta}\bigl\{((a,a), (b,b)) \mid a \alphar b \bigr\}$.
 \item Compute the commutator
   %% \begin{align*}
   %% [\alpha, \beta] &= \Psiba(0_A)
@@ -694,7 +696,7 @@ point of $\Psiba$.
   %% &= \bigcup_{a\in A} (a,a)/\Deltaba
   %% \end{align*}
   \[[\alpha, \beta] 
-  = \{(x,y) \in A\times A \mid \bigl(\exists a \in A\bigr) \, (a,a) \Deltabar (x,y)\} 
+  = \bigl\{(x,y) \in A\times A \mid (\exists a \in A) \, (a,a) \Deltabar (x,y)\bigr\} 
   =\bigcup_{a\in A} (a,a)/\Deltaba
     \]
 \end{enumerate}
