@@ -479,7 +479,7 @@ point of $\Psiba$.
   Here are two ways the least fixed point of $\Psiba$ could be computed:
   \begin{equation}
     \label{eq:4}
-  \tau = \Meet \{ \theta \in \Tol(A) \mid \Psiba(\theta) \leq \theta\}
+  \tau = \Meet \{ \theta \in \Tol(A) \mid \Psiba(T) \leq T\}
   \quad \text{ and } \quad
      \tau = \Join_{k\geq 0} \Psiba^{k}(0_A).
   \end{equation}
@@ -489,7 +489,7 @@ point of $\Psiba$.
   that is, $\tau = [\alpha, \beta]$.  Therefore, either
   expression in~(\ref{eq:4}) could potentially be used to compute the
   commutator. For example,
-  an algorithm for computing the commutator might be based on the following formula:
+  an algorithm might be based on the following formula:
   \begin{equation}
     \label{eq:5}
           [\alpha, \beta] = \Join_{k\geq 0} \Psiba^{k}(0_A).
