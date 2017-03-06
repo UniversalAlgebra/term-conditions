@@ -677,6 +677,29 @@ point of $\Psiba$.
   \end{enumerate}
 \end{proof}
 
+\section{Computing the Commutator}
+
+\noindent {\bf Input:} $\alpha$, $\beta \in \Con \bA$
+
+\bigskip
+
+\noindent {\bf Algorithm}
+\begin{enumerate}[Step 1.]
+\item Compute the congruence relation
+  $\Deltaba = \Cg^{\bbeta}\{\bigl((a,a), (b,b)\bigr) \mid a \alphar b \}$.
+\item Compute the commutator
+  %% \begin{align*}
+  %% [\alpha, \beta] &= \Psiba(0_A)
+  %% = \{(x,y) \in A\times A \mid \bigl(\exists a \in A\bigr) \, (a,a) \Deltabar (x,y)\}\\
+  %% &= \bigcup_{a\in A} (a,a)/\Deltaba
+  %% \end{align*}
+  \[[\alpha, \beta] 
+  = \{(x,y) \in A\times A \mid \bigl(\exists a \in A\bigr) \, (a,a) \Deltabar (x,y)\} 
+  =\bigcup_{a\in A} (a,a)/\Deltaba
+    \]
+\end{enumerate}
+
+
 \bibliographystyle{alphaurl}
 \bibliography{alt-refs.bib}
 
