@@ -1,8 +1,17 @@
 \newcommand{\CC}[3]{\ensuremath{\sansC(#1, #2; #3)}} % \CC{a}{b}{c}  for  C(a, b; c)
 \newcommand{\C}[2]{\ensuremath{\sansC(#1, #2)}}      % \C{a}{b}      for  C(a, b)
-\newcommand{\comm}[2]{\ensuremath{\mathrel{[#1, #2]}}}
-\newcommand{\comr}[1]{\ensuremath{\mathrel{\lb #1 \rb}}}
-\newcommand{\com}[1]{\ensuremath{\lb #1 \rb}}
+
+\newcommand{\commr}[2]{\ensuremath{\mathrel{[#1, #2]}}} % [r, s] (relation spacing)
+\newcommand{\comm}[2]{\ensuremath{[#1, #2]}} % [r, s] (relation spacing)
+\newcommand{\comr}[1]{\ensuremath{\mathrel{[#1, #1]}}}  % [r, r] (relation spacing)
+\newcommand{\com}[1]{\ensuremath{[#1, #1]}}             % [r, r] (no extra space)
+
+% \newcommand{\Comr}[1]{\ensuremath{\mathrel{\lb #1 \rb}}} % [[r]] (relation spacing)
+% \newcommand{\Com}[1]{\ensuremath{\lb #1 \rb}}            % [[r]] (no extra space)
+\newcommand{\Comr}[1]{\ensuremath{\mathrel{[#1]}}} % [[r]] (relation spacing)
+\newcommand{\Com}[1]{\ensuremath{[#1]}}            % [[r]] (no extra space)
+
+
 \newcommand{\etaR}{\ensuremath{\tilde{\eta}}}
 \newcommand{\hto}{\ensuremath{\rightharpoonup}}
 \newcommand{\bool}{\ensuremath{\mathtt{Bool}}}
@@ -31,6 +40,7 @@
 \newcommand{\Op}{\ensuremath{\operatorname{Op}}}
 \newcommand{\alg}[1]{\ensuremath{\mathbf{#1}}}
 \newcommand{\Sub}{\ensuremath{\operatorname{Sub}}}
+\newcommand{\Tol}{\ensuremath{\operatorname{Tol}}}
 \newcommand{\Con}{\ensuremath{\operatorname{Con}}}
 \newcommand{\Cg}{\ensuremath{\operatorname{Cg}}}
 \newcommand{\Sg}{\ensuremath{\operatorname{Sg}}}
@@ -138,10 +148,20 @@
 \newcommand{\rbeta}{\ensuremath{\mathrel{\beta}}}
 \newcommand{\rdelta}{\ensuremath{\mathrel{\delta}}}
 \newcommand{\balpha}{\ensuremath{\boldsymbol{\alpha}}}
+\newcommand{\alphar}{\ensuremath{\mathrel{\alpha}}}
+\newcommand{\betar}{\ensuremath{\mathrel{\beta}}}
+\newcommand{\gammar}{\ensuremath{\mathrel{\gamma}}}
 \newcommand{\bbeta}{\ensuremath{\boldsymbol{\beta}}}
 \newcommand{\bgamma}{\ensuremath{\boldsymbol{\gamma}}}
 \newcommand{\bdelta}{\ensuremath{\boldsymbol{\delta}}}
 \newcommand{\bepsilon}{\ensuremath{\boldsymbol{\epsilon}}}
+\newcommand{\Phiba}{\ensuremath{\Phi_{\beta, \alpha}}}
+\newcommand{\Psiba}{\ensuremath{\Psi_{\beta, \alpha}}}
+\newcommand{\Deltaba}{\ensuremath{\Delta_{\beta, \alpha}}}
+\newcommand{\Deltabar}{\ensuremath{\mathrel{\Delta_{\beta, \alpha}}}}
+%% \newcommand{\Phiba}{\ensuremath{\Phi}}
+%% \newcommand{\Psiba}{\ensuremath{\Psi}}
+\newcommand{\thetaba}{\ensuremath{\theta_{\beta, \alpha}}}
 \newcommand{\AAn}{\ensuremath{A^{(A^n)}}}
 \newcommand{\AAm}{\ensuremath{A^{(A^m)}}}
 \newcommand{\AAk}{\ensuremath{A^{(A^k)}}}
