@@ -473,7 +473,7 @@ point of $\Psiba$.
   Since $\Psiba$ is clearly a monotone increasing function on the complete
   lattice $\Tol(A)$, it is guaranteed to have a least fixed
   point---that is, there is a point $\tau\in \Tol(A)$ such that $\Psiba(\tau) = \tau$
-  and $\tau \leq T$, for every $T \in \Tol(\beta)$
+  and $\tau \leq T$, for every $T \in \Tol(A)$
   satisfying $\Psiba(T) = T$.
 \item
   Here are two ways the least fixed point of $\Psiba$ could be computed:
@@ -529,16 +529,18 @@ point of $\Psiba$.
   If $\alpha$, $\beta\in \Con(\bA)$ and 
   if $\Psi_{\beta, \alpha}$ is defined by~(\ref{eq:7}), then 
   \begin{enumerate}[(i)]
-  \item \label{item:1} $\Psiba$ is a closure operator on $\downbeta$;
+  \item \label{item:1} $\Psiba$ is a closure operator on $\Tol(A)$;
   \item \label{item:2} $[\alpha, \beta]$ is the least fixed point of $\Psiba$.
   \end{enumerate}
 \end{lemma}
 \begin{proof}\
   \begin{enumerate}[(i)]
   \item 
-  In fact, $\Psi_{\beta, \alpha}$ is a closure operator on all
-  of $\Tol(A)$ as we now prove by checking that the following three conditions hold
-  for all $T$, $T' \in \Tol(A)$:
+  %% In fact, $\Psi_{\beta, \alpha}$ is a closure operator on all
+  %% of $\Tol(A)$ as we 
+    To prove (i) we verify that
+    $\Psi_{\beta, \alpha}$ has the three properties that define a closure
+    operator---namely for all $T$, $T' \in \Tol(A)$,
   \begin{enumerate}[(c.1)]
   \item \label{item:c1} $T  \leq \Psiba(T )$;     
   \item \label{item:c2} $T  \leq T'  \Rightarrow \Psiba(T) \leq \Psiba(T')$;    
