@@ -578,80 +578,19 @@ point of $\Psiba$.
   %% \malcev's congruence generation theorem appears in the appendix Section
   %% below.
   %% [\alpha, \beta] = \Join_{k\geq 0} \Psiba^{k}(0_A).
-  We first prove $\Psiba(0_A)\leq   [\alpha, \beta]$.
-  %% \begin{equation}
-  %%   \label{eq:8}
-  %% \Join_{k\geq 0} \Psiba^{k}(0_A)\leq   [\alpha, \beta].
-  %% \end{equation}
-  If $(x,y)\in \Psiba(0_A)$ then there exists $a \in A$ such that 
-    \begin{equation}
-      \label{eq:1100}
-     (a,a) \mathrel{\Delta_{\beta, \alpha}} (x,y).
-    \end{equation}
-    From the definition of $\Delta_{\beta, \alpha}$ and 
-    \malcev's congruence generation theorem,~(\ref{eq:1100})
-    holds if and only if for there exist
-    $(z_i, z_i') \in \beta$, $(u_i, v_i) \in \alpha$, 
-    $f_i \in \Pol_1(\bbeta)$ (for $0\leq i \leq n$) such that $(a, a) = (z_0,z_0')$, $(x, y)=(z_n,z_n')$, and
-    \begin{align}
-      \label{eq:001}
-      \{(a, a),(z_1,z_1')\} &= \{f_0(u_0,u_0), f_0(v_0,v_0)\},\\
-      \label{eq:011}
-      \{(z_1,z_1'),(z_2,z_2')\} &= \{f_1(u_1,u_1), f_1(v_1,v_1)\},\\
-      \nonumber
-      &\; \; \vdots\\
-      %% \label{eq:n-1}
-      \nonumber
-      %% \{(z_{n-2},z_{n-2}'),(z_{n-1},z_{n-1}')\} &= \{f_{n-2}(u_{n-2},u_{n-2}), f_{n-2}(v_{n-2},v_{n-2})\}, \text{ and }\\
-      %% \nonumber
-      \{(z_{n-1},z_{n-1}'),(x, y)\} &= \{f_{n-1}(u_{n-1},u_{n-1}), f_{n-1}(v_{n-1},v_{n-1})\}.
-    \end{align}
-    Now $f_i \in \Pol_1(\bbeta)$ for all $i$, so
-    \newcommand\gA{\ensuremath{g^{\bA}}}%
-    %% \begin{align*}
-    \[      f_i(c, c') = g_i^{\bbeta}((c, c'), (b_1, b_1'), \dots, (b_k, b_k') )
-      %% &= (g_i^{\bA}(x, a_1, a_2, \dots, a_k), g_i^{\bA}(x, a_1', a_2', \dots, a_k')),%
-      = (\gA_i(c, \bb), \gA_i(c', \bb')),%
-      %% \end{align*}%
-      \]%
-    \renewcommand\gA{\ensuremath{g}}%
-    for some $k$, some $(k+1)$-ary term $\gA_i$, and some constants
-    $\bb = (b_1, \dots, b_k)$ and $\bb' = (b_1', \dots, b_k')$ satisfying
-    $b_i \betar b_i'$ ($1\leq i\leq k$). 
-    By~(\ref{eq:001}), either
-    \[
-    (a, a) = \bigl(\gA_0(u_0, \bb), \gA_0(u_0, \bb')\bigr)
-    \quad \text{ and } \quad 
-    (z_1,z_1')= \bigl(\gA_0(v_0, \bb), \gA_0(v_0, \bb')\bigr),
-    \]
-    or vice-versa. %Of course $(a, a) \in \comm{\alpha}{\beta}$,
-    We assumed $u_0 \alphar v_0$ and $b_i \betar b_i'$ ($1\leq i\leq k$),
-    so the $\alpha,\beta$-term condition entails
-    \[
-    \gA_0(u_0, \bb) \commr{\alpha}{\beta} \gA_0(u_0, \bb')
-    \quad \Longleftrightarrow \quad 
-    \gA_0(v_0, \bb) \commr{\alpha}{\beta} \gA_0(v_0, \bb').
-    \]
-    This and~(\ref{eq:001}) yield
-    $(a,a)\in [\alpha, \beta]$ iff
-    $(z_1,z_1')\in [\alpha, \beta]$.
-    Similarly~(\ref{eq:011}) and $u_1 \alphar u_1$ imply
-    $(z_1,z_1')\in [\alpha, \beta]$ iff
-    $(z_2,z_2')\in [\alpha, \beta]$.  Inductively, and by transitivity of
-    $[\alpha, \beta]$, we arrive at $(a,a)\in [\alpha, \beta]$ iff
-    $(x,y)\in [\alpha, \beta]$.
-    Of course 
-    $(a,a)\in [\alpha, \beta]$, so $(x,y)\in [\alpha, \beta]$, as desired.
 
-    We now prove $[\alpha, \beta]\leq \Psiba(0_A)$.
-    Since $[\alpha, \beta]$ is the least congruence $\gamma$
-    satisfying $\CC{\alpha}{\beta}{\gamma}$, it suffices to prove
+
+  We first prove $[\alpha, \beta]\leq \Psiba(0_A)$.
+  Since $[\alpha, \beta]$ is the least congruence $\gamma$
+  satisfying $\CC{\alpha}{\beta}{\gamma}$, it suffices to prove
     $\CC{\alpha}{\beta}{\Psiba(0_A)}$ holds.
-    Suppose $a \alphar a'$ and $b_i \betar b_i'$ ($(1\leq i \leq k$) and
-    $t^{\bA} \in \Pol_{k+1}(\bA)$ satisfy
-    $t^{\bA}(a, \bb) \mathrel{\Psiba(0_A)} t^{\bA}(a, \bb')$.  
+    Suppose $a \alphar a'$ and $b_i \betar b_i'$ %% ($1\leq i \leq k$)
+    and $t^{\bA} \in \Pol_{k+1}(\bA)$ satisfy
+    $t^{\bA}(a, \bb) \mathrel{\Psiba(0_A)} t^{\bA}(a, \bb')$,
+    where $\bb = (b_1, \dots, b_k)$ and $\bb' = (b_1', \dots, b_k')$.
     We must show $t(a', \bb) \mathrel{\Psiba(0_A)} t(a', \bb')$.  
-    The antecedent $t^{\bA}(a, \bb) \mathrel{\Psiba(0_A)} t^{\bA}(a, \bb')$ is equivalent to
+    By definition of $\Psiba$,
+    the antecedent $t^{\bA}(a, \bb) \mathrel{\Psiba(0_A)} t^{\bA}(a, \bb')$ is equivalent to    
     the existence of $c \in A$ such that $(c,c) \Deltabar (t^{\bA}(a, \bb), t^{\bA}(a, \bb'))$.
     Now
     \[
@@ -667,6 +606,74 @@ point of $\Psiba$.
     by transitivity of $\Deltaba$ that
     $(c,c) \Deltabar (t^{\bA}(a', \bb), t^{\bA}(a', \bb'))$.
     Therefore, $t(a', \bb) \mathrel{\Psiba(0_A)} t(a', \bb')$, as desired.  
+
+
+
+  We now prove $\Psiba(0_A)\leq   [\alpha, \beta]$.
+  %% \begin{equation}
+  %%   \label{eq:8}
+  %% \Join_{k\geq 0} \Psiba^{k}(0_A)\leq   [\alpha, \beta].
+  %% \end{equation}
+  If $(x,y)\in \Psiba(0_A)$ then there exists $a \in A$ such that 
+  \begin{equation}
+    \label{eq:1100}
+    (a,a) \mathrel{\Delta_{\beta, \alpha}} (x,y).
+  \end{equation}
+  From the definition of $\Delta_{\beta, \alpha}$ and 
+  \malcev's congruence generation theorem,~(\ref{eq:1100})
+  holds if and only if for there exist
+  $(z_i, z_i') \in \beta$ ($0\leq i \leq n+1$), and $(u_i, v_i) \in \alpha$,
+  $f_i \in \Pol_1(\bbeta)$ ($0\leq i \leq n$), such that
+  $(a, a) = (z_0,z_0')$ and $(x, y)=(z_{n+1},z'_{n+1})$ hold, and so do the
+  following equations of sets: 
+  \begin{align}
+    \label{eq:001}
+    \{(a, a),(z_1,z_1')\} &= \{f_0(u_0,u_0), f_0(v_0,v_0)\},\\
+    \label{eq:011}
+    \{(z_1,z_1'),(z_2,z_2')\} &= \{f_1(u_1,u_1), f_1(v_1,v_1)\},\\
+    \nonumber
+    &\; \; \vdots\\
+    %% \label{eq:n-1}
+    \nonumber
+    %% \{(z_{n-1},z_{n-1}'),(x, y)\} &= \{f_{n-1}(u_{n-1},u_{n-1}), f_{n-1}(v_{n-1},v_{n-1})\}.
+    \{(z_{n},z_{n}'),(x, y)\} &= \{f_{n}(u_{n},u_{n}), f_{n}(v_{n},v_{n})\}.
+  \end{align}
+  Now $f_i \in \Pol_1(\bbeta)$ for all $i$, so
+  \newcommand\gA{\ensuremath{g^{\bA}}}%
+  \[
+  f_i(c, c') = g_i^{\bbeta}((c, c'), (b_1, b_1'), \dots, (b_k, b_k') )
+  = (\gA_i(c, \bb), \gA_i(c', \bb')),%
+  \]
+  \renewcommand\gA{\ensuremath{g}}%
+  for some $k$, some $(k+1)$-ary term $\gA_i$, and some constants
+  $\bb = (b_1, \dots, b_k)$ and $\bb' = (b_1', \dots, b_k')$ satisfying
+  $b_i \betar b_i'$ ($1\leq i\leq k$). 
+  By~(\ref{eq:001}), either
+  \[
+  (a, a) = \bigl(\gA_0(u_0, \bb), \gA_0(u_0, \bb')\bigr)
+  \quad \text{ and } \quad 
+  (z_1,z_1')= \bigl(\gA_0(v_0, \bb), \gA_0(v_0, \bb')\bigr),
+  \]
+  or vice-versa. %Of course $(a, a) \in \comm{\alpha}{\beta}$,
+  We assumed $u_0 \alphar v_0$ and $b_i \betar b_i'$ ($1\leq i\leq k$),
+  so the $\alpha,\beta$-term condition entails
+  $\gA_0(u_0, \ba) \commr{\alpha}{\beta} \gA_0(u_0, \ba')$
+  iff 
+  $\gA_0(v_0, \ba) \commr{\alpha}{\beta} \gA_0(v_0, \ba')$.
+  %% \[
+  %%   \gA_0(u_0, \bb) \commr{\alpha}{\beta} \gA_0(u_0, \bb')
+  %%   \quad \Longleftrightarrow \quad 
+  %%   \gA_0(v_0, \bb) \commr{\alpha}{\beta} \gA_0(v_0, \bb').
+  %%   \]
+  From this and~(\ref{eq:001}) we deduce that 
+  $(a,a)\in [\alpha, \beta]$ iff $(z_1,z_1')\in [\alpha, \beta]$.
+  Similarly~(\ref{eq:011}) and $u_1 \alphar v_1$ imply
+  $(z_1,z_1')\in [\alpha, \beta]$ iff
+  $(z_2,z_2')\in [\alpha, \beta]$.  Inductively, and by transitivity of
+  $[\alpha, \beta]$, we conclude $(a,a)\in [\alpha, \beta]$ iff
+  $(x,y)\in [\alpha, \beta]$.
+  Since $(a,a)\in [\alpha, \beta]$, we have $(x,y)\in [\alpha, \beta]$, as desired.
+
   \end{enumerate}
 \end{proof}
 
@@ -744,11 +751,14 @@ point of $\Psiba$.
     or vice-versa.  Since $u_0 \alphar v_0$ and 
     $a_i \betar a_i'$ ($1\leq i\leq k$), the $\alpha,\beta$-term condition
     entails
-    \[
-    \gA_0(u_0, \ba) \commr{\alpha}{\beta} \gA_0(u_0, \ba')
-    \quad \Longleftrightarrow \quad 
-    \gA_0(v_0, \ba) \commr{\alpha}{\beta} \gA_0(v_0, \ba').
-    \]
+    %% \[
+    %% \gA_0(u_0, \ba) \commr{\alpha}{\beta} \gA_0(u_0, \ba')
+    %% \quad \Longleftrightarrow \quad 
+    %% \gA_0(v_0, \ba) \commr{\alpha}{\beta} \gA_0(v_0, \ba').
+    %% \]
+    $\gA_0(u_0, \ba) \commr{\alpha}{\beta} \gA_0(u_0, \ba')$
+    iff 
+    $\gA_0(v_0, \ba) \commr{\alpha}{\beta} \gA_0(v_0, \ba')$.
     This and~(\ref{eq:0}) yield
     $(a,b)\in [\alpha, \beta]$ iff
     $(z_1,z_1')\in [\alpha, \beta]$.
