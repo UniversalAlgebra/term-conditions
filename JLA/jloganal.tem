@@ -1,0 +1,169 @@
+%%%%%%%%%%%%%%%%%%          JLogAnal.tem       %%%%%%%%%%%%%%%%%%
+%
+%  Template for articles written in LaTeX for publication in
+% Journal of Logic and Analysis.  This template must be used with latex2e.  
+%  If you use BiBTeX then you should use the bibliography style 
+%  file  jloganal.bst 
+%
+%
+\documentclass{jloganal}    
+
+%\jlaart  
+
+%if this command is uncommented it provides a mock-up of the eventual published article
+
+
+%
+%   Add necessary packages here.  Note that amsthm, amssymb and
+%   amsmath are already loaded, so there is no need to add any 
+%   of these.  Examples:
+%
+%\usepackage{pinlabel}  %%% the recommended graphics+labelling package
+%\usepackage{graphicx}  %%% the recommended graphics package
+%\usepackage[all]{xy}
+%\usepackage{amscd}
+%
+%
+%%% Start of metadata
+%
+
+\title{}
+
+%  First author
+%
+\author{}
+\givenname{}
+\surname{}
+\address{}
+\email{}
+\urladdr{}
+
+%  Second author (uncomment if necessary)
+%
+%\author{}
+%\givenname{}
+%\surname{}
+%\address{}
+%\email{}
+%\urladdr{}
+%
+%  (Add a similar block for other authors)
+%
+%   Title and author both have running head options:
+%
+%   \title[Running head title]{Main title}
+%   \author[Running head author]{Author}
+%
+% give a separate \keyword and \subject line for each keyword/phrase or 
+% subject class eg \keyword{framed link} \subject{primary}{msc2000}{57M25}
+
+\keyword{}
+\subject{primary}{msc2000}{}
+\subject{secondary}{msc2000}{}
+
+%
+%  fill in the reference and password if your article is stored at the
+%  arXiv eg \arxivreference{math.GT/0512347}  \arxivpassword{5spud}
+
+\arxivreference{}
+\arxivpassword{}
+
+%
+%  Leave the following items blank
+%
+\volumenumber{}
+\issuenumber{}
+\publicationyear{}
+\papernumber{}
+\startpage{}
+\endpage{}
+\doi{}
+\MR{}
+\Zbl{}
+\received{}
+\revised{}
+\accepted{}
+\published{}
+\publishedonline{}
+\proposed{}
+\seconded{}
+\corresponding{}
+\editor{}
+\version{}
+
+%%% End of metadata
+%
+%%% Start of user-defined macros %%%
+%
+%   Theorem-type environments.  There are two predefined styles :
+%
+%   \theoremstyle{plain} : for theorems, corollaries etc with heading 
+%   bold and left justified, optional note bracketed in roman type
+%   and statement in slanted type.  This is the default style.
+%
+%   \theoremstyle{definition} : (alias remark)  for definitions, remarks 
+%   etc with heading bold and left justified, optional note as before but
+%   with statement in roman type.
+%   
+%   Some sample  \newtheorem's  (delete these unless you need
+%   them and insert your own):
+%\swapnumbers 
+%(this command will reverse the number and theorem name giving for example 
+%1.2 Theorem instead of Theorem 1.2)
+
+\newtheorem{thm}{Theorem}[section]    % Standard theorem environment
+\newtheorem{lem}[thm]{Lemma}          % Lemma environment with numbering 
+%                                     % consecutive to theorems
+\newtheorem{prop}[thm]{Proposition}    % Proposition environment with numbering 
+%                                     % consecutive to theorems
+\newtheorem{cor}[thm]{Corollary}          % Lemma environment with numbering 
+%                                     % consecutive to theorems
+\newtheorem*{zlem}{Zorn's Lemma}      % A special unnumbered lemma.
+%
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}    % Definition environment with 
+%                                     % numbering consecutive to theorems
+\newtheorem*{rem}{Remark}             % Unnumbered environment for remarks.
+%
+%   Type your macros (\newcommand's etc) below.
+%
+
+
+
+%%% End of user-defined macros %%%
+
+\begin{document}
+
+\begin{abstract}    % type your abstract below
+
+\end{abstract}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%   Start of main body of article
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%   End of main body of article
+%
+%                             References
+%
+%   BiBTeX users uncomment the following line:
+%
+%\bibliographystyle{jloganal}
+%
+
+\begin{thebibliography}
+
+\end{thebibliography}
+
+\end{document}
