@@ -514,7 +514,7 @@ MRREVIEWER = {Ivan Chajda},
 
 %% \usepackage{cleveref} %[2012/02/15]% v0.18.4; 
 % 0.16.1 of May 2010 would be sufficient, but what is the exact day?
-
+\overfullrule=1mm
 \usepackage[multiple]{footmisc}  %% for multiple footnote marks on same text
 
 %% \crefformat{footnote}{#2\footnotemark[#1]#3}
@@ -543,7 +543,7 @@ MRREVIEWER = {Ivan Chajda},
 
 %  First author
 %
-\author[W.~DeMeo]{William DeMeo}
+\author[W.~DeMeo]{William DeMeo\\\\7 March 2017}
 \givenname{William}
 \surname{DeMeo}
 \address{Department of Mathematics, University of Hawaii, Honolulu, Hawaii, 96822 USA}
@@ -1513,7 +1513,7 @@ Since $t$ is a local difference term for $T$, hence for
 $(a_i, b_i, b_i)$,  %% $(1\leq i \leq k)$,
 we see that 
 $t(a_i, b_i, b_i) \Comr{\Cg(a_i,b_i)} a_i$.
-Combining this with (\ref{eq:40000}) and (\ref{eq:50000}) yields
+This plus (\ref{eq:40000}) and (\ref{eq:50000}) yields
 $d(a_i,b_i,b_i) \Comr{\Cg(a_i,b_i)} a_i$,
 as desired.
 
@@ -1798,9 +1798,9 @@ is easy and similar to the proof
 of Corollary~\ref{cor:loc-diff-term}, we consign it to 
 appendix Section~\ref{sec:proof-cor:glob}.
 
-Before proceeding, we need to agree on some more notational conventions.
-If $\alpha \in \Con(\bA)$ and $\beta \in \Con(\bB)$, then
-$\alpha \mytimes \beta$ denotes the set of pairs $((a,b),(a',b'))\in (A\times B)^2$ satisfying
+We now pause to fix some more notation.
+If $\alpha \in \Con(\bA)$ and $\beta \in \Con(\bB)$, then we let
+$\alpha \mytimes \beta$ denote the set of pairs $((a,b),(a',b'))\in (A\times B)^2$ satisfying
 $a \mathrel{\alpha} a'$ and $b \mathrel{\beta} b'$.  The relation 
 $\alpha \mytimes \beta$ is clearly a congruence of $\bA \times \bB$.
 
@@ -2069,7 +2069,7 @@ Foundation Grant No.~1500235.
   \end{lemma}
 
   \begin{proof}
-    By monotonicity of the commutator, $\bigl[\Meet \alpha_i, \Meet \beta_i\bigr] \leq
+    By monotonicity, $\bigl[\Meet \alpha_i, \Meet \beta_i\bigr] \leq
     \comm {\alpha_i} {\beta_i} \leq \bigl[\Join \alpha_i, \Join \beta_i\bigr]$,
     for all $i \in I$.
   \end{proof}

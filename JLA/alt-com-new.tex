@@ -169,9 +169,9 @@ $D_\alpha =(\alpha \mytimes \alpha) \cap (0_A \times 0_A)$
     $t^{\bA}(a, \bb) \mathrel{\Psiba(0_A)} t^{\bA}(a, \bb')$,
     where $\bb = (b_1, \dots, b_k)$ and $\bb' = (b_1', \dots, b_k')$.
     We must show $t(a', \bb) \mathrel{\Psiba(0_A)} t(a', \bb')$.  
-    By definition of $\Psiba$,
-    the antecedent $t^{\bA}(a, \bb) \mathrel{\Psiba(0_A)} t^{\bA}(a, \bb')$ is equivalent to    
-    the existence of $c \in A$ such that $(c,c) \Deltabar (t^{\bA}(a, \bb), t^{\bA}(a, \bb'))$.
+    The antecedent
+    $t^{\bA}(a, \bb) \mathrel{\Psiba(0_A)} t^{\bA}(a, \bb')$ is equivalent to    
+    $(\exists \, c \in A)$ $(c,c) \Deltabar (t^{\bA}(a, \bb), t^{\bA}(a, \bb'))$.
     Now
     \[
     (t^{\bA}(a, \bb), t^{\bA}(a, \bb')) = t^{\bbeta}((a,a),(b_1, b_1'), \dots,(b_k, b_k')),
@@ -220,7 +220,7 @@ $D_\alpha =(\alpha \mytimes \alpha) \cap (0_A \times 0_A)$
   = (\gA_i(c, \bb), \gA_i(c', \bb')),%
   \]
   \renewcommand\gA{\ensuremath{g}}%
-  for some $k$, some $(k+1)$-ary term $\gA_i$, and some constants
+  for some $k$, some $(k+1)$-ary term $\gA_i$, and some constant tuples
   $\bb = (b_1, \dots, b_k)$ and $\bb' = (b_1', \dots, b_k')$ satisfying
   $b_i \betar b_i'$ ($1\leq i\leq k$). 
   By~(\ref{eq:001}), either
@@ -258,13 +258,13 @@ we now have the following simple method for computing it.
 
 \smallskip
 
-\noindent {\bf Input} \hskip2mm A finite algebra, $\bA = \<A, \dots\>$, and two congruence relations $\alpha$, $\beta \in \Con \bA$.
+\noindent {\bf Input} \hskip2mm A finite algebra $\bA = \<A, \dots\>$ and two congruences $\alpha$, $\beta \in \Con \bA$.
 
 \smallskip
 \noindent {\bf Procedure}
 \begin{itemize}
 \item {\bf Step 1} \hskip2mm Compute the congruence relation
-  $\Deltaba = \Cg^{\bbeta}\bigl\{((a,a), (b,b)) \mid a \alphar b \bigr\}$.
+  \[\Deltaba = \Cg^{\bbeta}\bigl\{((a,a), (b,b)) \mid a \alphar b \bigr\}.\]
 \item {\bf Step 2} \hskip2mm Compute the commutator
   \[[\alpha, \beta] 
   = \bigl\{(x,y) \in A\times A \mid (\exists a \in A) \, (a,a) \Deltabar (x,y)\bigr\} 
