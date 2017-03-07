@@ -955,19 +955,7 @@ follows:\footnote{This is similar to the standard notational convention
 \label{sec:equiv-cond-exist}
 The main result of this section is Theorem~\ref{thm:F}, which 
 is essentially due to Keith Kearnes and is based on an observation
-%% We won't use anything in this subsection
-%% when proving the main result of this paper; nonetheless, we include it since
-%% this result may be of independent interest.
-%% Let $\sV$ be a variety.  
 in~\cite{MR1358491}
-%% In that paper, Kearnes observed that
-%% a locally finite variety has a difference term
-%% iff it has a Taylor term and no type-2 tails.
-%% Let $\sV$ be a variety and let $\bF = \bF_{\sV}(2)$ denote the 2-generated
-%% free algebra in $\sV$.
-%% Then the assumption that $\sV$ be locally finite can be weakened
-%% to the hypothesis that $\bF$ is finite. This was observed in~\cite{MR1358491} 
-%% by showing that 
 which states that a variety $\sV$ has a difference term if and only if
 $\sansH \sansS \sansP(\bF_{\sV}(2))$ 
 has a difference term.
@@ -980,17 +968,14 @@ Since $\bB$ is 2-generated, $B \in \sansH \sansS \sansP (\bF)$.
 Hence $d(x, y, z)$ interprets as a difference term in $\bB$. This means that
 $d^{\bA} (a, a, b) = d^{\bB} (a, a, b) = b$.
 Furthermore,
-\[
-d^{\bA} (a, b, b) = d^{\bB} (a, b, b)
+$d^{\bA} (a, b, b) = d^{\bB} (a, b, b)
 %% \mathrel{[\Cg^{\bB} (a, b), \Cg^{\bB} (a, b)]}
-\Comr{\Cg^{\bB} (a, b)}
-a.
-\]
-But
+\Comr{\Cg^{\bB} (a, b)} a$.
+However, 
 %% $[\Cg^{\bB} (a, b), \Cg^{\bB} (a,b)]\subseteq [\theta, \theta]$
 $\Com{\Cg^{\bB} (a, b)} \subseteq \Com{\theta}$
-for any congruence
-$\theta \in \Con \bA$ for which $(a, b) \in \theta$. Consequently
+for every congruence
+$\theta \in \Con \bA$ containing $(a, b)$. Consequently
 $d^{\bA} (a, b, b)
 %% \mathrel{[\theta, \theta]}
 \Comr{\theta}
@@ -1006,7 +991,7 @@ First, the lemma that does the heavy lifting in the proof of
 Theorem~\ref{thm:F} is the following:
 \begin{lemma}
   \label{lem:equiv-cond-exist-1}
-  Let $\bA$ be an algebra, let $t(x,y,z)$ be a ternary term in the langauge
+  Let $\bA$ be an algebra, let $t(x,y,z)$ be a ternary term in the language
   of $\bA$, and let $\bF := \bF_{\bbV(\bA)}(x,y)$. Consider the following statements:
   \begin{enumerate}[(A)]
   \item \label{item:6} $t^{\bA}$ is not a difference term operation for $\bA$.
@@ -1047,7 +1032,7 @@ Theorem~\ref{thm:F} is the following:
   $\beta := \Cg^{\bB} (a, b)$ and
   %% $\delta:=\restr{\com{\Cg^{\bA} (a, b)}}{B^2}$,
   $\delta:=\Com{\Cg^{\bA} (a, b)} \cap B^2$.
-  (See Appendix~\ref{sec:details-omitted-from} for details.)\\[5pt]
+  (See Appendix~\ref{sec:details-omitted-from} for details.)\\[4pt]
   (\ref{item:7}) $\Rightarrow$ (\ref{item:8}):
   Since there is a surjective homomorphism from $\bF$ to $\bB$,
   Lemma~\ref{lem:hom-image-diff-term} implies that $d^{\bF}(x,y,z)$ 
@@ -1165,7 +1150,7 @@ Since $|S'| < |S|$, the set $S'$ has a local difference term $p$.
 We split the remainder of the proof into two cases.
 %% In the first case $\chi_0 = 0$ and in the second $\chi_0 = 1$.
 
-\vskip3mm
+\medskip
 
 %--------------------------------------
 \noindent \underline{Case $\chi_0 = 0$}:
@@ -1208,15 +1193,24 @@ as desired.
 
 For the indices $1\leq i \leq k$ we have $\chi_i =1$, so we prove
 $d(a_i,a_i,b_i) = b_i$ for such $i$. Observe,
-\begin{align}
-  d(a_i,a_i,b_i) &=
-  t(a_i, p(a_i,a_i,a_i), p(a_i,a_i,b_i)) \label{eq:200000}\\
-  &=t(a_i, a_i, b_i) \label{eq:200001}\\
-  &=b_i. \label{eq:200002}
-\end{align}
-Equation~(\ref{eq:200000}) holds by definition of $d$,~(\ref{eq:200001})
+% \begin{align}
+%   d(a_i,a_i,b_i) &=
+%   t(a_i, p(a_i,a_i,a_i), p(a_i,a_i,b_i)) \label{eq:200000}\\
+%   &=t(a_i, a_i, b_i) \label{eq:200001}\\
+%   &=b_i. \label{eq:200002}
+% \end{align}
+% Equation~(\ref{eq:200000}) holds by definition of $d$,~(\ref{eq:200001})
+% because $p$ is an idempotent local difference term for
+% $S'$, and~(\ref{eq:200002}) because $t$ is a local difference term for $T$.
+\[
+  d(a_i,a_i,b_i) =
+  t(a_i, p(a_i,a_i,a_i), p(a_i,a_i,b_i)) % \label{eq:200000}\\
+  =t(a_i, a_i, b_i) % \label{eq:200001}\\
+  =b_i. % \label{eq:200002}
+\]
+The first equation holds by definition of $d$, the second
 because $p$ is an idempotent local difference term for
-$S'$, and~(\ref{eq:200002}) because $t$ is a local difference term for $T$.
+$S'$, and the third because $t$ is a local difference term for $T$.
 
 The remaining triples in our original set $S$
 have indices satisfying $k<j\leq n$ and $\chi_j = 0$.
@@ -1237,10 +1231,9 @@ $(d(a_j, b_j,b_j), t(a_j,a_j,a_j))$
 belongs to
 $\Com{\Cg(a_j,b_j)}$.
 Finally, by idempotence of $t$ we have
-\[
-d(a_j,b_j,b_j)\Comr{\Cg(a_j,b_j)} a_j,\]
+$d(a_j,b_j,b_j)\Comr{\Cg(a_j,b_j)} a_j$,
 as desired.
-\\[6pt]
+\\[4pt]
 %--------------------------------------
 \underline{Case $\chi_0 = 1$}:
 %% \\[4pt]
@@ -1258,27 +1251,29 @@ define
 $d(x,y,z) = t(p(x,y,z), p(y,y,z), z)$. 
 Since $\chi_0 =1$, we want $d(a_0,a_0,b_0) = b_0$. By the definition of
 $d$,
-\begin{equation*}
-  d(a_0,a_0,b_0) =
-  t(p(a_0,a_0,b_0), p(a_0,a_0,b_0), b_0) =b_0.
-\end{equation*}
+% \begin{equation*}
+%   d(a_0,a_0,b_0) =
+%   t(p(a_0,a_0,b_0), p(a_0,a_0,b_0), b_0) =b_0.
+% \end{equation*}
+$d(a_0,a_0,b_0) =
+t(p(a_0,a_0,b_0), p(a_0,a_0,b_0), b_0) =b_0$.
 The last equality holds since $t$ is a local difference term for $T$, thus,
 for $(p(a_0, a_0, b_0), b_0, 1)$.
 
 If $1\leq i \leq k$, then $\chi_i =0$, so for these indices we prove
 that $(a_i, d(a_i,b_i,b_i))$ belongs to $\Com{\Cg(a_i,b_i)}$.
 Again, starting from the definition of $d$ and using idempotence of $p$, we have
-%% \begin{equation}
-%%   \label{eq:40000}
-%%   d(a_i,b_i,b_i) =
-%%   t(p(a_i,b_i,b_i), p(b_i,b_i,b_i), b_i)=
-%%   t(p(a_i,b_i,b_i), b_i, b_i).
-%% \end{equation}
-\begin{align}
-  d(a_i,b_i,b_i) &=
-  t(p(a_i,b_i,b_i), p(b_i,b_i,b_i), b_i)   \label{eq:40000}\\
-  &=t(p(a_i,b_i,b_i), b_i, b_i). \nonumber
-\end{align}
+\begin{equation}
+  \label{eq:40000}
+  d(a_i,b_i,b_i) =
+  t(p(a_i,b_i,b_i), p(b_i,b_i,b_i), b_i)=
+  t(p(a_i,b_i,b_i), b_i, b_i).
+\end{equation}
+% \begin{align}
+%   d(a_i,b_i,b_i) &=
+%   t(p(a_i,b_i,b_i), p(b_i,b_i,b_i), b_i)   \label{eq:40000}\\
+%   &=t(p(a_i,b_i,b_i), b_i, b_i). \nonumber
+% \end{align}
 Next, since $p$ is a local difference term for $S'$, we have
 \begin{equation}
   \label{eq:50000}
@@ -1299,12 +1294,12 @@ have indices $j$ satisfying $k<j\leq n$ and $\chi_j = 1$.
 For these we want $d(a_j,a_j,b_j) = b_j$.
 Since $p$ is a local difference term for $S'$, we have
 $p(a_j,a_j,b_j) = b_j$, and this along with idempotence of $t$ yields
-%%\[ d(a_j,a_j,b_j) =  t(p(a_j,a_j,b_j), p(a_j,a_j,b_j), b_j)=  t(b_j, b_j, b_j) =b_j,\]
-\begin{align*}
-d(a_j,a_j,b_j) &=
-t(p(a_j,a_j,b_j), p(a_j,a_j,b_j), b_j)\\
-&=t(b_j, b_j, b_j) =b_j,
-\end{align*}
+\[ d(a_j,a_j,b_j) =  t(p(a_j,a_j,b_j), p(a_j,a_j,b_j), b_j)=  t(b_j, b_j, b_j) =b_j,\]
+% \begin{align*}
+% d(a_j,a_j,b_j) &=
+% t(p(a_j,a_j,b_j), p(a_j,a_j,b_j), b_j)\\
+% &=t(b_j, b_j, b_j) =b_j,
+% \end{align*}
 as desired.
 \end{proof}
 
@@ -1404,9 +1399,9 @@ as desired.
     polynomial has been known for a long time (see~\cite{MR0455543}).
     The time complexity of congruence generation is also known to be polynomial
     (see~\cite{MR2470585}).  The only operation whose tractability might be 
-    questionable is the commutator, but there is a straight-forward algorithm for
-    computing it that we describe in detail below. 
-    (See Section~\ref{sec:interlude:-an-easy}.)
+    called into question is the commutator, but we have a straight-forward 
+    algorithm for computing it that we describe in detail in 
+    Appendix Section~\ref{sec:interlude:-an-easy}.
     % which, after the congruences have been computed, simply
     % involves generating more subalgebras.
     %% Finally, we observe that if $\bA$ has a difference term operation, then the
@@ -1416,9 +1411,389 @@ as desired.
 
 More details on the complexity of operations carried out by the algorithm, as well as many other algebraic operations, can be found in the references mentioned, as well as~\cite{MR1871085,MR1695293,Freese:2009}. 
 
-\newcommand\mytimes{\ensuremath{\ast}}
 
-\section{Interlude: an easy route to the commutator}
+\section{Generalizations and Extensions}
+
+%% \input{inputs/mix-loc-diff-terms.tex}
+
+%%% NEW SECTION
+\subsection{Mixed local difference terms}
+\label{sec:mixed-local-diff}
+In this section, we observe that the proofs in the previous section
+did not hinge on the fact that we only considered a single algebra.  
+Let $\sV$ be a variety and let $\bA_0=\< A_0, \dots\>$ and  $\bA_1=\< A_1, \dots\>$ be
+algebras in $\sV$.
+The direct sum (or coproduct) of $\bA_0$ and
+$\bA_1$ is denoted by $\bA_0 + \bA_1$
+(or by $\coprod_{i=0}^1 \bA_i$, especially when there are more than two
+factors).
+An element of (the universe of)
+$\bA_0 + \bA_1$ is often denoted by $\<a, i\>$,
+where $i\in \{0,1\}$ and $a \in A_i$.
+The (universe of the) coproduct %% $\coprod_{i=0}^1 (\bA_i\times \bA_i)$ has elements
+$\bA_0^2 + \bA_1^2$ has elements
+$\<(a,b), i\>$ where $i\in \{0,1\}$ and $(a,b) \in A_i^2$.
+An element of  the set $(A_0^2 + A_1^2) \times \{0,1\}$---and
+now the notation has already become a bit unwieldy---has
+the form $(\<(a,b), i\>, \chi)$, where $i\in \{0,1\}$, $(a,b) \in A_i^2$,
+and $\chi\in \{0,1\}$. 
+
+Fix two elements $(\<(a, b),i\>, \chi)$ and $(\<(a', b'),i'\>, \chi')$ of the
+set $(A_0^2 + A_1^2) \times \{0,1\}$.
+By a \defn{mixed local difference term} for this pair
+we mean a ternary term $d$ satisfying both
+\begin{align}
+\text{ if $\chi=0$, then } & a \Comr{\Cg^{\bA_i}(a,b)} d^{\bA_i}(a,b,b); \label{eq:mixed-diff-triple}\\
+\text{ if $\chi=1$, then } &d^{\bA_i}(a,a,b) = b; \nonumber
+\end{align}
+and the same set of relations with $a$, $b$, $i$, $\chi$ replaced 
+by $a'$, $b'$, $i'$, $\chi'$, respectively.
+
+Let $S$ be a sequence of triples drawn from the set
+\[
+\sU(A_0, A_1)  := (A_0^2 + A_1^2) \times \{0,1\}.
+\]
+If $d$ satisfies~(\ref{eq:mixed-diff-triple}) for all triples in $S$.
+then we call $d$ is a \defn{mixed local difference term for $S$}.
+We may use $\sU$ to denote the set $\sU(A_0, A_1)$ when the context renders the
+universes involved obvious or immaterial.
+
+Now, suppose that all pairs of triples 
+in $\sU$ have mixed local difference terms.
+Under this hypothesis the same argument that we used to prove
+Theorem~\ref{thm:local-diff-terms} above can be used to prove that, for every $n$,
+%% and every sequence $S\in \sU^n$, there is a term $d$ that is a mixed local
+%% difference term for $S$.
+every sequence $S\in \sU^n$ has a mixed local difference term.
+That is, there is a single term $d$ that works (i.e., satisfies
+the relations (\ref{eq:mixed-diff-triple})) for all $(\<(a, b), i\>,\chi)$ in $S$.
+Here is the full statement of this slightly more general version of
+Theorem~\ref{thm:local-diff-terms}.
+From now on we drop the ``mixed'' qualifier since
+it is inconsequential.
+
+\begin{thm} %[\protect{cf.~\cite[Theorem 2.2]{MR3239624}}]
+  \label{thm:mixed-local-diff-terms}
+  Let $\sV$ be an idempotent variety and let
+  $\bA_0 = \<A_0, \dots\>$ and   $\bA_1 = \<A_1, \dots\>$ be algebras in $\sV$. Define
+  $\sU  = (A_0^2 + A_1^2)\times \{0,1\}$
+  and suppose that every pair
+  $((\<(a, b), i\>, \chi), (\<(a', b'), i'\>\chi')) \in \sU^2$
+  has a local difference term. Then, for every $n$, every sequence $S \in \sU^n$
+  has a local difference term.
+\end{thm}
+
+Corollary~\ref{cor:loc-diff-term} also generalizes, as follows:
+\begin{cor}
+  \label{cor:mix-loc-diff-term}
+  Let $\sV$ be an idempotent variety and let
+  $\bA_0 = \<A_0, \dots\>$ and   $\bA_1 = \<A_1, \dots\>$ be algebras in $\sV$. Define
+  $\sU  = (A_0^2 + A_1^2)\times \{0,1\}$
+  and suppose that every pair
+  $((\<(a, b), i\>, \chi), (\<(a', b'), i'\>\chi')) \in \sU^2$
+  has a local difference term. Then, there is a term $d$ that interprets as a
+  difference term operation for both $\bA_0$ and $\bA_1$.
+\end{cor}
+%% Corollary~\ref{cor:loc-diff-term} also generalizes, as follows:
+%% \begin{cor}
+%%   \label{cor:mix-loc-diff-term}
+%%   Let $\scA = \{\<A_i, \dots\> \mid i \in I\}$ be a collection of finite
+%%   idempotent algebras. Then there exists a term $d$ that interprets as a
+%%   difference term operation in every $\<A_i, \dots\> \in \scA$ if and only if each pair
+%%   $((\<(a_i,b_i),\iota_i\>,\chi_i),  (\<(a_j,b_j),\iota_j\>,\chi_j))$ in
+%%   $\bigl(\coprod_{i \in I} A_i^2\times \{0,1\}\bigr)^2$
+%%   % \[\bigl(\coprod_{i \in I} (A_i^2\times \{0,1\})\bigr)
+%%   %   \times \bigl(\coprod_{i \in I} (A_i^2\times \{0,1\})\bigr),\]
+%%   has a local difference term.
+%% \end{cor}
+
+
+
+
+
+\subsection{Local difference terms on universes}
+\label{sec:glob-local-diff}
+The methods from earlier sections can be lifted up to work globally---that is,
+on universes rather than elements---as we now explain. 
+Let $\sV$ be a variety, let $\bA = \<A, \dots\> \in \sV$ 
+and $i\in \{0,1\}$.
+We call a term $d$ a \defn{local difference term
+for $(A, i)$}
+provided $d$ is a local difference term for every triple
+$(a,b,i) \in A \times A \times \{i\}$. That is, for all $a, b \in A$,
+\begin{align}
+\text{ if $i=0$, then } & \, a \Comr{\Cg^{\bA}(a,b)} d^{\bA}(a,b,b);
+\label{eq:global-diff-triple}\\
+\text{ if $i=1$, then } & \,
+d^{\bA}(a,a,b) = b. 
+\end{align}
+
+Let $\sV$ be a variety and let $\scA$ be a collection of algebras that belong to $\sV$.
+Let $\scS(\scA)$ be the collection of all pairs $(A, i)$ where $A$ is the universe
+of some algebra in $\scA$ and $i\in \{0,1\}$.  That is,
+\[
+\scS(\scA) = \{(A, i) \mid \<A, \dots\> \in \scA \text{ and } i \in \{0,1\}\}.
+\]
+Given a sequence
+$S = ((A_0, \chi_0), (A_1, \chi_1), \dots,
+(A_{n-1},\chi_{n-1})) \in \scS(\scA)^n$,
+(or a subset $S \subseteq \scS(\scA)$),
+a term $d$ is called a \defn{\glocal difference term for $S$}
+if it is a \glocal difference term for every pair $(A_i, \chi_i)$ in $S$.
+In addition to these definitions, in the proof of the next theorem we use
+$|S|$ to denote the \emph{length of the sequence $S$}
+(or, in case $S$ is a set, then $|S|$ denotes the cardinality of $S$, as usual).
+\begin{thm}
+  \label{thm:glob-loc-diff-terms}
+  Let $\sV$ be a variety.  Let $\scA$ be a collection of finite idempotent
+  algebras in $\sV$. Fix $n\geq 2$ and 
+  let $S= ((A_0, \chi_0), (A_1, \chi_1), \dots, (A_{n-1}, \chi_{n-1}))\in \scS(\scA)^n$.
+  Then there exists a term that is a \glocal difference term for $S$
+  if and only if each 2-element subsequence $((A_i,\chi_i), (A_j,\chi_j))$ of $S$
+  has a \glocal difference term.
+\end{thm}
+We relegate the proof of Theorem~\ref{thm:glob-loc-diff-terms} 
+to the appendix (see Section~\ref{sec:proof-thm:glob}), since the argument 
+is nearly identical to the one used to prove Theorem~\ref{thm:local-diff-terms}. 
+
+\begin{cor}
+  \label{cor:glob-loc-diff-term}
+  Let $\sV$ be a variety.  Let $\scA$ be a collection of finite idempotent
+  algebras in $\sV$. %% that is closed under the taking of subalgebras.
+  Then there exists a term $d$ that interprets as a difference term operation
+  for every algebra in $\scA$
+  if and only if each pair $((A,i), (B,j)) \in \scS(\scA)^2$ has a \glocal
+  difference term.
+\end{cor}
+Since the proof of Corollary~\ref{cor:glob-loc-diff-term}
+is easy and similar to the proof
+of Corollary~\ref{cor:loc-diff-term}, we consign it to 
+appendix Section~\ref{sec:proof-cor:glob}.
+
+Before proceeding, recall the following fairly standard notation:
+if $\alpha \in \Con(\bA)$ and $\beta \in \Con(\bB)$, then
+$\alpha \times \beta$ denotes the set of pairs $((a,b),(a',b'))\in (A\times B)^2$ satisfying
+$a \mathrel{\alpha} a'$ and $b \mathrel{\beta} b'$.  The relation 
+$\alpha \times \beta$ is clearly a congruence of $\bA \times \bB$.
+
+% \pagebreak[1]
+\begin{lem}
+  \label{lem:products}
+  Let $\sV$ be a variety and let $\bA$ and $\bB$ be finite idempotent
+  algebras in $\sV$. Suppose the term $d$ 
+  interprets as a difference term operation for $\bA\times \bB$.
+  Then $d^{\bA}$ (resp., $d^{\bB}$) is a difference term operation for 
+  $\bA$  (resp., $\bB$).
+\end{lem}
+\begin{proof}
+  Assume that for all $(a, b)$ and $(a', b')$ in $A \times B$, the term $d$ satisfies
+  \begin{align}
+    d^{\bA \times \bB}((a, b), (a, b), (a', b')) &= (a', b'),\; \text{ and } \label{eq:60002}\\
+    d^{\bA \times \bB}((a, b), (a', b'), (a', b'))
+    &\Comr{\Cg^{\bA \times \bB}((a, b), (a', b'))} (a, b). \label{eq:60003}
+  \end{align}
+  We prove that $d^{\bA}$ is a difference term operation
+  for $\bA$. (Obviously, the proof for $\bB$ is identical.)
+  Thus, fixing $a, a' \in A$, we will show 
+  \begin{align}
+    d^{\bA}(a, a, a') &= a',\; \text{ and } \label{eq:60004}\\
+    d^{\bA}(a,a',a')
+    &\Comr{\Cg^{\bA}(a, a')} a. \label{eq:60005}
+  \end{align}
+  Equation (\ref{eq:60004}) is obvious by (\ref{eq:60002}),
+  so we proceed to~(\ref{eq:60005}).
+  Observe that 
+  \[
+  (d^{\bA}(a, a',a'), d^{\bB}(b, b',b'))
+  \Comr{\Cg^{\bA \times \bB}((a, b), (a', b'))} (a, b),
+  \]
+  by~(\ref{eq:60003}). Therefore, Lemma~\ref{lem:hom-image-diff-term}
+  implies\footnote{The first projection 
+    $\pi_A : \bA \times \bB \to \bA$ is a surjective 
+    homomorphism, so 
+  $\pi_A \Com{\theta} \subseteq \Com{\pi_A(\theta)}$
+    for all $\theta \in \Con (\bA \times \bB)$,
+    by Lemma~\ref{lem:hom-image-diff-term}. Recall, that
+    $\pi_A$ is defined on a congruence $\theta \in \Con(\bA \times \bB)$ as follows:
+    $\pi_A(\theta) := \{(a,a') \in A^2 \mid ((a,b),(a',b')) \in \theta \text{ for
+      some $(b,b')\in B^2$}\}$.}
+  \[
+    (d^{\bA}(a, a',a'), a)\in \pi_A \Com{\Cg^{\bA \times \bB}((a, b), (a', b'))}
+    \subseteq \Com{\pi_A\bigl(\Cg^{\bA \times \bB}((a, b), (a', b'))\bigr)}.
+  \]
+  Next, observe that 
+  $\Cg^{\bA}(a,a') \mytimes \Cg^{\bB}(b,b')$  %%  \in \Con(\bA \times \bB)$
+  is a product of two congruences, one in $\Con(\bA)$ and the
+  other in $\Con(\bB)$, so it is a congruence of $\bA\times \bB$.
+  Moreover, it contains the pair $((a,b), (a',b'))$, so
+  %% belongs to $\Cg^{\bA}(a,a') \times \Cg^{\bB}(b,b')$, 
+  \[
+  \Cg^{\bA \times \bB}((a, b), (a', b'))\leq \Cg^{\bA}(a,a') \mytimes \Cg^{\bB}(b,b').
+  \]
+  Therefore, 
+  \[
+  \pi_A\bigl(\Cg^{\bA \times \bB}((a, b), (a', b'))\bigr)
+  \leq
+  \pi_A\bigl(\Cg^{\bA}(a,a') \mytimes \Cg^{\bB}(b,b')\bigr) = 
+  \Cg^{\bA}(a,a').
+  \]
+  Pulling all of these observations together and applying monotonicity of the
+  commutator, we arrive at $d^{\bA}(a, a',a')  \Comr{\Cg^{\bA}(a,a')} a$, as desired.
+\end{proof}
+
+The converse of Lemma~\ref{lem:products} is harder to prove.
+\begin{lem}
+  \label{lem:products-conv}
+ Let $\sV$ be a variety and let $\bA$ and $\bB$ be finite idempotent
+ algebras in $\sV$. Suppose there is a single term $d$ that
+ interprets as a difference term operation for $\bA$ and for $\bB$.
+ Then $d^{\bA \times \bB}$ is a difference term operation for the product
+ $\bA \times \bB$.
+\end{lem}
+\begin{proof}
+  Fix $(a, b)$ and $(a', b')$ in $A \times B$.
+  We must prove
+  \begin{align}
+    d^{\bA \times \bB}((a, b), (a, b), (a', b')) &= (a', b'),\; \text{ and } \label{eq:60000}\\
+    d^{\bA \times \bB}((a, b), (a', b'), (a', b'))
+    &\Comr{\Cg^{\bA \times \bB}((a, b), (a', b'))} (a, b). \label{eq:60001}
+  \end{align}
+  %% where $\theta:= \Cg^{\bA \times \bB}((a, b), (a', b'))$.
+  Since $d^{\bA}$ and $d^{\bB}$ are difference term operations for $\bA$ and
+  $\bB$, respectively, it's easy to see that~(\ref{eq:60000}) is satisfied:
+  \[
+  d^{\bA \times \bB}((a, b), (a, b), (a', b')) =
+  (d^{\bA}(a, a, a'),  d^{\bB}(b, b, b')) = (a', b').
+  \]
+  It remains to check (\ref{eq:60001}).
+  Again, since $d^{\bA}$ and
+  $d^{\bB}$ are difference term operations,
+  % \begin{align*}
+  % d^{\bA}(a,a',a')
+  % &\Comr{\Cg^{\bA}(a,a')} a\\
+  % d^{\bB}(b, b', b')
+  % &\Comr{\Cg^{\bB}(b,b')} b.
+  % \end{align*}
+  \[
+  d^{\bA}(a,a',a')
+  \Comr{\Cg^{\bA}(a,a')} a \quad \text{ and } \quad
+  d^{\bB}(b, b', b')
+  \Comr{\Cg^{\bB}(b,b')} b.
+\]
+  Therefore, 
+  % the pair $\bigl((d^{\bA}(a,a',a'),d^{\bB}(b, b', b')), (a,b)\bigr)$ belongs
+  % to the relation \[ \Com{\Cg^{\bA}(a,a')} \mytimes \Com{\Cg^{\bB}(b,b')}.\]
+  $(d^{\bA}(a,a',a'),d^{\bB}(b, b', b'))
+    \mathrel{\Com{\Cg^{\bA}(a,a')}\mytimes\Com{\Cg^{\bB}(b,b')}}
+    (a,b)$.
+  We claim that the latter is equal to
+  $\Com{\Cg^{\bA}(a,a') \mytimes \Cg^{\bB}(b,b')}$.
+  Recall from above that
+  \[
+  \Cg^{\bA \times \bB}((a, b), (a', b'))\leq \Cg^{\bA}(a,a') \times \Cg^{\bB}(b,b').
+  \]
+  Therefore, if we prove that
+  \[
+  \Com{\Cg^{\bA}(a,a')}  \mytimes  \Com{\Cg^{\bB}(b,b')} = 
+  \Com{\Cg^{\bA}(a,a') \mytimes \Cg^{\bB}(b,b')},
+  \]
+  then we could complete the proof by showing that
+  \begin{equation}
+    \label{eq:655}    
+  \Cg^{\bA \times \bB}((a, b), (a', b'))\geq \Cg^{\bA}(a,a') \mytimes \Cg^{\bB}(b,b').
+  \end{equation}
+
+  \smallskip
+
+  TODO: (\ref{eq:655}) is false in general; maybe false here
+  too; then we need a new idea.
+
+  \medskip
+  
+  TODO: Prove Lemma~\ref{lem:products-conv} somehow!!!
+  %% Therefore, by monotonicity of the commutator,
+  %% (\ref{eq:60001}) holds.
+  %% It remains to check the claim... 
+\end{proof}
+
+
+\subsection{Algorithm 2: existence of a difference term}
+\label{sec:algor-2}
+%% \subsection{Algorithm 2: existence of difference terms}
+%% \label{sec:algor-2:-exist}
+%% In this subsection we prove the following
+\begin{cor}
+\label{cor:algor-2}
+  There is a polynomial-time algorithm that takes as input
+  any finite idempotent algebra $\bA$ and decides whether
+  the variety $\bbV(\bA)$ that it generates
+  has a difference term operation.
+\end{cor}
+\begin{proof}
+  Let $\sV = \bbV(\bA)$ and let $\bF = \bF_{\sV}(x,y)$ be the free algebra in
+  $\sV$ generated by $x$ and $y$.
+  By Theorem~\ref{thm:F}, deciding whether $\sV$ has a difference term is equivalent to 
+  deciding whether $\bF$ has a difference term operation.
+  We can assume $\bF$ is a subdirect product of
+  $\bA_0 \times \bA_1 \times \cdots \times \bA_{n-1}$, where $n\leq |A|^2$ and
+  where each $\bA_i$ is a 2-generated subalgebra of $\bA$..
+  Let $\scA = \{A_0, A_1, \dots, A_{n-1}\}$ and (as above) let $\scS(\scA)$ denote 
+  all pairs $(A, i)$ such that $\bA = \<A, \dots\> \in \scA$ and $i\in \{0,1\}$.
+
+  We begin by proving that we can check in polynomial time (in $|A|$)
+  whether or not the product
+  $\bA_0 \times \bA_1 \times \cdots \times \bA_{n-1}$ has a difference term operation.
+  By Corollary~\ref{cor:glob-loc-diff-term} and Lemma~\ref{lem:products-conv},
+  it suffices to check that each of the 
+  $n^2$ pairs  in 
+  $\scS(\scA)^2$ has a \glocal
+  difference term.  Fix a pair
+  $((A_i, \chi_i), (A_j, \chi_j)) \in  \scS(\scA)^2$,
+  and let $\sU  = (A_i^2 + A_j^2)\times \{0,1\}$.
+  By Theorem~\ref{thm:mixed-local-diff-terms},
+  to prove that every sequence $S \in \sU^n$
+  has a local difference term, it suffices to check that every pair
+  $\bigl( (\<(a, b), i\>, \chi), (\<(a', b'), i'\>, \chi')\bigr) \in \sU^2$
+  has a local difference term. It follows from the argument given 
+  in the proof of Corollary~\ref{cor:algor-1} that the number of 
+  operations required to check whether
+  $\bigl( (\<(a, b), i\>, \chi), (\<(a', b'), i'\>, \chi')\bigr)$
+  has a local difference term is bounded by a
+  polynomial in $|A_i||A_j|\leq |A|^2$.  Since there are 
+  $4|A_i|^2|A_j|^2 \leq 4|A|^4$ pairs in $\sU^2$, 
+  it still takes only a polynomial in $|A|$ number of steps to test whether
+  the pair $((A_i, \chi_i), (A_j, \chi_j))$ has a \glocal difference term.
+  There are $n^2 \leq |A|^4$ such pairs to test, so the number of steps required to 
+  test whether
+  $\bA_0 \times \bA_1 \times \cdots \times \bA_{n-1}$ has a difference term
+  operation is bounded by a constant times a power of $|A|$.
+
+  \medskip
+
+  \noindent TODO: complete the proof by showing that if the product 
+  $\bA_0 \times \bA_1 \times \cdots \times \bA_{n-1}$ has a difference term operation,
+  then so does the subdirect product $\bF$.
+
+  \medskip
+
+\end{proof}
+
+% \draftsecskip
+
+
+
+\section*{Acknowledgments}
+Both authors were partially supported by the National Science 
+Foundation Grant No. 1500235.
+
+\newpage
+
+
+\appendix
+
+
+
+\section{An Easy Route to the Commutator}
 \label{sec:interlude:-an-easy}
 \subsection{Preliminaries}
 %% The genesis of these notes was my attempt to interpret the expression 
@@ -1511,16 +1886,15 @@ $t\in \Pol_{n+1}(\bA)$ we have
 %% iff $t(b,\bu) \mathrel{[\alpha, \beta]} t(b, \bv)$.
 $t(a,\bu) \mathrel{\gamma} t(a, \bv)$
 iff $t(b,\bu) \mathrel{\gamma} t(b, \bv)$.
+\begin{comment}
 Occasionally it is more convenient to write such an equivalence as a (two-way) derivation tree,
 as follows:
-%% \[
-%% \infer=[\CC{\alpha}{\beta}{\gamma}]{\Gamma \vdash t(b,\bu) \mathrel{[\alpha, \beta]} t(b, \bv)}{\Gamma \vdash t(a,\bu) \mathrel{[\alpha, \beta]} t(a, \bv)}\]
 \[
 \infer=[\CC{\alpha}{\beta}{\gamma}]{\Gamma \vdash t(b,\bu) \mathrel{\gamma} t(b, \bv)}{\Gamma \vdash t(a,\bu) \mathrel{\gamma} t(a, \bv)}\]
 where $\Gamma$ is a context containing
 $a \alphar b$, $u_i \betar v_i$ ($1\leq i\leq n$), and 
 $t\in \Pol_{n+1}(\bA)$.
-
+\end{comment}
 
 
 %%%%%%%%%%%%%%%%%%%%%% BEGIN: omitted stuff
@@ -1767,7 +2141,7 @@ point of $\Psiba$.
   \item \label{item:c3} $\Psiba(\Psiba(T))  = \Psiba(T)$. 
   \end{enumerate}
 
-  \vskip2mm
+  \smallskip
 
   \noindent {\it Proof of (c.1):} $(a,b) \in T $
   implies $(a,b) \in \Psiba(T )$ because $(a,b)\mathrel{\Delta_{\beta, \alpha}} (a,b)$.\\[4pt]
@@ -1902,12 +2276,13 @@ point of $\Psiba$.
 As a consequence of the description of the commutator given in the last section,
 we now have the following simple method for computing it.
 
-\bigskip
+\smallskip
 
 \noindent {\bf Input:} A finite algebra, $\bA = \<A, \dots\>$, and two congruences $\alpha$, $\beta \in \Con \bA$.
 
-\bigskip
+\smallskip
 \noindent {\bf Procedure:}
+
 \begin{enumerate}[Step 1.]
 \item Compute the congruence relation
   $\Deltaba = \Cg^{\bbeta}\bigl\{((a,a), (b,b)) \mid a \alphar b \bigr\}$.
@@ -1925,381 +2300,6 @@ we now have the following simple method for computing it.
 
 
 
-\section{Local Difference Terms: Generalizations and Extensions}
-
-%% \input{inputs/mix-loc-diff-terms.tex}
-
-%%% NEW SECTION
-\subsection{Mixed local difference terms}
-\label{sec:mixed-local-diff}
-In this section, we observe that the proofs in the previous section
-did not hinge on the fact that we only considered a single algebra.  
-Let $\sV$ be a variety and let $\bA_0=\< A_0, \dots\>$ and  $\bA_1=\< A_1, \dots\>$ be
-algebras in $\sV$.
-The direct sum (or coproduct) of $\bA_0$ and
-$\bA_1$ is denoted by $\bA_0 + \bA_1$
-(or by $\coprod_{i=0}^1 \bA_i$, especially when there are more than two
-factors).
-An element of (the universe of)
-$\bA_0 + \bA_1$ is often denoted by $\<a, i\>$,
-where $i\in \{0,1\}$ and $a \in A_i$.
-The (universe of the) coproduct %% $\coprod_{i=0}^1 (\bA_i\times \bA_i)$ has elements
-$\bA_0^2 + \bA_1^2$ has elements
-$\<(a,b), i\>$ where $i\in \{0,1\}$ and $(a,b) \in A_i^2$.
-An element of  the set $(A_0^2 + A_1^2) \times \{0,1\}$---and
-now the notation has already become a bit unwieldy---has
-the form $(\<(a,b), i\>, \chi)$, where $i\in \{0,1\}$, $(a,b) \in A_i^2$,
-and $\chi\in \{0,1\}$. 
-
-Fix two elements $(\<(a, b),i\>, \chi)$ and $(\<(a', b'),i'\>, \chi')$ of the
-set $(A_0^2 + A_1^2) \times \{0,1\}$.
-By a \defn{mixed local difference term} for this pair
-we mean a ternary term $d$ satisfying both
-\begin{align}
-\text{ if $\chi=0$, then } & a \Comr{\Cg^{\bA_i}(a,b)} d^{\bA_i}(a,b,b); \label{eq:mixed-diff-triple}\\
-\text{ if $\chi=1$, then } &d^{\bA_i}(a,a,b) = b; \nonumber
-\end{align}
-and the same set of relations with $a$, $b$, $i$, $\chi$ replaced 
-by $a'$, $b'$, $i'$, $\chi'$, respectively.
-
-Let $S$ be a sequence of triples drawn from the set
-\[
-\sU(A_0, A_1)  := (A_0^2 + A_1^2) \times \{0,1\}.
-\]
-If $d$ satisfies~(\ref{eq:mixed-diff-triple}) for all triples in $S$.
-then we call $d$ is a \defn{mixed local difference term for $S$}.
-We may use $\sU$ to denote the set $\sU(A_0, A_1)$ when the context renders the
-universes involved obvious or immaterial.
-
-Now, suppose that all pairs of triples 
-in $\sU$ have mixed local difference terms.
-Under this hypothesis the same argument that we used to prove
-Theorem~\ref{thm:local-diff-terms} above can be used to prove that, for every $n$,
-%% and every sequence $S\in \sU^n$, there is a term $d$ that is a mixed local
-%% difference term for $S$.
-every sequence $S\in \sU^n$ has a mixed local difference term.
-That is, there is a single term $d$ that works (i.e., satisfies
-the relations (\ref{eq:mixed-diff-triple})) for all $(\<(a, b), i\>,\chi)$ in $S$.
-Here is the full statement of this slightly more general version of
-Theorem~\ref{thm:local-diff-terms}.
-From now on we drop the ``mixed'' qualifier since
-it is inconsequential.
-
-\begin{thm} %[\protect{cf.~\cite[Theorem 2.2]{MR3239624}}]
-  \label{thm:mixed-local-diff-terms}
-  Let $\sV$ be an idempotent variety and let
-  $\bA_0 = \<A_0, \dots\>$ and   $\bA_1 = \<A_1, \dots\>$ be algebras in $\sV$. Define
-  $\sU  = (A_0^2 + A_1^2)\times \{0,1\}$
-  and suppose that every pair
-  $((\<(a, b), i\>, \chi), (\<(a', b'), i'\>\chi')) \in \sU^2$
-  has a local difference term. Then, for every $n$, every sequence $S \in \sU^n$
-  has a local difference term.
-\end{thm}
-
-Corollary~\ref{cor:loc-diff-term} also generalizes, as follows:
-\begin{cor}
-  \label{cor:mix-loc-diff-term}
-  Let $\sV$ be an idempotent variety and let
-  $\bA_0 = \<A_0, \dots\>$ and   $\bA_1 = \<A_1, \dots\>$ be algebras in $\sV$. Define
-  $\sU  = (A_0^2 + A_1^2)\times \{0,1\}$
-  and suppose that every pair
-  $((\<(a, b), i\>, \chi), (\<(a', b'), i'\>\chi')) \in \sU^2$
-  has a local difference term. Then, there is a term $d$ that interprets as a
-  difference term operation for both $\bA_0$ and $\bA_1$.
-\end{cor}
-%% Corollary~\ref{cor:loc-diff-term} also generalizes, as follows:
-%% \begin{cor}
-%%   \label{cor:mix-loc-diff-term}
-%%   Let $\scA = \{\<A_i, \dots\> \mid i \in I\}$ be a collection of finite
-%%   idempotent algebras. Then there exists a term $d$ that interprets as a
-%%   difference term operation in every $\<A_i, \dots\> \in \scA$ if and only if each pair
-%%   $((\<(a_i,b_i),\iota_i\>,\chi_i),  (\<(a_j,b_j),\iota_j\>,\chi_j))$ in
-%%   $\bigl(\coprod_{i \in I} A_i^2\times \{0,1\}\bigr)^2$
-%%   % \[\bigl(\coprod_{i \in I} (A_i^2\times \{0,1\})\bigr)
-%%   %   \times \bigl(\coprod_{i \in I} (A_i^2\times \{0,1\})\bigr),\]
-%%   has a local difference term.
-%% \end{cor}
-
-
-
-
-
-\subsection{Local difference terms on universes}
-\label{sec:glob-local-diff}
-The methods from earlier sections can be lifted up to work globally---that is,
-on universes rather than elements---as we now explain. 
-Let $\sV$ be a variety, let $\bA = \<A, \dots\> \in \sV$ 
-and $i\in \{0,1\}$.
-We call a term $d$ a \defn{local difference term
-for $(A, i)$}
-provided $d$ is a local difference term for every triple
-$(a,b,i) \in A \times A \times \{i\}$. That is, for all $a, b \in A$,
-\begin{align}
-\text{ if $i=0$, then } & \, a \Comr{\Cg^{\bA}(a,b)} d^{\bA}(a,b,b);
-\label{eq:global-diff-triple}\\
-\text{ if $i=1$, then } & \,
-d^{\bA}(a,a,b) = b. 
-\end{align}
-
-Let $\sV$ be a variety and let $\scA$ be a collection of algebras that belong to $\sV$.
-Let $\scS(\scA)$ be the collection of all pairs $(A, i)$ where $A$ is the universe
-of some algebra in $\scA$ and $i\in \{0,1\}$.  That is,
-\[
-\scS(\scA) = \{(A, i) \mid \<A, \dots\> \in \scA \text{ and } i \in \{0,1\}\}.
-\]
-Given a sequence
-\[S = ((A_0, \chi_0), (A_1, \chi_1), \dots,
-(A_{n-1},\chi_{n-1})) \in \scS(\scA)^n,
-\]
-(or a subset $S \subseteq \scS(\scA)$),
-a term $d$ is called a \defn{\glocal difference term for $S$}
-if it is a \glocal difference term for every pair $(A_i, \chi_i)$ in $S$.
-In addition to these definitions, in the proof of the next theorem we use
-$|S|$ to denote the \emph{length of the sequence $S$}
-(or, in case $S$ is a set, then $|S|$ denotes the cardinality of $S$, as usual).
-\begin{thm}
-  \label{thm:glob-loc-diff-terms}
-  Let $\sV$ be a variety.  Let $\scA$ be a collection of finite idempotent
-  algebras in $\sV$. Fix $n\geq 2$ and 
-  let $S= ((A_0, \chi_0), (A_1, \chi_1), \dots, (A_{n-1}, \chi_{n-1}))\in \scS(\scA)^n$.
-  Then there exists a term that is a \glocal difference term for $S$
-  if and only if each 2-element subsequence $((A_i,\chi_i), (A_j,\chi_j))$ of $S$
-  has a \glocal difference term.
-\end{thm}
-We relegate the proof of Theorem~\ref{thm:glob-loc-diff-terms} 
-to the appendix (see Section~\ref{sec:proof-thm:glob}), since the argument 
-is nearly identical to the one used to prove Theorem~\ref{thm:local-diff-terms}. 
-
-\begin{cor}
-  \label{cor:glob-loc-diff-term}
-  Let $\sV$ be a variety.  Let $\scA$ be a collection of finite idempotent
-  algebras in $\sV$. %% that is closed under the taking of subalgebras.
-  Then there exists a term $d$ that interprets as a difference term operation
-  for every algebra in $\scA$
-  if and only if each pair $((A,i), (B,j)) \in \scS(\scA)^2$ has a \glocal
-  difference term.
-\end{cor}
-Since the proof of Corollary~\ref{cor:glob-loc-diff-term}
-is easy and similar to the proof
-of Corollary~\ref{cor:loc-diff-term}, we consign it to 
-appendix Section~\ref{sec:proof-cor:glob}.
-
-Before proceeding, recall the following fairly standard notation:
-if $\alpha \in \Con(\bA)$ and $\beta \in \Con(\bB)$, then
-$\alpha \times \beta$ denotes the set of pairs $((a,b),(a',b'))\in (A\times B)^2$ satisfying
-$a \mathrel{\alpha} a'$ and $b \mathrel{\beta} b'$.  The relation 
-$\alpha \times \beta$ is clearly a congruence of $\bA \times \bB$.
-
-\pagebreak[1]
-\begin{lem}
-  \label{lem:products}
-  Let $\sV$ be a variety and let $\bA$ and $\bB$ be finite idempotent
-  algebras in $\sV$. Suppose the term $d$ 
-  interprets as a difference term operation for $\bA\times \bB$.
-  Then $d^{\bA}$ (resp., $d^{\bB}$) is a difference term operation for 
-  $\bA$  (resp., $\bB$).
-\end{lem}
-\begin{proof}
-  Assume that for all $(a, b)$ and $(a', b')$ in $A \times B$, the term $d$ satisfies
-  \begin{align}
-    d^{\bA \times \bB}((a, b), (a, b), (a', b')) &= (a', b'),\; \text{ and } \label{eq:60002}\\
-    d^{\bA \times \bB}((a, b), (a', b'), (a', b'))
-    &\Comr{\Cg^{\bA \times \bB}((a, b), (a', b'))} (a, b). \label{eq:60003}
-  \end{align}
-  We prove that $d^{\bA}$ is a difference term operation
-  for $\bA$. (Obviously, the proof for $\bB$ is identical.)
-  Thus, fixing $a, a' \in A$, we will show 
-  \begin{align}
-    d^{\bA}(a, a, a') &= a',\; \text{ and } \label{eq:60004}\\
-    d^{\bA}(a,a',a')
-    &\Comr{\Cg^{\bA}(a, a')} a. \label{eq:60005}
-  \end{align}
-  Equation (\ref{eq:60004}) is obvious by (\ref{eq:60002}),
-  so we proceed to~(\ref{eq:60005}).
-  Observe that 
-  \[
-  (d^{\bA}(a, a',a'), d^{\bB}(b, b',b'))
-  \Comr{\Cg^{\bA \times \bB}((a, b), (a', b'))} (a, b),
-  \]
-  by~(\ref{eq:60003}). Therefore, Lemma~\ref{lem:hom-image-diff-term}
-  implies\footnote{The first projection 
-    $\pi_A : \bA \times \bB \to \bA$ is a surjective 
-    homomorphism, so 
-  $\pi_A(\Com{\theta}) \subseteq \Com{\pi_A(\theta)}$
-    for all $\theta \in \Con (\bA \times \bB)$,
-    by Lemma~\ref{lem:hom-image-diff-term}. Recall, that
-    $\pi_A$ is defined on a congruence $\theta \in \Con(\bA \times \bB)$ as follows:
-    $\pi_A(\theta) := \{(a,a') \in A^2 \mid ((a,b),(a',b')) \in \theta \text{ for
-      some $(b,b')\in B^2$}\}$.}
-  \[
-    (d^{\bA}(a, a',a'), a)\in \pi_A\bigl(\Com{\Cg^{\bA \times \bB}((a, b), (a', b'))}\bigr)
-    \subseteq \Com{\pi_A\bigl(\Cg^{\bA \times \bB}((a, b), (a', b'))\bigr)}.
-  \]
-  Next, observe that 
-  $\Cg^{\bA}(a,a') \mytimes \Cg^{\bB}(b,b')$  %%  \in \Con(\bA \times \bB)$
-  is a product of two congruences, one in $\Con(\bA)$ and the
-  other in $\Con(\bB)$, so it is a congruence of $\bA\times \bB$.
-  Moreover, it contains the pair $((a,b), (a',b'))$, so
-  %% belongs to $\Cg^{\bA}(a,a') \times \Cg^{\bB}(b,b')$, 
-  \[
-  \Cg^{\bA \times \bB}((a, b), (a', b'))\leq \Cg^{\bA}(a,a') \mytimes \Cg^{\bB}(b,b').
-  \]
-  Therefore, 
-  \[
-  \pi_A\bigl(\Cg^{\bA \times \bB}((a, b), (a', b'))\bigr)
-  \leq
-  \pi_A\bigl(\Cg^{\bA}(a,a') \mytimes \Cg^{\bB}(b,b')\bigr) = 
-  \Cg^{\bA}(a,a').
-  \]
-  Pulling all of these observations together and applying monotonicity of the
-  commutator, we arrive at $d^{\bA}(a, a',a')  \Comr{\Cg^{\bA}(a,a')} a$, as desired.
-\end{proof}
-
-The converse of Lemma~\ref{lem:products} is harder to prove.
-\begin{lem}
-  \label{lem:products-conv}
- Let $\sV$ be a variety and let $\bA$ and $\bB$ be finite idempotent
- algebras in $\sV$. Suppose there is a single term $d$ that
- interprets as a difference term operation for $\bA$ and for $\bB$.
- Then $d^{\bA \times \bB}$ is a difference term operation for the product
- $\bA \times \bB$.
-\end{lem}
-\begin{proof}
-  Fix $(a, b)$ and $(a', b')$ in $A \times B$.
-  We must prove
-  \begin{align}
-    d^{\bA \times \bB}((a, b), (a, b), (a', b')) &= (a', b'),\; \text{ and } \label{eq:60000}\\
-    d^{\bA \times \bB}((a, b), (a', b'), (a', b'))
-    &\Comr{\Cg^{\bA \times \bB}((a, b), (a', b'))} (a, b). \label{eq:60001}
-  \end{align}
-  %% where $\theta:= \Cg^{\bA \times \bB}((a, b), (a', b'))$.
-  Since $d^{\bA}$ and $d^{\bB}$ are difference term operations for $\bA$ and
-  $\bB$, respectively, it's easy to see that~(\ref{eq:60000}) is satisfied:
-  \[
-  d^{\bA \times \bB}((a, b), (a, b), (a', b')) =
-  (d^{\bA}(a, a, a'),  d^{\bB}(b, b, b')) = (a', b').
-  \]
-  It remains to check (\ref{eq:60001}).
-  Again, since $d^{\bA}$ and
-  $d^{\bB}$ are difference term operations,
-  \begin{align*}
-  d^{\bA}(a,a',a')
-  &\Comr{\Cg^{\bA}(a,a')} a\\
-  d^{\bB}(b, b', b')
-  &\Comr{\Cg^{\bB}(b,b')} b.
-  \end{align*}
-  Therefore, the pair
-  $\bigl((d^{\bA}(a,a',a'),d^{\bB}(b, b', b')), (a,b)\bigr)$ belongs
-  to the relation
-  \[
-  \Com{\Cg^{\bA}(a,a')}
-  \mytimes
-  \Com{\Cg^{\bB}(b,b')}.
-  \]
-  We claim that the latter is equal to
-  $\Com{\Cg^{\bA}(a,a') \mytimes \Cg^{\bB}(b,b')}$.
-  Recall from above that
-  \[
-  \Cg^{\bA \times \bB}((a, b), (a', b'))\leq \Cg^{\bA}(a,a') \times \Cg^{\bB}(b,b').
-  \]
-  Therefore, if we prove that
-  \[
-  \Com{\Cg^{\bA}(a,a')}  \mytimes  \Com{\Cg^{\bB}(b,b')} = 
-  \Com{\Cg^{\bA}(a,a') \mytimes \Cg^{\bB}(b,b')},
-  \]
-  then we could complete the proof by showing that
-  \begin{equation}
-    \label{eq:655}    
-  \Cg^{\bA \times \bB}((a, b), (a', b'))\geq \Cg^{\bA}(a,a') \mytimes \Cg^{\bB}(b,b').
-  \end{equation}
-
-  \smallskip
-
-  TODO: (\ref{eq:655}) is false in general; maybe false here
-  too; then we need a new idea.
-
-  \medskip
-  
-  TODO: Prove Lemma~\ref{lem:products-conv} somehow!!!
-  %% Therefore, by monotonicity of the commutator,
-  %% (\ref{eq:60001}) holds.
-  %% It remains to check the claim... 
-\end{proof}
-
-
-\subsection{Algorithm 2: existence of a difference term}
-\label{sec:algor-2}
-%% \subsection{Algorithm 2: existence of difference terms}
-%% \label{sec:algor-2:-exist}
-%% In this subsection we prove the following
-\begin{cor}
-\label{cor:algor-2}
-  There is a polynomial-time algorithm that takes as input
-  any finite idempotent algebra $\bA$ and decides whether
-  the variety $\bbV(\bA)$ that it generates
-  has a difference term operation.
-\end{cor}
-\begin{proof}
-  Let $\sV = \bbV(\bA)$ and let $\bF = \bF_{\sV}(x,y)$ be the free algebra in
-  $\sV$ generated by $x$ and $y$.
-  By Theorem~\ref{thm:F}, deciding whether $\sV$ has a difference term is equivalent to 
-  deciding whether $\bF$ has a difference term operation.
-  We can assume $\bF$ is a subdirect product of
-  $\bA_0 \times \bA_1 \times \cdots \times \bA_{n-1}$, where $n\leq |A|^2$ and
-  where each $\bA_i$ is a 2-generated subalgebra of $\bA$..
-  Let $\scA = \{A_0, A_1, \dots, A_{n-1}\}$ and (as above) let $\scS(\scA)$ denote 
-  all pairs $(A, i)$ such that $\bA = \<A, \dots\> \in \scA$ and $i\in \{0,1\}$.
-
-  We begin by proving that we can check in polynomial time (in $|A|$)
-  whether or not the product
-  $\bA_0 \times \bA_1 \times \cdots \times \bA_{n-1}$ has a difference term operation.
-  By Corollary~\ref{cor:glob-loc-diff-term} and Lemma~\ref{lem:products-conv},
-  it suffices to check that each of the 
-  $n^2$ pairs  in 
-  $\scS(\scA)^2$ has a \glocal
-  difference term.  Fix a pair
-  $((A_i, \chi_i), (A_j, \chi_j)) \in  \scS(\scA)^2$,
-  and let $\sU  = (A_i^2 + A_j^2)\times \{0,1\}$.
-  By Theorem~\ref{thm:mixed-local-diff-terms},
-  to prove that every sequence $S \in \sU^n$
-  has a local difference term, it suffices to check that every pair
-  $\bigl( (\<(a, b), i\>, \chi), (\<(a', b'), i'\>, \chi')\bigr) \in \sU^2$
-  has a local difference term. It follows from the argument given 
-  in the proof of Corollary~\ref{cor:algor-1} that the number of 
-  operations required to check whether
-  $\bigl( (\<(a, b), i\>, \chi), (\<(a', b'), i'\>, \chi')\bigr)$
-  has a local difference term is bounded by a
-  polynomial in $|A_i||A_j|\leq |A|^2$.  Since there are 
-  $4|A_i|^2|A_j|^2 \leq 4|A|^4$ pairs in $\sU^2$, 
-  it still takes only a polynomial in $|A|$ number of steps to test whether
-  the pair $((A_i, \chi_i), (A_j, \chi_j))$ has a \glocal difference term.
-  There are $n^2 \leq |A|^4$ such pairs to test, so the number of steps required to 
-  test whether
-  $\bA_0 \times \bA_1 \times \cdots \times \bA_{n-1}$ has a difference term
-  operation is bounded by a constant times a power of $|A|$.
-
-  \medskip
-
-  \noindent TODO: complete the proof by showing that if the product 
-  $\bA_0 \times \bA_1 \times \cdots \times \bA_{n-1}$ has a difference term operation,
-  then so does the subdirect product $\bF$.
-
-  \medskip
-
-\end{proof}
-
-% \draftsecskip
-
-
-
-\section*{Acknowledgments}
-This research was supported by the National Science 
-Foundation under Grant No. 1500235.
-
-
-
-
-\appendix
 \section{Proofs}
 \subsection{Details omitted from proof of Lemma~\ref{lem:equiv-cond-exist-1}}
 \label{sec:details-omitted-from}
@@ -2381,7 +2381,7 @@ $(t(\bv, \br), t(\bv, \bs)) \in \delta$, as desired.
   \end{align*}
   We split the remainder of the proof into two cases.
 
-\vskip3mm
+  \medskip
 
 %--------------------------------------
 \noindent \underline{Case $\chi_0 = 0$:}
@@ -2408,7 +2408,7 @@ d(a,b,b) \Comr{\Cg(a,b)} a.
 \]
 Fix $a, b \in A_0$.
 By definition of $d$, and since
-$t$ is a \glocal difference term for $(A_0, 0)$, we have
+$t$ is a \glocal difference term for $(A_0, 0)$,
 \begin{equation}
   \label{eq:100100}
   d(a,b,b) 
@@ -2427,16 +2427,25 @@ Next, consider the (possibly empty) set of indices $\{i \mid 1\leq i \leq k\}$.
 For such indices $\chi_i =1$, so we will prove
 for all $a$, $b \in A_i$ that $d(a,a,b) = b$.
 Fix $a, b \in A_i$ and observe that
-\begin{align}
-  %% d^{\bB_i}(b,b,b') &=
-  d(a,a,b) &=
-  t(a, p(a,a,a), p(a,a,b)) \label{eq:210200}\\
-  &=t(a,a,b) \label{eq:220201}\\
-  &=b. \label{eq:230202}
-\end{align}
-Equation~(\ref{eq:210200}) holds by definition of $d$,~(\ref{eq:220201})
+% \begin{align}
+%   %% d^{\bB_i}(b,b,b') &=
+%   d(a,a,b) &=
+%   t(a, p(a,a,a), p(a,a,b)) \label{eq:210200}\\
+%   &=t(a,a,b) \label{eq:220201}\\
+%   &=b. \label{eq:230202}
+% \end{align}
+% Equation~(\ref{eq:210200}) holds by definition of $d$,~(\ref{eq:220201})
+% because $p$ is an idempotent \glocal difference term for
+% $S'$, and~(\ref{eq:230202}) because $t$ is a \glocal difference term for $T$.
+\[
+  d(a,a,b) =
+  t(a, p(a,a,a), p(a,a,b)) % \label{eq:210200}\\
+  =t(a,a,b) % \label{eq:220201}\\
+  =b. % \label{eq:230202}
+\]
+The first equation holds by definition of $d$, the second
 because $p$ is an idempotent \glocal difference term for
-$S'$, and~(\ref{eq:230202}) because $t$ is a \glocal difference term for $T$.
+$S'$, and the third because $t$ is a \glocal difference term for $T$.
 
 The indices of the remaining elements of $S$
 belong to the set $\{j \mid k<j\leq n\}$ (which is nonempty since we
@@ -2461,7 +2470,7 @@ $d(a, b,b) \Comr{\Cg(a,b)} t(a,a,a))$.
 Finally, by idempotence of $t$ we have
 $d(a,b,b)\Comr{\Cg(a,b)} a$,
 as desired.
-\\[6pt]
+\\[4pt]
 %--------------------------------------
 \underline{Case $\chi_0 = 1$:}
 Without loss of generality, suppose $\chi_1 = \chi_2 =\cdots =\chi_k = 0$,
@@ -2486,18 +2495,20 @@ for $(A_0, 1)$.
 Next, consider the (possibly empty) set of indices $\{i \mid 1\leq i \leq k\}$.
 For such indices $\chi_i =0$, so we will prove
 for all $a$, $b \in A_i$ that
-\[
-d(a,b,b) \Comr{\Cg(a,b)} a.
-\]
+$d(a,b,b) \Comr{\Cg(a,b)} a$.
 Fix $a, b\in A_i$.
-By definition of $d$ and idempotence of $p$, we have
-\begin{align}
-  d(a,b,b) &=
-  t(p(a,b,b), p(b,b,b), b)   \label{eq:444}\\
-  &=t(p(a,b,b), b, b). \nonumber
-\end{align}
+By definition of $d$ and idempotence of $p$, 
+% \begin{align}
+%   d(a,b,b) &=
+%   t(p(a,b,b), p(b,b,b), b)   \label{eq:444}\\
+%   &=t(p(a,b,b), b, b). \nonumber
+% \end{align}
+\begin{equation}
+\label{eq:444}  
+  d(a,b,b) = t(p(a,b,b), p(b,b,b), b) =t(p(a,b,b), b, b).
+\end{equation}
 Next, since $p$ is a \glocal difference term for $S'$,
-hence for $(A_i, 0)$, we have
+hence for $(A_i, 0)$,
 \begin{equation}
   \label{eq:555}
   t(p(a,b,b), b, b)
@@ -2505,12 +2516,9 @@ hence for $(A_i, 0)$, we have
  t(a, b, b).
 \end{equation}
 Finally, since $t$ is a \glocal difference term for $T$, hence for
-$(A_i, 0)$,  %% $(1\leq i \leq k)$,
-we have 
-\[
-t(a, b, b) \Comr{\Cg(a,b)} a.
-\]
-Combining this with (\ref{eq:444}) and (\ref{eq:555}) yields
+$(A_i, 0)$  $(1\leq i \leq k)$, we have  %% 
+$t(a, b, b) \Comr{\Cg(a,b)} a$.
+This, (\ref{eq:444}), and (\ref{eq:555}) yield
 $d(a,b,b) \Comr{\Cg(a,b)} a$,
 as desired.
 
@@ -2667,7 +2675,7 @@ $S$.
 
   We split the remainder of the proof into two cases.
 
-  \vskip3mm
+  \medskip
 
   %--------------------------------------
   \noindent \underline{Case $\chi_0 = 0$:}
@@ -2851,7 +2859,7 @@ Since $D(A)$ is a class of $\Theta$, we have
   $D(A)$, so the second pair must also belong this $\Theta$-class.
   That is, $t^{\bA}(\bx, v)= t^{\bA}(\by, v)$, as desired.
 
-  \vskip2mm
+  \smallskip
 
   \noindent ($\Rightarrow$) Assume $\bA$ is abelian. We show
   $\Cg^{\bA^2}(D(A)^2)$ has $D(A)$ as a block.  Assume
