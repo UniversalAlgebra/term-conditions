@@ -1,7 +1,19 @@
 \newcommand{\CC}[3]{\ensuremath{\sansC(#1, #2; #3)}} % \CC{a}{b}{c}  for  C(a, b; c)
 \newcommand{\C}[2]{\ensuremath{\sansC(#1, #2)}}      % \C{a}{b}      for  C(a, b)
-\newcommand{\comm}[2]{\ensuremath{\mathrel{[#1, #2]}}}
+
+\newcommand{\commr}[2]{\ensuremath{\mathrel{[#1, #2]}}} % [r, s] (relation spacing)
+\newcommand{\comm}[2]{\ensuremath{[#1, #2]}} % [r, s] (relation spacing)
+\newcommand{\comr}[1]{\ensuremath{\mathrel{[#1, #1]}}}  % [r, r] (relation spacing)
+\newcommand{\com}[1]{\ensuremath{[#1, #1]}}             % [r, r] (no extra space)
+
+\newcommand{\Comr}[1]{\ensuremath{\mathrel{\lb #1 \rb}}} % [[r]] (relation spacing)
+\newcommand{\Com}[1]{\ensuremath{\lb #1 \rb}}            % [[r]] (no extra space)
+
+
+%% \newcommand{\commone}{\ensuremath{\com\Cg^{\bF}(x,y)}}
+\newcommand{\commone}{\ensuremath{[1_F, 1_F]}}
 \newcommand{\etaR}{\ensuremath{\tilde{\eta}}}
+\newcommand{\rhoR}{\ensuremath{\tilde{\rho}}}
 \newcommand{\hto}{\ensuremath{\rightharpoonup}}
 \newcommand{\bool}{\ensuremath{\mathtt{Bool}}}
 \newcommand{\true}{\ensuremath{\mathtt{true}}}
@@ -30,6 +42,7 @@
 \newcommand{\alg}[1]{\ensuremath{\mathbf{#1}}}
 \newcommand{\Sub}{\ensuremath{\operatorname{Sub}}}
 \newcommand{\Con}{\ensuremath{\operatorname{Con}}}
+\newcommand{\Tol}{\ensuremath{\operatorname{Tol}}}
 \newcommand{\Cg}{\ensuremath{\operatorname{Cg}}}
 \newcommand{\Sg}{\ensuremath{\operatorname{Sg}}}
 \newcommand{\Clo}{\ensuremath{\operatorname{\mathsf{Clo}}}}
@@ -76,6 +89,10 @@
 \newcommand{\bC}{\ensuremath{\mathbf{C}}}
 \newcommand{\bD}{\ensuremath{\mathbf{D}}}
 \newcommand{\bF}{\ensuremath{\mathbf{F}}}
+%% \newcommand{\Fone}{\ensuremath{F_1}}
+%% \newcommand{\bFone}{\ensuremath{\mathbf{F}_1}}
+\newcommand{\Fone}{\ensuremath{F}}
+\newcommand{\bFone}{\ensuremath{\mathbf{F}}}
 \newcommand{\bP}{\ensuremath{\mathbf{P}}}
 \newcommand{\bp}{\ensuremath{\mathbf{p}}}
 \newcommand{\br}{\ensuremath{\mathbf{r}}}
@@ -91,6 +108,10 @@
 \newcommand{\malcev}{Mal'tsev\xspace}
 \newcommand{\var}[1]{\ensuremath{\mathcal{#1}}}
 
+\newcommand{\upalpha}{\ensuremath{\alpha^{\uparrow}}}
+\newcommand{\downalpha}{\ensuremath{\alpha^{\downarrow}}}
+\newcommand{\upbeta}{\ensuremath{\beta^{\uparrow}}}
+\newcommand{\downbeta}{\ensuremath{\beta^{\downarrow}}}
 
 
 \newcommand{\bs}{\ensuremath{\mathbf{s}}}
@@ -129,8 +150,20 @@
 \newcommand{\power}[1]{\ensuremath{\mathscr{P}(#1)}}
 %% \newcommand{\sP}{\ensuremath{\power{P}}}
 \newcommand{\sP}{\ensuremath{\mathcal{P}}}
+\newcommand{\alphar}{\ensuremath{\mathrel{\alpha}}}
+\newcommand{\betar}{\ensuremath{\mathrel{\beta}}}
+\newcommand{\gammar}{\ensuremath{\mathrel{\gamma}}}
 \newcommand{\balpha}{\ensuremath{\boldsymbol{\alpha}}}
 \newcommand{\bbeta}{\ensuremath{\boldsymbol{\beta}}}
+\newcommand{\bone}{\ensuremath{\boldsymbol{1}}}
+\newcommand{\boneF}{\ensuremath{\boldsymbol{1}_F}}
+
+\usepackage{accents}
+\newcommand{\ubar}[1]{\ensuremath{\underaccent{\bar}{#1}}}
+%% \newcommand{\ubar}[1]{\ensuremath{\underline{#1}}}
+\newcommand{\overbar}[1]{\ensuremath{\bar{#1}}}
+\renewcommand{\bbeta}{\ensuremath{\ubar{\boldsymbol{\beta}}}}
+
 \newcommand{\bgamma}{\ensuremath{\boldsymbol{\gamma}}}
 \newcommand{\bdelta}{\ensuremath{\boldsymbol{\delta}}}
 \newcommand{\bepsilon}{\ensuremath{\boldsymbol{\epsilon}}}

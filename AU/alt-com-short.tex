@@ -13,7 +13,23 @@
 %% \begin{filecontents*}{refs.bib} and \end{filecontents*} lines
 %% then delete the existing refs.bib file so it will be automatically generated 
 %% again with your new entry the next time you run pdfaltex.
-\begin{filecontents*}{alt-refs.bib}
+\begin{filecontents*}{refs.bib}
+@article {MR2470585,
+    AUTHOR = {Freese, Ralph},
+     TITLE = {Computing congruences efficiently},
+   JOURNAL = {Algebra Universalis},
+  FJOURNAL = {Algebra Universalis},
+    VOLUME = {59},
+      YEAR = {2008},
+    NUMBER = {3-4},
+     PAGES = {337--343},
+      ISSN = {0002-5240},
+   MRCLASS = {08A30 (08A40 68W30 68W40)},
+  MRNUMBER = {2470585 (2009j:08003)},
+MRREVIEWER = {Clifford H. Bergman},
+       DOI = {10.1007/s00012-008-2073-1},
+       URL = {http://dx.doi.org/10.1007/s00012-008-2073-1},
+}
 @article{Bergman-DeMeo-2016,
   author    = {Clifford Bergman and William DeMeo},
   title     = {Universal Algebraic Methods for Constraint Satisfaction Problems},
@@ -25,11 +41,99 @@
   biburl    = {http://dblp.uni-trier.de/rec/bib/journals/corr/BergmanD16},
   bibsource = {dblp computer science bibliography, http://dblp.org}
 }
-@unpublished{com-fix-poi,
-  author    = {William DeMeo},
-  title     = {The Commutator as Fixed Point of a Closure Operator},
-  year      = {2017},
-  note = {Unpublished seminar notes}
+@article {MR1663558,
+    AUTHOR = {Kearnes, Keith A. and Szendrei, {\'A}gnes},
+     TITLE = {The relationship between two commutators},
+   JOURNAL = {Internat. J. Algebra Comput.},
+  FJOURNAL = {International Journal of Algebra and Computation},
+    VOLUME = {8},
+      YEAR = {1998},
+    NUMBER = {4},
+     PAGES = {497--531},
+      ISSN = {0218-1967},
+   MRCLASS = {08A05 (08A30)},
+  MRNUMBER = {1663558},
+MRREVIEWER = {M. G. Stone},
+       DOI = {10.1142/S0218196798000247},
+       URL = {http://dx.doi.org/10.1142/S0218196798000247},
+}
+@article {MR1257643,
+    AUTHOR = {Lipparini, Paolo},
+     TITLE = {Commutator theory without join-distributivity},
+   JOURNAL = {Trans. Amer. Math. Soc.},
+  FJOURNAL = {Transactions of the American Mathematical Society},
+    VOLUME = {346},
+      YEAR = {1994},
+    NUMBER = {1},
+     PAGES = {177--202},
+      ISSN = {0002-9947},
+   MRCLASS = {08B10 (08A30 08B05)},
+  MRNUMBER = {1257643},
+MRREVIEWER = {H. Peter Gumm},
+       DOI = {10.2307/2154948},
+       URL = {http://dx.doi.org/10.2307/2154948},
+}
+@article {MR1145556,
+    AUTHOR = {Day, A. and Gumm, H. P.},
+     TITLE = {Some characterizations of the commutator},
+   JOURNAL = {Algebra Universalis},
+  FJOURNAL = {Algebra Universalis},
+    VOLUME = {29},
+      YEAR = {1992},
+    NUMBER = {1},
+     PAGES = {61--78},
+      ISSN = {0002-5240},
+   MRCLASS = {08B10 (08B99)},
+  MRNUMBER = {1145556},
+MRREVIEWER = {David Hobby},
+       DOI = {10.1007/BF01190756},
+       URL = {http://dx.doi.org/10.1007/BF01190756},
+}
+@article {MR541622,
+    AUTHOR = {Hagemann, Joachim and Herrmann, Christian},
+     TITLE = {A concrete ideal multiplication for algebraic systems and its
+              relation to congruence distributivity},
+   JOURNAL = {Arch. Math. (Basel)},
+  FJOURNAL = {Archiv der Mathematik. Archives of Mathematics. Archives
+              Math\'ematiques},
+    VOLUME = {32},
+      YEAR = {1979},
+    NUMBER = {3},
+     PAGES = {234--245},
+      ISSN = {0003-889X},
+   MRCLASS = {08B10},
+  MRNUMBER = {541622},
+MRREVIEWER = {Ralph Freese},
+       DOI = {10.1007/BF01238496},
+       URL = {http://dx.doi.org/10.1007/BF01238496},
+}
+@book {MR0432511,
+    AUTHOR = {Smith, Jonathan D. H.},
+     TITLE = {Mal$\prime$cev varieties},
+    SERIES = {Lecture Notes in Mathematics, Vol. 554},
+ PUBLISHER = {Springer-Verlag, Berlin-New York},
+      YEAR = {1976},
+     PAGES = {viii+158},
+   MRCLASS = {08A15},
+  MRNUMBER = {0432511},
+MRREVIEWER = {V. A. Artamonov},
+}
+@article {MR590312,
+    AUTHOR = {Gumm, H.-Peter},
+     TITLE = {An easy way to the commutator in modular varieties},
+   JOURNAL = {Arch. Math. (Basel)},
+  FJOURNAL = {Archiv der Mathematik. Archives of Mathematics. Archives
+              Math\'ematiques},
+    VOLUME = {34},
+      YEAR = {1980},
+    NUMBER = {3},
+     PAGES = {220--228},
+      ISSN = {0003-889X},
+   MRCLASS = {08B10},
+  MRNUMBER = {590312},
+MRREVIEWER = {Alden Pixley},
+       DOI = {10.1007/BF01224955},
+       URL = {http://dx.doi.org/10.1007/BF01224955},
 }
 @article {MR1358491,
     AUTHOR = {Kearnes, Keith A.},
@@ -49,7 +153,8 @@ MRREVIEWER = {H. Peter Gumm},
        URL = {http://dx.doi.org/10.1006/jabr.1995.1334},
 }
 \end{filecontents*}
-\documentclass[12pt,reqno]{amsart}
+%% \documentclass[reqno]{au}
+\documentclass{au}
 % The following \documentclass options may be useful:
 % preprint      Remove this option only once the paper is in final form.
 % 10pt          To set in 10-point type instead of 9-point.
@@ -143,7 +248,7 @@ MRREVIEWER = {H. Peter Gumm},
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{inputs/proof-dashed}
+%% \usepackage{inputs/proof-dashed}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -154,7 +259,7 @@ MRREVIEWER = {H. Peter Gumm},
 \begin{document}
 
 %% \title[Computing the Commutator Efficiently]{Computing the commutator efficiently}
-\title{The Commutator as Fixed Point of a Closure Operator}
+\title{The Commutator as Least Fixed Point of a Closure Operator}
 \date{\today}
 \author[W.~DeMeo]{William DeMeo}
 \address{University of Hawaii}
@@ -174,9 +279,9 @@ MRREVIEWER = {H. Peter Gumm},
 %% \renewcommand{\bbeta}{\ensuremath{\ubar{\boldsymbol{\beta}}}}
 
 \begin{abstract}
-  We present another description of the commutator---one that is inspired by that of
+  We present a description of the commutator that is inspired by that of
   Kearnes in~\cite[p.~930]{MR1358491} and leads to
-  an easy way to compute the commutator.
+  a simple procedure for computing the commutator.
   
   %% (here $\beta$ is a congruence of $\bA$ and $\bA \times_\beta \bA$ denotes the subalgebra of
   %% $\bA^2$ with universe $\beta$):
@@ -215,9 +320,9 @@ MRREVIEWER = {H. Peter Gumm},
 
 %% \subsection{Notation and Definitions}
 %% \label{sec:defs}
-Let $A$ and $B$ be sets and let $\alpha \subseteq A\times A$ and $\beta \subseteq B\times B$
-be binary relations on $A$ and $B$, respectively.
-We define
+If $A$ and $B$ are sets and  $\alpha \subseteq A\times A$ and $\beta \subseteq B\times B$
+are binary relations on $A$ and $B$, respectively, then 
+we define
 %% let $\alpha \otimes \beta$ denote the
 the \emph{pairwise product} of $\alpha$ and $\beta$ by
 \begin{equation}
@@ -232,19 +337,18 @@ and we let $\alpha \times \beta$ denote the usual Cartesian product of sets; tha
 \alpha \times \beta = \{((a, a'), (b, b')) 
 \in A^2\times B^2 \mid a\mathrel{\alpha} a' \, \text{ and } \, b\mathrel{\beta} b'\}.
 \end{equation}
-Notice that $\alpha \otimes \beta$ defines an equivalence relation on
-$A\times B$, whereas in general $\alpha\times \beta$ is 
-not even a binary relation on a single set.
+%% Notice that $\alpha \otimes \beta$ defines an equivalence relation on
+%% $A\times B$, whereas in general $\alpha\times \beta$ is 
+%% not even a binary relation on a single set.
 The equivalence class of $\alpha \otimes \beta$ containing the pair
 $(a, b)$ is denoted and defined by % \in A\times B$ is
 \[(a,b)/(\alpha \otimes \beta) = a/\alpha \times b/\beta= 
     \{(a', b') \in A\times B \mid a\mathrel{\alpha} a' \, \text{ and } \,  b\mathrel{\beta} b'\},
     \]
 the Cartesian product of the sets $a/\alpha$ and $b/\beta$.
-The collection of all such equivalence classes is also a Cartesian product, namely,
-\[
-(A\times B)/(\alpha \otimes \beta) =
-A/\alpha \times B/\beta  = \{(a, b)/(\alpha \otimes \beta) \mid a\in A \, \text{ and } \, b \in B\}.\]
+The set of all equivalence classes of $\alpha \otimes \beta$ is also a Cartesian product, namely,
+$(A\times B)/(\alpha \otimes \beta) =
+A/\alpha \times B/\beta  = \{(a, b)/(\alpha \otimes \beta) \mid a\in A \, \text{ and } \, b \in B\}$.
 %% \begin{remarks}\
 %%   \begin{enumerate}
 %%   \item The equivalence relations $\alpha$ and $\beta$ are subsets
@@ -258,15 +362,17 @@ A/\alpha \times B/\beta  = \{(a, b)/(\alpha \otimes \beta) \mid a\in A \, \text{
 
 For an algebra $\bA$ with congruence relations $\alpha$, $\beta\in \Con\bA$,
 let $\bbeta$ denote the subalgebra of $\bA\times \bA$ with universe 
-$\beta$, and let $0_A$ denote the least equivalence relation on $A$, and observe that this is a subuniverse of $\bbeta$.  Thus, $0_A = \{(a,a) \mid a\in A\} \leq \beta$.
+$\beta$, and let $0_A$ denote the least equivalence relation on $A$.
+%% (note that $0_A$ is a subuniverse of $\bbeta$).
+Thus, $0_A = \{(a,a) \mid a\in A\} \leq \beta$.
 Denote by $D_\alpha$ the following subset of $\beta \times \beta$:
 \begin{equation}
   \label{eq:9009}
 D_\alpha =(\alpha \otimes \alpha) \cap (0_A \times 0_A)
 = \{((a,a), (b,b)) \in (0_A \times 0_A) \mid a\alphar b\}.
 \end{equation}
-Let $\Delta_{\beta, \alpha} = \Cg^{\bbeta}(D_\alpha)$ denote the congruence of $\bbeta$ generated by
-$D_\alpha$.
+Let $\Delta_{\beta, \alpha} = \Cg^{\bbeta}(D_\alpha)$ denote the congruence relation
+of $\bbeta$ generated by $D_\alpha$.
 %% \end{align}
 %% \begin{align}
 %%   D_\alpha&:=(\alpha \otimes \alpha) \cap (0_A \times 0_A)
@@ -281,11 +387,15 @@ $D_\alpha$.
 %% \]
 The condition $\CC{\alpha}{\beta}{\gamma}$
 holds iff for all $a \alphar b$, for all $u_i \betar v_i$ ($1\leq i\leq n$), and for all 
-$t\in \Pol_{n+1}(\bA)$ we have
+$t\in \Pol_{n+1}(\bA)$, we have
 %% $t(a,\bu) \mathrel{[\alpha, \beta]} t(a, \bv)$
 %% iff $t(b,\bu) \mathrel{[\alpha, \beta]} t(b, \bv)$.
 $t(a,\bu) \mathrel{\gamma} t(a, \bv)$
 iff $t(b,\bu) \mathrel{\gamma} t(b, \bv)$.
+There are a number of different ways to define a commutator.
+See, for example,~\cite{MR0432511,MR541622,MR590312,MR1145556,MR1663558}.
+In this note, the commutator $[\alpha, \beta]$ is defined to be the least
+congruence $\gamma$ such that $\CC{\alpha}{\beta}{\gamma}$ holds.
 \begin{comment}
 Occasionally it is more convenient to write such an equivalence as a (two-way) derivation tree,
 as follows:
@@ -410,9 +520,9 @@ We now %% In~\cite{com-fix-poi} we gave
 describe an alternate way to express the commutator---specifically,
 it is the least fixed point of a certain closure operator.
 This description was inspired by the one that is mentioned in passing by
-Keith Kearnes in~\cite[p.~930]{MR1358491}.  Our goal here is merely 
+Keith Kearnes in~\cite[p.~930]{MR1358491}.  Our objective here is
 to prove that the description we present is correct (i.e., describes the commutator)
-and show that it leads to a simple, efficient procedure for computing the commutator.
+and to show that it leads to a simple, efficient procedure for computing the commutator.
 
 Let $\Tol(A)$ denote the collection of all tolerances (reflexive symmetric relations)
 on the set $A$,\footnote{Actually, a
@@ -455,23 +565,26 @@ for each $T \in  \Tol(A)$ follows:
 where
 $\Delta_{\beta, \alpha} = \Cg^{\bbeta}(D_\alpha)$ and
 $D_\alpha =(\alpha \otimes \alpha) \cap (0_A \times 0_A)$
-(see~(\ref{eq:9009})).
+(as in~(\ref{eq:9009})).
 %% We will prove below that the commutator $[\alpha, \beta]$ is the least fixed
 %% point of $\Psiba$.
 %% Since $\Psiba$ is clearly monotone increasing and since the collection of tolerances
 %% of $A$ is an algebraic (hence complete) lattice,
 %% $\Psiba$ has a least fixed point.
 
+\pagebreak[2]
 \begin{remarks}\
   \begin{enumerate}
 \item
-  It is not hard to show that $\Psiba (T)$ is reflexive and symmetric
-  whenever $T$ has these properties; that is, $\Psiba$ maps tolerances
-  to tolerances.  Similarly,
-  $\Psiba (T)$ is compatible with the operations of $\bA$ whenever
-  reflexive and symmetric
-  whenever $T$ has these properties; that is, $\Psiba$ maps tolerances
-  to tolerances.
+  It's easy to see that $\Psiba (T)$ is reflexive and symmetric
+  whenever $T$ has these properties; similarly, $\Psiba (T)$ is compatible with the
+  operations of $\bA$ whenever $T$ is. In other words $\Psiba$ maps tolerances of
+  $A$ ($\bA$, resp.) to tolerances of $A$ ($\bA$, resp.).
+  %% If $T$ happens to be transitive as well, then
+  %% $\Psiba (T)$ is also transitive; proof: let
+  %% $(x,y), (y,z) \in \Psiba (T)$.  Then there exists $(a,b)\in T$ and $(c,d) \in T$ such that
+  %% $(a,b) \Detalbar (x,y)$ and
+  %% $(c,d) \Detalbar (y,z)$.
   \item 
   Since $\Psiba$ is clearly a monotone increasing function on the complete
   lattice $\Tol(A)$, it is guaranteed to have a least fixed
@@ -482,25 +595,23 @@ $D_\alpha =(\alpha \otimes \alpha) \cap (0_A \times 0_A)$
   Here are two ways the least fixed point of $\Psiba$ could be computed:
   \begin{equation}
     \label{eq:4}
-  \tau = \Meet \{ \theta \in \Tol(A) \mid \Psiba(T) \leq T\}
+  \tau = \Meet \{ T \in \Tol(A) \mid \Psiba(T) \leq T\}
   \quad \text{ and } \quad
      \tau = \Join_{k\geq 0} \Psiba^{k}(0_A).
   \end{equation}
-  The fixed point lemma below (Lem.~\ref{lem:fixed-point-comm})
-  will show that the least
-  fixed point of $\Psiba$ is, in fact, the commutator;
-  that is, $\tau = [\alpha, \beta]$.  Therefore, either
-  expression in~(\ref{eq:4}) could potentially be used to compute the
-  commutator. %% For example,
+  In Lemma~\ref{lem:fixed-point-comm} we will show that the least
+  fixed point of $\Psiba$ is, in fact, the commutator,
+  $\tau = [\alpha, \beta]$, so either
+  expression in~(\ref{eq:4}) could potentially be used to compute it.
+  %% For example,
   %% an algorithm might be based on the following formula:
   %% \begin{equation}
   %%   \label{eq:5}
   %%         [\alpha, \beta] = \Join_{k\geq 0} \Psiba^{k}(0_A).
   %% \end{equation}
-  However, as we establish in Lemma~\ref{lem:fixed-point-comm} below,
-  $\Psiba$ is a closure operator, so in particular it is idempotent. Therefore,
-  $\Psiba^{k}(0_A) = \Psiba(0_A)$ for all $k$, and we arrive at
-  %% ~(\ref{eq:5}) reduces to
+  However, Lemma~\ref{lem:fixed-point-comm} also shows that 
+  $\Psiba$ is a closure operator; in particular, it is idempotent. Therefore,
+  $\Psiba^{k}(0_A) = \Psiba(0_A)$ for all $k$, so we have 
   the following simple description of the commutator:
   \begin{align*}
     %% \label{eq:55}
@@ -527,7 +638,7 @@ $D_\alpha =(\alpha \otimes \alpha) \cap (0_A \times 0_A)$
 \end{remarks}
 
 
-\subsection{A Fixed Point Lemma}
+\subsection{Fixed Point Lemma}
 \begin{lemma}
   \label{lem:fixed-point-comm}
   If $\alpha$, $\beta\in \Con(\bA)$ and 
@@ -705,10 +816,12 @@ we now have the following simple method for computing it.
   =\bigcup_{a\in A} (a,a)/\Deltaba
     \]
 \end{itemize}
+Note that $\Deltaba$ is a subalgebra of $\bA^2 \times \bA^2$ and such a congruence
+can be computed in polynomial-time in the size of $\bA$. (See~\cite{MR2470585}.)
 
 
 \bibliographystyle{alphaurl}
-\bibliography{alt-refs.bib}
+\bibliography{refs}
 
 
 

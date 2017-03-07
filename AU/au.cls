@@ -25,17 +25,12 @@
 %%% }
 %%%
 %====================================================================
-
 %% 2011/5/5: added \usepackage{url}
-
 \NeedsTeXFormat{LaTeX2e}% LaTeX 2.09 can't be used (nor non-LaTeX)
 [1994/12/01]% LaTeX date must December 1994 or later
 \ProvidesClass{au}[2011/05/05 v2.0]
-
-
 \global\expandafter\let\csname ver@amsthm.sty\expandafter\endcsname
   \csname ver@\@currname.\@currext\endcsname
-
 \let\@xp=\expandafter
 \let\@nx=\noexpand
 \def\@oparg#1[#2]{\@ifnextchar[{#1}{#1[#2]}}
@@ -92,12 +87,10 @@
 \DeclareOption{landscape}{\@tempdima\paperheight
   \paperheight\paperwidth \paperwidth\@tempdima}
 \DeclareOption{portrait}{}
-
 %% We use marginpars for \AUNOTE, so keep on right.
 %% Maybe this should only be true when banners are used?
 \DeclareOption{oneside}{\@twosidefalse \@mparswitchfalse}
 \DeclareOption{twoside}{\@twosidetrue  \@mparswitchfalse}
-
 \DeclareOption{draft}{\overfullrule5\p@
   \ClassWarning{\@classname}{%
     When the draft option is used, the
@@ -105,14 +98,8 @@
     command will print blank placeholder boxes\MessageBreak
     for the graphics}%
 }
-
 \overfullrule5\p@  %% This is the default.  Override it with option [final].
 \DeclareOption{final}{\overfullrule0\p@}
-
-
-
-
-
 %%%
 \def\publname{Algebra Universalis}
 \def\shortpublname{Algebra~univers.}
@@ -121,9 +108,7 @@
 \def\aulogo{\hbox{\vbox to 0pt{\vss\hrule
     \hbox{\vrule width 2pt height12pt\ 
     \aulogofont Algebra Universalis}}}}
-
 \def\ISSN{0002-5240}
-
 \newcount\page@count
 \def\thepage@count{\ifnum\page@count>9\else0\fi\number\page@count}
 \def\@bvser{\ifnum\currentissue>9\else0\fi\currentissue
@@ -131,7 +116,6 @@
    \ifnum\start@page>99\else0\fi
    \ifnum\start@page>9\else0\fi\number\start@page}
 %%%
-
 \newif\if@crop
 \newif\if@pageproof 
 \newif\if@OLF
@@ -144,7 +128,6 @@
 \DeclareOption{PRT}{\@PRTtrue}   %% final print version
 \DeclareOption{proof}{\@prooftrue} %% page proofs to send to author
 \DeclareOption{geom}{\@geomtrue} %% use geometry package
-
 \newif\if@titlepage
 \DeclareOption{titlepage}{\@titlepagetrue}
 \DeclareOption{notitlepage}{\@titlepagefalse}
@@ -219,12 +202,9 @@
 \lineskip=1pt \lineskiplimit=1pt
 \normallineskip=1pt \normallineskiplimit=1pt
 \let\baselinestretch=\@empty
-
 \headheight=8pt \headsep=14pt
-
 \footskip=24pt
 \topskip=10pt
-
 \columnsep=10pt \columnseprule=0pt
 \marginparwidth=90pt
 \marginparsep=11pt
@@ -312,7 +292,6 @@
     \rightmark{}{}\hfil \llap{\thepage}}%
   \let\@mkboth\markboth
 }
-
 \def\ps@OLFheadings{\ps@empty
   \def\@evenhead{%
     \setTrue{runhead}%
@@ -327,7 +306,6 @@
     \rightmark{}{}\hfil \llap{\thepage}}%
   \let\@mkboth\markboth
 }
-
 \let\sectionname\@empty
 \let\subsectionname\@empty
 \let\subsubsectionname\@empty
@@ -356,13 +334,10 @@
 \let\subsectionmark\@gobble
 \let\subsubsectionmark\@gobble
 \let\paragraphmark\@gobble
-
 \DeclareOption{makeidx}{}
 \ExecuteOptions{reqno,centertags,letterpaper,portrait,%
   10pt,twoside,onecolumn}
 \ProcessOptions\relax
-
-
 \def\dateposted#1{\def\@dateposted{#1}}%
 \let\@dateposted\@empty
 \if@PRT
@@ -371,7 +346,6 @@
 \def\@setdateposted{%
 %%%  \newline Article electronically published on \@dateposted}
 , \textit{published online} \@dateposted}
-
 \def\PRT@logo{%
   \set@logo{%
     \shortpublname~\textbf\currentvolume\ (\currentyear) \pageinfo
@@ -395,7 +369,6 @@
 }
 \def\no@logo{\vphantom{\PRT@logo}} %% Actually, makes no difference.
 \let\article@logo\relax %% This is the default, for users.
-
 \def\proof@logo{%
   \set@logo{%
     \vspace*{\baselineskip} \par  %% to make textspace the same?
@@ -406,7 +379,6 @@
     \hfill \aulogo
   }%
 }
-
 \long\def\set@logo#1{%
   \vbox to\headheight{%
     \@parboxrestore 
@@ -414,13 +386,11 @@
     \noindent\par\vss
   }%
 }
-
 \if@PRT
     \@geomtrue
     \overfullrule\z@ 
     \def\article@logo{\PRT@logo}
 \fi
-
 \if@OLF
   \@geomtrue
   \def\volinfo{Volume \currentvolume}%
@@ -428,20 +398,14 @@
   \let\article@logo\OLF@logo
   \AtBeginDocument{\pagestyle{OLFheadings}}
 \fi
-
 \if@proof
   \def\article@logo{\proof@logo}
   \@geomtrue
   \@croptrue
 \fi
-
 \if@pageproof
 \def\article@logo{\no@logo}
 \fi
-
-
-
-
 \if@compatibility
   \def\@tempa{\RequirePackage{amstex}\relax}%
 \else
@@ -487,11 +451,6 @@
       \RequirePackage{amsfonts}[1995/01/01]\relax
     }%
   }
-  
-  
-  
-  
-  
 \fi % end yesamsfonts branch
 \let\cleardouble@page\cleardoublepage
 \AtBeginDocument{%
@@ -554,12 +513,10 @@
 \renewcommand*{\title}[2][]{\gdef\shorttitle{#1}\gdef\@title{#2}}
 \edef\title{\@nx\@dblarg
   \@xp\@nx\csname\string\title\endcsname}
-
 %%% CP rewrite of \author, \address, \email, etc to allow
 %%% for multiple authors with the same address.  This should make
 %%% \Author (i.e., \fulladdress) obsolete.  Idea is from the JCM class
 %%% by David Carlisle.
-
 \renewcommand{\author}[2][]{%
   \ifx\@empty\authors
     \gdef\authors{#2}%
@@ -567,7 +524,6 @@
     \g@addto@macro\authors{\and#2}%
 %%    \g@addto@macro\addresses{\author{}}%
   \fi
-
 %%% CP  \currentauthors is the list of authors sharing the next
 %%% address
 \ifx\@empty\currentauthors
@@ -575,7 +531,6 @@
 \else
     \g@addto@macro\currentauthors{\and#2}
 \fi
-
   \@ifnotempty{#1}{%
     \ifx\@empty\shortauthors
       \gdef\shortauthors{#1}%
@@ -590,42 +545,36 @@
 \let\currentauthors\@empty
 \let\emails\@empty
 \let\urladdresses\@empty
-
 \let\addresses\@empty      \let\thankses\@empty
-
 %%%%%%%%%cp
 \newcommand{\address}[2][]{
 \andify\currentauthors
-\expandafter \g@addto@macro
-\expandafter \addresses
-\expandafter {%
-\expandafter \author
-\expandafter {%
+\@xp \g@addto@macro
+\@xp \addresses
+\@xp {%
+\@xp \author
+\@xp {%
             \currentauthors}}%
 \g@addto@macro\addresses{\address{#1}{#2}}
-\expandafter \g@addto@macro
-\expandafter \addresses
-\expandafter {%
+\@xp \g@addto@macro
+\@xp \addresses
+\@xp {%
             \emails}
-\expandafter\g@addto@macro
-\expandafter\addresses
-\expandafter{\urladdresses}
+\@xp\g@addto@macro
+\@xp\addresses
+\@xp{\urladdresses}
 \global\let\currentauthors\@empty
 \global\let\emails\@empty
 \global\let\urladdresses\@empty
 }
-
 \newcommand{\curraddr}[2][]{\g@addto@macro\addresses{\curraddr{#1}{#2}}}
 \newcommand{\andaddr}[2][]{\g@addto@macro\addresses{\andaddr{#1}{#2}}}
-
 %%%%%%%%%cp same for email and url?
 %\newcommand{\email}[2][]{\g@addto@macro\addresses{\email{#1}{#2}}}
 %\newcommand{\urladdr}[2][]{\g@addto@macro\addresses{\urladdr{#1}{#2}}}
 \newcommand{\email}[2][]{\g@addto@macro\emails{\email{#1}{#2}}}
 \newcommand{\urladdr}[2][]{\g@addto@macro\urladdresses{\urladdr{#1}{#2}}}
-
 \RequirePackage{url}
-
 \renewcommand{\thanks}[1]{%
   \@ifnotempty{#1}{\g@addto@macro\thankses{\thanks{#1}}}%
 }
@@ -638,14 +587,13 @@
 \footnotesize
 \raggedright
 \addvspace{8pt}
-  \def\author##1{\nobreak\addvspace\bigskipamount
-    \noindent{\scshape ##1}\vspace{2pt}\newline}%
   \def\\{\unskip, \ignorespaces}%
   \interlinepenalty\@M
-  \def\address##1##2{\begingroup
-  \hangindent \normalparindent
+ \def\author##1{\nobreak\addvspace\bigskipamount
+    \noindent{\scshape ##1}\vspace{2pt}\newline}%
+ \def\address##1##2{\begingroup
+    \hangindent \normalparindent
     \@ifnotempty{##1}{\ignorespaces{\indent\itshape{##1}}\ }%
-%    {\scshape\ignorespaces##2}\par\endgroup}%
     {\ignorespaces##2}\par\endgroup}%
   \def\curraddr##1##2{\begingroup
     \@ifnotempty{##2}{\nobreak \parindent\normalparindent
@@ -700,7 +648,6 @@
     \@translators}
   \endgroup
 }
-
 %%%
 %% NB: \scshape doesn't belong here? (CP)
 %% I think I will change this to "\author" ?
@@ -709,37 +656,26 @@
 \else \author[#1]{#2}
 \fi
 \address{{\scshape #2}\newline #3}}
-
 \let\auaddress=\fulladdress
 \let\Author=\fulladdress
-
 %%?? Use \andaddr instead?
 \def\andaddress %% multiple addresses for a single author
 {\newline\hspace*{10pt}\textit{and}\newline}
-
 \def\received#1#2{\def\@received{#1}\def\@finalform{#2}}
 \let\@received\@empty
 \let\@finalform\@empty
-
-
 \newif\if@specialissue
 \def\specialissue{\@specialissuetrue\def\@specialissue}
-
 \def\presentedby{\def\@presentedby}
 \let\@presentedby\@empty
-
 \let\full@address\@empty
-
 \def\fileno{\def\@fno}
 \let\@fno\@empty
 \def\bvno{\def\@bvno}
 \let\@bvno\@empty
-
 %\def\status#1{\def\st@tus{#1}}
 %\status{0}
-
 %%%
-
 \newcommand{\xandlist}[4]{\@andlista{{#1}{#2}{#3}}#4\and\and}
 \def\@andlista#1#2\and#3\and{\@andlistc{#2}\@ifnotempty{#3}{%
   \@andlistb#1{#3}}}
@@ -785,7 +721,6 @@
   \do\commby \do\@commby
   \do\dedicatory \do\@dedicatory \do\thanks \do\thankses
   \do\keywords \do\@keywords \do\subjclass \do\@subjclass
-
 \do\received \do\@received \do\@finalform \do\presentedby \do\@presentedby
 \do\fulladdress\do\full@address
 }
@@ -799,7 +734,6 @@
   \let\@makefnmark\relax  \let\@thefnmark\relax
   \ifx\@empty\@presentedby \else \@footnotetext{\@setpresentedby}\fi
   \ifx\@empty\@received \else \@footnotetext{\@setreceived}\fi
-
   \ifx\@empty\@subjclass\else \@footnotetext{\@setsubjclass}\fi
   \ifx\@empty\@keywords\else \@footnotetext{\@setkeywords}\fi
   \ifx\@empty\thankses\else \@footnotetext{%
@@ -826,9 +760,7 @@
     \vskip\dimen@\relax
   \fi
 } % end \@maketitle
-
 \AtBeginDocument{\def\@serieslogo{\article@logo}}
-
 \AtBeginDocument{%
   \@ifundefined{volinfo}{%
     \def\volinfo{%
@@ -956,13 +888,11 @@
   {\itshape\subjclassname}\/:\enspace\@subjclass\unskip\@addpunct.}
 \def\@setkeywords{%
   {\itshape \keywordsname}\/:\enspace \@keywords\unskip\@addpunct.}
-
 \def\@setreceived{%
   Received \@received;
    accepted in final form \@finalform\@addpunct.}
 \def\@setpresentedby{%
   Presented by \@presentedby\@addpunct.}
-
 \def\@setthanks{\def\thanks##1{\par##1\@addpunct.}\thankses}
 \newbox\abstractbox
 \newenvironment{abstract}{%
@@ -1054,9 +984,6 @@
   \endlist
 }
 \let\endenumerate=\endlist % for efficiency
-
-
-
 \renewenvironment{itemize}[1][\null\kern2em\null]{%
   \settowidth{\@mylen}{\hbox{\upshape#1}} 
   \ifnum\@itemdepth>3 \@toodeep
@@ -1188,7 +1115,6 @@
     \protect\@secnumpunct
   }%
 }
-
 \def\@secnumfont{\bfseries}
 \def\@sect#1#2#3#4#5#6[#7]#8{%
   \edef\@toclevel{\ifnum#2=\@m 0\else\number#2\fi}%
@@ -1327,7 +1253,6 @@
   }%
   \endgroup}
 \AtEndDocument{\@writetocindents}
-
 \let\indentlabel\@empty
 \def\@tochangmeasure#1{\sbox\z@{#1}%
   \ifdim\wd\z@>\csname r@tocindent\@toclevel\endcsname\relax
@@ -1565,7 +1490,6 @@
 \newcommand\printindex{\@input{\jobname.ind}}%
 \DeclareRobustCommand\textprime{\leavevmode
   \raise.8ex\hbox{\check@mathfonts\the\scriptfont2 \char48 }}
-
 \newcommand{\theoremstyle}[1]{%
   \@ifundefined{th@#1}{%
     \PackageWarning{amsthm}{Unknown theoremstyle `#1'}%
@@ -1993,17 +1917,12 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
   \ifdim\topmargin<.5truein \topmargin.5truein \fi
   \advance\topmargin -1truein\relax
 }
-
-
 \pagenumbering{arabic}%
 \pagestyle{headings}%
 \thispagestyle{plain}%
-
-
 %\IfFileExists{geometry.sty}
 \if@geom
     \RequirePackage[
-        dvips,
         paperwidth=   155mm,
         paperheight=  235mm,
         textwidth=    119mm,
@@ -2011,22 +1930,19 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
         lmargin=     18.5mm,
         tmargin=       19mm,
         heightrounded,
+driver=none,      %% because of crop package?
     ]{geometry}
 \else
     \textheight=569pt\textwidth=119mm
     \oddsidemargin=60pt\evensidemargin=\oddsidemargin
 \fi
-
 %%% datestamps and page numbers
     \font\pffont@=cmss8 \newcount\@@@sheetnumber
     \font\bigpffont@= phvb at 16pt 
-
 \if@crop
-\usepackage[dvips,letter,center,cam]{crop}
-
+\usepackage[letter,center,cam]{crop}
 %% Set references upright.
 \usepackage{upref}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcount\g@count  %% new
 \g@count=0
@@ -2043,9 +1959,6 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
 \end{picture}%
 }  %% new
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
 %\newsavebox\xb@x
 %\savebox\xb@x{\llap{\begin{picture}(20,20)(-9,5)
 %%\thicklines
@@ -2053,7 +1966,6 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
 %\put(17,3){\line(-1,1){14}}
 %\end{picture}
 %}}
-
 \renewcommand*\CROP@@info{{%
     \global\advance\CROP@index\@ne
         %\def\x{\discretionary{}{}{\hbox{\kern.5em---\kern.5em}}}%
@@ -2105,14 +2017,11 @@ pp.~\start@page--\end@page\x
         \hss
     }%
 }}
-
 \newcommand\CROP@user@a{
     \vbox to 0pt{%
         \rlap{\usebox\AU@vgrid}  %% new
         \vss} }
-
 \fi  %%\if@crop
-
 \newcommand{\NOTE}[1]{\marginpar{\raggedright \small (#1)}}
 \newcommand{\AUNOTE}[1]{\marginpar{\raggedright \small
    {\em Author:}\\#1}}
@@ -2137,12 +2046,8 @@ pp.~\start@page--\end@page\x
         }
     \fi
 }
-
-
 %% Hook for local mods (e.g., ifpdf?)
 \InputIfFileExists{AU.cfg}{}{}%
-
-
 \if@compatibility \else\endinput\fi
 \def\tiny{\Tiny}
 \def\defaultfont{\normalfont}
@@ -2150,7 +2055,5 @@ pp.~\start@page--\end@page\x
 \let\@newpf\proof \let\proof\relax \let\endproof\relax
 \newenvironment{pf}{\@newpf[\proofname]}{\popQED\endtrivlist}
 \newenvironment{pf*}[1]{\@newpf[#1]}{\popQED\endtrivlist}
-
 \endinput
-
 %% End of file `au.cls'.
