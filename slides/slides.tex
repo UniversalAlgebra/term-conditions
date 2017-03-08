@@ -14,6 +14,7 @@
 %%macs
 %For this presentation, I don't want citations
 \renewcommand{\cite}[1]{\relax}
+\renewcommand{\defn}[1]{\alert{#1}}
 % \newcommand{\V}{\ensuremath{\mathcal V}\xspace}
 % \newcommand{\mbold}[1]{\ensuremath{\mathbf{#1}}\xspace}
 % \makecs{\mbold}{ABDP}
@@ -21,27 +22,8 @@
 \newcommand{\dsize}{\displaystyle}
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Var}{Var}
-% \DeclareMathOperator{\Cg}{Cg}
-% \DeclareMathOperator{\Sub}{Sub}
-% \DeclareMathOperator{\Con}{Con}
-% \DeclareMathOperator{\Rel}{Rel}
 \newcommand{\bigpause}{\pause\bigskip}
-% \DeclareMathOperator{\CSP}{CSP}
-% \newcommand{\FF}{\mathbb{F}}
-% \DeclareMathOperator{\Pol}{Pol}
-% \DeclareMathOperator{\Inv}{Inv}
-% \renewcommand{\.}{\cdot}
-% \DeclareMathOperator{\core}{core}
-% \newcommand{\sA}{\ensuremath{\mathcal{A}}}
-% \newcommand{\sV}{\ensuremath{\mathcal{V}}}
-% \newcommand{\sS}{\ensuremath{\mathcal{S}}}
-% \newcommand{\sR}{\ensuremath{\mathcal{R}}}
-% \newcommand{\sD}{\ensuremath{\mathcal{D}}}
-% \newcommand{\bA}{\ensuremath{\mathbf{A}}}
-% \newcommand{\sF}{\ensuremath{\mathcal{F}}}
-% \newcommand{\defn}[1]{\textit{#1}}
-% \renewcommand{\ar}{\ensuremath{\operatorname{ar}}}
- % \newcommand{\bR}{\ensuremath{\mathbf{R}}}
+\newcommand{\medpause}{\pause\medskip}
 
 % \newcommand{\reduc}{\leq_{\text{\textnormal{p}}}}
 % \newcommand{\equivp}{\equiv_{\text{\textnormal{p}}}}
@@ -81,12 +63,14 @@
 \renewcommand{\phi}{\ensuremath{\varphi}}
 \begin{document}
 \title[Existence of Difference Terms]{Complexity of the Existence of Difference Terms}
-\author[\url{williamdemeo@gmail.com}]{William DeMeo\\
-{\small \url{williamdemeo@gmail.com}}}
-%\\[5pt]{\small University of Hawaii}
+\author[\url{williamdemeo@gmail.com}]
+       {William DeMeo\\
+{\small \url{williamdemeo@gmail.com}}
+\\[5pt]{\small joint with}\\
+{\small   Cliff Bergman and Ralph Freese}}
 
-\date[10 Mar 2017]{AMS Special Session\\[10pt]
-10 Mar 2017}
+\date[11 Mar 2017]{AMS Special Session\\[10pt]
+11 Mar 2017}
 
 \frame[plain]{\titlepage}
 
@@ -95,7 +79,7 @@
 
 \begin{frame}
 \frametitle{What is a difference term?}
-Let $\sV$ be a variety. \onslide<3>{{\color{gray}(idempotent?)}}
+Let $\sV$ be a variety. %% \onslide<3>{{\color{gray}(idempotent?)}}
 
 A term $d(x,y,z)$ is called a \alert{difference term} for $\sV$ 
 if it satisfies for all $\bA \in \sV$ and all $(a,b) \in \theta\in \Con\bA$
@@ -128,21 +112,23 @@ Recall, $d(x,y,z)$ is a \alert{difference term}
 if for all $\bA \in \sV$ and all $(a,b) \in \theta\in \Con\bA$
 \begin{equation}
 \label{eq:4}  
-a \comr{\theta} d^{\bA}(a,b,b) 
+a \comr{\theta} d(a,b,b) 
 \quad \text{ and } \quad
-d^{\bA}(a,a,b) = b 
+d(a,a,b) = b 
 \end{equation}
 
 \begin{itemize}
-\item<1->  We can replace $\theta$ 
+\item<2->
+If $d(a,a,b) \comr{\theta} b$ instead, $d$ is a \alert{weak difference term}.
+\item<3->  We can replace $\theta$ 
 with $\Cg^{\bA}(a,b)$ in the definition, 
 by monotonicity of $[\cdot, \cdot]$.
-\item<2->
+\item<4->
   If $\bA$ is \alert{abelian} ($[1_A, 1_A] = 0_A$), then 
   $[\theta, \theta] = 0_A$ for all $\theta$, by
   monotonicity, in which case
   (\ref{eq:4}) says $d^{\bA}$ is Mal'tsev.
-\item<3-> If $[\theta, \theta] = \theta$, then
+\item<5-> If $[\theta, \theta] = \theta$, then
   $a \comr{\theta} d^{\bA}(a,b,b)$ holds
   for all $(a, b) \in \theta$, in which case
 the third projection $d^{\bA}(x,y,z) = z$ satisfies (\ref{eq:4}).
@@ -161,6 +147,8 @@ the third projection $d^{\bA}(x,y,z) = z$ satisfies (\ref{eq:4}).
 Difference terms are studied extensively in the literature.
 
 \begin{itemize}
+
+
 \item
   {\footnotesize (1988)
     Hobby and McKenzie, ``The structure of finite algebras,''~{\bf 76} of
@@ -170,13 +158,17 @@ Difference terms are studied extensively in the literature.
     Kearnes, ``Varieties with a difference term,'' 
     {\em J. Algebra} {\bf 177}(3).}
 \item
+  {\footnotesize (1996)
+    Lipparini, ``A characterization of varieties with a difference term.''
+    {\em Canad. Math. Bull.} {\bf 39}(3).}
+\item
   {\footnotesize (1998)
     Kearnes and Szendrei, ``The relationship between two commutators,''
     {\em Internat. J. Algebra Comput.} {\bf 8}(4). } 
-\item
-  {\footnotesize (2013)
-    Kearnes and Kiss, ``The shape of congruence lattices,'' 
-    {\em Mem. Amer. Math. Soc.} {\bf 222}(1046).}
+%% \item
+%%   {\footnotesize (2013)
+%%     Kearnes and Kiss, ``The shape of congruence lattices,'' 
+%%     {\em Mem. Amer. Math. Soc.} {\bf 222}(1046).}
 \item
   {\footnotesize (2014)
     Valeriote and Willard, ``Idempotent {$n$}-permutable varieties,'' 
@@ -187,7 +179,7 @@ Difference terms are studied extensively in the literature.
     difference-term varieties with a finite residual bound,'' 
     {\em Trans. Amer. Math. Soc.} {\bf 368}(3).}
 \item
-  {\footnotesize (2017?)
+  {\footnotesize (201?)
   Kearnes, Szendrei and Willard, ``Simpler maltsev conditions for (weak)
   difference terms in locally finite varieties,'' to appear.}
 \end{itemize}
@@ -201,7 +193,7 @@ Difference terms are studied extensively in the literature.
   Roughly speaking, having a difference term is slightly stronger than having
   a Taylor term and slightly weaker than having a Mal'tsev term.
 
-  DT $\Rightarrow$ weak dt $\Rightarrow$  Taylor
+  Diff Term $\Rightarrow$ Weak Diff Term $\Rightarrow$  Taylor
   
   For finite $\bA$, $\bbV(\bA)$ has a weak difference term iff
   $\bbV(\bA)$ has a  Taylor term.
@@ -225,6 +217,227 @@ We solve an the following easier problem:
   $\bA$ has a difference term operation?
 \end{problem}
 \end{frame}
+
+%%%% LOC DIFF TERMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Local Difference Terms}
+
+% In~\cite{MR3239624},
+% M.~Valeriote and R.~Willard, Idempotent {$n$}-permutable varieties, {\em Bull.
+%   Lond. Math. Soc.} {\bf 46}(4)  (2014)  870--880.
+Valeriote and Willard recently defined %% an \defn{$\bA$-triple for $\bp$}
+%% to be a triple $(a,b,i)$ such that $a, b \in A$ and
+%% $p_i(a,b,b) = p_{i+1}(a,a,b)$. They use this to define 
+a ``local Hagemann-Mitschke sequence'' that they use for
+efficiently deciding, for a given $n$, whether an idempotent
+variety is $n$-permutable. 
+
+  \bigskip
+
+  We devise a similar device we call a
+  \emph{\alert{local difference term}}
+
+  leading to a polynomial-time
+  algorithm for deciding whether a given finite idempotent algebra
+  has a difference term operation.
+
+\end{frame}
+
+
+
+%%%% LOC DIFF TERMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Notation}
+
+  If $\theta$ is a tolerance or congruence of $\bA$, we abreviate
+  {\Large  \[
+  \Com{\theta}= [\theta, \theta]
+  \]}
+\vfill
+  \onslide<2->{%
+    Similar to standard notation
+    for the iterated commutator
+      \[
+        [\theta]^0 =  \theta, \quad
+        [\theta]^1 =  [\theta, \theta],  \quad
+        [\theta]^2 =  \bigl[[\theta, \theta],[\theta, \theta]\bigr],  \; \dots \;
+        \]}
+\end{frame}
+
+
+%%%% LOC DIFF TERMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Local Difference Terms}
+
+  Let $\bA=\< A, \dots\>$ be an algebra, fix $a, b \in A$ and
+  $i \in \{0,1\}$.
+
+  A \defn{local difference term for $(a,b,i)$} is a term $d(x,y,z)$ satisfying
+  \begin{align}
+    %% \text{ if $i=0$, then } & a \comm{\Cg^{\bA}(a,b)}{\Cg^{\bA}(a,b)} d(a,b,b); \label{eq:diff-triple}\\
+    \text{ if $i=0$, } \; & \; a \Comr{\Cg(a,b)} d(a,b,b); \label{eq:diff-triple-1}\\
+    \text{ if $i=1$, } \; & \hskip1cm d(a,a,b) = b. \label{eq:diff-triple-2}
+  \end{align}
+
+  \bigpause
+  If $d$ satisfies~(\ref{eq:diff-triple-1}) and~(\ref{eq:diff-triple-2}) for all triples
+  in some subset $S\subseteq A \times A \times \{0,1\}$, then $d(x,y,z)$ is a
+
+  \hskip1cm \defn{local difference term for the set $S$}.
+\end{frame}
+
+%%%% LOC DIFF TERMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Local Difference Terms}
+  Let 
+  $\sS = A \times A \times \{0,1\}$ and
+  suppose that every pair
+  $((a_0, b_0, \chi_0), (a_1, b_1, \chi_1))$
+  in $\sS^2$ has a local difference term.
+
+  \bigpause
+  That is, for each pair $((a_0, b_0, \chi_0), (a_1, b_1, \chi_1))$ 
+
+  $\exists \, d(x,y,z)$ such that for each $i \in \{0,1\}$
+  \begin{align}
+    a_i \Comr{\Cg(a_i,b_i)} d(a_i,b_i,b_i) & \;
+  \text{ if $\chi_i=0$;}  \label{eq:d-trip-i1}\\
+  d(a_i,a_i,b_i) =b_i & \;
+  \text{ if $\chi_i=1$.}\label{eq:d-trip-i2} %\\\nonumber
+  \end{align}
+  
+  \medpause
+  Under these hypothesis we prove that every subset of $\sS$
+  has a local difference term.
+
+  \vskip1mm
+  In other words, $\exists$ a single term $d$ that works 
+  for all $(a_i, b_i, \chi_i) \in S$.
+\end{frame}
+
+%%%% LOC DIFF TERMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{First Result}
+
+%% \subsection{Main Results}
+\begin{theorem}[\protect{{\small D. 2016}}]
+  \label{thm:local-diff-terms}
+  Let $\sV$ be an idempotent variety and
+  $\bA \in \sV$. Define
+  $\sS= A \times A \times \{0,1\}$
+  and suppose that every pair
+  $((a_0, b_0, \chi_0), (a_1, b_1, \chi_1)) \in \sS^2$
+  has a local difference term.
+  Then every subset $S \subseteq \sS$
+  has a local difference term.
+\end{theorem}
+
+\begin{corollary}
+  \label{cor:loc-diff-term}
+  A finite idempotent algebra $\bA$ has a difference term operation if and
+  only if each pair $((a,b,i), (a',b',i')) \in (A\times A \times \{0,1\})^2$ has a local
+  difference term.
+\end{corollary}
+
+
+\begin{note}
+  One direction is clear, since a difference term operation for $\bA$ is
+  obviously a local difference term for the whole set 
+  $A\times A \times \{0,1\}$.
+  For the converse, suppose
+  each pair in $(A\times A \times \{0,1\})^2$ has a local
+  difference term. Then, by Theorem~\ref{thm:local-diff-terms},
+  there is a single local difference term for the whole set $A\times A \times \{0,1\}$,
+  and this is a difference term operation for $\bA$.  Indeed, if $d$ is a
+  local difference term for $A\times A \times \{0,1\}$, then 
+  for all $a, b \in A$, we have
+  $a \Comr{\Cg(a,b)} d(a,b,b)$,
+  since $d$ is a local difference term for $(a,b,0)$, and we have
+  $d(a,a,b) = b$, since $d$ is also a local difference term for
+  $(a,b,1)$.
+\end{note}
+\end{frame}
+
+
+
+\begin{frame}
+  
+\begin{corollary}
+  \label{cor:algor-1}
+  There is a polynomial-time algorithm that takes as input
+  a finite idempotent algebra $\bA$ and decides whether
+  %% the variety $\bbV(\bA)$ that it generates
+  $\bA$ has a difference term operation.
+\end{corollary}
+
+\begin{note}
+  We describe an efficient algorithm for deciding,
+  given a finite idempotent algebra $\bA$,
+  whether every pair $((a,b,i), (a',b',i')) \in (A\times A \times \{0,1\})^2$ has a local
+  difference term.  By Corollary~\ref{cor:loc-diff-term}, this will prove we
+  can decide in polynomial-time whether $\bA$ has a difference term operation.
+
+  Fix a pair
+  $((a,b,i), (a',b',i'))$ in $(A\times A \times \{0,1\})^2$. If $i = i' = 0$,
+  then the first projection is a local difference term. If $i = i' = 1$,  
+    then the third projection is a local difference term. The two remaining cases to
+    consider are (1) $i = 0$ and $i'=1$, and (2)
+    $i = 1$ and $i'=0$. Since these are completely symmetric, we only handle the
+    first case. Assume  the given pair of triples is
+    $((a,b,0), (a',b',1))$.  By definition, a term $t$ is local difference term
+    for this pair iff
+    \[
+    a\Comr{\Cg(a,b)} t^{\bA}(a,b,b) \; \text{ and } \;
+    t^{\bA}(a',a',b') = b'.
+    \]
+    We can rewrite this condition more compactly by
+    considering 
+    \[t^{\bA\times \bA}((a,a'), (b,a'), (b,b')) =
+    (t^{\bA}(a,b,b),t^{\bA}(a',a',b')).\]
+    Clearly $t$ is a local difference term for
+    $((a,b,0), (a',b',1))$ iff
+    \[
+    t^{\bA\times \bA}((a,a'), (b,a'), (b,b'))\in a/\delta \times \{b'\},
+    \]
+    where $\delta = \Com{\Cg(a,b)}$ and $a/\delta$ denotes the
+    $\delta$-class containing $a$.
+    (Observe that $a/\delta \times \{b'\}$ is a subalgebra of $\bA \times \bA$
+    by idempotence.)
+    It follows that the pair
+    $((a,b,0), (a',b',1))$ has a local difference term iff
+    the subuniverse of $\bA\times \bA$ generated by
+    $\{(a,a'), (b,a'), (b,b')\}$ intersects nontrivially with the subuniverse
+    $a/\delta \times \{b'\}$.
+
+    Thus, the algorithm takes as input $\bA$ and, for each 
+    $((a,a'), (b,a'), (b,b'))$ in $(A\times A)^3$, computes
+    $\delta = \Com{\Cg(a,b)}$, computes the subalgebra
+    $\bS$ of $\bA\times \bA$ generated by
+    %% \Sg^{\bA\times \bA}\{(a,a'), (b,a'), (b,b')\}$, and then
+    $\{(a,a'), (b,a'), (b,b')\}$, and then
+    tests whether $S \cap (a/\delta \times \{b'\})$ is empty.
+    If we find an empty intersection at any point, then
+    $\bA$ has a difference term operation.
+    Otherwise the algorithm halts without witnessing an empty
+    intersection, in which case $\bA$ has a difference term operation.
+
+    Most of the operations carried out by this algorithm are well known to be
+    polynomial-time.  For example, that the running time of subalgebra generation is
+    polynomial has been known for a long time (see~\cite{MR0455543}).
+    The time complexity of congruence generation is also known to be polynomial
+    (see~\cite{MR2470585}).  The only operation whose tractability might be 
+    called into question is the commutator, but we have a straight-forward 
+    algorithm for computing it that we describe in detail in 
+    Appendix Section~\ref{sec:interlude:-an-easy}.
+\end{note}
+\end{frame}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%% F(2) stuff %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
   \frametitle{A Useful Lemma}
@@ -324,86 +537,23 @@ In case 2,
   %% , as we set out to prove.
 \end{frame}
 
-\begin{frame}{Local difference terms}
-
-% In~\cite{MR3239624},
-% M.~Valeriote and R.~Willard, Idempotent {$n$}-permutable varieties, {\em Bull.
-%   Lond. Math. Soc.} {\bf 46}(4)  (2014)  870--880.
-Valeriote and Willard recently defined %% an \defn{$\bA$-triple for $\bp$}
-%% to be a triple $(a,b,i)$ such that $a, b \in A$ and
-%% $p_i(a,b,b) = p_{i+1}(a,a,b)$. They use this to define 
-a ``local Hagemann-Mitschke sequence'' that they use for
-efficiently deciding, for a given $n$, whether an idempotent
-variety is $n$-permutable. 
-
-  \bigskip
-
-  Inspired by that work, we devise a similar construct, called
-  a ``local difference term,'' that we use to develop a polynomial-time
-  algorithm for deciding the existence of a difference term operation.
-
-\end{frame}
-\begin{frame}{Local difference terms}
-
-  Let $\bA=\< A, \dots\>$ be an algebra, fix $a, b \in A$ and
-  $i \in \{0,1\}$.
-  A \defn{local difference term for
-    $(a,b,i)$} is a ternary term $d$ satisfying the following:
-  \begin{align}
-    %% \text{ if $i=0$, then } & a \comm{\Cg^{\bA}(a,b)}{\Cg^{\bA}(a,b)} d(a,b,b); \label{eq:diff-triple}\\
-    \text{ if $i=0$, then } & a \comr{\Cg(a,b)} d(a,b,b); \label{eq:diff-triple}\\
-    \text{ if $i=1$, then } &d(a,a,b) = b. \nonumber
-  \end{align}
-
-  \bigpause
-  If $d$ satisfies~(\ref{eq:diff-triple}) for all triples
-  in some subset $S\subseteq A \times A \times \{0,1\}$, then we call $d$
-  a \defn{local difference term for $S$}.
-\end{frame}
-
-\begin{frame}{Local difference terms}
-  Let 
-  $\sS = A \times A \times \{0,1\}$ and
-  suppose that every pair
-  $((a_0, b_0, \chi_0), (a_1, b_1, \chi_1))$
-  in $\sS^2$ has a local difference term.
-
-  \bigpause
-  That is, for each pair $((a_0, b_0, \chi_0), (a_1, b_1, \chi_1))$, there exists
-  $d$ such that for each $i \in \{0,1\}$ we have
-  \begin{align}
-    a_i \comr{\Cg(a_i,b_i)} d(a_i,b_i,b_i), & \;
-  \text{ if $\chi_i=0$, and }  \label{eq:d-trip-i1}\\
-  d(a_i,a_i,b_i) =b_i, & \;
-  \text{ if $\chi_i=1$.}\label{eq:d-trip-i2} %\\\nonumber
-  \end{align}
-  
-  \bigpause
-  Under these hypothesis we prove that every subset $S\subseteq \sS$
-  has a local difference term.
-
-  \vskip2mm
-  In other words, $\exists$ a single term $d$ that works 
-  for all $(a_i, b_i, \chi_i) \in S$.
-\end{frame}
-
-\begin{frame}{Main Results}
-
-%% \subsection{Main Results}
-\begin{theorem} %[\protect{cf.~\cite[Theorem 2.2]{MR3239624}}]
-  \label{thm:local-diff-terms}
-  Let $\sV$ be an idempotent variety and
-  $\bA \in \sV$. Define
-  $\sS= A \times A \times \{0,1\}$
-  and suppose that every pair
-  $((a_0, b_0, \chi_0), (a_1, b_1, \chi_1)) \in \sS^2$
-  has a local difference term.
-  Then every subset $S \subseteq \sS$
-  has a local difference term.
-\end{theorem}
 
 
-\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \end{document}
