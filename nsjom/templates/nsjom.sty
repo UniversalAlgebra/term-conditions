@@ -1,0 +1,36 @@
+\def\abstract{\if@twocolumn
+\section*{\abstractname}%
+\else \small
+\quotation
+\noindent{\bf \abstractname. }%
+\fi}
+
+\def\endabstract{\if@twocolumn\else\endquotation\fi}
+
+
+\def\thebibliography#1{\section*{\refname\@mkboth
+  {\uppercase{\refname}}{\uppercase{\refname}}}\list
+  {\@biblabel{\arabic{enumiv}}}{\settowidth\labelwidth{\@biblabel{#1}}%
+    \leftmargin\labelwidth
+    \advance\leftmargin\labelsep
+    \usecounter{enumiv}%
+    \let\p@enumiv\@empty
+    \def\theenumiv{\arabic{enumiv}}}%
+    \def\newblock{\hskip .11em plus.33em minus.07em}%
+    \sloppy\clubpenalty4000\widowpenalty4000
+    \sfcode`\.=1000\relax
+    \itemsep 0pt \parsep 0pt \small}        %%% SAMO SAM DODAO OVAJ RED !!!
+
+
+
+
+\def\section{\@startsection {section}{1}{\z@}
+                            {5mm plus 1mm minus 1mm}{3mm plus 1mm minus 1mm}
+                            {\reset@font\large\bf}}
+
+\def\subsection{\@startsection {subsection}{2}{\z@}
+                            {3mm plus 1mm minus 1mm}{2mm plus 1mm minus 1mm}
+                            {\reset@font\normalsize\bf}}
+
+
+\def\@seccntformat#1{\csname the#1\endcsname.\quad}
