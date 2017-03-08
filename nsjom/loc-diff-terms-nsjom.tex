@@ -1,0 +1,2211 @@
+%% FILE: loc-diff-terms-ijac.tex
+%% AUTHOR: William DeMeo, Ralph Freese
+%% DATE: 1 Dec 2016
+%% COPYRIGHT: (C) 2016 William DeMeo 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                         BIBLIOGRAPHY FILE            %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The `filecontents` command will crete a file in the inputs directory called 
+%% refs.bib containing the references in the document, in case this file does 
+%% not exist already.
+%% If you want to add a BibTeX entry, please don't add it directly to the
+%% refs.bib file.  Instead, add it in this file between the
+%% \begin{filecontents*}{refs.bib} and \end{filecontents*} lines
+%% then delete the existing refs.bib file so it will be automatically generated 
+%% again with your new entry the next time you run pdfaltex.
+\begin{filecontents*}{refs.bib}
+@article {MR1637665,
+    AUTHOR = {Lipparini, Paolo},
+     TITLE = {A characterization of varieties with a difference term. {II}.
+              {N}eutral {$=$} meet semi-distributive},
+   JOURNAL = {Canad. Math. Bull.},
+  FJOURNAL = {Canadian Mathematical Bulletin. Bulletin Canadien de
+              Math\'ematiques},
+    VOLUME = {41},
+      YEAR = {1998},
+    NUMBER = {3},
+     PAGES = {318--327},
+      ISSN = {0008-4395},
+   MRCLASS = {08B05},
+  MRNUMBER = {1637665},
+MRREVIEWER = {E. W. Kiss},
+       DOI = {10.4153/CMB-1998-044-9},
+       URL = {http://dx.doi.org/10.4153/CMB-1998-044-9},
+}
+@article{Bergman-DeMeo-2016,
+  author    = {Clifford Bergman and William DeMeo},
+  title     = {Universal Algebraic Methods for Constraint Satisfaction Problems},
+  journal   = {CoRR},
+  volume    = {abs/1611.02867},
+  year      = {2016},
+  url       = {http://arxiv.org/abs/1611.02867},
+  timestamp = {Thu, 01 Dec 2016 19:32:08 +0100},
+  biburl    = {http://dblp.uni-trier.de/rec/bib/journals/corr/BergmanD16},
+  bibsource = {dblp computer science bibliography, http://dblp.org}
+}
+@article {MR1257643,
+    AUTHOR = {Lipparini, Paolo},
+     TITLE = {Commutator theory without join-distributivity},
+   JOURNAL = {Trans. Amer. Math. Soc.},
+  FJOURNAL = {Transactions of the American Mathematical Society},
+    VOLUME = {346},
+      YEAR = {1994},
+    NUMBER = {1},
+     PAGES = {177--202},
+      ISSN = {0002-9947},
+   MRCLASS = {08B10 (08A30 08B05)},
+  MRNUMBER = {1257643},
+MRREVIEWER = {H. Peter Gumm},
+       DOI = {10.2307/2154948},
+       URL = {http://dx.doi.org/10.2307/2154948},
+}
+@article {MR1145556,
+    AUTHOR = {Day, A. and Gumm, H. P.},
+     TITLE = {Some characterizations of the commutator},
+   JOURNAL = {Algebra Universalis},
+  FJOURNAL = {Algebra Universalis},
+    VOLUME = {29},
+      YEAR = {1992},
+    NUMBER = {1},
+     PAGES = {61--78},
+      ISSN = {0002-5240},
+   MRCLASS = {08B10 (08B99)},
+  MRNUMBER = {1145556},
+MRREVIEWER = {David Hobby},
+       DOI = {10.1007/BF01190756},
+       URL = {http://dx.doi.org/10.1007/BF01190756},
+}
+@article {MR541622,
+    AUTHOR = {Hagemann, Joachim and Herrmann, Christian},
+     TITLE = {A concrete ideal multiplication for algebraic systems and its
+              relation to congruence distributivity},
+   JOURNAL = {Arch. Math. (Basel)},
+  FJOURNAL = {Archiv der Mathematik. Archives of Mathematics. Archives
+              Math\'ematiques},
+    VOLUME = {32},
+      YEAR = {1979},
+    NUMBER = {3},
+     PAGES = {234--245},
+      ISSN = {0003-889X},
+   MRCLASS = {08B10},
+  MRNUMBER = {541622},
+MRREVIEWER = {Ralph Freese},
+       DOI = {10.1007/BF01238496},
+       URL = {http://dx.doi.org/10.1007/BF01238496},
+}
+@book {MR0432511,
+    AUTHOR = {Smith, Jonathan D. H.},
+     TITLE = {Mal$\prime$cev varieties},
+    SERIES = {Lecture Notes in Mathematics, Vol. 554},
+ PUBLISHER = {Springer-Verlag, Berlin-New York},
+      YEAR = {1976},
+     PAGES = {viii+158},
+   MRCLASS = {08A15},
+  MRNUMBER = {0432511},
+MRREVIEWER = {V. A. Artamonov},
+}
+@article {MR590312,
+    AUTHOR = {Gumm, H.-Peter},
+     TITLE = {An easy way to the commutator in modular varieties},
+   JOURNAL = {Arch. Math. (Basel)},
+  FJOURNAL = {Archiv der Mathematik. Archives of Mathematics. Archives
+              Math\'ematiques},
+    VOLUME = {34},
+      YEAR = {1980},
+    NUMBER = {3},
+     PAGES = {220--228},
+      ISSN = {0003-889X},
+   MRCLASS = {08B10},
+  MRNUMBER = {590312},
+MRREVIEWER = {Alden Pixley},
+       DOI = {10.1007/BF01224955},
+       URL = {http://dx.doi.org/10.1007/BF01224955},
+}
+@article {MR1871085,
+    AUTHOR = {Bergman, Clifford and Slutzki, Giora},
+     TITLE = {Computational complexity of some problems involving
+              congruences on algebras},
+   JOURNAL = {Theoret. Comput. Sci.},
+  FJOURNAL = {Theoretical Computer Science},
+    VOLUME = {270},
+      YEAR = {2002},
+    NUMBER = {1-2},
+     PAGES = {591--608},
+      ISSN = {0304-3975},
+     CODEN = {TCSDI},
+   MRCLASS = {08A30 (05C85 08A35 68Q17)},
+  MRNUMBER = {1871085 (2002i:08002)},
+MRREVIEWER = {Radim B{\v{e}}lohl{\'a}vek},
+       DOI = {10.1016/S0304-3975(01)00009-3},
+       URL = {http://dx.doi.org/10.1016/S0304-3975(01)00009-3},
+}
+@article {MR1695293,
+    AUTHOR = {Bergman, Clifford and Juedes, David and Slutzki, Giora},
+     TITLE = {Computational complexity of term-equivalence},
+   JOURNAL = {Internat. J. Algebra Comput.},
+  FJOURNAL = {International Journal of Algebra and Computation},
+    VOLUME = {9},
+      YEAR = {1999},
+    NUMBER = {1},
+     PAGES = {113--128},
+      ISSN = {0218-1967},
+   MRCLASS = {68Q17 (08A70 68Q15)},
+  MRNUMBER = {1695293 (2000b:68088)},
+       DOI = {10.1142/S0218196799000084},
+       URL = {http://dx.doi.org/10.1142/S0218196799000084},
+}
+@article {MR3449235,
+    AUTHOR = {Kearnes, Keith and Szendrei, {\'A}gnes and Willard, Ross},
+     TITLE = {A finite basis theorem for difference-term varieties with a
+              finite residual bound},
+   JOURNAL = {Trans. Amer. Math. Soc.},
+  FJOURNAL = {Transactions of the American Mathematical Society},
+    VOLUME = {368},
+      YEAR = {2016},
+    NUMBER = {3},
+     PAGES = {2115--2143},
+      ISSN = {0002-9947},
+   MRCLASS = {03C05 (08B05 08B10)},
+  MRNUMBER = {3449235},
+       DOI = {10.1090/tran/6509},
+       URL = {http://dx.doi.org/10.1090/tran/6509},
+}
+@article {MR1663558,
+    AUTHOR = {Kearnes, Keith A. and Szendrei, {\'A}gnes},
+     TITLE = {The relationship between two commutators},
+   JOURNAL = {Internat. J. Algebra Comput.},
+  FJOURNAL = {International Journal of Algebra and Computation},
+    VOLUME = {8},
+      YEAR = {1998},
+    NUMBER = {4},
+     PAGES = {497--531},
+      ISSN = {0218-1967},
+   MRCLASS = {08A05 (08A30)},
+  MRNUMBER = {1663558},
+MRREVIEWER = {M. G. Stone},
+       DOI = {10.1142/S0218196798000247},
+       URL = {http://dx.doi.org/10.1142/S0218196798000247},
+}
+@article{KSW,
+title = {Simpler maltsev conditions for (weak) difference terms in locally finite varieties},
+author = {Kearnes, Keith and Szendrei, \'{A}gnes and Willard, Ross},
+note = {to appear}
+}
+
+@article {MR3239624,
+    AUTHOR = {Valeriote, M. and Willard, R.},
+     TITLE = {Idempotent {$n$}-permutable varieties},
+   JOURNAL = {Bull. Lond. Math. Soc.},
+  FJOURNAL = {Bulletin of the London Mathematical Society},
+    VOLUME = {46},
+      YEAR = {2014},
+    NUMBER = {4},
+     PAGES = {870--880},
+      ISSN = {0024-6093},
+   MRCLASS = {08A05 (06F99 68Q25)},
+  MRNUMBER = {3239624},
+       DOI = {10.1112/blms/bdu044},
+       URL = {http://dx.doi.org/10.1112/blms/bdu044},
+}
+@article {MR3350327,
+    AUTHOR = {Kozik, Marcin and Krokhin, Andrei and Valeriote, Matt and
+              Willard, Ross},
+     TITLE = {Characterizations of several {M}altsev conditions},
+   JOURNAL = {Algebra Universalis},
+  FJOURNAL = {Algebra Universalis},
+    VOLUME = {73},
+      YEAR = {2015},
+    NUMBER = {3-4},
+     PAGES = {205--224},
+      ISSN = {0002-5240},
+   MRCLASS = {08B05 (08A70 08B10)},
+  MRNUMBER = {3350327},
+MRREVIEWER = {David Hobby},
+       DOI = {10.1007/s00012-015-0327-2},
+       URL = {http://dx.doi.org/10.1007/s00012-015-0327-2},
+}
+@article {MR1358491,
+    AUTHOR = {Kearnes, Keith A.},
+     TITLE = {Varieties with a difference term},
+   JOURNAL = {J. Algebra},
+  FJOURNAL = {Journal of Algebra},
+    VOLUME = {177},
+      YEAR = {1995},
+    NUMBER = {3},
+     PAGES = {926--960},
+      ISSN = {0021-8693},
+     CODEN = {JALGA4},
+   MRCLASS = {08B10 (08B05)},
+  MRNUMBER = {1358491},
+MRREVIEWER = {H. Peter Gumm},
+       DOI = {10.1006/jabr.1995.1334},
+       URL = {http://dx.doi.org/10.1006/jabr.1995.1334},
+}
+@book {MR2839398,
+    AUTHOR = {Bergman, Clifford},
+     TITLE = {Universal algebra},
+    SERIES = {Pure and Applied Mathematics (Boca Raton)},
+    VOLUME = {301},
+      NOTE = {Fundamentals and selected topics},
+ PUBLISHER = {CRC Press, Boca Raton, FL},
+      YEAR = {2012},
+     PAGES = {xii+308},
+      ISBN = {978-1-4398-5129-6},
+   MRCLASS = {08-02 (06-02 08A40 08B05 08B10 08B26)},
+  MRNUMBER = {2839398 (2012k:08001)},
+MRREVIEWER = {Konrad P. Pi{\'o}ro},
+}
+@article {MR0434928,
+    AUTHOR = {Taylor, Walter},
+     TITLE = {Varieties obeying homotopy laws},
+   JOURNAL = {Canad. J. Math.},
+  FJOURNAL = {Canadian Journal of Mathematics. Journal Canadien de
+              Math\'ematiques},
+    VOLUME = {29},
+      YEAR = {1977},
+    NUMBER = {3},
+     PAGES = {498--527},
+      ISSN = {0008-414X},
+   MRCLASS = {08A25},
+  MRNUMBER = {0434928 (55 \#7891)},
+MRREVIEWER = {James B. Nation},
+}
+  @BOOK{HM:1988,
+    AUTHOR = {Hobby, David and McKenzie, Ralph},
+    TITLE = {The structure of finite algebras},
+    SERIES = {Contemporary Mathematics},
+    VOLUME = {76},
+    PUBLISHER = {American Mathematical Society},
+    ADDRESS = {Providence, RI},
+    YEAR = {1988},
+    PAGES = {xii+203},
+    ISBN = {0-8218-5073-3},
+    MRCLASS = {08A05 (03C05 08-02 08B05)},
+    MRNUMBER = {958685 (89m:08001)},
+    MRREVIEWER = {Joel Berman},
+    note = {Available from:
+      \href{http://math.hawaii.edu/~ralph/Classes/619/HobbyMcKenzie-FiniteAlgebras.pdf}{math.hawaii.edu}}
+  }
+@article {MR0455543,
+    AUTHOR = {Jones, Neil D. and Laaser, William T.},
+     TITLE = {Complete problems for deterministic polynomial time},
+   JOURNAL = {Theoret. Comput. Sci.},
+  FJOURNAL = {Theoretical Computer Science},
+    VOLUME = {3},
+      YEAR = {1976},
+    NUMBER = {1},
+     PAGES = {105--117 (1977)},
+      ISSN = {0304-3975},
+   MRCLASS = {68A20},
+  MRNUMBER = {0455543},
+MRREVIEWER = {Forbes D. Lewis},
+       DOI = {10.1016/0304-3975(76)90068-2},
+       URL = {http://dx.doi.org/10.1016/0304-3975(76)90068-2},
+}
+@article{DeMeo:2017-ext,
+  author    = {William DeMeo},
+  title     = {On the Complexity of Difference Term Existence},
+  year      = {2017},
+  note      = {This is a place-holder to be used after posting long version on arXiv.},
+  url       = {https://github.com/UniversalAlgebra/diff-term-existence}
+}
+@article{Bergman-DeMeo,
+  author    = {Clifford Bergman and William DeMeo},
+  title     = {Universal Algebraic Methods for Constraint Satisfaction Problems},
+  journal   = {CoRR},
+  year      = {2016},
+  note      = {Available at: \url{http://arxiv.org/abs/1611.02867}},
+  url       = {http://arxiv.org/abs/1611.02867},
+  timestamp = {Thu, 01 Dec 2016 19:32:08 +0100},
+  biburl    = {http://dblp.uni-trier.de/rec/bib/journals/corr/BergmanD16},
+  bibsource = {dblp computer science bibliography, http://dblp.org}
+}
+@unpublished{Bergman-DeMeo-alt,
+    AUTHOR = {Bergman, Clifford and DeMeo, William},
+    TITLE = {Universal Algebraic Methods for Constraint Satisfaction Problems},
+    YEAR = {2016},
+    NOTE = {unpublished notes; available online},
+    URL = {https://github.com/UniversalAlgebra/algebraic-csp}
+}
+  @article {Freese:2009,
+    AUTHOR = {Freese, Ralph and Valeriote, Matthew A.},
+    TITLE = {On the complexity of some {M}altsev conditions},
+    JOURNAL = {Internat. J. Algebra Comput.},
+    FJOURNAL = {International Journal of Algebra and Computation},
+    VOLUME = {19},
+    YEAR = {2009},
+    NUMBER = {1},
+    PAGES = {41--77},
+    ISSN = {0218-1967},
+    MRCLASS = {08B05 (03C05 08B10 68Q25)},
+    MRNUMBER = {2494469 (2010a:08008)},
+    MRREVIEWER = {Clifford H. Bergman},
+    DOI = {10.1142/S0218196709004956},
+    URL = {http://dx.doi.org/10.1142/S0218196709004956}
+  }
+@article {MR3076179,
+    AUTHOR = {Kearnes, Keith A. and Kiss, Emil W.},
+     TITLE = {The shape of congruence lattices},
+   JOURNAL = {Mem. Amer. Math. Soc.},
+  FJOURNAL = {Memoirs of the American Mathematical Society},
+    VOLUME = {222},
+      YEAR = {2013},
+    NUMBER = {1046},
+     PAGES = {viii+169},
+      ISSN = {0065-9266},
+      ISBN = {978-0-8218-8323-5},
+   MRCLASS = {08B05 (08B10)},
+  MRNUMBER = {3076179},
+MRREVIEWER = {James B. Nation},
+       DOI = {10.1090/S0065-9266-2012-00667-8},
+       URL = {http://dx.doi.org/10.1090/S0065-9266-2012-00667-8},
+}
+@incollection {MR1404955,
+    AUTHOR = {Kearnes, Keith A.},
+     TITLE = {Idempotent simple algebras},
+ BOOKTITLE = {Logic and algebra ({P}ontignano, 1994)},
+    SERIES = {Lecture Notes in Pure and Appl. Math.},
+    VOLUME = {180},
+     PAGES = {529--572},
+ PUBLISHER = {Dekker, New York},
+      YEAR = {1996},
+   MRCLASS = {08B05 (06F25 08A05 08A30)},
+  MRNUMBER = {1404955 (97k:08004)},
+MRREVIEWER = {E. W. Kiss},
+}
+@misc{william_demeo_2016_53936,
+  author       = {DeMeo, William and Freese, Ralph},
+  title        = {AlgebraFiles v1.0.1},
+  month        = May,
+  year         = 2016,
+  doi          = {10.5281/zenodo.53936},
+  url          = {http://dx.doi.org/10.5281/zenodo.53936}
+}
+@article{FreeseMcKenzie2016,
+	Author = {Freese, Ralph and McKenzie, Ralph},
+	Date-Added = {2016-08-22 19:43:56 +0000},
+	Date-Modified = {2016-08-22 19:45:50 +0000},
+	Journal = {Algebra Universalis},
+	Title = {Mal'tsev families of varieties closed under join or Mal'tsev product},
+	Year = {to appear}
+}
+@article {MR2333368,
+    AUTHOR = {Kearnes, Keith A. and Tschantz, Steven T.},
+     TITLE = {Automorphism groups of squares and of free algebras},
+   JOURNAL = {Internat. J. Algebra Comput.},
+  FJOURNAL = {International Journal of Algebra and Computation},
+    VOLUME = {17},
+      YEAR = {2007},
+    NUMBER = {3},
+     PAGES = {461--505},
+      ISSN = {0218-1967},
+   MRCLASS = {08A35 (08B20 20B25)},
+  MRNUMBER = {2333368},
+MRREVIEWER = {Giovanni Ferrero},
+       DOI = {10.1142/S0218196707003615},
+       URL = {http://dx.doi.org/10.1142/S0218196707003615},
+}
+@article {MR2504025,
+    AUTHOR = {Valeriote, Matthew A.},
+     TITLE = {A subalgebra intersection property for congruence distributive
+              varieties},
+   JOURNAL = {Canad. J. Math.},
+  FJOURNAL = {Canadian Journal of Mathematics. Journal Canadien de
+              Math\'ematiques},
+    VOLUME = {61},
+      YEAR = {2009},
+    NUMBER = {2},
+     PAGES = {451--464},
+      ISSN = {0008-414X},
+     CODEN = {CJMAAB},
+   MRCLASS = {08B10 (08A30 08B05)},
+  MRNUMBER = {2504025},
+MRREVIEWER = {Jarom{\'{\i}}r Duda},
+       DOI = {10.4153/CJM-2009-023-2},
+       URL = {http://dx.doi.org/10.4153/CJM-2009-023-2},
+}
+@misc{UACalc,
+	Author = {Ralph Freese and Emil Kiss and Matthew Valeriote},
+	Date-Added = {2014-11-20 01:52:20 +0000},
+	Date-Modified = {2014-11-20 01:52:20 +0000},
+	Note = {Available at: {\verb+www.uacalc.org+}},
+	Title = {Universal {A}lgebra {C}alculator},
+	Year = {2011}
+}
+@article {MR2470585,
+    AUTHOR = {Freese, Ralph},
+     TITLE = {Computing congruences efficiently},
+   JOURNAL = {Algebra Universalis},
+  FJOURNAL = {Algebra Universalis},
+    VOLUME = {59},
+      YEAR = {2008},
+    NUMBER = {3-4},
+     PAGES = {337--343},
+      ISSN = {0002-5240},
+   MRCLASS = {08A30 (08A40 68W30 68W40)},
+  MRNUMBER = {2470585 (2009j:08003)},
+MRREVIEWER = {Clifford H. Bergman},
+       DOI = {10.1007/s00012-008-2073-1},
+       URL = {http://dx.doi.org/10.1007/s00012-008-2073-1},
+}
+@incollection {MR1191235,
+    AUTHOR = {Szendrei, {\'A}gnes.},
+     TITLE = {A survey on strictly simple algebras and minimal varieties},
+ BOOKTITLE = {Universal algebra and quasigroup theory ({J}adwisin, 1989)},
+    SERIES = {Res. Exp. Math.},
+    VOLUME = {19},
+     PAGES = {209--239},
+ PUBLISHER = {Heldermann, Berlin},
+      YEAR = {1992},
+   MRCLASS = {08-02 (08A40 08B05)},
+  MRNUMBER = {1191235 (93h:08001)},
+MRREVIEWER = {Ivan Chajda},
+}
+@unpublished{Bergman-DeMeo,
+    AUTHOR = {Bergman, Clifford and DeMeo, William},
+    TITLE = {Universal Algebraic Methods for Constraint Satisfaction Problems:
+      with applications to commutative idempotent binars},
+    YEAR = {2016},
+    NOTE = {unpublished notes; soon to be available online},
+    URL = {https://github.com/UniversalAlgebra/algebraic-csp}
+}
+\end{filecontents*}
+%:biblio
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                     PREAMBLE                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[leqno,twoside]{article}
+\headsep 0.5cm \pagestyle{myheadings}
+\usepackage{amssymb,amsmath,latexsym, amsthm,enumerate, nsjom, amsfonts}
+\title{}\author{}\date{}
+\markboth{W.~DeMeo}{Complexity of Difference Term Existence}\setcounter{page}{1}
+%% \usepackage[dvipdfm, pdfstartview=FitH]{hyperref} % Use LaTeX and then DVI2PDF,
+% or, if you plan to use packages only compatible with PDFLaTeX
+\usepackage[pdftex, pdfstartview=FitH]{hyperref}
+
+%% \usepackage{graphicx}
+% Use this package if you plan to put some pictures
+
+%% \usepackage{pinlabel}  %%% was the recommended graphics+labelling package for JLA
+
+%If you want equations number as (2.1), where, 2 is the section number then use
+\numberwithin{equation}{section} %You may omit this line if you want numbering as (1)
+
+ \newtheorem{thm}{Theorem}[section]
+ \newtheorem*{theorem}{Theorem}        % theorem environment without numbering
+ \newtheorem{cor}[thm]{Corollary}
+ \newtheorem*{corollary}{Corollary}     % Corollary environment without numbering 
+ \newtheorem{lem}[thm]{Lemma}
+ \newtheorem*{lemma}{Lemma}            % Lemma environment without numbering 
+ \newtheorem*{zlem}{Zorn's Lemma}      % A special unnumbered lemma.
+ \newtheorem*{monotonicity}{Monotonicity of the Commutator} % A special unnumbered lemma.
+ \newtheorem{prop}[thm]{Proposition}
+
+ \theoremstyle{definition}
+ \newtheorem{defn}[thm]{Definition}
+ \newtheorem{prob}{Problem}    
+ \newtheorem{ex}[thm]{Example}
+
+ \theoremstyle{remark}
+ \newtheorem{rem}[thm]{Remark}
+ \newtheorem{Fact}{Fact}[section]
+ \newtheorem{remarks}{Remarks}
+
+
+
+ \usepackage[paperwidth=165mm, paperheight=235mm, twoside, hmargin={25mm,20mm}, vmargin={20mm,20mm} ]{geometry}
+
+% You may use some variations of this environments, for instance, with separate global counters
+% \newtheorem{defn}{Definition}
+% Also, you may use your own names for environments like
+% \newtheorem{df}{Definition}
+% or whatever you prefer, but, please, use them
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%% MY STUFF
+ \usepackage{macros}
+ \usepackage{comment}
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %% showkeys: just comment out in the final version
+ \usepackage[notref,notcite]{showkeys}
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %% removed these for jla
+ % \usepackage{amsmath,amssymb,amsthm} %, amsmath are included by default}
+ %% \usepackage{amscd}
+ \usepackage{mathtools}
+ % \usepackage{scrextend}
+ \usepackage{lmodern}% http://ctan.org/pkg/lm
+ %\usepackage{bm}
+ \usepackage{latexsym,enumerate,scalefnt,ifthen} %,mathrsfs,
+ \usepackage{stmaryrd}
+ \SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
+ \usepackage[mathscr]{euscript}
+ %% \usepackage[colorlinks=true,urlcolor=black,linkcolor=black,citecolor=black]{hyperref}
+ \usepackage{scalefnt}
+ \usepackage{tikz}
+ \usepackage{color}
+ %% \usepackage[margin=1.5in]{geometry}
+
+ \newboolean{todos}
+ \setboolean{todos}{true}  % set to true to include TODO statements
+ %   \setboolean{todos}{false}  % set to false to exclude TODO statements
+
+   %%% INTENDED USE OF THE arxiv AND extralong BOOLEAN VARIABLES
+   %%% -- The brief journal version should have `arxiv` and `extralong` variables set to false.
+   %%% -- The arxiv version should have `arxiv` set to true and `extralong` set to false.
+   %%% -- The extralong version may contain notes intended for our own personal reference.
+   %%%    For the extralong version, set both `arxiv` and `extralong` to true.   
+   \newboolean{arxiv}
+   \setboolean{arxiv}{true}  % set to true to include almost everything
+   \setboolean{arxiv}{false}  % set to false for the brief version
+
+   \newboolean{extralong}
+   \setboolean{extralong}{true}  % set to true to include everything
+   %% \setboolean{extralong}{false}  % set to false for the long (but not too long) version
+
+   \newboolean{footnotes}
+   \setboolean{footnotes}{true}  % set to true to include footnotes
+   \setboolean{footnotes}{false}  % set to false for no footnotes
+
+
+   \newboolean{draftsecskip}
+   \setboolean{draftsecskip}{true}
+   % \setboolean{draftsecskip}{false}
+
+   \newboolean{thetanotation}
+   \setboolean{thetanotation}{true}
+   \setboolean{thetanotation}{false}
+
+
+   % \newcommand\draftsecskip{\ifthenelse{\boolean{draftsecskip}}{\medskip}{}}
+   \newcommand\draftsecskip{\ifthenelse{\boolean{draftsecskip}}{\newpage}{}}
+
+   %%%% wjd: adding pagebreaks for ``draft mode'' to reduce printing costs
+   %%%%      To turn off these unnecessary page breaks, set `draft` to false:
+   \newboolean{draft}
+   \setboolean{draft}{true}  % set to true to include footnotes
+
+   \newcommand\extendedref{\cite{DeMeo:2017-ext}}
+   %% \newcommand{\glocal}{global-local} %% This is a weird name... changing it:
+   \newcommand{\glocal}{local\xspace}
+   
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End of user-defined macros %%%
+
+
+
+
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{flushleft}
+\vspace*{-1.1cm} {\sc  Novi Sad J.\ Math.}\\ {\sc Vol.\ XX, No.\ Y,
+20ZZ, ??-??}
+\end{flushleft}
+\vspace{0.8cm}
+% PRAVLJENJE NASLOVA
+\begin{center}
+{\large \bf ON THE COMPLEXITY OF DIFFERENCE TERM EXISTENCE\footnote{This is one place where you can put acknowledgement}
+
+} \vspace*{3mm}
+
+% Title should be in upper case
+
+{\bf William DeMeo\footnote{Department of Mathematics, University of Hawaii,\\
+    e-mail: \href{mailto:williamdemeo@gmail.com}{williamdemeo@gmail.com}}
+and Ralph Freese\footnote{Department of Mathematics, University of Hawaii,\\
+    e-mail: \href{mailto:ralph@math.hawaii.edu}{ralph@math.hawaii.edu}}}
+\end{center}
+% Authors should be ordered alphabetically
+% Please, use your full name and put an email address in affiliation. The example with underline in e-mail address:
+%\href{mailto:my_address@wikibooks.org}{my\_address@wikibooks.org}
+
+\begin{abstract}
+We consider the following practical question: given a finite algebra $\bA$ in a
+finite language, can we efficiently decide whether the variety generated by
+$\bA$ has a difference term?  We define %In~\cite{DeMeo:2017}
+``local difference terms'' and used to solve 
+a related but easier problem---namely, we show that
+there is a polynomial-time algorithm for deciding whether any finite idempotent
+algebra has a difference term operation. 
+Thereafter, we define ``global-local difference terms'' which we use to 
+make some progress toward an efficient algorithm for deciding whether the
+variety generated by a finite idempotent algebra has a difference term.
+\\[2mm] {\it AMS Mathematics  Subject Classification $(2000)$}: 08B05, 08B10, 68Q25, 03C05 
+% Please do not use not complete classification like 54Axx
+\\[1mm] {\it Key words and phrases:} difference term, idempotent algebra, commutator
+
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%   Start of main body of article
+
+
+\section{Introduction}
+\label{sec:introduction}
+Let $\sV$ be a variety (equational class) of algebras.
+A ternary term $d$ in the language of $\sV$ is called 
+a \defin{difference term for $\sV$} if it satisfies the following:
+for all $\bA = \<A, \dots \> \in \sV$, for all $a, b \in A$, for every 
+congruence $\theta\in \Con\bA$ containing $(a,b)$, we have
+\begin{equation}
+\label{eq:3}  
+d^{\bA}(a,a,b) = b \quad \text{ and } \quad
+d^{\bA}(a,b,b) \comr{\theta} a,
+\end{equation}
+where $[\cdot, \cdot]$ denotes the (term condition) commutator
+defined in Section~\ref{sec:definitions} below
+(see also~\cite{HM:1988} or~\cite{MR3076179}).
+(By the monotonicity of the commutator, we could replace $\theta$ in the
+definition by $\Cg^{\bA}(a,b)$.)
+If for all $a, b \in A$ the relations in (\ref{eq:3}) hold 
+with $\theta = \Cg^{\bA}(a,b)$, then we call
+$d^{\bA}$ a \defin{difference term operation} for $\bA$.
+
+Difference terms are studied extensively in the universal algebra literature.
+(See, for example, \cite{HM:1988,KSW,MR3449235,MR1358491,MR3076179,MR1663558}.)
+There are many reasons to study difference terms, but
+perhaps the most obvious is that knowing a variety 
+has a difference term allows us to deduce many useful
+properties of the algebras in that variety.
+(Very roughly speaking, having a difference term is slightly stronger than having
+a Taylor term and slightly weaker than having a Mal'tsev term.
+Note that if
+$\bA$ is an \defin{abelian} algebra---that is, $[1_A, 1_A] = 0_A$---then by
+the monotonicity of the commutator we have
+$[\theta, \theta] = 0_A$ for all $\theta \in \Con \bA$, in which case
+(\ref{eq:3}) says that $d^{\bA}$ is a Mal'tsev term operation.)
+
+Digital computers have turned out to be invaluable tools for exploring and
+understanding algebras and the varieties they inhabit, and this is largely due
+to the fact that researchers have found ingenious ways
+to get computers to solve abstract decision problems---such as
+whether a variety is 
+congruence-modular (\cite{Freese:2009}) or
+congruence-$n$-permutable (\cite{MR3239624})---and to do so efficiently.
+%% , in a way that scales well with problem size.
+
+Consider the following problems:
+\begin{prob}
+  \label{prob:1}
+  Is there a polynomial-time algorithm that takes a finite
+  idempotent algebra $\bA$ as input and decides whether the variety generated by
+  $\bA$ has a difference term?
+\end{prob}
+\begin{prob}
+  \label{prob:2}
+  Is there a polynomial-time algorithm that takes a finite
+  idempotent algebra $\bA$ as input and decides whether 
+  $\bA$ has a difference term operation?
+\end{prob}
+In the present paper we solve Problem~\ref{prob:2} and then discuss the
+progress we have made toward a solution to Problem~\ref{prob:1}. 
+
+The rest of the paper is organized as follows:
+Section~\ref{sec:definitions} introduces notation and definitions and some of
+the background that we expect the reader to have.
+In~\cite{MR1358491} 
+it was shown that a locally finite idempotent variety $\sV$ has a difference
+term if and only if $\sansH \sansS \sansP(\bF_{\sV}(2))$ 
+has a difference term (where $\bF_{\sV}(2)$ denotes the 2-generated free algebra in $\sV$).
+In Section~\ref{sec:equiv-cond-exist}
+we observe that this is also equivalent to
+the free algebra $\bF_{\sV}(2)$ itself having a difference term operation.
+In~\cite{MR3239624},
+Valeriote and Willard define 
+a ``local Hagemann-Mitschke sequence'' which they use as the basis of
+an efficient algorithm for deciding for a given $n$ whether an idempotent
+variety is $n$-permutable. 
+In Section~\ref{sec:local-diff-terms}
+we devise a similar construct, called
+a ``local difference term,'' that we use, in Section~\ref{sec:algor-1},
+to give a polynomial-time algorithm for deciding the existence of a difference term
+operation for $\bA$.  In Section~\ref{sec:glob-local-diff} we extend local
+difference terms from points to universes and then, in 
+Section~\ref{sec:algor-2}, we describe some recent progress toward a polynomial-time
+algorithm for deciding whether the variety generated by a finite idempotent algebra has a
+difference term. We conclude with a brief description of our software
+implementation of the main algorithm (TODO!!!), and mention some related 
+problems that remain open (TODO!!!).
+
+
+\section{Background, Notation, Definitions}
+\label{sec:definitions}
+%% The centralizer, term condition, and abelian congruences}
+%% We review some useful properties of centralizers and abelian
+Our arguments depend on some basic results of universal algebra that we now review.
+For the most part we use standard notation such as those found in~\cite{MR2839398}.
+\ifthenelse{\boolean{thetanotation}}{
+  One exception is the old-fashioned notation we use for congruence generation:
+  if $\bA =\<A, \dots\>$ is an algebra with elements $a, b \in A$,
+  then we use $\Theta(a,b)$ to denote the congruence of $\bA$ generated by $a$
+  and $b$. If $X\subseteq A$, then $\Theta(X)$ is the congruence generated by $X$.  
+  \renewcommand{\Cg}{\ensuremath{\Theta}}
+  Most other notation we use is standard.
+}{}
+
+Let $A$ and $B$ be sets and let $\alpha \subseteq A\times A$ and $\beta \subseteq B\times B$
+be binary relations on $A$ and $B$, respectively.
+We define
+%% let $\alpha \mytimes \beta$ denote the
+the \emph{pairwise product} of $\alpha$ and $\beta$ by
+\begin{equation}
+\label{eq:pair-product}
+\alpha \mytimes \beta = \{((a, b), (a', b')) 
+\in (A\times B)^2 \mid a\mathrel{\alpha} a'\, \text{ and } \,  b\mathrel{\beta} b'\},
+\end{equation}
+and we let $\alpha \times \beta$ denote the usual Cartesian product of sets; that is,
+%% of the sets $\alpha$ and $\beta$, that is,
+\begin{equation}
+\label{eq:set-product}
+\alpha \times \beta = \{((a, a'), (b, b')) 
+\in A^2\times B^2 \mid a\mathrel{\alpha} a' \, \text{ and } \, b\mathrel{\beta} b'\}.
+\end{equation}
+Notice that $\alpha \mytimes \beta$ defines an equivalence relation on
+$A\times B$, whereas in general $\alpha\times \beta$ is 
+not even a binary relation on a single set.
+The equivalence class of $\alpha \mytimes \beta$ containing the pair
+$(a, b)$ is denoted and defined by % \in A\times B$ is
+\[(a,b)/(\alpha \mytimes \beta) = a/\alpha \times b/\beta= 
+    \{(a', b') \in A\times B \mid a\mathrel{\alpha} a' \, \text{ and } \,  b\mathrel{\beta} b'\},
+    \]
+the Cartesian product of the sets $a/\alpha$ and $b/\beta$.
+The collection of all such equivalence classes is also a Cartesian product, namely,
+\[
+(A\times B)/(\alpha \mytimes \beta) =
+A/\alpha \times B/\beta  = \{(a, b)/(\alpha \mytimes \beta) \mid a\in A \, \text{ and } \, b \in B\}.\]
+%% \begin{remarks}\
+%%   \begin{enumerate}
+%%   \item The equivalence relations $\alpha$ and $\beta$ are subsets
+%%     of $A^2$ and $B^2$, respectively, so it might seem more natural to interpret 
+%%     $\alpha \times \beta$ as a subset of $A^2 \times B^2$. Nonetheless, in this 
+%%     context it is usually more convenient to arrange the coordinates 
+%%     so that $\alpha \times \beta \subseteq (A \times B)^2$, as in
+%%     item~(\ref{item:9}).
+%%   \end{enumerate}
+%% \end{remarks}
+
+
+
+
+Let $\bA = \<A, F^{\bA}\>$ be an algebra.
+A reflexive, symmetric, compatible binary relation $T\subseteq A^2$ is called a
+\defin{tolerance of $\bA$}.  
+Given a pair $(\bu, \bv) \in A^m\times A^m$ of $m$-tuples of $A$, we sometimes
+use the short-hand $\bu \mathrel{\bT} \bv$ to mean
+``$\bu(i) \mathrel{T} \bv(i)$ for all $0\leq i<m$.'' 
+%% A \defin{tolerance} of an algebra $\bA$ is a reflexive symmetric compatible relation.
+
+The set of all tolerance relations of $\bA$ is denoted $\Tol(\bA)$, 
+and the set of all congruence relations is denoted $\Con(\bA)$.
+The subalgebra of $\bA$ generated by a set $X \subseteq A$ is denoted by
+$\Sg^{\bA}(X)$, and
+the congruence relation of $\bA$ generated by a set $X \subseteq A\times A$ is
+denoted by $\Cg^{\bA}(X)$.
+(We sometimes leave off the parentheses and write $\Sg^{\bA}X$ or $\Cg^{\bA}X$.
+If $X$ is finite, say, $X = \{(a,b)\}$, we typically write 
+$\Cg^{\bA}(a,b)$ instead of $\Cg^{\bA}\{(a,b)\}$.)
+%% If $X$ is finite, say, $X = \{a,b\}$, then we
+%% often write $\Sg^{\bA}\{a,b\}$, instead of $\Sg^{\bA}(\{a,b\})$.
+
+
+We state a number of definitions in this section using tolerance relations, but 
+the definitions don't change when the tolerance in question happens to be
+a congruence relation (i.e., a transitive tolerance).
+
+Suppose $S$ and $T$ are tolerances on $\bA$.  An \defin{$S,T$-matrix} 
+is a $2\times 2$ array of the form
+\[
+\begin{bmatrix*}[r] t(\ba,\bu) & t(\ba,\bv)\\ t(\bb,\bu)&t(\bb,\bv)\end{bmatrix*},
+\]
+where $t$, $\ba$, $\bb$, $\bu$, $\bv$ have the following properties:
+\begin{enumerate}[(i)] %[label=(\roman*)]
+\item $t\in \sansClo_{\ell + m}(\bA)$,
+\item $(\ba, \bb)\in A^\ell\times A^\ell$ and $\ba \mathrel{\bS} \bb$,
+\item $(\bu, \bv)\in A^m\times A^m$ and $\bu \mathrel{\bT} \bv$.
+\end{enumerate}
+Let $\delta$ be a congruence relation of $\bA$.
+If the entries of every $S,T$-matrix satisfy
+\begin{equation}
+  \label{eq:22}
+t(\ba,\bu) \mathrel{\delta} t(\ba,\bv)\quad \iff \quad t(\bb,\bu) \mathrel{\delta} t(\bb,\bv),
+\end{equation}
+then we say that $S$ \defin{centralizes $T$ modulo} $\delta$ and we write 
+$\CC{S}{T}{\delta}$.
+That is, $\CC{S}{T}{\delta}$  means that 
+(\ref{eq:22}) holds \emph{for all}
+$\ell$, $m$, $t$, $\ba$, $\bb$, $\bu$, $\bv$ satisfying properties (i)--(iii).
+
+The \defin{commutator} of $S$ and $T$, denoted by $[S, T]$,
+is the least congruence $\delta$ such that $\CC{S}{T}{\delta}$ 
+holds.  
+Note that $\CC{S}{T}{0_A}$ is equivalent to $[S,T] = 0_A$, and this
+is sometimes called the \defin{$S, T$-term condition};
+when it holds we say  that
+$S$ \defin{centralizes} $T$. %% , and write $\C{S}{T}$.
+A tolerance $T$ is called \defin{abelian} if
+%% $\C{T}{T}$ (i.e., $[T, T] = 0_A$).  
+$[T, T] = 0_A$.  
+An algebra $\bA$ is called \defin{abelian} if $1_A$ is abelian
+(i.e., $[1_A,1_A] = 0_A$).
+
+%% \begin{rem}
+%%   An algebra $\bA$ is abelian iff %$\C{1_A}{1_A}$ iff
+%%   \[
+%%   \forall \ell, m \in \N,
+%%   \quad \forall t\in \sansClo_{\ell + m}(\bA),
+%%   \quad \forall (\ba, \bb)\in A^\ell\times A^\ell,
+%%   \]
+%%   \[
+%%   \ker t(\ba, \cdot)=\ker t(\bb, \cdot).
+%%   \]
+%% \end{rem}
+
+%% wjd: deleting the iterated commutator stuff (I don't think we need it)
+%% It is sometimes useful to iterate the commutator, for example,
+%% $[[\alpha, \alpha], [\alpha, \alpha]]$, and for this purpose
+%% we define $[\alpha]^n$ recursively as
+%% follows:
+%% $[\alpha]^0 = \alpha$ and
+%% $[\alpha]^{n+1} = [[\alpha]^n, [\alpha]^n]$.  A congruence $\alpha$ of $\bA$
+%% is called \defin{solvable} if $[\alpha]^n = 0_A$ for some $n$.
+
+
+Here are some properties of the centralizer relation
+that are well-known and not too hard to prove
+(see \cite[Prop~3.4]{HM:1988} or~\cite[Thm~2.19]{MR3076179}).
+\begin{lem}
+\label{lem:centralizers}
+Let $\bA$ be an algebra and suppose
+$\bB$ is a subalgebra of $\bA$. 
+Let $\alpha$, $\beta$, $\gamma$, $\delta$, $\alpha_i$
+$\beta_j$, $\gamma_k$
+be congruences of $\bA$, for all 
+$i \in I$, $j\in J$, $k \in K$. Then the following hold:
+\begin{enumerate}
+\item \label{centralizing_over_meet}
+  $\CC{\alpha}{\beta}{\alpha \meet \beta}$;
+\item \label{centralizing_over_meet2}
+  if $\CC{\alpha}{ \beta}{ \gamma_k}$ for all $k \in K$, then
+  $\CC{\alpha}{ \beta}{ \Meet_{K}\gamma_k}$;
+\item \label{centralizing_over_join1}
+  if $\CC{\alpha_i}{ \beta}{ \gamma}$ for all $i\in I$, then
+  $\CC{\Join_{I}\alpha_i}{ \beta}{\gamma}$;
+\item \label{monotone_centralizers1}
+  if $\CC{\alpha}{ \beta}{ \gamma}$ and $\alpha' \leq \alpha$, then 
+  $\CC{\alpha'}{ \beta}{ \gamma}$;
+\item \label{monotone_centralizers2}
+  if $\CC{\alpha}{ \beta}{ \gamma}$ and $\beta' \leq \beta$, then
+  $\CC{\alpha}{ \beta'}{ \gamma}$;
+\item \label{centralizing_over_subalg}
+  if $\CC{\alpha}{ \beta}{ \gamma}$ in $\bA$, 
+  then $\CC{\alpha\cap B^2}{ \beta\cap B^2}{\gamma\cap B^2}$ in $\bB$;
+\item \label{centralizing_factors}
+  if $\gamma \leq \delta$, then $\CC{\alpha}{ \beta}{ \delta}$
+  in $\bA$ if and only if $\CC{\alpha/\gamma}{ \beta/\gamma}{ \delta/\gamma}$
+  in $\bA/\gamma$.
+\end{enumerate}
+\end{lem}
+
+
+\begin{rem}
+By (\ref{centralizing_over_meet}), 
+if $\alpha \meet \beta = 0_{A}$,  
+then %$\C{\beta}{\alpha}$ and $\C{\alpha}{\beta}$.
+$[\beta, \alpha] = 0_A = [\alpha, \beta]$.
+\end{rem}
+
+% \draftsecskip
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% \subsection{The commutator}
+%% \label{sec:facts-about-comm}
+Before proceeding, we collect some facts about the commutator that are
+sometimes useful, especially when reasoning about difference terms.
+The next two lemmas are easy consequences
+of Lemma~\ref{lem:centralizers}, so 
+we omit the proofs.
+(See Section~\ref{sec-lem:monotone-comm}
+of the extended version of this paper~\extendedref.)
+
+\begin{lem}[Monotonicity of the Commutator]
+  \label{lem:monotone-comm}
+  Let $\bA$ be an algebra
+  with congruences
+  $\alpha$, $\alpha'$, $\beta$, $\beta'$ satisfying
+  $\alpha\leq \alpha'$ and $\beta \leq \beta'$.
+  Then $\comm \alpha \beta \leq \comm{\alpha'}{\beta'}$.
+\end{lem}
+%% \begin{proof}
+%%   For every $\delta \in \Con\bA$, $\CC{\alpha'}{\beta'}{\delta}$ implies
+%%   $\CC{\alpha}{\beta}{\delta}$, since $\alpha\leq \alpha'$ and $\beta \leq \beta'$.
+%%   In particular, $\CC{\alpha'}{\beta'}{[\alpha', \beta']}$ implies
+%%   $\CC{\alpha}{\beta}{[\alpha', \beta']}$, so
+%%   $\comm{\alpha}{\beta} \leq \comm{\alpha'}{\beta'}$.
+%% \end{proof}
+
+\begin{lem}
+  \label{lem:complete-meet-join-monotone}
+Let $\bA$ be an algebra with congruences
+$\alpha_i$ and 
+$\beta_i$ %% $\gamma_k$
+%% are congruences of $\bA$, 
+for all $i \in I$.
+Then
+\[
+\bigl[ \Meet \alpha_i, \Meet \beta_i \bigr] \leq
+\Meet \comm {\alpha_i} {\beta_i}
+\quad \text{ and } \quad
+\Join \comm {\alpha_i} {\beta_i} \leq
+\bigl[ \Join \alpha_i, \Join \beta_i\bigr].
+\]
+\end{lem}
+
+%% \begin{proof}
+%%   By Lemma~\ref{lem:monotone-comm}, $\bigl[\Meet \alpha_i, \Meet \beta_i\bigr] \leq
+%%   \comm {\alpha_i} {\beta_i} \leq \bigl[\Join \alpha_i, \Join \beta_i\bigr]$,
+%%   for all $i \in I$.
+%% \end{proof}
+
+The next result is useful when considering a commutator computed
+with respect to a subalgebra $\bB \leq \bA$, rather than with respect to the
+whole algebra $\bA$.
+In the statement of the lemma, we use shorthand notation that will come in handy below.
+The commutator %% , $[\theta, \theta]$,
+of a congruence $\theta$ with itself, which appears so often in the sequel,
+will be abbreviated as follows:\footnote{This is similar to the standard notational convention
+  for the iterated commutator:
+  \[
+    [\theta]^0 =  \theta, \quad
+    [\theta]^1 =  [\theta, \theta],  \quad
+    [\theta]^2 =  \bigl[[\theta, \theta],[\theta, \theta]\bigr],  \; \dots, \;
+    [\theta]^n =  \bigl[[\theta]^{n-1}, [\theta]^{n-1}\bigr], \; \dots.
+    \]
+}
+\[
+\Com{\theta}:= [\theta, \theta].
+\]
+
+
+
+\begin{lem}
+\label{lem:subalgebra-comm}
+If $\bB \leq \bA$ and $a, b \in B$, then 
+$\Com{\Cg^{\bB} (a, b)} \subseteq \Com{\Cg^{\bA} (a, b)}$. %%  \label{eq:6-app}
+\end{lem}
+\begin{proof}
+  Let $\alpha = \Cg^{\bA} (a, b)$, $\beta = \Cg^{\bB} (a, b)$, and
+  $\delta=\Com{\Cg^{\bA} (a, b)} \cap B^2$. 
+  To prove the lemma it suffices to show that
+  $\CC{\beta}{\beta}{\delta}$ holds, since this will give us
+  the required $\leq$ relation in the following:
+  \[\Com{\Cg^{\bB}(a,b)} = \com{\beta} \leq \delta \subseteq \Com{\Cg^{\bA}(a,b)}.\]
+  Let $\br$, $\bs \in B^{k}$, 
+  $\bu$, $\bv \in B^{\ell}$, and $t\in \Clo_{k+\ell}(\bB)$.
+  Assume $r_i \rbeta s_i$ and $u_i \rbeta v_i$ and $t(\br, \bu) \rdelta t(\br, \bv)$.
+  We must prove $t(\bs, \bu) \rdelta t(\bs, \bv)$.
+  Clearly, $\beta \subseteq \alpha$, so $r_i \rbeta s_i$ and $u_i \rbeta v_i$ imply
+  $r_i \ralpha s_i$ and $u_i \ralpha v_i$.  Therefore, 
+  $(t(\br, \bu), t(\br, \bv)) \in \delta  %% =\com{\alpha} \cap B^2 
+  \subseteq \com{\alpha}$ implies
+  $(t(\bs, \bu), t(\bs, \bv)) \in \com{\alpha}$.
+  Of course, $(t(\bs, \bu), t(\bs, \bv)) \in B^2$, since $\bB$ is a subalgebra. 
+  Therefore, $(t(\bs, \bu), t(\bs, \bv)) \in \com{\alpha}\cap B^2 = \delta$, as desired.
+\end{proof}
+
+
+
+%% We will apply the preceding result in a simple special case involving
+%% just four congruences; we record this version of the result for convenience.
+%% %% (delete the corollary later)
+%% \begin{cor}
+%%   \label{cor:facts-about-comm-1}
+%% Let $\bA$ be an algebra with congruences
+%% $\alpha$, $\beta$, $\gamma$, $\delta$.  Then,
+%% \[
+%% \comm {\alpha \meet \gamma} {\beta \meet \delta} {\leq}
+%% \comm \alpha \beta \meet \comm \gamma \delta
+%% \quad \text{ and } \quad
+%% \comm \alpha \beta \join \comm \gamma \delta {\leq}
+%% \comm {\alpha \join \gamma} {\beta \join \delta}.
+%% \]
+%% \end{cor}
+
+
+
+\begin{lem}[\protect{\cite[Theorem 2.10]{MR1358491}}]
+\label{lem:hom-image-diff-term}
+  Let $\bA$ and $\bB$ be algebras of the same similarity type and suppose
+  $\phi: \bA \to \bB$ is a surjective homomorphism.  If
+  $\alpha, \beta \in \Con \bA$, then
+  $\phi([\alpha, \beta]) \subseteq [\phi(\alpha), \phi(\beta)]$.
+  Moreover, if there exists a homomorphism $\psi: \bB \to \bA$ such that
+  $\phi \circ \psi = \id_B$ and $\rho, \sigma \in \Con \bB$, then
+ \[\psi^{-1} \{[\psi(\rho), \psi(\sigma)]\} = \phi\bigl( [\psi(\rho), \psi(\sigma)]\bigr)
+  = [\rho, \sigma].\]
+\end{lem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Conditions for Existence of a Difference Term}
+\label{sec:equiv-cond-exist}
+The main result of this section is Theorem~\ref{thm:F}, which 
+is essentially due to Keith Kearnes and is based on an observation
+in~\cite{MR1358491}
+asserting that a variety $\sV$ has a difference term if and only if
+$\sansH \sansS \sansP(\bF_{\sV}(2))$ 
+has a difference term.
+%% (where $\bF_{\sV}(2)$ denotes the 2-generated free algebra in $\sV$).
+The forward implication of this claim is trivial;
+the argument for the converse goes as follows:
+assume that $d(x, y, z)$ is a difference term for $\sansH \sansS \sansP(\bF)$.
+Choose $\bA \in \sV$ and $a, b \in A$. Let $\bB = \Sg^{\bA} \{a, b\}$.
+Since $\bB$ is 2-generated, $B \in \sansH \sansS \sansP (\bF)$.
+Hence $d(x, y, z)$ interprets as a difference term in $\bB$. This means that
+$d^{\bA} (a, a, b) = d^{\bB} (a, a, b) = b$.
+Furthermore,
+$d^{\bA} (a, b, b) = d^{\bB} (a, b, b)
+%% \mathrel{[\Cg^{\bB} (a, b), \Cg^{\bB} (a, b)]}
+\Comr{\Cg^{\bB} (a, b)} a$.
+However, 
+%% $[\Cg^{\bB} (a, b), \Cg^{\bB} (a,b)]\subseteq [\theta, \theta]$
+$\Com{\Cg^{\bB} (a, b)} \subseteq \Com{\theta}$
+for every congruence
+$\theta \in \Con \bA$ containing $(a, b)$. Consequently
+$d^{\bA} (a, b, b)
+%% \mathrel{[\theta, \theta]}
+\Comr{\theta}
+a$ as desired.
+
+Considering the goal of our project, it is natural
+to ask whether the existence of a difference term for
+ $\sV$ is equivalent to the  existence  of a difference term
+operation for a specific algebra in $\sV$.  This is achieved in
+Theorem~\ref{thm:F}, which will play a key role
+in our main complexity argument in Section~\ref{sec:glob-local-diff}.
+First, the lemma that does the heavy lifting in the proof of 
+Theorem~\ref{thm:F} is the following:
+\begin{lem}
+  \label{lem:equiv-cond-exist-1}
+  Let $\bA$ be an algebra, let $t(x,y,z)$ be a ternary term in the language
+  of $\bA$, and let $\bF = \bF_{\bbV(\bA)}(x,y)$. Consider the following statements:
+  \begin{enumerate}[(A)]
+  \item \label{item:6} $t^{\bA}$ is not a difference term operation for $\bA$.
+  \item \label{item:7} There exists a 2-generated subalgebra $\bB \leq \bA$
+    such that $t^{\bB}$ is not a difference term operation for $\bB$.
+  \item \label{item:8} $t^{\bF}$ is not a difference term operation for $\bF$.
+  \end{enumerate}
+  Then (\ref{item:6}) implies (\ref{item:7}) and (\ref{item:7}) implies (\ref{item:8}).
+\end{lem}
+\begin{proof}
+  (\ref{item:6}) $\Rightarrow $ (\ref{item:7}):
+  Suppose  $t^{\bA}$ fails to be a difference term operation for $\bA$ and let $a, b \in
+  A$ witness this failure. That is, either
+  \begin{enumerate}
+  \item\label{item:9} $d^{\bA}(a,a,b) \neq b$, or
+  \item\label{item:10} $(d^{\bA}(a,b,b), a) \notin \Com{\Cg^{\bA} (a, b)}$.
+  \end{enumerate}
+  Let $\bB = \Sg^{\bA} \{a, b\}$.  In case
+  (\ref{item:9}), 
+  $d^{\bB}(a,a,b) = d^{\bA}(a,a,b) \neq b$, so $d^{\bB}(x,y,z)$ is not a difference
+  term operation for $\bB$.
+  In case (\ref{item:10}), observe that
+  $(d^{\bB}(a,b,b), a) = (d^{\bA}(a,b,b), a)\notin \Com{\Cg^{\bA} (a, b)}$.
+  By Lemma~\ref{lem:subalgebra-comm}, $\Com{\Cg^{\bB} (a, b)} \subseteq \Com{\Cg^{\bA} (a, b)}$,
+  from which it follow that $(d^{\bB}(a,b,b), a) \notin \Com{\Cg^{\bB} (a, b)}$.
+  Therefore, $d^{\bB}(x,y,z)$ is not a difference term operation for $\bB$.
+  \\[4pt]
+  (\ref{item:7}) $\Rightarrow$ (\ref{item:8}):
+  Since there is a surjective homomorphism from $\bF$ to $\bB$,
+  Lemma~\ref{lem:hom-image-diff-term} implies that $d^{\bF}(x,y,z)$ 
+  is not a difference term operation for $\bF$.
+\end{proof}
+
+\smallskip
+%% Cliff's comment:
+%% F is a subalgebra of A^n for some n. We can assume that V is neither congruence
+%% modular nor meet-semidistributive. Can we use that fact to put a  bound on n?
+%% (On the face of it, all we know is that n < a^2 where a is the cardinality of A.) 
+
+\begin{thm}
+  \label{thm:F}
+Let $\sV$ be a variety and $\bF = \bF_{\sV}(2)$, the 2-generated
+free algebra in $\sV$. The following are equivalent:
+\begin{enumerate}[(i)]
+\item \label{item:1010}
+  $\sV$ has a difference term;
+\item \label{item:2}
+  $\sansH \sansS \sansP (\bF)$ has a difference term;
+\item \label{item:3}
+  $\bF$ has a difference term operation.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+  The implications
+  (\ref{item:1010}) $\Rightarrow$  (\ref{item:2}) $\Rightarrow$  (\ref{item:3}) are
+  obvious. We prove
+  (\ref{item:3}) $\Rightarrow$  (\ref{item:1010}) by contraposition.
+  Suppose $\sV$ has no difference term and let
+  %% (We show $\bF$ has no difference term operation.)
+  $d(x,y,z)$ be an arbitrary ternary term in the language of $\sV$.
+  Let $\bA\in \sV$ be such that $d^{\bA}(x,y,z)$ is not a difference term
+  operation for $\bA$. Then by Lemma~\ref{lem:equiv-cond-exist-1}, $d^{\bF}(x,y,z)$ 
+  is not a difference term operation for $\bF$.
+  %% Since $d(x,y,z)$ is arbitrary, it follows that
+  %% $\bF$ has no difference term operation whatsoever.
+  %% , as we set out to prove.
+\end{proof}
+
+\section{Local Difference Terms}
+\label{sec:local-diff-terms}
+In~\cite{MR3239624},
+Valeriote and Willard define %% an \defin{$\bA$-triple for $\bp$}
+%% to be a triple $(a,b,i)$ such that $a, b \in A$ and
+%% $p_i(a,b,b) = p_{i+1}(a,a,b)$. They use this to define 
+a ``local Hagemann-Mitschke sequence'' which they use as the basis of
+an efficient algorithm for deciding for a given $n$ whether an idempotent
+variety is $n$-permutable. 
+Inspired by that work, we devise a similar construct, called
+a ``local difference term,'' that we use to develop a polynomial-time
+algorithm for deciding the existence of a difference term operation.
+
+Let $\bA=\< A, \dots\>$ be an algebra, fix $a, b \in A$ and
+$i \in \{0,1\}$.
+%% An \defin{$\bA$-local difference term for
+A \defin{local difference term for
+  $(a,b,i)$} is a ternary term $d$ satisfying the following:
+\begin{align}
+%% \text{ if $i=0$, then } & a \comm{\Cg^{\bA}(a,b)}{\Cg^{\bA}(a,b)} d(a,b,b); \label{eq:diff-triple}\\
+\text{ if $i=0$, then } & a \Comr{\Cg(a,b)} d(a,b,b); \label{eq:diff-triple}\\
+\text{ if $i=1$, then } &d(a,a,b) = b. \nonumber
+\end{align}
+If $d$ satisfies~(\ref{eq:diff-triple}) for all triples
+in some subset $S\subseteq A \times A \times \{0,1\}$, then we call $d$
+a \defin{local difference term for $S$}.
+
+Let 
+$\sS = A \times A \times \{0,1\}$ and
+suppose that every pair
+$((a_0, b_0, \chi_0), (a_1, b_1, \chi_1))$
+in $\sS^2$ has a local difference term.
+That is, for each pair $((a_0, b_0, \chi_0), (a_1, b_1, \chi_1))$, there exists
+$d$ such that for each $i \in \{0,1\}$ we have
+\begin{align}
+  a_i \Comr{\Cg(a_i,b_i)} d(a_i,b_i,b_i), & \;
+  \text{ if $\chi_i=0$, and }  \label{eq:d-trip-i1}\\
+  d(a_i,a_i,b_i) =b_i, & \;
+  \text{ if $\chi_i=1$.}\label{eq:d-trip-i2} %\\\nonumber
+\end{align}
+Under these hypothesis we will prove that every subset $S\subseteq \sS$
+has a local difference term.
+That is, there is a single term $d$ that works (i.e., satisfies
+(\ref{eq:d-trip-i1}) and (\ref{eq:d-trip-i2})) for all $(a_i, b_i, \chi_i) \in S$.
+The statement and proof of this new result follows.
+
+%% \subsection{Main Results}
+\begin{thm} %[\protect{cf.~\cite[Theorem 2.2]{MR3239624}}]
+  \label{thm:local-diff-terms}
+  Let $\sV$ be an idempotent variety and
+  $\bA \in \sV$. Define
+  $\sS= A \times A \times \{0,1\}$
+  and suppose that every pair
+  $((a_0, b_0, \chi_0), (a_1, b_1, \chi_1)) \in \sS^2$
+  has a local difference term.
+  Then every subset $S \subseteq \sS$
+  has a local difference term.
+\end{thm}
+\begin{proof}
+The proof is by induction on the size of $S$.  In the base case, $|S| = 2$,
+the claim holds by assumption.
+Fix $n\geq 2$ and assume that every subset of $\sS$ of size $2\leq k \leq n$ has a local
+difference term. Let
+\[
+S = \{(a_0, b_0, \chi_0), (a_1, b_1, \chi_1), \dots, (a_{n}, b_{n},\chi_{n})\} \subseteq \sS,\]
+so that $|S| = n+1$.  We prove $S$ has a local difference term.
+
+Since $|S| \geq 3$ and $\chi_i \in \{0,1\}$ for all $i$, there must exist
+indices $i\neq j$ such that $\chi_i = \chi_j$. Assume without loss of generality
+that one of these indices is $j=0$.  Define
+the set
+$S' = S \setminus \{(a_0, b_0, \chi_0)\}$.
+Since $|S'| < |S|$, the set $S'$ has a local difference term $p$.
+We split the remainder of the proof into two cases.
+%% In the first case $\chi_0 = 0$ and in the second $\chi_0 = 1$.
+
+\medskip
+
+%--------------------------------------
+\noindent \underline{Case $\chi_0 = 0$}:
+Without loss of generality, suppose that $\chi_1 = %% \chi_2 =
+\cdots =\chi_k = 1$,
+and $\chi_{k+1} %% = \chi_{k+2} 
+= \cdots = \chi_{n} = 0$. Define %% $T$ to be the set
+\[T = \{(a_0, p(a_0, b_0, b_0), 0),
+(a_1, b_1, 1), (a_2, b_2, 1), 
+\dots, (a_k, b_k, 1)\},\] and 
+note that $|T| < |S|$.
+Let $t$ be a local difference term for $T$.
+Define
+\[
+d(x,y,z) = t(x, p(x,y,y), p(x,y,z)).
+\]
+We show that $d$ is a local difference term for $S$.
+Since $\chi_0 =0$, we first verify that
+$(a_0, d(a_0,b_0,b_0))$ belongs to $\Com{\Cg(a_0,b_0)}$.
+Indeed,
+\begin{equation}
+    \label{eq:100000}
+  d(a_0,b_0,b_0) =
+  %% t(a_0, p(a_0,b_0,b_0), p(a_0,b_0,b_0))\comr{\tau} a_0,
+  t(a_0, p(a_0,b_0,b_0), p(a_0,b_0,b_0))\Comr{\Cg(a_0, p(a_0,b_0,b_0))} a_0.
+\end{equation}
+%% where we have used $\tau$ to denote $\Cg(a_0, p(a_0,b_0,b_0))$.
+Note that the pair $(a_0, p(a_0,b_0,b_0))$ is equal to
+$(p(a_0,a_0,a_0), p(a_0,b_0,b_0))$ (by idempotence) and 
+belongs to $\Cg(a_0, b_0)$, so $\Cg(a_0, p(a_0,b_0,b_0))\leq \Cg(a_0,b_0)$.
+Therefore,
+%% so $\tau\leq \Cg(a_0,b_0)$. Therefore,
+by monotonicity of the commutator we have
+$\Com{\Cg(a_0, p(a_0,b_0,b_0))} \leq \Com{\Cg(a_0,b_0)}$.
+It follows from this and (\ref{eq:100000}) that
+%% $d(a_0,b_0,b_0)\comm{\Cg(a_0,b_0)}{\Cg(a_0,b_0)} a_0$,
+$d(a_0,b_0,b_0)\Comr{\Cg(a_0,b_0)} a_0$, as desired.
+
+For the indices $1\leq i \leq k$ we have $\chi_i =1$, so we prove
+$d(a_i,a_i,b_i) = b_i$ for such indices. Observe,
+\[
+  d(a_i,a_i,b_i) =
+  t(a_i, p(a_i,a_i,a_i), p(a_i,a_i,b_i)) % \label{eq:200000}\\
+  =t(a_i, a_i, b_i) % \label{eq:200001}\\
+  =b_i. % \label{eq:200002}
+\]
+The first equation holds by definition of $d$, the second
+because $p$ is an idempotent local difference term for
+$S'$, and the third because $t$ is a local difference term for $T$.
+
+The remaining triples in our original set $S$
+have indices satisfying $k<j\leq n$ and $\chi_j = 0$.
+Thus, for these triples we want
+$d(a_j,b_j,b_j)\Comr{\Cg(a_j,b_j)} a_j$.
+By definition,
+\begin{equation}
+  \label{eq:450000}
+d(a_j,b_j,b_j) =t(a_j, p(a_j,b_j,b_j), p(a_j,b_j,b_j)).  
+\end{equation}
+Since $p$ is a local difference term for $S'$, %we have
+the pair $(p(a_j,b_j,b_j), a_j)$ belongs to $[\Cg(a_j,b_j), \Cg(a_j,b_j)]$.
+%% $(p(a_j,b_j,b_j), a_j)\in [\Cg(a_j,b_j), \Cg(a_j,b_j)]$.
+This and 
+(\ref{eq:450000}) imply
+that 
+$(d(a_j, b_j,b_j), t(a_j,a_j,a_j))$
+belongs to
+$\Com{\Cg(a_j,b_j)}$.
+Finally, by idempotence of $t$ we have
+$d(a_j,b_j,b_j)\Comr{\Cg(a_j,b_j)} a_j$,
+as desired.
+\\[4pt]
+%--------------------------------------
+\underline{Case $\chi_0 = 1$}:
+%% \\[4pt]
+%% Assume $\chi_0 = 1$ and, 
+Without loss of generality, suppose $\chi_1 = \chi_2 =\cdots =\chi_k = 0$,
+and $\chi_{k+1} = \chi_{k+2} = \cdots = \chi_{n} = 1$. Define 
+\[
+T = \{(p(a_0, a_0, b_0), b_0, 1),
+(a_1, b_1, 0), (a_2, b_2 0), \dots, (a_k, b_k, 0)\},
+\]
+and note that $|T| < |S|$.
+Let $t$ be a local difference term for $T$ and
+define
+%% \[d(x,y,z) = t(p(x,y,z), p(y,y,z), z).\] 
+$d(x,y,z) = t(p(x,y,z), p(y,y,z), z)$. 
+Since $\chi_0 =1$, we want $d(a_0,a_0,b_0) = b_0$. By the definition of
+$d$,
+% \begin{equation*}
+%   d(a_0,a_0,b_0) =
+%   t(p(a_0,a_0,b_0), p(a_0,a_0,b_0), b_0) =b_0.
+% \end{equation*}
+$d(a_0,a_0,b_0) =
+t(p(a_0,a_0,b_0), p(a_0,a_0,b_0), b_0) =b_0$.
+The last equality holds since $t$ is a local difference term for $T$, thus,
+for $(p(a_0, a_0, b_0), b_0, 1)$.
+
+If $1\leq i \leq k$, then $\chi_i =0$, so for these indices we prove
+that $(a_i, d(a_i,b_i,b_i))$ belongs to $\Com{\Cg(a_i,b_i)}$.
+Again, starting from the definition of $d$ and using idempotence of $p$, we have
+\begin{equation}
+  \label{eq:40000}
+  d(a_i,b_i,b_i) =
+  t(p(a_i,b_i,b_i), p(b_i,b_i,b_i), b_i)=
+  t(p(a_i,b_i,b_i), b_i, b_i).
+\end{equation}
+% \begin{align}
+%   d(a_i,b_i,b_i) &=
+%   t(p(a_i,b_i,b_i), p(b_i,b_i,b_i), b_i)   \label{eq:40000}\\
+%   &=t(p(a_i,b_i,b_i), b_i, b_i). \nonumber
+% \end{align}
+Next, since $p$ is a local difference term for $S'$, we have
+\begin{equation}
+  \label{eq:50000}
+  t(p(a_i,b_i,b_i), b_i, b_i)
+ \Comr{\Cg(a_i,b_i)}
+ t(a_i, b_i, b_i).
+\end{equation}
+Since $t$ is a local difference term for $T$, hence for
+$(a_i, b_i, b_i)$,  %% $(1\leq i \leq k)$,
+we see that 
+$t(a_i, b_i, b_i) \Comr{\Cg(a_i,b_i)} a_i$.
+This plus (\ref{eq:40000}) and (\ref{eq:50000}) yields
+$d(a_i,b_i,b_i) \Comr{\Cg(a_i,b_i)} a_i$,
+as desired.
+
+The remaining elements of our original set $S$
+have indices $j$ satisfying $k<j\leq n$ and $\chi_j = 1$.
+For these we want $d(a_j,a_j,b_j) = b_j$.
+Since $p$ is a local difference term for $S'$, we have
+$p(a_j,a_j,b_j) = b_j$, and this along with idempotence of $t$ yields
+\[ d(a_j,a_j,b_j) =  t(p(a_j,a_j,b_j), p(a_j,a_j,b_j), b_j)=  t(b_j, b_j, b_j) =b_j,\]
+% \begin{align*}
+% d(a_j,a_j,b_j) &=
+% t(p(a_j,a_j,b_j), p(a_j,a_j,b_j), b_j)\\
+% &=t(b_j, b_j, b_j) =b_j,
+% \end{align*}
+as desired.
+\end{proof}
+
+\begin{cor}
+  \label{cor:loc-diff-term}
+  A finite idempotent algebra $\bA$ has a difference term operation if and
+  only if each pair $((a,b,i), (a',b',i')) \in (A\times A \times \{0,1\})^2$ has a local
+  difference term.
+\end{cor}
+\begin{proof}
+  One direction is clear, since a difference term operation for $\bA$ is
+  obviously a local difference term for the whole set 
+  $A\times A \times \{0,1\}$.
+  For the converse, suppose
+  each pair in $(A\times A \times \{0,1\})^2$ has a local
+  difference term. Then, by Theorem~\ref{thm:local-diff-terms},
+  there is a single local difference term for the whole set $A\times A \times \{0,1\}$,
+  and this is a difference term operation for $\bA$.  Indeed, if $d$ is a
+  local difference term for $A\times A \times \{0,1\}$, then 
+  for all $a, b \in A$, we have
+  $a \Comr{\Cg(a,b)} d(a,b,b)$,
+  since $d$ is a local difference term for $(a,b,0)$, and we have
+  $d(a,a,b) = b$, since $d$ is also a local difference term for
+  $(a,b,1)$.
+\end{proof}
+
+% \draftsecskip
+
+\subsection{Algorithm 1: existence of a difference term operation}
+\label{sec:algor-1}
+%% In this subsection we prove the following:
+%% \subsection*{Algorithm 1: existence of a difference term operation}
+\begin{cor}
+  \label{cor:algor-1}
+  There is a polynomial-time algorithm that takes as input
+  any finite idempotent algebra $\bA$ and decides whether
+  %% the variety $\bbV(\bA)$ that it generates
+  $\bA$ has a difference term operation.
+\end{cor}
+\begin{proof}
+  %% and let  $\sV = \bbV(\bA)$.
+  We describe an efficient algorithm for deciding,
+  given a finite idempotent algebra $\bA$,
+  whether every pair $((a,b,i), (a',b',i')) \in (A\times A \times \{0,1\})^2$ has a local
+  difference term.  By Corollary~\ref{cor:loc-diff-term}, this will prove we
+  can decide in polynomial-time whether $\bA$ has a difference term operation.
+  %% We will then complete the
+  %% proof by explaining why $\bA$ has a difference term operation iff the variety
+  %% it generates has a difference term. 
+
+  Fix a pair
+  $((a,b,i), (a',b',i'))$ in $(A\times A \times \{0,1\})^2$. If $i = i' = 0$,
+  then the first projection is a local difference term. If $i = i' = 1$,  
+    then the third projection is a local difference term. The two remaining cases to
+    consider are (1) $i = 0$ and $i'=1$, and (2)
+    $i = 1$ and $i'=0$. Since these are completely symmetric, we only handle the
+    first case. Assume  the given pair of triples is
+    $((a,b,0), (a',b',1))$.  By definition, a term $t$ is local difference term
+    for this pair iff
+    \[
+    a\Comr{\Cg(a,b)} t^{\bA}(a,b,b) \; \text{ and } \;
+    t^{\bA}(a',a',b') = b'.
+    \]
+    We can rewrite this condition more compactly by
+    considering 
+    \[t^{\bA\times \bA}((a,a'), (b,a'), (b,b')) =
+    (t^{\bA}(a,b,b),t^{\bA}(a',a',b')).\]
+    Clearly $t$ is a local difference term for
+    $((a,b,0), (a',b',1))$ iff
+    \[
+    t^{\bA\times \bA}((a,a'), (b,a'), (b,b'))\in a/\delta \times \{b'\},
+    \]
+    where $\delta = \Com{\Cg(a,b)}$ and $a/\delta$ denotes the
+    $\delta$-class containing $a$.
+    (Observe that $a/\delta \times \{b'\}$ is a subalgebra of $\bA \times \bA$
+    by idempotence.)
+    It follows that the pair
+    $((a,b,0), (a',b',1))$ has a local difference term iff
+    the subuniverse of $\bA\times \bA$ generated by
+    $\{(a,a'), (b,a'), (b,b')\}$ intersects nontrivially with the subuniverse
+    $a/\delta \times \{b'\}$.
+
+    Thus, the algorithm takes as input $\bA$ and, for each 
+    $((a,a'), (b,a'), (b,b'))$ in $(A\times A)^3$, computes
+    $\delta = \Com{\Cg(a,b)}$, computes the subalgebra
+    $\bS$ of $\bA\times \bA$ generated by
+    %% \Sg^{\bA\times \bA}\{(a,a'), (b,a'), (b,b')\}$, and then
+    $\{(a,a'), (b,a'), (b,b')\}$, and then
+    tests whether $S \cap (a/\delta \times \{b'\})$ is empty.
+    If we find an empty intersection at any point, then
+    $\bA$ has a difference term operation.
+    Otherwise the algorithm halts without witnessing an empty
+    intersection, in which case $\bA$ has a difference term operation.
+
+    Most of the operations carried out by this algorithm are well known to be
+    polynomial-time.  For example, that the running time of subalgebra generation is
+    polynomial has been known for a long time (see~\cite{MR0455543}).
+    The time complexity of congruence generation is also known to be polynomial
+    (see~\cite{MR2470585}).  The only operation whose tractability might be 
+    called into question is the commutator, but we have a straight-forward 
+    algorithm for computing it that we describe in detail in 
+    Appendix Section~\ref{sec:interlude:-an-easy}.
+    % which, after the congruences have been computed, simply
+    % involves generating more subalgebras.
+    %% Finally, we observe that if $\bA$ has a difference term operation, then the
+    %% variety it generates has a difference term.
+\end{proof}
+
+
+More details on the complexity of operations carried out by the algorithm, as well as many other algebraic operations, can be found in the references mentioned, as well as~\cite{MR1871085,MR1695293,Freese:2009}. 
+
+
+\section{Generalizations and Extensions}
+
+%% \input{inputs/mix-loc-diff-terms.tex}
+
+%%% NEW SECTION
+\subsection{Mixed local difference terms}
+\label{sec:mixed-local-diff}
+In this section, we observe that the proofs in the previous section
+did not hinge on the fact that we only considered a single algebra.  
+Let $\sV$ be a variety and let $\bA_0=\< A_0, \dots\>$ and  $\bA_1=\< A_1, \dots\>$ be
+algebras in $\sV$.
+The direct sum (or coproduct) of $\bA_0$ and
+$\bA_1$ is denoted by $\bA_0 + \bA_1$
+(or by $\coprod_{i=0}^1 \bA_i$, especially when there are more than two
+factors).
+An element of (the universe of)
+$\bA_0 + \bA_1$ is often denoted by $\<a, i\>$,
+where $i\in \{0,1\}$ and $a \in A_i$.
+The (universe of the) coproduct %% $\coprod_{i=0}^1 (\bA_i\times \bA_i)$ has elements
+$\bA_0^2 + \bA_1^2$ has elements
+$\<(a,b), i\>$ where $i\in \{0,1\}$ and $(a,b) \in A_i^2$.
+An element of  the set $(A_0^2 + A_1^2) \times \{0,1\}$---and
+now the notation has already become a bit unwieldy---has
+the form $(\<(a,b), i\>, \chi)$, where $i\in \{0,1\}$, $(a,b) \in A_i^2$,
+and $\chi\in \{0,1\}$. 
+
+Fix two elements $(\<(a, b),i\>, \chi)$ and $(\<(a', b'),i'\>, \chi')$ of the
+set $(A_0^2 + A_1^2) \times \{0,1\}$.
+By a \defin{mixed local difference term} for this pair
+we mean a ternary term $d$ satisfying both
+\begin{align}
+\text{ if $\chi=0$, then } & a \Comr{\Cg^{\bA_i}(a,b)} d^{\bA_i}(a,b,b); \label{eq:mixed-diff-triple}\\
+\text{ if $\chi=1$, then } &d^{\bA_i}(a,a,b) = b; \nonumber
+\end{align}
+and the same set of relations with $a$, $b$, $i$, $\chi$ replaced 
+by $a'$, $b'$, $i'$, $\chi'$, respectively.
+
+Let $S$ be a sequence of triples drawn from the set
+\[
+\sU(A_0, A_1)  := (A_0^2 + A_1^2) \times \{0,1\}.
+\]
+If $d$ satisfies~(\ref{eq:mixed-diff-triple}) for all triples in $S$.
+then we call $d$ is a \defin{mixed local difference term for $S$}.
+We may use $\sU$ to denote the set $\sU(A_0, A_1)$ when the context renders the
+universes involved obvious or immaterial.
+
+Now, suppose that all pairs of triples 
+in $\sU$ have mixed local difference terms.
+Under this hypothesis the same argument that we used to prove
+Theorem~\ref{thm:local-diff-terms} above can be used to prove that, for every $n$,
+%% and every sequence $S\in \sU^n$, there is a term $d$ that is a mixed local
+%% difference term for $S$.
+every sequence $S\in \sU^n$ has a mixed local difference term.
+That is, there is a single term $d$ that works (i.e., satisfies
+the relations (\ref{eq:mixed-diff-triple})) for all $(\<(a, b), i\>,\chi)$ in $S$.
+Here is the full statement of this slightly more general version of
+Theorem~\ref{thm:local-diff-terms}.
+From now on we drop the ``mixed'' qualifier since
+it is inconsequential.
+
+\begin{thm} %[\protect{cf.~\cite[Theorem 2.2]{MR3239624}}]
+  \label{thm:mixed-local-diff-terms}
+  Let $\sV$ be an idempotent variety and let
+  $\bA_0 = \<A_0, \dots\>$ and   $\bA_1 = \<A_1, \dots\>$ be algebras in $\sV$. Define
+  $\sU  = (A_0^2 + A_1^2)\times \{0,1\}$
+  and suppose that every pair
+  $((\<(a, b), i\>, \chi), (\<(a', b'), i'\>\chi')) \in \sU^2$
+  has a local difference term. Then, for every $n$, every sequence $S \in \sU^n$
+  has a local difference term.
+\end{thm}
+
+Corollary~\ref{cor:loc-diff-term} also generalizes, as follows:
+\begin{cor}
+  \label{cor:mix-loc-diff-term}
+  Let $\sV$ be an idempotent variety and let
+  $\bA_0 = \<A_0, \dots\>$ and   $\bA_1 = \<A_1, \dots\>$ be algebras in $\sV$. Define
+  $\sU  = (A_0^2 + A_1^2)\times \{0,1\}$
+  and suppose that every pair
+  $((\<(a, b), i\>, \chi), (\<(a', b'), i'\>\chi')) \in \sU^2$
+  has a local difference term. Then, there is a term $d$ that interprets as a
+  difference term operation for both $\bA_0$ and $\bA_1$.
+\end{cor}
+%% Corollary~\ref{cor:loc-diff-term} also generalizes, as follows:
+%% \begin{cor}
+%%   \label{cor:mix-loc-diff-term}
+%%   Let $\scA = \{\<A_i, \dots\> \mid i \in I\}$ be a collection of finite
+%%   idempotent algebras. Then there exists a term $d$ that interprets as a
+%%   difference term operation in every $\<A_i, \dots\> \in \scA$ if and only if each pair
+%%   $((\<(a_i,b_i),\iota_i\>,\chi_i),  (\<(a_j,b_j),\iota_j\>,\chi_j))$ in
+%%   $\bigl(\coprod_{i \in I} A_i^2\times \{0,1\}\bigr)^2$
+%%   % \[\bigl(\coprod_{i \in I} (A_i^2\times \{0,1\})\bigr)
+%%   %   \times \bigl(\coprod_{i \in I} (A_i^2\times \{0,1\})\bigr),\]
+%%   has a local difference term.
+%% \end{cor}
+
+
+
+
+
+\subsection{Local difference terms on universes}
+\label{sec:glob-local-diff}
+The methods from earlier sections can be lifted up to work globally---that is,
+on universes rather than elements---as we now explain. 
+Let $\sV$ be a variety, let $\bA = \<A, \dots\> \in \sV$ 
+and $i\in \{0,1\}$.
+We call a term $d$ a \defin{local difference term
+for $(A, i)$}
+provided $d$ is a local difference term for every triple
+$(a,b,i) \in A \times A \times \{i\}$. That is, for all $a, b \in A$,
+\begin{align}
+\text{ if $i=0$, then } & \, a \Comr{\Cg^{\bA}(a,b)} d^{\bA}(a,b,b);
+\label{eq:global-diff-triple}\\
+\text{ if $i=1$, then } & \,
+d^{\bA}(a,a,b) = b. 
+\end{align}
+
+Let $\sV$ be a variety and let $\scA$ be a collection of algebras that belong to $\sV$.
+Let $\scS(\scA)$ be the collection of all pairs $(A, i)$ where $A$ is the universe
+of some algebra in $\scA$ and $i\in \{0,1\}$.  That is,
+\[
+\scS(\scA) = \{(A, i) \mid \<A, \dots\> \in \scA \text{ and } i \in \{0,1\}\}.
+\]
+Given a sequence
+$S = ((A_0, \chi_0), (A_1, \chi_1), \dots,
+(A_{n-1},\chi_{n-1})) \in \scS(\scA)^n$,
+(or a subset $S \subseteq \scS(\scA)$),
+a term $d$ is called a \defin{\glocal difference term for $S$}
+if it is a \glocal difference term for every pair $(A_i, \chi_i)$ in $S$.
+In addition to these definitions, in the proof of the next theorem we use
+$|S|$ to denote the \emph{length of the sequence $S$}
+(or, in case $S$ is a set, then $|S|$ denotes the cardinality of $S$, as usual).
+\begin{thm}
+  \label{thm:glob-loc-diff-terms}
+  Let $\sV$ be a variety.  Let $\scA$ be a collection of finite idempotent
+  algebras in $\sV$. Fix $n\geq 2$ and 
+  let $S= ((A_0, \chi_0), (A_1, \chi_1), \dots, (A_{n-1}, \chi_{n-1}))\in \scS(\scA)^n$.
+  Then there exists a term that is a \glocal difference term for $S$
+  if and only if each 2-element subsequence $((A_i,\chi_i), (A_j,\chi_j))$ of $S$
+  has a \glocal difference term.
+\end{thm}
+We relegate the proof of Theorem~\ref{thm:glob-loc-diff-terms} 
+to the appendix (see Section~\ref{sec:proof-thm:glob}), since the argument 
+is nearly identical to the one used to prove Theorem~\ref{thm:local-diff-terms}. 
+
+\begin{cor}
+  \label{cor:glob-loc-diff-term}
+  Let $\sV$ be a variety.  Let $\scA$ be a collection of finite idempotent
+  algebras in $\sV$. %% that is closed under the taking of subalgebras.
+  Then there exists a term $d$ that interprets as a difference term operation
+  for every algebra in $\scA$
+  if and only if each pair $((A,i), (B,j)) \in \scS(\scA)^2$ has a \glocal
+  difference term.
+\end{cor}
+Since the proof of Corollary~\ref{cor:glob-loc-diff-term}
+is easy and similar to the proof
+of Corollary~\ref{cor:loc-diff-term}, we consign it to 
+appendix Section~\ref{sec:proof-cor:glob}.
+
+We now pause to fix some more notation.
+If $\alpha \in \Con(\bA)$ and $\beta \in \Con(\bB)$, then we let
+$\alpha \mytimes \beta$ denote the set of pairs $((a,b),(a',b'))\in (A\times B)^2$ satisfying
+$a \mathrel{\alpha} a'$ and $b \mathrel{\beta} b'$.  The relation 
+$\alpha \mytimes \beta$ is clearly a congruence of $\bA \times \bB$.
+
+% \pagebreak[1]
+\begin{lem}
+  \label{lem:products}
+  Let $\sV$ be a variety and let $\bA$ and $\bB$ be finite idempotent
+  algebras in $\sV$. Suppose the term $d$ 
+  interprets as a difference term operation for $\bA\times \bB$.
+  Then $d^{\bA}$ (resp., $d^{\bB}$) is a difference term operation for 
+  $\bA$  (resp., $\bB$).
+\end{lem}
+\begin{proof}
+  Assume that for all $(a, b)$ and $(a', b')$ in $A \times B$, the term $d$ satisfies
+  \begin{align}
+    d^{\bA \times \bB}((a, b), (a, b), (a', b')) &= (a', b'),\; \text{ and } \label{eq:60002}\\
+    d^{\bA \times \bB}((a, b), (a', b'), (a', b'))
+    &\Comr{\Cg^{\bA \times \bB}((a, b), (a', b'))} (a, b). \label{eq:60003}
+  \end{align}
+  We prove that $d^{\bA}$ is a difference term operation
+  for $\bA$. (Obviously, the proof for $\bB$ is identical.)
+  Thus, fixing $a, a' \in A$, we will show 
+  \begin{align}
+    d^{\bA}(a, a, a') &= a',\; \text{ and } \label{eq:60004}\\
+    d^{\bA}(a,a',a')
+    &\Comr{\Cg^{\bA}(a, a')} a. \label{eq:60005}
+  \end{align}
+  Equation (\ref{eq:60004}) is obvious by (\ref{eq:60002}),
+  so we proceed to~(\ref{eq:60005}).
+  Observe that 
+  \[
+  (d^{\bA}(a, a',a'), d^{\bB}(b, b',b'))
+  \Comr{\Cg^{\bA \times \bB}((a, b), (a', b'))} (a, b),
+  \]
+  by~(\ref{eq:60003}). Therefore, Lemma~\ref{lem:hom-image-diff-term}
+  implies\footnote{The first projection 
+    $\pi_A : \bA \times \bB \to \bA$ is a surjective 
+    homomorphism, so 
+  $\pi_A \Com{\theta} \subseteq \Com{\pi_A(\theta)}$
+    for all $\theta \in \Con (\bA \times \bB)$,
+    by Lemma~\ref{lem:hom-image-diff-term}. Recall, that
+    $\pi_A$ is defined on a congruence $\theta \in \Con(\bA \times \bB)$ as follows:
+    $\pi_A(\theta) = \{(a,a') \in A^2 \mid ((a,b),(a',b')) \in \theta \text{ for
+      some $(b,b')\in B^2$}\}$.}
+  \[
+    (d^{\bA}(a, a',a'), a)\in \pi_A \Com{\Cg^{\bA \times \bB}((a, b), (a', b'))}
+    \subseteq \Com{\pi_A\bigl(\Cg^{\bA \times \bB}((a, b), (a', b'))\bigr)}.
+  \]
+  Next, observe that 
+  $\Cg^{\bA}(a,a') \mytimes \Cg^{\bB}(b,b')$  %%  \in \Con(\bA \times \bB)$
+  is a product of two congruences, one in $\Con(\bA)$ and the
+  other in $\Con(\bB)$, so it is a congruence of $\bA\times \bB$.
+  Moreover, it contains the pair $((a,b), (a',b'))$, so
+  %% belongs to $\Cg^{\bA}(a,a') \times \Cg^{\bB}(b,b')$, 
+  \[
+  \Cg^{\bA \times \bB}((a, b), (a', b'))\leq \Cg^{\bA}(a,a') \mytimes \Cg^{\bB}(b,b').
+  \]
+  Therefore, 
+  \[
+  \pi_A\bigl(\Cg^{\bA \times \bB}((a, b), (a', b'))\bigr)
+  \leq
+  \pi_A\bigl(\Cg^{\bA}(a,a') \mytimes \Cg^{\bB}(b,b')\bigr) = 
+  \Cg^{\bA}(a,a').
+  \]
+  Pulling all of these observations together and applying monotonicity of the
+  commutator, we arrive at $d^{\bA}(a, a',a')  \Comr{\Cg^{\bA}(a,a')} a$, as desired.
+\end{proof}
+
+The converse of Lemma~\ref{lem:products} is harder to prove.
+\begin{lem}
+  \label{lem:products-conv}
+ Let $\sV$ be a variety and let $\bA$ and $\bB$ be finite idempotent
+ algebras in $\sV$. Suppose there is a single term $d$ that
+ interprets as a difference term operation for $\bA$ and for $\bB$.
+ Then $d^{\bA \times \bB}$ is a difference term operation for the product
+ $\bA \times \bB$.
+\end{lem}
+\begin{proof}
+  Fix $(a, b)$ and $(a', b')$ in $A \times B$.
+  We must prove
+  \begin{align}
+    d^{\bA \times \bB}((a, b), (a, b), (a', b')) &= (a', b'),\; \text{ and } \label{eq:60000}\\
+    d^{\bA \times \bB}((a, b), (a', b'), (a', b'))
+    &\Comr{\Cg^{\bA \times \bB}((a, b), (a', b'))} (a, b). \label{eq:60001}
+  \end{align}
+  %% where $\theta:= \Cg^{\bA \times \bB}((a, b), (a', b'))$.
+  Since $d^{\bA}$ and $d^{\bB}$ are difference term operations for $\bA$ and
+  $\bB$, respectively, it's easy to see that~(\ref{eq:60000}) is satisfied:
+  \[
+  d^{\bA \times \bB}((a, b), (a, b), (a', b')) =
+  (d^{\bA}(a, a, a'),  d^{\bB}(b, b, b')) = (a', b').
+  \]
+  It remains to check (\ref{eq:60001}).
+  Again, since $d^{\bA}$ and
+  $d^{\bB}$ are difference term operations,
+  % \begin{align*}
+  % d^{\bA}(a,a',a')
+  % &\Comr{\Cg^{\bA}(a,a')} a\\
+  % d^{\bB}(b, b', b')
+  % &\Comr{\Cg^{\bB}(b,b')} b.
+  % \end{align*}
+  \[
+  d^{\bA}(a,a',a')
+  \Comr{\Cg^{\bA}(a,a')} a \quad \text{ and } \quad
+  d^{\bB}(b, b', b')
+  \Comr{\Cg^{\bB}(b,b')} b.
+\]
+  Therefore, 
+  % the pair $\bigl((d^{\bA}(a,a',a'),d^{\bB}(b, b', b')), (a,b)\bigr)$ belongs
+  % to the relation \[ \Com{\Cg^{\bA}(a,a')} \mytimes \Com{\Cg^{\bB}(b,b')}.\]
+  $(d^{\bA}(a,a',a'),d^{\bB}(b, b', b'))
+    \mathrel{\Com{\Cg^{\bA}(a,a')}\mytimes\Com{\Cg^{\bB}(b,b')}}
+    (a,b)$.
+  We claim that the latter is equal to
+  $\Com{\Cg^{\bA}(a,a') \mytimes \Cg^{\bB}(b,b')}$.
+  Recall from above that
+  \[
+  \Cg^{\bA \times \bB}((a, b), (a', b'))\leq \Cg^{\bA}(a,a') \times \Cg^{\bB}(b,b').
+  \]
+  Therefore, if we prove that
+  \[
+  \Com{\Cg^{\bA}(a,a')}  \mytimes  \Com{\Cg^{\bB}(b,b')} = 
+  \Com{\Cg^{\bA}(a,a') \mytimes \Cg^{\bB}(b,b')},
+  \]
+  then we could complete the proof by showing that
+  \begin{equation}
+    \label{eq:655}    
+  \Cg^{\bA \times \bB}((a, b), (a', b'))\geq \Cg^{\bA}(a,a') \mytimes \Cg^{\bB}(b,b').
+  \end{equation}
+
+  \smallskip
+
+  TODO: (\ref{eq:655}) is false in general; maybe false here
+  too; then we need a new idea.
+
+  \medskip
+  
+  TODO: Prove Lemma~\ref{lem:products-conv} somehow!!!
+  %% Therefore, by monotonicity of the commutator,
+  %% (\ref{eq:60001}) holds.
+  %% It remains to check the claim... 
+\end{proof}
+
+
+\subsection{Algorithm 2: existence of a difference term}
+\label{sec:algor-2}
+%% \subsection{Algorithm 2: existence of difference terms}
+%% \label{sec:algor-2:-exist}
+%% In this subsection we prove the following
+\begin{cor}
+\label{cor:algor-2}
+  There is a polynomial-time algorithm that takes as input
+  any finite idempotent algebra $\bA$ and decides whether
+  the variety $\bbV(\bA)$ that it generates
+  has a difference term operation.
+\end{cor}
+\begin{proof}
+  Let $\sV = \bbV(\bA)$ and let $\bF = \bF_{\sV}(x,y)$ be the free algebra in
+  $\sV$ generated by $x$ and $y$.
+  By Theorem~\ref{thm:F}, deciding whether $\sV$ has a difference term is equivalent to 
+  deciding whether $\bF$ has a difference term operation.
+  We can assume $\bF$ is a subdirect product of
+  $\bA_0 \times \bA_1 \times \cdots \times \bA_{n-1}$, where $n\leq |A|^2$ and
+  where each $\bA_i$ is a 2-generated subalgebra of $\bA$..
+  Let $\scA = \{A_0, A_1, \dots, A_{n-1}\}$ and (as above) let $\scS(\scA)$ denote 
+  all pairs $(A, i)$ such that $\bA = \<A, \dots\> \in \scA$ and $i\in \{0,1\}$.
+
+  We begin by proving that we can check in polynomial time (in $|A|$)
+  whether or not the product
+  $\bA_0 \times \bA_1 \times \cdots \times \bA_{n-1}$ has a difference term operation.
+  By Corollary~\ref{cor:glob-loc-diff-term} and Lemma~\ref{lem:products-conv},
+  it suffices to check that each of the 
+  $n^2$ pairs  in 
+  $\scS(\scA)^2$ has a \glocal
+  difference term.  Fix a pair
+  $((A_i, \chi_i), (A_j, \chi_j)) \in  \scS(\scA)^2$,
+  and let $\sU  = (A_i^2 + A_j^2)\times \{0,1\}$.
+  By Theorem~\ref{thm:mixed-local-diff-terms},
+  to prove that every sequence $S \in \sU^n$
+  has a local difference term, it suffices to check that every pair
+  $\bigl( (\<(a, b), i\>, \chi), (\<(a', b'), i'\>, \chi')\bigr) \in \sU^2$
+  has a local difference term. It follows from the argument given 
+  in the proof of Corollary~\ref{cor:algor-1} that the number of 
+  operations required to check whether
+  $\bigl( (\<(a, b), i\>, \chi), (\<(a', b'), i'\>, \chi')\bigr)$
+  has a local difference term is bounded by a
+  polynomial in $|A_i||A_j|\leq |A|^2$.  Since there are 
+  $4|A_i|^2|A_j|^2 \leq 4|A|^4$ pairs in $\sU^2$, 
+  it still takes only a polynomial in $|A|$ number of steps to test whether
+  the pair $((A_i, \chi_i), (A_j, \chi_j))$ has a \glocal difference term.
+  There are $n^2 \leq |A|^4$ such pairs to test, so the number of steps required to 
+  test whether
+  $\bA_0 \times \bA_1 \times \cdots \times \bA_{n-1}$ has a difference term
+  operation is bounded by a constant times a power of $|A|$.
+
+  \medskip
+
+  \noindent TODO: complete the proof by showing that if the product 
+  $\bA_0 \times \bA_1 \times \cdots \times \bA_{n-1}$ has a difference term operation,
+  then so does the subdirect product $\bF$.
+\end{proof}
+
+% \draftsecskip
+
+\section*{Acknowledgments}
+The author would like to thank
+Ralph Freese for proposing this project and calling attention to
+the work of Valeriote and Willard.
+Other helpful suggestions came from Cliff Bergman and the
+following members of the {\it Hawaii Universal Algebra 
+Seminar:} Alex Guillen, Tristan Holmes, Bill Lampe, and J.~B.~Nation.
+These contributions are gratefully acknowledged.
+
+This work was partially supported by the National Science 
+Foundation Grant No.~1500235.
+
+%% \newpage
+
+
+\appendix
+
+
+
+\section{An Easy Route to the Commutator}
+\label{sec:interlude:-an-easy}
+\input{alt-com-new}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% OMITTED PROOFS
+
+\section{Proofs}
+\label{sec:proofs}
+
+\ifthenelse{\boolean{extralong}}{
+
+  \subsection{Proof of Lemmas~\ref{lem:monotone-comm} and~\ref{lem:complete-meet-join-monotone}}
+  \label{sec-lem:monotone-comm}
+
+  \begin{lemma}[Monotonicity of the Commutator]
+    %% \label{lem:monotone-comm}
+    Let $\bA$ be an algebra with congruences $\alpha$, $\alpha'$, $\beta$, $\beta'$ satisfying
+    $\alpha\leq \alpha'$ and $\beta \leq \beta'$.
+    Then $\comm \alpha \beta \leq \comm{\alpha'}{\beta'}$.
+  \end{lemma}
+  \begin{proof}
+    For every $\delta \in \Con\bA$, $\CC{\alpha'}{\beta'}{\delta}$ implies
+    $\CC{\alpha}{\beta}{\delta}$, since $\alpha\leq \alpha'$ and $\beta \leq \beta'$.
+    In particular, $\CC{\alpha'}{\beta'}{[\alpha', \beta']}$ implies
+    $\CC{\alpha}{\beta}{[\alpha', \beta']}$, so
+    $\comm{\alpha}{\beta} \leq \comm{\alpha'}{\beta'}$.
+  \end{proof}
+
+  \begin{lemma}[\ref{lem:complete-meet-join-monotone}]
+    Let $\bA$ be an algebra with congruences
+    $\alpha_i$ and 
+    $\beta_i$ %% $\gamma_k$
+    %% are congruences of $\bA$, 
+    for all $i \in I$.
+    Then
+    \[
+    \bigl[ \Meet \alpha_i, \Meet \beta_i \bigr] 
+    \leq \Meet \comm {\alpha_i} {\beta_i}  \quad \text{ and } \quad
+    \Join \comm {\alpha_i} {\beta_i} \leq \bigl[ \Join \alpha_i, \Join \beta_i\bigr].
+    \]
+  \end{lemma}
+
+  \begin{proof}
+    By monotonicity, $\bigl[\Meet \alpha_i, \Meet \beta_i\bigr] \leq
+    \comm {\alpha_i} {\beta_i} \leq \bigl[\Join \alpha_i, \Join \beta_i\bigr]$,
+    for all $i \in I$.
+  \end{proof}
+}{}
+
+
+\subsection{Proof of Theorem~\ref{thm:glob-loc-diff-terms}}
+\label{sec:proof-thm:glob}
+\begin{theorem} %[\ref{thm:glob-loc-diff-terms}]
+  Let $\sV$ be a variety.  Let $\scA$ be a collection of finite idempotent
+  algebras in $\sV$. Fix $n\geq 2$ and 
+  let $S= ((A_0, \chi_0), (A_1, \chi_1), \dots, (A_{n-1}, \chi_{n-1}))\in \scS(\scA)^n$.
+  Then there exists a term that is a \glocal difference term for $S$
+  if and only if each 2-element subsequence $((A_i,\chi_i), (A_j,\chi_j))$ of $S$
+  has a \glocal difference term.
+\end{theorem}
+\begin{proof}
+  One direction is clear; if $d$ is a \glocal difference term for every
+  element $(A_i, \chi_i)$ of $S$, then  every pair $((A_i,\chi_i),
+  (A_j,\chi_j))$ of elements of $S$ also has a \glocal difference
+  term---namely, $d$.
+
+  For the converse, suppose that
+  for each pair $((A_i,\chi_i), (A_j,\chi_j))$ of elements of $S$ there exists a
+  term $p_{ij}$ that is a \glocal difference term for both
+  $(A_i,\chi_i)$ and $(A_j,\chi_j)$.
+  We will prove by induction on the length of $S$ that
+  %% , for every $n\geq 2$ every subsequence $S \in \scS(\scA)^n$
+  there exists a term $d$ that is a \glocal difference term for every
+  $(A_i, \chi_i)$ in $S$.
+
+  In the base case, $n = |S| = 2$, the claim holds by assumption.
+  Fix $n\geq 2$ and assume for every
+  $2\leq k \leq n$ that every sequence in $\scS(\scA)^k$
+  has a \glocal difference term. Let
+  $S = ((A_0, \chi_0), (A_1, \chi_1), \dots, (A_{n},\chi_{n})) \in \scS(\scA)^{n+1}$.
+  %% We prove there exists a term $d$ that is a \glocal difference term for every
+  %% $(A_i, \chi_i)$ in $S$.
+  We prove  $S$ has a \glocal difference term.
+
+  Since $|S| \geq 3$ and $\chi_i \in \{0,1\}$ for all $i$, there must exist
+  indices $i\neq j$ such that $\chi_i = \chi_j$. Assume without loss of generality
+  that one of these indices is $j=0$.  Define the subsequence
+  $S' = ((A_1, \chi_1), \dots,(A_{n},\chi_{n}))$ of $S$. %% \in \scS(\scA)^{n}$
+  Since $|S'| = n$, the sequence $S'$ has a \glocal difference term $p$.
+  Thus, for all $1\leq i \leq n$,
+  for all $a, b\in A_i$  we have
+  \begin{align*}
+    \text{ if $\chi_i=0$, then } &
+    a \Comr{\Cg(a,b)} d(a,b,b);\\
+    \text{ if $\chi_i=1$, then } &
+    %% d^{\bB_i}(b,b,b') = b'.
+    d(a,a,b) = b.
+  \end{align*}
+  We split the remainder of the proof into two cases.
+
+  \medskip
+
+%--------------------------------------
+\noindent \underline{Case $\chi_0 = 0$:}
+Without loss of generality, suppose that
+$\chi_1 = \chi_2 = \cdots =\chi_k = 1$,
+and
+$\chi_{k+1} = \chi_{k+2} = \cdots = \chi_{n} = 0$.
+Define
+%% the set
+%% \[P_0 = \{p(b, b', b')  \in B_0 \mid b, b' \in B_0\},\]
+%% and let
+\[
+T = ((A_0, 0), (A_1, 1), (A_2, 1), \dots, (A_k, 1)).
+\]
+Note that $|T| < |S|$.
+Let $t$ be a \glocal difference term for $T$.
+We will prove that the term $d(x,y,z) = t(x, p(x,y,y), p(x,y,z))$
+is a \glocal difference term for $S$.
+
+The first element of $S$ is $(A_0, 0)$, so we need to show for all $a$, $b \in A_0$
+that
+\[
+d(a,b,b) \Comr{\Cg(a,b)} a.
+\]
+Fix $a, b \in A_0$.
+By definition of $d$, and since
+$t$ is a \glocal difference term for $(A_0, 0)$,
+\begin{equation}
+  \label{eq:100100}
+  d(a,b,b) 
+  =t(a, c, c)\Comr{\Cg(a, c)} a,
+\end{equation}
+where $c = p(a,b,b)$.
+Now, $(a, c) = (p(a,a,a), p(a,b,b)) \in \Cg(a, b)$, therefore,
+$\Cg(a, c) \leq \Cg(a,b')$.
+It follows from this and monotonicity of the commutator that
+$\Com{\Cg(a, c)} \leq \Com{\Cg(a,b)}$,
+This and~(\ref{eq:100100}) imply
+$d(a,b,b)\Comr{\Cg(a,b)} a$,
+as desired.
+
+Next, consider the (possibly empty) set of indices $\{i \mid 1\leq i \leq k\}$.
+For such indices $\chi_i =1$, so we will prove
+for all $a$, $b \in A_i$ that $d(a,a,b) = b$.
+Fix $a, b \in A_i$ and observe that
+% \begin{align}
+%   %% d^{\bB_i}(b,b,b') &=
+%   d(a,a,b) &=
+%   t(a, p(a,a,a), p(a,a,b)) \label{eq:210200}\\
+%   &=t(a,a,b) \label{eq:220201}\\
+%   &=b. \label{eq:230202}
+% \end{align}
+% Equation~(\ref{eq:210200}) holds by definition of $d$,~(\ref{eq:220201})
+% because $p$ is an idempotent \glocal difference term for
+% $S'$, and~(\ref{eq:230202}) because $t$ is a \glocal difference term for $T$.
+\[
+  d(a,a,b) =
+  t(a, p(a,a,a), p(a,a,b)) % \label{eq:210200}\\
+  =t(a,a,b) % \label{eq:220201}\\
+  =b. % \label{eq:230202}
+\]
+The first equation holds by definition of $d$, the second
+because $p$ is an idempotent \glocal difference term for
+$S'$, and the third because $t$ is a \glocal difference term for $T$.
+
+The indices of the remaining elements of $S$
+belong to the set $\{j \mid k<j\leq n\}$ (which is nonempty since we
+assumed $\chi_0 = \chi_i = 0$ for some $i>0$).
+For such indices we have $\chi_j = 0$.
+Thus, fixing $a, b \in A_j$, we check that
+$d(a,b,b)\Comr{\Cg(a,b)} a$.
+%% Fix $a, b \in A_j$. 
+By definition,
+\begin{equation}
+  \label{eq:451}
+%% d^{\bA_j}(a,b,b) =t^{\bA_j}(a, p^{\bA_j}(a,b,b), p^{\bA_j}(a,b,b)).  
+d(a,b,b) =t(a, p(a,b,b), p(a,b,b)).  
+\end{equation}
+Also, $p(a,b,b) \Comr{\Cg(a,b)} a$,
+since $p$ is a \glocal difference term for $S'$.
+%% $(p(a,b,b), a)\in [\Cg(a,b), \Cg(a,b)]$.
+This and (\ref{eq:451}) imply
+that
+%% $(d(a, b,b), t(a,a,a))$ belongs to $\Com{\Cg(a,b)}$.
+$d(a, b,b) \Comr{\Cg(a,b)} t(a,a,a))$.
+Finally, by idempotence of $t$ we have
+$d(a,b,b)\Comr{\Cg(a,b)} a$,
+as desired.
+\\[4pt]
+%--------------------------------------
+\underline{Case $\chi_0 = 1$:}
+Without loss of generality, suppose $\chi_1 = \chi_2 =\cdots =\chi_k = 0$,
+and $\chi_{k+1} = \chi_{k+2} = \cdots = \chi_{n} = 1$.
+%% Define the set
+%% \[P_1 = \{p(b, b', b')  \in B_0 \mid b, b' \in B_0\},\]
+Define
+\[
+T = ((A_0, 1), (A_1, 0), (A_2, 0), \dots, (A_k, 0)).
+\]
+and note that $|T| < |S|$, so $T$ has a \glocal difference term $t$.
+We will prove that the term $d(x,y,z) = t(p(x,y,z), p(y,y,z), z)$
+is a \glocal difference term for $S$.
+
+The first pair in $S$ is $(A_0, 1)$, so we want to show for all $a$, $b \in A_0$ that
+$d(a,a,b) = b$.
+Fix $a$, $b \in A_0$. By definition of $d$,
+we have $d(a,a,b) = t(p(a,a,b), p(a,a,b), b) =b$.
+The last equality holds since $t$ is a \glocal difference term for $T$, in particular,
+for $(A_0, 1)$.
+
+Next, consider the (possibly empty) set of indices $\{i \mid 1\leq i \leq k\}$.
+For such indices $\chi_i =0$, so we will prove
+for all $a$, $b \in A_i$ that
+$d(a,b,b) \Comr{\Cg(a,b)} a$.
+Fix $a, b\in A_i$.
+By definition of $d$ and idempotence of $p$, 
+% \begin{align}
+%   d(a,b,b) &=
+%   t(p(a,b,b), p(b,b,b), b)   \label{eq:444}\\
+%   &=t(p(a,b,b), b, b). \nonumber
+% \end{align}
+\begin{equation}
+\label{eq:444}  
+  d(a,b,b) = t(p(a,b,b), p(b,b,b), b) =t(p(a,b,b), b, b).
+\end{equation}
+Next, since $p$ is a \glocal difference term for $S'$,
+hence for $(A_i, 0)$,
+\begin{equation}
+  \label{eq:555}
+  t(p(a,b,b), b, b)
+ \Comr{\Cg(a,b)}
+ t(a, b, b).
+\end{equation}
+Finally, since $t$ is a \glocal difference term for $T$, hence for
+$(A_i, 0)$  $(1\leq i \leq k)$, we have  %% 
+$t(a, b, b) \Comr{\Cg(a,b)} a$.
+This, (\ref{eq:444}), and (\ref{eq:555}) yield
+$d(a,b,b) \Comr{\Cg(a,b)} a$,
+as desired.
+
+The indices of the remaining elements of $S$
+belong to the set $\{j \mid k<j\leq n\}$ (which is nonempty since we
+assumed $\chi_0 = \chi_i = 1$ for some $i>0$).
+For such indices we have $\chi_j = 1$.
+Thus, fixing $a, b \in A_j$, we check that $d(a,a,b) = b$.
+Indeed, $p(a,a,b) = b$, since $p$ is a \glocal difference term for $S'$; 
+this, along with idempotence of $t$, yields
+$d(a,a,b) =t(p(a,a,b), p(a,a,b), b)=t(b, b, b) =b$.
+\end{proof}
+
+\subsection{Proof of Corollary~\ref{cor:glob-loc-diff-term}}
+\label{sec:proof-cor:glob}
+\begin{corollary} %[\ref{cor:glob-loc-diff-term}]
+  Let $\sV$ be a variety.  Let $\scA$ be a collection of finite idempotent
+  algebras in $\sV$. %% that is closed under the taking of subalgebras.
+  Then there exists a term $d$ that interprets as a difference term operation
+  for every algebra in $\scA$
+  if and only if each pair $((A,i), (B,j)) \in \scS(\scA)^2$ has a \glocal
+  difference term.
+\end{corollary}
+%% The proof of this result is also easy and very similar to the proof
+%% of~\ref{cor:loc-diff-term}; nevertheless, it appears in the appendix
+%% (see Section~\ref{sec:proof-thm:glob}).
+\begin{proof}
+  One direction is clear, since a term that is a difference term operation for
+  every $\bA \in \scA$ is obviously a \glocal difference term for
+  every $(A, i) \in \scS(\scA)$.
+  For the converse, suppose
+  each pair in $\scS(\scA)^2$ has a \glocal
+  difference term. Then, by Theorem~\ref{thm:glob-loc-diff-terms},
+  there is a single term $d$ that is a \glocal difference term for every 
+  $(A, i) \in \scS(\scA)$, 
+  and therefore $d$ interprets as a difference term operation for every $\bA \in \scA$.
+  To see this, choose an arbitrary $\bA = \<A, \dots\> \in \scA$ and fix $a, b \in A$. 
+  Then $a \Comr{\Cg(a,b)} d^{\bA}(a,b,b)$,
+  since $d$ is a \glocal difference term for $(A,0)$,
+  and $d^{\bA}(a,a,b) = b$, since $d$ is a \glocal
+  difference term for $(A,1)$. 
+  %% Since $a, b$ were arbitrary elements of $A$, we conclude that
+  %% $d$ is a difference term operation for $\bA$.
+\end{proof}
+
+
+
+%%%%%%%%%%%%%%%%%%%%   End of main body of article
+%
+%                             References
+%
+%   BiBTeX users uncomment the following line:
+%
+\bibliographystyle{plainurl} %jloganal}
+%
+%% \bibliographystyle{ws-ijac}
+%% \bibliographystyle{alphaurl}
+\bibliography{refs}
+%% \begin{thebibliography}
+%% \end{thebibliography}
+
+\end{document}
+
+
+
+% References must be ordered alphabetically and all have to be cited in the text. Citation should be done using, for instance,  \cite{1}
+% Please use the following model. If your references are not in such model, we have to change it, which rises a possibility for a mistake.
+
+\begin{thebibliography}{9}
+\bibitem{1}  Bohl, E., Discrete versus continuous models for dissipative
+systems. In: Numerical models for bifurcation problems. (T. Kr\"{u}pper,
+H.D. Mittelmann, H. Weber, eds.), pp. 68-78. Basel, Boston, Stuttgart:
+Birkh\"{a}user Verlag 1984.
+
+
+\bibitem{dm2}
+  Ili\'c, A., Ma\v sulovi\'c, D., Rajkovi\'c, U.,
+  Finite homomorphism-homogeneous tournaments with loops.
+  Journal of Graph Theory, Vol.\ 59 No.\ 1 (2008), 45--58.
+
+\bibitem{2}  O Reilly, M.J., A uniform scheme for the singularly perturbed
+Riccati equation. Numer. Math. 50 (1987), 483-501.
+
+\bibitem{3}  Ortega, J.M., Rheinboldt, W.C., Iterative solution of nonlinear
+equations in several variables. New York and London: Academic Press 1970.
+
+
+\bibitem{4} J\"{o}rg, B., Ferle\v{z}, J., Grabczewski, E., Public IST
+World Deliverable 1.2 -- Data Model for Knowledge Organisation.  2005. Available
+at: \url
+{http://ist-world.dfki.de/downloads/deliverables/ISTWorld_D1.2_DataModelForKnowledgeOrganisation.pdf}
+(accessed 4 September 2010)
+
+%Please use \url{} for hyperlinks
+
+\end{thebibliography}
+
+
+
+\end{document} 
