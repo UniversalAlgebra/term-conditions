@@ -455,6 +455,7 @@ Another well-known result, whose proof also appears in the appendix
 \end{lemma}
 
 
+\begin{comment}
 
 \subsection{Alternate description of the commutator}
 \label{sec:altern-descr-comm}
@@ -464,10 +465,10 @@ belongs to the commutator in question. This  description is
 similar to the one in~\cite[p.~930]{MR1358491}.
 
 If $\alpha$  and $\beta$ are binary relations on $A$,
-we let $\alpha \otimes \beta$ denote
+we let $\alpha \mytimes \beta$ denote
 the following binary relation on $A^2$:
 \[
-\alpha \otimes \beta := \{\bigl((x,y), (x', y')\bigr) \mid x\alphar x' \text{
+\alpha \mytimes \beta := \{\bigl((x,y), (x', y')\bigr) \mid x\alphar x' \text{
   and } y\betar y'\}.
 \]  
 We reserve $\alpha \times \beta$ for the usual Cartesian product
@@ -480,7 +481,7 @@ let $\bbeta$ denote the subalgebra of $\bA\times \bA$ with universe
 $\beta$.
 Let $0_A = \{(a,a) \mid a\in A\}$, let
 \begin{align}
-D_\alpha&:=(\alpha \otimes \alpha) \cap (0_A\times 0_A) = 
+D_\alpha&:=(\alpha \mytimes \alpha) \cap (0_A\times 0_A) = 
 \{((a,a), (b,b)) \in 0_A \times 0_A \mid a\alphar b\}, \text{ and let }\\
 \Delta_{\beta, \alpha} &:= \Cg^{\bbeta}(D_\alpha ). 
 \end{align}
@@ -529,12 +530,12 @@ takes each $B \subseteq \beta$ to
 Let $\Psi_{\beta, \alpha} \colon \Eq(\beta) \to \Eq(\beta)$ be the function that
 takes each $R \in \Eq(\beta)$ to the equivalence relation
 \begin{align*}
-  \Psi_{\beta, \alpha}(R) &= \Delta_{\beta, \alpha} \circ (R \otimes R) \circ \Delta_{\beta, \alpha} \\
+  \Psi_{\beta, \alpha}(R) &= \Delta_{\beta, \alpha} \circ (R \mytimes R) \circ \Delta_{\beta, \alpha} \\
   &= \{\bigl((x,y), (x',y')\bigr) \mid \bigl(\exists (r, r') \in R\bigr) \;
   \bigl((x,y) \mathrel{\Delta_{\beta, \alpha}} (r,r) \; \text{ and } \;  (r',r')
   \mathrel{\Delta_{\beta, \alpha}} (x'y')\bigr)\}\\
   &= \{\bigl((x,y), (x',y')\bigr) \mid \bigl(\exists (r, r')\bigr) \;
-  (x,y) \mathrel{\Delta_{\beta, \alpha}} (r,r) \mathrel{(R \otimes R)} (r',r')
+  (x,y) \mathrel{\Delta_{\beta, \alpha}} (r,r) \mathrel{(R \mytimes R)} (r',r')
   \mathrel{\Delta_{\beta, \alpha}} (x'y')\}.
 \end{align*}
 %% \newcommand{\Phiba}{\ensuremath{\Phi_{\beta, \alpha}}}
@@ -556,6 +557,7 @@ commutator $[\alpha, \beta]$.
 \noindent (A proof of Lemma~\ref{lem:fixed-point-comm} appears in Appendix
 Section~\ref{sec:fixed-point-lemma} below.)
 
+\end{comment}
 
 \section{Main Result}
 Our goal is to prove Theorem~\ref{thm:main-result} below. Our proof will use the following lemma.
@@ -608,7 +610,7 @@ by the set $\{(x, x), (x, y), (y, y)\}$ (as above).
 Recall from Lemma~\ref{lem:preliminary-facts}~(\ref{item:1}) that
 $\Com{\Cg^{\bF}(x,y)} = [1_{F},1_{F}]$.  Therefore, if we can prove 
 \begin{equation}
-  \label{eq:0000001}
+  \label{eq:001}
 %% R \cap \bigl(\{y\} \times (x/\Com{\Cg^{\bF_1}(x,y)})\bigr) \neq \emptyset.
 R \cap \bigl(\{y\} \times (x/[1_{F_1},1_{F_1}])\bigr) \neq \emptyset,
 \end{equation}
@@ -629,7 +631,7 @@ That is,
 %% \end{equation}
 $(t^{\bF}(x,y,y),x) \in \Com{\Cg^{\bF}(x,y)}$ and
 $t^{\bF}(x,x,y) = y$, which means that $t^{\bF}$ is a difference term operation 
-for $\bF$.  In short, to prove the theorem it suffices to establish~(\ref{eq:0000001}). 
+for $\bF$.  In short, to prove the theorem it suffices to establish~(\ref{eq:001}). 
 
 %% Of course, $[1_F, 1_F]\leq 1_F$ and
 %% Lemma~\ref{lem:preliminary-facts}~(\ref{item:1.5}) dispenses with 
@@ -698,7 +700,7 @@ first and second factors of the product is no longer helpful.)
 If~(\ref{item:6}) holds, then we're done since in that case
 $(y, x/[1_{\Fone},1_{\Fone}]) \in R/(\etaR_0 \meet \rho_1)$,
 which implies $(y, z) \in R$ for some $z \comr{1_{\Fone}} x$.
-That is, (\ref{eq:1}) holds.
+That is, (\ref{eq:001}) holds.
 We can rule out case~(\ref{item:8}) because $\bFone/[1_{\Fone}, 1_{\Fone}]$ is abelian and
 is therefore absorption free
 (see~Appendix Section~\ref{sec:proof-that-abelian} below).
@@ -800,11 +802,11 @@ It is important, especially in this section, to be clear about what we mean
 by the product of two equivalence relations.
 Let $A$ and $B$ be sets and let $\alpha \in \Eq(A)$ and $\beta \in \Eq(B)$
 be equivalence relations on $A$ and $B$, respectively.
-We denote by $\alpha \otimes \beta$ the \emph{pairwise product} relation,
+We denote by $\alpha \mytimes \beta$ the \emph{pairwise product} relation,
 which we define as follows:
 \begin{equation}
 \label{eq:pair-product}
-\alpha \otimes \beta = \{\bigl((a, b), (a', b')\bigr) 
+\alpha \mytimes \beta = \{\bigl((a, b), (a', b')\bigr) 
 \in (A\times B)^2 \mid a\mathrel{\alpha} a', \, b\mathrel{\beta} b'\}.
 \end{equation}
 In contrast, the Cartesian product of $\alpha$ and $\beta$ is 
@@ -814,19 +816,19 @@ In contrast, the Cartesian product of $\alpha$ and $\beta$ is
 \in A^2\times B^2 \mid a\mathrel{\alpha} a', \, b\mathrel{\beta} b'\}.
 \end{equation}
 
-Notice that $\alpha \otimes \beta$ defines an equivalence relation on the set
+Notice that $\alpha \mytimes \beta$ defines an equivalence relation on the set
 $A\times B$, whereas $\alpha\times \beta$ is generally
 not even a binary relation on a set.
-The equivalence class of $\alpha \otimes \beta$ containing the pair
+The equivalence class of $\alpha \mytimes \beta$ containing the pair
 $(a, b)$ is % \in A\times B$ is
-  \[(a,b)/(\alpha \otimes \beta) = a/\alpha \times b/\beta= 
+  \[(a,b)/(\alpha \mytimes \beta) = a/\alpha \times b/\beta= 
     \{(a', b') \in A\times B \mid a\mathrel{\alpha} a', \, b\mathrel{\beta} b'\},
     \]
 This is simply the Cartesian product of the sets $a/\alpha$ and $b/\beta$.
 The collection of all such equivalence classes is also a Cartesian product, namely,
 \[
-(A\times B)/(\alpha \otimes \beta) =
-A/\alpha \times B/\beta  = \{(a, b)/(\alpha \otimes \beta) \mid a\in A,\,b \in B\}.\]
+(A\times B)/(\alpha \mytimes \beta) =
+A/\alpha \times B/\beta  = \{(a, b)/(\alpha \mytimes \beta) \mid a\in A,\,b \in B\}.\]
 %% \begin{remarks}\
 %%   \begin{enumerate}
 %%   \item The equivalence relations $\alpha$ and $\beta$ are subsets
@@ -1033,16 +1035,50 @@ $1_F \subseteq 1_{A_0 \times A_1 \times A_2}$, so by monotonicity of the commuta
 $\com{1_F} \subseteq \com{1_{A_0\times A_1\times A_2}}$ holds.
 
 Our goal is to prove~(\ref{eq:3}), namely,
-  $d^{\bF}(\bx, \by, \by) \comr{1_F} \bx$. To do so, we will exploit the
-alternate description of the commutator from
-Section~\ref{sec:altern-descr-comm}.
-In the present context, $\bbeta$ is represented by 
+  $d^{\bF}(\bx, \by, \by) \comr{1_F} \bx$. 
+To do so, we will exploit a well-known alternative description of the commutator.
+Let $\Tol(A)$ denote the collection of all tolerances (reflexive symmetric relations)
+on the set $A$,\footnote{Actually, a
+  \emph{tolerance} of an algebra $\bA = \<A, \dots\>$
+  is a reflexive symmetric subalgebra of $\bA \times \bA$.
+  Therefore, the set of all tolerances of $\bA$ forms an
+  algebraic (hence complete) lattice.
+  If we drop the operations and consider only the set $A$, then a tolerance relation on $A$
+  is simply a reflexive symmetric binary relation.
+}
+and let 
+$\Psi_{\beta, \alpha} \colon \Tol(A) \to \Tol(A)$ be the function defined
+for each $T \in  \Tol(A)$ follows:
+\begin{equation}
+  % \label{eq:7}
+  \Psi_{\beta, \alpha}(T)
+  = \{ (x,y) \in A\times A \mid
+  (\exists\, (a,b) \in T)\,
+ (a,b) \mathrel{\Delta_{\beta, \alpha}} (x,y)\},
+\end{equation}
+where
+$\Delta_{\beta, \alpha} = \Cg^{\bbeta}(D_\alpha)$ and
+$D_\alpha =(\alpha \mytimes \alpha) \cap (0_A \times 0_A)$.
+It can be shown that $\Psiba$ is a closure operator with fixed point 
+$\comm{\alpha}{\beta}$, and this leads to the following simple description of
+the commutator:
+  \begin{align*}
+    %% \label{eq:55}
+          [\alpha, \beta] =
+          \Psiba(0_A)
+          &= \{ (x,y) \in A\times A \mid
+          (\exists\, (a,b) \in 0_A)\, (a,b) \mathrel{\Delta_{\beta, \alpha}} (x,y)\}\\
+          &= \{ (x,y) \in A\times A \mid
+          (\exists a \in A)\, (a,a) \mathrel{\Delta_{\beta, \alpha}} (x,y)\}.
+  \end{align*}
+
+In the present context, $\bbeta$ is 
 $1_F$, the universe of the algebra $\bF\times \bF$.
 Let %% $D = \{(x,x) \mid x\in F\}$ and 
 \[
 D = \{(x,x) \mid x\in F\}, \quad
-D^2_{1_F} = \{\bigl((a,a), (b,b)\bigr) \in D^2 \mid a, b \in F\}, \quad
-\Delta = \Delta_{1_F, 1_F} = \Cg^{\bF^2}(D_{1_F}^2). %= \Cg^{\bF^2}(D^2).  
+D_{1_F} = \{\bigl((a,a), (b,b)\bigr) \in D^2 \mid a, b \in F\}, \quad
+\Delta = \Delta_{1_F, 1_F} = \Cg^{\bF^2}(D_{1_F}). %= \Cg^{\bF^2}(D^2).  
 \]
 %% \begin{align*}
 %% \nonumber D &= \{(x,x) \mid x\in F\}\\
@@ -1056,7 +1092,7 @@ D^2_{1_F} = \{\bigl((a,a), (b,b)\bigr) \in D^2 \mid a, b \in F\}, \quad
 %% \quad \text{ and }\quad 
 %% \Delta := \Delta_{1_F, 1_F} = \Cg^{\bF^2}(D_{1_F}^2). %= \Cg^{\bF^2}(D^2).  
 %% \]
-Then $D^2_{1_F} = D\times D$, so $\Delta = \Cg^{\bF^2}(D\times D)$.
+Then $D_{1_F} = D\times D$, so $\Delta = \Cg^{\bF^2}(D\times D)$.
 %% That is, here $D^2_{1_F}$ is simply the square of the diagonal set, that is, 
 %% \begin{equation*}
 %%   %% \label{eq:10}
@@ -1075,7 +1111,7 @@ Then $D$ is a class of $\Delta$ and $\bF$ is abelian.
 In that case, $\bF$ is absorption free
 (see Lemma~\ref{lem:abelian-AF}) and the Absorption Theorem implies
 $\bR  = \bF \times \bF$.
-Our earlier goal~(\ref{eq:0000001}) is
+Our earlier goal~(\ref{eq:001}) is
 trivially satisfied in this case. Therefore, we proceed under the assumption that $\bF$ is
 nonabelian, or equivalently, that no congruence of $\bF^2$ has a class that is
 exactly the diagonal set, $D = \{(x,x) \mid x\in F\}$.
@@ -1089,8 +1125,8 @@ takes each $B \subseteq F\times F$ to
 We now prove that
 $\bigl(d^{\bF}(\bx, \by, \by), \bx \bigr) \in  \Phi \com{1_F}$.
 This will complete the proof of (\ref{eq:3}), since
-$\Phi \com{1_F} \subseteq \com{1_F}$ by
-Lemma~\ref{lem:fixed-point-comm}.
+$\Phi \com{1_F} \subseteq \com{1_F}$.
+ % byLemma~\ref{lem:fixed-point-comm}.
 By (\ref{eq:666}), 
 $(d^{\bF}(\bx, \by, \by), \bx ) \in  \Phi \com{1_F}$ iff
 $(d^{\bF}(\bx, \by, \by), \bx ) \mathrel{\Delta} (b, b')$
@@ -1112,7 +1148,7 @@ each $i \in \{0,1,2\}$, so
 \begin{equation*}
   % \label{eq:4}
 \bigl(d^{\bA_0}(a_0, b_0, b_0), d^{\bA_1}(a_1, b_1, b_1), d^{\bA_2}(a_2, b_2, b_2)\bigr)
- \mathrel{\com{1_{A_0}} \otimes  \com{1_{A_1}} \otimes \com{1_{A_2}}} (a_0, a_1, a_2),
+ \mathrel{\com{1_{A_0}} \mytimes  \com{1_{A_1}} \mytimes \com{1_{A_2}}} (a_0, a_1, a_2),
 \end{equation*}
 but we can do better.
 Indeed, by assumption~(\ref{item:14}),
@@ -1126,13 +1162,13 @@ Combining this with assumption~(\ref{item:13}) we have
 \[
 \bigl(d^{\bA_0\times \bA_1}((a_0, a_1), (b_0,b_1), (b_0, b_1)),
 d^{\bA_2}(a_2, b_2,b_2)\bigr)
-\mathrel{\com{1_{A_0\times A_1}} \otimes \com{1_{A_2}}}
+\mathrel{\com{1_{A_0\times A_1}} \mytimes \com{1_{A_2}}}
 \bigl((a_0, a_1),a_2\bigr).
 \]
 and 
 \[
 \bigl(d^{\bA_0}(a_0, b_0, b_0), d^{\bA_1\times \bA_2}((a_1, a_2), (b_1,b_2), (b_1, b_2))\bigr)
-\mathrel{\com{1_{A_0}} \otimes \com{1_{A_1\times A_2}}} \bigl(a_0, (a_1, a_2)\bigr).
+\mathrel{\com{1_{A_0}} \mytimes \com{1_{A_1\times A_2}}} \bigl(a_0, (a_1, a_2)\bigr).
 \]
 This is an improvement, % improves upon~(\ref{eq:4}), 
 but we still haven't made full use of our assumptions.
@@ -1154,8 +1190,8 @@ $\com{1_F} \subseteq \com{1_{A_0\times A_1\times A_2}}$ holds.
 \\[4pt]
 {\bf Question.} How do the following congruence relations compare?
 \begin{enumerate}
-\item $\com{1_{A_0}} \otimes \com{1_{A_1\times A_2}}$
-\item $\com{1_{A_0\times A_1}} \otimes \com{1_{A_2}}$
+\item $\com{1_{A_0}} \mytimes \com{1_{A_1\times A_2}}$
+\item $\com{1_{A_0\times A_1}} \mytimes \com{1_{A_2}}$
 \item $\com{1_{A_0\times A_1\times A_2}}$
 \item $\com{1_F}$
 \end{enumerate}
@@ -1163,12 +1199,12 @@ $\com{1_F} \subseteq \com{1_{A_0\times A_1\times A_2}}$ holds.
 \medskip
 
 \[
-\Com{1_{A_0}} \otimes \Com{1_{A_1\times A_2}} = 
+\Com{1_{A_0}} \mytimes \Com{1_{A_1\times A_2}} = 
 \{(\bx, \by) \mid x_0 \Comr{1_{A_0}} y_0 \, \text{ and } \, 
 (x_1, x_2) \Comr{1_{A_1\times A_2}} (y_1, y_2)\}.
 \]
 \[
-\Com{1_{A_0\times A_1}} \otimes\Com{1_{A_2}} = 
+\Com{1_{A_0\times A_1}} \mytimes\Com{1_{A_2}} = 
 \{(\bx, \by) \mid  
 (x_0, x_1) \Comr{1_{A_0\times A_1}} (y_0, y_1)\, \text{ and } \, x_2 \Comr{1_{A_2}} y_2 
 \}.
@@ -1233,18 +1269,18 @@ Let $\sV$ be a variety and let $\bA$ and $\bB$ be idempotent
 algebras in $\sV$.
 Recall the following standard notation:
 if $\alpha \in \Con(\bA)$ and $\beta \in \Con(\bB)$, then
-$\alpha \otimes \beta$ denotes the set of pairs $((a,b),(a',b'))$ satisfying
+$\alpha \mytimes \beta$ denotes the set of pairs $((a,b),(a',b'))$ satisfying
 $a \mathrel{\alpha} a'$ and $b \mathrel{\beta} b'$.  The relation 
-$\alpha \otimes \beta$ is clearly a congruence of $\bA \times \bB$.
+$\alpha \mytimes \beta$ is clearly a congruence of $\bA \times \bB$.
 
 Fix $(a, b)$ and $(a', b')$ in $A \times B$, and consider the claim 
 \begin{equation}
   \label{eq:999}
-\Cg^{\bA}(a,a') \otimes \Cg^{\bB}(b,b')
+\Cg^{\bA}(a,a') \mytimes \Cg^{\bB}(b,b')
 =\Cg^{\bA \times \bB}((a, b), (a', b')).
 \end{equation}
 
-Let $\tau := \Cg^{\bA}(a,a') \otimes \Cg^{\bB}(b,b')$  %%  \in \Con(\bA \times \bB)$
+Let $\tau := \Cg^{\bA}(a,a') \mytimes \Cg^{\bB}(b,b')$  %%  \in \Con(\bA \times \bB)$
 and $\theta:= \Cg^{\bA \times \bB}((a, b), (a', b'))$.
 First note that $\tau$ is a (pairwise) product of a congruence
 of $\bA$ with a congruence of $\bB$, so $\tau$ is a congruence of $\bA\times \bB$.
@@ -1421,8 +1457,8 @@ $\Pol_1(\bA \times \bB)$ such that
 %   &= \bigl(f^{\bA} (a'), s^{\bB}(b', \dots, b')\bigr)= \bigl(f^{\bA} (a'), b'\bigr).
 % \end{align*}
 
-\newpage
-
+% \newpage
+\bigskip
 \section{Miscellaneous Theorems}
 We collect here the statement and proofs of results that we used above but whose
 proofs were omitted from the main body above so as not to iterrupt the flow.
@@ -1656,8 +1692,8 @@ Finite idempotent abelian algebras are absorption-free.
   $s(\bb, a) = t_m(\bb, a,a) \in B$, as desired.
 \end{proof}
 
+\begin{comment}
 \bigskip
-
 \subsection{Fixed Point Lemma}
 \label{sec:fixed-point-lemma}
 \begin{lem}[Lem.~\protect{\ref{lem:fixed-point-comm}} above]
@@ -1826,8 +1862,8 @@ by~(\ref{item:1}).
     Since  $(p(a, \bc), p(a, \bc')) \in B$, this proves
     $(p(a', \bc), p(a', \bc')) \in \Phiba(B)$, completing the proof.
   \end{proof}
-
 \bigskip
+\end{comment}
 
 \subsection{Absorption Theorem (Barto and Kozik)}
 % K and Theorem 3.2 of BKS}
@@ -1862,8 +1898,8 @@ $\bA$ has a proper absorbing subuniverse, or $\bB$ has a proper absorbing subuni
   absorption-free (see \cite[Proposition 2.1.(1)]{MR3374664}).
   Let $\bR$ be the subalgebra of $\bF^2$ generated by
   $(x, y), (x, x), (y, x)$. It is subdirect in $\bF^2$.
-  Since $\bF$ is idempotent, $\etaR_A \join \etaR_B = 1_R$
-  (as observed in Lemma~\ref{lem:preliminary-facts}~(\ref{item:5})).
+  Since $\bF$ is idempotent, $\etaR_A \join \etaR_B = 1_R$.
+  % (as observed in Lemma~\ref{lem:preliminary-facts}~(\ref{item:5})).
   Consequently, by Theorem~\ref{thm:absorption},
   $\bR = \bF^2$, and there is a term $m$ witnessing
   that $(y, y) \in R$, i.e., a term $m$ satisfying
