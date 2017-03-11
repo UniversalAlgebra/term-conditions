@@ -4,17 +4,20 @@
 % \usepackage{pgfpages} 
 % \pgfpagesuselayout{4 on 1}[letterpaper,landscape,border shrink=3mm]
 \usepackage{amsmath}
+\usepackage{mathtools}
 \usepackage{helvet}
+%% \usepackage{../nsjom/macros}
 \usepackage{../notes/inputs/macros}
-% \usepackage{../inputs/macros}
 \usepackage{comment}
 \usepackage{xspace}
 \usepackage{pifont}
 \usepackage[all,cmtip,arrow]{xy}  %for xy-pic fonts
+\usepackage{../notes/inputs/proof-dashed}
 %%macs
 %For this presentation, I don't want citations
 \renewcommand{\cite}[1]{\relax}
 \renewcommand{\defn}[1]{\alert{#1}}
+\newcommand{\defin}[1]{\alert{#1}}
 % \newcommand{\V}{\ensuremath{\mathcal V}\xspace}
 % \newcommand{\mbold}[1]{\ensuremath{\mathbf{#1}}\xspace}
 % \makecs{\mbold}{ABDP}
@@ -77,7 +80,155 @@
 \setbeamercolor{block body example}%
 {parent=normal text,use=block title example,bg=block title example.bg!25!bg}
 
+%====================================================================
+\section{Introduction}
+\newcommand\oftype{\ensuremath{\mathrel{:}}}
+%--------------------------------------------------------------------
+\subsection{Preliminaries}
+
 \begin{frame}
+  \frametitle{What is the commutator?}
+  Let $\bA$ be an algebra.
+
+  $\CC{1_A}{1_A}{0_A}$ denotes the following statement:
+
+  $\forall \, t\in \sansClo_{\ell + m}(\bA)$, 
+  $\forall \, \ba, \bb\in A^\ell$,
+  $\forall \, \bu, \bv\in A^m$,
+  \begin{equation}
+    \label{eq:210}
+    t(\ba,\bu) = t(\ba,\bv)\quad \iff \quad t(\bb,\bu) = t(\bb,\bv),
+  \end{equation}
+  \pause
+  
+  We say ``$\CC{1_A}{1_A}{0_A}$ holds'' and write $\com{1_A} = 0_A$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{What is the commutator?}
+  \framesubtitle{the rule $\CC{1_A}{1_A}{0_A}$}
+  Let $\Gamma$ be a ``context'' containing
+  \[
+  \bA \oftype \sV, \qquad 
+  t \oftype \sansClo_{\ell + m}(\bA), \qquad
+  \ba, \bb \oftype A^\ell, \qquad \bu, \bv\oftype A^m
+  \]
+  Then the statement ``$\CC{1_A}{1_A}{0_A}$ holds'' can be viewed as a
+  \emph{derivation rule}
+  \[
+  %% \infer[\CC{1_A}{1_A}{0_A}]%
+  \infer{\Gamma \vdash  t(\bb,\bu) = t(\bb, \bv)}%
+        {\Gamma \vdash  t(\ba,\bu) = t(\ba, \bv)}
+  \]
+  %% \[
+  %% \infer[\CC{1_A}{1_A}{0_A}]%
+  %%        {\Gamma \vdash \bigl(\forall \,\bb \oftype A^\ell\bigr) \; t(\bb,\bu) = t(\bb, \bv)}%
+  %%        {\Gamma \vdash \bigl(\exists \,\ba \oftype A^\ell\bigr) \; t(\ba,\bu) = t(\ba, \bv)}
+  %% \]
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{What is the commutator?}
+  \framesubtitle{the rule $\CC{S}{T}{0_A}$}
+  In a context $\Gamma$ containing
+  \begin{gather*}
+    \bA  \oftype \sV \qquad      \bu, \bv \oftype A^m   \qquad \ba, \bb \oftype A^\ell \\
+    t \oftype \sansClo_{\ell + m}(\bA) \qquad S, T \oftype \Tol(\bA)
+  \end{gather*}
+  %% \begin{gather*}
+  %%   \bA \oftype \sV \qquad 
+  %%   t \oftype \sansClo_{\ell + m}(\bA) \qquad
+  %%   S, T \oftype \Tol(\bA) \\
+  %%   \ba, \bb \oftype A^\ell \qquad
+  %%   \bu, \bv \oftype A^m
+  %% \end{gather*}
+  $\CC{S}{T}{0_A}$ corresponds to the derivation rule
+  \[
+  %% \infer[\CC{S}{T}{0_A}]%
+  \infer{\Gamma \vdash t(\bb,\bu) = t(\bb, \bv)}%
+        {\Gamma \vdash \ba \mathrel{\bS} \bb & \Gamma \vdash \bu \mathrel{\bT} \bv & \Gamma \vdash t(\ba,\bu) = t(\ba, \bv)}
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{What is the commutator?}
+  \framesubtitle{the rule $\CC{S}{T}{\delta}$}
+  In a context $\Gamma$ containing
+  %% \begin{alignat*}{3}
+  %%   \bA  &\oftype \sV \qquad    &        t &\oftype \sansClo_{\ell + m}(\bA)\\
+  %%   \bu, \bv &\oftype A^m \qquad &S, T &\oftype \Tol(\bA) \\
+  %%   \ba, \bb &\oftype A^\ell \qquad & \delta &\oftype \Con(\bA)
+  %%   \end{alignat*}
+  %% \begin{alignat*}{4}
+  %%   \bA  &\oftype \sV \qquad    &  \bu, \bv &\oftype A^m   \qquad &\ba, \bb &\oftype A^\ell \\
+  %%   t &\oftype \sansClo_{\ell + m}(\bA) \qquad &S, T &\oftype \Tol(\bA)\qquad & \delta &\oftype \Con(\bA)
+  %%   \end{alignat*}
+  \begin{gather*}
+    \bA  \oftype \sV \qquad      \bu, \bv \oftype A^m   \qquad \ba, \bb \oftype A^\ell \\
+    t \oftype \sansClo_{\ell + m}(\bA) \qquad S, T \oftype \Tol(\bA)\qquad  \delta \oftype \Con(\bA)
+  \end{gather*}
+  $\CC{S}{T}{\delta}$ is the rule
+  \[
+  %% \infer[\CC{S}{T}{\delta}]%
+  \infer{\Gamma \vdash t(\bb,\bu) \deltar t(\bb, \bv)}%
+        {\Gamma \vdash \ba \mathrel{\bS} \bb & \Gamma \vdash \bu \mathrel{\bT} \bv & \Gamma \vdash t(\ba,\bu) \deltar t(\ba, \bv)} 
+        \]
+        \pause
+        %% The \defn{commutator} $\comm{S}{T}$ is the least $\delta \in \Con \bA$ such that
+        %% $\CC{S}{T}{\delta}$ is a rule.
+        The \defn{commutator} is the least $\delta$ such that
+        $\CC{S}{T}{\delta}$ is a valid rule.
+        \pause
+        \[\comm{S}{T} = \Meet \{\delta \in \Con \bA \mid \CC{S}{T}{\delta} \text{ holds}\}\]
+
+\end{frame}
+
+
+
+\begin{frame}{Definitions: Term Condition, Commutator}
+  Suppose $S$ and $T$ are \emph{tolerances} on $\bA$\\[4pt]
+  {\small (i.e., $S$ and $T$ are compatible, reflexive, and symmetric)}
+
+  \pause
+  An \defin{$S,T$-matrix} is a $2\times 2$ array of the form
+  \[
+  \begin{bmatrix*}[r] t(\ba,\bu) & t(\ba,\bv)\\ t(\bb,\bu)&t(\bb,\bv)\end{bmatrix*},
+  \]
+  where 
+  \begin{enumerate}[(i)] %[label=(\roman*)]
+  \item $t\in \sansClo_{\ell + m}(\bA)$
+  \item $(\ba, \bb)\in A^\ell\times A^\ell$ and $\ba \mathrel{\bS} \bb$
+    (i.e. $\forall i$ $a_i \mathrel{S} b_i$)
+  \item $(\bu, \bv)\in A^m\times A^m$ and $\bu \mathrel{\bT} \bv$.
+  \end{enumerate}
+
+  \pause
+  For $\delta \in \Con\bA$ if every $S,T$-matrix satisfies
+  \begin{equation}
+    \label{eq:22}
+    t(\ba,\bu) \mathrel{\delta} t(\ba,\bv)\quad \iff \quad t(\bb,\bu) \mathrel{\delta} t(\bb,\bv),
+  \end{equation}
+  we say \defin{$S$ centralizes $T$ modulo $\delta$} and write 
+  $\CC{S}{T}{\delta}$.
+
+  That is, $\CC{S}{T}{\delta}$  means
+  (\ref{eq:22}) holds \emph{for all}
+  $\ell$, $m$, $t$, $\ba$, $\bb$, $\bu$, $\bv$ satisfying (i)--(iii).
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+  \begin{frame}
 \frametitle{What is a difference term?}
 Let $\sV$ be a variety. %% \onslide<3>{{\color{gray}(idempotent?)}}
 
@@ -106,7 +257,7 @@ with $\Cg^{\bA}(a,b)$ in the def.
 
 
 \begin{frame}
-\frametitle{Easy facts}
+\frametitle{Remarks}
 
 Recall, $d(x,y,z)$ is a \alert{difference term}
 if for all $\bA \in \sV$ and all $(a,b) \in \theta\in \Con\bA$
@@ -141,6 +292,9 @@ the third projection $d^{\bA}(x,y,z) = z$ satisfies (\ref{eq:4}).
 % $d^{\bA}$ a \defn{difference term operation} for $\bA$.
 \end{frame}
 
+
+%--------------------------------------------------------------------
+\subsection{Motivation}
 
 \begin{frame}
   \frametitle{Motivation}
@@ -185,6 +339,7 @@ Difference terms are studied extensively in the literature.
 \end{itemize}
 \end{frame}
 
+
 \begin{frame}
   \frametitle{Motivation}
   Knowing a variety has a difference term allows us to deduce useful
@@ -200,8 +355,12 @@ Difference terms are studied extensively in the literature.
   \onslide<2>{{\color{gray}(locally finite?)}}
 \end{frame}
 
+
+%--------------------------------------------------------------------
+\subsection{Main Problem: decide whether difference terms exist}
+
 \begin{frame}
-  \frametitle{Computational Problem}
+  \frametitle{Computational Decision Problem}
   \begin{problem}[1]
   \label{prob:1}
   Is there a polynomial-time algorithm that takes a finite
@@ -218,7 +377,59 @@ We solve an the following easier problem:
 \end{problem}
 \end{frame}
 
-%%%% LOC DIFF TERMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%--------------------------------------------------------------------
+\subsection{Definitions}
+
+\begin{frame}{Definitions: Term Condition, Commutator}
+  Suppose $S$ and $T$ are \emph{tolerances} on $\bA$\\[4pt]
+  {\small (i.e., $S$ and $T$ are compatible, reflexive, and symmetric)}
+
+  \pause
+  An \defin{$S,T$-matrix} is a $2\times 2$ array of the form
+  \[
+  \begin{bmatrix*}[r] t(\ba,\bu) & t(\ba,\bv)\\ t(\bb,\bu)&t(\bb,\bv)\end{bmatrix*},
+  \]
+  where 
+  \begin{enumerate}[(i)] %[label=(\roman*)]
+  \item $t\in \sansClo_{\ell + m}(\bA)$
+  \item $(\ba, \bb)\in A^\ell\times A^\ell$ and $\ba \mathrel{\bS} \bb$
+    (i.e. $\forall i$ $a_i \mathrel{S} b_i$)
+  \item $(\bu, \bv)\in A^m\times A^m$ and $\bu \mathrel{\bT} \bv$.
+  \end{enumerate}
+
+  \pause
+  For $\delta \in \Con\bA$ if every $S,T$-matrix satisfies
+  \begin{equation}
+    \label{eq:22}
+    t(\ba,\bu) \mathrel{\delta} t(\ba,\bv)\quad \iff \quad t(\bb,\bu) \mathrel{\delta} t(\bb,\bv),
+  \end{equation}
+  we say \defin{$S$ centralizes $T$ modulo $\delta$} and write 
+  $\CC{S}{T}{\delta}$.
+
+  That is, $\CC{S}{T}{\delta}$  means
+  (\ref{eq:22}) holds \emph{for all}
+  $\ell$, $m$, $t$, $\ba$, $\bb$, $\bu$, $\bv$ satisfying (i)--(iii).
+\end{frame}
+
+
+\begin{frame}{Definitions: Term Condition, Commutator}
+  The \defin{commutator} $[S, T]$ is the least
+  $\delta$ such that $\CC{S}{T}{\delta}$.
+
+  The \defin{$S, T$-term condition} is $\CC{S}{T}{0_A}$ (i.e., $[S,T] = 0_A$)
+
+  A tolerance $T$ is called \defin{abelian} if $[T, T] = 0_A$.  
+
+  An algebra $\bA$ is called \defin{abelian} if $1_A$ is abelian
+  (i.e., $[1_A,1_A] = 0_A$).
+
+\end{frame}
+
+%=========================================================================
+\section{Local Difference Terms}
 \begin{frame}{Local Difference Terms}
 
 % In~\cite{MR3239624},
@@ -242,9 +453,7 @@ variety is $n$-permutable.
 
 \end{frame}
 
-
-
-%%%% LOC DIFF TERMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Notation and Definitons}
 \begin{frame}{Notation}
 
   If $\theta$ is a tolerance or congruence of $\bA$, we abreviate
@@ -263,7 +472,6 @@ variety is $n$-permutable.
 \end{frame}
 
 
-%%%% LOC DIFF TERMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Local Difference Terms}
 
   Let $\bA=\< A, \dots\>$ be an algebra, fix $a, b \in A$ and
@@ -283,7 +491,7 @@ variety is $n$-permutable.
   \hskip1cm \defn{local difference term for the set $S$}.
 \end{frame}
 
-%%%% LOC DIFF TERMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}{Local Difference Terms}
   Let 
   $\sS = A \times A \times \{0,1\}$ and
@@ -311,7 +519,8 @@ variety is $n$-permutable.
   for all $(a_i, b_i, \chi_i) \in S$.
 \end{frame}
 
-%%%% LOC DIFF TERMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Results}
+
 \begin{frame}{First Result}
 
 %% \subsection{Main Results}
