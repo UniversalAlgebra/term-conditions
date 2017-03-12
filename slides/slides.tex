@@ -143,14 +143,14 @@
     t(\ba,\bu) \mathrel{\delta} t(\ba,\bv)\quad \iff \quad t(\bb,\bu) \mathrel{\delta} t(\bb,\bv),
   \end{equation}
   then we say ``\defn{$S$ centralizes $T$ modulo $\delta$}'' and we write
-  ``$\CC{S}{T}{\delta}$ holds.''
+  $\CC{S}{T}{\delta}$.
 \end{frame}
 
 
 \begin{frame}[label=defs]{What is the commutator?}
   %% \framesubtitle{the commutator}
 
-  The \defin{commutator of $S$ and $T$} is denoted $[S, T]$ and is defined to be
+  The \defin{commutator of $S$ and $T$} is denoted $[S, T]$ and defined to be
   the least $\delta\in \Con\bA$ such that $\CC{S}{T}{\delta}$ holds.  
 
   \medpause
@@ -263,8 +263,8 @@
 
 \begin{frame}[label=motivation-heuristics]{Motivation}
   %% \framesubtitle{Heuristics}    
-  Knowing a variety has a difference term allows us to deduce useful
-  properties of the algebras in that variety.
+  %% Knowing a variety has a difference term allows us to deduce useful
+  %% properties of the algebras in that variety.
 
   Roughly speaking, having a difference term is slightly stronger than having
   a Taylor term and slightly weaker than having a Mal'tsev term.
@@ -303,7 +303,7 @@
 \begin{frame}[label=premature]{}
 
   \begin{center}
-    ``I settled Question 2!''
+    ``I answered Question 2!''
 
     %% \animategraphics[loop,controls,width=5cm]{12}{84871861-}{0}{149}
     \animategraphics[loop,controls,width=5cm]{12}{./Vb68Anr/Vb68Anr-}{0}{39}
@@ -407,12 +407,12 @@ variety is $n$-permutable.
 
   That is, for each $((a_0, b_0, \chi_0), (a_1, b_1, \chi_1))$
   there is a $d(x,y,z)$ such that for each $i \in \{0,1\}$
-  \begin{align}
+  \begin{align*}
     a_i \Comr{\Cg(a_i,b_i)} d(a_i,b_i,b_i), & \;
-  \text{ if $\chi_i=0$;}  \label{eq:d-trip-i1}\\
+  \text{ if $\chi_i=0$;} \\% \label{eq:d-trip-i1}\\
   d(a_i,a_i,b_i) =b_i, & \;
-  \text{ if $\chi_i=1$.}\label{eq:d-trip-i2} %\\\nonumber
-  \end{align}
+  \text{ if $\chi_i=1$.}%\label{eq:d-trip-i2} %\\\nonumber
+  \end{align*}
   
   \medpause
   Then every subset $S\subseteq \sS$ has a local difference term.
@@ -428,14 +428,14 @@ variety is $n$-permutable.
 
 
 %% \subsection{Main Results}
-\begin{theorem}[1] %[\protect{{\small D. 2016}}]
+\begin{theorem} %[\protect{{\small D. 2016}}]
   \label{thm:local-diff-terms}
   Let $\sV$ be an idempotent variety and
   $\bA \in \sV$. Define
   $\sS= A \times A \times \{0,1\}$
   and suppose that every pair
   $((a_0, b_0, \chi_0), (a_1, b_1, \chi_1)) \in \sS^2$
-  has a local difference term.
+  has a local difference term.\\
   Then every subset $S \subseteq \sS$
   has a local difference term.
 \end{theorem}
@@ -485,7 +485,7 @@ variety is $n$-permutable.
 
 \end{frame}
 
-\begin{frame}[label=local-diff-term-res]{Theorem 1 (proof sketch)}
+\begin{frame}[label=local-diff-term-res]{Theorem (proof sketch)}
   %% \framesubtitle{first result}
 
 %% \subsection{Main Results}
@@ -510,7 +510,7 @@ variety is $n$-permutable.
   We prove $S$ has a local difference term.
 
   \pause
-  Wlog $\chi_0 = \chi_i$ for some $i>0$.
+  Wlog assume $\chi_0 = \chi_i$ for some $i>0$.
 
   %% Since $|S| \geq 3$ and $\chi_i \in \{0,1\}$ for all $i$, 
   %% $\exists i\neq j$ such that 
@@ -666,23 +666,24 @@ variety is $n$-permutable.
   {\bf Output:} ``yes'' iff $\bA$ has a difference term operation
 
   \pause
-  By the Theorem 1 it suffices to decide whether each pair
+  By the theorem it suffices to decide whether each pair
   $((a,b,i), (a',b',i'))$ %% \in (A\times A \times \{0,1\})^2$ 
-  has its own local dt.
+  has its own local difference term.
 
   \pause
   %% For each $((a,b,i), (a',b',i'))$ in $(A\times A \times \{0,1\})^2$:
-  If $i = i' = 0$, the first projection is a local difference term.
+  If $i = i' = 0$, the first projection is a local dt.
 
-  If $i = i' = 1$, the third projection is a local difference term.
+  If $i = i' = 1$, the third projection is a local dt.
 
   If $i = 0$, $i'=1$,  then %% $((a,b,i), (a',b',i')) = ((a,b,0), (a',b',1))$, then
   %% $i = 1$ and $i'=0$. Since these are completely symmetric, we only handle the first case.
   $t$ is local dt for $((a,b,0), (a',b',1))$ iff
   \[
   a\Comr{\Cg(a,b)} t^{\bA}(a,b,b) \; \text{ and } \;
-  t^{\bA}(a',a',b') = b'.
+  t^{\bA}(a',a',b') = b'
   \]
+  \hfill {\Large $\rightsquigarrow$}
 \end{frame}
 \begin{frame}[label=algorithm]{DTO Algorithm (cont)}
   Since
@@ -696,7 +697,7 @@ variety is $n$-permutable.
   %% where $\delta = \Com{\Cg(a,b)}$ and $a/\delta$ denotes the
   %% $\delta$-class containing $a$.
 
-  By idempotence $\bigl(a/\Com{\Cg(a,b)}\bigr) \times \{b'\}$ is a subalgebra of $\bA \times \bA$.
+  \note{By idempotence $\bigl(a/\Com{\Cg(a,b)}\bigr) \times \{b'\}$ is a subalgebra of $\bA \times \bA$.}
 
   So $((a,b,0), (a',b',1))$ has a local dt iff the intersection
   \[\Sg^{\bA^2}\{(a,a'), (b,a'), (b,b')\} \bigcap
@@ -745,16 +746,18 @@ variety is $n$-permutable.
 Let $\sV$ be a variety.
 Let $\bA_0$ and  $\bA_1$ be algebras in $\sV$.
 
-An element of $\bA_0 + \bA_1$ is $\<a, i\>$,
-where $i\in \{0,1\}$ and $a \in A_i$.
+%% An element of $\bA_0 + \bA_1$ is $\<a, i\>$,
+%% where $i\in \{0,1\}$ and $a \in A_i$.
 
 %% $\coprod_{i=0}^1 (\bA_i\times \bA_i)$ has elements
-$\bA_0^2 + \bA_1^2$ has elements
+$A_0^2 + A_1^2$ has elements
 $\<(a,b), i\>$ where $i\in \{0,1\}$ and $(a,b) \in A_i^2$.
 
 $(A_0^2 + A_1^2) \times \{0,1\}$
-has elements $(\<(a,b), i\>, \chi)$, where $i\in \{0,1\}$, $(a,b) \in A_i^2$,
-$\chi\in \{0,1\}$. 
+has elements $(\<(a,b), i\>, \chi)$, where
+\[
+i\in \{0,1\} \qquad  (a,b) \in A_i^2 \qquad \chi\in \{0,1\}.
+\]
 
 Fix $(\<(a, b),i\>, \chi)$ and $(\<(a', b'),i'\>, \chi')$ in
 $(A_0^2 + A_1^2) \times \{0,1\}$.
@@ -773,22 +776,21 @@ and similarly for $a'$, $b'$, $i'$, $\chi'$.
 
   Let $S$ be a sequence of triples drawn from the set
   \[
-  \sU := (A_0^2 + A_1^2) \times \{0,1\}.
+  \sU = (A_0^2 + A_1^2) \times \{0,1\}.
   \]
 
-  If $d$ is a local dt for all triples in $S$,
-  then we call $d$ is a \defin{local difference term for $S$}.
+  Call $d$ a \defin{local difference term for $S$} iff $d$ is a local dt for all triples in $S$.
 
   %% We may use $\sU$ to denote the set $\sU(A_0, A_1)$ when the context renders the
   %% universes involved obvious or immaterial.
 
-  Now, suppose all pairs in $\sU$ have local difference terms.
+  Suppose all pairs in $\sU$ have local difference terms.
   Then, for every $n$
   %% and every sequence $S\in \sU^n$, there is a term $d$ that is a mixed local
   %% difference term for $S$.
-  every sequence $S\in \sU^n$ has a mixed local difference term.
+  every sequence $S\in \sU^n$ has a mixed local dt.
 
-  That is, there is a single term $d$ that works
+  That is, there is a single term that works
   for all $(\<(a, b), i\>,\chi)$ in $S$.
 \end{frame}
 
@@ -799,12 +801,12 @@ and similarly for $a'$, $b'$, $i'$, $\chi'$.
 
   \begin{theorem} %[\protect{cf.~\cite[Theorem 2.2]{MR3239624}}]
   \label{thm:mixed-local-diff-terms}
-  $\bA_0$ and   $\bA_1$ be algebras in an idempotent variety $\sV$.
+  $\bA_0$ and   $\bA_1$ be finite algebras in an idempotent variety $\sV$.
   Define $\sU  = (A_0^2 + A_1^2)\times \{0,1\}$
   and suppose every 
   $((\<(a, b), i\>, \chi), (\<(a', b'), i'\>\chi')) \in \sU^2$
   has a local difference term.
-  Then for every $n$ every sequence $S \in \sU^n$
+  Then $\forall n$ every $S \in \sU^n$
   has a local difference term.
   \end{theorem}
 
@@ -812,12 +814,15 @@ and similarly for $a'$, $b'$, $i'$, $\chi'$.
 
   \begin{corollary}
   \label{cor:mix-loc-diff-term}
-  Let $\sV$ be an idempotent variety and let
-  $\bA_0 = \<A_0, \dots\>$ and   $\bA_1 = \<A_1, \dots\>$ be algebras in $\sV$. Define
-  $\sU  = (A_0^2 + A_1^2)\times \{0,1\}$
-  and suppose that every pair
-  $((\<(a, b), i\>, \chi), (\<(a', b'), i'\>\chi')) \in \sU^2$
-  has a local difference term. Then, there is a term $d$ that interprets as a
+  Let $\bA_0 = \<A_0, \dots\>$ and   $\bA_1 = \<A_1, \dots\>$ be 
+  finite idempotent algebras.
+  %% Define
+  %% $\sU  = (A_0^2 + A_1^2)\times \{0,1\}$
+  %% and 
+  Suppose every pair
+  $((\<(a, b), i\>, \chi), (\<(a', b'), i'\>\chi'))$
+  in $(A_0^2 + A_1^2)\times \{0,1\}$
+  has a local dt. Then, there is a term $d$ that interprets as a
   difference term operation for both $\bA_0$ and $\bA_1$.
   \end{corollary}
 \end{frame}
@@ -839,7 +844,7 @@ and similarly for $a'$, $b'$, $i'$, $\chi'$.
   \pause
   Let $\scA$ be a collection of algebras in $\sV$, and
   $\scS(\scA)$ all pairs $(A, i)$,
-  where $A$ is a universe and $i\in \{0,1\}$. That is
+  where $A$ is a universe from $\scA$ and $i\in \{0,1\}$. That is
   \[
   \scS(\scA) = \{(A, i) \mid \<A, \dots\> \in \scA \text{ and } i \in \{0,1\}\}.
   \]
@@ -901,8 +906,8 @@ and similarly for $a'$, $b'$, $i'$, $\chi'$.
 \begin{lemma}
   \label{lem:products}
   If $\bA$ and $\bB$ are finite, idempotent algebras of same type
-  and if $d^{\bA \times \bB}$ is a dt operation for $\bA\times \bB$,
-  then $d^{\bA}$ (resp., $d^{\bB}$) is a dt operation for 
+  and if $d^{\bA \times \bB}$ is a difference term operation for $\bA\times \bB$,
+  then $d^{\bA}$ (resp., $d^{\bB}$) is a difference term operation for 
   $\bA$  (resp., $\bB$).
 \end{lemma}
 
@@ -927,7 +932,7 @@ and similarly for $a'$, $b'$, $i'$, $\chi'$.
   \begin{lemma}
     \label{lem:equiv-cond-exist-1}
     Let $\bA$ be an algebra, $t(x,y,z)$ a ternary term.
-    Assume $\bF := \bF_{\bbV(\bA)}(2)$ finite. 
+    Assume $\bF = \bF_{\bbV(\bA)}(2)$ finite. 
     Consider the following statements:
     \begin{enumerate}[(A)]
     \item \label{item:6} $t^{\bA}$ is not a dt operation for $\bA$.
@@ -995,7 +1000,7 @@ The implications
   obvious. 
 
   \pause 
-  We prove (\ref{item:3}) $\Rightarrow$  (\ref{item:1}) by contraposition:
+  (\ref{item:3}) $\Rightarrow$  (\ref{item:1}) is easy to prove by contraposition:
 
   Suppose $\sV$ has no dt and let $d(x,y,z)$ be a ternary term.
 
@@ -1029,8 +1034,8 @@ The implications
   all pairs $(A, i)$ such that $\bA = \<A, \dots\> \in \scA$ and $i\in \{0,1\}$.
 
   {\bf Claim:} We can check in polynomial time (in $|A|$)
-  whether or not the product
-  $\bA_0 \times \bA_1 \times \cdots \times \bA_{n-1}$ has a dt operation.
+  whether the product
+  $\bA_0 \times \bA_1 \times \cdots \times \bA_{n-1}$ has a difference term operation.
 
 \end{frame}
 
@@ -1074,7 +1079,7 @@ The implications
 \begin{frame}[label=pau]{}
 \begin{center}
 
-Time to Quit for the Day!
+Let's Quit for the Day!
 
 \bigskip\bigskip
 \includegraphics[scale=.4]{drinks}
