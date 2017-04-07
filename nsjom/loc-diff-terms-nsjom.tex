@@ -1033,9 +1033,10 @@ $\Com{\Cg^{\bB} (a, b)} \subseteq \Com{\Cg^{\bA} (a, b)}$. %%  \label{eq:6-app}
 %% \comm {\alpha \join \gamma} {\beta \join \delta}.
 %% \]
 %% \end{cor}
-
-
-
+Before stating the next result, we remind the reader of a 
+standard notational convention. 
+If $\phi \in \Hom(\bA, \bB)$ and $\theta \in \Con (\bA)$, then by
+$\phi(\theta)$ we mean the set $\{(\phi(x), \phi(y)) \mid x \thetar y\}$.
 \begin{lem}[\protect{\cite[Theorem 2.10]{MR1358491}}]
 \label{lem:hom-image-diff-term}
   Let $\bA$ and $\bB$ be algebras of the same similarity type and suppose
@@ -1047,6 +1048,8 @@ $\Com{\Cg^{\bB} (a, b)} \subseteq \Com{\Cg^{\bA} (a, b)}$. %%  \label{eq:6-app}
  \[\psi^{-1} \{[\psi(\rho), \psi(\sigma)]\} = \phi\bigl( [\psi(\rho), \psi(\sigma)]\bigr)
   = [\rho, \sigma].\]
 \end{lem}
+In fact, this result holds even if $\phi$ is not surjective. (See the remark
+after the proof of~\cite[Theorem 2.10]{MR1358491}}].)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1125,7 +1128,28 @@ Theorem~\ref{thm:F} is the following:
   is not a difference term operation for $\bF$.
 \end{proof}
 
-\smallskip
+Obviously, we could have stated~\ref{lem:equiv-cond-exist-1} in the following positive form:
+\begin{cor}
+  Let $\bA$ be an algebra, let $t(x,y,z)$ be a ternary term in the language
+  of $\bA$, and let $\bF = \bF_{\bbV(\bA)}(x,y)$. Consider the following statements:
+  \begin{enumerate}[(A')]
+  \item \label{item:6'} $t^{\bA}$ is a difference term operation for $\bA$.
+  \item \label{item:7'} for all 2-generated $\bB \leq \bA$,
+    $t^{\bB}$ is a difference term operation for $\bB$;
+  \item \label{item:8'} $t^{\bF}$ is a difference term operation for $\bF$;
+  \end{enumerate}
+  Then (\ref{item:8'}') $\Rightarrow$ (\ref{item:7'}') $\Rightarrow$ (\ref{item:6'}').
+\end{cor}
+
+\begin{lem}
+If $\bA$ and $\bB$ are algebras of the same type, if 
+$\phi \in \Hom(\bA, \bB)$, and if $a, a' \in A$, then 
+$\phi \bigl(\Cg^{\bA}(a,a')\bigr) =\Cg^{\bA}\bigl(\phi (a),\phi(a')\bigr)$.
+\end{lem}
+\begin{proof}
+By definition, $\phi \bigl(\Cg^{\bA}(a,a')\bigr$...
+\end{proof}
+
 %% Cliff's comment:
 %% F is a subalgebra of A^n for some n. We can assume that V is neither congruence
 %% modular nor meet-semidistributive. Can we use that fact to put a  bound on n?
