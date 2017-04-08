@@ -479,7 +479,7 @@ MRREVIEWER = {Ivan Chajda},
 \headsep 0.5cm \pagestyle{myheadings}
 \usepackage{amssymb,amsmath,latexsym, amsthm,enumerate, nsjom, amsfonts}
 \title{}\author{}\date{}
-\markboth{W.~DeMeo}{Complexity of Difference Term Existence}\setcounter{page}{1}
+\markboth{W.~DeMeo and R.~Freese}{Complexity of Difference Term Existence}\setcounter{page}{1}
 %% \usepackage[dvipdfm, pdfstartview=FitH]{hyperref} % Use LaTeX and then DVI2PDF,
 % or, if you plan to use packages only compatible with PDFLaTeX
 \usepackage[pdftex, pdfstartview=FitH]{hyperref}
@@ -1039,7 +1039,7 @@ If $\phi \in \Hom(\bA, \bB)$ and $\theta \in \Con (\bA)$, then by
 $\phi(\theta)$ we mean the set $\{(\phi(x), \phi(y)) \mid x \thetar y\}$.
 \begin{lem}[\protect{\cite[Theorem 2.10]{MR1358491}}]
 \label{lem:hom-image-diff-term}
-  Let $\bA$ and $\bB$ be algebras of the same similarity type and suppose
+  Let $\bA$, $\bB$ be algebras of the same similarity type and suppose
   $\phi: \bA \to \bB$ is a surjective homomorphism.  If
   $\alpha, \beta \in \Con \bA$, then
   $\phi([\alpha, \beta]) \subseteq [\phi(\alpha), \phi(\beta)]$.
@@ -1049,7 +1049,23 @@ $\phi(\theta)$ we mean the set $\{(\phi(x), \phi(y)) \mid x \thetar y\}$.
   = [\rho, \sigma].\]
 \end{lem}
 In fact, this result holds even if $\phi$ is not surjective. (See the remark
-after the proof of~\cite[Theorem 2.10]{MR1358491}}].)
+after the proof of~\cite[Theorem 2.10]{MR1358491}.)
+
+
+\begin{lem}
+  \label{lem:hom-cong}
+  Let $\bA$, $\bB$ be algebras of the same similarity type and suppose
+  $\phi: \bA \to \bB$ is a surjective homomorphism.  If $a, a' \in A$, then 
+  $\phi \bigl(\Cg^{\bA}(a,a')\bigr) =\Cg^{\bB}\bigl(\phi (a),\phi(a')\bigr)$.
+\end{lem}
+\begin{proof}
+
+For the opposite inclusion, note that $\phi$ 
+takes congruences to congruences, so $\phi \bigl(\Cg^{\bA}(a,a')\bigr)$ is a congruence
+of $\bB$ that clearly contains $(\phi (a),\phi(a'))$. Therefore,
+$\Cg^{\bB}\bigl(\phi (a),\phi(a')\bigr) \subseteq \phi \bigl(\Cg^{\bA}(a,a')\bigr)$. 
+\end{proof}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1141,14 +1157,6 @@ Obviously, we could have stated~\ref{lem:equiv-cond-exist-1} in the following po
   Then (\ref{item:8'}') $\Rightarrow$ (\ref{item:7'}') $\Rightarrow$ (\ref{item:6'}').
 \end{cor}
 
-\begin{lem}
-If $\bA$ and $\bB$ are algebras of the same type, if 
-$\phi \in \Hom(\bA, \bB)$, and if $a, a' \in A$, then 
-$\phi \bigl(\Cg^{\bA}(a,a')\bigr) =\Cg^{\bA}\bigl(\phi (a),\phi(a')\bigr)$.
-\end{lem}
-\begin{proof}
-By definition, $\phi \bigl(\Cg^{\bA}(a,a')\bigr$...
-\end{proof}
 
 %% Cliff's comment:
 %% F is a subalgebra of A^n for some n. We can assume that V is neither congruence
