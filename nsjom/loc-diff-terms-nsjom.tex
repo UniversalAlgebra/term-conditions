@@ -604,7 +604,7 @@ MRREVIEWER = {Ivan Chajda},
 % \vspace*{-1.1cm} {\sc  Novi Sad J.\ Math.}\\ {\sc Vol.\ XX, No.\ Y, 20ZZ, ??-??}
 % \end{flushleft}
 \begin{flushright}
-\vspace*{-1.1cm} {{\small \sffamily Last updated: 8 March 2017}}
+\vspace*{-1.1cm} {{\small \sffamily Last updated: 6 April 2017}}
 \end{flushright}
 \vspace{0.8cm}
 % PRAVLJENJE NASLOVA
@@ -1036,20 +1036,23 @@ $\Com{\Cg^{\bB} (a, b)} \subseteq \Com{\Cg^{\bA} (a, b)}$. %%  \label{eq:6-app}
 Before stating the next result, we remind the reader of a 
 standard notational convention. 
 If $\phi \in \Hom(\bA, \bB)$ and $\theta \in \Con (\bA)$, then by
-$\phi(\theta)$ we mean the set $\{(\phi(x), \phi(y)) \mid x \thetar y\}$.
+$\phi(\theta)$ we mean the set $\{(\phi(x), \phi(y)) \mid x \thetar y \}$.
 \begin{lem}[\protect{\cite[Theorem 2.10]{MR1358491}}]
-\label{lem:hom-image-diff-term}
+  \label{lem:hom-image-diff-term}
   Let $\bA$ and $\bB$ be algebras of the same similarity type and suppose
   $\phi: \bA \to \bB$ is a surjective homomorphism.  If
   $\alpha, \beta \in \Con \bA$, then
   $\phi([\alpha, \beta]) \subseteq [\phi(\alpha), \phi(\beta)]$.
   Moreover, if there exists a homomorphism $\psi: \bB \to \bA$ such that
   $\phi \circ \psi = \id_B$ and $\rho, \sigma \in \Con \bB$, then
- \[\psi^{-1} \{[\psi(\rho), \psi(\sigma)]\} = \phi\bigl( [\psi(\rho), \psi(\sigma)]\bigr)
-  = [\rho, \sigma].\]
+  \[
+    \psi^{-1} \{ [ \psi(\rho), \psi(\sigma) ] \} = 
+    \phi \bigl( [\psi(\rho), \psi(\sigma)] \bigr)
+    = [\rho, \sigma].
+  \]
 \end{lem}
 In fact, this result holds even if $\phi$ is not surjective. (See the remark
-after the proof of~\cite[Theorem 2.10]{MR1358491}}].)
+after the proof of~\cite[Theorem 2.10]{MR1358491}.)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1144,10 +1147,55 @@ Obviously, we could have stated~\ref{lem:equiv-cond-exist-1} in the following po
 \begin{lem}
 If $\bA$ and $\bB$ are algebras of the same type, if 
 $\phi \in \Hom(\bA, \bB)$, and if $a, a' \in A$, then 
-$\phi \bigl(\Cg^{\bA}(a,a')\bigr) =\Cg^{\bA}\bigl(\phi (a),\phi(a')\bigr)$.
+$\phi \bigl(\Cg^{\bA}(a,a')\bigr) =\Cg^{\bB}\bigl(\phi (a),\phi(a')\bigr)$.
 \end{lem}
 \begin{proof}
-By definition, $\phi \bigl(\Cg^{\bA}(a,a')\bigr$...
+% By definition, 
+% \[\phi \bigl(\Cg^{\bA}(a,a')\bigr) = \{\bigl(\phi (x),\phi(y)\bigr) \mid (x,y) \in \Cg^{\bA}(a,a') \}.\]
+We first let $(u,v) \in \phi \bigl(\Cg^{\bA}(a,a')\bigr)$---that is,
+$(u,v) = \bigl(\phi (x),\phi(y)\bigr)$ for some  $(x,y) \in \Cg^{\bA}(a,a')$---
+and we will show $(u,v) \in \Cg^{\bB}\bigl(\phi (a),\phi(a')\bigr)$.
+By Malcev's theorem, $(x,y) \in \Cg^{\bA}(a,a')$ iff there exist
+$c_i\in A$, $z_i \in \{a, a'\}$, and $f_i\in \Pol(\bA)$ 
+such that 
+\[
+\{x, c_1\} = \{f_0(z_0), f_0(z_1)\}, 
+\{c_1, c_2\} = \{f_1(z_1), f_1(z_2)\}, 
+\dots
+\]
+\[ 
+\qquad \dots, \{c_{n-1}, y\} = \{f_{n-1}(z_{n-1}), f_{n-1}(z_n)\}.
+\] 
+Now apply $\phi$ to all elements to get 
+\[
+\{\phi(x), \phi(c_1)\} = \{\phi(f_0(z_0)), \phi(f_0(z_1))\}, \phantom{XXXXXXXXX}
+\]
+\[
+\{\phi(c_1), \phi(c_2)\} = \{\phi(f_1(z_1)), \phi(f_1(z_2))\},\dots
+ \phantom{XXX}
+\]
+\[ 
+\qquad\qquad \dots, 
+\{\phi(c_{n-1}), \phi(y)\} = \{\phi(f_{n-1}(z_{n-1})), \phi(f_{n-1}(z_n))\};
+\] 
+that is,\footnote{Since $\phi$ is a homomorphism, to every polynomial 
+$g^{\bA} \in \Pol(\bA)$ there corresponds a polynomial 
+$g^{\bB} \in \Pol(\bB)$ satisfying 
+$\phi g^{\bA} = g^{\bB}\phi$.  This justifies equating
+$\phi(f_{i}(z_{i}))$ with $f_{i}(\phi(z_{i}))$ above.}
+\begin{align}
+  \label{eq:11111}
+\{u, \phi(c_1)\} =& \{f_0(\phi(z_0)), f_0(\phi(z_1))\}, 
+\{\phi(c_1), \phi(c_2)\} = \{f_1(\phi(z_1)), f_1(\phi(z_2))\}, 
+\dots \nonumber\\
+&\qquad \dots, 
+\{\phi(c_{n-1}), v\} = \{f_{n-1}(\phi(z_{n-1})), f_{n-1}(\phi(z_n))\}.
+\end{align}
+Now, again by Malcev's theorem, the relations in (\ref{eq:11111})
+hold iff $(u,v)$ belongs to $\Cg^{\bB}\bigl(\phi (a),\phi(a')\bigr)$, 
+and the latter is what we set out to prove.
+
+For the converse...
 \end{proof}
 
 %% Cliff's comment:
