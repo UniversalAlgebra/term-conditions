@@ -18,4 +18,6 @@
 If you wish to contribute to this repository, the correct way is to use the
 standard [fork-clone-pull-request](https://gist.github.com/Chaser324/ce0505fbed06b947d962) workflow described [here](https://gist.github.com/Chaser324/ce0505fbed06b947d962).
 
-If you identify an issue that should be addressed by the contributors to this repository, please open a [new issue](https://github.com/UniversalAlgebra/term-conditions/issues/new).
+If you identify an issue that should be addressed by contributors to this repository, please open a [new issue](https://github.com/UniversalAlgebra/term-conditions/issues/new).
+
+Thanks for your interest in this work! 
