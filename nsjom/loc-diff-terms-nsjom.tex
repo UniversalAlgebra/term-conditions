@@ -505,6 +505,7 @@ MRREVIEWER = {Ivan Chajda},
  \theoremstyle{definition}
  \newtheorem{defn}[thm]{Definition}
  \newtheorem{prob}{Problem}    
+ \newtheorem{question}{Question}    
  \newtheorem{ex}[thm]{Example}
 
  \theoremstyle{remark}
@@ -1038,13 +1039,8 @@ standard notational convention.
 If $\phi \in \Hom(\bA, \bB)$ and $\theta \in \Con (\bA)$, then by
 $\phi(\theta)$ we mean the set $\{(\phi(x), \phi(y)) \mid x \thetar y \}$.
 \begin{lem}[\protect{\cite[Theorem 2.10]{MR1358491}}]
-<<<<<<< HEAD
-  \label{lem:hom-image-diff-term}
-  Let $\bA$ and $\bB$ be algebras of the same similarity type and suppose
-=======
 \label{lem:hom-image-diff-term}
   Let $\bA$, $\bB$ be algebras of the same similarity type and suppose
->>>>>>> 7ee70af9efb8e987f798cf1ae18ef69d103b3d0d
   $\phi: \bA \to \bB$ is a surjective homomorphism.  If
   $\alpha, \beta \in \Con \bA$, then
   $\phi([\alpha, \beta]) \subseteq [\phi(\alpha), \phi(\beta)]$.
@@ -1058,9 +1054,6 @@ $\phi(\theta)$ we mean the set $\{(\phi(x), \phi(y)) \mid x \thetar y \}$.
 \end{lem}
 In fact, this result holds even if $\phi$ is not surjective. (See the remark
 after the proof of~\cite[Theorem 2.10]{MR1358491}.)
-<<<<<<< HEAD
-=======
-
 
 \begin{lem}
   \label{lem:hom-cong}
@@ -1069,14 +1062,56 @@ after the proof of~\cite[Theorem 2.10]{MR1358491}.)
   $\phi \bigl(\Cg^{\bA}(a,a')\bigr) =\Cg^{\bB}\bigl(\phi (a),\phi(a')\bigr)$.
 \end{lem}
 \begin{proof}
+% By definition, 
+% \[\phi \bigl(\Cg^{\bA}(a,a')\bigr) = \{\bigl(\phi (x),\phi(y)\bigr) \mid (x,y) \in \Cg^{\bA}(a,a') \}.\]
+We first let $(u,v) \in \phi \bigl(\Cg^{\bA}(a,a')\bigr)$---that is,
+$(u,v) = \bigl(\phi (x),\phi(y)\bigr)$ for some  $(x,y) \in \Cg^{\bA}(a,a')$---
+and we will show $(u,v) \in \Cg^{\bB}\bigl(\phi (a),\phi(a')\bigr)$.
+By Malcev's theorem, $(x,y) \in \Cg^{\bA}(a,a')$ iff there exist
+$c_i\in A$, $z_i \in \{a, a'\}$, and $f_i\in \Pol(\bA)$ 
+such that 
+\[
+\{x, c_1\} = \{f_0(z_0), f_0(z_1)\}, 
+\{c_1, c_2\} = \{f_1(z_1), f_1(z_2)\}, 
+\dots
+\]
+\[ 
+\qquad \dots, \{c_{n-1}, y\} = \{f_{n-1}(z_{n-1}), f_{n-1}(z_n)\}.
+\] 
+Now apply $\phi$ to all elements to get 
+\[
+\{\phi(x), \phi(c_1)\} = \{\phi(f_0(z_0)), \phi(f_0(z_1))\}, \phantom{XXXXXXXXX}
+\]
+\[
+\{\phi(c_1), \phi(c_2)\} = \{\phi(f_1(z_1)), \phi(f_1(z_2))\},\dots
+ \phantom{XXX}
+\]
+\[ 
+\qquad\qquad \dots, 
+\{\phi(c_{n-1}), \phi(y)\} = \{\phi(f_{n-1}(z_{n-1})), \phi(f_{n-1}(z_n))\};
+\] 
+that is,\footnote{Since $\phi$ is a homomorphism, to every polynomial 
+$g^{\bA} \in \Pol(\bA)$ there corresponds a polynomial 
+$g^{\bB} \in \Pol(\bB)$ satisfying 
+$\phi g^{\bA} = g^{\bB}\phi$.  This justifies equating
+$\phi(f_{i}(z_{i}))$ with $f_{i}(\phi(z_{i}))$ above.}
+\begin{align}
+  \label{eq:11111}
+\{u, \phi(c_1)\} =& \{f_0(\phi(z_0)), f_0(\phi(z_1))\}, 
+\{\phi(c_1), \phi(c_2)\} = \{f_1(\phi(z_1)), f_1(\phi(z_2))\}, 
+\dots \nonumber\\
+&\qquad \dots, 
+\{\phi(c_{n-1}), v\} = \{f_{n-1}(\phi(z_{n-1})), f_{n-1}(\phi(z_n))\}.
+\end{align}
+Now, again by Malcev's theorem, the relations in (\ref{eq:11111})
+hold iff $(u,v)$ belongs to $\Cg^{\bB}\bigl(\phi (a),\phi(a')\bigr)$, 
+and the latter is what we set out to prove.
 
 For the opposite inclusion, note that $\phi$ 
 takes congruences to congruences, so $\phi \bigl(\Cg^{\bA}(a,a')\bigr)$ is a congruence
 of $\bB$ that clearly contains $(\phi (a),\phi(a'))$. Therefore,
 $\Cg^{\bB}\bigl(\phi (a),\phi(a')\bigr) \subseteq \phi \bigl(\Cg^{\bA}(a,a')\bigr)$. 
 \end{proof}
-
->>>>>>> 7ee70af9efb8e987f798cf1ae18ef69d103b3d0d
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1167,63 +1202,6 @@ Obviously, we could have stated~\ref{lem:equiv-cond-exist-1} in the following po
   \end{enumerate}
   Then (\ref{item:8'}') $\Rightarrow$ (\ref{item:7'}') $\Rightarrow$ (\ref{item:6'}').
 \end{cor}
-
-<<<<<<< HEAD
-\begin{lem}
-If $\bA$ and $\bB$ are algebras of the same type, if 
-$\phi \in \Hom(\bA, \bB)$, and if $a, a' \in A$, then 
-$\phi \bigl(\Cg^{\bA}(a,a')\bigr) =\Cg^{\bB}\bigl(\phi (a),\phi(a')\bigr)$.
-\end{lem}
-\begin{proof}
-% By definition, 
-% \[\phi \bigl(\Cg^{\bA}(a,a')\bigr) = \{\bigl(\phi (x),\phi(y)\bigr) \mid (x,y) \in \Cg^{\bA}(a,a') \}.\]
-We first let $(u,v) \in \phi \bigl(\Cg^{\bA}(a,a')\bigr)$---that is,
-$(u,v) = \bigl(\phi (x),\phi(y)\bigr)$ for some  $(x,y) \in \Cg^{\bA}(a,a')$---
-and we will show $(u,v) \in \Cg^{\bB}\bigl(\phi (a),\phi(a')\bigr)$.
-By Malcev's theorem, $(x,y) \in \Cg^{\bA}(a,a')$ iff there exist
-$c_i\in A$, $z_i \in \{a, a'\}$, and $f_i\in \Pol(\bA)$ 
-such that 
-\[
-\{x, c_1\} = \{f_0(z_0), f_0(z_1)\}, 
-\{c_1, c_2\} = \{f_1(z_1), f_1(z_2)\}, 
-\dots
-\]
-\[ 
-\qquad \dots, \{c_{n-1}, y\} = \{f_{n-1}(z_{n-1}), f_{n-1}(z_n)\}.
-\] 
-Now apply $\phi$ to all elements to get 
-\[
-\{\phi(x), \phi(c_1)\} = \{\phi(f_0(z_0)), \phi(f_0(z_1))\}, \phantom{XXXXXXXXX}
-\]
-\[
-\{\phi(c_1), \phi(c_2)\} = \{\phi(f_1(z_1)), \phi(f_1(z_2))\},\dots
- \phantom{XXX}
-\]
-\[ 
-\qquad\qquad \dots, 
-\{\phi(c_{n-1}), \phi(y)\} = \{\phi(f_{n-1}(z_{n-1})), \phi(f_{n-1}(z_n))\};
-\] 
-that is,\footnote{Since $\phi$ is a homomorphism, to every polynomial 
-$g^{\bA} \in \Pol(\bA)$ there corresponds a polynomial 
-$g^{\bB} \in \Pol(\bB)$ satisfying 
-$\phi g^{\bA} = g^{\bB}\phi$.  This justifies equating
-$\phi(f_{i}(z_{i}))$ with $f_{i}(\phi(z_{i}))$ above.}
-\begin{align}
-  \label{eq:11111}
-\{u, \phi(c_1)\} =& \{f_0(\phi(z_0)), f_0(\phi(z_1))\}, 
-\{\phi(c_1), \phi(c_2)\} = \{f_1(\phi(z_1)), f_1(\phi(z_2))\}, 
-\dots \nonumber\\
-&\qquad \dots, 
-\{\phi(c_{n-1}), v\} = \{f_{n-1}(\phi(z_{n-1})), f_{n-1}(\phi(z_n))\}.
-\end{align}
-Now, again by Malcev's theorem, the relations in (\ref{eq:11111})
-hold iff $(u,v)$ belongs to $\Cg^{\bB}\bigl(\phi (a),\phi(a')\bigr)$, 
-and the latter is what we set out to prove.
-
-For the converse...
-\end{proof}
-=======
->>>>>>> 7ee70af9efb8e987f798cf1ae18ef69d103b3d0d
 
 %% Cliff's comment:
 %% F is a subalgebra of A^n for some n. We can assume that V is neither congruence
@@ -1816,19 +1794,19 @@ $\alpha \mytimes \beta$ is clearly a congruence of $\bA \times \bB$.
 \end{proof}
 
 The converse of Lemma~\ref{lem:products} is harder to prove.
-\begin{lem}
-  \label{lem:products-conv}
+\begin{question}
+  \label{q:products-conv}
  Let $\sV$ be a variety and let $\bA$ and $\bB$ be finite idempotent
  algebras in $\sV$. Suppose there is a single term $d$ that
  interprets as a difference term operation for $\bA$ and for $\bB$.
- Then $d^{\bA \times \bB}$ is a difference term operation for the product
- $\bA \times \bB$.
-\end{lem}
-\begin{proof}
-  Fix $(a, b)$ and $(a', b')$ in $A \times B$.
-  We must prove
-  \begin{align}
-    d^{\bA \times \bB}((a, b), (a, b), (a', b')) &= (a', b'),\; \text{ and } \label{eq:60000}\\
+ Does it follow that $d^{\bA \times \bB}$ is a difference term operation for the product
+ $\bA \times \bB$/
+\end{question}
+
+Fix $(a, b)$ and $(a', b')$ in $A \times B$.
+To answer Question~\ref{q:products-conv} in the affirmative we must prove
+\begin{align}
+  d^{\bA \times \bB}((a, b), (a, b), (a', b')) &= (a', b'),\; \text{ and } \label{eq:60000}\\
     d^{\bA \times \bB}((a, b), (a', b'), (a', b'))
     &\Comr{\Cg^{\bA \times \bB}((a, b), (a', b'))} (a, b). \label{eq:60001}
   \end{align}
@@ -1842,12 +1820,6 @@ The converse of Lemma~\ref{lem:products} is harder to prove.
   It remains to check (\ref{eq:60001}).
   Again, since $d^{\bA}$ and
   $d^{\bB}$ are difference term operations,
-  % \begin{align*}
-  % d^{\bA}(a,a',a')
-  % &\Comr{\Cg^{\bA}(a,a')} a\\
-  % d^{\bB}(b, b', b')
-  % &\Comr{\Cg^{\bB}(b,b')} b.
-  % \end{align*}
   \[
   d^{\bA}(a,a',a')
   \Comr{\Cg^{\bA}(a,a')} a \quad \text{ and } \quad
@@ -1855,8 +1827,6 @@ The converse of Lemma~\ref{lem:products} is harder to prove.
   \Comr{\Cg^{\bB}(b,b')} b.
   \]
   Therefore, 
-  % the pair $\bigl((d^{\bA}(a,a',a'),d^{\bB}(b, b', b')), (a,b)\bigr)$ belongs
-  % to the relation \[ \Com{\Cg^{\bA}(a,a')} \mytimes \Com{\Cg^{\bB}(b,b')}.\]
   $(d^{\bA}(a,a',a'),d^{\bB}(b, b', b'))
     \mathrel{\Com{\Cg^{\bA}(a,a')}\mytimes\Com{\Cg^{\bB}(b,b')}}
     (a,b)$.
@@ -1885,10 +1855,7 @@ The converse of Lemma~\ref{lem:products} is harder to prove.
   \medskip
   
   TODO: Prove Lemma~\ref{lem:products-conv} somehow!!!
-  %% Therefore, by monotonicity of the commutator,
-  %% (\ref{eq:60001}) holds.
-  %% It remains to check the claim... 
-\end{proof}
+
 
 
 \subsection{Algorithm 2: existence of a difference term}
