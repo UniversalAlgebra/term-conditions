@@ -353,7 +353,6 @@ MRREVIEWER = {Ivan Chajda},
 %:biblio
 \documentclass[12pt]{amsart}
 
-\usepackage[mathcal]{euscript}
 
 %% wjd added these packages vvvvvvvvvvvvvvvvvvvvvvvvv
 \usepackage{url,amssymb,enumerate,tikz,scalefnt} 
@@ -368,6 +367,7 @@ MRREVIEWER = {Ivan Chajda},
 \usepackage{inputs/rflatexmacs}
 \usepackage{inputs/wjdlatexmacs}
 
+\usepackage[mathcal]{euscript}
 
 
 \renewcommand{\th}[2]{#1\mathrel{\theta}#2}
@@ -700,7 +700,7 @@ test can be performed in polynomial time---that is, the running time of the test
 is bounded by a polynomial function of the size of $\alg{A}$.
 In~\cite[Sec.~3]{Freese:2009}, Freese and Valeriote prove a sequence of
 lemmas to establish that, if $\alg{A}$ is finite and idempotent, and if
-$\sV = \bbV(\alg{A})$ omits types 1 and 5, then to test for the existence of tails
+$\mathcal V = \bbV(\alg{A})$ omits types 1 and 5, then to test for the existence of tails
 in $\sV$ it suffices to look for them 
 in the 3-generated subalgebras of $\alg{A}^2$.
 %% More specifically, the authors assume that the type set of $\bbV(\alg{A})$ contains no 1's
@@ -807,88 +807,143 @@ $\emptyset \subset \sigma\subset \nn$
 \end{lemma}
 \begin{proof}
   %% {\bf TODO:} fill in proof of  Lemma~\ref{lem:fv_3-3}.
-  \begin{enumerate}[(i)]
-  \item %\label{item:6} There exists $0\leq i< n $  such that $\alpha \join \rho_i = 1_B$
-    If not, then we would have $\beta \leq \rho_i$ for all $i$, and that
-    would imply $\beta = 0_B$.
-  \item %\label{item:7} There exists $i$ such that $\alpha \join \rho_i < 1_B$.
-    Assume
-    \begin{equation}
-      \label{eq:4}
-      \alpha \join \rho_i = 1_B \; \text{ for all $i$.}
-    \end{equation}
-    Take a nonempty proper subset $\sigma \subset \nn$ of indices and let 
-    $\rho_\sigma = \bigwedge_{j\in \sigma} \rho_j$.
-    Then $\alpha \join \rho_\sigma = 1_B$ since otherwise,
-    by Lemma~\ref{lem:fv_3-2}, we have
-    $\alpha \leq \beta \leq \rho_\sigma \leq \rho_i$ for $i \in \sigma$, so
-    $\alpha \join \rho_i = \rho_i < 1_B$, contradicting (\ref{eq:4}).
-    Therefore, $\beta \join \rho_\sigma = 1_B$.
+  %%\begin{enumerate}[(i)]
+  %%\item %\label{item:6} There exists $0\leq i< n $  such that $\alpha \join \rho_i = 1_B$
+If item \eqref{item:6} failed, then we would 
+have $\beta \leq \rho_i$ for all $i$, and that
+would imply $\beta = 0_B$.
+  %%\item %\label{item:7} There exists $i$ such that $\alpha \join \rho_i < 1_B$.
+  
+To see \eqref{item:7}, assume
+\begin{equation} \label{eq:4}
+\alpha \join \rho_i = 1_B \; \text{ for all $i$.}
+\end{equation}
+Take a nonempty proper subset $\sigma \subset \nn$ of indices and let 
+$\rho_\sigma = \bigwedge_{j\in \sigma} \rho_j$.
+Then $\alpha \join \rho_\sigma = 1_B$ since otherwise,
+by Lemma~\ref{lem:fv_3-2}, we have
+$\alpha \leq \beta \leq \rho_\sigma \leq \rho_i$ for $i \in \sigma$, so
+$\alpha \join \rho_i = \rho_i < 1_B$, contradicting (\ref{eq:4}).
+Therefore, $\beta \join \rho_\sigma = 1_B$.
 
-    \smallskip
+\smallskip
 
-    \noindent {\bf Subclaim:}
-    For all nonempty proper subsets $\sigma \subset n$,
-    for all $a\in \body(U)$ and all $v\in B$, we have
-    $(a, v) \in \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta$.
+\noindent {\bf Subclaim:}
+For all nonempty proper subsets $\sigma \subset n$,
+for all $c\in \body(U)$ and all $v\in B$, we have
+$(c, v) \in \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta$.
 
-    \smallskip
+\smallskip
     
-    \noindent To prove the subclaim, we first note that $\beta \join \rho_\sigma = 1_B$ implies
-    $\restr{\beta}{U} \join \restr{\rho_\sigma}{U} = 1_U$ since $U = e(B)$.
-    Now, for all $x, y \in U$, if $x\in \body(U)$ and $y\in \tail(U)$, then
-    $(x,y) \notin \beta$.  Therefore,
-    $(x, y) \in  1_U = \restr{\beta}{U} \join \restr{\rho_\sigma}{U}$ implies
-    there must be some $a \in \body(U)$ and $t\in \tail(U)$ such that 
-    $a \mathrel{\rho_\sigma} t$.  Let $b\in \body(U)$ be such that
-    $(a,b) \in \restr{\beta}{U} - \restr{\alpha}{U}$.  By Lemma~\ref{lem:fv_3-1},
-    $\alg{B} = \Sg^{\alg{B}}(a, b, t)$.
+\noindent To prove the subclaim, we first note that 
+$\beta \join \rho_\sigma = 1_B$ implies
+$\restr{\beta}{U} \join \restr{\rho_\sigma}{U} = 1_U$ since $U = e(B)$.
+Now, for all $x, y \in U$, if $x\in \body(U)$ and $y\in \tail(U)$, then
+$(x,y) \notin \beta$.  Therefore,
+$(x, y) \in  1_U = \restr{\beta}{U} \join \restr{\rho_\sigma}{U}$ implies
+there must be some $a \in \body(U)$ and $t\in \tail(U)$ such that 
+$a \mathrel{\rho_\sigma} t$.  
 
-    Let $v \in B$. Then $v = s^{\alg{B}}(a,b,t)$ for some (idempotent) term $s$, so
-    \[
-    v = s^{\alg{B}}(a,b,t)
-        \mathrel{\rho_\sigma} s^{\alg{B}}(a,b,a)
-        \mathrel{\beta} s^{\alg{B}}(a,a,a) = a,
-    \]
-    and
-    \[
-    v = s^{\alg{B}}(a,b,t)
-        \mathrel{\beta}  s^{\alg{B}}(a,a,t)
-        \mathrel{\rho_\sigma}s^{\alg{B}}(a,a,a)  = a.
-    \]
-    Therefore, $(v,a) \in  \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta$.
+%%%%%%
 
-    Now, let $d(x,y,z)$ be a pseudo-\malcev polynomial for $U$,
-    which exists by~\cite[Lem.~4.20]{HM:1988}.
-    Thus,
-    \begin{itemize}
-    \item $d(B,B,B) = U$
-    \item $d(x,x,x) = x$ for all $x\in U$
-    \item $d(x,x,y) = y = d(y,x,x)$ for all $x\in \body(U)$, $y \in U$.
-    \end{itemize}
-    For all $a, b \in \body(U)$, the unary polynomials
-    $d(x,a,b)$, $d(a,x,b)$, and $d(a,b,x)$ are permutations on $U$.
+%Let $b\in \body(U)$ be such that
+%$(a,b) \in \restr{\beta}{U} - \restr{\alpha}{U}$.  
 
-    For $c\in \body(U)$, let $p(x) = d(x,a,c)$. Then (see~\cite[Lem.~4.20]{HM:1988})
-    we have $p(U) = U$, $p(a) = d(a,a,c) = c \in \body(U)$ and $p(t)\in \tail(U)$,
-    since $t\in \tail(U)$.  Since $(a,t) \in \rho_\sigma$, we have
-    $(c, p(t)) = (p(a), p(t)) \in \rho_\sigma$.
+%By Lemma~\ref{lem:fv_3-1},
+%$\alg{B} = \Sg^{\alg{B}}(a, b, t)$.
+%Let $v \in B$. Then $v = s^{\alg{B}}(a,b,t)$ 
+%for some (idempotent) term $s$, so
+%\[
+%v = s^{\alg{B}}(a,b,t)
+%\mathrel{\rho_\sigma} s^{\alg{B}}(a,b,a)
+%\mathrel{\beta} s^{\alg{B}}(a,a,a) = a,
+%\]
+%and
+%\[
+%v = s^{\alg{B}}(a,b,t)
+%\mathrel{\beta}  s^{\alg{B}}(a,a,t)
+%\mathrel{\rho_\sigma}s^{\alg{B}}(a,a,a)  = a.
+%\]
+%Therefore, 
+%$(v,a) \in  \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta$.
 
-    We conclude from the foregoing that,
-    for all nonempty proper subsets $\sigma \subset n$,
-    for all $a\in \body(U)$ and all $v\in B$, we have
-    $(a, v) \in \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta$, proving the subclaim.
+%%%%%%%%%%%%%%%%%
 
-    Now, \cite[Lem.~4.20]{HM:1988} states that it is impossible to find
-    $b \in \body(U)$ and $t \in \tail(U)$ such that $d(b,t,t) \mathrel{\beta} b$.
-    We will contradict this with the $b$ and $t$ considered above.
-    In fact, for these elements, we even have equality: $d(b,t,t) = b$.
+Now, let $d(x,y,z)$ be a pseudo-\malcev polynomial for $U$,
+which exists by~\cite[Lem.~4.20]{HM:1988}.
+Thus,
+\begin{itemize}
+\item $d(B,B,B) = U$
+\item $d(x,x,x) = x$ for all $x\in U$
+\item $d(x,x,y) = y = d(y,x,x)$ for all $x\in \body(U)$, $y \in U$.
+\end{itemize}
+Moreover, for all $c, d \in \body(U)$, the unary polynomials
+$d(x,c,d)$, $d(c,x,d)$, and $d(c,d,x)$ are permutations on $U$.
 
-  \end{enumerate}
+Now let $c$ be an arbitrary element of $\body(U)$, and
+let $p(x) = d(x,a,c)$. 
+Then (see~\cite[Lem.~4.20]{HM:1988})
+we have $p(U) = U$, $p(a) = d(a,a,c) = c \in \body(U)$ 
+and $p(t)\in \tail(U)$,
+since $t\in \tail(U)$. Let $t' = p(t)$. 
+Since $(a,t) \in \rho_\sigma$, we have
+$(c, t') = (p(a), p(t)) \in \rho_\sigma$. 
 
-  {\bf TODO:} fill in the remaining details.
+Since $c$ is in the body, there is an element $d$ in the body with
+$(c,d) \in \beta - \alpha$.
+By Lemma~\ref{lem:fv_3-1},
+$\alg{B} = \Sg^{\alg{B}}(c, d, t')$.
+Let $v \in B$ be arbitrary. Then $v = s^{\alg{B}}(c,d,t')$ for 
+some (idempotent) term $s$, so
+\[
+v = s^{\alg{B}}(c,d,t')
+\mathrel{\rho_\sigma} s^{\alg{B}}(c,d,c)
+\mathrel{\beta} s^{\alg{B}}(c,c,c) = c,
+\]
+and
+\[
+v = s^{\alg{B}}(c,d,t')
+\mathrel{\beta}  s^{\alg{B}}(c,c,t')
+\mathrel{\rho_\sigma}s^{\alg{B}}(c,c,c)  = c.
+\]
+Therefore, 
+$(v,c) \in  \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta$,
+proving the subclaim.
+
+
+%We conclude from the foregoing that,
+%for all nonempty proper subsets $\sigma \subset n$,
+%for all $a\in \body(U)$ and all $v\in B$, we have
+%$(a, v) \in \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta$, 
+%proving the subclaim.
+
+Now, \cite[Lem.~4.20]{HM:1988} states that it is impossible to find
+$b \in \body(U)$ and $t \in \tail(U)$ such that $d(b,t,t) \mathrel{\beta} b$.
+We will contradict this with the $b$ and $t$ considered above.
+In fact, for these elements, we even have equality: $d(b,t,t) = b$.
+
+%%\end{enumerate}
+
+{\bf TODO:} fill in the remaining details.
 
 \end{proof}
+
+
+%\begin{lemma}[{\protect cf.~\cite[Lem.~3.3]{Freese:2009}}]
+%\label{lem:fv_3-3x}
+%There is exactly one~$i$ such that $\beta \not\le \rho_i$.
+%\end{lemma}
+%\begin{proof}
+%If $n = 1$ then $\rho_1 = 0$ so the results holds. The lemma
+%above shows there must there must be at least one $\rho_i \ge \beta$
+%so let $\rho_1 \not\ge \beta$ and $\rho_2 \ge \beta$. If $n = 2$, 
+%the result holds. Otherwise let $\rho = \rho_1 \meet \rho_2$ and
+%note it is clearly not above $\beta$. Since $\beta$ is 
+%join irreducible and $\alpha$ is its unique lower cover,
+%$\rho \meet \beta \le \alpha$. But then $\alg B/\rho$ has a type~2
+%tail, contradicting the minimality of~$n$. 
+%\end{proof}
+
 
 \begin{theorem}[Thm.~3.4~\cite{Freese:2009}]
   \label{thm:fv_3-4}
