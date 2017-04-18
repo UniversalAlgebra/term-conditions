@@ -732,12 +732,21 @@ while modifying the assumptions and adjusting the arguments as necessary.
 
 
 Throughout, we let $\nn$ denote the set $\{0,1,\dots, n-1\}$ and 
-(at least for the rest of this section) we let $\sS$ be a finite set of finite,
-similar, idempotent algebras, closed under the taking of subalgebras, such that
+(at least for the rest of this section) we let $\sS$ be a finite 
+set of finite,
+similar, idempotent algebras, closed under the taking of 
+subalgebras, such that
 $\sV = \bbV(\sS)$ omits 1 (but may include type 5).
-We will suppose that some finite algebra
-$\alg{B}$ in $\sV$ has a prime quotient whose minimal sets have non-empty
-\emph{type-2} tails and show that there is a 3-generated subalgebra of the
+If there is a finite algebra in $\sV$ having a type 2 minimal set 
+having a tail, then, by standard tame congruence theory, there
+is such an algebra which is a subalgebra of a product 
+of elements
+in $\sS$ have a type~2 minimal set with a tail. So we
+suppose that some finite algebra
+$\alg{B}$ in $\sV$ has a prime quotient whose minimal sets 
+have non-empty
+\emph{type-2} tails and show that there is a 3-generated 
+subalgebra of the
 product of two members of $\sS$ with this property.
 
 Since $\sS$ is closed under the taking of subalgebras,
@@ -917,15 +926,18 @@ proving the subclaim.
 %$(a, v) \in \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta$, 
 %proving the subclaim.
 
-Now, \cite[Lem.~4.20]{HM:1988} states that it is impossible to find
-$b \in \body(U)$ and $t \in \tail(U)$ such that $d(b,t,t) \mathrel{\beta} b$.
-We will contradict this with the $b$ and $t$ considered above.
-In fact, for these elements, we even have equality: $d(b,t,t) = b$.
-
-%%\end{enumerate}
-
-{\bf TODO:} fill in the remaining details.
-
+Let $b \in \body(U)$ and $t \in \tail(U)$. By
+\cite[Lemma~4.25]{HM:1988}, $(b, d(b,t,t)) \notin \beta$.
+We will arrive at a contradiction by showing that 
+$b = d(b,t,t)$. By the claim $(b,t) \in \beta \circ \rho$ so
+there is an element $a \in B$ with 
+$b\mathrel\beta a \mathrel\rho_i t$. By applying the idempotent
+polynomial $e$ with $e(U) = U$ to this, we may assume $a \in U$
+and, since $a\mathrel \beta b$, $a \in \body(U)$. So
+\[
+d(b,t,t) \mathrel\rho_i d(b,a,a) = b.
+\]
+Since this hold for every~$i$, $d(b,t,t) = b$.
 \end{proof}
 
 
