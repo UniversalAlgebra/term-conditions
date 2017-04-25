@@ -1507,7 +1507,7 @@ as desired.
   then the first projection is a local difference term. If $i = i' = 1$,
     then the third projection is a local difference term. The two remaining cases to
     consider are (1) $i = 0$ and $i'=1$, and (2)
-    $i = 1$ and $i'=0$. Since these are completely symmetric, we only handle the
+    $i = 1$ and $i'=0$. Since these are symmetric, we only handle the
     first case. Assume  the given pair of triples is
     $((a,b,0), (a',b',1))$.  By definition, a term $t$ is local difference term
     for this pair iff
@@ -1563,30 +1563,114 @@ as desired.
 
 More details on the complexity of operations carried out by the algorithm, as well as many other algebraic operations, can be found in the references mentioned, as well as~\cite{MR1871085,MR1695293,Freese:2009}.
 
-
-\section{Algorithm for Constructing a Difference Term Operation}
+\section{Computing difference term operations}
 Let $\alg{A} = \<A, \dots\>$ be a finite idempotent algebra and suppose we know that
 a difference term operation for $\alg{A}$ exists.  In this section we
 describe an algorithm for constructing a difference term operation given
 that we know such an operation exists.
 
-For reasons that will soon become clear, we let the universe of
-\alg{A} be the set $\{a_0, a_1, \dots, a_{n-1}, b_0, b_1, \dots, b_{n-1}\}$.
-Let $T_0 = \{(a_0, b_0, 0), (a_1, b_1, 1)\}$,
-$T_1 = \{(a_1, b_1, 1), (a_2, b_2, 0)\}$,
-$T_2 = \{(a_2, b_2, 0), (a_3, b_3, 1)\}$, $\dots$,
-$T_{n-1} = \{(a_{n-2}, b_{n-2}, 1), (a_{n-1}, b_{n-1}, 0)\}$.
+\subsection{Sets of size two}
+A local difference term operation for the set
+$\{(a_0,b_0,0), (a_1, b_1, 0)\}$ is the first projection,
+$t(x,y,z) = x$.
+A local difference term operation for the set
+$\{(a_0,b_0,1), (a_1, b_1, 1)\}$ is the third projection,
+$t(x,y,z) = y$.
 
-First, we compute a local difference term for $T_0$ using the following
-algorithm:
 
-\noindent \underline{Subroutine 1:}
+\smallskip
+
+\noindent \underline{\textbf{Subroutine 01}}\\[4pt]
+To compute a local difference term operation for the set
+$\{(a_0,b_0,0), (a_1, b_1, 1)\}$,
 \begin{enumerate}
-\item 
+\item compute $\theta_0:=\com{\Cg^{\alg{A}}(a_0, b_0)}$;
+\item form $C_0:= a_0/\theta_0 \times \{b_1\}$
+      (a subuniverse of $\alg{A}\times\alg{A}$ by idempotence);
+\item compute
+      $S_0:=\Sg^{\alg{A}\times \alg{A}} \{(a_0,a_1),(b_0,a_1),(b_0,b_1)\}$;
+\item find a term operation $t$ of $\alg{A}$ satisfying
+\[t^{\alg{A}\times\alg{A}}((a_0,a_1),(b_0,a_1),(b_0,b_1)) =
+ (t^{\alg{A}}(a_0,b_0,b_0), t^{\alg{A}}(a_1,a_1,b_1)) \in C_0 \cap S_0.\]
+\end{enumerate}
+Then $t$ is a local difference term for the set
+$\{(a_0, b_0, 0), (a_1, b_1, 1)\}$.
+
+\medskip
+
+\noindent \underline{\textbf{Subroutine 10}}\\[4pt]
+To compute a local difference term operation for the set
+$\{(a_0,b_0,1), (a_1, b_1, 0)\}$,
+\begin{enumerate}
+\item compute $\theta_1:=\com{\Cg^{\alg{A}}(a_1, b_1)}$;
+\item form $C_1:= \{b_0\}\times a_1/\theta_1$
+      (a subuniverse of $\alg{A}\times\alg{A}$ by idempotence);
+\item compute
+      $S_1:=\Sg^{\alg{A}\times \alg{A}} \{(a_0,a_1),(a_0,b_1),(b_0,b_1)\}$;
+\item find a term operation $t$ of $\alg{A}$ satisfying
+%\[t((a_0,a_1),(a_0,b_1),(b_0,b_1)) \in C \cap S.\]
+\[t^{\alg{A}\times\alg{A}}((a_0,a_1),(a_0,b_1),(b_0,b_1)) =
+ (t^{\alg{A}}(a_0,a_0,b_0), t^{\alg{A}}(a_1,b_1,b_1)) \in C_1 \cap S_1.\]
+\end{enumerate}
+Then $t$ is a local difference term for the set
+$\{(a_0, b_0, 1), (a_1, b_1, 0)\}$.
+
+\smallskip
+
+\subsection{Sets of size three}
+A local difference term operation for the set
+$\{(a_0,b_0, 0), (a_1, b_1, 0), (a_2, b_2, 0)\}$ is the first projection,
+$t(x,y,z) = x$.
+A local difference term operation for the set
+$\{(a_0,b_0,1), (a_1, b_1, 1), (a_2, b_2, 1)\}$ is the third projection,
+$t(x,y,z) = y$.
+For sets of size three, there are only two other cases to consider
+(since the other cases are symmetric to these two).
+They are
+$\{(a_0, b_0, 0), (a_1, b_1, 1),  (a_2, b_2, 0)\}$ and
+$\{(a_0, b_0, 1), (a_1, b_1, 0), (a_2, b_2, 1)\}$.
+
+\smallskip
+
+\noindent \underline{\textbf{Subroutine 010}}\\[4pt]
+To find a local difference term operation for
+$\{(a_0, b_0, 0), (a_1, b_1, 1),  (a_2, b_2, 0)\}$,
+\begin{enumerate}
+\item compute $t_0$, a local difference term for
+$\{(a_0, b_0, 0), (a_1, b_1, 1)\}$ using Subroutine 01.
+\item compute $t_1$, a local difference term for
+$\{(a_1, b_1, 1),  (a_2, b_2, 0)\}$, using
+Subroutine 10.
 \end{enumerate}
 
+\medskip
 
+...to be continued...
 
+\medskip
+
+\noindent \underline{\textbf{Subroutine 101}}\\[4pt]
+To find a local difference term operation for
+$\{(a_0, b_0, 1), (a_1, b_1, 0),  (a_2, b_2, 1)\}$,
+
+\medskip
+
+...to be continued...
+
+\medskip
+\begin{comment}
+For reasons that will soon become clear, we let the universe of
+\alg{A} be the set
+$A =\{a_0, a_1, \dots, a_{n-1}, b_0, b_1, \dots, b_{n-1}\}$.
+Define the following sets:
+\begin{align*}
+T_0 &= \{(a_0, b_0, 0), (a_1, b_1, 1)\}\\
+T_1 &= \{(a_1, b_1, 1), (a_2, b_2, 0)\}\\
+T_2 &= \{(a_2, b_2, 0), (a_3, b_3, 1)\}\\
+\vdots\\
+T_{n-1} &= \{(a_{n-2}, b_{n-2}, 1), (a_{n-1}, b_{n-1}, 0)\}.
+\end{align*}
+\end{comment}
 
 \section{Generalizations and Extensions}
 
