@@ -748,7 +748,7 @@ while modifying the assumptions and adjusting the arguments as necessary.
 \medskip
 
 Throughout, we let $\nn$ denote the set $\{0,1,\dots, n-1\}$ and 
-(at least for the rest of this section) we let $\sS$ be a finite 
+we let $\sS$ be a finite 
 set of finite,
 similar, idempotent algebras, closed under the taking of 
 subalgebras, such that
@@ -908,45 +908,15 @@ Thus, there is some $t$ in the tail of $U$ with $(0,t) \in
 B$ since it contains $\{0,1,t\}$.  Thus, $\alpha \join \rho = 1_B$.
 \end{proof}
 
-\begin{lemma}[{\protect cf.~\cite[Lemma~3.3]{Freese:2009}}]
-  \label{lem:fv_3-3}
-  \begin{enumerate}[(i)]
-    \item \label{item:6} There exists $0\leq i< n $
-      such that $\alpha \join \rho_i = 1_B$
-    \item \label{item:7} There exists $i$ such that  
-      $\alpha \join \rho_i < 1_B$.
-  \end{enumerate}
-\end{lemma}
-\begin{proof}
-  %% {\bf TODO:} fill in proof of  Lemma~\ref{lem:fv_3-3}.
-  %%\begin{enumerate}[(i)]
-  %%\item %\label{item:6} There exists $0\leq i< n $  such that $\alpha \join \rho_i = 1_B$
-If item \eqref{item:6} failed, then we would 
-have $\beta \leq \rho_i$ for all $i$, and that
-would imply $\beta = 0_B$.
-  %%\item %\label{item:7} There exists $i$ such that $\alpha \join \rho_i < 1_B$.
-  
-To see \eqref{item:7}, assume
-\begin{equation} \label{eq:4}
-\alpha \join \rho_i = 1_B \; \text{ for all $i$.}
-\end{equation}
-Take a nonempty proper subset $\sigma \subset \nn$ of indices and let 
-$\rho_\sigma = \bigwedge_{j\in \sigma} \rho_j$.
-Then $\alpha \join \rho_\sigma = 1_B$ since otherwise,
-by Lemma~\ref{lem:fv_3-2}, we have
-$\alpha \leq \beta \leq \rho_\sigma \leq \rho_i$ for $i \in \sigma$, so
-$\alpha \join \rho_i = \rho_i < 1_B$, contradicting (\ref{eq:4}).
-Therefore, $\beta \join \rho_\sigma = 1_B$.
-
-\smallskip
-
-\noindent {\bf Subclaim:}
+\begin{lemma}\label{lem:nearperm}
 For all nonempty proper subsets $\sigma \subset \nn$,
 for all $c\in \body(U)$ and all $v\in B$, we have
 $(c, v) \in \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta$.
+\end{lemma}
 
-\smallskip
-    
+%\smallskip
+
+\begin{proof}
 \noindent To prove the subclaim, we first note that 
 $\beta \join \rho_\sigma = 1_B$ implies
 $\restr{\beta}{U} \join \restr{\rho_\sigma}{U} = 1_U$ since $U = e(B)$
@@ -1021,7 +991,42 @@ v = s^{\alg{B}}(c,d,t')
 \]
 Therefore, 
 $(v,c) \in  \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta$,
-proving the subclaim.
+proving the lemma.
+\end{proof}
+
+
+
+\begin{lemma}[{\protect cf.~\cite[Lemma~3.3]{Freese:2009}}]\
+  \label{lem:fv_3-3}
+  \begin{enumerate}[(i)]
+    \item \label{item:6} There exists $0\leq i< n $
+      such that $\alpha \join \rho_i = 1_B$
+    \item \label{item:7} There exists $i$ such that  
+      $\alpha \join \rho_i < 1_B$.
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  %% {\bf TODO:} fill in proof of  Lemma~\ref{lem:fv_3-3}.
+  %%\begin{enumerate}[(i)]
+  %%\item %\label{item:6} There exists $0\leq i< n $  such that $\alpha \join \rho_i = 1_B$
+If item \eqref{item:6} failed, then we would 
+have $\beta \leq \rho_i$ for all $i$, and that
+would imply $\beta = 0_B$.
+  %%\item %\label{item:7} There exists $i$ such that $\alpha \join \rho_i < 1_B$.
+  
+To see \eqref{item:7}, assume
+\begin{equation} \label{eq:4}
+\alpha \join \rho_i = 1_B \; \text{ for all $i$.}
+\end{equation}
+Take a nonempty proper subset $\sigma \subset \nn$ of indices and let 
+$\rho_\sigma = \bigwedge_{j\in \sigma} \rho_j$.
+Then $\alpha \join \rho_\sigma = 1_B$ since otherwise,
+by Lemma~\ref{lem:fv_3-2}, we have
+$\alpha \leq \beta \leq \rho_\sigma \leq \rho_i$ for $i \in \sigma$, so
+$\alpha \join \rho_i = \rho_i < 1_B$, contradicting (\ref{eq:4}).
+Therefore, $\beta \join \rho_\sigma = 1_B$.
+
+%\smallskip
 
 
 %We conclude from the foregoing that,
@@ -1033,7 +1038,8 @@ proving the subclaim.
 Let $b \in \body(U)$ and $t \in \tail(U)$. By
 \cite[Lemma~4.25]{HM:1988}, $(b, d(b,t,t)) \notin \beta$.
 We will arrive at a contradiction by showing that 
-$b = d(b,t,t)$. By the claim $(b,t) \in \beta \circ \rho$ so
+$b = d(b,t,t)$. By Lemma~\ref{lem:nearperm}, 
+$(b,t) \in \beta \circ \rho$ so
 there is an element $a \in B$ with 
 $b\mathrel\beta a \mathrel\rho_i t$. By applying the idempotent
 polynomial $e$ with $e(U) = U$ to this, we may assume $a \in U$
