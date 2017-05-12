@@ -434,23 +434,24 @@ MRREVIEWER = {Ivan Chajda},
 \usepackage{fullpage}
 \begin{document}
 
-\title[Difference Terms and Semilattice Terms]{%
-  Notes on Complexity of Deciding Existence of Difference Terms and Semilattice Terms}
+\title[Complexity of Difference Term Existence]{%
+  Notes on Complexity of Deciding Existence of Difference Terms}
 \date{\today}
-\author{DeMeo}
+%% \author{DeMeo}
 \address{University of Hawaii}
 \email{williamdemeo@gmail.com}
-\author{Freese}
+%% \author{Freese}
 \email{ralph@math.hawaii.edu}
-\author{Guillen}
-\email{guillena@math.hawaii.edu}
-\author{Holmes}
-\email{tristanh@hawaii.edu}
-\author{Lampe}
-\email{bill@math.hawaii.edu}
-\author{Nation}
-\email{jb@math.hawaii.edu}
-
+%% \author{Guillen}
+%% \email{guillena@math.hawaii.edu}
+%% \author{Holmes}
+%% \email{tristanh@hawaii.edu}
+%% \author{Lampe}
+%% \email{bill@math.hawaii.edu}
+%% \author{Nation}
+%% \email{jb@math.hawaii.edu}
+%% \author{Valeriote}
+\email{matt@math.mcmaster.ca}
 
 %% \thanks{The authors would like to extend special thanks to...}
 
@@ -677,7 +678,10 @@ omitting types.
 \end{center}
 
 In Section~\ref{sec:freese-valer-lemm}, the following result will be useful.
-\begin{cor}[Cor.~2.2~\cite{Freese:2009}]
+\begin{cor}
+
+[{\protect cf.~\cite[Lem.~3.3]{Freese:2009}}]
+  [Cor.~2.2~\cite{Freese:2009}]
   \label{cor:2.2}
   Let $\bA$ be a finite idempotent algebra and $T$ an order ideal in the
   lattice of types. Then $\bbV(\bA)$ omits $T$ if and only if $\sansS(\bA)$ does.
@@ -688,6 +692,631 @@ In Section~\ref{sec:freese-valer-lemm}, the following result will be useful.
 
 \draftsecskip
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+\draftbreak
+
+\section{The Freese-Valeriote Lemmas Revisited}
+\label{sec:freese-valer-lemm}
+In~\cite{Freese:2009}, Corollary~\ref{cor:2.2} is the starting point of the
+development of a polynomial-time algorithm that determines if a given finite
+idempotent algebra generates a \cm variety. 
+
+%% The following lemma ties in with the previous proposition and will be used
+%% in Sec. 6.
+%% \begin{lemma}[Lemma 2.3~\cite{Freese:2009}] 
+%%   Let $\bA$ be a finite idempotent algebra and let $\bS \in \sansH \sansS(\bA)$
+%%   be strictly simple. Then there are elements $a, b \in A$ such that, if
+%%   $\bB = \Sg^{\bA} (a, b)$, then $1_B = \Cg^{\bB} (a, b)$ and is join irreducible
+%%   with unique lower cover $\rho$ such that $\bS = \bB/\rho$.
+%% \end{lemma}
+%% \begin{proof}
+%%   Choose $\bB \in \sansS (\bA)$ as small as possible having $\bS$ as a homomorphic image,
+%%   say $\bS = \bB/\rho$. We claim that if $a, b \in B$ with
+%%   $(a, b) \in \notin \rho$ then they generate $\bB$. To
+%%   see this, let $\bB'= \Sg^{\bB} (a, b)$ and let $h$ be the quotient map from B to S with kernel
+%%   ρ. Then h(B  ) is a non-trivial subuniverse of S and so must equal S. Thus B  = B.
+%%   Now let a, b ∈ B with (a, b) ∈
+%%   / ρ. Since the block of Cg B (a, b) containing a
+%%   and b is a subuniverse of B then from the previous paragraph, we conclude that
+%%   Cg B (a, b) = 1 B and that ρ is its unique lower cover.
+%% \end{proof}
+
+According to the characterization
+in~\cite[Ch.~8]{HM:1988} of locally finite congruence modular (resp.,
+distributive) varieties, a finite algebra $\bA$ generates a congruence modular
+(resp., distributive) variety $\sV$ if and only if the typeset of $\sV$ is
+contained in $\{2, 3, 4\}$ (resp., $\{3, 4\}$) and all minimal sets of prime
+quotients of finite algebras in $\sV$ have empty
+tails~\cite[Def.~2.15]{HM:1988}. Note that in the distributive 
+case the empty tails condition is equivalent to the minimal sets all having exactly
+two elements.
+
+It follows from Corollary~\ref{cor:2.2} and Proposition~\ref{prop:2.1}
+that if $\bA$ is idempotent then one can
+test the first condition, on omitting types 1 and 5 (or 1, 2, and 5) by searching
+for a 2-generated subalgebra of $\bA$ whose typeset is not contained in
+$\{2, 3, 4\}$ ($\{3, 4\}$). It is proved in~\cite[Sec.~6]{Freese:2009} that this
+test can be performed in polynomial time---that is, the running time of the test
+is bounded by a polynomial function of the size of $\bA$.
+In~\cite[Sec.~3]{Freese:2009}, Freese and Valeriote prove a sequence of
+lemmas to establish that, if $\bA$ is finite and idempotent, and if
+$\sV = \bbV(\bA)$ omits types 1 and 5, then to test for the existence of tails
+in $\sV$ it suffices to look for them 
+in the 3-generated subalgebras of $\bA^2$.
+%% More specifically, the authors assume that the type set of $\bbV(\bA)$ contains no 1's
+%% and no 5's, and under this 
+%% assumption they prove that non-empty tails either do not occur in $\bbV(\bA)$,
+%% or they occur in 3-generated subalgebras of $\bA^2$.
+In other words, either there are no non-empty tails
+or else there are non-empty tails that are easy to find
+(since they occur in 3-generated subalgebras of $\bA^2$).
+It follows that Problem~\ref{prob:2} has a positive answer:
+deciding whether or not a finite idempotent algebra generates a congruence
+modular variety is tractable.\footnote{That is, there are positive integers
+  $C, n$, and an algorithm that takes
+  a finite idempotent algebra $\bA$ as input and decides
+  in at most $C|\bA|^n$ steps whether $\bbV(\bA)$ is congruence modular.
+  Here $|\bA|$ denotes the number of bits required to encode the algebra $\bA$.}
+%% polynomial-time algorithm to decide, for a finite idempotent algebra $\bA$,
+%% whether $\bbV(\bA)$ is congruence modular.}
+
+Our goal is to use the same strategy to solve Problem~\ref{prob:1}.
+As such, we revisit each lemma in Section 3 of \cite{Freese:2009},
+and consider whether it can be proved under modified hypotheses.
+Specifically, we continue to assume that the type set of $\bbV(\bA)$ contains no 1's,
+but we will now drop the ``no 5's'' assumption.  We will attempt to prove that
+either there are no \emph{type-2} tails in $\bbV(\bA)$, or else \emph{type-2}
+tails can be found ``quickly,'' (e.g., in a 3-generated subalgebra of $\bA^2$).
+We continue to quote~\cite{Freese:2009} where possible,
+while modifying the assumptions and adjusting the arguments as necessary.
+
+
+Throughout, we let $\nn$ denote the set $\{0,1,\dots, n-1\}$ and 
+(at least for the rest of this section) we let $\sS$ be a finite set of finite,
+similar, idempotent algebras, closed under the taking of subalgebras, such that
+$\sV = \bbV(\sS)$ omits 1 (but may include type 5).
+We will suppose that some finite algebra
+$\bB$ in $\sV$ has a prime quotient whose minimal sets have non-empty
+\emph{type-2} tails and show that there is a 3-generated subalgebra of the
+product of two members of $\sS$ with this property.
+
+Since $\sS$ is closed under the taking of subalgebras,
+we may assume that the algebra $\bB$ from the previous paragraph is a subdirect
+product of a finite number of members of $\sS$. Choose $n$ minimal such that for
+some $\bA_0$, $\bA_1$, $\dots$, $\bA_{n-1}$ in $\sS$, there is a subdirect
+product $\bB \sdp \prod_{\nn} \bA_i$
+that has a prime quotient with non-empty type-2 tails.
+Under the assumption that $n > 1$ we will attempt to prove that $n = 2$.
+
+For this $n$, select the $\bA_i$ and $\bB$ so that $|B|$ is as small as possible.
+Let $\alpha \prec \beta$ be a prime quotient of $\bB$ with non-empty
+type-2 tails and choose $\beta$ minimal with this property.
+Let $U$ be an $(\alpha, \beta)$-minimal set and let $N$ be an
+ $(\alpha, \beta)$-trace of $U$. Let 0 and 1 be
+two distinct members of $N$ with $(0, 1) \notin \alpha$.
+
+\begin{lem}[{\protect cf.~\cite[Lem.~3.1]{Freese:2009}}]
+  \label{lem:fv_3-1}
+  Let $t$ be a member of the tail of $U$. Then $\beta$ is the congruence of $\bB$
+  generated by the pair $(0, 1)$ and $\bB$ is generated by $\{0, 1, t\}$.
+\end{lem}
+It seems the proof of~\cite[Lem.~3.1]{Freese:2009} goes through with only minor
+adjustments. % to prove Lemma~\ref{lem:fv_3-1}.
+\begin{proof}
+  {\bf TODO:} fill in proof of  Lemma~\ref{lem:fv_3-1}.
+\end{proof}
+
+
+For $i \leq n$, let $\rho_i$ denote the kernel of the projection of $\bB$ onto $\bA_i$,
+so $\bB \cong \bA_i/\rho_i$.
+For a subset $\sigma \subseteq \nn$, define
+\[
+\rho_\sigma := \bigwedge_{j\in \sigma} \rho_j.
+\]
+Consequently,
+$\rho_{\nn} = \bigwedge_{j\in \nn}\rho_j = 0_{B}$
+%% \marginnote{wjd: I don't see why join in (3.1) is $1_B$... it's probably wrong.}[3cm]
+%% \begin{equation}
+%%   \label{eq:2}
+%%   \rho_{\nn} = \bigwedge_{j\in \nn}\rho_j = 0_{B} \quad \text{ and } \quad
+%%   \bigvee_{j\in \nn}\rho_j =1_B. %% \qquad
+%% \end{equation}
+By minimality of $n$ we know that the intersection of any  proper subset of the
+$\rho_i$, $1 \leq i \leq n$ is strictly above $0_B$.  Thus,
+$0_B < \rho_\sigma < 1_B$ for all 
+$\emptyset \subset \sigma\subset \nn$
+(by $\subset$ we mean \emph{proper} subset).
+
+\begin{lem}[{\protect cf.~\cite[Lem.~3.2]{Freese:2009}}]
+  \label{lem:fv_3-2}
+  If $\sigma \subset \nn$, then
+  either $\beta \leq \rho_\sigma$ or $\alpha \join \rho_\sigma = 1_B$.
+\end{lem}
+\begin{proof}
+  {\bf TODO:} fill in proof of  Lemma~\ref{lem:fv_3-2}.
+\end{proof}
+
+\begin{lem}[{\protect cf.~\cite[Lem.~3.3]{Freese:2009}}]
+  \label{lem:fv_3-3}
+  \begin{enumerate}[(i)]
+    \item \label{item:6} There exists $0\leq i< n $
+      such that $\alpha \join \rho_i = 1_B$
+    \item \label{item:7} There exists $i$ such that  
+      $\alpha \join \rho_i < 1_B$.
+  \end{enumerate}
+\end{lem}
+\begin{proof}
+  %% {\bf TODO:} fill in proof of  Lemma~\ref{lem:fv_3-3}.
+  \begin{enumerate}[(i)]
+  \item %\label{item:6} There exists $0\leq i< n $  such that $\alpha \join \rho_i = 1_B$
+    If not, then we would have $\beta \leq \rho_i$ for all $i$, and that
+    would imply $\beta = 0_B$.
+  \item %\label{item:7} There exists $i$ such that $\alpha \join \rho_i < 1_B$.
+    Assume
+    \begin{equation}
+      \label{eq:4}
+      \alpha \join \rho_i = 1_B \; \text{ for all $i$.}
+    \end{equation}
+    Take a nonempty proper subset $\sigma \subset \nn$ of indices and let 
+    $\rho_\sigma = \bigwedge_{j\in \sigma} \rho_j$.
+    Then $\alpha \join \rho_\sigma = 1_B$ since otherwise,
+    by Lemma~\ref{lem:fv_3-2}, we have
+    $\alpha \leq \beta \leq \rho_\sigma \leq \rho_i$ for $i \in \sigma$, so
+    $\alpha \join \rho_i = \rho_i < 1_B$, contradicting (\ref{eq:4}).
+    Therefore, $\beta \join \rho_\sigma = 1_B$.
+
+    \smallskip
+
+    \noindent {\bf Subclaim:}
+    For all nonempty proper subsets $\sigma \subset n$,
+    for all $a\in \body(U)$ and all $v\in B$, we have
+    $(a, v) \in \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta$.
+
+    \smallskip
+    
+    \noindent To prove the subclaim, we first note that $\beta \join \rho_\sigma = 1_B$ implies
+    $\restr{\beta}{U} \join \restr{\rho_\sigma}{U} = 1_U$ since $U = e(B)$.
+    Now, for all $x, y \in U$, if $x\in \body(U)$ and $y\in \tail(U)$, then
+    $(x,y) \notin \beta$.  Therefore,
+    $(x, y) \in  = 1_U = \restr{\beta}{U} \join \restr{\rho_\sigma}{U}$ implies
+    there must be some $a \in \body(U)$ and $t\in \tail(U)$ such that 
+    $a \mathrel{\rho_\sigma} t$.  Let $b\in \body(U)$ be such that
+    $(a,b) \in \restr{\beta}{U} - \restr{\alpha}{U}$.  By Lemma~\ref{lem:fv_3-1},
+    $\bB = \Sg^{\bB}(a, b, t)$.
+
+    Let $v \in B$. Then $v = s^{\bB}(a,b,t)$ for some (idempotent) term $s$, so
+    \[
+    v = s^{B}(a,b,t) \mathrel{\rho_\sigma} s^{B}(a,b,a) \mathrel{\beta} s^{B}(a,a,a)  = a,
+    \]
+    and
+    \[
+    v = s^{B}(a,b,t) \mathrel{\beta}  s^{B}(a,a,t) \mathrel{\rho_\sigma}s^{B}(a,a,a)  = a.
+    \]
+    Therefore, $(v,a) \in  \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta$.
+
+    Now, let $d(x,y,z)$ be a pseudo-\malcev polynomial for $U$,
+    which exists by~\cite[Lem.~4.20]{HM:1988}.
+    Thus,
+    \begin{itemize}
+    \item $d(B,B,B) = U$
+    \item $d(x,x,x) = x$ for all $x\in U$
+    \item $d(x,x,y) = y = d(y,x,x)$ for all $x\in \body(U)$, $y \in U$.
+    \end{itemize}
+    For all $a, b \in \body(U)$, the unary polynomials
+    $d(x,a,b)$, $d(a,x,b)$, and $d(a,b,x)$ are permutations on $U$.
+
+    For $c\in \body(U)$, let $p(x) = d(x,a,c)$. Then (see~\cite[Lem.~4.20]{HM:1988})
+    we have $p(U) = U$, $p(a) = d(a,a,c) = c \in \body(U)$ and $p(t)\in \tail(U)$,
+    since $t\in \tail(U)$.  Since $(a,t) \in \rho_\sigma$, we have
+    $(c, p(t)) = (p(a), p(t)) \in \rho_\sigma$.
+
+    We conclude from the foregoing that,
+    for all nonempty proper subsets $\sigma \subset n$,
+    for all $a\in \body(U)$ and all $v\in B$, we have
+    $(a, v) \in \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta$, proving the subclaim.
+
+    Now, \cite[Lem.~4.20]{HM:1988} states that it is impossible to find
+    $b \in \body(U)$ and $t \in \tail(U)$ such that $d(b,t,t) \mathrel{\beta} b$.
+    We will contradict this with the $b$ and $t$ considered above.
+    In fact, for these elements, we even have equality: $d(b,t,t) = b$.
+
+    
+    
+
+
+    
+  \end{enumerate}
+
+\end{proof}
+
+\begin{thm}[Thm.~3.4~\cite{Freese:2009}]
+  \label{thm:fv_3-4}
+  Let $\sV$ be the variety generated by some finite set $\sS$ of finite,
+  idempotent algebras that is closed under taking subalgebras. If $\sV$
+  omits type 1 \sout{and 5} and some finite member of $\sV$ has a prime quotient
+  whose minimal sets have non-empty \underline{type-2} tails then there is some
+  3-generated algebra B with this property that belongs to $\sS$ or is a subdirect
+  product of two algebras from $\sS$. 
+\end{thm}
+\begin{proof}
+  {\bf TODO:} fill in proof of Theorem~\ref{thm:fv_3-4}.
+\end{proof}
+
+
+\draftbreak
+
+\section{Local difference terms}
+
+In~\cite{MR3239624},
+Valeriote and Willard define %% an \defn{$\bA$-triple for $\bp$}
+%% to be a triple $(a,b,i)$ such that $a, b \in A$ and
+%% $p_i(a,b,b) = p_{i+1}(a,a,b)$. They use this to define 
+a ``local Hagemann-Mitschke sequence'' which they use as the basis of
+an efficient algorithm for deciding for a given $n$ whether an idempotent
+variety is $n$-permutable. 
+Inspired by that work, we devise a similar construct, called
+a ``local difference term,'' that we use to develop a polynomial-time
+algorithm for deciding the existence of a (global) difference term operation.
+%% , given a finite idempotent algebra $\bA$, whether the variety
+%% generated by $\bA$ has a difference term.
+
+
+For the most part we use standard notation, definitions, and
+results of universal algebra, such as those found in~\cite{MR2839398}.
+However, we make the following exception for notational simplicity:
+if $\bA =\<A, \dots\>$ is an algebra with elements 
+$a, b \in A$, then we use $\theta(a,b)$ to denote
+the congruence of $\bA$ generated by $a$ and $b$.
+
+\renewcommand{\Cg}{\ensuremath{\theta}}
+
+
+Let $\bA=\< A, \dots\>$ be an algebra, fix $a, b \in A$ and
+$i \in \{0,1\}$.
+%% An \defn{$\bA$-local difference term for
+A \defn{local difference term for
+  $(a,b,i)$} is a ternary term $p$ satisfying the following:
+\begin{align}
+%% \text{ if $i=0$, then } & a \comm{\Cg^{\bA}(a,b)}{\Cg^{\bA}(a,b)} p(a,b,b); \label{eq:diff-triple}\\
+\text{ if $i=0$, then } & a \comm{\Cg(a,b)}{\Cg(a,b)} p(a,b,b); \label{eq:diff-triple}\\
+\text{ if $i=1$, then } &p(a,a,b) = b. \nonumber
+\end{align}
+%% We often drop the
+%% $\bA$ when the algebra is clear from context.
+%% For example, we write $\Cg$ in place of $\Cg^{\bA}$, and 
+%% call the term $p$ above a local difference term for 
+%% $(a,b,i)$.
+If $p$ satisfies~(\ref{eq:diff-triple}) for all triples
+in some subset $S\subseteq A \times A \times \{0,1\}$, then we call $p$
+a \defn{local difference term for $S$}.
+
+Let 
+$\sS = A \times A \times \{0,1\}$ and
+suppose that every pair
+$((a_0, b_0, \chi_0), (a_1, b_1, \chi_1))$
+in $\sS^2$ has a local difference term.
+That is, for each pair $((a_0, b_0, \chi_0), (a_1, b_1, \chi_1))$, there exists
+$p$ such that for each $i \in \{0,1\}$ we have
+\begin{align}
+  a_i \comm{\Cg(a_i,b_i)}{\Cg(a_i,b_i)} p(a_i,b_i,b_i), & \;
+  \text{ if $\chi_i=0$, and }  \label{eq:d-trip-i1}\\
+  p(a_i,a_i,b_i) =b_i, & \;
+  \text{ if $\chi_i=1$.}\label{eq:d-trip-i2} %\\\nonumber
+\end{align}
+Under these hypothesis we will prove that every subset $S\subseteq \sS$
+has a local difference term.
+That is, there is a single term $p$ that works (i.e., satisfies
+(\ref{eq:d-trip-i1}) and (\ref{eq:d-trip-i2})) for all $(a_i, b_i, \chi_i) \in S$.
+The statement and proof of this new result follows.
+
+\begin{thm}[\protect{cf.~\cite[Theorem 2.2]{MR3239624}}]
+  \label{thm:local-diff-terms}
+  Let $\sV$ be an idempotent variety and
+  $\bA \in \sV$. Define
+  $\sS= A \times A \times \{0,1\}$
+  and suppose that every pair
+  $((a_0, b_0, \chi_0), (a_1, b_1, \chi_1)) \in \sS^2$
+  has a local difference term.
+  Then every subset $S \subseteq \sS$,
+  has a local difference term.
+\end{thm}
+\begin{proof}
+The proof is by induction on the size of $S$.  In the base case, $|S| = 2$,
+the claim holds by assumption.
+Fix $n\geq 2$ and assume that every subset of $\sS$ of size $2\leq k \leq n$ has a local
+difference term. Let
+$S = \{(a_0, b_0, \chi_0), (a_1, b_1, \chi_1), \dots, (a_{n}, b_{n},\chi_{n})\} \subseteq \sS$,
+so that $|S| = n+1$.  We prove $S$ has a local difference term.
+
+Since $|S| \geq 3$ and $\chi_i \in \{0,1\}$ for all $i$, there must exist
+indices $i\neq j$ such that $\chi_i = \chi_j$. Assume without loss of generality
+that one of these indices is $j=0$.  Define
+the set
+$S' = S \setminus \{(a_0, b_0, \chi_0)\}$.
+Since $|S'| < |S|$, the set $S'$ has a local difference term $p$.
+We split the remainder of the proof into two cases. In the first case
+$\chi_0 = 0$ and in the second
+$\chi_0 = 1$.
+
+\vskip3mm
+
+%--------------------------------------
+\noindent \underline{Case 0:} $\chi_0 = 0$.
+%% \\[4pt]
+%% Assume $\chi_0 = 0$ and, 
+%% w
+Without loss of generality, suppose that $\chi_1 = %% \chi_2 =
+\cdots =\chi_k = 1$,
+and $\chi_{k+1} %% = \chi_{k+2} 
+= \cdots = \chi_{n} = 0$. Define %% $T$ to be the set
+$T = \{(a_0, p(a_0, b_0, b_0), 0),
+(a_1, b_1, 1), (a_2, b_2, 1), 
+\dots, (a_k, b_k, 1)\}$, and 
+note that $|T| < |S|$.
+Let $t$ be a local difference term for $T$.
+Define
+\[
+d(x,y,z) = t(x, p(x,y,y), p(x,y,z)).
+\]
+Since $\chi_0 =0$, we need to show
+$(a_0, d(a_0,b_0,b_0))$ belongs to $\comm{\Cg(a_0,b_0)}{\Cg(a_0,b_0)}$.
+We have
+\begin{equation}
+    \label{eq:100000}
+  d(a_0,b_0,b_0) =
+  t(a_0, p(a_0,b_0,b_0), p(a_0,b_0,b_0))\comm{\tau}{\tau} a_0,
+\end{equation}
+where we have used $\tau$ to denote $\Cg(a_0, p(a_0,b_0,b_0))$.
+Note that
+%% \[(a_0, p(a_0,b_0,b_0)) = (p(a_0,a_0,a_0), p(a_0,b_0,b_0)) \in \Cg(a_0, b_0),\]
+$(a_0, p(a_0,b_0,b_0))$ is equal to $(p(a_0,a_0,a_0), p(a_0,b_0,b_0))$ which 
+belongs to $\Cg(a_0, b_0)$,
+so $\tau\leq \Cg(a_0,b_0)$. Therefore,
+by monotonicity of the commutator,
+$\comm{\tau}{\tau} {\leq} \comm{\Cg(a_0,b_0)}{\Cg(a_0,b_0)}$.
+It follows from this and (\ref{eq:100000}) that
+%% $d(a_0,b_0,b_0)\comm{\Cg(a_0,b_0)}{\Cg(a_0,b_0)} a_0$,
+\[d(a_0,b_0,b_0)\comm{\Cg(a_0,b_0)}{\Cg(a_0,b_0)} a_0,\]
+as desired.
+
+For the indices $1\leq i \leq k$ we have $\chi_i =1$, so we wish to prove
+$d(a_i,a_i,b_i) = b_i$ for such $i$. Observe,
+\begin{align}
+  d(a_i,a_i,b_i) &=
+  t(a_i, p(a_i,a_i,a_i), p(a_i,a_i,b_i)) \label{eq:200000}\\
+  &=t(a_i, a_i, b_i) \label{eq:200001}\\
+  &=b_i. \label{eq:200002}
+\end{align}
+Equation~(\ref{eq:200000}) holds by definition of $d$,~(\ref{eq:200001})
+because $p$ is an idempotent local difference term for
+$S'$, and~(\ref{eq:200002}) because $t$ is a local difference term for $T$.
+
+The remaining triples in our original set $S$
+have indices satisfying $k<j\leq n$ and $\chi_j = 0$.
+Thus, for these triples we want
+$d(a_j,b_j,b_j)\comm{\Cg(a_j,b_j)}{\Cg(a_j,b_j)} a_j$.
+By definition,
+\begin{equation}
+  \label{eq:450000}
+d(a_j,b_j,b_j) =t(a_j, p(a_j,b_j,b_j), p(a_j,b_j,b_j)).  
+\end{equation}
+Since $p$ is a local difference term for $S'$, we have
+%% the pair $(p(a_j,b_j,b_j), a_j)$ belongs to $[\Cg(a_j,b_j), \Cg(a_j,b_j)]$.
+$(p(a_j,b_j,b_j), a_j)\in [\Cg(a_j,b_j), \Cg(a_j,b_j)]$.
+This and 
+(\ref{eq:450000}) imply
+%% \begin{equation*}
+%%     %% \label{eq:300000}
+%%   d(a_j,b_j,b_j) =
+%%   t(a_j, p(a_j,b_j,b_j), p(a_j,b_j,b_j))
+%%   \comm{\Cg(a_j,b_j)}{\Cg(a_j,b_j)} t(a_j,a_j,a_j) = a_j,
+%% \end{equation*}
+that 
+%% $(t(a_j, p(a_j,b_j,b_j), p(a_j,b_j,b_j)), t(a_j,a_j,a_j))$
+$(d(a_j, b_j,b_j), t(a_j,a_j,a_j))$
+belongs to
+$\comm{\Cg(a_j,b_j)}{\Cg(a_j,b_j)}$.
+Finally, by idempotence of $t$ we have
+$d(a_j,b_j,b_j)\comm{\Cg(a_j,b_j)}{\Cg(a_j,b_j)} a_j$,
+%% \begin{align*}
+%%     %% \label{eq:300000}
+%%   d(a_j,b_j,b_j) &=
+%%   t(a_j, p(a_j,b_j,b_j), p(a_j,b_j,b_j))\\
+%%   &\comm{\Cg(a_j,b_j)}{\Cg(a_j,b_j)} t(a_j,a_j,a_j)\\
+%%   &= a_j,
+%% \end{align*}
+as desired.
+\\[6pt]
+%--------------------------------------
+\underline{Case 1:}
+$\chi_0 = 1$.
+%% \\[4pt]
+%% Assume $\chi_0 = 1$ and, 
+Without loss of generality, suppose $\chi_1 = \chi_2 =\cdots =\chi_k = 0$,
+and $\chi_{k+1} = \chi_{k+2} = \cdots = \chi_{n} = 1$. Define 
+\[
+T = \{(p(a_0, a_0, b_0), b_0, 1),
+(a_1, b_1, 0), (a_2, b_2 0), \dots, (a_k, b_k, 0)\},
+\]
+and note that $|T| < |S|$.
+Let $t$ be a local difference term for $T$ and
+define
+%% \[d(x,y,z) = t(p(x,y,z), p(y,y,z), z).\] 
+$d(x,y,z) = t(p(x,y,z), p(y,y,z), z)$. 
+Since $\chi_0 =1$, we want $d(a_0,a_0,b_0) = b_0$. By the definition of
+$d$,
+\begin{equation*}
+  d(a_0,a_0,b_0) =
+  t(p(a_0,a_0,b_0), p(a_0,a_0,b_0), b_0) =b_0.
+\end{equation*}
+The last equality holds since $t$ is a local difference term for $T$, thus,
+for $(p(a_0, a_0, b_0), b_0, 1)$.
+
+If $1\leq i \leq k$, then $\chi_i =0$, so for these indices we want
+$d(a_i,b_i,b_i) \comm{\Cg(a_i,b_i)}{\Cg(a_i,b_i)} a_i$.
+Again, starting from the definition of $d$ and using idempotence of $p$, we have
+%% \begin{equation}
+%%   \label{eq:40000}
+%%   d(a_i,b_i,b_i) =
+%%   t(p(a_i,b_i,b_i), p(b_i,b_i,b_i), b_i)=
+%%   t(p(a_i,b_i,b_i), b_i, b_i).
+%% \end{equation}
+\begin{align}
+  d(a_i,b_i,b_i) &=
+  t(p(a_i,b_i,b_i), p(b_i,b_i,b_i), b_i)   \label{eq:40000}\\
+  &=t(p(a_i,b_i,b_i), b_i, b_i). \nonumber
+\end{align}
+Next, since $p$ is a local difference term for $S'$, we have
+\begin{equation}
+  \label{eq:50000}
+  t(p(a_i,b_i,b_i), b_i, b_i)
+ \comm{\theta(a_i,b_i)}{\theta(a_i,b_i)}
+ t(a_i, b_i, b_i).
+\end{equation}
+Finally, since $t$ is a local difference term for $T$, hence for
+$(a_i, b_i, b_i)$,  %% $(1\leq i \leq k)$,
+we have 
+$t(a_i, b_i, b_i) \comm{\Cg(a_i,b_i)}{\Cg(a_i,b_i)} a_i$.
+Combining this with (\ref{eq:40000}) and (\ref{eq:50000}) yields
+$d(a_i,b_i,b_i) \comm{\Cg(a_i,b_i)}{\Cg(a_i,b_i)} a_i$,
+as desired.
+
+The remaining elements of our original set $S$
+have indices $j$ satisfying $k<j\leq n$ and $\chi_j = 1$.
+For these we want $d(a_j,a_j,b_j) = b_j$.
+Since $p$ is a local difference term for $S'$, we have
+$p(a_j,a_j,b_j) = b_j$, and this along with idempotence of $t$ yields
+%%\[ d(a_j,a_j,b_j) =  t(p(a_j,a_j,b_j), p(a_j,a_j,b_j), b_j)=  t(b_j, b_j, b_j) =b_j,\]
+\begin{align*}
+d(a_j,a_j,b_j) &=
+t(p(a_j,a_j,b_j), p(a_j,a_j,b_j), b_j)\\
+&=t(b_j, b_j, b_j) =b_j,
+\end{align*}
+as desired.
+\end{proof}
+
+\begin{cor}
+  \label{cor:loc-diff-term}
+  A finite idempotent algebra $\bA$ has a difference term operation if and
+  only if every pair $((a,b,i), (a',b',i')) \in (A\times A \times \{0,1\})^2$ has a local
+  difference term.
+\end{cor}
+\begin{proof}
+  One direction is clear, since a difference term operation for $\bA$ is
+  obviously a local difference term for the whole set 
+  $A\times A \times \{0,1\}$.
+  For the converse, suppose
+  each pair in $(A\times A \times \{0,1\})^2$ has a local
+  difference term. Then, by Theorem~\ref{thm:local-diff-terms},
+  there is a single local difference term for the whole set $A\times A \times \{0,1\}$,
+  and this is a difference term operation for $\bA$.  Indeed, if $d$ is a
+  local difference term for $A\times A \times \{0,1\}$, then 
+  for all $a, b \in A$, we have
+  $a \comm{\Cg(a,b)}{\Cg(a,b)} d(a,b,b)$,
+  since $d$ is a local difference term for $(a,b,0)$, and we have
+  $d(a,a,b) = b$, since $d$ is also a local difference term for
+  $(a,b,1)$.
+\end{proof}
+
+\newpage
+\section{The Algorithm}
+\begin{cor}
+  There is a polynomial-time algorithm that takes as input
+  any finite idempotent algebra $\bA$ and decides whether
+  %% the variety $\bbV(\bA)$ that it generates
+  $\bA$ has a difference term operation.
+\end{cor}
+\begin{proof}
+  %% and let  $\sV = \bbV(\bA)$.
+  We describe an efficient algorithm for deciding,
+  given a finite idempotent algebra $\bA$,
+  whether every pair $((a,b,i), (a',b',i')) \in (A\times A \times \{0,1\})^2$ has a local
+  difference term.  By Corollary~\ref{cor:loc-diff-term}, this will prove we
+  can decide in polynomial-time whether $\bA$ has a difference term operation.
+  %% We will then complete the
+  %% proof by explaining why $\bA$ has a difference term operation iff the variety
+  %% it generates has a difference term. 
+
+  Fix a pair
+  $((a,b,i), (a',b',i'))$ in $(A\times A \times \{0,1\})^2$. If $i = i' = 0$,
+  then the first projection is a local difference term. If $i = i' = 1$,  
+    then the third projection is a local difference term. The two remaining cases to
+    consider are (1) $i = 0$ and $i'=1$, and (2)
+    $i = 1$ and $i'=0$. Since these are completely symmetric, we only handle the
+    first case. Assume  the given pair of triples is
+    $((a,b,0), (a',b',1))$.  By definition, a term $t$ is local difference term
+    for this pair iff
+    \[
+    a\comm{\Cg(a,b)}{\Cg(a,b)} t^{\bA}(a,b,b) \; \text{ and } \;
+    t^{\bA}(a',a',b') = b'.
+    \]
+    We can rewrite this condition more compactly by
+    considering 
+    $t^{\bA\times \bA}((a,a'), (b,a'), (b,b')) =
+    (t^{\bA}(a,b,b),t^{\bA}(a',a',b'))$.
+    Clearly $t$ is a local difference term for
+    $((a,b,0), (a',b',1))$ iff
+    \[
+    t^{\bA\times \bA}((a,a'), (b,a'), (b,b'))\in a/\delta \times \{b'\},
+    \]
+    where $\delta = [\Cg(a,b), \Cg(a,b)]$ and $a/\delta$ denotes the
+    $\delta$-class containing $a$.
+    (Observe that $a/\delta \times \{b'\}$ is a subalgebra of $\bA \times \bA$
+    by idempotence.)
+    It follows that the pair
+    $((a,b,0), (a',b',1))$ has a local difference term iff
+    the subuniverse of $\bA\times \bA$ generated by
+    $\{(a,a'), (b,a'), (b,b')\}$ intersects nontrivially with the subuniverse
+    $a/\delta \times \{b'\}$.
+
+    Thus, the algorithm takes as input $\bA$ and, for each triple
+    $((a,a'), (b,a'), (b,b'))$ in $(A\times A)^3$, computes
+    $\delta = [\Cg(a,b), \Cg(a,b)]$, computes the subalgebra
+    $\bS$ of $\bA\times \bA$ generated by
+    %% \Sg^{\bA\times \bA}\{(a,a'), (b,a'), (b,b')\}$, and then
+    $\{(a,a'), (b,a'), (b,b')\}$, and then
+    tests whether $S \cap (a/\delta \times \{b'\})$ is empty.
+    If we find an empty intersection at any point, then the algorithm returns
+    the answer ``no difference term operation.'' Otherwise,
+    $\bA$ has a difference term operation.
+
+    Most of the operations carried out by this algorithm are well known to be
+    polynomial-time.  For example, that the running time of subalgebra generation is
+    polynomial has been known for a long time (see~\cite{MR0455543}).
+    The time complexity of congruence generation is also known to be polynomial
+    (see~\cite{MR2470585}).  The only operation whose tractability might be 
+    questionable is the commutator, but there is a straight-forward algorithm for
+    computing it which, after the congruences have been computed, simply
+    involves generating more subalgebras.
+    %% Finally, we observe that if $\bA$ has a difference term operation, then the
+    %% variety it generates has a difference term.
+\end{proof}
+
+More details on the complexity of operations carried out by the algorithm, as well as many other algebraic operations, can be found in the references mentioned, as well as~\cite{MR1871085,MR1695293,Freese:2009}. 
+
+
+\subsection{Extension to subalgebras}
+\input{inputs/global-local-diff-term.tex}
+
+
+\newpage
+
+
+
+\renewcommand{\Cg}{\ensuremath{\operatorname{Cg}}}
+
+\appendix
+
+
+
 
 \subsection{The centralizer, term condition, and abelian congruences}
 We review some useful properties of centralizers and abelian
@@ -1154,551 +1783,6 @@ free algebra in $\sV$. The following are equivalent:
 
 
 
-
-
-
-
-
-\draftbreak
-
-\section{The Freese-Valeriote Lemmas Revisited}
-\label{sec:freese-valer-lemm}
-In~\cite{Freese:2009}, Corollary~\ref{cor:2.2} is the starting point of the
-development of a polynomial-time algorithm that determines if a given finite
-idempotent algebra generates a \cm variety. 
-
-%% The following lemma ties in with the previous proposition and will be used
-%% in Sec. 6.
-%% \begin{lemma}[Lemma 2.3~\cite{Freese:2009}] 
-%%   Let $\bA$ be a finite idempotent algebra and let $\bS \in \sansH \sansS(\bA)$
-%%   be strictly simple. Then there are elements $a, b \in A$ such that, if
-%%   $\bB = \Sg^{\bA} (a, b)$, then $1_B = \Cg^{\bB} (a, b)$ and is join irreducible
-%%   with unique lower cover $\rho$ such that $\bS = \bB/\rho$.
-%% \end{lemma}
-%% \begin{proof}
-%%   Choose $\bB \in \sansS (\bA)$ as small as possible having $\bS$ as a homomorphic image,
-%%   say $\bS = \bB/\rho$. We claim that if $a, b \in B$ with
-%%   $(a, b) \in \notin \rho$ then they generate $\bB$. To
-%%   see this, let $\bB'= \Sg^{\bB} (a, b)$ and let $h$ be the quotient map from B to S with kernel
-%%   ρ. Then h(B  ) is a non-trivial subuniverse of S and so must equal S. Thus B  = B.
-%%   Now let a, b ∈ B with (a, b) ∈
-%%   / ρ. Since the block of Cg B (a, b) containing a
-%%   and b is a subuniverse of B then from the previous paragraph, we conclude that
-%%   Cg B (a, b) = 1 B and that ρ is its unique lower cover.
-%% \end{proof}
-
-According to the characterization
-in~\cite[Ch.~8]{HM:1988} of locally finite congruence modular (resp.,
-distributive) varieties, a finite algebra $\bA$ generates a congruence modular
-(resp., distributive) variety $\sV$ if and only if the typeset of $\sV$ is
-contained in $\{2, 3, 4\}$ (resp., $\{3, 4\}$) and all minimal sets of prime
-quotients of finite algebras in $\sV$ have empty
-tails~\cite[Def.~2.15]{HM:1988}. Note that in the distributive 
-case the empty tails condition is equivalent to the minimal sets all having exactly
-two elements.
-
-It follows from Corollary~\ref{cor:2.2} and Proposition~\ref{prop:2.1}
-that if $\bA$ is idempotent then one can
-test the first condition, on omitting types 1 and 5 (or 1, 2, and 5) by searching
-for a 2-generated subalgebra of $\bA$ whose typeset is not contained in
-$\{2, 3, 4\}$ ($\{3, 4\}$). It is proved in~\cite[Sec.~6]{Freese:2009} that this
-test can be performed in polynomial time---that is, the running time of the test
-is bounded by a polynomial function of the size of $\bA$.
-In~\cite[Sec.~3]{Freese:2009}, Freese and Valeriote prove a sequence of
-lemmas to establish that, if $\bA$ is finite and idempotent, and if
-$\sV = \bbV(\bA)$ omits types 1 and 5, then to test for the existence of tails
-in $\sV$ it suffices to look for them 
-in the 3-generated subalgebras of $\bA^2$.
-%% More specifically, the authors assume that the type set of $\bbV(\bA)$ contains no 1's
-%% and no 5's, and under this 
-%% assumption they prove that non-empty tails either do not occur in $\bbV(\bA)$,
-%% or they occur in 3-generated subalgebras of $\bA^2$.
-In other words, either there are no non-empty tails
-or else there are non-empty tails that are easy to find
-(since they occur in 3-generated subalgebras of $\bA^2$).
-It follows that Problem~\ref{prob:2} has a positive answer:
-deciding whether or not a finite idempotent algebra generates a congruence
-modular variety is tractable.\footnote{That is, there are positive integers
-  $C, n$, and an algorithm that takes
-  a finite idempotent algebra $\bA$ as input and decides
-  in at most $C|\bA|^n$ steps whether $\bbV(\bA)$ is congruence modular.
-  Here $|\bA|$ denotes the number of bits required to encode the algebra $\bA$.}
-%% polynomial-time algorithm to decide, for a finite idempotent algebra $\bA$,
-%% whether $\bbV(\bA)$ is congruence modular.}
-
-Our goal is to use the same strategy to solve Problem~\ref{prob:1}.
-As such, we revisit each lemma in Section 3 of \cite{Freese:2009},
-and consider whether it can be proved under modified hypotheses.
-Specifically, we continue to assume that the type set of $\bbV(\bA)$ contains no 1's,
-but we will now drop the ``no 5's'' assumption.  We will attempt to prove that
-either there are no \emph{type-2} tails in $\bbV(\bA)$, or else \emph{type-2}
-tails can be found ``quickly,'' (e.g., in a 3-generated subalgebra of $\bA^2$).
-We continue to quote~\cite{Freese:2009} where possible,
-while modifying the assumptions and adjusting the arguments as necessary.
-
-
-Throughout, we let $\nn$ denote the set $\{0,1,\dots, n-1\}$ and 
-(at least for the rest of this section) we let $\sS$ be a finite set of finite,
-similar, idempotent algebras, closed under the taking of subalgebras, such that
-$\sV = \bbV(\sS)$ omits 1 (but may include type 5).
-We will suppose that some finite algebra
-$\bB$ in $\sV$ has a prime quotient whose minimal sets have non-empty
-\emph{type-2} tails and show that there is a 3-generated subalgebra of the
-product of two members of $\sS$ with this property.
-
-Since $\sS$ is closed under the taking of subalgebras,
-we may assume that the algebra $\bB$ from the previous paragraph is a subdirect
-product of a finite number of members of $\sS$. Choose $n$ minimal such that for
-some $\bA_0$, $\bA_1$, $\dots$, $\bA_{n-1}$ in $\sS$, there is a subdirect
-product $\bB \sdp \prod_{\nn} \bA_i$
-that has a prime quotient with non-empty type-2 tails.
-Under the assumption that $n > 1$ we will attempt to prove that $n = 2$.
-
-For this $n$, select the $\bA_i$ and $\bB$ so that $|B|$ is as small as possible.
-Let $\alpha \prec \beta$ be a prime quotient of $\bB$ with non-empty
-type-2 tails and choose $\beta$ minimal with this property.
-Let $U$ be an $(\alpha, \beta)$-minimal set and let $N$ be an
- $(\alpha, \beta)$-trace of $U$. Let 0 and 1 be
-two distinct members of $N$ with $(0, 1) \notin \alpha$.
-
-\begin{lem}[Lem.~3.1~\cite{Freese:2009}]
-  \label{lem:fv_3-1}
-  Let $t$ be a member of the tail of $U$. Then $\beta$ is the congruence of $\bB$
-  generated by the pair $(0, 1)$ and $\bB$ is generated by $\{0, 1, t\}$.
-\end{lem}
-It seems the proof of~\cite[Lem.~3.1]{Freese:2009} goes through with only minor
-adjustments. % to prove Lemma~\ref{lem:fv_3-1}.
-\begin{proof}
-  {\bf TODO:} fill in proof of  Lemma~\ref{lem:fv_3-1}.
-\end{proof}
-
-
-
-%% For $i \leq n$, let $\pi_i$ be the projection homomorphism from $\bB$ onto
-%% $\bA_i$ and let $\rho_i$ be the kernel of $\pi_i$, so $\bB \cong \bA_i/\rho_i$.
-For $i \leq n$, %% let $\pi_i$ be the projection homomorphism from $\bB$ onto
-%% $\bA_i$ and
-let $\rho_i$ denote the kernel of the projection of $\bB$ onto $\bA_i$,
-so $\bB \cong \bA_i/\rho_i$.
-For a subset $\sigma \subseteq \nn$, define
-\[
-\rho_\sigma := \bigwedge_{j\in \sigma} \rho_j.
-\]
-%% If $\sigma$ is a singleton, say, $\sigma= \{j\}$, then
-%% we write $\rho_j$ instead of $\rho_{\{j\}}$.
-Consequently,
-\marginnote{wjd: I don't see why join in (3.1) is $1_B$... it's probably wrong.}[3cm]
-\begin{equation}
-  \label{eq:2}
- \rho_{\nn} = \bigwedge_{j\in \nn}\rho_j = 0_{B}
- %% \rho_\sigma= \bigwedge_{j\in \sigma}\rho_j, 
- \quad \text{ and } \quad
-\bigvee_{j\in \nn}\rho_j =1_B. %% \qquad
-\end{equation}
-By minimality of $n$ we know that the intersection of any  proper subset of the
-$\rho_i$, $1 \leq i \leq n$ is strictly above $0_B$.  Thus,
-%%  in addition to the standard identities in~(\ref{eq:2}), we also have 
-$0_B < \rho_\sigma < 1_B$ for all 
-$\emptyset \subset \sigma\subset \nn$.
-(N.B.,  $\subset$ means \emph{proper} subset.)
-
-
-\begin{lem}[Lem.~3.2~\cite{Freese:2009}]
-  \label{lem:fv_3-2}
-  If $\sigma \subset \nn$, then
-  either $\beta \leq \rho_\sigma$ or $\alpha \join \rho_\sigma = 1_B$.
-\end{lem}
-\begin{proof}
-  {\bf TODO:} fill in proof of  Lemma~\ref{lem:fv_3-2}.
-\end{proof}
-
-\begin{lem}[Lem.~3.3~\cite{Freese:2009}]
-  \label{lem:fv_3-3}
-  $\alpha \join \rho_i < 1_B$ for at least one $i$ and $\alpha \join \rho_j = 1_B$
-  for at least one $j$.  
-\end{lem}
-\begin{proof}
-  {\bf TODO:} fill in proof of  Lemma~\ref{lem:fv_3-3}.
-\end{proof}
-
-\begin{thm}[Thm.~3.4~\cite{Freese:2009}]
-  \label{thm:fv_3-4}
-  Let $\sV$ be the variety generated by some finite set $\sS$ of finite,
-  idempotent algebras that is closed under taking subalgebras. If $\sV$
-  omits type 1 \sout{and 5} and some finite member of $\sV$ has a prime quotient
-  whose minimal sets have non-empty \underline{type-2} tails then there is some
-  3-generated algebra B with this property that belongs to $\sS$ or is a subdirect
-  product of two algebras from $\sS$. 
-\end{thm}
-\begin{proof}
-  {\bf TODO:} fill in proof of Theorem~\ref{thm:fv_3-4}.
-\end{proof}
-
-
-\draftbreak
-
-\section{Local difference terms}
-
-In~\cite{MR3239624},
-Valeriote and Willard define %% an \defn{$\bA$-triple for $\bp$}
-%% to be a triple $(a,b,i)$ such that $a, b \in A$ and
-%% $p_i(a,b,b) = p_{i+1}(a,a,b)$. They use this to define 
-a ``local Hagemann-Mitschke sequence'' which they use as the basis of
-an efficient algorithm for deciding for a given $n$ whether an idempotent
-variety is $n$-permutable. 
-Inspired by that work, we devise a similar construct, called
-a ``local difference term,'' that we use to develop a polynomial-time
-algorithm for deciding the existence of a (global) difference term operation.
-%% , given a finite idempotent algebra $\bA$, whether the variety
-%% generated by $\bA$ has a difference term.
-
-
-For the most part we use standard notation, definitions, and
-results of universal algebra, such as those found in~\cite{MR2839398}.
-However, we make the following exception for notational simplicity:
-if $\bA =\<A, \dots\>$ is an algebra with elements 
-$a, b \in A$, then we use $\theta(a,b)$ to denote
-the congruence of $\bA$ generated by $a$ and $b$.
-
-\renewcommand{\Cg}{\ensuremath{\theta}}
-
-
-Let $\bA=\< A, \dots\>$ be an algebra, fix $a, b \in A$ and
-$i \in \{0,1\}$.
-%% An \defn{$\bA$-local difference term for
-A \defn{local difference term for
-  $(a,b,i)$} is a ternary term $p$ satisfying the following:
-\begin{align}
-%% \text{ if $i=0$, then } & a \comm{\Cg^{\bA}(a,b)}{\Cg^{\bA}(a,b)} p(a,b,b); \label{eq:diff-triple}\\
-\text{ if $i=0$, then } & a \comm{\Cg(a,b)}{\Cg(a,b)} p(a,b,b); \label{eq:diff-triple}\\
-\text{ if $i=1$, then } &p(a,a,b) = b. \nonumber
-\end{align}
-%% We often drop the
-%% $\bA$ when the algebra is clear from context.
-%% For example, we write $\Cg$ in place of $\Cg^{\bA}$, and 
-%% call the term $p$ above a local difference term for 
-%% $(a,b,i)$.
-If $p$ satisfies~(\ref{eq:diff-triple}) for all triples
-in some subset $S\subseteq A \times A \times \{0,1\}$, then we call $p$
-a \defn{local difference term for $S$}.
-
-Let 
-$\sS = A \times A \times \{0,1\}$ and
-suppose that every pair
-$((a_0, b_0, \chi_0), (a_1, b_1, \chi_1))$
-in $\sS^2$ has a local difference term.
-That is, for each pair $((a_0, b_0, \chi_0), (a_1, b_1, \chi_1))$, there exists
-$p$ such that for each $i \in \{0,1\}$ we have
-\begin{align}
-  a_i \comm{\Cg(a_i,b_i)}{\Cg(a_i,b_i)} p(a_i,b_i,b_i), & \;
-  \text{ if $\chi_i=0$, and }  \label{eq:d-trip-i1}\\
-  p(a_i,a_i,b_i) =b_i, & \;
-  \text{ if $\chi_i=1$.}\label{eq:d-trip-i2} %\\\nonumber
-\end{align}
-Under these hypothesis we will prove that every subset $S\subseteq \sS$
-has a local difference term.
-That is, there is a single term $p$ that works (i.e., satisfies
-(\ref{eq:d-trip-i1}) and (\ref{eq:d-trip-i2})) for all $(a_i, b_i, \chi_i) \in S$.
-The statement and proof of this new result follows.
-
-\begin{thm}[\protect{cf.~\cite[Theorem 2.2]{MR3239624}}]
-  \label{thm:local-diff-terms}
-  Let $\sV$ be an idempotent variety and
-  $\bA \in \sV$. Define
-  $\sS= A \times A \times \{0,1\}$
-  and suppose that every pair
-  $((a_0, b_0, \chi_0), (a_1, b_1, \chi_1)) \in \sS^2$
-  has a local difference term.
-  Then every subset $S \subseteq \sS$,
-  has a local difference term.
-\end{thm}
-\begin{proof}
-The proof is by induction on the size of $S$.  In the base case, $|S| = 2$,
-the claim holds by assumption.
-Fix $n\geq 2$ and assume that every subset of $\sS$ of size $2\leq k \leq n$ has a local
-difference term. Let
-$S = \{(a_0, b_0, \chi_0), (a_1, b_1, \chi_1), \dots, (a_{n}, b_{n},\chi_{n})\} \subseteq \sS$,
-so that $|S| = n+1$.  We prove $S$ has a local difference term.
-
-Since $|S| \geq 3$ and $\chi_i \in \{0,1\}$ for all $i$, there must exist
-indices $i\neq j$ such that $\chi_i = \chi_j$. Assume without loss of generality
-that one of these indices is $j=0$.  Define
-the set
-$S' = S \setminus \{(a_0, b_0, \chi_0)\}$.
-Since $|S'| < |S|$, the set $S'$ has a local difference term $p$.
-We split the remainder of the proof into two cases. In the first case
-$\chi_0 = 0$ and in the second
-$\chi_0 = 1$.
-
-\vskip3mm
-
-%--------------------------------------
-\noindent \underline{Case 0:} $\chi_0 = 0$.
-%% \\[4pt]
-%% Assume $\chi_0 = 0$ and, 
-%% w
-Without loss of generality, suppose that $\chi_1 = %% \chi_2 =
-\cdots =\chi_k = 1$,
-and $\chi_{k+1} %% = \chi_{k+2} 
-= \cdots = \chi_{n} = 0$. Define %% $T$ to be the set
-$T = \{(a_0, p(a_0, b_0, b_0), 0),
-(a_1, b_1, 1), (a_2, b_2, 1), 
-\dots, (a_k, b_k, 1)\}$, and 
-note that $|T| < |S|$.
-Let $t$ be a local difference term for $T$.
-Define
-\[
-d(x,y,z) = t(x, p(x,y,y), p(x,y,z)).
-\]
-Since $\chi_0 =0$, we need to show
-$(a_0, d(a_0,b_0,b_0))$ belongs to $\comm{\Cg(a_0,b_0)}{\Cg(a_0,b_0)}$.
-We have
-\begin{equation}
-    \label{eq:100000}
-  d(a_0,b_0,b_0) =
-  t(a_0, p(a_0,b_0,b_0), p(a_0,b_0,b_0))\comm{\tau}{\tau} a_0,
-\end{equation}
-where we have used $\tau$ to denote $\Cg(a_0, p(a_0,b_0,b_0))$.
-Note that
-%% \[(a_0, p(a_0,b_0,b_0)) = (p(a_0,a_0,a_0), p(a_0,b_0,b_0)) \in \Cg(a_0, b_0),\]
-$(a_0, p(a_0,b_0,b_0))$ is equal to $(p(a_0,a_0,a_0), p(a_0,b_0,b_0))$ which 
-belongs to $\Cg(a_0, b_0)$,
-so $\tau\leq \Cg(a_0,b_0)$. Therefore,
-by monotonicity of the commutator,
-$\comm{\tau}{\tau} {\leq} \comm{\Cg(a_0,b_0)}{\Cg(a_0,b_0)}$.
-It follows from this and (\ref{eq:100000}) that
-%% $d(a_0,b_0,b_0)\comm{\Cg(a_0,b_0)}{\Cg(a_0,b_0)} a_0$,
-\[d(a_0,b_0,b_0)\comm{\Cg(a_0,b_0)}{\Cg(a_0,b_0)} a_0,\]
-as desired.
-
-For the indices $1\leq i \leq k$ we have $\chi_i =1$, so we wish to prove
-$d(a_i,a_i,b_i) = b_i$ for such $i$. Observe,
-\begin{align}
-  d(a_i,a_i,b_i) &=
-  t(a_i, p(a_i,a_i,a_i), p(a_i,a_i,b_i)) \label{eq:200000}\\
-  &=t(a_i, a_i, b_i) \label{eq:200001}\\
-  &=b_i. \label{eq:200002}
-\end{align}
-Equation~(\ref{eq:200000}) holds by definition of $d$,~(\ref{eq:200001})
-because $p$ is an idempotent local difference term for
-$S'$, and~(\ref{eq:200002}) because $t$ is a local difference term for $T$.
-
-The remaining triples in our original set $S$
-have indices satisfying $k<j\leq n$ and $\chi_j = 0$.
-Thus, for these triples we want
-$d(a_j,b_j,b_j)\comm{\Cg(a_j,b_j)}{\Cg(a_j,b_j)} a_j$.
-By definition,
-\begin{equation}
-  \label{eq:450000}
-d(a_j,b_j,b_j) =t(a_j, p(a_j,b_j,b_j), p(a_j,b_j,b_j)).  
-\end{equation}
-Since $p$ is a local difference term for $S'$, we have
-%% the pair $(p(a_j,b_j,b_j), a_j)$ belongs to $[\Cg(a_j,b_j), \Cg(a_j,b_j)]$.
-$(p(a_j,b_j,b_j), a_j)\in [\Cg(a_j,b_j), \Cg(a_j,b_j)]$.
-This and 
-(\ref{eq:450000}) imply
-%% \begin{equation*}
-%%     %% \label{eq:300000}
-%%   d(a_j,b_j,b_j) =
-%%   t(a_j, p(a_j,b_j,b_j), p(a_j,b_j,b_j))
-%%   \comm{\Cg(a_j,b_j)}{\Cg(a_j,b_j)} t(a_j,a_j,a_j) = a_j,
-%% \end{equation*}
-that 
-%% $(t(a_j, p(a_j,b_j,b_j), p(a_j,b_j,b_j)), t(a_j,a_j,a_j))$
-$(d(a_j, b_j,b_j), t(a_j,a_j,a_j))$
-belongs to
-$\comm{\Cg(a_j,b_j)}{\Cg(a_j,b_j)}$.
-Finally, by idempotence of $t$ we have
-$d(a_j,b_j,b_j)\comm{\Cg(a_j,b_j)}{\Cg(a_j,b_j)} a_j$,
-%% \begin{align*}
-%%     %% \label{eq:300000}
-%%   d(a_j,b_j,b_j) &=
-%%   t(a_j, p(a_j,b_j,b_j), p(a_j,b_j,b_j))\\
-%%   &\comm{\Cg(a_j,b_j)}{\Cg(a_j,b_j)} t(a_j,a_j,a_j)\\
-%%   &= a_j,
-%% \end{align*}
-as desired.
-\\[6pt]
-%--------------------------------------
-\underline{Case 1:}
-$\chi_0 = 1$.
-%% \\[4pt]
-%% Assume $\chi_0 = 1$ and, 
-Without loss of generality, suppose $\chi_1 = \chi_2 =\cdots =\chi_k = 0$,
-and $\chi_{k+1} = \chi_{k+2} = \cdots = \chi_{n} = 1$. Define 
-\[
-T = \{(p(a_0, a_0, b_0), b_0, 1),
-(a_1, b_1, 0), (a_2, b_2 0), \dots, (a_k, b_k, 0)\},
-\]
-and note that $|T| < |S|$.
-Let $t$ be a local difference term for $T$ and
-define
-%% \[d(x,y,z) = t(p(x,y,z), p(y,y,z), z).\] 
-$d(x,y,z) = t(p(x,y,z), p(y,y,z), z)$. 
-Since $\chi_0 =1$, we want $d(a_0,a_0,b_0) = b_0$. By the definition of
-$d$,
-\begin{equation*}
-  d(a_0,a_0,b_0) =
-  t(p(a_0,a_0,b_0), p(a_0,a_0,b_0), b_0) =b_0.
-\end{equation*}
-The last equality holds since $t$ is a local difference term for $T$, thus,
-for $(p(a_0, a_0, b_0), b_0, 1)$.
-
-If $1\leq i \leq k$, then $\chi_i =0$, so for these indices we want
-$d(a_i,b_i,b_i) \comm{\Cg(a_i,b_i)}{\Cg(a_i,b_i)} a_i$.
-Again, starting from the definition of $d$ and using idempotence of $p$, we have
-%% \begin{equation}
-%%   \label{eq:40000}
-%%   d(a_i,b_i,b_i) =
-%%   t(p(a_i,b_i,b_i), p(b_i,b_i,b_i), b_i)=
-%%   t(p(a_i,b_i,b_i), b_i, b_i).
-%% \end{equation}
-\begin{align}
-  d(a_i,b_i,b_i) &=
-  t(p(a_i,b_i,b_i), p(b_i,b_i,b_i), b_i)   \label{eq:40000}\\
-  &=t(p(a_i,b_i,b_i), b_i, b_i). \nonumber
-\end{align}
-Next, since $p$ is a local difference term for $S'$, we have
-\begin{equation}
-  \label{eq:50000}
-  t(p(a_i,b_i,b_i), b_i, b_i)
- \comm{\theta(a_i,b_i)}{\theta(a_i,b_i)}
- t(a_i, b_i, b_i).
-\end{equation}
-Finally, since $t$ is a local difference term for $T$, hence for
-$(a_i, b_i, b_i)$,  %% $(1\leq i \leq k)$,
-we have 
-$t(a_i, b_i, b_i) \comm{\Cg(a_i,b_i)}{\Cg(a_i,b_i)} a_i$.
-Combining this with (\ref{eq:40000}) and (\ref{eq:50000}) yields
-$d(a_i,b_i,b_i) \comm{\Cg(a_i,b_i)}{\Cg(a_i,b_i)} a_i$,
-as desired.
-
-The remaining elements of our original set $S$
-have indices $j$ satisfying $k<j\leq n$ and $\chi_j = 1$.
-For these we want $d(a_j,a_j,b_j) = b_j$.
-Since $p$ is a local difference term for $S'$, we have
-$p(a_j,a_j,b_j) = b_j$, and this along with idempotence of $t$ yields
-%%\[ d(a_j,a_j,b_j) =  t(p(a_j,a_j,b_j), p(a_j,a_j,b_j), b_j)=  t(b_j, b_j, b_j) =b_j,\]
-\begin{align*}
-d(a_j,a_j,b_j) &=
-t(p(a_j,a_j,b_j), p(a_j,a_j,b_j), b_j)\\
-&=t(b_j, b_j, b_j) =b_j,
-\end{align*}
-as desired.
-\end{proof}
-
-\begin{cor}
-  \label{cor:loc-diff-term}
-  A finite idempotent algebra $\bA$ has a difference term operation if and
-  only if every pair $((a,b,i), (a',b',i')) \in (A\times A \times \{0,1\})^2$ has a local
-  difference term.
-\end{cor}
-\begin{proof}
-  One direction is clear, since a difference term operation for $\bA$ is
-  obviously a local difference term for the whole set 
-  $A\times A \times \{0,1\}$.
-  For the converse, suppose
-  each pair in $(A\times A \times \{0,1\})^2$ has a local
-  difference term. Then, by Theorem~\ref{thm:local-diff-terms},
-  there is a single local difference term for the whole set $A\times A \times \{0,1\}$,
-  and this is a difference term operation for $\bA$.  Indeed, if $d$ is a
-  local difference term for $A\times A \times \{0,1\}$, then 
-  for all $a, b \in A$, we have
-  $a \comm{\Cg(a,b)}{\Cg(a,b)} d(a,b,b)$,
-  since $d$ is a local difference term for $(a,b,0)$, and we have
-  $d(a,a,b) = b$, since $d$ is also a local difference term for
-  $(a,b,1)$.
-\end{proof}
-
-\newpage
-\section{The Algorithm}
-\begin{cor}
-  There is a polynomial-time algorithm that takes as input
-  any finite idempotent algebra $\bA$ and decides whether
-  %% the variety $\bbV(\bA)$ that it generates
-  $\bA$ has a difference term operation.
-\end{cor}
-\begin{proof}
-  %% and let  $\sV = \bbV(\bA)$.
-  We describe an efficient algorithm for deciding,
-  given a finite idempotent algebra $\bA$,
-  whether every pair $((a,b,i), (a',b',i')) \in (A\times A \times \{0,1\})^2$ has a local
-  difference term.  By Corollary~\ref{cor:loc-diff-term}, this will prove we
-  can decide in polynomial-time whether $\bA$ has a difference term operation.
-  %% We will then complete the
-  %% proof by explaining why $\bA$ has a difference term operation iff the variety
-  %% it generates has a difference term. 
-
-  Fix a pair
-  $((a,b,i), (a',b',i'))$ in $(A\times A \times \{0,1\})^2$. If $i = i' = 0$,
-  then the first projection is a local difference term. If $i = i' = 1$,  
-    then the third projection is a local difference term. The two remaining cases to
-    consider are (1) $i = 0$ and $i'=1$, and (2)
-    $i = 1$ and $i'=0$. Since these are completely symmetric, we only handle the
-    first case. Assume  the given pair of triples is
-    $((a,b,0), (a',b',1))$.  By definition, a term $t$ is local difference term
-    for this pair iff
-    \[
-    a\comm{\Cg(a,b)}{\Cg(a,b)} t^{\bA}(a,b,b) \; \text{ and } \;
-    t^{\bA}(a',a',b') = b'.
-    \]
-    We can rewrite this condition more compactly by
-    considering 
-    $t^{\bA\times \bA}((a,a'), (b,a'), (b,b')) =
-    (t^{\bA}(a,b,b),t^{\bA}(a',a',b'))$.
-    Clearly $t$ is a local difference term for
-    $((a,b,0), (a',b',1))$ iff
-    \[
-    t^{\bA\times \bA}((a,a'), (b,a'), (b,b'))\in a/\delta \times \{b'\},
-    \]
-    where $\delta = [\Cg(a,b), \Cg(a,b)]$ and $a/\delta$ denotes the
-    $\delta$-class containing $a$.
-    (Observe that $a/\delta \times \{b'\}$ is a subalgebra of $\bA \times \bA$
-    by idempotence.)
-    It follows that the pair
-    $((a,b,0), (a',b',1))$ has a local difference term iff
-    the subuniverse of $\bA\times \bA$ generated by
-    $\{(a,a'), (b,a'), (b,b')\}$ intersects nontrivially with the subuniverse
-    $a/\delta \times \{b'\}$.
-
-    Thus, the algorithm takes as input $\bA$ and, for each triple
-    $((a,a'), (b,a'), (b,b'))$ in $(A\times A)^3$, computes
-    $\delta = [\Cg(a,b), \Cg(a,b)]$, computes the subalgebra
-    $\bS$ of $\bA\times \bA$ generated by
-    %% \Sg^{\bA\times \bA}\{(a,a'), (b,a'), (b,b')\}$, and then
-    $\{(a,a'), (b,a'), (b,b')\}$, and then
-    tests whether $S \cap (a/\delta \times \{b'\})$ is empty.
-    If we find an empty intersection at any point, then the algorithm returns
-    the answer ``no difference term operation.'' Otherwise,
-    $\bA$ has a difference term operation.
-
-    Most of the operations carried out by this algorithm are well known to be
-    polynomial-time.  For example, that the running time of subalgebra generation is
-    polynomial has been known for a long time (see~\cite{MR0455543}).
-    The time complexity of congruence generation is also known to be polynomial
-    (see~\cite{MR2470585}).  The only operation whose tractability might be 
-    questionable is the commutator, but there is a straight-forward algorithm for
-    computing it which, after the congruences have been computed, simply
-    involves generating more subalgebras.
-    %% Finally, we observe that if $\bA$ has a difference term operation, then the
-    %% variety it generates has a difference term.
-\end{proof}
-
-More details on the complexity of operations carried out by the algorithm, as well as many other algebraic operations, can be found in the references mentioned, as well as~\cite{MR1871085,MR1695293,Freese:2009}. 
-
-
-\subsection{Extension to subalgebras}
-\input{inputs/global-local-diff-term.tex}
-
-
-\newpage
-
-
-
-\renewcommand{\Cg}{\ensuremath{\operatorname{Cg}}}
-
-\appendix
-
 %% \section{Facts about centralizers and abelian algebras}
 %% \label{sec:proofs-elem-facts}
 
@@ -1877,6 +1961,20 @@ $\beta \in \Con (A_1 \times A_2)$.  Then both $\bA_1$ and $\bA_2$ are abelian.
 
 
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

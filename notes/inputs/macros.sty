@@ -49,6 +49,8 @@
 \newcommand{\alg}[1]{\ensuremath{\mathbf{#1}}}
 \newcommand{\Sub}{\ensuremath{\operatorname{Sub}}}
 \newcommand{\Con}{\ensuremath{\operatorname{Con}}}
+\newcommand{\body}{\ensuremath{\operatorname{Body}}}
+\newcommand{\tail}{\ensuremath{\operatorname{Tail}}}
 \newcommand{\Tol}{\ensuremath{\operatorname{Tol}}}
 \newcommand{\Cg}{\ensuremath{\operatorname{Cg}}}
 \newcommand{\Sg}{\ensuremath{\operatorname{Sg}}}
@@ -262,5 +264,14 @@
 %% \newcommand{\mas}{\acs{MAS}\xspace}
 
 \renewcommand{\subsetneq}{\ensuremath{\subsetneqq}}
-   %% \newcommand{\glocal}{global-local} %% This is a weird name... changing it:
-   \newcommand{\glocal}{local\xspace}
+%% \newcommand{\glocal}{global-local} %% This is a weird name... changing it:
+\newcommand{\glocal}{local\xspace}
+
+%%% RESTRICTION 
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+    \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+    #1 % the function
+    \vphantom{\big|} % pretend it's a little taller at normal size
+    \right|_{#2} % this is the delimiter
+}}
+%% use like this: \restr{f}{A} (restriction of the function f to the set A)

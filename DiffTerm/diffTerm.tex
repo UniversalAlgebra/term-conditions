@@ -870,10 +870,10 @@ $\emptyset \subset \sigma\subset \nn$
 
 \begin{lemma}[{\protect cf.~\cite[Lem.~3.2]{Freese:2009}}]
   \label{lem:fv_3-2}
-  If $\sigma \subset \nn$, then
+  For every proper nonempty subset $\sigma \subset \nn$,
   either $\beta \leq \rho_\sigma$ or $\alpha \join \rho_\sigma = 1_B$.
 \end{lemma}
-\begin{proof}
+\begin{proof} Let $\rho = \rho_\sigma$.
 Suppose that $\beta \not\le {\rho}$ (or equivalently $(0,1) \notin
 \rho$). Since $\beta$ is join irreducible, $\beta\meet\rho \le
 \alpha$ and so $\beta\meet \rho = \alpha \meet \rho$.  Furthermore,
@@ -909,23 +909,24 @@ B$ since it contains $\{0,1,t\}$.  Thus, $\alpha \join \rho = 1_B$.
 \end{proof}
 
 \begin{lemma}\label{lem:nearperm}
-For all nonempty proper subsets $\sigma \subset \nn$,
-for all $c\in \body(U)$ and all $v\in B$, we have
-$(c, v) \in \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta$.
+  For every proper nonempty subset $\sigma \subset \nn$,
+  for all $v\in B$, and for all $c\in \body(U)$, we have
+  $(v,c) \in \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta$.
 \end{lemma}
 
 %\smallskip
-
+%% \newcommand\rhosig{\ensuremath{\rho_\sigma}}
+\newcommand\rhosig{\ensuremath{\rho}}
 \begin{proof}
-\noindent To prove the subclaim, we first note that 
-$\beta \join \rho_\sigma = 1_B$ implies
-$\restr{\beta}{U} \join \restr{\rho_\sigma}{U} = 1_U$ since $U = e(B)$
+\noindent Let $\rho = \rho_\sigma$. Note that
+$\beta \join \rhosig = 1_B$ implies
+$\restr{\beta}{U} \join \restr{\rhosig}{U} = 1_U$ since $U = e(B)$
 for some idempotent unary polynomial~$e$.
 Now, for all $x$, $y \in U$, if $x\in \body(U)$ and $y\in \tail(U)$, then
 $(x,y) \notin \beta$.  Therefore,
-$(x, y) \in  1_U = \restr{\beta}{U} \join \restr{\rho_\sigma}{U}$ implies
+$(x, y) \in  1_U = \restr{\beta}{U} \join \restr{\rhosig}{U}$ implies
 there must be some $a \in \body(U)$ and $t\in \tail(U)$ such that 
-$a \mathrel{\rho_\sigma} t$.  
+$a \mathrel{\rhosig} t$.  
 
 %%%%%%
 
@@ -938,17 +939,17 @@ $a \mathrel{\rho_\sigma} t$.
 %for some (idempotent) term $s$, so
 %\[
 %v = s^{\alg{B}}(a,b,t)
-%\mathrel{\rho_\sigma} s^{\alg{B}}(a,b,a)
+%\mathrel{\rhosig} s^{\alg{B}}(a,b,a)
 %\mathrel{\beta} s^{\alg{B}}(a,a,a) = a,
 %\]
 %and
 %\[
 %v = s^{\alg{B}}(a,b,t)
 %\mathrel{\beta}  s^{\alg{B}}(a,a,t)
-%\mathrel{\rho_\sigma}s^{\alg{B}}(a,a,a)  = a.
+%\mathrel{\rhosig}s^{\alg{B}}(a,a,a)  = a.
 %\]
 %Therefore, 
-%$(v,a) \in  \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta$.
+%$(v,a) \in  \beta \circ \rhosig \cap \rhosig \circ \beta$.
 
 %%%%%%%%%%%%%%%%%
 
@@ -963,35 +964,37 @@ Thus,
 Moreover, for all $c$, $d \in \body(U)$, the unary polynomials
 $d(x,c,d)$, $d(c,x,d)$, and $d(c,d,x)$ are permutations on $U$.
 
-Now let $c$ be an arbitrary element of $\body(U)$, and
+Next, fix an arbitrary element $c\in \body(U)$ and
 let $p(x) = d(x,a,c)$. 
 Then (see~\cite[Lem.~4.20]{HM:1988})
-we have $p(U) = U$, $p(a) = d(a,a,c) = c \in \body(U)$ 
-and $p(t)\in \tail(U)$,
-since $t\in \tail(U)$. Let $t' = p(t)$. 
-Since $(a,t) \in \rho_\sigma$, we have
-$(c, t') = (p(a), p(t)) \in \rho_\sigma$. 
-
+we have
+\begin{itemize}
+\item  $p(U) = U$, since $U$ is minimal,
+\item $p(a) = d(a,a,c) = c \in \body(U)$, and
+  \item  $t':=p(t)\in \tail(U)$, since $t\in \tail(U)$.
+\end{itemize}
+Since $(a,t) \in \rhosig$, we have $(c, t') = (p(a), p(t)) \in \rhosig$. 
 Since $c$ is in the body, there is an element $d$ in the body with
-$(c,d) \in \beta - \alpha$.
-By Lemma~\ref{lem:fv_3-1},
+$(c,d) \in \beta - \alpha$. By Lemma~\ref{lem:fv_3-1}, this implies
 $\alg{B} = \Sg^{\alg{B}}(c, d, t')$.
-Let $v \in B$ be arbitrary. Then $v = s^{\alg{B}}(c,d,t')$ for 
+
+Finally, if $v \in B$, then $v = s^{\alg{B}}(c,d,t')$ for 
 some (idempotent) term $s$, so
 \[
 v = s^{\alg{B}}(c,d,t')
-\mathrel{\rho_\sigma} s^{\alg{B}}(c,d,c)
+\mathrel{\rhosig} s^{\alg{B}}(c,d,c)
 \mathrel{\beta} s^{\alg{B}}(c,c,c) = c,
 \]
 and
 \[
 v = s^{\alg{B}}(c,d,t')
 \mathrel{\beta}  s^{\alg{B}}(c,c,t')
-\mathrel{\rho_\sigma}s^{\alg{B}}(c,c,c)  = c.
+\mathrel{\rhosig}s^{\alg{B}}(c,c,c)  = c.
 \]
 Therefore, 
-$(v,c) \in  \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta$,
-proving the lemma.
+$(v,c) \in  \beta \circ \rhosig \cap \rhosig \circ \beta$.
+Since $v \in B$ and $c\in \body(U)$ were aribitrary,
+this completes the proof.
 \end{proof}
 
 
