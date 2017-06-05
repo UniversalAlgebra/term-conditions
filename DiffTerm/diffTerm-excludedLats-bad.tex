@@ -984,6 +984,7 @@ Since this hold for every~$i$, $d(b,t,t) = b$.
 \section{Excluded Lattices}
 
 \begin{theorem}
+\label{thm:conjecture}
 Let $\alg A$ be a finite algebra with a Taylor term. Then 
 $\Con(\alg{A})$ does not have congruences 
 $\alpha$, $\beta$, $\rho_0, \ldots, \rho_{n-1}$
@@ -1010,89 +1011,15 @@ First note that it follows from (2), (3), and (4) that
 forms a pentagon, for each~$i$. 
 Let $U$ be an $(\alpha, \beta)$-minimal set and 
 let $e$ be an idempotent polynomial with $e(A) = U$. 
-Then $e$ induces a latticehomomorphism of $\Con \alg A$ onto
-$\Con \alg A |_{U}$ separating $\alpha$ from $\beta$. It 
+Then $e$ induces a lattice homomorphism of $\Con \alg A$ onto
+$\Con \alg A |_{U}$ separating $\alpha$ from $\beta$, thus
+leaving the pentagon intact. It 
 follows that $U$ must have a tail, for otherwise, it would
 be a type 2 minimal set with only body and the pseudo 
 Maltsev operation would mean $\Con \alg A |_{U}$ is
 modular, a contradiction. 
 
-
-
-
-%%%%
-
-We claim that for each~$i$ and for all $c\in \body(U)$ 
-and all $v\in A$, we have
-$(c, v) \in \beta \circ \rho_i \cap \rho_i \circ \beta$.
-
-
-    
-To prove this, we first note that 
-$\beta \join \rho_i = 1_A$ implies
-$\restr{\beta}{U} \join \restr{\rho_i}{U} = 1_U$, since $U = e(B)$.
-Now, for all $x$, $y \in U$, if $x\in \body(U)$ 
-and $y\in \tail(U)$, then
-$(x,y) \notin \beta$.  Therefore,
-$(x, y) \in  1_U = \restr{\beta}{U} \join \restr{\rho_i}{U}$ implies
-there must be some $a \in \body(U)$ and $t\in \tail(U)$ such that 
-$a \mathrel{\rho_i} t$.  
-
-Now, let $d(x,y,z)$ be a pseudo-\malcev polynomial for $U$,
-which exists by~\cite[Lem.~4.20]{HM:1988}.
-Thus,
-\begin{itemize}
-\item $d(B,B,B) = U$
-\item $d(x,x,x) = x$ for all $x\in U$
-\item $d(x,x,y) = y = d(y,x,x)$ for all $x\in \body(U)$, $y \in U$.
-\end{itemize}
-Moreover, for all $c, d \in \body(U)$, the unary polynomials
-$d(x,c,d)$, $d(c,x,d)$, and $d(c,d,x)$ are permutations on $U$.
-
-Now let $c$ be an arbitrary element of $\body(U)$, and
-let $p(x) = d(x,a,c)$. 
-Then (see~\cite[Lem.~4.20]{HM:1988})
-we have $p(U) = U$, $p(a) = d(a,a,c) = c \in \body(U)$ 
-and $p(t)\in \tail(U)$,
-since $t\in \tail(U)$. Let $t' = p(t)$. 
-Since $(a,t) \in \rho_\sigma$, we have
-$(c, t') = (p(a), p(t)) \in \rho_\sigma$. 
-
-Since $c$ is in the body, there is an element $d$ in the body with
-$(c,d) \in \beta - \alpha$.
-By Lemma~\ref{lem:fv_3-1},
-$\alg{B} = \Sg^{\alg{B}}(c, d, t')$.
-Let $v \in B$ be arbitrary. Then $v = s^{\alg{B}}(c,d,t')$ for 
-some (idempotent) term $s$, so
-\[
-v = s^{\alg{B}}(c,d,t')
-\mathrel{\rho_\sigma} s^{\alg{B}}(c,d,c)
-\mathrel{\beta} s^{\alg{B}}(c,c,c) = c,
-\]
-and
-\[
-v = s^{\alg{B}}(c,d,t')
-\mathrel{\beta}  s^{\alg{B}}(c,c,t')
-\mathrel{\rho_\sigma}s^{\alg{B}}(c,c,c)  = c.
-\]
-Therefore, 
-$(v,c) \in  \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta$,
-proving the subclaim.
-
-
-Let $b \in \body(U)$ and $t \in \tail(U)$. By
-\cite[Lemma~4.25]{HM:1988}, $(b, d(b,t,t)) \notin \beta$.
-We will arrive at a contradiction by showing that 
-$b = d(b,t,t)$. By the claim $(b,t) \in \beta \circ \rho$ so
-there is an element $a \in B$ with 
-$b\mathrel\beta a \mathrel\rho_i t$. By applying the idempotent
-polynomial $e$ with $e(U) = U$ to this, we may assume $a \in U$
-and, since $a\mathrel \beta b$, $a \in \body(U)$. So
-\[
-d(b,t,t) \mathrel\rho_i d(b,a,a) = b.
-\]
-Since this hold for every~$i$, $d(b,t,t) = b$.
-
+\todo{finish proof of Theorem~\ref{thm:conjecture}}
 
 \end{proof}
 
