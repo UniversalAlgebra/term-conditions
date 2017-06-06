@@ -1,0 +1,1622 @@
+%% FILE: diffTerm.tex
+%% AUTHOR: William DeMeo, Ralph Freese, Matthew Valeriote
+%% DATE: 13 April 2017
+%% COPYRIGHT: (C) 2017 DeMeo, Freese, Valeriote
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                         BIBLIOGRAPHY FILE            %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The `filecontents` command will crete a file in the inputs directory called 
+%% refs.bib containing the references in the document, in case this file does 
+%% not exist already.
+%% If you want to add a BibTeX entry, please don't add it directly to the
+%% refs.bib file.  Instead, add it in this file between the
+%% \begin{filecontents*}{refs.bib} and \end{filecontents*} lines
+%% then delete the existing refs.bib file so it will be automatically generated 
+%% again with your new entry the next time you run pdfaltex.
+\begin{filecontents*}{inputs/refs.bib}
+@article {MR1871085,
+    AUTHOR = {Bergman, Clifford and Slutzki, Giora},
+     TITLE = {Computational complexity of some problems involving
+              congruences on algebras},
+   JOURNAL = {Theoret. Comput. Sci.},
+  FJOURNAL = {Theoretical Computer Science},
+    VOLUME = {270},
+      YEAR = {2002},
+    NUMBER = {1-2},
+     PAGES = {591--608},
+      ISSN = {0304-3975},
+     CODEN = {TCSDI},
+   MRCLASS = {08A30 (05C85 08A35 68Q17)},
+  MRNUMBER = {1871085 (2002i:08002)},
+MRREVIEWER = {Radim B{\v{e}}lohl{\'a}vek},
+       DOI = {10.1016/S0304-3975(01)00009-3},
+       URL = {http://dx.doi.org/10.1016/S0304-3975(01)00009-3},
+}
+@article {MR1695293,
+    AUTHOR = {Bergman, Clifford and Juedes, David and Slutzki, Giora},
+     TITLE = {Computational complexity of term-equivalence},
+   JOURNAL = {Internat. J. Algebra Comput.},
+  FJOURNAL = {International Journal of Algebra and Computation},
+    VOLUME = {9},
+      YEAR = {1999},
+    NUMBER = {1},
+     PAGES = {113--128},
+      ISSN = {0218-1967},
+   MRCLASS = {68Q17 (08A70 68Q15)},
+  MRNUMBER = {1695293 (2000b:68088)},
+       DOI = {10.1142/S0218196799000084},
+       URL = {http://dx.doi.org/10.1142/S0218196799000084},
+}
+@article {MR3449235,
+    AUTHOR = {Kearnes, Keith and Szendrei, {\'A}gnes and Willard, Ross},
+     TITLE = {A finite basis theorem for difference-term varieties with a
+              finite residual bound},
+   JOURNAL = {Trans. Amer. Math. Soc.},
+  FJOURNAL = {Transactions of the American Mathematical Society},
+    VOLUME = {368},
+      YEAR = {2016},
+    NUMBER = {3},
+     PAGES = {2115--2143},
+      ISSN = {0002-9947},
+   MRCLASS = {03C05 (08B05 08B10)},
+  MRNUMBER = {3449235},
+       DOI = {10.1090/tran/6509},
+       URL = {http://dx.doi.org/10.1090/tran/6509},
+}
+@article {MR1663558,
+    AUTHOR = {Kearnes, Keith A. and Szendrei, {\'A}gnes},
+     TITLE = {The relationship between two commutators},
+   JOURNAL = {Internat. J. Algebra Comput.},
+  FJOURNAL = {International Journal of Algebra and Computation},
+    VOLUME = {8},
+      YEAR = {1998},
+    NUMBER = {4},
+     PAGES = {497--531},
+      ISSN = {0218-1967},
+   MRCLASS = {08A05 (08A30)},
+  MRNUMBER = {1663558},
+MRREVIEWER = {M. G. Stone},
+       DOI = {10.1142/S0218196798000247},
+       URL = {http://dx.doi.org/10.1142/S0218196798000247},
+}
+@article{KSW,
+title = {Simpler {M}altsev conditions for (weak) difference terms in locally finite varieties},
+author = {Kearnes, Keith and Szendrei, \'{A}gnes and Willard, Ross},
+note = {to appear}
+}
+
+@article {MR3239624,
+    AUTHOR = {Valeriote, M. and Willard, R.},
+     TITLE = {Idempotent {$n$}-permutable varieties},
+   JOURNAL = {Bull. Lond. Math. Soc.},
+  FJOURNAL = {Bulletin of the London Mathematical Society},
+    VOLUME = {46},
+      YEAR = {2014},
+    NUMBER = {4},
+     PAGES = {870--880},
+      ISSN = {0024-6093},
+   MRCLASS = {08A05 (06F99 68Q25)},
+  MRNUMBER = {3239624},
+       DOI = {10.1112/blms/bdu044},
+       URL = {http://dx.doi.org/10.1112/blms/bdu044},
+}
+@article {MR3350327,
+    AUTHOR = {Kozik, Marcin and Krokhin, Andrei and Valeriote, Matt and
+              Willard, Ross},
+     TITLE = {Characterizations of several {M}altsev conditions},
+   JOURNAL = {Algebra Universalis},
+  FJOURNAL = {Algebra Universalis},
+    VOLUME = {73},
+      YEAR = {2015},
+    NUMBER = {3-4},
+     PAGES = {205--224},
+      ISSN = {0002-5240},
+   MRCLASS = {08B05 (08A70 08B10)},
+  MRNUMBER = {3350327},
+MRREVIEWER = {David Hobby},
+       DOI = {10.1007/s00012-015-0327-2},
+       URL = {http://dx.doi.org/10.1007/s00012-015-0327-2},
+}
+@article {MR1358491,
+    AUTHOR = {Kearnes, Keith A.},
+     TITLE = {Varieties with a difference term},
+   JOURNAL = {J. Algebra},
+  FJOURNAL = {Journal of Algebra},
+    VOLUME = {177},
+      YEAR = {1995},
+    NUMBER = {3},
+     PAGES = {926--960},
+      ISSN = {0021-8693},
+     CODEN = {JALGA4},
+   MRCLASS = {08B10 (08B05)},
+  MRNUMBER = {1358491},
+MRREVIEWER = {H. Peter Gumm},
+       DOI = {10.1006/jabr.1995.1334},
+       URL = {http://dx.doi.org/10.1006/jabr.1995.1334},
+}
+@book {MR2839398,
+    AUTHOR = {Bergman, Clifford},
+     TITLE = {Universal algebra},
+    SERIES = {Pure and Applied Mathematics (Boca Raton)},
+    VOLUME = {301},
+      NOTE = {Fundamentals and selected topics},
+ PUBLISHER = {CRC Press, Boca Raton, FL},
+      YEAR = {2012},
+     PAGES = {xii+308},
+      ISBN = {978-1-4398-5129-6},
+   MRCLASS = {08-02 (06-02 08A40 08B05 08B10 08B26)},
+  MRNUMBER = {2839398 (2012k:08001)},
+MRREVIEWER = {Konrad P. Pi{\'o}ro},
+}
+@article {MR0434928,
+    AUTHOR = {Taylor, Walter},
+     TITLE = {Varieties obeying homotopy laws},
+   JOURNAL = {Canad. J. Math.},
+  FJOURNAL = {Canadian Journal of Mathematics. Journal Canadien de
+              Math\'ematiques},
+    VOLUME = {29},
+      YEAR = {1977},
+    NUMBER = {3},
+     PAGES = {498--527},
+      ISSN = {0008-414X},
+   MRCLASS = {08A25},
+  MRNUMBER = {0434928 (55 \#7891)},
+MRREVIEWER = {James B. Nation},
+}
+@BOOK{HM:1988,
+    AUTHOR = {Hobby, David and McKenzie, Ralph},
+    TITLE = {The structure of finite algebras},
+    SERIES = {Contemporary Mathematics},
+    VOLUME = {76},
+    PUBLISHER = {American Mathematical Society},
+    ADDRESS = {Providence, RI},
+    YEAR = {1988},
+    PAGES = {xii+203},
+    ISBN = {0-8218-5073-3},
+    MRCLASS = {08A05 (03C05 08-02 08B05)},
+    MRNUMBER = {958685 (89m:08001)},
+    MRREVIEWER = {Joel Berman},
+    note = {Available from:
+      \href{http://math.hawaii.edu/~ralph/Classes/619/HobbyMcKenzie-FiniteAlgebras.pdf}{math.hawaii.edu}}
+  }
+@article {MR0455543,
+    AUTHOR = {Jones, Neil D. and Laaser, William T.},
+     TITLE = {Complete problems for deterministic polynomial time},
+   JOURNAL = {Theoret. Comput. Sci.},
+  FJOURNAL = {Theoretical Computer Science},
+    VOLUME = {3},
+      YEAR = {1976},
+    NUMBER = {1},
+     PAGES = {105--117 (1977)},
+      ISSN = {0304-3975},
+   MRCLASS = {68A20},
+  MRNUMBER = {0455543},
+MRREVIEWER = {Forbes D. Lewis},
+       DOI = {10.1016/0304-3975(76)90068-2},
+       URL = {http://dx.doi.org/10.1016/0304-3975(76)90068-2},
+}
+	
+@article{Freese:2009,
+    AUTHOR = {Freese, Ralph and Valeriote, Matthew A.},
+    TITLE = {On the complexity of some {M}altsev conditions},
+    JOURNAL = {Internat. J. Algebra Comput.},
+    FJOURNAL = {International Journal of Algebra and Computation},
+    VOLUME = {19},
+    YEAR = {2009},
+    NUMBER = {1},
+    PAGES = {41--77},
+    ISSN = {0218-1967},
+    MRCLASS = {08B05 (03C05 08B10 68Q25)},
+    MRNUMBER = {2494469 (2010a:08008)},
+    MRREVIEWER = {Clifford H. Bergman},
+    DOI = {10.1142/S0218196709004956},
+    URL = {http://dx.doi.org/10.1142/S0218196709004956}
+  }
+
+@ARTICLE{KearnesKiss1999,
+    AUTHOR = {Kearnes, Keith A. and Kiss, Emil W.},
+     TITLE = {Modularity prevents tails},
+   JOURNAL = {Proc. Amer. Math. Soc.},
+  FJOURNAL = {Proceedings of the American Mathematical Society},
+    VOLUME = {127},
+      YEAR = {1999},
+    NUMBER = {1},
+     PAGES = {11--19},
+      ISSN = {0002-9939},
+     CODEN = {PAMYAR},
+   MRCLASS = {08A05 (08A30 08B10)},
+  MRNUMBER = {99m:08003},
+MRREVIEWER = {Branimir {\v{S}}e{\v{s}}elja},
+}
+  
+  
+  
+@article {MR3076179,
+    AUTHOR = {Kearnes, Keith A. and Kiss, Emil W.},
+     TITLE = {The shape of congruence lattices},
+   JOURNAL = {Mem. Amer. Math. Soc.},
+  FJOURNAL = {Memoirs of the American Mathematical Society},
+    VOLUME = {222},
+      YEAR = {2013},
+    NUMBER = {1046},
+     PAGES = {viii+169},
+      ISSN = {0065-9266},
+      ISBN = {978-0-8218-8323-5},
+   MRCLASS = {08B05 (08B10)},
+  MRNUMBER = {3076179},
+MRREVIEWER = {James B. Nation},
+       DOI = {10.1090/S0065-9266-2012-00667-8},
+       URL = {http://dx.doi.org/10.1090/S0065-9266-2012-00667-8},
+}
+@incollection {MR1404955,
+    AUTHOR = {Kearnes, Keith A.},
+     TITLE = {Idempotent simple algebras},
+ BOOKTITLE = {Logic and algebra ({P}ontignano, 1994)},
+    SERIES = {Lecture Notes in Pure and Appl. Math.},
+    VOLUME = {180},
+     PAGES = {529--572},
+ PUBLISHER = {Dekker, New York},
+      YEAR = {1996},
+   MRCLASS = {08B05 (06F25 08A05 08A30)},
+  MRNUMBER = {1404955 (97k:08004)},
+MRREVIEWER = {E. W. Kiss},
+}
+@misc{william_demeo_2016_53936,
+  author       = {DeMeo, William and Freese, Ralph},
+  title        = {AlgebraFiles v1.0.1},
+  month        = May,
+  year         = 2016,
+  doi          = {10.5281/zenodo.53936},
+  url          = {http://dx.doi.org/10.5281/zenodo.53936}
+}
+@article{FreeseMcKenzie2016,
+	Author = {Freese, Ralph and McKenzie, Ralph},
+	Date-Added = {2016-08-22 19:43:56 +0000},
+	Date-Modified = {2016-08-22 19:45:50 +0000},
+	Journal = {Algebra Universalis},
+	Title = {Mal'tsev families of varieties closed under join or Mal'tsev product},
+	Year = {to appear}
+}
+@article {MR2333368,
+    AUTHOR = {Kearnes, Keith A. and Tschantz, Steven T.},
+     TITLE = {Automorphism groups of squares and of free algebras},
+   JOURNAL = {Internat. J. Algebra Comput.},
+  FJOURNAL = {International Journal of Algebra and Computation},
+    VOLUME = {17},
+      YEAR = {2007},
+    NUMBER = {3},
+     PAGES = {461--505},
+      ISSN = {0218-1967},
+   MRCLASS = {08A35 (08B20 20B25)},
+  MRNUMBER = {2333368},
+MRREVIEWER = {Giovanni Ferrero},
+       DOI = {10.1142/S0218196707003615},
+       URL = {http://dx.doi.org/10.1142/S0218196707003615},
+}
+@article {MR2504025,
+    AUTHOR = {Valeriote, Matthew A.},
+     TITLE = {A subalgebra intersection property for congruence distributive
+              varieties},
+   JOURNAL = {Canad. J. Math.},
+  FJOURNAL = {Canadian Journal of Mathematics. Journal Canadien de
+              Math\'ematiques},
+    VOLUME = {61},
+      YEAR = {2009},
+    NUMBER = {2},
+     PAGES = {451--464},
+      ISSN = {0008-414X},
+     CODEN = {CJMAAB},
+   MRCLASS = {08B10 (08A30 08B05)},
+  MRNUMBER = {2504025},
+MRREVIEWER = {Jarom{\'{\i}}r Duda},
+       DOI = {10.4153/CJM-2009-023-2},
+       URL = {http://dx.doi.org/10.4153/CJM-2009-023-2},
+}
+@misc{UACalc,
+	Author = {Ralph Freese and Emil Kiss and Matthew Valeriote},
+	Date-Added = {2014-11-20 01:52:20 +0000},
+	Date-Modified = {2014-11-20 01:52:20 +0000},
+	Note = {Available at: {\verb+www.uacalc.org+}},
+	Title = {Universal {A}lgebra {C}alculator},
+	Year = {2011}
+}
+@article{Freese2008,
+	Author = {Freese, Ralph},
+	Date-Added = {2016-08-29 01:31:23 +0000},
+	Date-Modified = {2016-08-29 01:32:09 +0000},
+	Journal = {Alg. Univ.},
+	Pages = {337--343},
+	Title = {Computing congruences efficiently},
+	Volume = {59},
+	Year = {2008}
+}	
+@article {MR2470585,
+    AUTHOR = {Freese, Ralph},
+     TITLE = {Computing congruences efficiently},
+   JOURNAL = {Algebra Universalis},
+  FJOURNAL = {Algebra Universalis},
+    VOLUME = {59},
+      YEAR = {2008},
+    NUMBER = {3-4},
+     PAGES = {337--343},
+      ISSN = {0002-5240},
+   MRCLASS = {08A30 (08A40 68W30 68W40)},
+  MRNUMBER = {2470585 (2009j:08003)},
+MRREVIEWER = {Clifford H. Bergman},
+       DOI = {10.1007/s00012-008-2073-1},
+       URL = {http://dx.doi.org/10.1007/s00012-008-2073-1},
+}
+@incollection {MR1191235,
+    AUTHOR = {Szendrei, {\'A}gnes.},
+     TITLE = {A survey on strictly simple algebras and minimal varieties},
+ BOOKTITLE = {Universal algebra and quasigroup theory ({J}adwisin, 1989)},
+    SERIES = {Res. Exp. Math.},
+    VOLUME = {19},
+     PAGES = {209--239},
+ PUBLISHER = {Heldermann, Berlin},
+      YEAR = {1992},
+   MRCLASS = {08-02 (08A40 08B05)},
+  MRNUMBER = {1191235 (93h:08001)},
+MRREVIEWER = {Ivan Chajda},
+}
+@unpublished{Bergman-DeMeo,
+    AUTHOR = {Bergman, Clifford and DeMeo, William},
+    TITLE = {Universal Algebraic Methods for Constraint Satisfaction Problems:
+      with applications to commutative idempotent binars},
+    YEAR = {2016},
+    NOTE = {unpublished notes; soon to be available online},
+    URL = {https://github.com/UniversalAlgebra/algebraic-csp}
+}
+\end{filecontents*}
+%:biblio
+\documentclass[12pt]{amsart}
+
+
+%% wjd added these packages vvvvvvvvvvvvvvvvvvvvvvvvv
+\usepackage{url,amssymb,enumerate,tikz,scalefnt} 
+\usepackage[normalem]{ulem} % for \sout (strikeout)   wjd: could remove this in final draft
+\usepackage[colorlinks=true,urlcolor=black,linkcolor=black,citecolor=black]{hyperref}
+%%  wjd ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amscd}
+%% \usepackage{exers}
+\usepackage{inputs/rflatexmacs}
+\usepackage{inputs/wjdlatexmacs}
+
+\usepackage[mathcal]{euscript}
+
+
+\renewcommand{\th}[2]{#1\mathrel{\theta}#2}
+\newcommand{\infixrel}[3]{#2\mathrel{#1}#3}
+
+%\usepackage{hyperref}
+
+%\renewcommand{\V}{\text{\textup{V}}}
+%\renewcommand{\V}{\operatorname{V}}
+%\renewcommand{\T}{\operatorname{T}}
+%\newcommand{\U}{\text{U}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{prob}{Problem}
+
+\title[A test for a difference term]{A polynomial time test for a
+difference term in an idempotent variety}
+\author{William DeMeo}
+\address[William DeMeo]{
+Department of Mathematics\\
+University of Hawaii\\
+Honolulu, Hawaii\\
+96822 USA}
+\email[William DeMeo]{demeo@math.hawaii.edu}
+\author{Ralph Freese}
+\address[Ralph Freese]{
+Department of Mathematics\\
+University of Hawaii\\
+Honolulu, Hawaii\\
+96822 USA}
+\email[Ralph Freese]{ralph@math.hawaii.edu}
+\author{Matthew Valeriote}
+\address[Matthew Valeriote]{
+Department of Mathematics\\
+McMaster University\\
+Hamilton, Ontario\\
+xxxxx Canada}
+\email[Mathhew Valeriote]{matt@math.mcmaster.ca}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle 
+
+\begin{abstract}
+We consider the following practical question: given a finite 
+algebra $\alg{A}$ in a
+finite language, can we efficiently decide whether the variety 
+generated by $\alg{A}$
+has a difference term?  We answer this question in the idempotent case
+and then describe possible algorithms for constructing difference terms.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:introduction}
+
+A \defn{difference term} for a variety $\sV$ is a ternary term $d$ in the
+language of $\sV$ that satisfies the following:
+if $\alg{A} = \<A, \dots \> \in \sV$, then for all $a, b \in A$ we have
+\begin{equation}
+\label{eq:3}  
+d^{\alg{A}}(a,a,b) = b \quad \text{ and } \quad
+d^{\alg{A}}(a,b,b) \mathrel{\comm \theta \theta} a,
+\end{equation}
+where $\theta$ is any congruence %% of $\alg{A}$
+containing $(a,b)$
+and $[\cdot, \cdot]$ denotes the \defn{commutator}.
+%% (see Section~\ref{sec:defin-notat}).
+When the relations in (\ref{eq:3}) hold we call $d^{\alg{A}}$
+a \defn{difference term operation} for $\alg{A}$.
+
+Difference terms are studied extensively in the general algebra literature.
+(See, for example, \cite{MR1358491,MR1663558,MR3076179,KSW,MR3449235}.)
+There are many reasons to study difference terms, but
+one obvious reason is because if we know that a variety 
+has a difference term, this fact allows us to deduce many useful
+properties of the algebras inhabiting that variety.
+Very roughly speaking, having a difference term is slightly stronger than having
+a Taylor term and slightly weaker than having a Mal'cev term.
+(Note that if
+$\alg{A}$ is an \defn{abelian} algebra, which means 
+that $[1_A, 1_A] = 0_A$, then, by
+the monotonicity of the commutator,
+$[\theta, \theta] = 0_A$ for all $\theta \in \Con \alg{A}$, 
+in which case $\textbf{A}$
+(\ref{eq:3}) says that $d^{\alg{A}}$ is a Mal'tsev term operation.)
+
+Digital computers have turned out to be invaluable tools for exploring and
+understanding algebras and the varieties they inhabit, and this is largely due
+to the fact that, over the last three decades,
+researchers have found ingenious ways to get computers to
+solve challenging abstract decision problems---such as whether a variety is
+congruence $n$-permutable (\cite{MR3239624}), or
+congruence modular (\cite{Freese:2009})---and to do so very quickly.
+This paper contributes to this effort by finding an efficient
+algorithm for deciding whether a locally finite idempotent variety has a
+difference term.
+
+The central question motivating this project is the following:
+\begin{prob}
+  \label{prob:1}
+  Is there a polynomial-time algorithm to decide for a finite,
+  idempotent algebra $\alg{A}$ if $\bbV(\alg{A})$ has a difference term?
+\end{prob}
+ 
+In~\cite{MR1358491} 
+Kearnes proved the following theorem, which is basic for our studies.
+
+\begin{theorem}\label{thm:KearnesThm}
+The variety $\sV = \bbV(\alg A)$ generated by a 
+finite algebra $\alg A$ has a difference  if and only if
+it has a Taylor term and, for all finite algebras 
+$\alg B \in \sV$,
+the minimal sets of every type~\atyp\ prime interval in
+$\op{Con}(\alg B)$ have empty tails.
+\end{theorem}
+
+
+
+
+No 1's is poly-time decidable by Valeriote's subtype theorem.
+In~\cite{Freese:2009}, Freese and Valeriote solved an 
+analogous problem, by giving a positive answer to the following
+\begin{prob}
+  \label{prob:2}
+  Is there a polynomial-time algorithm to decide for a finite,
+  idempotent algebra $\alg{A}$ if $\bbV(\alg{A})$ is \ac{cm}?
+\end{prob}
+
+Congruence modularity is characterized by no 1's, no 5's and no tails.
+Again no 1's and no 5's can be decided by the subtype theorem,
+and in~\cite{Freese:2009} the authors prove that if there is
+a tail in $\bbV(\alg{A})$, there is a tail ``near the bottom.''
+More precisely, if $\alg{A}$ is finite and idempotent, 
+and $\bbV(\alg{A})$ has no
+1's and no 5's and has tails, then there is a tail in 
+a 3-generated subalgebra of $\alg{A}^2$.
+Using this it is proved that deciding \cm is polynomial-time.
+
+But the proof of the no tails part uses that in a variety with 
+no 1's or 5's, the congruence lattice modulo 
+the {\it solvability congruence} (defined below)
+is (join) semidistributive.
+Now, restricting to just testing no type-\atyp\ tails 
+(vs no tails of any type) is
+not a problem. So, for example, there is a poly-time 
+algorithm for testing if
+$\bbV(\alg{A})$ has no 1's, no 5's and no type-\atyp\ tails.  
+
+Here is a related problem.
+\begin{prob}
+  \label{prob:3}
+  Is there an $\alg{A}$, idempotent and having a Taylor term, 
+  no type-2 tail in 
+  subalgebras of $\alg{A}^k$, for $k < n$, but having a type-\atyp\ 
+  tail in a subalgebra
+  of $\alg{A}^n$. 
+\end{prob}
+Perhaps we could construct such an algebra using congruence lattice
+representation techniques. 
+
+%% Hobby and McKenzie give some info about the types in a $D_2$
+%% embedded in $\Con (\alg{A})$. (See~\cite[Lemma 6.3]{HM:1988}).
+%% Exercise 7 of that section considers 4-element
+%% algebras whose congruence lattice is the concrete embedding of $D_2$
+%% in $\Eq(4)$; the one with coatoms $01|23$, $02|13$, and $0|123$, and with atoms
+%% $0|1|23$ and $0|2|13$. By~\cite[Lemma 6.3]{HM:1988}, the middle-top
+%% interval must be type 5 (assuming a Taylor term). But all the others can be 5's,
+%% or all the others can be 4's, or all the others can be 3's.
+%% One might attempt to find an example where they are all 2's, but that not possible
+%% since otherwise $0|123$ would be a solvable congruence,
+%% which would imply the two atoms would permute.
+
+%% \draftbreak
+
+\section{Background, definitions, and notation}
+\label{sec:defin-notat}
+Our starting point is the set of lemmas at the beginning of Section 3 in
+the Freese-Valeriote paper~\cite{Freese:2009}.
+We first review some of the basic \ac{tct}
+that comes up in the proofs in that paper. (In fact, most of this section 
+is copied from the nice presentation of \tct background that appears
+in~\cite[Sec.~2]{Freese:2009}.)
+
+The reference for \tct is the book by Hobby and McKenzie
+\cite{HM:1988}, according to which,
+for each covering $\alpha \prec \beta$ in the congruence lattice of a finite
+algebra $\alg{A}$, the local behavior of the $\beta$-classes is captured by the
+so-called $(\alpha, \beta)$-traces~\cite[Def.~2.15]{HM:1988}.
+Modulo $\alpha$, the induced structure on the traces is limited to one
+of five possible types:
+
+\begin{enumerate}[(1)]
+\item unary algebra whose basic operations are all permutations (unary type);
+\item one-dimensional vector space over some finite field (affine type);
+\item 2-element boolean algebra (boolean type);
+\item 2-element lattice (lattice type);
+\item 2-element semilattice (semilattice type).
+\end{enumerate}
+
+Thus to each covering $\alpha \prec \beta$
+corresponds a ``\tct type'' in $\{1,2,3,4,5\}$ 
+(see~\cite[Def.~5.1]{HM:1988}),
+denoted by $\typ(\alpha, \beta)$, called the \emph{typeset} of $\alg{A}$.
+The set of all \tct types that are realized by covering pairs of congruences of a
+finite algebra $\alg{A}$ is denoted by $\typ\{\alg{A}\}$, and if $\sK$ is a class of algebras,
+then $\typ\{\sK\}$ denotes the union of the typesets of all finite algebras in $\sK$.
+\tct types are ordered according to the following ``lattice of types:''
+
+\newcommand{\dotsize}{0.8pt}
+%% To create nodes of lattices in a uniform and consistent way, we define
+\tikzstyle{lat} = [circle,draw,inner sep=\dotsize]
+% To scale all diagrams uniformly, change this setting:
+\begin{center}
+\newcommand{\figscale}{.7}
+\begin{tikzpicture}[scale=\figscale]
+  \scalefont{.8}
+  \node[lat] (1) at (0,0) {};
+  \node[lat] (2) at (-1,1.5) {};
+  \node[lat] (3) at (0,3) {};
+  \node[lat] (4) at (.8,2.1) {};
+  \node[lat] (5) at (.8,.9) {};
+  \draw (1) node [below] {$1$};
+  \draw (2) node [left] {$2$};
+  \draw (3) node [above] {$3$};
+  \draw (4) node [right] {$4$};
+  \draw (5) node [right] {$5$};
+  \draw[semithick] 
+  (1) -- (2) -- (3) -- (4) -- (5) -- (1);
+\end{tikzpicture}
+\end{center}
+Whether or not $\bbV(\alg{A})$ omits one of the order ideals of the lattice of types can be
+determined locally.  This is spelled out for us in the next proposition.
+(A \defn{strictly simple} algebra is a simple
+algebra with no non-trivial subalgebras.)
+%% ; i.e.~no proper subalgebras with
+%% more than one element.)
+
+
+\begin{prop}[Prop.~2.1~\cite{Freese:2009}]
+  \label{prop:2.1}
+If A is a finite idempotent algebra and $i \in \typ(\bbV(\alg{A}))$ then there
+is a finite strictly simple algebra $\bS$ of type~\jtyp for 
+some $j \leq i$ in $\sansH \sansS (\alg{A})$.
+If
+\begin{enumerate}[(1)]
+\item 
+  $j = 1$ then $\bS$ is term equivalent to a 2-element set;
+\item
+  $j = 2$ then $\bS$ is term equivalent to the idempotent reduct of a module;
+\item
+  $j = 3$ then $\bS$ is functionally complete;
+\item
+  $j = 4$ then $\bS$ is polynomially equivalent to a 2-element lattice;
+\item
+  $j = 5$ then $\bS$ is term equivalent to a 2-element semilattice.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+  This is a combination of~\cite[Prop.~3.1]{MR2504025} and~\cite[Thm.~6.1]{MR1191235}.
+\end{proof}
+
+Table~\ref{tab:1} is from~\cite{MR3350327} and gives another characterization of
+omitting types.
+\begin{center}
+  \begin{table}
+    \caption{\cite{MR3350327}.}
+    \label{tab:1}
+    \begin{tabular}{|l|l|}
+      \hline
+      Omitting Class &  Equivalent Property\\
+      \hline
+      $\sM_{\{1\}}$ & satisfies a nontrivial idempotent \malcev condition \\
+      \hline
+      $\sM_{\{1,5\}}$ & satisfies a nontrivial congruence identity\\ % (see~\cite{MR3076179})\\
+      \hline
+      $\sM_{\{1,4,5\}}$ & congruence n-permutable, for some $n > 1$ \\
+      \hline
+      $\sM_{\{1,2\}}$ & congruence meet semidistributive \\
+      \hline
+      $\sM_{\{1,2,5\}}$ & congruence join semidistributive\\ % (see~\cite{MR3076179})\\
+      \hline
+      $\sM_{\{1,2,4,5\}}$ & congruence $n$-permutable for some $n$ and\\
+      &congruence join semidistributive\\
+      \hline
+    \end{tabular}
+  \end{table}
+\end{center}
+
+In Section~\ref{sec:freese-valer-lemm}, the following result will be useful.
+\begin{corollary}
+
+[{\protect cf.~\cite[Lem.~3.3]{Freese:2009}}]
+  [Cor.~2.2~\cite{Freese:2009}]
+  \label{cor:2.2}
+  Let $\alg{A}$ be a finite idempotent algebra and $T$ an order ideal in the
+  lattice of types. Then $\bbV(\alg{A})$ omits $T$ if and only if $\sansS(\alg{A})$ does.
+  %% In particular, $\bbV(\alg{A})$ omits 1 and 2 if and only if $\sansS(\alg{A})$ omits 1 and 2.
+\end{corollary}
+
+
+
+%% \draftsecskip
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \draftbreak
+
+\section{The Freese-Valeriote Lemmas Revisited}
+\label{sec:freese-valer-lemm}
+In~\cite{Freese:2009}, Corollary~\ref{cor:2.2} is the starting point of the
+development of a polynomial-time algorithm that determines if a given finite
+idempotent algebra generates a \cm variety. 
+
+%% The following lemma ties in with the previous proposition and will be used
+%% in Sec. 6.
+%% \begin{lemma}[Lemma 2.3~\cite{Freese:2009}] 
+%%   Let $\alg{A}$ be a finite idempotent algebra and let $\bS \in \sansH \sansS(\alg{A})$
+%%   be strictly simple. Then there are elements $a, b \in A$ such that, if
+%%   $\alg{B} = \Sg^{\alg{A}} (a, b)$, then $1_B = \Cg^{\alg{B}} (a, b)$ and is join irreducible
+%%   with unique lower cover $\rho$ such that $\bS = \alg{B}/\rho$.
+%% \end{lemma}
+%% \begin{proof}
+%%   Choose $\alg{B} \in \sansS (\alg{A})$ as small as possible having $\bS$ as a homomorphic image,
+%%   say $\bS = \alg{B}/\rho$. We claim that if $a, b \in B$ with
+%%   $(a, b) \in \notin \rho$ then they generate $\alg{B}$. To
+%%   see this, let $\alg{B}'= \Sg^{\alg{B}} (a, b)$ and let $h$ be the quotient map from B to S with kernel
+%%   ρ. Then h(B  ) is a non-trivial subuniverse of S and so must equal S. Thus B  = B.
+%%   Now let a, b ∈ B with (a, b) ∈
+%%   / ρ. Since the block of Cg B (a, b) containing a
+%%   and b is a subuniverse of B then from the previous paragraph, we conclude that
+%%   Cg B (a, b) = 1 B and that ρ is its unique lower cover.
+%% \end{proof}
+
+According to the characterization
+in~\cite[Ch.~8]{HM:1988} of locally finite congruence modular (resp.,
+distributive) varieties, a finite algebra $\alg{A}$ generates a congruence modular
+(resp., distributive) variety $\sV$ if and only if the typeset 
+of $\sV$ is
+contained in $\{\atyp, \btyp, \ltyp\}$ (resp., $\{\btyp, \ltyp\}$) 
+and all minimal sets of prime
+quotients of finite algebras in $\sV$ have empty
+tails~\cite[Def.~2.15]{HM:1988}. Note that in the distributive 
+case the empty tails condition is equivalent to the minimal sets all having exactly
+two elements.
+
+It follows from Corollary~\ref{cor:2.2} and Proposition~\ref{prop:2.1}
+that if $\alg{A}$ is idempotent then one can
+test the first condition, on omitting 
+types \utyp\ and \styp\ (or \utyp, \atyp, and \styp) by searching
+for a 2-generated subalgebra of $\alg{A}$ whose typeset is 
+not contained in
+$\{\atyp, \btyp, \ltyp\}$ ($\{\btyp, \ltyp\}$). It is proved 
+in~\cite[Sec.~6]{Freese:2009} that this
+test can be performed in polynomial time---that is, the running 
+time of the test
+is bounded by a polynomial function of the size of $\alg{A}$.
+In~\cite[Sec.~3]{Freese:2009}, Freese and Valeriote prove a sequence of
+lemmas to establish that, if $\alg{A}$ is finite and idempotent, and if
+$\mathcal V = \bbV(\alg{A})$ omits types \utyp\ and \styp, 
+then to test for the existence of tails
+in $\sV$ it suffices to look for them 
+in the 3-generated subalgebras of $\alg{A}^2$.
+%% More specifically, the authors assume that the type set of $\bbV(\alg{A})$ contains no 1's
+%% and no 5's, and under this 
+%% assumption they prove that non-empty tails either do not occur in $\bbV(\alg{A})$,
+%% or they occur in 3-generated subalgebras of $\alg{A}^2$.
+In other words, either there are no non-empty tails
+or else there are non-empty tails that are easy to find
+(since they occur in 3-generated subalgebras of $\alg{A}^2$).
+It follows that Problem~\ref{prob:2} has a positive answer:
+deciding whether or not a finite idempotent algebra generates a congruence
+modular variety is tractable.\footnote{That is, there are positive integers
+  $C, n$, and an algorithm that takes
+  a finite idempotent algebra $\alg{A}$ as input and decides
+  in at most $C|\alg{A}|^n$ steps whether $\bbV(\alg{A})$ is congruence modular.
+  Here $|\alg{A}|$ denotes the number of bits required to encode the algebra $\alg{A}$.}
+%% polynomial-time algorithm to decide, for a finite idempotent algebra $\alg{A}$,
+%% whether $\bbV(\alg{A})$ is congruence modular.}
+
+Our goal is to use the same strategy to solve Problem~\ref{prob:1}.
+As such, we revisit each lemma in Section 3 of \cite{Freese:2009},
+and consider whether it can be proved under modified hypotheses.
+Specifically, we continue to assume that the type set of $\bbV(\alg{A})$ contains no \utyp's,
+but we will now drop the ``no \styp's'' assumption.  We will 
+attempt to prove that
+either there are no \emph{type-\atyp} tails in $\bbV(\alg{A})$, 
+or else \emph{type-\atyp}
+tails can be found ``quickly,'' (e.g., in a 3-generated subalgebra of $\alg{A}^2$).
+We continue to quote~\cite{Freese:2009} where possible,
+while modifying the assumptions and adjusting the arguments as necessary.
+
+\medskip
+
+Throughout, we let $\nn$ denote the set $\{0,1,\dots, n-1\}$ and 
+we let $\sS$ be a finite 
+set of finite,
+similar, idempotent algebras, closed under the taking of 
+subalgebras, such that
+$\sV = \bbV(\sS)$ omits type-\utyp\ (but may include type-\styp).
+If there is a finite algebra in $\sV$ having a type-\atyp\ minimal 
+set with a tail, then, by standard tame congruence theory, there
+is such an algebra which is a subalgebra of a product 
+of elements in $\sS$. 
+So we suppose that some finite algebra
+$\alg{B}$ in $\sV$ has a prime quotient of type~\atyp\ whose 
+minimal sets 
+have non-empty
+tails and show that there is a 3-generated 
+subalgebra of the
+product of two members of $\sS$ with this property.
+
+Since $\sS$ is closed under the taking of subalgebras,
+we may assume that the algebra $\alg{B}$ from the previous paragraph is a subdirect
+product of a finite number of members of $\sS$. Choose $n$ minimal such that for
+some $\alg{A}_0$, $\alg{A}_1$, $\dots$, $\alg{A}_{n-1}$ in $\sS$, there is a subdirect
+product $\alg{B} \sdp \prod_{\nn} \alg{A}_i$
+that has a prime quotient of type~\atyp\ whose minimal sets have
+non-empty tails.
+Under the assumption that $n > 1$ we will prove that $n = 2$.
+
+For this $n$, select the $\alg{A}_i$ and $\alg{B}$ so that $|B|$ is as small as possible.
+Let $\alpha \prec \beta$ be a prime quotient of $\alg{B}$ 
+of type~\atyp\ such that its minimal sets have
+non-empty tails, and choose $\beta$ minimal with this property.
+By \cite[Lemma 6.2]{HM:1988} this implies $\beta$ is join 
+irreducible and $\alpha$ is its unique subcover.
+Let $U$ be an $(\alpha, \beta)$-minimal set. 
+
+%and let $N$ be an
+% $(\alpha, \beta)$-trace of $U$. Let 0 and 1 be
+%two distinct members of $N$ with $(0, 1) \notin \alpha$.
+
+\begin{lemma}[{\protect cf.~\cite[Lem.~3.1]{Freese:2009}}]
+\label{lem:fv_3-1}
+If\/ $0$, $1 \in U$ such that $(0,1) \in \beta \setminus \alpha$ and
+$t$ be a member of the tail of $U$. Then $\beta$ is the 
+congruence of $\alg{B}$
+generated by the pair $(0,1)$ and $\alg{B}$ is generated 
+by $\{0, 1, t\}$.
+\end{lemma}
+
+\begin{proof}
+Since $\beta$ is join irreducible with unique subcover $\alpha$, any
+pair of elements in $\beta \setminus \alpha$ generates $\beta$.
+
+Let $\alg C$ be the subalgebra of $\alg B$ generated by $\{0,1,t\}$. We
+will obtain a contradiction under the assumption that $|C| < |B|$
+and the minimal sets of $\alg C$ which have type~\atyp\ all 
+have empty tails. Let $\beta'$
+and $\alpha'$ be the restrictions of $\beta$ and $\alpha $ to $C$,
+respectively. Then $\alpha' < \beta'$ since $(0,1) \in
+\beta'\setminus \alpha'$ and so there are $\delta \covs \gamma$ in
+$\con{\alg C}$ with $\alpha' \le \delta \cov \gamma \le \beta'$ and
+such that $(0,1) \in \gamma\setminus \delta$.
+
+Since $(\alpha,\beta)$ is type~\atyp, $\beta$ is abelian over $\alpha$.
+This implies $\beta'$ is abelian over $\alpha'$ 
+by \cite[Lemma 2.19(9)]{MR3076179},
+which implies the
+types of the prime quotients occurring between $\alpha'$ and $\beta'$
+are~\utyp\ or \atyp.
+But since we are assuming $\alg B$ has a Taylor term,
+they are all of type~\atyp. 
+In particular, $(\delta,\gamma)$ has type~\atyp.
+
+Suppose that $|C| < |B|$ and all $\langle \delta, \gamma \rangle$
+minimal sets have empty tails. Let $V$ be a $\langle \delta,\gamma
+\rangle$ minimal set and let $p(x)$ be some polynomial of $\alg C$
+with range $V$ and with $(p(0) ,p(1))\notin \delta$. Such a
+polynomial exists by Theorem~2.8 of~\cite{HM:1988}
+since $(0,1) \in \gamma\setminus \delta$.
+
+The polynomial $p(x)$ can be expressed in the form 
+$s^{\alg C}(x,0,1,t)$ for some term $s(x,y,z,w)$ 
+of $\mathcal V$ and so extends to
+a polynomial $p'(x) = s^{\alg B}(x,0,1,t)$ of $\alg B$.  Since $(p(0),
+p(1)) \in \gamma\setminus \delta$ then $(p'(0), p'(1)) \in
+\beta\setminus \alpha$ and so $p'$ must map the minimal set $U$ onto
+a polynomially isomorphic set $W$.   
+
+Since the type of $\langle \delta, \gamma \rangle$ is \atyp\ 
+and $V$ has no tail,   
+$\alg C|_V$ has a Maltsev polynomial $s(x,y,z)$. 
+Since $\{p(0), p(1),p(t)\} \subseteq V$ and 
+since this polynomial has an extension to a
+polynomial of $\alg B$ it follows that there is a polynomial
+$f(x,y,z)$ of $\alg B$ that satisfies the Maltsev identities when
+restricted to the set $\{p'(0), p'(1), p'(t)\} \subseteq W$. This
+contradicts Lemma~4.26 of~\cite{HM:1988}, since $p'(0)$ and $p'(1)$
+are in the body of $W$ and $p'(t)$ is in the tail, since $p'$ is a
+polynomial isomorphism from $U$ to~$W$.
+\end{proof}
+
+
+For $i \leq n$, let $\rho_i$ denote the kernel of the projection of $\alg{B}$ onto $\alg{A}_i$,
+so $\alg{B} \cong \alg{A}_i/\rho_i$.
+For a subset $\sigma \subseteq \nn$, define
+\[
+\rho_\sigma := \bigwedge_{j\in \sigma} \rho_j.
+\]
+Consequently,
+$\rho_{\nn} = \bigwedge_{j\in \nn}\rho_j = 0_{B}$
+%% \marginnote{wjd: I don't see why join in (3.1) is $1_B$... it's probably wrong.}[3cm]
+%% \begin{equation}
+%%   \label{eq:2}
+%%   \rho_{\nn} = \bigwedge_{j\in \nn}\rho_j = 0_{B} \quad \text{ and } \quad
+%%   \bigvee_{j\in \nn}\rho_j =1_B. %% \qquad
+%% \end{equation}
+By minimality of $n$ we know that the intersection of any  proper subset of the
+$\rho_i$, $1 \leq i \leq n$ is strictly above $0_B$.  Thus,
+$0_B < \rho_\sigma < 1_B$ for all 
+$\emptyset \subset \sigma\subset \nn$
+(by $\subset$ we mean \emph{proper} subset).
+
+\begin{lemma}[{\protect cf.~\cite[Lem.~3.2]{Freese:2009}}]
+  \label{lem:fv_3-2}
+  For every proper nonempty subset $\sigma \subset \nn$,
+  either $\beta \leq \rho_\sigma$ or $\alpha \join \rho_\sigma = 1_B$.
+\end{lemma}
+\begin{proof} Let $\rho = \rho_\sigma$.
+Suppose that $\beta \not\le {\rho}$ (or equivalently $(0,1) \notin
+\rho$). Since $\beta$ is join irreducible, $\beta\meet\rho \le
+\alpha$ and so $\beta\meet \rho = \alpha \meet \rho$.  Furthermore,
+$\alpha\join {\rho} = \beta \join {\rho}$, or else we can find a
+prime quotient between these two congruences that is perspective
+with $\langle \alpha, \beta \rangle$.  But then the algebra 
+$\alg B/{\rho}$ has a prime quotient of type~\atyp\ whose minimal sets have non-empty
+tails.  Since this algebra is isomorphic to a subdirect product of
+fewer than $n$ members of $\mathcal S$, we conclude, by the minimality 
+of~$n$, that indeed $\alpha\join {\rho} = \beta \join {\rho}$.
+
+Thus the set
+\[
+\mathcal P = \{\beta\meet\rho, \rho, \alpha, \beta, \alpha\join\rho\}
+\]
+forms a pentagon in $\Con \alg B$. Let $C$ be the
+$(\alpha\join\rho)$-class that contains $0$ and let $M = C\mathrel{\cap} U$.
+Note that $C$ contains $1$ and, since $\alg B$ is idempotent,  that
+$C$ is a subuniverse of $\alg B$. By Lemma 2.4 of \cite{HM:1988}, we
+conclude that the restriction to $M$ is a surjective lattice
+homomorphism from the interval $I[0_B,
+\alpha\join\rho]$ in $\Con{\alg B}$ to the interval $I[0_M,
+(\alpha\join\rho)|_M]$ in $\Con{\alg B}|_M$.  Note that since $(0,1) \in
+\beta|_M \setminus \alpha|_M$, this restriction map separates
+$\alpha$ and $\beta$.  Then, the image under the restriction map of
+the pentagon $\mathcal P$ is a pentagon in $\Con{\alg B}|_M$.  This
+implies that $M$ contains some elements of the tail of $U$, since
+otherwise $\Con{\alg B}|_M$ has a Maltsev term operation and hence  
+is modular.
+Thus, there is some $t$ in the tail of $U$ with $(0,t) \in
+\alpha\join \rho$. Using Lemma~\ref{lem:fv_3-1} we conclude that $C =
+B$ since it contains $\{0,1,t\}$.  Thus, $\alpha \join \rho = 1_B$.
+\end{proof}
+
+\begin{lemma}\label{lem:nearperm}
+  For every proper nonempty subset $\sigma \subset \nn$,
+  for all $v\in B$, and for all $c\in \body(U)$, we have
+  $(v,c) \in \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta$.
+\end{lemma}
+
+%\smallskip
+%% \newcommand\rhosig{\ensuremath{\rho_\sigma}}
+\newcommand\rhosig{\ensuremath{\rho}}
+\begin{proof}
+\noindent Let $\rho = \rho_\sigma$. Note that
+$\beta \join \rhosig = 1_B$ implies
+$\restr{\beta}{U} \join \restr{\rhosig}{U} = 1_U$ since $U = e(B)$
+for some idempotent unary polynomial~$e$.
+Now, for all $x$, $y \in U$, if $x\in \body(U)$ and $y\in \tail(U)$, then
+$(x,y) \notin \beta$.  Therefore,
+$(x, y) \in  1_U = \restr{\beta}{U} \join \restr{\rhosig}{U}$ implies
+there must be some $a \in \body(U)$ and $t\in \tail(U)$ such that 
+$a \mathrel{\rhosig} t$.  
+
+%%%%%%
+
+%Let $b\in \body(U)$ be such that
+%$(a,b) \in \restr{\beta}{U} - \restr{\alpha}{U}$.  
+
+%By Lemma~\ref{lem:fv_3-1},
+%$\alg{B} = \Sg^{\alg{B}}(a, b, t)$.
+%Let $v \in B$. Then $v = s^{\alg{B}}(a,b,t)$ 
+%for some (idempotent) term $s$, so
+%\[
+%v = s^{\alg{B}}(a,b,t)
+%\mathrel{\rhosig} s^{\alg{B}}(a,b,a)
+%\mathrel{\beta} s^{\alg{B}}(a,a,a) = a,
+%\]
+%and
+%\[
+%v = s^{\alg{B}}(a,b,t)
+%\mathrel{\beta}  s^{\alg{B}}(a,a,t)
+%\mathrel{\rhosig}s^{\alg{B}}(a,a,a)  = a.
+%\]
+%Therefore, 
+%$(v,a) \in  \beta \circ \rhosig \cap \rhosig \circ \beta$.
+
+%%%%%%%%%%%%%%%%%
+
+Now, let $d(x,y,z)$ be a pseudo-\malcev polynomial for $U$,
+which exists by~\cite[Lemma~4.20]{HM:1988}.
+Thus,
+\begin{itemize}
+\item $d(B,B,B) = U$
+\item $d(x,x,x) = x$ for all $x\in U$
+\item $d(x,x,y) = y = d(y,x,x)$ for all $x\in \body(U)$, $y \in U$.
+\end{itemize}
+Moreover, for all $c$, $d \in \body(U)$, the unary polynomials
+$d(x,c,d)$, $d(c,x,d)$, and $d(c,d,x)$ are permutations on $U$.
+
+Next, fix an arbitrary element $c\in \body(U)$ and
+let $p(x) = d(x,a,c)$. 
+Then (see~\cite[Lem.~4.20]{HM:1988})
+we have
+\begin{itemize}
+\item  $p(U) = U$, since $U$ is minimal,
+\item $p(a) = d(a,a,c) = c \in \body(U)$, and
+  \item  $t':=p(t)\in \tail(U)$, since $t\in \tail(U)$.
+\end{itemize}
+Since $(a,t) \in \rhosig$, we have $(c, t') = (p(a), p(t)) \in \rhosig$. 
+Since $c$ is in the body, there is an element $d$ in the body with
+$(c,d) \in \beta - \alpha$. By Lemma~\ref{lem:fv_3-1}, this implies
+$\alg{B} = \Sg^{\alg{B}}(c, d, t')$.
+
+Finally, if $v \in B$, then $v = s^{\alg{B}}(c,d,t')$ for 
+some (idempotent) term $s$, so
+\[
+v = s^{\alg{B}}(c,d,t')
+\mathrel{\rhosig} s^{\alg{B}}(c,d,c)
+\mathrel{\beta} s^{\alg{B}}(c,c,c) = c,
+\]
+and
+\[
+v = s^{\alg{B}}(c,d,t')
+\mathrel{\beta}  s^{\alg{B}}(c,c,t')
+\mathrel{\rhosig}s^{\alg{B}}(c,c,c)  = c.
+\]
+Therefore, 
+$(v,c) \in  \beta \circ \rhosig \cap \rhosig \circ \beta$.
+Since $v \in B$ and $c\in \body(U)$ were aribitrary,
+this completes the proof.
+\end{proof}
+
+
+
+\begin{lemma}[{\protect cf.~\cite[Lemma~3.3]{Freese:2009}}]\
+  \label{lem:fv_3-3}
+  \begin{enumerate}[(i)]
+    \item \label{item:6} There exists $0\leq i< n $
+      such that $\alpha \join \rho_i = 1_B$
+    \item \label{item:7} There exists $i$ such that  
+      $\alpha \join \rho_i < 1_B$.
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  %% {\bf TODO:} fill in proof of  Lemma~\ref{lem:fv_3-3}.
+  %%\begin{enumerate}[(i)]
+  %%\item %\label{item:6} There exists $0\leq i< n $  such that $\alpha \join \rho_i = 1_B$
+If item \eqref{item:6} failed, then we would 
+have $\beta \leq \rho_i$ for all $i$, and that
+would imply $\beta = 0_B$.
+  %%\item %\label{item:7} There exists $i$ such that $\alpha \join \rho_i < 1_B$.
+  
+To see \eqref{item:7}, assume
+\begin{equation} \label{eq:4}
+\alpha \join \rho_i = 1_B \; \text{ for all $i$.}
+\end{equation}
+Take a nonempty proper subset $\sigma \subset \nn$ of indices and let 
+$\rho_\sigma = \bigwedge_{j\in \sigma} \rho_j$.
+Then $\alpha \join \rho_\sigma = 1_B$ since otherwise,
+by Lemma~\ref{lem:fv_3-2}, we have
+$\alpha \leq \beta \leq \rho_\sigma \leq \rho_i$ for $i \in \sigma$, so
+$\alpha \join \rho_i = \rho_i < 1_B$, contradicting (\ref{eq:4}).
+Therefore, $\beta \join \rho_\sigma = 1_B$.
+
+%\smallskip
+
+
+%We conclude from the foregoing that,
+%for all nonempty proper subsets $\sigma \subset n$,
+%for all $a\in \body(U)$ and all $v\in B$, we have
+%$(a, v) \in \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta$, 
+%proving the subclaim.
+
+Let $b \in \body(U)$ and $t \in \tail(U)$. By
+\cite[Lemma~4.25]{HM:1988}, $(b, d(b,t,t)) \notin \beta$.
+We will arrive at a contradiction by showing that 
+$b = d(b,t,t)$. By Lemma~\ref{lem:nearperm}, 
+$(b,t) \in \beta \circ \rho$ so
+there is an element $a \in B$ with 
+$b\mathrel\beta a \mathrel\rho_i t$. By applying the idempotent
+polynomial $e$ with $e(U) = U$ to this, we may assume $a \in U$
+and, since $a\mathrel \beta b$, $a \in \body(U)$. So
+\[
+d(b,t,t) \mathrel\rho_i d(b,a,a) = b.
+\]
+Since this hold for every~$i$, $d(b,t,t) = b$.
+\end{proof}
+
+
+%\begin{lemma}[{\protect cf.~\cite[Lem.~3.3]{Freese:2009}}]
+%\label{lem:fv_3-3x}
+%There is exactly one~$i$ such that $\beta \not\le \rho_i$.
+%\end{lemma}
+%\begin{proof}
+%If $n = 1$ then $\rho_1 = 0$ so the results holds. The lemma
+%above shows there must there must be at least one $\rho_i \ge \beta$
+%so let $\rho_1 \not\ge \beta$ and $\rho_2 \ge \beta$. If $n = 2$, 
+%the result holds. Otherwise let $\rho = \rho_1 \meet \rho_2$ and
+%note it is clearly not above $\beta$. Since $\beta$ is 
+%join irreducible and $\alpha$ is its unique lower cover,
+%$\rho \meet \beta \le \alpha$. But then $\alg B/\rho$ has a type~2
+%tail, contradicting the minimality of~$n$. 
+%\end{proof}
+
+
+\begin{theorem}[Thm.~3.4~\cite{Freese:2009}]\label{thm:fv_3-4}
+Let $\sV$ be the variety generated by some finite set $\sS$ of finite,
+idempotent algebras that is closed under taking subalgebras. If\/ $\sV$
+omits type~\utyp\ and some finite member of $\sV$ has a prime quotient 
+of type~\atyp\
+whose minimal sets have non-empty tails, then there is some
+3-generated algebra $\alg B$ with this property that belongs to $\sS$ or is a subdirect
+product of two algebras from $\sS$. 
+\end{theorem}
+\begin{proof}
+Choose $n > 0$, $\alg A_i \in \sS$, for $0 \le i \le n-1$ and $\alg B$
+as above. From Lemma \ref{lem:fv_3-1} we know that $\alg B$ is
+3-generated. If $n > 1$ then by the previous lemma we can choose $i$
+and $j \le n$ with $\beta \le \rho_i$ and $\alpha \join \rho_j =
+1_B$. If $n > 2$ then Lemma~\ref{lem:fv_3-2} applies to $\rho = \rho_i
+\meet \rho_j$ and so we know that either $\beta \le \rho$ or $\alpha
+\join \rho = 1_B$. This yields a contradiction as the former is not
+possible, since $\beta \not\le \rho_j$ and the latter can't hold
+since both $\alpha$ and $\rho$ are below $\rho_i$.
+
+So, the minimality of $n$ forces $n\le 2$ and the result follows.
+\end{proof}
+
+
+\begin{theorem}
+Let $\alg A$ be a finite idempotent algebra and let $\sV$ be the variety 
+it generates. Then $\sV$ has a difference term if and only if the
+following conditions hold.
+\begin{enumerate}
+\item $\alg A$ has a Taylor term.
+\item There do not exist $x_0$, $x_1$, $y_0$ and $y_1\in A$
+satisfying $\alpha < \beta$ and $\beta$ is abelian over $\alpha$,
+where 
+\begin{align*}
+\alpha = &\Cga c d B, \quad \beta = \alpha \join \Cga a b B,\\
+&\gamma = \Cga a c B \join \Cga b d B,
+\end{align*}
+$a = (x_0,x_1)$, $b = (x_0,y_1)$, $c = (y_0,x_1)$
+and $d=(y_0,y_1)$, and $\alg B$ is the subalgebra of $\alg A^2$ generated
+by $a$, $b$, $c$ and $d$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+First assume $\sV$ has a difference term.
+Then (1) holds by Theorem~\ref{thm:KearnesThm}.
+If (2) fails then there are $x_0$, $x_1$, $y_0$ and $y_1 \in A$ such
+that the conditions specified in (2) hold. 
+Since $\beta \le \rho_0$ and 
+$\gamma \le \rho_1$, $\beta \meet \gamma = 0_{\alg B}$. And clearly
+$\beta \le \alpha \join \gamma$.
+From this it follows that 
+\[
+\{0_{\alg B}, \alpha, \beta, \gamma, \alpha \join \gamma\}
+\]
+forms a pentagon.
+
+Let $M$ be an $\la \alpha',\beta\ra$ minimal set, 
+where $\alpha \le \alpha' \cov \beta$. Since $[\beta,\beta] \le \alpha'$
+and (1) holds, $M$ has type~\atyp.
+Restriction to $M$ maps  $\Con (\alg B)$ homomorphically 
+onto $\Con (\alg B|_M)$ by Lemma~2.3 of \cite{HM:1988}. 
+Let $0$ and $1$ be elements of a trace of $M$ with 
+$(0,1) \notin \alpha'$. 
+Since $(0,1) \in \beta|_M\setminus \alpha'|_M$, this 
+lattice homomorphism is faithful on this pentagon. If 
+$M$ had no tail, the $M = \body(M)$ which has a Maltsev
+term and so $\Con(\alg B|_M)$ is modular, a contradiction.
+Hence (2) holds.
+
+
+For the converse assume that $\sV$ does not have a difference 
+term. 
+We want to show that (1) or (2) fails. Assume both hold.
+By Theorem~\ref{thm:KearnesThm} there is a finite 
+algebra $\alg B \in \sV$ and a join irreducible 
+$\beta \in \op{Con}(\alg B)$ with lower cover 
+$\alpha$ such that the type of $\beta$ over $\alpha$ is~\atyp\
+and the $\alpha$-$\beta$ minimal sets have
+nonempty tails. Let $U$ be one of these minimal sets.
+
+
+We may assume $\alg B$ is minimal in the same manner as with the
+above lemmas (with $\sS$ being the subalgebras of $\alg A$).
+By Lemma~\ref{lem:fv_3-1} 
+we have that $\alg B$ is generated by any $0$, $1$, and $t$ in
+$U$ such
+that $\beta = \Cga 01{B}$ and $t$ is in the tail. By 
+Theorem~\ref{thm:fv_3-4}, $\alg B$ is either 
+in $\sS$ or is a subdirect product of two members of $\sS$.
+
+Assume the former holds; that is, $\alg B$ is a subalgebra
+of $\alg A$. 
+
+
+
+%%%%  here  %%%%%%%%%
+If the latter holds (and the former does not), then
+by Lemma~\ref{lem:fv_3-3} we may 
+assume $\rho_0 \join \alpha = 1_{\alg B}$ and
+$\rho_1 \join \alpha < 1_{\alg B}$. By Lemma~\ref{lem:fv_3-2}
+we have $\rho_1 \ge \beta$.
+This implies that $0$ and $1$ have the same second coordinate; that is,
+$0 = (a,c)$ and $1 = (b,c)$ for some $a$, $b$ and $c\in A$.
+By Lemma~\ref{lem:nearperm} $(0,t) \in \rho_0 \circ \beta$
+so $0 \mathrel {\rho_0} t' \mathrel{\beta} t$. Let $U = e(B)$
+where $e$ is an idempotent polynomial. Then
+$0 \mathrel {\rho_0} e(t') \mathrel{\beta} t$. This gives
+that $e(t')$ is in the tail of $U$ and 
+$0 \mathrel{\rho_0} e(t')$. We can
+replace $t$ by $e(t')$, and so assume that 
+$0 \mathrel{\rho_0} t$.
+Since $0 = (a,c)$, $t = (a,d)$ for some $d\in A$. From this
+it follows that (2) fails.
+
+Now we assume our algebra $\alg B$ descried above is a subalgebra
+of $\alg A$. 
+
+
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+\section{The Algorithm and its Time Complexity}
+
+If $\alg A$ is an algebra with underlying set (or universe) $A$,
+we let $|\alg A| = |A|$ be the cardinality of
+$A$ and $||\alg A||$ be the \emph{input size}; that is,
+\[
+||\alg A|| = \sum_{i=0}^r k_i n^i
+\]
+where, $k_i$ is the number of basic operations of arity~$i$ and $r$
+is the largest arity. We let
+\begin{align*}
+n &= |\alg A|  \qquad m = ||\alg A|| \\
+r &= \text{the largest arity of the operations of $\alg A$}
+\end{align*}
+
+Using the results of the last section together with ideas from
+\cite{Freese:2009},
+which are based on \cite{KearnesKiss1999},
+we show that there is an algorithm that decides if the variety 
+generated by a finite, idempotent
+algebra has a difference term that
+runs in time a constant times $rn^4m^2$.
+
+%%%%%%   here   %%%%%%%
+
+
+
+Of course the input to our algorithm is a finite, idempotent algebra $\alg A$
+and it return YES if $\alg A$ has a difference term; NO otherwise. Here is a 
+broad outline:
+
+\begin{enumerate}
+\item
+Test if type~\utyp\ occurs in $\bbV(\alg A)$. If so, return NO.
+
+\item
+For each triple $a$, $b$ and $c\in A$, find the subalgebra 
+$\alg B$ of $\alg A$ generated by this triple. Find 
+$\beta = \Cga a b{B}$. If $\beta$ is not join irreducible,
+continue to the next triple. Find the type of $\beta$. If this
+is not \atyp, continue to the next triple. Calculate an
+$\alpha$-$\beta$ minimal set. If this minimal set has a 
+tail, return NO. Otherwise, continue to the next triple.
+
+\item
+For each quadruple  $a$, $b$, $c$ and $d$ in $A$, construct 
+the subalgebra $\alg B$ of 
+$\alg A \times \alg A$ generated by $0 = (a, c)$, $1 = (b,c)$ 
+and $t = (a,d)$.
+Let $\beta = \Cga01{B}$.
+%% fix this Cg macro
+If $\beta$ is not join irreducible, continue to the next quadruple.
+Let $\alpha$ be the unique lower cover of $\beta$, 
+and let $\rho_0$ and 
+$\rho_1 \in \op{Con}(\alg B)$ be the projection kernels. 
+If the type of $\beta$ over $\alpha$
+is~\atyp\ and $\rho_0 \join \alpha = 1_{\alg B}$, return NO.
+Otherwise continue to the next quadruple.
+\item
+Return YES.
+\end{enumerate}
+
+
+
+\section{Excluded Lattices}
+
+\begin{theorem}
+\label{thm:conjecture}
+Let $\alg A$ be a finite algebra with a Taylor term. Then 
+$\Con(\alg{A})$ does not have congruences 
+$\alpha$, $\beta$, $\rho_0, \ldots, \rho_{n-1}$
+ satisfying
+\begin{enumerate}
+\item
+$\rho_i \ne 1_{\alg A}$, for all $i$,
+\item
+$\Meet \rho_i = 0_{\alg A}$,
+\item
+$\beta$ is join irreducible,
+\item 
+$\alpha \cov \beta$ is a prime quotient of type 2, and
+\item
+$\alpha \join \rho_i = 1_{\alg A}$, for all $i$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+First note that it follows from (2), (3), and (4) that
+\[
+\{\rho_i\meet\beta, \alpha, \beta, \rho_i, 1_{\alg A}\}
+\]
+forms a pentagon, for each~$i$. 
+Let $U$ be an $(\alpha, \beta)$-minimal set and 
+let $e$ be an idempotent polynomial with $e(A) = U$. 
+Then $e$ induces a lattice homomorphism of $\Con \alg A$ onto
+$\Con \alg A |_{U}$ separating $\alpha$ from $\beta$, thus
+leaving the pentagon intact. It 
+follows that $U$ must have a tail, for otherwise, it would
+be a type 2 minimal set with only body and the pseudo 
+Maltsev operation would mean $\Con \alg A |_{U}$ is
+modular, a contradiction. 
+\\[8pt]
+{\bf TODO:} finish proof of Theorem~\ref{thm:conjecture}
+
+\end{proof}
+
+
+%\bibliographystyle{amsplain} %% or amsalpha
+%% \bibliographystyle{alpha-url}
+%% \printbibliography
+\bibliographystyle{alphaurl}
+\bibliography{inputs/refs}
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+With notation and assumptions as above.
+
+\begin{theorem}[cf. Theorem 3.3 of \cite{FreeseValeriote2009}]
+This is a test.
+\end{theorem}
+
+
+
+
+
+
+\bibliographystyle{rsfplain}
+%\bibliography{\jobname}
+\bibliography{/Users/ralph/tex/bib/Database/db}
+
+
+
+A \emph{minority term} (for an algebra or variety) is a 
+3-variable term $q(x,y,z)$ such if two of the variables
+are equal, its value is the other one; that is, 
+\[
+q(x,x,y) \approx q(x,y,x) \approx q(y,x,x) \approx y.
+\]
+We are interested in an algebraic description of varieties having
+a minority term. One possible conjecture is:
+\begin{conjecture}
+$\mathcal V$ has a minority term if and only if it is CP and its
+ring has characteristic~1 or~2.
+\end{conjecture}
+
+
+
+\begin{fact}
+If $\mathcal V$ has a minority term, then it is CP.
+\end{fact}
+
+\begin{proof}
+Clearly a minority term is a Maltsev term.
+\end{proof}
+
+\begin{fact}
+A CD variety $\mathcal V$ has a minority term if and
+only if it is CP.
+\end{fact}
+
+\begin{proof}
+A variety is CD and CP if and only if it has a Pixley term. 
+If $p(x,y,z)$ is a Pixley term then 
+\[
+q(x,y,z) = p(p(x,y,z),x,p(x,z,y))
+\]
+is a minority term. The fact can be derived from these
+observations.
+\end{proof}
+
+\begin{fact}
+A variety of groups has a minority term if and only
+the variety has exponent 2 (well, or 1).
+\end{fact}
+
+\begin{proof}
+If a variety has exponent 2 then it is abelian and so,
+using additive notation, $x + y + z$ is a minority term.
+
+If the exponent is not 2 then the variety contains a group
+which contains an element of order $n$, where $n > 2$ (or 
+infinite). This element generates a cyclic group. In any
+abelian algebra the Maltsev term operation is unique and so
+must be $x - y + z$. But one easily checks that this is not
+a minority term when $n > 2$.
+\end{proof}
+
+\begin{lemma}
+Let $\mathcal V$ be a CP variety with a Maltsev term $p(x,y.z)$.
+The the following are equivalent:
+\begin{enumerate}
+\item
+The ring $R(\mathcal V)$ of $\mathcal V$ has characteristic~2.
+\item
+On every block of every abelian congruence, $p$ restricted to the 
+block is a minority term; that is, satisfies $p(a,b,a) = b$.
+\item
+If $\theta = \textup{Cg}^{\alg F_{\mathcal V}(x,y)}(x,y)$, then,
+on each block of $\theta/[\theta,\theta]$, $p$ is a minority term.
+\end{enumerate}
+If $\mathcal V$ has a minority term, then these conditions hold.
+\end{lemma}
+
+\begin{proof}
+By commutator theory (give some specific refs, also that the ring
+is det by the strucure of $\theta/[\theta,\theta]$) 
+the Maltsev term operation on an
+abelian algebra, or even a block of an abelian congruence, 
+is unique and it is $p(x,y,z) = x - y + z$ for
+some abelian group. It is easy that $x - y + z$ is a minority
+if and only if the abelian group has exponent~2.
+\end{proof}
+
+
+\end{document}
+
+
+Let $\alg A$ be an algebra and let $S$ and $T$ be tolerances
+on $\alg A$. 
+Let $M(S,T)$, or $M^{\alg A}(S,T)$ to emphasize $\alg A$,
+be the set of all $2 \times 2$ matrices of the form
+\begin{equation}\label{eq1}
+\begin{bmatrix}
+p&q\\
+r&s
+\end{bmatrix}
+=
+\begin{bmatrix}
+f(\mathbf{a},\mathbf{u})&f(\mathbf{a},\mathbf{v})\\
+f(\mathbf{b},\mathbf{u})&f(\mathbf{b},\mathbf{v})
+\end{bmatrix}
+\end{equation}
+where $f(\mathbf{x},\mathbf{y})$ is an $(m+n)$-ary polynomial of
+$\alg A$, $\mathbf{a} \mathrel{S} \mathbf{b}$, and 
+$\mathbf{u} \mathrel{T} \mathbf{v}$
+(componentwise, of course). The members of $M(S,T)$ are called
+\emph{$S,T$-matrices}.
+
+The first exercise gives an efficient way to find $M(S,T)$.
+
+\section*{Exercises}
+
+\begin{exercises}
+
+\prob
+Show that $M(S,T)$ is the subalgebra of $\alg A^4$ generated by
+\[
+\left\{
+\begin{bmatrix}
+a&a\\
+b&b
+\end{bmatrix} : a \mathrel{S} b\right\}
+\union
+\left\{
+\begin{bmatrix}
+c&d\\
+c&d
+\end{bmatrix} : c \mathrel{T} d\right\}
+\]
+
+\prob
+Use the symmetry of $S$ and $T$ to show the matrix obtained from an
+$S,T$-matrix by interchanging the rows or columns (or both) is also
+in $M(S,T)$. 
+
+\prob
+$M(T,T)$ is closed under taking transposes. 
+
+\end{exercises}
+
+\section*{Centrality Relations}
+
+We define four kinds of centrality, called centrality, strong
+centrality, weak centrality, and strong rectularity. The is a fifth
+centrality condition known as rectangularity which we will save for
+later.
+
+Let $\delta$ be a congruence and $S$ and $T$ be
+tolerance relations on  $\alg A$. The above centrality relations
+are denoted $\alg C(S,T;\delta)$ (centrality), 
+$\alg S(S,T;\delta)$ (strong centrality), 
+$\alg W(S,T;\delta)$ (weak centrality),  and
+$\alg SR(S,T;\delta)$ (strong rectangularity). They hold if the
+appropriate implication below holds for all 
+\[
+\begin{bmatrix}
+p&q\\
+r&s
+\end{bmatrix} \in M(S,T)
+\]
+\begin{itemize}
+\item centrality: 
+$p \mathrel{\delta} q \implies r \mathrel{\delta} s$.
+\item strong rectangularity: 
+$p \mathrel{\delta} s \implies r \mathrel{\delta} s$.
+\item weak centrality: 
+$p \mathrel{\delta} q \mathrel{\delta} s \implies r \mathrel{\delta} s$.
+\item strong centrality holds if both centrality and strong
+rectangularity hold.
+\end{itemize}
+
+Using the exercises it is easy to see that the implication defining 
+$\alg C(S,T;\delta)$ can be replaced by 
+$r \mathrel{\delta} s \implies p \mathrel{\delta} q$ and this is
+equivalent to 
+\[
+p \mathrel{\delta} q \Longleftrightarrow r \mathrel{\delta} s.
+\]
+Similar statements hold for the other conditions: weak centrality
+is equivalent to saying that if any three of $p$, $q$, $r$ and $s$
+are $\delta$ related, then they all are. And strong rectangularity
+says that if the elements of the main diagonal, or of the sinister
+diagonal, are $\delta$ related, then all four are.
+
+The \emph{$S,T$-term condition} is the condition $\alg C(S,T,0)$,
+usually expressed using the right-hand matrix in~\eqref{eq1}. 
+Other kinds of term conditions are defined similarly. 
+
+If $\alg C(S,T;\delta_i)$ holds for all $i \in I$, then
+$\alg C(S,T;\Meet_{i\in I}\delta_i)$ holds. Similar statements hold
+for the other centrality conditions. So there is a least $\delta$
+such that $\alg C(S,T;\delta)$ holds. This $\delta$ is the 
+\emph{commutator} of $S$ and $T$, and is denoted $[S,T]$. The
+commutators for the other centrality relations are denoted
+$[S,T]_{\alg S}$, $[S,T]_{\alg {SR}}$, and $[S,T]_{\alg W}$.
+
+The properties of these centrality relations are coverered in
+Theorem~2.19 and Theorem~3.4 of~\cite{KearnesKiss2013}. Much stronger
+properties hold in congruence modular varieties;
+see~\cite{FreeseMcKenzie1987}.
+
+\section*{Exercises}
+
+\begin{exercises}
+
+\prob
+As defined in \cite{HobbyMcKenzie1988}, $\beta$ is \emph{strongly
+Abelian} over $\delta$ ($\delta \leq \beta$, both congruences on $\alg A$)
+if the following implication holds for all polynomials $f$ and all
+elements $x_0, \ldots, x_{n-1}$, $y_0, \ldots, y_{n-1}$, and 
+$z_1, \ldots, z_{n-1}$ with $x_0 \mathrel\beta y_0$ and
+$x_i \mathrel\beta y_i \mathrel\beta z_i$, $i = 1, \ldots n-1$.
+\begin{align*}
+f(x_0,\ldots,&x_{n-1}) \mathrel\delta f(y_0,\ldots,y_{n-1}) \\
+&\implies
+f(x_0, z_1,\ldots,z_{n-1}) \mathrel\delta f(y_0, z_1,\ldots,z_{n-1})
+\end{align*}
+Show that $\beta$ is strongly 
+Abelian over $\delta$ if and only if $\alg S(\beta,\beta;\delta)$ 
+holds, and also show this is in turn equivalent to
+$\alg {SR}(\beta,\beta;\delta)$.
+\end{exercises}
+
+
+
+\bibliographystyle{rsfplain}
+%\bibliography{\jobname}
+\bibliography{/home/ralph/tex/bib/Database/db}
+
+
+\end{document}
