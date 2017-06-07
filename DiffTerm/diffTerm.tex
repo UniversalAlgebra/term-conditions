@@ -15,6 +15,38 @@
 %% then delete the existing refs.bib file so it will be automatically generated 
 %% again with your new entry the next time you run pdfaltex.
 \begin{filecontents*}{inputs/refs.bib}
+@article {MR3350334,
+    AUTHOR = {Horowitz, Jonah},
+     TITLE = {Testing for edge terms is decidable},
+   JOURNAL = {Algebra Universalis},
+  FJOURNAL = {Algebra Universalis},
+    VOLUME = {73},
+      YEAR = {2015},
+    NUMBER = {3-4},
+     PAGES = {321--334},
+      ISSN = {0002-5240},
+   MRCLASS = {03C05 (03B25 08A40 08B05)},
+  MRNUMBER = {3350334},
+MRREVIEWER = {David Casperson},
+       DOI = {10.1007/s00012-015-0325-4},
+       URL = {http://dx.doi.org/10.1007/s00012-015-0325-4},
+}
+@article {MR3109457,
+    AUTHOR = {Horowitz, Jonah},
+     TITLE = {Computational complexity of various {M}al'cev conditions},
+   JOURNAL = {Internat. J. Algebra Comput.},
+  FJOURNAL = {International Journal of Algebra and Computation},
+    VOLUME = {23},
+      YEAR = {2013},
+    NUMBER = {6},
+     PAGES = {1521--1531},
+      ISSN = {0218-1967},
+   MRCLASS = {03C05 (08B05 68Q25)},
+  MRNUMBER = {3109457},
+MRREVIEWER = {Klaus Denecke},
+       DOI = {10.1142/S0218196713500343},
+       URL = {http://dx.doi.org/10.1142/S0218196713500343},
+}
 @ARTICLE{2017arXiv170302764D,
    author = {{DeMeo}, W.},
     title = "{The Commutator as Least Fixed Point of a Closure Operator}",
@@ -1448,25 +1480,26 @@ Return YES.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% wjd: NEW SECTION  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Difference Term Operation for One Algebra}
-Above we addressed the problem of deciding the existence 
-of a difference term for a given (idempotent, locally finite) 
-variety.  In this section we are concerned with the existence of a 
-difference term operation for a specific (finite, idempotent) algebra, 
-and we will describe polynomial-time algorithms for
+\section{Difference Term Operations}
+Above we addressed the problem of deciding the existence of a difference term 
+for a given (idempotent, locally finite) variety.  In this section we are 
+concerned with the practical problem of finding a difference term 
+\emph{operation} for a given (finite, idempotent) algebra.
+We describe polynomial-time algorithms for
 \begin{enumerate}
 \item \label{item:a} deciding whether a finite, idempotent algebra 
 has a difference term operation, and 
 \item \label{item:b} finding a difference term operation 
 for a finite, idempotent algebra.
 \end{enumerate}
-Notice that Theorem XX already solves Problem~(\ref{item:a}).
+Of course, Theorem XX already solves Problem~(\ref{item:a}).
 Nonetheless, the solution presented in this section serves
 two puposes.  First, it gives an alternative proof of 
 the existence of a polynomial-time algorithm for solving Problem~(\ref{item:a})
-(and the proof doesn't use any tame congruence theory).  
-Second, this alternative proof develops machinery 
-that we need to solve Problem~(\ref{item:b}).
+(and, incidentally, in contrast to the earlier proof, 
+here we don't require any tame congruence theory).  
+Second, this alternative proof develops machinery
+that we exploit heavily when solving Problem~(\ref{item:b}).
 
 
 
@@ -1476,15 +1509,18 @@ that we need to solve Problem~(\ref{item:b}).
 \subsection{Local Difference Terms}
 \label{sec:local-diff-terms}
 In~\cite{MR3239624},
-Valeriote and Willard define %% an \defin{$\bA$-triple for $\bp$}
+Ross Willard and the third author define %% an \defin{$\bA$-triple for $\bp$}
 %% to be a triple $(a,b,i)$ such that $a, b \in A$ and
 %% $p_i(a,b,b) = p_{i+1}(a,a,b)$. They use this to define
 a ``local Hagemann-Mitschke sequence'' which they use as the basis of
 an efficient algorithm for deciding for a given $n$ whether an idempotent
 variety is $n$-permutable.
-Inspired by that work, we devise a similar construct, called
-a ``local difference term,'' that we use to develop a polynomial-time
-algorithm for deciding the existence of a difference term operation.
+In~\cite{MR3109457}, Jonah Horowitz introduced similar 
+``local-to-global'' methods for deciding when a given variety satisfies 
+certain Mal'cev conditions.
+Inspired by these works, we now define a ``local difference term'' and 
+use it to develop a polynomial-time algorithm for deciding the existence 
+of a difference term operation.
 
 Let $\bA=\< A, \dots\>$ be an algebra, fix $a, b \in A$ and
 $i \in \{0,1\}$.
@@ -1502,15 +1538,19 @@ a \defin{local difference term for $S$}.
 
 \smallskip
 
-\noindent {\bf Notation:} In the sequel we will often use the abbreviation
-``\ld term'' in place of ``local difference term.''
-
-\smallskip
-
-Let
-$\sS = A \times A \times \{0,1\}$. We usually denote an 
+\noindent {\bf Notation.} In the sequel we often use the following 
+abbreviations:
+\begin{itemize}
+\item 
+``\ld term'' in place of ``local difference term''
+\item $\theta_i:= \Cg^{\alg{A}}(a_i, b_i)$,
+for $a_i$ and $b_i$ elements of $A$.
+\item $\sS := A \times A \times \{0,1\}$. 
+\end{itemize}
+In addition, we denote an 
 arbitrary element of $\sS$ by $\bs_i = (a_i, b_i, \chi_i)$.
-Suppose that every pair
+
+Adopting the notation above, suppose that every pair
 of elements of $\sS$ has an \ld term .
 That is, for each $(\bs_0, \bs_1)\in \sS^2$ there exists
 $d$ such that for each $i \in \{0,1\}$ we have
@@ -1523,9 +1563,9 @@ $d$ such that for each $i \in \{0,1\}$ we have
 where $\bs_i = (a_i, b_i, \chi_i)$.
 Under these hypothesis we will prove that every subset $S\subseteq \sS$
 has an \ld term.
-That is, there is a single term $d$ that works (i.e., satisfies
-(\ref{eq:d-trip-i1}) and (\ref{eq:d-trip-i2})) for all $\bs \in S$.
-The statement and proof of this new result follows.
+That is, there is a single term $d$ that satisfies
+(\ref{eq:d-trip-i1}) and (\ref{eq:d-trip-i2}) for all $\bs \in S$.
+% The statement and proof of this result follows.
 
 %% \subsection{Main Results}
 \begin{theorem} %[\protect{cf.~\cite[Theorem 2.2]{MR3239624}}]
@@ -1539,11 +1579,6 @@ The statement and proof of this new result follows.
   Then every subset $S \subseteq \sS$
   has a local difference term.
 \end{theorem}
-
-\noindent {\bf Notation:} \emph{Throughtout the proof of Theorem~\ref{thm:local-diff-terms}, we let}
-\begin{equation*}
-\theta_i := \Cg(a_i,b_i).
-\end{equation*}
 
 \begin{proof}
 
@@ -1718,8 +1753,8 @@ as desired.
 \end{corollary}
 \begin{proof}
   One direction is clear, since a difference term operation for $\bA$ is
-  obviously an \ld term for the whole set
-  $A\times A \times \{0,1\}$.
+  obviously an \ld term for every pair in 
+  $(A\times A \times \{0,1\})^2$.
   For the converse, suppose
   each pair in $(A\times A \times \{0,1\})^2$ has an \ld term. 
   Then, by Theorem~\ref{thm:local-diff-terms},
@@ -1789,14 +1824,14 @@ as desired.
     $\{(a,a'), (b,a'), (b,b')\}$ intersects nontrivially with the subuniverse
     $a/\delta \times \{b'\}$.
 
-    Thus, the algorithm takes as input $\bA$ and, for each
-    $((a,a'), (b,a'), (b,b'))$ in $(A\times A)^3$, computes
-    $\delta = \com{\Cg(a,b)}$, computes the subalgebra
-    $\bS$ of $\bA\times \bA$ generated by
-    %% \Sg^{\bA\times \bA}\{(a,a'), (b,a'), (b,b')\}$, and then
-    $\{(a,a'), (b,a'), (b,b')\}$, and then
-    tests whether $S \cap (a/\delta \times \{b'\})$ is empty.
-    If we find an empty intersection at any point, then
+    Thus, we take as input a finite, idempotent algebra $\bA$ and, 
+    for each element $((a,a'), (b,a'), (b,b'))$ of $(A\times A)^3$,
+    \begin{enumerate}
+      \item compute $\delta = \com{\Cg(a,b)}$, 
+      \item compute $\bS = \Sg^{\bA\times \bA}\{(a,a'), (b,a'), (b,b')\}$,
+      \item \label{item:a3} test whether $S \cap (a/\delta \times \{b'\})$ is empty.
+    \end{enumerate}
+    If ever we find an empty intersection in step (\ref{item:a3}), then
     $\bA$ has no difference term operation.
     Otherwise the algorithm halts without witnessing an empty
     intersection, in which case $\bA$ has a difference term operation.
@@ -1815,18 +1850,18 @@ as desired.
 \end{proof}
 
 
-More details on the complexity of operations carried out by the algorithm, as well as many other algebraic operations, can be found in the references mentioned, as well as~\cite{MR1871085,MR1695293,Freese:2009}.
+More details on the complexity of operations carried out by the algorithm, and
+many other algebraic operations, can be found in the references mentioned in the preceding paragraph, but see also~\cite{MR1871085,MR1695293,Freese:2009}.
 
-\section{Computing difference term operations}
-Let $\alg{A} = \<A, \dots\>$ be a finite idempotent algebra and suppose we know that
-a difference term operation for $\alg{A}$ exists.  In this section we
-describe an algorithm for constructing a difference term operation given
-that we know such an operation exists.
-Throughout this section, for elements $a_i$ and $b_i$ of an algebra $\alg{A}$, 
-we denote by $\theta_i$ the congruence generated by $(a_i,b_i)$.  That is,
-\begin{equation*}
-\theta_i := \Cg^{\alg{A}}(a_i, b_i).
-\end{equation*}
+\subsection{Computing a Difference Term Operation}
+Let $\alg{A} = \<A, \dots\>$ be a finite idempotent algebra and suppose we 
+know that a difference term operation for $\alg{A}$ exists.  In this section we
+describe an algorithm for constructing a difference term operation given that 
+we know such an operation exists.
+
+As above, for the congruence generated by a pair $(a_i, b_i)$ 
+of elements of an algebra $\alg{A}$, we use the shorthand
+$\theta_i := \Cg^{\alg{A}}(a_i, b_i)$.
 
 \subsection{Sets of size two}
 An \ld term operation for 
@@ -1857,8 +1892,10 @@ $\{(a_0, b_0, 0), (a_1, b_1, 1)\}$.
 \noindent \underline{\textbf{Subroutine 10}}\\[4pt]
 To compute an \ld term operation for
 $\{(a_0,b_0,1), (a_1, b_1, 0)\}$, obviously this is symmetric to
-the situation handled in Subroutine 01.  Nonetheless, we include the
-listing here so that later we can easy refer to this version of the algorithm.
+the situation handled in Subroutine 01 and so the general algorithm
+is the same.  Nonetheless, we include a listing of the computational 
+steps required so that later we can easily refer to this special case 
+of the general algorithm.
 \begin{enumerate}
 \item Compute $\delta_1=\com{\theta_1}$;
 \item form $C_1= \{b_0\}\times a_1/\delta_1 \leq \alg{A}\times\alg{A}$;
@@ -1885,13 +1922,13 @@ An \ld term operation for the set
 \{(a_0,b_0,1), (a_1, b_1, 1), (a_2, b_2, 1)\}
 \end{equation*}
 is the third projection, $t(x,y,z) = y$.
-There are only two other sets of size three to consider, 
+There are only two other sets of size three that need to be considered, 
 since the other cases are symmetric to these.
-They are
-\begin{equation*}
-\{(a_0, b_0, 0), (a_1, b_1, 1),  (a_2, b_2, 0)\} \text{ and }
-\{(a_0, b_0, 0), (a_1, b_1, 1), (a_2, b_2, 1)\}.
-\end{equation*}
+% They are
+% \begin{equation*}
+% \{(a_0, b_0, 0), (a_1, b_1, 1),  (a_2, b_2, 0)\} \text{ and }
+% \{(a_0, b_0, 0), (a_1, b_1, 1), (a_2, b_2, 1)\}.
+% \end{equation*}
 
 \smallskip
 
