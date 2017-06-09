@@ -1887,16 +1887,16 @@ $t(x,y,z) = x$.
 An \ld term operation for
 the set $\{(a_0,b_0,1), (a_1, b_1, 1)\}$ is the third projection,
 $t(x,y,z) = z$.\footnote{Moreover, if $a_0 = b_0$, then by idempotence every ternary term $t$ 
-satisfies $t(a_0, b_0, b_0) = a_0$; thus the third projection is an \ld 
-term for $\{(a_0,b_0,\chi_0), (a_1, b_1, \chi_1)\}$, 
+satisfies $t(a_0, b_0, b_0) = a_0$; therefore, the third projection is an \ld 
+term for the set $\{(a_0,b_0,\chi_0), (a_1, b_1, \chi_1)\}$, 
 for all $\chi_0$, $\chi_1$ in $\{0,1\}$. 
 Similarly, if $a_1 = b_1$, then $t(a_1, a_1, b_1) = b_1$ for all ternary $t$, 
 so the third projection is an \ld term.
 Therefore, we need only consider sets of the form
 $\{(a_0,b_0, 0), (a_1, b_1, 1)\}$, where $a_0 \neq b_0$ and 
 $a_1 \neq b_1$.  
-We have relegated this observation to a footnote because the efficiency gain
-that it yields does not impact the overall complexity of our algorithm.} 
+We have relegated this observation to a footnote because it yeilds a computational 
+that does not impact the overall complexity of the main algorithm.} 
 
 
 In the following algorithm descriptions,
@@ -2037,7 +2037,8 @@ ys := %as \; zip \; (1, 1, \dots, 1) =
 ((a_0, b_0, 1), (a_1, b_1, 1), \dots, (a_k, b_k, 1)). 
 \end{equation*}
 
-Using the subroutines from Subsection~\ref{sec:induct} 
+Using the routines in Subsections~\ref{sec:size2}
+and~\ref{sec:induct} 
 (\ld-2 for the base case, \ild-1 for the induction step),
 we compute an \ld term operation $s_0$ for
 \begin{equation*}
@@ -2054,7 +2055,8 @@ $((a_0, b_0, 0), (a_1, b_1, 0)) :: ys$  (where $::$ denotes
 list concatenation).
 % \end{equation*}
 
-Next, we use the subroutines in Subsection~\ref{sec:induct} 
+Next, we use the routines in Subsections~\ref{sec:size2}
+and~\ref{sec:induct} 
 (\ld-2 for the base case, \ild-0 for the induction step),
 to compute an \ld term operation $t_2$ for
 \begin{equation*}
@@ -2090,155 +2092,6 @@ $a, b \in A$ and $\chi \in \{0,1\}$,
 $d(x,y,z)$ is the desired difference term operation for $\alg{A}$.
 
 
-
-\bigskip
-
-\hrule
-
-\bigskip
-
-\noindent \emph{TODO: the remaining sections about the algorithm will be completely
-rewritten and mostly deleted.  Obviously we don't want to build up the 
-algorithm in the way described.  Instead, we'll use recursion.}
-
-\subsection{Sets of size three}
-An \ld term operation for the set
-\begin{equation*}
-\{(a_0,b_0, 0), (a_1, b_1, 0), (a_2, b_2, 0)\}
-\end{equation*}
-is the first projection, $t(x,y,z) = x$.
-An \ld term operation for the set
-\begin{equation*}
-\{(a_0,b_0,1), (a_1, b_1, 1), (a_2, b_2, 1)\}
-\end{equation*}
-is the third projection, $t(x,y,z) = y$.
-There are two other forms of 3-sets to consider.
-We label these $P_3$ and $Q_3$ and handle them with 
-the following subroutines.
-% They are
-% \begin{align*}
-% P &= \{(a_0, b_0, 0), (a_1, b_1, 0),  (a_2, b_2, 1)\} \text{ and }\\
-% Q &= \{(a_0, b_0, 1), (a_1, b_1, 1), (a_2, b_2, 0)\}.
-% \end{align*}
-% $P = \{(a_0, b_0, 0), (a_1, b_1, 0),  (a_2, b_2, 1)\}$
-% and $Q = \{(a_0, b_0, 1), (a_1, b_1, 1), (a_2, b_2, 0)\}$.
-
-\medskip
-
-\noindent \underline{\textbf{Subroutine \ld-3.0}}\\[4pt]
-To find an \ld term operation for
-$P_3:=\{(a_0, b_0, 0), (a_1, b_1, 0),  (a_2, b_2, 1)\}$,
-% $\{(a_0, b_0, 0), (a_1, b_1, 1),  (a_2, b_2, 0)\}$,
-\begin{enumerate}
-\item use Subroutine \ld-2 to compute an \ld term operation $s$ for
-\begin{equation*}
-\{(a_1, b_1, 0), (a_2, b_2, 1)\}; 
-\end{equation*}
-\item use Subroutine \ld-2 to compute an \ld term operation $t$ for
-\begin{equation*}
-\{(a_0, s(a_0, b_0, b_0), 0), (a_2, b_2, 1)\}.
-\end{equation*}
-\end{enumerate}
-It is easy to check that
-$d(x,y,z) = t(x, s(x,y,y), s(x,y,z))$
-is then an \ld term operation for $P_3$ 
-(see Case $\chi_0=0$ in the proof of Theorem~\ref{thm:local-diff-terms}).
-
-\medskip
-
-\noindent \underline{\textbf{Subroutine \ld-3.1}}\\[4pt]
-To find an \ld term operation for 
-$Q_3 := \{(a_0, b_0, 1), (a_1, b_1, 1), (a_2, b_2, 0)\}$,
-\begin{enumerate}
-\item \label{item:001-1}
-use Subroutine \ld-2 to compute an \ld term $s$ for the set
-\begin{equation*}
-\{(a_1, b_1, 1), (a_2, b_2, 0)\};
-\end{equation*}
-\item \label{item:001-2} use Subroutine \ld-2 to compute an \ld term $t$
-for the set
-\begin{equation*}
-\{(s(a_0, a_0, b_0), b_0, 1),  (a_2,a_2,0)\}.
-\end{equation*}
-\end{enumerate}
-Then 
-%%%
-$d(x,y,z) = t(s(x,y,z), s(y,y,z),z)$
-%%%
-is an \ld term  for $Q_3$ (see Case $\chi_0=1$ in the proof of Theorem~\ref{thm:local-diff-terms}).
-
-\subsection{Sets of Size 4} We handle one more case before 
-using induction to give a general recursive algorithm.
-The nontrivial forms of 4-sets are
-\begin{align*}
-P_4 &:= \{(a_0, b_0, 0), (a_1, b_1, 0),  (a_2, b_2, 0),  (a_3, b_3, 1)\},\\ 
-Q_4 &:= \{(a_0, b_0, 1), (a_1, b_1, 1), (a_2, b_2, 1), (a_3, b_3, 0)\},\\
-R_4 &:= \{(a_0, b_0, 0), (a_1, b_1, 0),  (a_2, b_2, 1),  (a_3, b_3, 1)\}.
-\end{align*}
-
-\medskip
-
-\noindent \underline{\textbf{Subroutine \ld-4.0}}\\[4pt]
-To find an \ld term operation for a set like $P_4$,
-% $\{(a_0, b_0, 0), (a_1, b_1, 1),  (a_2, b_2, 0)\}$,
-\begin{enumerate}
-\item use Subroutine \ld-3.0 to compute an \ld term operation $s$ for
-\begin{equation*}
-\{(a_1, b_1, 0),  (a_2, b_2, 0),  (a_3, b_3, 1)\};
-\end{equation*}
-\item use Subroutine \ld-2 to compute an \ld term operation $t$ for
-\begin{equation*}
-\{(a_0, s(a_0, b_0, b_0), 0), (a_3, b_3, 1)\}.
-\end{equation*}
-\end{enumerate}
-It is easy to check that
-$d(x,y,z) = t(x, s(x,y,y), s(x,y,z))$
-is then an \ld term operation for $P_4$ 
-(see Case $\chi_0=0$ in the proof of Theorem~\ref{thm:local-diff-terms}).
-
-\medskip
-
-\noindent \underline{\textbf{Subroutine \ld-4.1}}\\[4pt]
-To find an \ld term operation for a set like $Q_4$
-% $\{(a_0, b_0, 0), (a_1, b_1, 1),  (a_2, b_2, 1)\}$,
-\begin{enumerate}
-\item 
-use Subroutine \ld-3.1 to compute an \ld term $s$ for the set
-\begin{equation*}
-\{(a_1, b_1, 1), (a_2, b_2, 1), (a_3, b_3, 0)\};
-\end{equation*}
-\item  use Subroutine \ld-2 to compute an \ld term $t$
-for the set
-\begin{equation*}
-\{(s(a_0, a_0, b_0), b_0, 1),  (a_3,a_3,0)\}.
-\end{equation*}
-\end{enumerate}
-Then 
-%%%
-$d(x,y,z) = t(s(x,y,z), s(y,y,z),z)$
-%%%
-is an \ld term  for $Q_4$ (see Case $\chi_0=1$ in the proof of Theorem~\ref{thm:local-diff-terms}).
-
-
-\medskip
-
-\noindent \underline{\textbf{Subroutine \ld-4.2}}\\[4pt]
-To find an \ld term operation for a set like $R_4$
-% $\{(a_0, b_0, 0), (a_1, b_1, 1),  (a_2, b_2, 1)\}$,
-\begin{enumerate}
-\item 
-use Subroutine \ld-3.1 to compute an \ld term $s$ for the set
-\begin{equation*}
-\{(a_1, b_1, 0), (a_2, b_2, 1), (a_3, b_3, 1)\};
-\end{equation*}
-\item use Subroutine \ld-2 to compute an \ld term operation $t$ for
-\begin{equation*}
-\{(a_0, s(a_0, b_0, b_0), 0), (a_3, b_3, 1)\}.
-\end{equation*}
-\end{enumerate}
-Then 
-$d(x,y,z) = t(x, s(x,y,y), s(x,y,z))$
-is an \ld term operation for $P_4$. 
 
 %\bibliographystyle{amsplain} %% or amsalpha
 %% \bibliographystyle{alpha-url}
@@ -2508,9 +2361,147 @@ $\alg {SR}(\beta,\beta;\delta)$.
 
 
 
-\bibliographystyle{rsfplain}
-%\bibliography{\jobname}
-\bibliography{/home/ralph/tex/bib/Database/db}
+%%%%%%% wjd: old stuff (will delete eventually)%%%%%%%%%%%%%%%%%
+
+\noindent \emph{TODO: the remaining sections about the algorithm will be completely
+rewritten and mostly deleted.  Obviously we don't want to build up the 
+algorithm in the way described.  Instead, we'll use recursion.}
+
+\subsection{Sets of size three}
+An \ld term operation for the set
+\begin{equation*}
+\{(a_0,b_0, 0), (a_1, b_1, 0), (a_2, b_2, 0)\}
+\end{equation*}
+is the first projection, $t(x,y,z) = x$.
+An \ld term operation for the set
+\begin{equation*}
+\{(a_0,b_0,1), (a_1, b_1, 1), (a_2, b_2, 1)\}
+\end{equation*}
+is the third projection, $t(x,y,z) = y$.
+There are two other forms of 3-sets to consider.
+We label these $P_3$ and $Q_3$ and handle them with 
+the following subroutines.
+% They are
+% \begin{align*}
+% P &= \{(a_0, b_0, 0), (a_1, b_1, 0),  (a_2, b_2, 1)\} \text{ and }\\
+% Q &= \{(a_0, b_0, 1), (a_1, b_1, 1), (a_2, b_2, 0)\}.
+% \end{align*}
+% $P = \{(a_0, b_0, 0), (a_1, b_1, 0),  (a_2, b_2, 1)\}$
+% and $Q = \{(a_0, b_0, 1), (a_1, b_1, 1), (a_2, b_2, 0)\}$.
+
+\medskip
+
+\noindent \underline{\textbf{Subroutine \ld-3.0}}\\[4pt]
+To find an \ld term operation for
+$P_3:=\{(a_0, b_0, 0), (a_1, b_1, 0),  (a_2, b_2, 1)\}$,
+% $\{(a_0, b_0, 0), (a_1, b_1, 1),  (a_2, b_2, 0)\}$,
+\begin{enumerate}
+\item use Subroutine \ld-2 to compute an \ld term operation $s$ for
+\begin{equation*}
+\{(a_1, b_1, 0), (a_2, b_2, 1)\}; 
+\end{equation*}
+\item use Subroutine \ld-2 to compute an \ld term operation $t$ for
+\begin{equation*}
+\{(a_0, s(a_0, b_0, b_0), 0), (a_2, b_2, 1)\}.
+\end{equation*}
+\end{enumerate}
+It is easy to check that
+$d(x,y,z) = t(x, s(x,y,y), s(x,y,z))$
+is then an \ld term operation for $P_3$ 
+(see Case $\chi_0=0$ in the proof of Theorem~\ref{thm:local-diff-terms}).
+
+\medskip
+
+\noindent \underline{\textbf{Subroutine \ld-3.1}}\\[4pt]
+To find an \ld term operation for 
+$Q_3 := \{(a_0, b_0, 1), (a_1, b_1, 1), (a_2, b_2, 0)\}$,
+\begin{enumerate}
+\item \label{item:001-1}
+use Subroutine \ld-2 to compute an \ld term $s$ for the set
+\begin{equation*}
+\{(a_1, b_1, 1), (a_2, b_2, 0)\};
+\end{equation*}
+\item \label{item:001-2} use Subroutine \ld-2 to compute an \ld term $t$
+for the set
+\begin{equation*}
+\{(s(a_0, a_0, b_0), b_0, 1),  (a_2,a_2,0)\}.
+\end{equation*}
+\end{enumerate}
+Then 
+%%%
+$d(x,y,z) = t(s(x,y,z), s(y,y,z),z)$
+%%%
+is an \ld term  for $Q_3$ (see Case $\chi_0=1$ in the proof of Theorem~\ref{thm:local-diff-terms}).
+
+\subsection{Sets of Size 4} We handle one more case before 
+using induction to give a general recursive algorithm.
+The nontrivial forms of 4-sets are
+\begin{align*}
+P_4 &:= \{(a_0, b_0, 0), (a_1, b_1, 0),  (a_2, b_2, 0),  (a_3, b_3, 1)\},\\ 
+Q_4 &:= \{(a_0, b_0, 1), (a_1, b_1, 1), (a_2, b_2, 1), (a_3, b_3, 0)\},\\
+R_4 &:= \{(a_0, b_0, 0), (a_1, b_1, 0),  (a_2, b_2, 1),  (a_3, b_3, 1)\}.
+\end{align*}
+
+\medskip
+
+\noindent \underline{\textbf{Subroutine \ld-4.0}}\\[4pt]
+To find an \ld term operation for a set like $P_4$,
+% $\{(a_0, b_0, 0), (a_1, b_1, 1),  (a_2, b_2, 0)\}$,
+\begin{enumerate}
+\item use Subroutine \ld-3.0 to compute an \ld term operation $s$ for
+\begin{equation*}
+\{(a_1, b_1, 0),  (a_2, b_2, 0),  (a_3, b_3, 1)\};
+\end{equation*}
+\item use Subroutine \ld-2 to compute an \ld term operation $t$ for
+\begin{equation*}
+\{(a_0, s(a_0, b_0, b_0), 0), (a_3, b_3, 1)\}.
+\end{equation*}
+\end{enumerate}
+It is easy to check that
+$d(x,y,z) = t(x, s(x,y,y), s(x,y,z))$
+is then an \ld term operation for $P_4$ 
+(see Case $\chi_0=0$ in the proof of Theorem~\ref{thm:local-diff-terms}).
+
+\medskip
+
+\noindent \underline{\textbf{Subroutine \ld-4.1}}\\[4pt]
+To find an \ld term operation for a set like $Q_4$
+% $\{(a_0, b_0, 0), (a_1, b_1, 1),  (a_2, b_2, 1)\}$,
+\begin{enumerate}
+\item 
+use Subroutine \ld-3.1 to compute an \ld term $s$ for the set
+\begin{equation*}
+\{(a_1, b_1, 1), (a_2, b_2, 1), (a_3, b_3, 0)\};
+\end{equation*}
+\item  use Subroutine \ld-2 to compute an \ld term $t$
+for the set
+\begin{equation*}
+\{(s(a_0, a_0, b_0), b_0, 1),  (a_3,a_3,0)\}.
+\end{equation*}
+\end{enumerate}
+Then 
+%%%
+$d(x,y,z) = t(s(x,y,z), s(y,y,z),z)$
+%%%
+is an \ld term  for $Q_4$ (see Case $\chi_0=1$ in the proof of Theorem~\ref{thm:local-diff-terms}).
 
 
-\end{document}
+\medskip
+
+\noindent \underline{\textbf{Subroutine \ld-4.2}}\\[4pt]
+To find an \ld term operation for a set like $R_4$
+% $\{(a_0, b_0, 0), (a_1, b_1, 1),  (a_2, b_2, 1)\}$,
+\begin{enumerate}
+\item 
+use Subroutine \ld-3.1 to compute an \ld term $s$ for the set
+\begin{equation*}
+\{(a_1, b_1, 0), (a_2, b_2, 1), (a_3, b_3, 1)\};
+\end{equation*}
+\item use Subroutine \ld-2 to compute an \ld term operation $t$ for
+\begin{equation*}
+\{(a_0, s(a_0, b_0, b_0), 0), (a_3, b_3, 1)\}.
+\end{equation*}
+\end{enumerate}
+Then 
+$d(x,y,z) = t(x, s(x,y,y), s(x,y,z))$
+is an \ld term operation for $P_4$. 
