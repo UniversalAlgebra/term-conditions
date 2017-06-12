@@ -1565,15 +1565,15 @@ variety is $n$-permutable.
 In~\cite{MR3109457}, Jonah Horowitz introduced similar 
 ``local-to-global'' methods for deciding when a given variety satisfies 
 certain Mal'cev conditions.
-Inspired by these works, we now define a ``local difference term'' and 
-use it to develop a polynomial-time algorithm for deciding the existence 
-of a difference term operation.
+Inspired by these works, we now define a ``local difference term 
+operation'' and use it to develop a polynomial-time algorithm for deciding
+the existence of a difference term operation.
 
 Let $\bA=\< A, \dots\>$ be an algebra, fix $a, b \in A$ and
 $i \in \{0,1\}$.
 %% An \defin{$\bA$-local difference term for
-A \defin{local difference term for $(a,b,i)$} 
-is a ternary term $d$ satisfying the following:
+A \defin{local difference term operation for $(a,b,i)$} 
+is a ternary term operation $d$ satisfying the following:
 \begin{align}
 %% \text{ if $i=0$, then } & a \comm{\Cg^{\bA}(a,b)}{\Cg^{\bA}(a,b)} d(a,b,b); \label{eq:diff-triple}\\
 \text{ if $i=0$, then } & a \comr{\Cg(a,b)} d(a,b,b); \label{eq:diff-triple}\\
@@ -1581,7 +1581,7 @@ is a ternary term $d$ satisfying the following:
 \end{align}
 If $d$ satisfies~(\ref{eq:diff-triple}) for all triples
 in some subset $S\subseteq A \times A \times \{0,1\}$, then we call $d$
-a \defin{local difference term for $S$}.
+a \defin{local difference term operation for $S$}.
 
 \smallskip
 
@@ -1589,7 +1589,7 @@ a \defin{local difference term for $S$}.
 abbreviations:
 \begin{itemize}
 \item 
-``\ld term'' in place of ``local difference term''
+``\ld term'' means ``local difference term operation''
 \item $\theta_i:= \Cg^{\alg{A}}(a_i, b_i)$,
 for $a_i$ and $b_i$ elements of $A$.
 \item $\sS := A \times A \times \{0,1\}$. 
@@ -1612,9 +1612,7 @@ has an \ld term.
 That is, there is a single term $d$ that satisfies
 (\ref{eq:d-trip-i1}) and (\ref{eq:d-trip-i2}) for all 
 $\bs_i = (a_i, b_i, \chi_i) \in S$.
-% The statement and proof of this result follows.
 
-%% \subsection{Main Results}
 \begin{theorem} %[\protect{cf.~\cite[Theorem 2.2]{MR3239624}}]
   \label{thm:local-diff-terms}
   Let $\sV$ be an idempotent variety and
@@ -1622,75 +1620,70 @@ $\bs_i = (a_i, b_i, \chi_i) \in S$.
   $\sS= A \times A \times \{0,1\}$
   and suppose that every pair
   $(\bs_0, \bs_1) \in \sS^2$
-  has a local difference term.
+  has a local difference term operation.
   Then every subset $S \subseteq \sS$
-  has a local difference term.
+  has a local difference term operation.
 \end{theorem}
 
 \begin{proof}
 
 The proof is by induction on the size of $S$.  In the base case, $|S| = 2$,
 the claim holds by assumption.
-Fix $n\geq 2$ and assume that every subset of $\sS$ of size $2\leq k \leq n$ has 
-an \ld term. Let
+Fix $n\geq 2$ and assume that every subset of $\sS$ of size $2\leq k \leq n$
+has an \ld term. Let
 \[
-S = \{(a_0, b_0, \chi_0), (a_1, b_1, \chi_1), \dots, (a_{n}, b_{n},\chi_{n})\} 
-\subseteq \sS,
+S = \{(a_0, b_0, \chi_0), (a_1, b_1, \chi_1), \dots, 
+        (a_{n}, b_{n},\chi_{n})\} \subseteq \sS,
 \]
 so that $|S| = n+1$.  We prove $S$ has an \ld term.
 
 Since $|S| \geq 3$ and $\chi_i \in \{0,1\}$ for all $i$, there must exist
-indices $i\neq j$ such that $\chi_i = \chi_j$. Assume without loss of generality
-that one of these indices is $j=0$.  Define
-the set
-$S' = S \mysetminus \{(a_0, b_0, \chi_0)\}$.
+indices $i\neq j$ such that $\chi_i = \chi_j$. Assume without loss of
+generality that one of these indices is $j=n$.  
+Define the set $S' = S \mysetminus \{(a_n, b_n, \chi_n)\}$.
 Since $|S'| < |S|$, the set $S'$ has an \ld term $p$.
 We split the remainder of the proof into two cases.
-%% In the first case $\chi_0 = 0$ and in the second $\chi_0 = 1$.
 
 \medskip
 
 %--------------------------------------
-\noindent \underline{Case $\chi_0 = 0$}:
-Without loss of generality, suppose that $\chi_1 = %% \chi_2 =
-\cdots =\chi_k = 1$,
-and $\chi_{k+1} %% = \chi_{k+2}
-= \cdots = \chi_{n} = 0$. Define %% $T$ to be the set
-\[T = \{(a_0, p(a_0, b_0, b_0), 0),
-(a_1, b_1, 1), (a_2, b_2, 1),
-\dots, (a_k, b_k, 1)\},\] and
+\noindent \underline{Case $\chi_n = 0$}:
+Without loss of generality, suppose that 
+\begin{equation*}
+  \chi_0 = %% \chi_2 =
+\cdots =\chi_{k-1} = 1 \quad \text{and} \quad
+\chi_{k} = \cdots = \chi_{n} = 0.
+\end{equation*} 
+Define %% $T$ to be the set
+\[T = \{(a_0, b_0, 1), (a_1, b_1, 1),
+\dots, (a_{k-1}, b_{k-1}, 1), (a_n, p(a_n, b_n, b_n), 0)\},\] and
 note that $|T| < |S|$.
 Let $t$ be an \ld term for $T$.
-Define
+We show that 
 \[
 d(x,y,z) = t(x, p(x,y,y), p(x,y,z)).
 \]
-We show that $d$ is an \ld term for $S$.
+is an \ld term for $S$.
 
-Since $\chi_0 =0$, we first verify that
-$(a_0, d(a_0,b_0,b_0))$ belongs to $\com{\theta_0}$.
-Let $\gamma = \Cg(a_0, p(a_0,b_0,b_0))$. 
-Then
+Since $\chi_n =0$, we first verify that
+$a_n \comr{\theta_n} d(a_n,b_n,b_n)$.
+If we let $\gamma = \Cg(a_n, p(a_n,b_n,b_n))$, then
 \begin{equation}
     \label{eq:100000}
-  d(a_0,b_0,b_0) =
-  %% t(a_0, p(a_0,b_0,b_0), p(a_0,b_0,b_0))\comr{\tau} a_0,
-  t(a_0, p(a_0,b_0,b_0), p(a_0,b_0,b_0))\comr{\gamma} a_0.
+  d(a_n,b_n,b_n) =
+  t(a_n, p(a_n,b_n,b_n), p(a_n,b_n,b_n))\comr{\gamma} a_n.
 \end{equation}
-%% where we have used $\tau$ to denote $\Cg(a_0, p(a_0,b_0,b_0))$.
-The pair $(a_0, p(a_0,b_0,b_0))$ is equal to
-$(p(a_0,a_0,a_0), p(a_0,b_0,b_0))$ and
-belongs to $\theta_0$, so $\gamma\leq \theta_0$,
-so,
-%% so $\tau\leq \theta_0$. Therefore,
-by monotonicity of the commutator, we have
-$\com{\gamma} \leq \com{\theta_0}$.
+The pair $(a_n, p(a_n,b_n,b_n))$ is equal to
+$(p(a_n,a_n,a_n), p(a_n,b_n,b_n))$ and so 
+belongs to $\theta_n:= \Cg^{\alg{A}}(a_n, b_n)$.
+Therefore, $\gamma\leq \theta_n$, and so,
+by monotonicity of the commutator,
+$\com{\gamma} \leq \com{\theta_n}$.
 It follows from this and (\ref{eq:100000}) that
-%% $d(a_0,b_0,b_0)\comm{\Cg(a_0,b_0)}{\Cg(a_0,b_0)} a_0$,
-$d(a_0,b_0,b_0)\comr{\theta_0} a_0$, as desired.
+$a_n \comr{\theta_n} d(a_n,b_n,b_n)$, as desired.
 
-For the indices $1\leq i \leq k$ we have $\chi_i =1$, so we prove
-$d(a_i,a_i,b_i) = b_i$ for such indices. Observe,
+For the indices $0\leq i < k$ we have $\chi_i =1$, so we prove
+$d(a_i,a_i,b_i) = b_i$ for these indices. Observe,
 \[
   d(a_i,a_i,b_i) =
   t(a_i, p(a_i,a_i,a_i), p(a_i,a_i,b_i)) % \label{eq:200000}\\
@@ -1698,13 +1691,13 @@ $d(a_i,a_i,b_i) = b_i$ for such indices. Observe,
   =b_i. % \label{eq:200002}
 \]
 The first equation holds by definition of $d$, the second
-because $p$ is an idempotent local difference term for
+because $p$ is an idempotent \ld term for
 $S'$, and the third because $t$ is an \ld term for $T$.
 
 The remaining triples in our original set $S$
-have indices satisfying $k<j\leq n$ and $\chi_j = 0$.
-Thus, for these triples we want
-$d(a_j,b_j,b_j)\comr{\theta_j} a_j$.
+have indices satisfying $k\leq j < n$ and $\chi_j = 0$.
+Thus, for these we want
+$a_j \comr{\theta_j} d(a_j,b_j,b_j)$.
 By definition,
 \begin{equation}
   \label{eq:450000}
@@ -1712,7 +1705,6 @@ d(a_j,b_j,b_j) =t(a_j, p(a_j,b_j,b_j), p(a_j,b_j,b_j)).
 \end{equation}
 Since $p$ is an \ld term for $S'$, %we have
 the pair $(p(a_j,b_j,b_j), a_j)$ belongs to $\com{\theta_j}$.
-%% $(p(a_j,b_j,b_j), a_j)\in [\Cg(a_j,b_j), \Cg(a_j,b_j)]$.
 This and
 (\ref{eq:450000}) imply
 that
@@ -1722,32 +1714,32 @@ $\com{\theta_j}$.
 Finally, by idempotence of $t$ we have
 $d(a_j,b_j,b_j)\comr{\theta_j} a_j$,
 as desired.
-\\[4pt]
+
+\medskip
 %--------------------------------------
-\underline{Case $\chi_0 = 1$}:
-%% \\[4pt]
-%% Assume $\chi_0 = 1$ and,
-Without loss of generality, suppose $\chi_1 = \chi_2 =\cdots =\chi_k = 0$,
-and $\chi_{k+1} = \chi_{k+2} = \cdots = \chi_{n} = 1$. Define
-\[
-T = \{(p(a_0, a_0, b_0), b_0, 1),
-(a_1, b_1, 0), (a_2, b_2 0), \dots, (a_k, b_k, 0)\},
-\]
-and note that $|T| < |S|$.
-Let $t$ be an \ld term for $T$ and
-define
-%% \[d(x,y,z) = t(p(x,y,z), p(y,y,z), z).\]
-$d(x,y,z) = t(p(x,y,z), p(y,y,z), z)$.
-Since $\chi_0 =1$, we want to prove that 
-$d(a_0,a_0,b_0) = b_0$. By the definition of
-$d$,
-\begin{equation*}  d(a_0,a_0,b_0) =
-  t(p(a_0,a_0,b_0), p(a_0,a_0,b_0), b_0) =b_0.
+\noindent \underline{Case $\chi_n = 1$}:
+Without loss of generality, suppose 
+\begin{equation*}
+  \chi_0 =\cdots =\chi_{k-1} = 0 
+  \quad \text{and} \quad
+\chi_{k} = \cdots = \chi_{n} = 1.
 \end{equation*}
-% $d(a_0,a_0,b_0) =
-% t(p(a_0,a_0,b_0), p(a_0,a_0,b_0), b_0) =b_0$.
+Define
+\begin{equation*}
+T = \{(a_0, b_0, 0), (a_1, b_1 0), \dots, (a_{k-1}, b_{k-1}, 0), 
+        (p(a_n, a_n, b_n), b_n, 1)\},
+\end{equation*}
+and note that $|T| < |S|$.
+Let $t$ be an \ld term for $T$ and define
+$d(x,y,z) = t(p(x,y,z), p(y,y,z), z)$.
+Since $\chi_n =1$, we must show that
+$d(a_n,a_n,b_n) = b_n$. By the definition of $d$,
+\begin{equation*}  
+  d(a_n,a_n,b_n) =
+  t(p(a_n,a_n,b_n), p(a_n,a_n,b_n), b_n) =b_n.
+\end{equation*}
 The last equality holds since $t$ is an \ld term for $T$, so it's 
-an \ld term for $(p(a_0, a_0, b_0), b_0, 1)$.
+an \ld term for $(p(a_n, a_n, b_n), b_n, 1)$.
 
 If $1\leq i \leq k$, then $\chi_i =0$, so for these indices we prove
 that $a_i$ is congruent to $d(a_i,b_i,b_i)$ modulo $\com{\theta_i}$.
@@ -1758,11 +1750,6 @@ Again, starting from the definition of $d$ and using idempotence of $p$, we have
   t(p(a_i,b_i,b_i), p(b_i,b_i,b_i), b_i)=
   t(p(a_i,b_i,b_i), b_i, b_i).
 \end{equation}
-% \begin{align}
-%   d(a_i,b_i,b_i) &=
-%   t(p(a_i,b_i,b_i), p(b_i,b_i,b_i), b_i)   \label{eq:40000}\\
-%   &=t(p(a_i,b_i,b_i), b_i, b_i). \nonumber
-% \end{align}
 Next, since $p$ is an \ld term for $S'$, we have
 \begin{equation}
   \label{eq:50000}
@@ -1771,23 +1758,17 @@ Next, since $p$ is an \ld term for $S'$, we have
  t(a_i, b_i, b_i).
 \end{equation}
 Since $t$ is an \ld term for $T$, 
-% hence for $(a_i, b_i, b_i)$,  %% $(1\leq i \leq k)$,
 we have
 $t(a_i, b_i, b_i) \comr{\theta_i} a_i$, so 
 (\ref{eq:40000}) and (\ref{eq:50000}) imply
 $d(a_i,b_i,b_i) \comr{\theta_i} a_i$, as desired.
 
 The remaining elements of $S$
-have indices $j$ satisfying $k<j\leq n$ and $\chi_j = 1$.
+have indices satisfying $k\leq j < n$ and $\chi_j = 1$.
 For these we want $d(a_j,a_j,b_j) = b_j$.
 Since $p$ is an \ld term for $S'$, we have
 $p(a_j,a_j,b_j) = b_j$; this plus idempotence of $t$ yields
 \[ d(a_j,a_j,b_j) =  t(p(a_j,a_j,b_j), p(a_j,a_j,b_j), b_j)=  t(b_j, b_j, b_j) =b_j,\]
-% \begin{align*}
-% d(a_j,a_j,b_j) &=
-% t(p(a_j,a_j,b_j), p(a_j,a_j,b_j), b_j)\\
-% &=t(b_j, b_j, b_j) =b_j,
-% \end{align*}
 as desired.
 \end{proof}
 
