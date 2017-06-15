@@ -1479,6 +1479,32 @@ n &= |\alg A|  \qquad m = ||\alg A|| \\
 r &= \text{the largest arity of the operations of $\alg A$}
 \end{align*}
 
+Throughout this section we let $c$ denote a constant independent of
+these parameters.
+
+\begin{prop}\label{speedprop}
+Let $\alg A$ be a finite algebra with the parameters above.
+\begin{enumerate}
+\item If $S$ is a subset of $A$, then $\Sg^{\alg A}(S)$ can be computed
+in time
+\[
+c\, r\,||\Sg^{\alg A}(S)|| \le c\, r\,||\m A|| = crm
+\]
+\item If $a$, $b \in A$, then $\Cga a b A$ can be computed in
+$c\, r\, ||\alg A|| = crm$ time.
+\item
+If $\alpha$ and $\beta$ are congruences of $\alg A$,
+then $[\alpha,\beta]$ can be computed in ...
+\end{enumerate}
+\end{prop}
+
+
+
+
+\textcolor{purple}{Below is an older version, which will
+need to be deleted. Also the time estimate is wrong.}
+
+
 Using the results of the last section together with ideas from
 \cite{Freese:2009},
 which are based on \cite{KearnesKiss1999},
