@@ -2254,8 +2254,8 @@ Also define
 \sA_{2k} &= \{(a_0, b_0, 0), (a_0, b_0, 1), \dots, (a_k,b_k,0), (a_k,b_k,1)\}.
 \end{align*}
 That is, 
-$\sA_{2k} = \sA_{2k-1} \cup \{(a_k,b_k,1)\}$ and 
-$\sA_{2k+1} = \sA_{2k} \cup \{(a_k,b_k,0)\}$.
+$\sA_{2k} = \sA_{2k-1} \cup \{(a_k,b_k,1)\}$ and
+$\sA_{2k+1} = \sA_{2k} \cup \{(a_{k+1},b_{k+1},0)\}$.
 
 \RestyleAlgo{boxruled}
 \LinesNumbered
@@ -2270,15 +2270,15 @@ $\sA_{2k+1} = \sA_{2k} \cup \{(a_k,b_k,0)\}$.
 
 compute $\delta_0$ and $\delta_1$ (see~(\ref{eqn:notation1}) for definition);
 
-compute the stream $\sS_1$ of term operations $s$ that satisfy $s(a_0,a_0,b_0) = b_0$;
+compute the stream $\sS_0$ of term operations $s$ that satisfy $s(a_0,a_0,b_0) = b_0$;
 
-find $p$ in $\sS_1$ satisfying $p(a_0, b_0, b_0) \mathrel{\delta_0} a_0$;
+find a term operation $p$ in $\sS_0$ satisfying $p(a_0, b_0, b_0) \mathrel{\delta_0} a_0$;
 
 compute $c_1 = p(a_1,b_1,b_1)$;
 
-find $q$ in $\sS_1$ satisfying $q(a_1, c_1, c_1) \mathrel{\delta_1} a_1$;
+find a term operation $q$ in $\sS_0$ satisfying $q(a_1, c_1, c_1) \mathrel{\delta_1} a_1$;
 
-return $(\sS_1, s_1)$ where $s_1(x,y,z) = q(x,p(x,y,y),p(x,y,z))$
+return $(s_0, \sS_0)$ where $s_0(x,y,z) = q(x,p(x,y,y),p(x,y,z))$
 \end{algorithm}
 
 
@@ -2291,18 +2291,46 @@ return $(\sS_1, s_1)$ where $s_1(x,y,z) = q(x,p(x,y,y),p(x,y,z))$
 
   \caption{return \ldt for $\sA_2$
   \label{alg:stream-ldt2}  }
-  \Input{$(\sS_1, s_1)$ (from Alg~\ref{alg:stream-ldt1})}
+  \Input{$(s_0, \sS_0)$ (from Alg~\ref{alg:stream-ldt1})}
   \Output{an \ld term for $\sA_2$}
 
-compute the stream $\sS_2$ of term operations $p$ 
-that satisfy $p(s_1(a_1,a_1,b_1), s_1(a_1,a_1,b_1), b_1) = b_1$;
+compute the stream $\sS_1$ of term operations $p$ 
+that satisfy $p(s_0(a_1,a_1,b_1), s_0(a_1,a_1,b_1), b_1) = b_1$;
 
-find $p$ in $\sS_1 \cap \sS_2$ and compute $d_1 = p(a_1,b_1,b_1)$;
+find a term operation $p$ in $\sS_0 \cap \sS_1$ and compute $d_1 = p(a_1,b_1,b_1)$;
 
-find $q$ in $\sS_2$ satisfying $q(a_1, d_1, d_1) \mathrel{\delta_1} a_1$.
+find a term operation $q$ in $\sS_1$ satisfying $q(a_1, d_1, d_1) \mathrel{\delta_1} a_1$.
 
-return $(\sS_2, s_2)$ where $s_2(x,y,z) = q(x, p(x,y,y), p(x,y,z))$
+return $(\sS_0, \sS_1, s_1)$ where $s_1(x,y,z) = q(x, p(x,y,y), p(x,y,z))$
 \end{algorithm}
+
+
+% \RestyleAlgo{boxed}
+\RestyleAlgo{boxruled}
+\LinesNumbered
+\begin{algorithm}
+  \SetKwInOut{Input}{Input}
+  \SetKwInOut{Output}{Output}
+
+  \caption{return \ldt for $\sA_3$
+  \label{alg:stream-ldt3}  }
+  \Input{$(s_1, \sS_0, \sS_1)$ (from Alg~\ref{alg:stream-ldt2})}
+  \Output{an \ld term for $\sA_3$}
+
+compute $\delta_2$;
+
+compute the substream $\sS_2 \subseteq \sS_0$ of terms satisfying
+ $p(a_1,a_1,b_1) = b_1$;
+
+compute $c_2 = s_1(a_2, b_2, b_2)$;
+
+find a term operation $p$ in $\sS_2$ satisfying 
+$p(a_2, c_2, c_2) \mathrel{\delta_2} a_2$;
+
+return $(s_2, \sS_0, \sS_1, \sS_2)$ where $s_2(x,y,z) = p(x, s_1(x,y,y), s_1(x,y,z))$
+\end{algorithm}
+
+
 
 \newpage
 \appendix
