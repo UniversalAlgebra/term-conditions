@@ -464,6 +464,7 @@ MRREVIEWER = {Ivan Chajda},
 \newtheorem{fact}[theorem]{Fact}
 \newtheorem{remark}{Remark}
 \newtheorem*{remarks}{Remarks}
+\newtheorem*{rem}{Remark}
 \newtheorem{prob}{Problem}
 
 \title[A test for a difference term]{A polynomial time test for a
@@ -1490,14 +1491,13 @@ Let $\alg A =\< A, \dots\>$ be an algebra, fix $a, b \in A$ and
 $i \in \{0,1\}$.
 %% An \defin{$\alg A $-local difference term for
 A \defin{local difference term operation for $(a,b,i)$} 
-is a ternary term operation $d$ satisfying the following:
+is a ternary term operation $\ell$ satisfying the following:
 \begin{align}
-%% \text{ if $i=0$, then } & a \comm{\Cg^{\alg A }(a,b)}{\Cg^{\alg A }(a,b)} d(a,b,b); \label{eq:diff-triple}\\
-\text{ if $i=0$, then } & a \comr{\Cg(a,b)} d(a,b,b); \label{eq:diff-triple}\\
-\text{ if $i=1$, then } &d(a,a,b) = b. \nonumber
+\text{ if $i=0$, then } & a \comr{\Cg(a,b)} \ell(a,b,b); \label{eq:diff-triple}\\
+\text{ if $i=1$, then } &\ell(a,a,b) = b. \nonumber
 \end{align}
-If $d$ satisfies~(\ref{eq:diff-triple}) for all triples
-in some subset $S\subseteq A \times A \times \{0,1\}$, then we call $d$
+If $\ell$ satisfies~(\ref{eq:diff-triple}) for all triples
+in some subset $S\subseteq A \times A \times \{0,1\}$, then we call $\ell$
 a \defin{local difference term operation for $S$}.
 
 \smallskip
@@ -1507,36 +1507,78 @@ abbreviations:
 \begin{itemize}
 \item 
 ``\ld term'' means ``local difference term operation''
-\item $\theta_i:= \Cg^{\alg{A}}(a_i, b_i)$,
-for $a_i$ and $b_i$ elements of $A$.
+\item $\theta_{ab}:= \Cg^{\alg{A}}(a, b)$,
+for $a$ and $b$ elements of $A$.
 \item $\sS := A \times A \times \{0,1\}$. 
 \end{itemize}
-In addition, we denote an 
-arbitrary element of $\sS$ by $\bs_i = (a_i, b_i, \chi_i)$.
+%% In addition, we denote an 
+%% arbitrary element of $\sS$ by $s = (a, b, \chi)$.
 
-Adopting the notation above, suppose that every pair
+We introduce one more bit of notation that will be convenient below.
+Given a subset $T \subseteq \Clo_3(\alg{A})$ of ternary terms operations on
+$\alg{A}$, and a subset $S \subseteq A^2\times \{0,1\}$,
+denote by $\bowtie$ the relation from $T$ to $S$ defined by
+$t \bowtie (a,b,i)$ iff the following:
+%% \begin{align*}
+%%   t \bowtie (a,b,i) \; \text{ iff } \;
+%%      & \text{ the following:}\\
+%%      & \text{ if $i=0$, then } a \comr{\theta_{ab}} t(a,b,b), \text{ and } \\
+%%      & \text{ if $i=1$, then } \; t(a,a,b)  = b. 
+%% \end{align*}
+\begin{align*}
+\text{ if $i=0$,} \quad & a \comr{\theta_{ab}} t(a,b,b);\\
+\text{ if $i=1$,} \quad & \qquad t(a,a,b)  = b. 
+\end{align*}
+
+We remark that $\bowtie$ induces a \emph{Galois pair} from subsets
+of $\Clo_3(\alg{A})$ to subsets of $A^2\times \{0,1\}$ and back---namely,
+%% $(\Fix, \Inv)$---namely,
+\begin{align*}
+\Fix &\colon \sP(\Clo_3(\alg{A})) \to \sP(A^2\times \{0,1\}), \text{
+  and }\\
+\Inv &\colon \sP(A^2 \times \{0,1\}) \to \sP(\Clo_3(\alg{A})),
+\end{align*}
+are defined as follows:
+for $T \subseteq \Clo_3(\alg{A})$ and $S \subseteq A^2 \times \{0,1\}$,
+\begin{align*}
+  \Fix(T) &= \{s \in A^2 \times \{0,1\} \mid t \bowtie s
+  \text{ for all } t \in T\},\\
+  \Inv(S) &= \{t \in \Clo_3(\alg{A}) \mid t \bowtie s
+  \text{ for all } s \in S\}.
+\end{align*}
+In other words, the set of \ld terms for $S$ is
+$\Inv(S)$, whereas $\Fix(T)$ is the subset of
+$A^2\times \{0,1\}$ for which every $t\in T$ is an \ld term.
+
+Now, suppose that every pair
 of elements of $\sS$ has an \ld term.
-That is, for each $(\bs_0, \bs_1)\in \sS^2$ there exists
-$d$ such that for each $i \in \{0,1\}$ we have
-\begin{align}
-  a_i \comr{\theta_i} d(a_i,b_i,b_i), & \;
-  \text{ if $\chi_i=0$, and }  \label{eq:d-trip-i1}\\
-  d(a_i,a_i,b_i) =b_i, & \;
-  \text{ if $\chi_i=1$,}\label{eq:d-trip-i2} %\\\nonumber
-\end{align}
-Under these hypothesis we will prove that every subset $S\subseteq \sS$
+That is, $\Inv(\{s_0, s_1\})$ is nonempty for every
+$(s_0, s_1) \in \sS^2$.%%  there exists
+%% %% $(s_0, s_1)\in \sS^2$ there exists
+%% $\ell \in $ such that for each $i \in \{0,1\}$ we have
+%% \begin{align}
+%%   a_i \comr{\theta_{a_ib_i}} \ell(a_i,b_i,b_i), & \;
+%%   \text{ if $\chi_i=0$, and }  \label{eq:d-trip-i1}\\
+%%   \ell(a_i,a_i,b_i) =b_i, & \;
+%%   \text{ if $\chi_i=1$,}\label{eq:d-trip-i2} %\\\nonumber
+%% \end{align}
+Under this hypothesis we will prove that every subset $S\subseteq \sS$
 has an \ld term.
-That is, there is a single term $d$ that satisfies
-(\ref{eq:d-trip-i1}) and (\ref{eq:d-trip-i2}) for all 
-$\bs_i = (a_i, b_i, \chi_i) \in S$.
+%% That is, there is a single term $\ell$ that satisfies
+%% (\ref{eq:d-trip-i1}) and (\ref{eq:d-trip-i2}) for all 
+%% $s_i = (a_i, b_i, \chi_i) \in S$.
+That is, $\Inv(S) \neq \emptyset$, which means
+there is at least one term $\ell$ that
+satisfies~(\ref{eq:diff-triple}) for all triples
+$(a, b, \chi) \in S$.
 
 \begin{theorem} %[\protect{cf.~\cite[Theorem 2.2]{MR3239624}}]
   \label{thm:local-diff-terms}
   Let $\sV$ be an idempotent variety and
-  $\alg A  \in \sV$. Define
-  $\sS= A \times A \times \{0,1\}$
+  $\alg A  \in \sV$, %% . Define
+  %% $\sS= A \times A \times \{0,1\}$
   and suppose that every pair
-  $(\bs_0, \bs_1) \in \sS^2$
+  $(s_0, s_1) \in (A^2 \times \{0,1\})^2$
   has a local difference term operation.
   Then every subset $S \subseteq \sS$
   has a local difference term operation.
@@ -1572,13 +1614,13 @@ Without loss of generality, suppose that
 \chi_{k} = \cdots = \chi_{n} = 0.
 \end{equation*} 
 Define %% $T$ to be the set
-\[T = \{(a_0, b_0, 1), (a_1, b_1, 1),
+\[S_1 = \{(a_0, b_0, 1), (a_1, b_1, 1),
 \dots, (a_{k-1}, b_{k-1}, 1), (a_n, p(a_n, b_n, b_n), 0)\},\] and
-note that $|T| < |S|$.
-Let $t$ be an \ld term for $T$.
+note that $|S_1| < |S|$.
+Let $q$ be an \ld term for $S_1$.
 We show that 
 \[
-d(x,y,z) = t(x, p(x,y,y), p(x,y,z)).
+d(x,y,z) = q(x, p(x,y,y), p(x,y,z)).
 \]
 is an \ld term for $S$.
 
@@ -1588,14 +1630,14 @@ If we let $\gamma = \Cg(a_n, p(a_n,b_n,b_n))$, then
 \begin{equation}
     \label{eq:100000}
   d(a_n,b_n,b_n) =
-  t(a_n, p(a_n,b_n,b_n), p(a_n,b_n,b_n))\comr{\gamma} a_n.
+  q(a_n, p(a_n,b_n,b_n), p(a_n,b_n,b_n))\comr{\gamma} a_n.
 \end{equation}
 The pair $(a_n, p(a_n,b_n,b_n))$ is equal to
 $(p(a_n,a_n,a_n), p(a_n,b_n,b_n))$ and so 
 belongs to $\theta_n:= \Cg^{\alg{A}}(a_n, b_n)$.
-Therefore, $\gamma\leq \theta_n$, and so,
-by monotonicity of the commutator,
-$\com{\gamma} \leq \com{\theta_n}$.
+Therefore, $\gamma\leq \theta_n$, so
+$\com{\gamma} \leq \com{\theta_n}$,
+by monotonicity of the commutator.
 It follows from this and (\ref{eq:100000}) that
 $a_n \comr{\theta_n} d(a_n,b_n,b_n)$, as desired.
 
@@ -1603,13 +1645,13 @@ For the indices $0\leq i < k$ we have $\chi_i =1$, so we prove
 $d(a_i,a_i,b_i) = b_i$ for these indices. Observe,
 \[
   d(a_i,a_i,b_i) =
-  t(a_i, p(a_i,a_i,a_i), p(a_i,a_i,b_i)) % \label{eq:200000}\\
-  =t(a_i, a_i, b_i) % \label{eq:200001}\\
+  q(a_i, p(a_i,a_i,a_i), p(a_i,a_i,b_i)) % \label{eq:200000}\\
+  =q(a_i, a_i, b_i) % \label{eq:200001}\\
   =b_i. % \label{eq:200002}
 \]
 The first equation holds by definition of $d$, the second
 because $p$ is an idempotent \ld term for
-$S'$, and the third because $t$ is an \ld term for $T$.
+$S'$, and the third because $q \in \Inv(S_1)$.
 
 The remaining triples in our original set $S$
 have indices satisfying $k\leq j < n$ and $\chi_j = 0$.
@@ -1618,19 +1660,17 @@ $a_j \comr{\theta_j} d(a_j,b_j,b_j)$.
 By definition,
 \begin{equation}
   \label{eq:450000}
-d(a_j,b_j,b_j) =t(a_j, p(a_j,b_j,b_j), p(a_j,b_j,b_j)).
+d(a_j,b_j,b_j) =q(a_j, p(a_j,b_j,b_j), p(a_j,b_j,b_j)).
 \end{equation}
-Since $p$ is an \ld term for $S'$, %we have
-the pair $(p(a_j,b_j,b_j), a_j)$ belongs to $\com{\theta_j}$.
-This and
-(\ref{eq:450000}) imply
-that
-$(d(a_j, b_j,b_j), t(a_j,a_j,a_j))$
-belongs to
-$\com{\theta_j}$.
-Finally, by idempotence of $t$ we have
-$d(a_j,b_j,b_j)\comr{\theta_j} a_j$,
-as desired.
+Since $p \in \Inv(S')$, we have
+%% the pair $(p(a_j,b_j,b_j), a_j)$ belongs to $\com{\theta_j}$.
+$a_j \comr{\theta_j} p(a_j,b_j,b_j)$, 
+so (\ref{eq:450000}) implies that
+$a_j = q(a_j,a_j,a_j) \comr{\theta_j} d(a_j, b_j,b_j)$.
+
+%% Finally, by idempotence of $q$ we have
+%% $d(a_j,b_j,b_j)\comr{\theta_j} a_j$,
+%% as desired.
 
 \medskip
 %--------------------------------------
@@ -1643,73 +1683,70 @@ Without loss of generality, suppose
 \end{equation*}
 Define
 \begin{equation*}
-T = \{(a_0, b_0, 0), (a_1, b_1 0), \dots, (a_{k-1}, b_{k-1}, 0), 
+S_0 = \{(a_0, b_0, 0), (a_1, b_1 0), \dots, (a_{k-1}, b_{k-1}, 0), 
         (p(a_n, a_n, b_n), b_n, 1)\},
 \end{equation*}
-and note that $|T| < |S|$.
-Let $t$ be an \ld term for $T$ and define
-$d(x,y,z) = t(p(x,y,z), p(y,y,z), z)$.
+and note that $|S_0| < |S|$.
+Let $q \in \Inv(S_0)$ and define
+$d(x,y,z) = q(p(x,y,z), p(y,y,z), z)$.
 Since $\chi_n =1$, we must show that
 $d(a_n,a_n,b_n) = b_n$. By the definition of $d$,
 \begin{equation*}  
   d(a_n,a_n,b_n) =
-  t(p(a_n,a_n,b_n), p(a_n,a_n,b_n), b_n) =b_n.
+  q(p(a_n,a_n,b_n), p(a_n,a_n,b_n), b_n) =b_n.
 \end{equation*}
-The last equality holds since $t$ is an \ld term for $T$, so it's 
-an \ld term for $(p(a_n, a_n, b_n), b_n, 1)$.
+The last equality holds since $q \in \Inv(S_0)\subseteq \Inv\{(p(a_n, a_n, b_n), b_n, 1)\}$.
 
-If $1\leq i \leq k$, then $\chi_i =0$, so for these indices we prove
-that $a_i$ is congruent to $d(a_i,b_i,b_i)$ modulo $\com{\theta_i}$.
+If $1\leq i \leq k$, then $\chi_i =0$. For these indices we must prove
+that $a_i$ is congruent to $d(a_i,b_i,b_i)$ modulo $\com{\theta_{a_ib_i}}$.
 Again, starting from the definition of $d$ and using idempotence of $p$, we have
 \begin{equation}
   \label{eq:40000}
   d(a_i,b_i,b_i) =
-  t(p(a_i,b_i,b_i), p(b_i,b_i,b_i), b_i)=
-  t(p(a_i,b_i,b_i), b_i, b_i).
+  q(p(a_i,b_i,b_i), p(b_i,b_i,b_i), b_i)=
+  q(p(a_i,b_i,b_i), b_i, b_i).
 \end{equation}
-Next, since $p$ is an \ld term for $S'$, we have
+Next, since $p \in \Inv(S')$,
 \begin{equation}
   \label{eq:50000}
-  t(p(a_i,b_i,b_i), b_i, b_i)
- \comr{\theta_i}
- t(a_i, b_i, b_i).
+  q(p(a_i,b_i,b_i), b_i, b_i)
+ \comr{\theta_{a_ib_i}}
+ q(a_i, b_i, b_i).
 \end{equation}
-Since $t$ is an \ld term for $T$, 
-we have
-$t(a_i, b_i, b_i) \comr{\theta_i} a_i$, so 
+Since $q \in \Inv(S_0)$, we have
+$q(a_i, b_i, b_i) \comr{\theta_{a_ib_i}} a_i$, so 
 (\ref{eq:40000}) and (\ref{eq:50000}) imply
-$d(a_i,b_i,b_i) \comr{\theta_i} a_i$, as desired.
+$d(a_i,b_i,b_i) \comr{\theta_{a_ib_i}} a_i$, as desired.
 
 The remaining elements of $S$
 have indices satisfying $k\leq j < n$ and $\chi_j = 1$.
 For these we want $d(a_j,a_j,b_j) = b_j$.
-Since $p$ is an \ld term for $S'$, we have
-$p(a_j,a_j,b_j) = b_j$; this plus idempotence of $t$ yields
+Since $p \in \Inv(S')$, 
+$p(a_j,a_j,b_j) = b_j$; this plus idempotence of $q$ yields
 \begin{equation*}
- d(a_j,a_j,b_j) =  t(p(a_j,a_j,b_j), p(a_j,a_j,b_j), b_j)=  t(b_j, b_j, b_j) =b_j.
+ d(a_j,a_j,b_j) =  q(p(a_j,a_j,b_j), p(a_j,a_j,b_j), b_j)=  q(b_j, b_j, b_j) =b_j.
 \end{equation*}
 \end{proof}
 
 \begin{corollary}
   \label{cor:loc-diff-term}
   A finite idempotent algebra $\alg A $ has a difference term operation if and
-  only if each pair $((a,b,i), (a',b',i')) \in (A\times A \times \{0,1\})^2$ 
+  only if each pair $((a,b,i), (a',b',i')) \in (A^2 \times \{0,1\})^2$ 
   has a local difference term.
 \end{corollary}
 \begin{proof}
   A difference term operation for $\alg A $ is clearly an \ld term for every pair in 
-  $(A\times A \times \{0,1\})^2$, so one direction of the corollary is obvious.
+  $(A^2 \times \{0,1\})^2$, so one direction of the corollary is obvious.
   For the converse, suppose
-  each pair in $(A\times A \times \{0,1\})^2$ has an \ld term. 
+  each pair in $(A^2 \times \{0,1\})^2$ has an \ld term. 
   Then, by Theorem~\ref{thm:local-diff-terms},
-  there is a single \ld term for the whole set $A\times A \times \{0,1\}$,
-  and this is an \ld term operation for $\alg A $.  Indeed, if $d$ is a
-  \ld term for $A\times A \times \{0,1\}$, then
+  there is a single \ld term for the whole set $A^2 \times \{0,1\}$,
+  and this is an \ld term operation for $\alg A $.  Indeed, if
+  $d \in \Inv(A^2 \times \{0,1\})$, then
   for all $a, b \in A$, we have
   $a \comr{\Cg(a,b)} d(a,b,b)$,
-  since $d$ is an \ld term for $(a,b,0)$, and we have
-  $d(a,a,b) = b$, since $d$ is also an \ld term for
-  $(a,b,1)$.
+  since $d \in \Inv\{(a,b,0)\}$, and
+  $d(a,a,b) = b$, since $d\in \Inv\{(a,b,1)\}$.
 \end{proof}
 
 % \draftsecskip
@@ -1729,7 +1766,7 @@ $p(a_j,a_j,b_j) = b_j$; this plus idempotence of $t$ yields
   %% and let  $\sV = \bbV(\alg A )$.
   We describe an efficient algorithm for deciding,
   given a finite idempotent algebra $\alg A $,
-  whether every pair $((a,b,i), (a',b',i')) \in (A\times A \times \{0,1\})^2$ 
+  whether every pair in $(A^2 \times \{0,1\})^2$ 
   has an \ld term.  By Corollary~\ref{cor:loc-diff-term}, this will prove we
   can decide in polynomial-time whether $\alg A $ has an difference term operation.
   %% We will then complete the
@@ -1737,14 +1774,15 @@ $p(a_j,a_j,b_j) = b_j$; this plus idempotence of $t$ yields
   %% it generates has a difference term.
 
   Fix a pair
-  $((a,b,i), (a',b',i'))$ in $(A\times A \times \{0,1\})^2$. If $i = i' = 0$,
+  $((a,b,i), (a',b',i'))$ in $(A^2 \times \{0,1\})^2$. If $i = i' = 0$,
   then the first projection is an \ld term. If $i = i' = 1$,
     then the third projection is an \ld term. The two remaining cases to
     consider are (1) $i = 0$ and $i'=1$, and (2)
     $i = 1$ and $i'=0$. Since these are symmetric, we only handle the
-    first case. Assume  the given pair of triples is
-    $((a,b,0), (a',b',1))$.  By definition, a term $t$ is 
-    an \ld term for this pair iff
+    first case. Assume  the given pair of triples are
+    $((a,b,0), (a',b',1))$.  By definition, 
+    $t \in \Inv\{(a,b,0), (a',b',1)\}$ iff
+    %% an \ld term for this pair iff
     \[
     a\comr{\Cg(a,b)} t^{\alg A }(a,b,b) \; \text{ and } \;
     t^{\alg A }(a',a',b') = b'.
@@ -1753,20 +1791,22 @@ $p(a_j,a_j,b_j) = b_j$; this plus idempotence of $t$ yields
     considering
     \[t^{\alg{A} \times \alg{A} }((a,a'), (b,a'), (b,b')) =
     (t^{\alg A }(a,b,b),t^{\alg A }(a',a',b')).\]
-    Clearly $t$ is an \ld term for
-    $((a,b,0), (a',b',1))$ iff
+    Clearly
+    $t \in \Inv\{(a,b,0), (a',b',1)\}$ iff
+    %% $t$ is an \ld term for
+    %% $((a,b,0), (a',b',1))$ iff
     \[
     t^{\alg A \times \alg A }((a,a'), (b,a'), (b,b'))\in a/\delta \times \{b'\},
     \]
     where $\delta = \com{\Cg(a,b)}$ and $a/\delta$ denotes the
     $\delta$-class containing $a$.
-    (Observe that $a/\delta \times \{b'\}$ is a subalgebra of $\alg A  \times \alg A $
-    by idempotence.)
+    %% (Observe that $(a/\delta) \times \{b'\}$
+    %% is a subalgebra of $\alg A  \times \alg A $  by idempotence.)
     It follows that the pair
     $((a,b,0), (a',b',1))$ has an \ld term iff
     the subuniverse of $\alg A \times \alg A $ generated by
     $\{(a,a'), (b,a'), (b,b')\}$ intersects nontrivially with the subuniverse
-    $a/\delta \times \{b'\}$.
+    $(a/\delta) \times \{b'\}$.
 
     Thus, we take as input a finite idempotent algebra $\alg A $ and, 
     for each element $((a,a'), (b,a'), (b,b'))$ of $(A\times A)^3$,
@@ -1849,8 +1889,8 @@ such as $\theta_0 = \Cg^{\alg{A}}(a_0, b_0)$.)
 
   \caption{return an \ld term for $\{(a_0,b_0,0), (a_1, b_1, 1)\}$
           \label{alg:ld-2}  }
-\Input{$\{(a_0,b_0,0), (a_1, b_1, 1)\}$}
-\Output{an \ld term for $\{(a_0,b_0,0), (a_1, b_1, 1)\}$}
+\Input{$S = \{(a_0,b_0,0), (a_1, b_1, 1)\}$}
+\Output{$t \in \Inv(S)$ (an \ld term for $S$)}
 
 compute $\delta_0=\com{\theta_0}$;
 
@@ -1867,7 +1907,13 @@ find a term $t$ such that
 return $t$
 \end{algorithm}
 
-\textcolor{red}{(Should we say explicitly how to perform Step 4 of Algorithm~\ref{alg:ld-2}?)}
+\begin{rem}
+  In practice, while generating elements of $S_0$ in Step 3
+  of Algorithm~\ref{alg:ld-2}, we should simultaneously check whether
+  any of these elements belongs to $C_0$.  If so, the algorithm
+  halts (without necessarily computing all of $S_0$).
+\end{rem}
+  %% \textcolor{red}{(Should we say explicitly how to perform Step 4 of Algorithm~\ref{alg:ld-2}?)}
 
 \begin{comment}
 \noindent \underline{\textbf{Subroutine \ld-2'}}\\[4pt]
@@ -2099,8 +2145,8 @@ programming langauge.
 In addition to notational conventions above, such as
 \begin{equation}
 \label{eqn:notation1}
-\theta_i = \Cg^{\alg{A}}(a_i, b_i) \; \text{ and } \;
-\delta_i=\com{\theta_i},
+\theta_{a_ib_i} = \Cg^{\alg{A}}(a_i, b_i) \; \text{ and } \;
+\delta_i=\com{\theta_{a_ib_i}},
 \end{equation}
 we also take
 $as = ((a_0, b_0), (a_1, b_1), \dots, (a_k, b_k))$ 
