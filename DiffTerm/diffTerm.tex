@@ -1500,26 +1500,16 @@ is a ternary term operation $\ell$ satisfying the following:
 \text{ if $i=1$, then } &\ell(a,a,b) = b. \nonumber
 \end{align}
 If $\ell$ satisfies~(\ref{eq:diff-triple}) for all triples
-in some subset $S\subseteq A \times A \times \{0,1\}$, then we call $\ell$
+in some subset $S\subseteq A^2 \times \{0,1\}$, then we call $\ell$
 a \defin{local difference term operation for $S$}.
-
-\smallskip
-
-\noindent {\bf Notation.} In the sequel we often use the following 
-abbreviations:
-\begin{itemize}
-\item 
-``\ld term'' means ``local difference term operation''
-\item $\sS := A^2 \{0,1\}$. 
-\end{itemize}
-%% In addition, we denote an 
-%% arbitrary element of $\sS$ by $s = (a, b, \chi)$.
-
-We introduce one more bit of notation that will be convenient below.
-Given a subset $T \subseteq \Clo_3(\alg{A})$ of ternary terms operations on
+Throughout the remainder of the paper, we will 
+write ``\ld term'' as shorthand for
+``local difference term operation.''
+One more bit of notation will come in handy below.
+Given a subset $T \subseteq \Clo_3(\alg{A})$ of ternary term operations on
 $\alg{A}$, and a subset $S \subseteq A^2\times \{0,1\}$,
 denote by $\bowtie$ the relation from $T$ to $S$ defined by
-$t \bowtie (a,b,i)$ iff the following:
+$t \bowtie (a,b,i)$ iff the following conditions hold:
 %% \begin{align*}
 %%   t \bowtie (a,b,i) \; \text{ iff } \;
 %%      & \text{ the following:}\\
@@ -1549,14 +1539,19 @@ for $T \subseteq \Clo_3(\alg{A})$ and $S \subseteq A^2 \times \{0,1\}$,
   \Inv(S) &= \{t \in \Clo_3(\alg{A}) \mid t \bowtie s
   \text{ for all } s \in S\}.
 \end{align*}
-In other words, the set of \ld terms for $S$ is
-$\Inv(S)$, whereas $\Fix(T)$ is the subset of
-$A^2\times \{0,1\}$ for which every $t\in T$ is an \ld term.
+In other words, the set of local difference term operations 
+for $S$ is $\Inv(S)$. We $S$ is finite,
+ say $S = ((a_0, b_0, \chi_0), \dots, (a_n, b_n, \chi_n)$,
+ where usually write $\Inv((a_0, b_0, \chi_0), \dots, (a_n, b_n, \chi_n))$.
+
+The subset of
+$A^2\times \{0,1\}$ for which every $t\in T$ is an \ld term
+is denoted by $\Fix(T)$
 
 Now, suppose that every pair
-of elements of $\sS$ has an \ld term.
-That is, $\Inv(\{s_0, s_1\})$ is nonempty for every
-$(s_0, s_1) \in \sS^2$.%%  there exists
+$(s_0, s_1) \in (\AsqBool)^2$ 
+has an \ld term. That is, suppose $\Inv(s_0, s_1)$ is nonempty.
+%%  there exists
 %% %% $(s_0, s_1)\in \sS^2$ there exists
 %% $\ell \in $ such that for each $i \in \{0,1\}$ we have
 %% \begin{align}
@@ -1565,37 +1560,35 @@ $(s_0, s_1) \in \sS^2$.%%  there exists
 %%   \ell(a_i,a_i,b_i) =b_i, & \;
 %%   \text{ if $\chi_i=1$,}\label{eq:d-trip-i2} %\\\nonumber
 %% \end{align}
-Under this hypothesis we will prove that every subset $S\subseteq \sS$
+Under this hypothesis we will prove that every subset $S\subseteq \AsqBool$
 has an \ld term.
 %% That is, there is a single term $\ell$ that satisfies
 %% (\ref{eq:d-trip-i1}) and (\ref{eq:d-trip-i2}) for all 
 %% $s_i = (a_i, b_i, \chi_i) \in S$.
-That is, $\Inv(S) \neq \emptyset$, which means
-there is at least one term $\ell$ that
-satisfies~(\ref{eq:diff-triple}) for all triples
-$(a, b, \chi) \in S$.
+
 
 \begin{theorem} %[\protect{cf.~\cite[Theorem 2.2]{MR3239624}}]
   \label{thm:local-diff-terms}
-  Let $\sV$ be an idempotent variety and
-  $\alg A  \in \sV$, %% . Define
+  Let $\sV$ be an idempotent variety and let
+  $\alg A  \in \sV$. %% . Define
   %% $\sS= A \times A \times \{0,1\}$
-  and suppose that every pair
+  If every pair
   $(s_0, s_1) \in (A^2 \times \{0,1\})^2$
-  has a local difference term operation.
-  Then every subset $S \subseteq \sS$
+  has a local difference term operation, then
+  every subset $S \subseteq \AsqBool$
   has a local difference term operation.
 \end{theorem}
+
 
 \begin{proof}
 
 The proof is by induction on the size of $S$.  In the base case, $|S| = 2$,
 the claim holds by assumption.
-Fix $n\geq 2$ and assume that every subset of $\sS$ of size $2\leq k \leq n$
+Fix $n\geq 2$ and assume that every subset of $\AsqBool$ of size $2\leq k \leq n$
 has an \ld term. Let
 \[
 S = \{(a_0, b_0, \chi_0), (a_1, b_1, \chi_1), \dots, 
-        (a_{n}, b_{n},\chi_{n})\} \subseteq \sS,
+        (a_{n}, b_{n},\chi_{n})\} \subseteq \AsqBool,
 \]
 so that $|S| = n+1$.  We prove $S$ has an \ld term.
 
@@ -1698,7 +1691,7 @@ $d(a_n,a_n,b_n) = b_n$. By the definition of $d$,
   d(a_n,a_n,b_n) =
   q(p(a_n,a_n,b_n), p(a_n,a_n,b_n), b_n) =b_n.
 \end{equation*}
-The last equality holds since $q \in \Inv(S_0)\subseteq \Inv\{(p(a_n, a_n, b_n), b_n, 1)\}$.
+The last equality holds since $q \in \Inv(S_0)\subseteq \Inv(p(a_n, a_n, b_n), b_n, 1)$.
 
 If $1\leq i \leq k$, then $\chi_i =0$. For these indices we must prove
 that $a_i$ is congruent to $d(a_i,b_i,b_i)$ modulo $\com{\thetai}$.
@@ -1731,26 +1724,39 @@ $p(a_j,a_j,b_j) = b_j$; this plus idempotence of $q$ yields
 \end{equation*}
 \end{proof}
 
+
+Here is an obvious corollary of Theorem~\ref{thm:local-diff-terms}. 
 \begin{corollary}
-  \label{cor:loc-diff-term}
-  A finite idempotent algebra $\alg A $ has a difference term operation if and
-  only if each pair $((a,b,i), (a',b',i')) \in (A^2 \times \{0,1\})^2$ 
-  has a local difference term.
+\label{cor:loc-diff-term}
+  Let $\alg A$ be a finite idempotent algebra.
+If $\Inv (s, s') \neq \emptyset$ for all pairs $(s, s') \in (\AsqBool)^2$,
+then $\Inv (\AsqBool) \neq \emptyset$,
+% \[ \Inv (\AsqBool)^2 = 
+% \bigcap\{\Inv(s,s') \mid 
+% (s,s') \in (\AsqBool)^2\} \neq \emptyset,\]
+and $\alg{A}$ has a difference term operation.
 \end{corollary}
 \begin{proof}
-  A difference term operation for $\alg A $ is clearly an \ld term for every pair in 
-  $(A^2 \times \{0,1\})^2$, so one direction of the corollary is obvious.
-  For the converse, suppose
-  each pair in $(A^2 \times \{0,1\})^2$ has an \ld term. 
-  Then, by Theorem~\ref{thm:local-diff-terms},
-  there is a single \ld term for the whole set $A^2 \times \{0,1\}$,
-  and this is an \ld term operation for $\alg A $.  Indeed, if
-  $d \in \Inv(A^2 \times \{0,1\})$, then
-  for all $a, b \in A$, we have
-  $a \comr{\Cg(a,b)} d(a,b,b)$,
-  since $d \in \Inv\{(a,b,0)\}$, and
-  $d(a,a,b) = b$, since $d\in \Inv\{(a,b,1)\}$.
+  If we let $S = \AsqBool$ in Theorem~\ref{thm:local-diff-terms}, then there exists a term operation $d \in \Inv(A^2 \times \{0,1\})$, so 
+  for all $a, b \in A$ we have $a \comr{\Cg(a,b)} d(a,b,b)$,
+  (since $d \in \Inv((a,b,0))$) and $d(a,a,b) = b$ (since $d\in \Inv((a,b,1))$).
 \end{proof}
+% 
+% \begin{corollary}
+%   
+%   A finite idempotent algebra $\alg A $ has a difference term operation if and
+%   only if each pair in $(A^2 \times \{0,1\})^2$ 
+%   has a local difference term.
+% \end{corollary}
+% \begin{proof}
+%   A difference term operation for $\alg A $ is clearly an \ld term for every pair in 
+%   $(A^2 \times \{0,1\})^2$, so one direction of the corollary is obvious.
+%   For the converse, suppose
+%   each pair in $(A^2 \times \{0,1\})^2$ has an \ld term. 
+%   Then, by Theorem~\ref{thm:local-diff-terms},
+%   there is a single \ld term for the whole set $A^2 \times \{0,1\}$,
+%   and this is a difference term operation for $\alg A $.
+% \end{proof}
 
 % \draftsecskip
 
@@ -1758,6 +1764,7 @@ $p(a_j,a_j,b_j) = b_j$; this plus idempotence of $q$ yields
 \label{sec:algor-1}
 %% In this subsection we prove the following:
 %% \subsection*{Algorithm 1: existence of a difference term operation}
+Here is the practical consequence of Theorem~\ref{thm:local-diff-terms}.
 \begin{corollary}
   \label{cor:algor-1}
   There is a polynomial-time algorithm that takes as input
@@ -1854,12 +1861,12 @@ describe an algorithm for constructing a difference term operation
 We build up the algorithm in stages. Subsection~\ref{sec:size2}
 gives a procedure (Algorithm~\ref{alg:ld-2}) for finding an \ld term for sets 
 of size 2, and Subsection~\ref{sec:induct} gives two inductive steps 
-(Algorithms~\ref{alg:ild0} and~\ref{alg:ild1}) on which our main
-algorithm depends.
-Our main recursive algorithm for constructing a difference term 
-operation for $\alg A$ appears in Subsection~\ref{sec:algor-2}.
+(Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}) 
+for producing \ld terms on successively larger subsets of $A^2 \times \{0,1\}$.
+% Our main recursive algorithm for constructing a difference term 
+% operation for $\alg A$ appears in Subsection~\ref{sec:algor-2}.
 
-\subsubsection{Base cases}
+\subsubsection{Base case}
 \label{sec:size2}
 An \ld term operation for the set
 $\{(a_0,b_0,0), (a_1, b_1, 0)\}$ is the first projection,
@@ -1896,33 +1903,39 @@ such as $\thetao = \Cg^{\alg{A}}(a_0, b_0)$.)
   \SetKwInOut{Input}{Input}
   \SetKwInOut{Output}{Output}
 
-  \caption{return an \ld term for $\{(a_0,b_0,0), (a_1, b_1, 1)\}$
-          \label{alg:ld-2}  }
-\Input{$S = \{(a_0,b_0,0), (a_1, b_1, 1)\}$}
-\Output{$t \in \Inv(S)$ (an \ld term for $S$)}
+  \caption{return an \ld term for $\{(a_0,b_0,0), (a_1, b_1, 1)\}$ \label{alg:ld-2}  }
+  \Input{$S = \{(a_0,b_0,0), (a_1, b_1, 1)\}$}
+  \Output{$t \in \Inv(S)$ (an \ld term for $S$)}
 
-compute $\delta_0=\com{\thetao}$;
+  compute $\delta_0 = \com{ \theta_0 }$;
 
-form $C_0= a_0/\delta_0 \times \{b_1\} \leq \alg{A}\times\alg{A}$;
+  form $C_0= (a_0/\delta_0) \times \{b_1\}$;
 
-compute
-      $S_0=\Sg^{\alg{A}\times \alg{A}} \{(a_0,a_1),(b_0,a_1),(b_0,b_1)\}$;
+  compute $S_0=\Sg^{\alg{A}\times \alg{A}} \{(a_0,a_1),(b_0,a_1),(b_0,b_1)\}$;
 
-find a term $t$ such that
+  find a term $t$ such that
 %\begin{equation*}%t^{\alg{A}\times\alg{A}}((a_0,a_1),(b_0,a_1),(b_0,b_1)) =
- $(t^{\alg{A}}(a_0,b_0,b_0), t^{\alg{A}}(a_1,a_1,b_1)) \in C_0 \cap S_0$;
+  $(t^{\alg{A}}(a_0,b_0,b_0), t^{\alg{A}}(a_1,a_1,b_1)) \in C_0 \cap S_0$;
 %\end{equation*}
 
 return $t$
 \end{algorithm}
-
-\begin{rem}
-  In practice, while generating elements of $S_0$ in Step 3
-  of Algorithm~\ref{alg:ld-2}, we should simultaneously check whether
-  any of these elements belongs to $C_0$.  If so, the algorithm
-  halts (without necessarily computing all of $S_0$).
-\end{rem}
-  %% \textcolor{red}{(Should we say explicitly how to perform Step 4 of Algorithm~\ref{alg:ld-2}?)}
+In practice, there are a number of different ways we could structure this 
+algorithm when implementing it in software, and it should be obvious 
+that the ordering of the first three steps is inconsequential.\footnote{
+  For instance, we might structure the algorithm in one of the following ways:
+  \begin{enumerate}
+    \item Compute $\delta_0 = \com{ \theta_0 }$, then 
+    present $\Sg^{\alg{A}\times \alg{A}} \{(a_0,a_1),(b_0,a_1),(b_0,b_1)\}$
+    as a (call-by-need) stream $S_0$; filter $S_0$ against the predicate 
+    $s \in (a_0/\delta_0) \times \{b_1\}$; the result is a stream from 
+    which we take (compute) the first element.
+    \item Alternatively, while generating elements of $S_0$ in Step 3
+    of Algorithm~\ref{alg:ld-2}, we simultaneously check whether
+    any of these elements belongs to $C_0$.  If so, the algorithm
+    halts (without necessarily computing all of $S_0$).
+  \end{enumerate}  %% \textcolor{red}{(Should we say explicitly how to perform Step 4 of Algorithm~\ref{alg:ld-2}?)}
+  }
 
 \begin{comment}
 \noindent \underline{\textbf{Subroutine \ld-2'}}\\[4pt]
@@ -1947,116 +1960,222 @@ $\{(a_0, b_0, 1), (a_1, b_1, 0)\}$.
 \end{comment}
 
 
-
-\subsubsection{Induction steps}
+\subsubsection{Induction step}
 \label{sec:induct}
+Here are some notational conventions we use in this section.
+% % we also take
+% $as = ((a_0, b_0), (a_1, b_1), \dots, (a_k, b_k))$ 
+% to be the list of all pairs in the set $A\times A$.
+% Also define
+\begin{align*}
+\sA_0 &= \{(a_0, b_0, 0), (a_0, b_0, 1)\},\\
+\sA_1 &= \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0)\},\\
+\sA_2 &= \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0), (a_1,b_1,1)\},\\
+&\vdots\\
+\sA_{2k} &= \{(a_0, b_0, 0), (a_0, b_0, 1), \dots, (a_k,b_k,0), (a_k,b_k,1)\}.
+\end{align*}
+That is, 
+$\sA_{2k} = \sA_{2k-1} \cup \{(a_k,b_k,1)\}$ and
+$\sA_{2k+1} = \sA_{2k} \cup \{(a_{k+1},b_{k+1},0)\}$.
+Let
+\[
+  \zeta_i = \ld(a_i, b_i, 0) \quad \text{ and } \quad
+  \zeta_{\kk} = \bigcap_{0\leq i < k}\zeta_i 
+=\ld \{(a_i, b_i, 0) \mid 0\leq i<k\},
+  % =\ld ((a_0, b_0, 0) , (a_1, b_1, 0), \dots, (a_{k-1}, b_{k-1}, 0))
+  \]
+\[  \eta_i = \ld(a_i, b_i, 1)
+   \quad \text{ and } \quad
+  \eta_{\kk} = \bigcap_{0\leq i < k}\eta_i
+=\ld \{(a_i, b_i, 1) \mid 0\leq i<k\}.
+  % =\ld ((a_0, b_0, 1) , (a_1, b_1, 1), \dots, (a_{k-1}, b_{k-1}, 1))
+\]
+% Evidently, $\zeta_{\kk} = \bigcap_{0\leq i < k}\zeta_i$ is the set of \ld terms
+% for $\{(a_i, b_i, 0) \mid 0\leq i<k\}$, while 
+% $\eta_{\kk} = \bigcap_{0\leq i < k}\eta_i$ is the set of \ld terms
+% for $\{(a_i, b_i, 1) \mid 0\leq i<k\}$.
 
-The next ingredient we need for our construction of a 
-difference term operation for $\alg{A}$ 
-is 
-a way to produce an \ld
-term operation for a set of the form  (for $j>1$)
-\begin{equation}
-\label{eqn:Pj}
-P_j = \{(a_0, b_0, 1), (a_1, b_1, 0), (a_2, b_2, 0), \dots, 
-(a_j, b_j, 0)\},
-\end{equation}
-assuming we're given an \ld term operation for $P_{j-1} = P_{j} \mysetminus \{(a_j, b_j, 0)\}$.  
+Algorithm~\ref{alg:ld-2} serves as a base case, giving 
+an \ld term for $\sA_0$ that we will use as input to Algorithm~\ref{alg:stream-ldt1}, the output of which is 
+an \ld term for $\sA_1$.
+That output will serve in turn as input to 
+Algorithm~\ref{alg:stream-ldt2} the result of which is
+an \ld term for $\sA_2$.  Thereafter, this process alternates between Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}.
+Inductively, we obtain a single \ld term for all of $A^2 \times \{0,1\}$,
+which is a difference term operation for $\alg A$.
+
+\RestyleAlgo{boxruled}
+\LinesNumbered
+\begin{algorithm}%[ht]
+  \SetKwInOut{Input}{Input}
+  \SetKwInOut{Output}{Output}
+
+  \caption{Return an \ldt for $\sA_{2k+1}$ given 
+  $\eta_{\kk}$ and an \ldt for $\sA_{2k}$.
+  \label{alg:stream-ldt1}  }
+  \Input{$\eta_{\kk}$ and $s_{2k} \in \ld(\sA_{2k})$}
+  \Output{$\eta_{\kplus}$ and $s_{2k+1} \in \ld(\sA_{2k+1})$}
+
+  compute $p \in \eta_{\kk} \cap \ld (a_{k+1}, s_{2k}(a_{k+1}, b_{k+1}, b_{k+1}), 0)$
+
+  return $(s_{2k+1}, \eta_{\kplus})$ where 
+  $s_{2k+1}(x,y,z) = p(x, s_{2k}(x,y,y), s_{2k}(x,y,z))$.
+\end{algorithm}
 
 
-\begin{comment}
-\noindent \underline{\bf Subroutine \ild-0}\\[4pt]
-The input, $p$,  is
-an \ld term operation for $P_{j-1} = P_{j} \mysetminus \{(a_j, b_j, 0)\}$.  
-\begin{enumerate}[1.]
-\item 
-Call Subroutine \ld-2 to 
-compute an \ld term operation $t$ for the set
+\RestyleAlgo{boxruled}
+\LinesNumbered
+\begin{algorithm}%[ht]
+  \SetKwInOut{Input}{Input}
+  \SetKwInOut{Output}{Output}
+
+  \caption{Return an \ldt for $\sA_{2k}$ given $\zeta_{\kk}$ and 
+  an \ldt for $\sA_{2k-1}$.
+  \label{alg:stream-ldt2}  }
+\Input{$\zeta_{\kminus}$ and $s_{2k-1} \in \ld (\sA_{2k-1})$}
+\Output{$\zeta_{\kk}$ and $s_{2k} \in \ld(\sA_{2k})$}
+
+compute $p \in \zeta_{\kminus} \cap \ld (s_{2k-1}(a_k, a_k, b_k), b_k, 1)$;
+
+  return $(s_{2k}, \zeta_{\kk})$ where 
+  $s_{2k}(x,y,z) = p(s_{2k-1}(x,y,z), s_{2k-1}(y,y,z),z)$.
+\end{algorithm}
+
+
+
+
+
+
+
+
+
+%\bibliographystyle{amsplain} %% or amsalpha
+%% \bibliographystyle{alpha-url}
+%% \printbibliography
+\bibliographystyle{alphaurl}
+\bibliography{inputs/refs}
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+\newpage
+\appendix
+
+\section{Miscellaneous Proofs}
+\subsection{Difference term identity verifications}
+\label{app:dt-ids}
+
+\begin{lemma}[Verifies Subroutine \ild-0]
+If $p$ is an \ld term for 
 \begin{equation*}
-\{(a_0, b_0, 1), (a_j, p(a_j, b_j, b_j), 0)\}.
+P_{j-1} = \{(a_0, b_0, 1), (a_1, b_1, 0), \dots, (a_{j-1}, b_{j-1}, 0)\}.  
 \end{equation*}
-\item Return the following 
-\ld term operation for $P_j$: 
-\begin{equation}
-d(x,y,z) = t(x, p(x,y,y), p(x,y,z)).
-\label{eq:idl0-dto}
-\end{equation}
+and $t$ is an \ld term for
+\begin{equation*}
+\{(a_0, b_0, 1), (a_j, p(a_j, b_j, b_j), 0)\},
+\end{equation*}
+then $d(x,y,z) = t(x, p(x,y,y), p(x,y,z))$ is an \ld term for 
+$P_{j} = P_{j-1}  \cup \{(a_j, b_j, 0)\}$.  
+\end{lemma}
+
+\begin{proof} There are three sorts of cases to check.
+\begin{enumerate}[1.]
+\item $(a_0, b_0, 1)$: 
+\begin{equation*}
+d(a_0, a_0, b_0) =  
+t(a_0, p(a_0,a_0,a_0), p(a_0,a_0,b_0)) = 
+t(a_0, a_0, b_0) = b_0
+\end{equation*}
+ 
+\item $(a_k, b_k, 0)$ $(1\leq k < j)$: 
+\begin{equation*}
+d(a_k, b_k, b_k) =  
+t(a_k, p(a_k,b_k,b_k), p(a_k,b_k,b_k)) 
+\comr{\thetak}  
+t(a_k, a_k, a_k)  = a_k
+\end{equation*}
+
+\item $(a_j, b_j, 0)$: 
+If  
+$\thetaj = \Cg(a_j, b_j)$ and 
+$\gamma_j = \Cg(a_j, p(a_j, b_j, b_j))$, then
+\begin{equation*}
+d(a_j, b_j, b_j) =  
+t(a_j, p(a_j,b_j,b_j), p(a_j,b_j,b_j)) 
+\comr{\gamma_j} a_j,
+\end{equation*}
+so 
+$d(a_j, b_j, b_j) \comr{\thetaj} a_j$,
+since $\gamma_j \leq \thetaj$. 
 \end{enumerate}
-\qed
-\end{comment}
+\end{proof}
 
 
+\begin{lemma}[Verifies Subroutine \ild-1]
+If $q$ is an \ld term for 
+\begin{equation*}
+Q_{j-1} = \{(a_0, b_0, 0), (a_1, b_1, 1), \dots, (a_{j-1}, b_{j-1}, 1)\}.  
+\end{equation*}
+and $t$ is an \ld term for
+\begin{equation*}
+\{(a_0, b_0, 0), (q(a_j, a_j, b_j), b_j, 1)\},
+\end{equation*}
+then $d(x,y,z) = t(q(x,y,z), q(y,y,z), z)$ is an \ld term for 
+$Q_{j} = Q_{j-1}  \cup \{(a_j, b_j, 1)\}$.  
+\end{lemma}
 
+\begin{proof} There are three sorts of cases to check.
+\begin{enumerate}[1.]
+\item $(a_0, b_0, 0)$: 
+\begin{equation*}
+d(a_0, b_0, b_0) =  
+t(q(a_0,b_0,b_0), q(b_0,b_0,b_0), b_0) 
+\comr{\thetao} 
+t(a_0, b_0, b_0) \comr{\thetao} 
+a_0
+\end{equation*}
+ 
+\item $(a_k, b_k, 1)$ $(1\leq k < j)$: 
+\begin{equation*}
+d(a_k, a_k, b_k) =  
+t(q(a_k,a_k,b_k), q(a_k,a_k,b_k), b_k) 
+= t(b_k, b_k, b_k) = b_k
+\end{equation*}
 
-% \RestyleAlgo{boxed}
-\RestyleAlgo{boxruled}
-\LinesNumbered
-\begin{algorithm}%[ht]
-  \SetKwInOut{Input}{Input}
-  \SetKwInOut{Output}{Output}
-
-  % \caption{Given \ld term for $P_{j-1}$, 
-\caption{Return an \ld term for the set $P_j$ defined in~(\ref{eqn:Pj})
-\label{alg:ild0}}  
-%   $P_{j-1}=\{(a_0, b_0, 1), (a_1, b_1, 0), (a_2, b_2, 0), \dots, 
-% (a_{j-1}, b_{j-1}, 0)\}$, compute an \ld term for 
- % = P_{j-1} \cup \{(a_j, b_j, 0)\}$
-\Input{$p =$ an \ld term for $P_{j-1}$}
-\Output{$d =$ an \ld term for $P_j$}
-
-compute an \ld term $t$ for $\{(a_0, b_0, 1), (a_j, p(a_j, b_j, b_j), 0)\}$;
-
-return $d(x,y,z) = t(x, p(x,y,y), p(x,y,z))$
-
-\end{algorithm}
-
-
-We also need a way to produce an \ld
-term operation for a set of the form  (for $j>1$)
-\begin{equation}
-\label{eqn:Qj}
-Q_{j} = \{(a_0, b_0, 0), (a_1, b_1, 1), (a_2, b_2, 1), \dots, 
-(a_{j}, b_{j}, 1)\},
-\end{equation}
-assuming we're given an \ld term operation for 
-$Q_{j-1} = Q_j \mysetminus \{(a_j, b_j, 1)\}$.  
-
-% \RestyleAlgo{boxed}
-\RestyleAlgo{boxruled}
-\LinesNumbered
-\begin{algorithm}%[ht]
-  \SetKwInOut{Input}{Input}
-  \SetKwInOut{Output}{Output}
-  \caption{Return an \ld term for the set $Q_j$ defined in~(\ref{eqn:Qj})
-  \label{alg:ild1}}  
-  \Input{$q =$ an \ld term for $Q_{j-1}$}
-  \Output{$d =$ an \ld term for $Q_j$}
-
-  compute an \ld term $t$ for $\{(a_0, b_0, 0), (q(a_j, a_j, b_j), b_j, 1)\}$;
-
-  return $d(x,y,z) = t(q(x,y,z), q(y,y,z), z)$
-\end{algorithm}
-
-\begin{remarks}\
-\begin{enumerate}[1.] 
-\item In each of the Algorithms~\ref{alg:ild0} and \ref{alg:ild1},
-the first step is a call to Algorithm~\ref{alg:ld-2} 
-for computing an \ld term for a pair of triples.
-\item The easy verification that Algorithm~\ref{alg:ild0} returns
-an \ld term for $P_j$ appears in Appendix Section~\ref{app:dt-ids}. 
-\textcolor{red}{(Decide whether to omit proof.)}
-\item The easy verification that Algorithm~\ref{alg:ild1} returns
-an \ld term for $Q_j$ appears in Appendix Section~\ref{app:dt-ids}. 
-\textcolor{red}{(Decide whether to omit proof.)}
+\item $(a_j, b_j, 1)$: 
+\begin{equation*}
+d(a_j, a_j, b_j) =  
+t(q(a_j,a_j,b_j), q(a_j,a_j,b_j), b_j) = b_j 
+\end{equation*}
 \end{enumerate}
-\end{remarks}
-% (see Case $\chi_0=0$ in the proof of Theorem~\ref{thm:local-diff-terms}).
+\end{proof}
+
+
+
+
+
+
+
+
 
 
 \subsection{Algorithm for constructing a difference term operation}
 \label{sec:algor-2}
-Finally, we are ready to describe the complete procedure for construction
-of a difference term operation for $\alg{A}$.  
+We are now in a poition to describe a complete procedure for constructing
+a difference term operation for a given algebra $\alg{A}$.  
+
 In this section we work with \emph{lists} 
 (aka sequences, aka tuples) of triples, 
 such as $((a_0, b_0, 0), (a_1, b_1, 0))$, rather than \emph{sets} of triples,
@@ -2139,6 +2258,55 @@ d(x,y,z) = t_k(s_{k-1}(x,y,z), s_{k-1}(y,y,z), z).
 Since $xs :: ys$ contains all of the triples $(a,b,\chi)$, where
 $a, b \in A$ and $\chi \in \{0,1\}$, 
 $d(x,y,z)$ is the desired difference term operation for $\alg{A}$.
+
+
+
+
+
+
+
+compute $\delta_0$ and $\delta_1$ (see~(\ref{eqn:notation1}) for definition);
+
+compute the stream $\sS_0$ of term operations $s$ that satisfy $s(a_0,a_0,b_0) = b_0$;
+
+find a term operation $p$ in $\sS_0$ satisfying $p(a_0, b_0, b_0) \mathrel{\delta_0} a_0$;
+
+compute $c_1 = p(a_1,b_1,b_1)$;
+
+find a term operation $q$ in $\sS_0$ satisfying $q(a_1, c_1, c_1) \mathrel{\delta_1} a_1$;
+
+return $(s_0, \sS_0)$ where $s_0(x,y,z) = q(x,p(x,y,y),p(x,y,z))$
+\end{algorithm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2247,114 +2415,126 @@ return $(s_2, \sS_0, \sS_1, \sS_2)$ where $s_2(x,y,z) = p(x, s_1(x,y,y), s_1(x,y
 
 
 
-\newpage
-\appendix
 
-\section{Miscellaneous Proofs}
-\subsection{Difference term identity verifications}
-\label{app:dt-ids}
 
-\begin{lemma}[Verifies Subroutine \ild-0]
-If $p$ is an \ld term for 
-\begin{equation*}
-P_{j-1} = \{(a_0, b_0, 1), (a_1, b_1, 0), \dots, (a_{j-1}, b_{j-1}, 0)\}.  
-\end{equation*}
-and $t$ is an \ld term for
-\begin{equation*}
-\{(a_0, b_0, 1), (a_j, p(a_j, b_j, b_j), 0)\},
-\end{equation*}
-then $d(x,y,z) = t(x, p(x,y,y), p(x,y,z))$ is an \ld term for 
-$P_{j} = P_{j-1}  \cup \{(a_j, b_j, 0)\}$.  
-\end{lemma}
 
-\begin{proof} There are three sorts of cases to check.
+
+
+
+
+
+
+
+
+
+
+
+
+%%% OLD ALGORITHM June 2017
+
+\subsubsection{Induction steps}
+\label{sec:induct}
+
+The next ingredient we need for our construction of a 
+difference term operation for $\alg{A}$ 
+is 
+a way to produce an \ld
+term operation for a set of the form  (for $j>1$)
+\begin{equation}
+\label{eqn:Pj}
+P_j = \{(a_0, b_0, 1), (a_1, b_1, 0), (a_2, b_2, 0), \dots, 
+(a_j, b_j, 0)\},
+\end{equation}
+assuming we're given an \ld term operation for $P_{j-1} = P_{j} \mysetminus \{(a_j, b_j, 0)\}$.  
+
+
+\begin{comment}
+\noindent \underline{\bf Subroutine \ild-0}\\[4pt]
+The input, $p$,  is
+an \ld term operation for $P_{j-1} = P_{j} \mysetminus \{(a_j, b_j, 0)\}$.  
 \begin{enumerate}[1.]
-\item $(a_0, b_0, 1)$: 
+\item 
+Call Subroutine \ld-2 to 
+compute an \ld term operation $t$ for the set
 \begin{equation*}
-d(a_0, a_0, b_0) =  
-t(a_0, p(a_0,a_0,a_0), p(a_0,a_0,b_0)) = 
-t(a_0, a_0, b_0) = b_0
+\{(a_0, b_0, 1), (a_j, p(a_j, b_j, b_j), 0)\}.
 \end{equation*}
- 
-\item $(a_k, b_k, 0)$ $(1\leq k < j)$: 
-\begin{equation*}
-d(a_k, b_k, b_k) =  
-t(a_k, p(a_k,b_k,b_k), p(a_k,b_k,b_k)) 
-\comr{\thetak}  
-t(a_k, a_k, a_k)  = a_k
-\end{equation*}
-
-\item $(a_j, b_j, 0)$: 
-If  
-$\thetaj = \Cg(a_j, b_j)$ and 
-$\gamma_j = \Cg(a_j, p(a_j, b_j, b_j))$, then
-\begin{equation*}
-d(a_j, b_j, b_j) =  
-t(a_j, p(a_j,b_j,b_j), p(a_j,b_j,b_j)) 
-\comr{\gamma_j} a_j,
-\end{equation*}
-so 
-$d(a_j, b_j, b_j) \comr{\thetaj} a_j$,
-since $\gamma_j \leq \thetaj$. 
+\item Return the following 
+\ld term operation for $P_j$: 
+\begin{equation}
+d(x,y,z) = t(x, p(x,y,y), p(x,y,z)).
+\label{eq:idl0-dto}
+\end{equation}
 \end{enumerate}
-\end{proof}
+\qed
+\end{comment}
 
 
-\begin{lemma}[Verifies Subroutine \ild-1]
-If $q$ is an \ld term for 
-\begin{equation*}
-Q_{j-1} = \{(a_0, b_0, 0), (a_1, b_1, 1), \dots, (a_{j-1}, b_{j-1}, 1)\}.  
-\end{equation*}
-and $t$ is an \ld term for
-\begin{equation*}
-\{(a_0, b_0, 0), (q(a_j, a_j, b_j), b_j, 1)\},
-\end{equation*}
-then $d(x,y,z) = t(q(x,y,z), q(y,y,z), z)$ is an \ld term for 
-$Q_{j} = Q_{j-1}  \cup \{(a_j, b_j, 1)\}$.  
-\end{lemma}
 
-\begin{proof} There are three sorts of cases to check.
-\begin{enumerate}[1.]
-\item $(a_0, b_0, 0)$: 
-\begin{equation*}
-d(a_0, b_0, b_0) =  
-t(q(a_0,b_0,b_0), q(b_0,b_0,b_0), b_0) 
-\comr{\thetao} 
-t(a_0, b_0, b_0) \comr{\thetao} 
-a_0
-\end{equation*}
- 
-\item $(a_k, b_k, 1)$ $(1\leq k < j)$: 
-\begin{equation*}
-d(a_k, a_k, b_k) =  
-t(q(a_k,a_k,b_k), q(a_k,a_k,b_k), b_k) 
-= t(b_k, b_k, b_k) = b_k
-\end{equation*}
 
-\item $(a_j, b_j, 1)$: 
-\begin{equation*}
-d(a_j, a_j, b_j) =  
-t(q(a_j,a_j,b_j), q(a_j,a_j,b_j), b_j) = b_j 
-\end{equation*}
+% \RestyleAlgo{boxed}
+\RestyleAlgo{boxruled}
+\LinesNumbered
+\begin{algorithm}%[ht]
+  \SetKwInOut{Input}{Input}
+  \SetKwInOut{Output}{Output}
+
+  % \caption{Given \ld term for $P_{j-1}$, 
+\caption{Return an \ld term for the set $P_j$ defined in~(\ref{eqn:Pj})
+\label{alg:ild0}}  
+%   $P_{j-1}=\{(a_0, b_0, 1), (a_1, b_1, 0), (a_2, b_2, 0), \dots, 
+% (a_{j-1}, b_{j-1}, 0)\}$, compute an \ld term for 
+ % = P_{j-1} \cup \{(a_j, b_j, 0)\}$
+\Input{$p =$ an \ld term for $P_{j-1}$}
+\Output{$d =$ an \ld term for $P_j$}
+
+compute an \ld term $t$ for $\{(a_0, b_0, 1), (a_j, p(a_j, b_j, b_j), 0)\}$;
+
+return $d(x,y,z) = t(x, p(x,y,y), p(x,y,z))$
+
+\end{algorithm}
+
+
+We also need a way to produce an \ld
+term operation for a set of the form  (for $j>1$)
+\begin{equation}
+\label{eqn:Qj}
+Q_{j} = \{(a_0, b_0, 0), (a_1, b_1, 1), (a_2, b_2, 1), \dots, 
+(a_{j}, b_{j}, 1)\},
+\end{equation}
+assuming we're given an \ld term operation for 
+$Q_{j-1} = Q_j \mysetminus \{(a_j, b_j, 1)\}$.  
+
+% \RestyleAlgo{boxed}
+\RestyleAlgo{boxruled}
+\LinesNumbered
+\begin{algorithm}%[ht]
+  \SetKwInOut{Input}{Input}
+  \SetKwInOut{Output}{Output}
+  \caption{Return an \ld term for the set $Q_j$ defined in~(\ref{eqn:Qj})
+  \label{alg:ild1}}  
+  \Input{$q =$ an \ld term for $Q_{j-1}$}
+  \Output{$d =$ an \ld term for $Q_j$}
+
+  compute an \ld term $t$ for $\{(a_0, b_0, 0), (q(a_j, a_j, b_j), b_j, 1)\}$;
+
+  return $d(x,y,z) = t(q(x,y,z), q(y,y,z), z)$
+\end{algorithm}
+
+\begin{remarks}\
+\begin{enumerate}[1.] 
+\item In each of the Algorithms~\ref{alg:ild0} and \ref{alg:ild1},
+the first step is a call to Algorithm~\ref{alg:ld-2} 
+for computing an \ld term for a pair of triples.
+\item The easy verification that Algorithm~\ref{alg:ild0} returns
+an \ld term for $P_j$ appears in Appendix Section~\ref{app:dt-ids}. 
+\textcolor{red}{(Decide whether to omit proof.)}
+\item The easy verification that Algorithm~\ref{alg:ild1} returns
+an \ld term for $Q_j$ appears in Appendix Section~\ref{app:dt-ids}. 
+\textcolor{red}{(Decide whether to omit proof.)}
 \end{enumerate}
-\end{proof}
-
-
-
-
-%\bibliographystyle{amsplain} %% or amsalpha
-%% \bibliographystyle{alpha-url}
-%% \printbibliography
-\bibliographystyle{alphaurl}
-\bibliography{inputs/refs}
-
-
-
-
-
-
-\end{document}
-
+\end{remarks}
+% (see Case $\chi_0=0$ in the proof of Theorem~\ref{thm:local-diff-terms}).
 
 
 
