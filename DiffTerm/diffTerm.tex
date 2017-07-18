@@ -429,6 +429,18 @@ MRREVIEWER = {Ivan Chajda},
 %% uncomment the next line if we want to revert to the "set" minus notation
 %% \renewcommand{\mysetminus}{\ensuremath{\setminus}}
 
+\usepackage[yyyymmdd,hhmmss]{datetime}
+\usepackage{background}
+\backgroundsetup{
+  position=current page.east,
+  angle=-90,
+  nodeanchor=east,
+  vshift=-1cm,
+  hshift=2cm,
+  opacity=1,
+  scale=1.5,
+  contents={\textcolor{gray!80}{WORK IN PROGRESS!  DO NOT DISEMINATE! (compiled on \today\ at \currenttime)}}
+}
 %%  wjd ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -1884,7 +1896,7 @@ so the third projection is an \ld term.
 Therefore, we need only consider sets of the form
 $\{(a_0,b_0, 0), (a_1, b_1, 1)\}$, where $a_0 \neq b_0$ and 
 $a_1 \neq b_1$.  
-We have relegated this observation to a footnote because it yeilds a computational 
+We have relegated this observation to a footnote because it yields a computational 
 that does not impact the overall complexity of the main algorithm.} 
 \end{comment}
 
@@ -2173,7 +2185,7 @@ t(q(a_j,a_j,b_j), q(a_j,a_j,b_j), b_j) = b_j
 
 \subsection{Algorithm for constructing a difference term operation}
 \label{sec:algor-2}
-We are now in a poition to describe a complete procedure for constructing
+We are now in a position to describe a complete procedure for constructing
 a difference term operation for a given algebra $\alg{A}$.  
 
 In this section we work with \emph{lists} 
@@ -2236,7 +2248,7 @@ for the elements of
 $((a_0, b_0, 0), (a_1, b_1, 0), (a_2, b_2, 0)) :: ys$.
 % \end{equation}
 
-Proceding inductively, for fixed $1<j\leq k$, 
+Proceeding inductively, for fixed $1<j\leq k$, 
 if $s_{j-1}$ is an \ld term 
 for the elements in the list
 \begin{equation*}
@@ -2317,7 +2329,7 @@ for constructing a difference term operation for a given finite idempotent
 algebra $\alg{A}$.  
 The point here is to describe a version of the algorithm that is more practical
 and resembles how we might realistically implement it in a computer 
-programming langauge.
+programming language.
 
 In addition to notational conventions above, such as
 \begin{equation}
