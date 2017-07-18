@@ -299,3 +299,31 @@
     \right|_{#2} % this is the delimiter
 }}
 %% use like this: \restr{f}{A} (restriction of the function f to the set A)
+
+
+%% VVVVVV BEGIN BETTER MARGIN NOTES  VVVVVV
+%%
+%% This section of macros was added to provide for better margin notes.
+%% SEE:  http://tex.stackexchange.com/questions/9796/how-to-add-todo-notes
+%%
+\usepackage{xargs}           % Use more than one optional parameter in a new commands
+\usepackage{datetime}
+\newdateformat{specialdate}{\twodigit\year-\twodigit\month-\twodigit\day}
+\date{\specialdate\today}
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+
+%% William's margin notes:  \wjd{this is a note}
+\newcommandx{\wjd}[2][1=]{%
+  \todo[linecolor=purple,backgroundcolor=purple!25,bordercolor=purple,#1]%
+       {{\bf wjd} \specialdate\today: #2}
+}
+
+%% Ralph's margin notes:  \rf{this is a note}
+\newcommandx{\caa}[2][1=]{
+  \todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]%
+       {{\bf caa} \specialdate\today: #2}
+}
+
+\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+%% ^^^^^^^^^ END BETTER MARGIN NOTES ^^^^^^^^^^^^^^
+%%
