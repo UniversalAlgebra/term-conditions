@@ -550,20 +550,32 @@ $[\theta, \theta] = 0_A$ for all $\theta \in \Con \alg{A}$,
 in which case $\textbf{A}$
 (\ref{eq:3}) says that $d^{\alg{A}}$ is a \malcev term operation.)
 
-Difference terms also play a role in recent work of Keith Kearnes, Agnes Szendrei, and Ross Willard, who discovered what is the best known result about 
-J\'onsson's famous question---whether
-every variety of finite residual bound is finitely 
-axiomatizable.\footnote{That is, there is a finite bound on the size of the   subdirectly irreducible members of the variety.}
-It is proved in~\cite{MR3449235} that the answer 
-is ``yes'' if, in addition to a finite residual bound, 
-the variety has a difference term.
+Difference terms also play a role in recent work of Keith Kearnes,
+Agnes Szendrei, and Ross Willard.
+In~\cite{MR3449235} these authors give a positive answer
+J\'onsson's famous question---whether a variety of finite
+residual bound must be finitely
+axiomatizable---for the
+special case in which the variety has a difference
+term.\footnote{To say a variety has \emph{finite residual bound} is to say
+  there is a finite bound on the size of the subdirectly irreducible
+  members of the variety.} 
 
-Computers have become an invaluable tool in the quest to understanding 
-algebraic structures and the varieties they inhabit, largely due to the fact that over the last three decades researchers have found ingenious ways to 
-get computers to solve challenging abstract algebraic decision 
-problems---e.g., whether a variety is congruence $n$-permutable
-(\cite{MR3239624}), or congruence modular 
-(\cite{Freese:2009})---and to do so very quickly.
+Computers have become invaluable as a research tool and have helped to
+broaden and deepen our understanding of algebraic structures and the
+varieties they inhabit.  This is largely due to the efforts
+of researchers who, over the last three decades, have found ingenious
+ways to coax computers into solving challenging abstract algebraic
+decision problems, and to do so very quickly.
+To give a couple of examples related to our own work,, 
+it is proved in~\cite{MR3239624} (respectively,~\cite{Freese:2009})
+that deciding whether a variety is congruence-$n$-permutable
+(respectively, congruence-modular) is \emph{tractable}.\footnote{To
+  say that the decision problem is \emph{tractable} is to say
+  that there exists an algorithm for solvng the problem that ``scales
+  well'' with respect to increasing input size, by which we mean that
+  the number of operations required to reach a correct decision is
+  bounded by a polynomial function of the input size.}
 The present paper continues this effort by presenting an efficient
 algorithm for deciding whether a locally finite idempotent variety has a
 difference term.
