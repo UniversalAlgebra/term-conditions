@@ -1477,9 +1477,8 @@ It does not tell us whether or not $\alg A$ has a difference term operation.
 
 \medskip
 
-\wjd{We should insert an example of an
-  algebra $\alg A$ that has a difference term operation, but
-  $\bbV(\alg A)$ has no difference term.}
+\wjd{insert example: $\alg A$ has a diff term op, but
+  $\bbV(\alg A)$ has no diff term.}
 
 \medskip
 
@@ -1490,12 +1489,10 @@ sections.
 In Subsection~\ref{sec:algor-1} we give a polynomial-time algorithm
 for deciding whether a given algebra $\alg A$ has a difference term operation.
 In Subsection~\ref{sec:comp-diff-term} we address problem~(\ref{item:b})
-by presenting a (non-polynomial-time) algorithm for constructing a difference term
-operation.  
-We suspect there is a polynomial-time algorithm for
-constructing a difference term when one is known to exist.  However,
-we don't have such an algorithm yet.
-
+by presenting an algorithm for constructing a difference term operation.  
+However, this algorithms does not run in polynomial-time and, at the time 
+of this writing, we do not know of a more efficient algorithm for constructing a difference term operation, even when such an operation is known to exist. 
+Also, we have not yet proved the existence of a tractible algorithm for constructing difference term operations.
 
 \subsection{Local Difference Terms}
 \label{sec:local-diff-terms}
@@ -1531,7 +1528,7 @@ write ``\ld term'' as shorthand for
 One more bit of notation will come in handy below.
 Given a subset $T \subseteq \Clo_3(\alg{A})$ of ternary term operations on
 $\alg{A}$, and a subset $S \subseteq A^2\times \{0,1\}$,
-denote by $\bowtie$ the relation from $T$ to $S$ defined by
+we denote by $\bowtie$ the relation from $T$ to $S$ defined as follows:
 $t \bowtie (a,b,i)$ iff the following conditions hold:
 %% \begin{align*}
 %%   t \bowtie (a,b,i) \; \text{ iff } \;
@@ -1545,7 +1542,7 @@ $t \bowtie (a,b,i)$ iff the following conditions hold:
 \text{ if $i=1$,} \quad & \qquad t(a,a,b)  = b. 
 \end{align*}
 
-As a binary relation, $\bowtie$ induces an obvious \emph{Galois connection}
+As a binary relation, $\bowtie$ induces an obvious Galois connection
 from subsets of $\Clo_3(\alg{A})$ to subsets of $A^2\times \{0,1\}$ and
 back---namely,
 %% $(\Fix, \Inv)$---namely,
@@ -1563,24 +1560,16 @@ for $T \subseteq \Clo_3(\alg{A})$ and $S \subseteq A^2 \times \{0,1\}$,
   \text{ for all } s \in S\}.
 \end{align*}
 In other words, $\Inv(S)$ is the set of \ld terms
-for $S$, and $\Fix(T)$ is the set of triples for which every $t\in T$ is an \ld term.
-
-We may take $S$ to be a finite list,
-say $S = ((a_0, b_0, \chi_0), \dots, (a_n, b_n, \chi_n))$;
-in such cases $\Inv((a_0, b_0, \chi_0), \dots, (a_n, b_n, \chi_n))$
-will denote the set of \ld term operations for $S$.
+for $S$, and $\Fix(T)$ is the set of triples for which every $t\in T$ 
+is an \ld term.  Sometimes $S$ will denote a finite list,
+say $S = ((a_0, b_0, \chi_0), \dots, (a_n, b_n, \chi_n))$, in which case the set of \ld term operations for $S$ will be denoted by 
+$\Inv((a_0, b_0, \chi_0), \dots, (a_n, b_n, \chi_n))$.
 
 Now, suppose that every pair
 $(s_0, s_1)\in (\AsqBool)^2$ %$\AsqBool$ 
 has an \ld term.  
-% That is, suppose $\Inv(s_0, s_1)$ is nonempty for every 
-% pair $(s_0, s_1) \in (\AsqBool)^2$. 
 Then every subset $S\subseteq \AsqBool$
 has an \ld term, as we now prove.
-%% That is, there is a single term $\ell$ that satisfies
-%% (\ref{eq:d-trip-i1}) and (\ref{eq:d-trip-i2}) for all 
-%% $s_i = (a_i, b_i, \chi_i) \in S$.
-
 
 \begin{theorem} %[\protect{cf.~\cite[Theorem 2.2]{MR3239624}}]
   \label{thm:local-diff-terms}
@@ -1598,46 +1587,45 @@ has an \ld term, as we now prove.
 \begin{proof}
 
 The proof is by induction on the size of $S$.  In the base case, $|S| = 2$,
-the claim holds by assumption.
-Fix $n\geq 2$ and assume that every subset of $\AsqBool$ of size $2\leq k \leq n$
-has an \ld term. Let
+the claim holds by assumption. Fix $n\geq 2$ and assume that every subset of
+$\AsqBool$ of size $k \leq n$ has an \ld term. Let
 \[
-S = \{(a_0, b_0, \chi_0), (a_1, b_1, \chi_1), \dots, 
+S := \{(a_0, b_0, \chi_0), (a_1, b_1, \chi_1), \dots, 
         (a_{n}, b_{n},\chi_{n})\} \subseteq \AsqBool,
 \]
 so that $|S| = n+1$.  We prove $S$ has an \ld term.
 
-Since $|S| \geq 3$ and $\chi_i \in \{0,1\}$ for all $i$, there must exist
-indices $i\neq j$ such that $\chi_i = \chi_j$. Assume without loss of
-generality that one of these indices is $j=n$.  
-Define the set $S' = S \mysetminus \{(a_n, b_n, \chi_n)\}$.
-Since $|S'| < |S|$, the set $S'$ has an \ld term $p$.
+Since $|S| \geq 3$, % and $\chi_i \in \{0,1\}$ for all $i$, 
+there exist indices $i\neq j$ such that $\chi_i = \chi_j$. 
+Assume without loss of generality that one such index is $j=n$.  
+If $S' := S \mysetminus \{(a_n, b_n, \chi_n)\}$, then
+$|S'| < |S|$, so the set $S'$ has an \ld term, $p$.
 We split the remainder of the proof into two cases.
 
 \medskip
 
 %--------------------------------------
 \noindent \underline{Case $\chi_n = 0$}:
-Without loss of generality, suppose that 
+Without loss of generality, assume
 \begin{equation*}
   \chi_0 = %% \chi_2 =
 \cdots =\chi_{k-1} = 1 \quad \text{and} \quad
 \chi_{k} = \cdots = \chi_{n} = 0.
 \end{equation*} 
 Define %% $T$ to be the set
-\[S_1 = \{(a_0, b_0, 1), (a_1, b_1, 1),
+\[S_1 := \{(a_0, b_0, 1), (a_1, b_1, 1),
 \dots, (a_{k-1}, b_{k-1}, 1), (a_n, p(a_n, b_n, b_n), 0)\},\] and
 note that $|S_1| < |S|$.
 Let $q$ be an \ld term for $S_1$.
 We show that 
 \[
-d(x,y,z) = q(x, p(x,y,y), p(x,y,z)).
+d(x,y,z) := q(x, p(x,y,y), p(x,y,z)).
 \]
 is an \ld term for $S$.
 
 Since $\chi_n =0$, we first verify that
 $a_n \comr{\thetan} d(a_n,b_n,b_n)$.
-If we let $\gamma = \Cg(a_n, p(a_n,b_n,b_n))$, then
+If $\gamma := \Cg(a_n, p(a_n,b_n,b_n))$, then
 \begin{equation}
     \label{eq:100000}
   d(a_n,b_n,b_n) =
@@ -1652,8 +1640,8 @@ by monotonicity of the commutator.
 It follows from this and (\ref{eq:100000}) that
 $a_n \comr{\thetan} d(a_n,b_n,b_n)$, as desired.
 
-For the indices $0\leq i < k$ we have $\chi_i =1$, so we prove
-$d(a_i,a_i,b_i) = b_i$ for these indices. Observe,
+For indices $i < k$, we have $\chi_i =1$, so want to prove
+$d(a_i,a_i,b_i) = b_i$ for such $i$. Observe,
 \[
   d(a_i,a_i,b_i) =
   q(a_i, p(a_i,a_i,a_i), p(a_i,a_i,b_i)) % \label{eq:200000}\\
@@ -1666,7 +1654,7 @@ $S'$, and the third because $q \in \Inv(S_1)$.
 
 The remaining triples in our original set $S$
 have indices satisfying $k\leq j < n$ and $\chi_j = 0$.
-Thus, for these we want
+For these we want
 $a_j \comr{\thetaj} d(a_j,b_j,b_j)$.
 By definition,
 \begin{equation}
@@ -1692,15 +1680,15 @@ Without loss of generality, suppose
   \quad \text{and} \quad
 \chi_{k} = \cdots = \chi_{n} = 1.
 \end{equation*}
-Define
+If 
 \begin{equation*}
-S_0 = \{(a_0, b_0, 0), (a_1, b_1 0), \dots, (a_{k-1}, b_{k-1}, 0), 
+S_0 := \{(a_0, b_0, 0), (a_1, b_1 0), \dots, (a_{k-1}, b_{k-1}, 0), 
         (p(a_n, a_n, b_n), b_n, 1)\},
 \end{equation*}
-and note that $|S_0| < |S|$.
-Let $q \in \Inv(S_0)$ and define
-$d(x,y,z) = q(p(x,y,z), p(y,y,z), z)$.
-Since $\chi_n =1$, we must show that
+then $|S_0| < |S|$, so there exists $q \in \Inv(S_0)$. We claim  that
+$d(x,y,z) := q(p(x,y,z), p(y,y,z), z)$ is a local difference term
+operation for $S$.
+Since $\chi_n =1$, we first show
 $d(a_n,a_n,b_n) = b_n$. By the definition of $d$,
 \begin{equation*}  
   d(a_n,a_n,b_n) =
