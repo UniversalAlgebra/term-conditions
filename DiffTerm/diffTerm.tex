@@ -1581,7 +1581,7 @@ are satisfied.
 % \quad t(a,a,b)  = b, & \text{ if $i=1$.}
 % \end{cases}
 % \end{align*}
-Occasionally, the notation $(a,b,i)\rtimes t$ will serve as a convenient and equivalent alternative to $t\ltimes (a,b,i)$.
+Occasionally, $(a,b,i)\rtimes t$ will serve as a convenient and equivalent alternative to $t\ltimes (a,b,i)$.
 
 As a binary relation, $\ltimes$ induces an obvious Galois connection
 from subsets of $A^2\times \{0,1\}$ to subsets
@@ -1594,7 +1594,7 @@ of $\Clo_3(\alg{A})$.  Specifically, we define
 as follows:
 for $S \subseteq A^2 \times \{0,1\}$ and $T \subseteq \Clo_3(\alg{A})$,
 \begin{align*}
-  S^{\rtimes} &= \{t \in \Clo_3(\alg{A}) \mid s \rtimes t
+  S^{\rtimes} &= \{t \in \Clo_3(\alg{A}) \mid t \ltimes s
   \text{ for all } s \in S\}, \\
   T^{\ltimes} &= \{s \in A^2 \times \{0,1\} \mid t \ltimes s
   \text{ for all } t \in T\}.
@@ -1673,10 +1673,11 @@ If $\gamman := \Cg(a_n, p(a_n,b_n,b_n))$, then
 \end{equation}
 The pair $(a_n, p(a_n,b_n,b_n))$ is equal to
 $(p(a_n,a_n,a_n), p(a_n,b_n,b_n))$ and so 
-belongs to $\theta_n:= \Cg^{\alg{A}}(a_n, b_n)$.
+% belongs to $\theta_n:= \Cg^{\alg{A}}(a_n, b_n)$.
+belongs to $\thetan$.
 Therefore, $\gamman\leq \thetan$, so
-$\com{\gamman} \leq \com{\thetan}$,
-by monotonicity of the commutator.
+$\com{\gamman} \leq \com{\thetan}$.
+% by monotonicity of the commutator.
 It follows from this and (\ref{eq:100000}) that
 $a_n \comr{\thetan} d(a_n,b_n,b_n)$, as desired.
 
@@ -1725,15 +1726,16 @@ If
 S_1 := \{(a_0, b_0, 0), (a_1, b_1 0), \dots, (a_{k-1}, b_{k-1}, 0), 
         (p(a_n, a_n, b_n), b_n, 1)\},
 \end{equation*}
-then $|S_1| < |S|$, so there exists $q \in \Inv{S_1}$. We claim  that
-$d(x,y,z) := q(p(x,y,z), p(y,y,z), z)$ is a local difference term
-operation for $S$.
-Since $\chi_n =1$, we first show
-$d(a_n,a_n,b_n) = b_n$. By the definition of $d$,
-\begin{equation*}  
-  d(a_n,a_n,b_n) =
-  q(p(a_n,a_n,b_n), p(a_n,a_n,b_n), b_n) =b_n.
+then $|S_1| < |S|$, so there exists $q \in \Inv{S_1}$. 
+We claim  that
+\begin{equation*}
+  d(x,y,z) := q(p(x,y,z), p(y,y,z), z)
 \end{equation*}
+is an \ld term for $S$. Since $\chi_n =1$, we first show
+$d(a_n,a_n,b_n) = b_n$. By its
+% \begin{equation*}  
+$ d(a_n,a_n,b_n) = q(p(a_n,a_n,b_n), p(a_n,a_n,b_n), b_n) =b_n$.
+% \end{equation*}
 The last equality holds since 
 % $q \in \Inv{S_1}\subseteq \Inv{p(a_n, a_n, b_n), b_n, 1)}$.
 $q \ltimes (p(a_n, a_n, b_n), b_n, 1)$.
@@ -1763,11 +1765,11 @@ The remaining elements of $S$
 have indices satisfying $k\leq j < n$ and $\chi_j = 1$.
 For these we want $d(a_j,a_j,b_j) = b_j$.
 Since $p \in \Inv{S'}$, we have
-$p(a_j,a_j,b_j) = b_j$. This plus idempotence of $q$ yields
+$p(a_j,a_j,b_j) = b_j$, and this plus idempotence of $q$ yields
 \begin{equation*}
  d(a_j,a_j,b_j) =  q(p(a_j,a_j,b_j), p(a_j,a_j,b_j), b_j)=  q(b_j, b_j, b_j) =b_j,
 \end{equation*}
-as desired
+as desired.
 \end{proof}
 
 \begin{corollary}
@@ -1779,10 +1781,9 @@ as desired
 \end{corollary}
 \begin{proof}
   Letting $S := \AsqBool$ in Theorem~\ref{thm:local-diff-terms} establishes
-  the existence of a term operation $d \in \Inv{S}$. Thus, for every pair 
-  $a, b \in A$ we have $a \comr{\thetaab} d(a,b,b)$, since 
+  the existence of a term operation $d \in \Inv{S}$. Thus, for all $a, b \in A$, $a \comr{\thetaab} d(a,b,b)$, since 
   % $d \in \Inv{(a,b,0)}$, 
-  $d \ltimes (a,b,0)$, and we have $d(a,a,b) = b$, since 
+  $d \ltimes (a,b,0)$, and $d(a,a,b) = b$, since 
   % $d\in \Inv{(a,b,1)}$.
   $d\ltimes (a,b,1)$.
 \end{proof}
@@ -1922,7 +1923,7 @@ algorithm.}
 The remaining sets of size 2 have the form
 $((a_0,b_0,0), (a_1, b_1, 1))$, and 
 an \ld term for such sets can be computed by
-Algorithm~\ref{alg:ld-2}, as described in the box.
+Algorithm~\ref{alg:ld-2}, as described in the box below.
 % (In the following algorithm descriptions,
 % we continue to use the shorthand notations established above, 
 % such as $\thetaj := \Cg^{\alg{A}}(a_j, b_j)$.)
@@ -2025,9 +2026,8 @@ Let
 % $\eta_{\kk} = \bigcap_{0\leq i < k}\eta_i$ is the set of \ld terms
 % for $\{(a_i, b_i, 1) \mid 0\leq i<k\}$.
 
-Algorithm~\ref{alg:ld-2} serves as a base case, giving 
-an \ld term for $\sA_0$ that we will use as input to Algorithm~\ref{alg:stream-ldt1}, the output of which is 
-an \ld term for $\sA_1$.
+Algorithm~\ref{alg:ld-2} serves as a base case, giving an \ld term for
+$\sA_0$ that we will use as input to Algorithm~\ref{alg:stream-ldt1}, the output of which is an \ld term for $\sA_1$.
 That output will serve in turn as input to 
 Algorithm~\ref{alg:stream-ldt2} the result of which is
 an \ld term for $\sA_2$.  Thereafter, this process alternates between Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}.
@@ -2040,16 +2040,19 @@ which is a difference term operation for $\alg A$.
   \SetKwInOut{Input}{Input}
   \SetKwInOut{Output}{Output}
 
-  \caption{Return an \ldt for $\sA_{2k+1}$ given 
+  \caption{Return an \ldt for $\sA_{2k+1}$, given 
   $\eta_{\kk}$ and an \ldt for $\sA_{2k}$.
   \label{alg:stream-ldt1}  }
-  \Input{$\eta_{\kk}$ and $s_{2k} \in \ld(\sA_{2k})$}
-  \Output{$\eta_{\kplus}$ and $s_{2k+1} \in \ld(\sA_{2k+1})$}
+  \Input{$\eta_{\kk}$ and $s_{2k} \in \Inv { \sA_{2k} }$}
+  \Output{$\eta_{\kplus}$ and $s_{2k+1} \in \Inv { \sA_{2k+1} }$}
 
-  compute $p \in \eta_{\kk} \cap \ld (a_{k+1}, s_{2k}(a_{k+1}, b_{k+1}, b_{k+1}), 0)$
+  construct $p \in \eta_{\kk} \cap \Inv {\{ (a_{k+1}, s_{2k}(a_{k+1}, b_{k+1}, b_{k+1}), 0)\} }$
 
-  return $(s_{2k+1}, \eta_{\kplus})$ where 
-  $s_{2k+1}(x,y,z) = p(x, s_{2k}(x,y,y), s_{2k}(x,y,z))$.
+  construct $s_{2k+1}(x,y,z) = p(x, s_{2k}(x,y,y), s_{2k}(x,y,z))$;
+
+  construct $\eta_{\kplus} = \eta_{\kk} \cap \Inv{ \{(a_k, b_k, 1)\} }$;
+
+  return $(s_{2k+1}, \eta_{\kplus})$.
 \end{algorithm}
 
 
@@ -2062,13 +2065,18 @@ which is a difference term operation for $\alg A$.
   \caption{Return an \ldt for $\sA_{2k}$ given $\zeta_{\kk}$ and 
   an \ldt for $\sA_{2k-1}$.
   \label{alg:stream-ldt2}  }
-\Input{$\zeta_{\kminus}$ and $s_{2k-1} \in \ld (\sA_{2k-1})$}
-\Output{$\zeta_{\kk}$ and $s_{2k} \in \ld(\sA_{2k})$}
+  \Input{$\zeta_{\kminus}$ and $s_{2k-1} \in \Inv{ \sA_{2k-1} }$}
+  \Output{$\zeta_{\kk}$ and $s_{2k} \in \Inv {\sA_{2k}}$}
 
-compute $p \in \zeta_{\kminus} \cap \ld (s_{2k-1}(a_k, a_k, b_k), b_k, 1)$;
+  construct $p \in \zeta_{\kminus} \cap 
+          \Inv { \{(s_{2k-1}(a_k, a_k, b_k), b_k, 1) \} }$;
 
-  return $(s_{2k}, \zeta_{\kk})$ where 
-  $s_{2k}(x,y,z) = p(s_{2k-1}(x,y,z), s_{2k-1}(y,y,z),z)$.
+  construct $s_{2k}(x,y,z) = p(s_{2k-1}(x,y,z), s_{2k-1}(y,y,z),z)$;
+
+  construct $\zeta_{\kk} = \zeta_{\kminus} 
+            \cap \Inv { \{(a_{k-1}, b_{k-1}, 0)\}}$;
+
+  return $(s_{2k}, \zeta_{\kk})$. 
 \end{algorithm}
 
 
