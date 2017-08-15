@@ -1,0 +1,26 @@
+title: "A poly-time test for difference terms in idempotent varieties"
+author:
+- "William DeMeo [&lt;williamdemeo@gmail.com&gt;](mailto:williamdemeo@gmail.com)"
+- "joint work with<br> 
+  Ralph Freese & Matt Valeriote"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+tags: [difference term, Mal'cev conditions]
+mathjax : TeX-MML-AM_HTMLorMML-full
+abstract: |
+  This is the abstract.
+
+  It consists of two paragraphs.
+  output:
+  revealjs::revealjs_presentation:
+    center: false
+    theme: night
+    transition: fade
+    self_contained: false
+    incremental: true
+    keep_md: true
+    highlight: pygments
+    reveal_plugins: ["notes", "chalkboard", "zoom"]
+    reveal_options:
+      center: false
+      progress: true
+      slideNumber: true
