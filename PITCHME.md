@@ -2,7 +2,6 @@
 
 - Can we efficiently decide whether a finite algebra $\mathbf{A}$ generates
   a variety with a difference term? |
-
 - We give a positive answer in the idempotent case and describe 
   an algorithm for constructing difference terms. 
 
@@ -64,12 +63,11 @@ a **difference term operation** for $\mathbf{A}$.
 
 ## A Related Problem
 
-+ **Theorem** (Freese, Valeriote *IJAC* 2009)<br>
+- **Theorem** (Freese, Valeriote *IJAC* 2009)<br>
   There is a poly-time algorithm that takes a finite
   idempotent algebra $\mathbf{A}$ and decides whether $\mathbb{V}(\mathbf{A})$ is 
-  <a style="color:#e7ad52">*congruence-modular*</a>.
-
-+ **Proof Idea**
+  <a style="color:#e7ad52">*congruence-modular*</a>. |
+- **Proof Idea**
   <small>
   <ul> 
     <li>Congruence-modularity is characterized by omitting 1's, 5's, and tails.</li>
@@ -90,7 +88,6 @@ a **difference term operation** for $\mathbf{A}$.
   For example, $\mathbb{V}(\mathbf{A})$ omits $\{1, 5\}$ iff $\mathsf{S}(\mathbf{A})$ 
   does.
   </p> |
-
 - Freese and Valeriote prove
   <p>
   If $\mathbb{V}(\mathbf{A})$ omits $\{1, 5\}$, 
@@ -104,12 +101,11 @@ a **difference term operation** for $\mathbf{A}$.
 - Suppose $\mathbb{V}(\mathbf A)$ omits type 1 and contains a finite
   algebra $\mathbf{B}$ with a type 2 prime quotient $\alpha \prec \beta$
   such that the $\langle \alpha, \beta \rangle$-minimal sets have non-empty tails. |
-  
 - Then there exists a 3-generated subalgebra of $\mathbf A \times \mathbf A$
   with this property. |
-  
-- **Conclusion:** to check for type 2 tails in $\mathbb{V}(\mathbf A)$, it suffices 
-  to look for them in 3-generated subalgebras of $\mathbf A \times \mathbf A$.
+- **Conclusion:** to check for type 2 tails in $\mathbb{V}(\mathbf A)$, it
+  suffices to look for them in 3-generated subalgebras of 
+  $$\mathbf A \times \mathbf A$$.
 
 +++
 
@@ -117,22 +113,19 @@ a **difference term operation** for $\mathbf{A}$.
 
 - WLOG $\mathbf{B}$ is a subdirect
   product of a finite subcollection of $\mathcal S$.  |
-
 - Choose $n$ minimal such that for some $\mathbf{A}_0$,
   $\dots$, $\mathbf{A}_{n-1}$ in $\mathcal S$, there exists
   $\mathbf{B} \leq_{sd} \prod_{[n]} \mathbf{A}_i$
   with a prime quotient of type 2 whose minimal sets have tails. |
-  
 - Assuming $n > 1$, we prove that $n = 2$.
 
 +++
 
-- For this $n$, select the $\mathbf{A}_i$ and $\mathbf{B}$ so that $|B|$ is as small as possible. |
-
+- For this $n$, select the $\mathbf{A}_i$ and $\mathbf{B}$ so that $|B|$ 
+  is as small as possible. |
 - Let $\alpha \prec \beta$ be a prime quotient of $\mathbf{B}$ 
   of type~2 such that its minimal sets have
   non-empty tails, and choose $\beta$ minimal with this property. |
-
 - By HM, this implies $\beta$ is join 
   irreducible and $\alpha$ is its unique subcover.
   Let $U$ be an $(\alpha, \beta)$-minimal set. 
