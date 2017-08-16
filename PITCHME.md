@@ -2,9 +2,7 @@
 
 William DeMeo [&lt;williamdemeo@gmail.com&gt;](mailto:williamdemeo@gmail.com)  
 
-joint work with  
-
-Ralph Freese & Matt Valeriote  
+joint work with Ralph Freese & Matt Valeriote  
 
 <a style="color:#e7ad52">BLAST 2017 @ Vanderbilt<a style="color:#e7ad52">
 
@@ -20,7 +18,7 @@ Ralph Freese & Matt Valeriote
 
 ## Definitions
 
-A <a style="color:#e7ad52"><i>difference term</i></a> for $\mathcal{V}$ is a term $d$ satisfying, $\forall \; \mathbf A \in \mathcal V$, $\forall a, b \in A$, 
+A <a style="color:#e7ad52"><i>difference term</i></a> for $\mathcal{V}$ is a term $d$ satisfying, $\forall \; \mathbf A \in \mathcal V$ and $\forall a, b \in A$, 
 
 $$d(a,a,b) = b \quad \text{ and } \quad
 d(a,b,b) \mathrel{[\theta, \theta]} a$$
@@ -60,15 +58,20 @@ $\mathbb{V}(\mathbf{A})$ has nonempty type 2 tails?
   + If there is a type-2 in $\mathbb{V}(\mathbf{A})$, then there is a type-2 tail "near the bottom" of $\mathbb{V}(\mathbf A)$. <!-- .element: class="fragment" -->
 ---
 
-<div class="fragment" align="left">
-<a style="color:#e7ad52">Main Theorem</a>
-</div>
+## Main Theorem
 
-- Suppose $\mathbb{V}(\mathbf A)$ omits type 1 and contains a finite algebra $\mathbf{B}$ with a type 2 prime quotient $\alpha \prec \beta$ such that the $\langle \alpha, \beta \rangle$-minimal sets have non-empty tails. <!-- .element: class="fragment" -->
-- Then there exists a 3-generated subalgebra of $\mathbf A \times \mathbf A$
-  with this property. <!-- .element: class="fragment" -->
-- **Conclusion:** to check for type 2 tails in $\mathbb{V}(\mathbf A)$, it suffices to look for them in 3-generated subalgebras of $\mathbf A \times \mathbf A$. <!-- .element: class="fragment" -->
+<p class="fragment" align="left">
+Suppose $\mathbb{V}(\mathbf A)$ omits type 1 and contains a finite algebra $\mathbf{B}$ with a type 2 prime quotient $\alpha \prec \beta$ such that the $\langle \alpha, \beta \rangle$-minimal sets have non-empty tails.
+</p>
 
+<p class="fragment" align="left">
+Then there exists a 3-generated subalgebra of $\mathbf A \times \mathbf A$
+with this property. </p>
+  
+<p class="fragment" align="left">
+<a style="color:#e7ad52">**Conclusion:**</a> 
+to check for type-2 tails in $\mathbb{V}(\mathbf A)$, it suffices to look in 3-generated subalgebras of $\mathbf A \times \mathbf A$.
+</p>
 
 ---
 
