@@ -14,9 +14,9 @@ Ralph Freese & Matt Valeriote
 
 - Can we efficiently decide whether a finite algebra $\mathbf{A}$ generates a variety with a difference term? <!-- .element: class="fragment" -->
 
-- We will outline the proof that the answer is "yes." <!-- .element: class="fragment" -->
+- We prove that the answer is "yes" in the idempotent case. <!-- .element: class="fragment" -->
 
-- Time permitting, we will describe an algorithm for constructing difference terms. <!-- .element: class="fragment" -->
+- Time permitting, we describe an algorithm for constructing difference terms. <!-- .element: class="fragment" -->
 
 ---
 
@@ -24,7 +24,7 @@ Ralph Freese & Matt Valeriote
 
 A <a style="color:#e7ad52"><i>difference term</i></a> for $\mathcal{V}$ is a term $d$ satisfying,
   
-for all $\mathbf A = \langle A, \dots \rangle \in \mathcal V$ and all $a, b \in A$, 
+for all $\mathbf A \in \mathcal V$ and $a, b \in A$, 
 
 $$d(a,a,b) = b \quad \text{ and } \quad
 d(a,b,b) \mathrel{[\theta, \theta]} a$$
