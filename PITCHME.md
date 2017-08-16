@@ -2,10 +2,9 @@
 
 ## The Problem
 
-- Can we efficiently decide whether a finite algebra $\mathbf{A}$ generates
-  a variety with a difference term? |
-- We give a positive answer in the idempotent case and describe 
-  an algorithm for constructing difference terms. 
+- Can we efficiently decide whether a finite algebra $\mathbf{A}$ generates a variety with a difference term? <!-- .element: class="fragment" -->
+
+- We give a positive answer in the idempotent case and describe an algorithm for constructing difference terms. <!-- .element: class="fragment" -->
 
 ---
 
@@ -65,11 +64,15 @@ a **difference term operation** for $\mathbf{A}$.
 
 ## A Related Problem
 
-- **Theorem** (Freese, Valeriote *IJAC* 2009)<br>
+<div class="fragment" align="left">
+**Theorem** (Freese, Valeriote *IJAC* 2009)<br>
   There is a poly-time algorithm that takes a finite
   idempotent algebra $\mathbf{A}$ and decides whether $\mathbb{V}(\mathbf{A})$ is 
-  <a style="color:#e7ad52">*congruence-modular*</a>. |
-- **Proof Idea**
+  <a style="color:#e7ad52">*congruence-modular*</a>.
+</div>
+
+<div class="fragment" align="left">
+  **Proof Idea**
   <small>
   <ul> 
     <li>Congruence-modularity is characterized by omitting 1's, 5's, and tails.</li>
@@ -78,36 +81,40 @@ a **difference term operation** for $\mathbf{A}$.
          "near the bottom".</li>
   </ul>
   </small>
+</div>
 
 +++
 
 ## What is "near the bottom"?
 
-- **Theorem.** Let $\mathbf{A}$ be a finite idempotent algebra and $T$ an order ideal in the
+<div class="fragment" align="left">
+**Theorem.** Let $\mathbf{A}$ be a finite idempotent algebra and $T$ an order ideal in the
   lattice of types. Then $\mathbb{V}(\mathbf{A})$ omits $T$ iff $\mathsf{S}(\mathbf{A})$
   does.
   <p>
   For example, $\mathbb{V}(\mathbf{A})$ omits $\{1, 5\}$ iff $\mathsf{S}(\mathbf{A})$ 
   does.
-  </p> |
-- Freese and Valeriote prove
+  </p> 
+</div>
+
+<div class="fragment" align="left">
+Freese and Valeriote prove
   <p>
   If $\mathbb{V}(\mathbf{A})$ omits $\{1, 5\}$, 
   then nontrivial tails occur in $\mathbb{V}(\mathbf{A})$ only if they occur
   in 3-generated subalgebras of $\mathbf{A}^2$.</p>
+</div>
 
 ---
 
 ## Main Theorem
 
-- Suppose $\mathbb{V}(\mathbf A)$ omits type 1 and contains a finite
-  algebra $\mathbf{B}$ with a type 2 prime quotient $\alpha \prec \beta$
-  such that the $\langle \alpha, \beta \rangle$-minimal sets have non-empty tails. |
+- Suppose $\mathbb{V}(\mathbf A)$ omits type 1 and contains a finite algebra $\mathbf{B}$ with a type 2 prime quotient $\alpha \prec \beta$ such that the $\langle \alpha, \beta \rangle$-minimal sets have non-empty tails. <!-- .element: class="fragment" -->
 - Then there exists a 3-generated subalgebra of $\mathbf A \times \mathbf A$
-  with this property. |
+  with this property. <!-- .element: class="fragment" -->
 - **Conclusion:** to check for type 2 tails in $\mathbb{V}(\mathbf A)$, it
   suffices to look for them in 3-generated subalgebras of 
-  $$\mathbf A \times \mathbf A$$.
+  $$\mathbf A \times \mathbf A$$.<!-- .element: class="fragment" -->
 
 +++
 
