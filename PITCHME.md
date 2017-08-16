@@ -30,6 +30,7 @@ a **difference term operation** for $\mathbf{A}$.
 +++
 
 ## Problem Statement
+<small>
 <div class="fragment" align="left">
   Is there a poly-time algorithm that takes a finite
   idempotent algebra $\mathbf{A}$ and decides 
@@ -59,6 +60,7 @@ a **difference term operation** for $\mathbf{A}$.
   idempotent algebra $\mathbf{A}$ and decides whether 
   $\mathbb{V}(\mathbf{A})$ has type 2 tails?
 </div>
+</small>
 
 ---
 

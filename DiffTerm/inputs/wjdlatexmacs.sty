@@ -26,6 +26,7 @@
 \newcommand{\bool}{\ensuremath{\mathtt{Bool}}}
 \newcommand{\true}{\ensuremath{\mathtt{true}}}
 \newcommand{\false}{\ensuremath{\mathtt{false}}}
+\newcommand{\List}{\ensuremath{\operatorname{List}}}
 \newcommand{\ar}{\ensuremath{\operatorname{ar}}}
 \newcommand{\CSP}{\ensuremath{\operatorname{CSP}}}
 \newcommand{\dom}{\ensuremath{\operatorname{dom}}}
@@ -83,8 +84,10 @@
 \newcommand{\sansRel}{\ensuremath{\mathsf{Rel}}}
 \newcommand{\sansInv}{\ensuremath{\mathsf{Inv}}}
 \newcommand{\sansFix}{\ensuremath{\mathsf{Fix}}}
-\newcommand{\Inv}{\ensuremath{\mathsf{LD}}}
-\newcommand{\Fix}{\ensuremath{\mathsf{\widehat{LD}}}}
+% \newcommand{\Inv}{\ensuremath{\mathsf{LD}}}
+\newcommand{\Inv}[1]{\ensuremath{#1^{\rtimes}}}
+% \newcommand{\Fix}{\ensuremath{\mathsf{\widehat{LD}}}}
+\newcommand{\Fix}[1]{\ensuremath{#1^{\ltimes}}}
 \newcommand{\sansClo}{\ensuremath{\operatorname{\mathsf{Clo}}}}
 \newcommand{\sansR}{\ensuremath{\mathsf{R}}} % ALL FINITARY RELATIONS
 \newcommand{\sansS}{\ensuremath{\mathsf{S}}}
