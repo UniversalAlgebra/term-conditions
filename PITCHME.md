@@ -14,9 +14,7 @@ Ralph Freese & Matt Valeriote
 
 - Can we efficiently decide whether a finite algebra $\mathbf{A}$ generates a variety with a difference term? <!-- .element: class="fragment" -->
 
-- We prove that the answer is "yes" in the idempotent case. <!-- .element: class="fragment" -->
-
-- Time permitting, we describe an algorithm for constructing difference terms. <!-- .element: class="fragment" -->
+- We will outline the proof that the answer is "yes" in the idempotent case. <!-- .element: class="fragment" -->
 
 ---
 
@@ -57,9 +55,9 @@ $\mathbb{V}(\mathbf{A})$ has nonempty type 2 tails?
 
 ## Strategy
 
-  + (Kearnes) Having a difference term is characterized by omitting 1's and tails of type 2. <!-- .element: class="fragment" -->
+  + (Kearnes) Having a diff term is characterized by omitting 1's and type-2 tails. <!-- .element: class="fragment" -->
   + (Valeriote) Omitting 1's is poly-time decidable by the subtype theorem. <!-- .element: class="fragment" -->
-  + If there is a tail of type 2 in $\mathbb{V}(\mathbf{A})$, then there is a tail of type 2 "near the bottom" of $\mathbb{V}(\mathbf A)$. <!-- .element: class="fragment" -->
+  + If there is a type-2 in $\mathbb{V}(\mathbf{A})$, then there is a type-2 tail "near the bottom" of $\mathbb{V}(\mathbf A)$. <!-- .element: class="fragment" -->
 ---
 
 <div class="fragment" align="left">
