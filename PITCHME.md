@@ -1,4 +1,4 @@
-# A poly-time test for difference terms in idempotent varieties
+## A poly-time test for difference terms in idempotent varieties
 
 William DeMeo [&lt;williamdemeo@gmail.com&gt;](mailto:williamdemeo@gmail.com)  
 
@@ -6,7 +6,7 @@ joint work with
 
 Ralph Freese & Matt Valeriote  
 
-BLAST 2017 @ Vanderbilt
+<a style="color:#e7ad52">BLAST 2017 @ Vanderbilt<a style="color:#e7ad52">
 
 ---
 
@@ -31,12 +31,6 @@ d(a,b,b) \mathrel{[\theta, \theta]} a$$
 
 where $\theta$ is any congruence containing $(a,b)$ and $[\cdot, \cdot]$ is the <a style="color:#e7ad52"><i>commutator</i></a>.
 
-Note: 
-When the relations above hold we call $d^{\mathbf{A}}$ a **difference term operation** for $\mathbf{A}$.
-
-Note: 
-We make colors <span class="fragment highlight-red">like this</span>
-
 ---
 
 ## Problem Statement
@@ -45,13 +39,14 @@ Is there a poly-time algorithm that takes a finite
 idempotent algebra $\mathbf{A}$ and decides 
 whether $\mathbb{V}(\mathbf{A})$ has a difference term?
 
-**Theorem** (Kearnes *J Algebra* 1995)   
+<div class="fragment" align="left"><a style="color:#e7ad52">**Theorem**</a> (Kearnes *J Algebra* 1995)   
 $\mathbb{V}(\mathbf{A})$ has a diff term
 $\Leftrightarrow$  $\mathbb{V}(\mathbf{A})$ omits 1's and type 2 tails
+</div>
 
 Omitting 1's is poly-time decidable by Valeriote's subtype theorem.
 
-**Reduced Problem**   
+<a style="color:#e7ad52">**Reduced Problem**</a> 
 Is there a poly-time algorithm that takes a finite 
 idempotent algebra $\mathbf{A}$ and decides whether 
 $\mathbb{V}(\mathbf{A})$ has nonempty type 2 tails?
