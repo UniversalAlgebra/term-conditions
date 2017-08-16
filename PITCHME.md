@@ -22,9 +22,7 @@ Ralph Freese & Matt Valeriote
 
 ## Definitions
 
-A <a style="color:#e7ad52"><i>difference term</i></a> for $\mathcal{V}$ is a term $d$ satisfying,
-  
-for all $\mathbf A \in \mathcal V$ and $a, b \in A$, 
+A <a style="color:#e7ad52"><i>difference term</i></a> for $\mathcal{V}$ is a term $d$ satisfying, $\forall \; \mathbf A \in \mathcal V$, $\forall a, b \in A$, 
 
 $$d(a,a,b) = b \quad \text{ and } \quad
 d(a,b,b) \mathrel{[\theta, \theta]} a$$
