@@ -31,10 +31,11 @@ d(a,b,b) \mathrel{[\theta, \theta]} a$$
 
 where $\theta$ is any congruence containing $(a,b)$ and $[\cdot, \cdot]$ is the <a style="color:#e7ad52"><i>commutator</i></a>.
 
-[Note]: # (When the relations above hold we call $d^{\mathbf{A}}$
-a **difference term operation** for $\mathbf{A}$.)
+Note: 
+When the relations above hold we call $d^{\mathbf{A}}$ a **difference term operation** for $\mathbf{A}$.
 
-[Note]: # (We make colors <span class="fragment highlight-red">like this</span>)
+Note: 
+We make colors <span class="fragment highlight-red">like this</span>
 
 ---
 
@@ -126,10 +127,7 @@ Consequently,
 
 $\rho_{[n]} = \bigwedge_{j\in [n]}\rho_j = 0_{B}$
 
-By minimality of $n$ we know that the intersection of any  proper subset of the
-$\rho_i$, $1 \leq i \leq n$ is strictly above $0_B$.  Thus,
-$0_B < \rho_\sigma < 1_B$ for all 
-$\emptyset \subset \sigma\subset [n]$
+By minimality of $n$ we know that the intersection of any  proper subset of the $\rho_i$, $1 \leq i \leq n$ is strictly above $0_B$.  Thus, $0_B < \rho_\sigma < 1_B$ for all $\emptyset \subset \sigma\subset [n]$
 (by $\subset$ we mean \emph{proper} subset).
 
 ---
