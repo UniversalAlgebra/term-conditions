@@ -1,111 +1,90 @@
+# A poly-time test for difference terms in idempotent varieties
+
+William DeMeo [&lt;williamdemeo@gmail.com&gt;](mailto:williamdemeo@gmail.com)  
+
+joint work with  
+
+Ralph Freese & Matt Valeriote  
+
+BLAST 2017 @ Vanderbilt
+
 ---
 
 ## The Problem
 
 - Can we efficiently decide whether a finite algebra $\mathbf{A}$ generates a variety with a difference term? <!-- .element: class="fragment" -->
 
-- We give a positive answer in the idempotent case and describe an algorithm for constructing difference terms. <!-- .element: class="fragment" -->
+- We will outline the proof that the answer is "yes." <!-- .element: class="fragment" -->
+
+- Time permitting, we will describe an algorithm for constructing difference terms. <!-- .element: class="fragment" -->
 
 ---
 
 ## Definitions
 
-<div class="fragment" align="left">A  <a style="color:#e7ad52">*difference term*</a> for $\mathcal V$ is a term $d$ satisfying,
-  <p>
-  for all $\mathbf A = \langle A, \dots \rangle \in \mathcal V$ and all $a, b \in A$, 
-  </p>
-  $$d(a,a,b) = b \quad \text{ and } \quad
-  d(a,b,b) \mathrel{[\theta, \theta]} a$$
-  </div>
-  <br>
-  <div class="fragment" align="left">where $\theta$ is any congruence containing $(a,b)$ and $[\cdot, \cdot]$ is the <a style="color:#e7ad52">*commutator*</a>.</div>
+A <a style="color:#e7ad52"><i>difference term</i></a> for $\mathcal{V}$ is a term $d$ satisfying,
+  
+for all $\mathbf A = \langle A, \dots \rangle \in \mathcal V$ and all $a, b \in A$, 
 
+$$d(a,a,b) = b \quad \text{ and } \quad
+d(a,b,b) \mathrel{[\theta, \theta]} a$$
 
-<aside class="notes"> When the relations above hold we call $d^{\mathbf{A}}$
-a **difference term operation** for $\mathbf{A}$.
-</aside>
+where $\theta$ is any congruence containing $(a,b)$ and $[\cdot, \cdot]$ is the <a style="color:#e7ad52"><i>commutator</i></a>.
 
-<aside class="notes"> We make colors <span class="fragment highlight-red">like this</span></aside>
+[//]: # (When the relations above hold we call $d^{\mathbf{A}}$
+a **difference term operation** for $\mathbf{A}$.)
 
-+++
+[//]: # (We make colors <span class="fragment highlight-red">like this</span>)
+
+---
 
 ## Problem Statement
-<small>
-<div class="fragment" align="left">
-  Is there a poly-time algorithm that takes a finite
-  idempotent algebra $\mathbf{A}$ and decides 
-  whether $\mathbb{V}(\mathbf{A})$ has a difference term?
-</div>
 
-<p>
+Is there a poly-time algorithm that takes a finite
+idempotent algebra $\mathbf{A}$ and decides 
+whether $\mathbb{V}(\mathbf{A})$ has a difference term?
 
-<div class="fragment" align="left">
-  **Theorem** (Kearnes *J Algebra* 1995) 
-  <br>
-  <a style="color:#e7ad52">$\mathbb{V}(\mathbf{A})$ has a diff term</a>
-  $\Leftrightarrow$ <a style="color:#e7ad52"> $\mathbb{V}(\mathbf{A})$ omits 1's and type 2 tails</a>
-</div>
+**Theorem** (Kearnes *J Algebra* 1995)   
+$\mathbb{V}(\mathbf{A})$ has a diff term
+$\Leftrightarrow$  $\mathbb{V}(\mathbf{A})$ omits 1's and type 2 tails
 
-<p>
+Omitting 1's is poly-time decidable by Valeriote's subtype theorem.
 
-<div class="fragment" align="left">
-  Omitting 1's is poly-time decidable by Valeriote's subtype theorem.
-</div>
-
-<p>
-
-<div class="fragment" align="left">
-  **Reduced Problem** <br>
-  Is there a poly-time algorithm that takes a finite 
-  idempotent algebra $\mathbf{A}$ and decides whether 
-  $\mathbb{V}(\mathbf{A})$ has type 2 tails?
-</div>
-</small>
+**Reduced Problem**   
+Is there a poly-time algorithm that takes a finite 
+idempotent algebra $\mathbf{A}$ and decides whether 
+$\mathbb{V}(\mathbf{A})$ has nonempty type 2 tails?
 
 ---
 
 ## A Related Problem
 
-<div class="fragment" align="left">
-**Theorem** (Freese, Valeriote *IJAC* 2009)<br>
+**Theorem** (Freese, Valeriote *IJAC* 2009)  
   There is a poly-time algorithm that takes a finite
   idempotent algebra $\mathbf{A}$ and decides whether $\mathbb{V}(\mathbf{A})$ is 
   <a style="color:#e7ad52">*congruence-modular*</a>.
-</div>
 
-<div class="fragment" align="left">
-  **Proof Idea**
-  <small>
-  <ul> 
-    <li>Congruence-modularity is characterized by omitting 1's, 5's, and tails.</li>
-    <li> Omitting 1's and 5's is poly-time decidable by the subtype theorem.</li>
-    <li> If there is a tail in $\mathbb{V}(\mathbf{A})$, then there is a tail
-         "near the bottom".</li>
-  </ul>
-  </small>
-</div>
+**Proof Idea**
+  + Congruence-modularity is characterized by omitting 1's, 5's, and tails. <!-- .element: class="fragment" -->
+  + Omitting 1's and 5's is poly-time decidable by the subtype theorem. <!-- .element: class="fragment" -->
+  + If there is a tail in $\mathbb{V}(\mathbf{A})$, then there is a tail
+         "near the bottom". <!-- .element: class="fragment" -->
 
-+++
+---
 
 ## What is "near the bottom"?
 
-<div class="fragment" align="left">
 **Theorem.** Let $\mathbf{A}$ be a finite idempotent algebra and $T$ an order ideal in the
   lattice of types. Then $\mathbb{V}(\mathbf{A})$ omits $T$ iff $\mathsf{S}(\mathbf{A})$
   does.
-  <p>
+  
   For example, $\mathbb{V}(\mathbf{A})$ omits $\{1, 5\}$ iff $\mathsf{S}(\mathbf{A})$ 
   does.
-  </p> 
-</div>
 
-<div class="fragment" align="left">
-Freese and Valeriote prove
-  <p>
+*Freese and Valeriote prove:*  
   If $\mathbb{V}(\mathbf{A})$ omits $\{1, 5\}$, 
   then nontrivial tails occur in $\mathbb{V}(\mathbf{A})$ only if they occur
-  in 3-generated subalgebras of $\mathbf{A}^2$.</p>
-</div>
+  in 3-generated subalgebras of $\mathbf{A}^2$.
 
 ---
 
@@ -116,32 +95,32 @@ Freese and Valeriote prove
   with this property. <!-- .element: class="fragment" -->
 - **Conclusion:** to check for type 2 tails in $\mathbb{V}(\mathbf A)$, it
   suffices to look for them in 3-generated subalgebras of 
-  $$\mathbf A \times \mathbf A$$.<!-- .element: class="fragment" -->
+  $\mathbf A \times \mathbf A$. <!-- .element: class="fragment" -->
 
-+++
+---
 
 ## Proof Strategy
 
 - WLOG $\mathbf{B}$ is a subdirect
-  product of a finite subcollection of $\mathcal S$.  |
+  product of a finite subcollection of $\mathcal S$.  <!-- .element: class="fragment" -->
 - Choose $n$ minimal such that for some $\mathbf{A}_0$,
   $\dots$, $\mathbf{A}_{n-1}$ in $\mathcal S$, there exists
   $\mathbf{B} \leq_{sd} \prod_{[n]} \mathbf{A}_i$
-  with a prime quotient of type 2 whose minimal sets have tails. |
-- Assuming $n > 1$, we prove that $n = 2$.
+  with a prime quotient of type 2 whose minimal sets have tails. <!-- .element: class="fragment" -->
+- Assuming $n > 1$, we prove that $n = 2$. <!-- .element: class="fragment" -->
 
-+++
+---
 
 - For this $n$, select the $\mathbf{A}_i$ and $\mathbf{B}$ so that $|B|$ 
-  is as small as possible. |
+  is as small as possible. <!-- .element: class="fragment" -->
 - Let $\alpha \prec \beta$ be a prime quotient of $\mathbf{B}$ 
   of type~2 such that its minimal sets have
-  non-empty tails, and choose $\beta$ minimal with this property. |
+  non-empty tails, and choose $\beta$ minimal with this property. <!-- .element: class="fragment" -->
 - By HM, this implies $\beta$ is join 
   irreducible and $\alpha$ is its unique subcover.
-  Let $U$ be an $(\alpha, \beta)$-minimal set. 
+  Let $U$ be an $(\alpha, \beta)$-minimal set. <!-- .element: class="fragment" -->
 
-+++
+---
 
 ## Lemma 3.1
 
@@ -170,7 +149,7 @@ $0_B < \rho_\sigma < 1_B$ for all
 $\emptyset \subset \sigma\subset [n]$
 (by $\subset$ we mean \emph{proper} subset).
 
-+++
+---
 
 ## Lemma 3.2
   For every proper nonempty subset $\sigma \subset [n]$,
@@ -187,7 +166,7 @@ For all $\sigma \subset [n]$, all $v\in B$, and all $c\in body(U)$, we have
 
 2. There exists $i$ such that $\alpha \vee \rho_i < 1_B$.
 
-+++
+---
 
 ## Theorem 3.4
 
