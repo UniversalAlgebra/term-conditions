@@ -31,10 +31,10 @@ d(a,b,b) \mathrel{[\theta, \theta]} a$$
 
 where $\theta$ is any congruence containing $(a,b)$ and $[\cdot, \cdot]$ is the <a style="color:#e7ad52"><i>commutator</i></a>.
 
-[//]: Note: (When the relations above hold we call $d^{\mathbf{A}}$
+[Note]: # (When the relations above hold we call $d^{\mathbf{A}}$
 a **difference term operation** for $\mathbf{A}$.)
 
-[//]: Note: (We make colors <span class="fragment highlight-red">like this</span>)
+[Note]: # (We make colors <span class="fragment highlight-red">like this</span>)
 
 ---
 
@@ -67,24 +67,18 @@ $\mathbb{V}(\mathbf{A})$ has nonempty type 2 tails?
 **Proof Idea**
   + Congruence-modularity is characterized by omitting 1's, 5's, and tails. <!-- .element: class="fragment" -->
   + Omitting 1's and 5's is poly-time decidable by the subtype theorem. <!-- .element: class="fragment" -->
-  + If there is a tail in $\mathbb{V}(\mathbf{A})$, then there is a tail
-         "near the bottom". <!-- .element: class="fragment" -->
+  + If there is a tail in $\mathbb{V}(\mathbf{A})$, then there is a tail "near the bottom". <!-- .element: class="fragment" -->
 
 ---
 
 ## What is "near the bottom"?
 
-**Theorem.** Let $\mathbf{A}$ be a finite idempotent algebra and $T$ an order ideal in the
-  lattice of types. Then $\mathbb{V}(\mathbf{A})$ omits $T$ iff $\mathsf{S}(\mathbf{A})$
-  does.
+**Theorem.** Let $\mathbf{A}$ be a finite idempotent algebra and $T$ an order ideal in the lattice of types. Then $\mathbb{V}(\mathbf{A})$ omits $T$ iff $\mathsf{S}(\mathbf{A})$ does.
   
-  For example, $\mathbb{V}(\mathbf{A})$ omits $\{1, 5\}$ iff $\mathsf{S}(\mathbf{A})$ 
-  does.
+For example, $\mathbb{V}(\mathbf{A})$ omits $\{1, 5\}$ iff $\mathsf{S}(\mathbf{A})$ does.
 
 *Freese and Valeriote prove:*  
-  If $\mathbb{V}(\mathbf{A})$ omits $\{1, 5\}$, 
-  then nontrivial tails occur in $\mathbb{V}(\mathbf{A})$ only if they occur
-  in 3-generated subalgebras of $\mathbf{A}^2$.
+If $\mathbb{V}(\mathbf{A})$ omits $\{1, 5\}$, then nontrivial tails occur in $\mathbb{V}(\mathbf{A})$ only if they occur in 3-generated subalgebras of $\mathbf{A}^2$.
 
 ---
 
@@ -93,32 +87,21 @@ $\mathbb{V}(\mathbf{A})$ has nonempty type 2 tails?
 - Suppose $\mathbb{V}(\mathbf A)$ omits type 1 and contains a finite algebra $\mathbf{B}$ with a type 2 prime quotient $\alpha \prec \beta$ such that the $\langle \alpha, \beta \rangle$-minimal sets have non-empty tails. <!-- .element: class="fragment" -->
 - Then there exists a 3-generated subalgebra of $\mathbf A \times \mathbf A$
   with this property. <!-- .element: class="fragment" -->
-- **Conclusion:** to check for type 2 tails in $\mathbb{V}(\mathbf A)$, it
-  suffices to look for them in 3-generated subalgebras of 
-  $\mathbf A \times \mathbf A$. <!-- .element: class="fragment" -->
+- **Conclusion:** to check for type 2 tails in $\mathbb{V}(\mathbf A)$, it suffices to look for them in 3-generated subalgebras of $\mathbf A \times \mathbf A$. <!-- .element: class="fragment" -->
 
 ---
 
 ## Proof Strategy
 
-- WLOG $\mathbf{B}$ is a subdirect
-  product of a finite subcollection of $\mathcal S$.  <!-- .element: class="fragment" -->
-- Choose $n$ minimal such that for some $\mathbf{A}_0$,
-  $\dots$, $\mathbf{A}_{n-1}$ in $\mathcal S$, there exists
-  $\mathbf{B} \leq_{sd} \prod_{[n]} \mathbf{A}_i$
-  with a prime quotient of type 2 whose minimal sets have tails. <!-- .element: class="fragment" -->
+- WLOG $\mathbf{B}$ is a subdirect product of a finite subcollection of $\mathcal S$. <!-- .element: class="fragment" -->
+- Choose $n$ minimal such that for some $\mathbf{A}_0$, $\dots$, $\mathbf{A}_{n-1}$ in $\mathcal S$, there exists $\mathbf{B} \leq_{sd} \prod_{[n]} \mathbf{A}_i$ with a prime quotient of type 2 whose minimal sets have tails. <!-- .element: class="fragment" -->
 - Assuming $n > 1$, we prove that $n = 2$. <!-- .element: class="fragment" -->
 
 ---
 
-- For this $n$, select the $\mathbf{A}_i$ and $\mathbf{B}$ so that $|B|$ 
-  is as small as possible. <!-- .element: class="fragment" -->
-- Let $\alpha \prec \beta$ be a prime quotient of $\mathbf{B}$ 
-  of type~2 such that its minimal sets have
-  non-empty tails, and choose $\beta$ minimal with this property. <!-- .element: class="fragment" -->
-- By HM, this implies $\beta$ is join 
-  irreducible and $\alpha$ is its unique subcover.
-  Let $U$ be an $(\alpha, \beta)$-minimal set. <!-- .element: class="fragment" -->
+- For this $n$, select the $\mathbf{A}_i$ and $\mathbf{B}$ so that $|B|$ is as small as possible. <!-- .element: class="fragment" -->
+- Let $\alpha \prec \beta$ be a prime quotient of $\mathbf{B}$ of type~2 such that its minimal sets have non-empty tails, and choose $\beta$ minimal with this property. <!-- .element: class="fragment" -->
+- By HM, this implies $\beta$ is join irreducible and $\alpha$ is its unique subcover. Let $U$ be an $(\alpha, \beta)$-minimal set. <!-- .element: class="fragment" -->
 
 ---
 
