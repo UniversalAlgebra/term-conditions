@@ -31,10 +31,10 @@ d(a,b,b) \mathrel{[\theta, \theta]} a$$
 
 where $\theta$ is any congruence containing $(a,b)$ and $[\cdot, \cdot]$ is the <a style="color:#e7ad52"><i>commutator</i></a>.
 
-[//]: # (When the relations above hold we call $d^{\mathbf{A}}$
+[//]: Note: (When the relations above hold we call $d^{\mathbf{A}}$
 a **difference term operation** for $\mathbf{A}$.)
 
-[//]: # (We make colors <span class="fragment highlight-red">like this</span>)
+[//]: Note: (We make colors <span class="fragment highlight-red">like this</span>)
 
 ---
 
