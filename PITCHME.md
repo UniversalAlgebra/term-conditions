@@ -39,19 +39,19 @@ whether $\mathbb{V}(\mathbf{A})$ has a difference term?
 
 <div class="fragment" align="left"><a style="color:#e7ad52">**Theorem**</a> (Kearnes *J Algebra* 1995)   
 $\mathbb{V}(\mathbf{A})$ has a diff term
-$\Leftrightarrow$  $\mathbb{V}(\mathbf{A})$ omits 1's and type 2 tails
+$\Leftrightarrow$  $\mathbb{V}(\mathbf{A})$ omits 1's and type-2 tails
 </div>
 
-<div class="fragment" align="left">
+<p class="fragment" align="left">
 Omitting 1's is poly-time decidable by Valeriote's subtype theorem.
-</div>
+</p>
 
-<div class="fragment" align="left">
+<p class="fragment" align="left">
 <a style="color:#e7ad52">**Reduced Problem**</a>   
 Is there a poly-time algorithm that takes a finite 
 idempotent algebra $\mathbf{A}$ and decides whether 
 $\mathbb{V}(\mathbf{A})$ has nonempty type 2 tails?
-</div>
+</p>
 
 ---
 
