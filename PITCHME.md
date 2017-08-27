@@ -1,8 +1,10 @@
 ## A poly-time test for difference terms in idempotent varieties
 
-William DeMeo [&lt;williamdemeo@gmail.com&gt;](mailto:williamdemeo@gmail.com)  
+[William DeMeo &lt;williamdemeo@gmail.com&gt;](mailto:williamdemeo@gmail.com)  
 
-joint work with Ralph Freese & Matt Valeriote  
+joint work with 
+[Ralph Freese](mailto:ralph@math.hawaii.edu)
+& [Matt Valeriote](mailto:matt@math.mcmaster.ca)
 
 <a style="color:#e7ad52">BLAST 2017 @ Vanderbilt<a style="color:#e7ad52">
 
@@ -10,20 +12,22 @@ joint work with Ralph Freese & Matt Valeriote
 
 ## The Problem
 
-- Can we efficiently decide whether a finite algebra $\mathbf{A}$ generates a variety with a difference term? <!-- .element: class="fragment" -->
+<p class="fragment" align="left">
+Can we efficiently decide whether a finite algebra $\mathbf{A}$ generates a variety with a difference term? </p>
 
-- We will outline the proof that the answer is "yes" in the idempotent case. <!-- .element: class="fragment" -->
+<p class="fragment" align="left">
+We will outline the proof that the answer is "yes" in the idempotent case. </p>
 
 ---
 
-## Definitions
+## Definition
 
 A <a style="color:#e7ad52"><i>difference term</i></a> for $\mathcal{V}$ is a term $d$ satisfying, $\forall \; \mathbf A \in \mathcal V$ and $\forall a, b \in A$, 
 
 $$d(a,a,b) = b \quad \text{ and } \quad
 d(a,b,b) \mathrel{[\theta, \theta]} a$$
 
-where $\theta$ is any congruence containing $(a,b)$ and $[\cdot, \cdot]$ is the <a style="color:#e7ad52"><i>commutator</i></a>.
+where $\theta$ is any congruence containing $(a,b)$ and $[\cdot, \cdot]$ is the *commutator*.
 
 ---
 
@@ -33,147 +37,198 @@ Is there a poly-time algorithm that takes a finite
 idempotent algebra $\mathbf{A}$ and decides 
 whether $\mathbb{V}(\mathbf{A})$ has a difference term?
 
-<div class="fragment" align="left"><a style="color:#e7ad52">**Theorem**</a> (Kearnes *J Algebra* 1995)   
-$\mathbb{V}(\mathbf{A})$ has a diff term
-$\Leftrightarrow$  $\mathbb{V}(\mathbf{A})$ omits 1's and type-2 tails
+<div class="fragment" align="left"><a style="color:#e7ad52">**Theorem**</a> (Kearnes, *J Algebra* 1995)   
+$\mathbb{V}(\mathbf{A})$ has a difference term
+$\; \Longleftrightarrow \;$  $\mathbb{V}(\mathbf{A})$ omits type 1 and type-2 tails
 </div>
 
 <p class="fragment" align="left">
-Omitting 1's is poly-time decidable by Valeriote's subtype theorem.
+Omitting 1 is poly-time decidable by Valeriote's subtype theorem.
 </p>
 
 <p class="fragment" align="left">
 <a style="color:#e7ad52">**Reduced Problem**</a>   
 Is there a poly-time algorithm that takes a finite 
 idempotent algebra $\mathbf{A}$ and decides whether 
-$\mathbb{V}(\mathbf{A})$ has nonempty type 2 tails?
+$\mathbb{V}(\mathbf{A})$ has nonempty type-2 tails?
 </p>
 
 ---
 
 ## Strategy
 
-  + (Kearnes) Having a diff term is characterized by omitting 1's and type-2 tails. <!-- .element: class="fragment" -->
-  + (Valeriote) Omitting 1's is poly-time decidable by the subtype theorem. <!-- .element: class="fragment" -->
-  + If there is a type-2 in $\mathbb{V}(\mathbf{A})$, then there is a type-2 tail "near the bottom" of $\mathbb{V}(\mathbf A)$. <!-- .element: class="fragment" -->
+<p class="fragment" align="left">
+<a style="color:#e7ad52">*Kearnes:*</a>
+Having a diff term is characterized by omitting 1's and type-2 tails.
+</p>
+
+<p class="fragment" align="left">
+<a style="color:#e7ad52">*Valeriote:*</a>
+Omitting 1's is poly-time decidable by the subtype theorem.
+</p>
+
+<p class="fragment" align="left">
+<a style="color:#e7ad52">*To show:*</a> 
+Type-2 tails, when they occur in $\mathbb{V}(\mathbf{A})$, 
+are easy to find.
+</p>
+
+---
+
+---?image=http://www.propinsanity.com/wp-content/uploads/2014/09/image.jpg
+
 ---
 
 ## Main Theorem
 
-<p class="fragment" align="left">
-Suppose $\mathbb{V}(\mathbf A)$ omits type 1 and contains a finite algebra $\mathbf{B}$ with a type 2 prime quotient $\alpha \prec \beta$ such that the $\langle \alpha, \beta \rangle$-minimal sets have non-empty tails.
-</p>
+Let $\mathbf A$ be a finite idempotent algebra.
+
+Suppose $\mathbb{V}(\mathbf A)$ omits type 1 and contains a finite algebra $\mathbf{B}$ with a type-2 prime quotient $\alpha \prec \beta$ such that the $\langle \alpha, \beta \rangle$-minimal sets have nonempty tails.
 
 <p class="fragment" align="left">
 Then there exists a 3-generated subalgebra of $\mathbf A \times \mathbf A$
 with this property. </p>
   
 <p class="fragment" align="left">
-<a style="color:#e7ad52">**Conclusion:**</a> 
-to check for type-2 tails in $\mathbb{V}(\mathbf A)$, it suffices to look in 3-generated subalgebras of $\mathbf A \times \mathbf A$.
+<a style="color:#e7ad52">**Conclusion:**</a>
+to check for type-2 tails in $\mathbb{V}(\mathbf A)$ it suffices to look in 3-generated subalgebras of $\mathbf A \times \mathbf A$.
 </p>
 
 ---
 
-<div class="fragment" align="left">
-<a style="color:#e7ad52">**Lemma 1**</a>
-If $0$, $1 \in U$, if $(0,1) \in \beta - \alpha$, if
-$t \in Tail(U)$, then $\beta = Cg(0,1)$ and $\mathbf B$ is generated by $\{0, 1, t\}$.
-</div>
+## Notation
 
+$[n] = \{ 0, 1, \dots, n-1 \}, \qquad
+\rho_i = \operatorname{ker} (\mathbf B \twoheadrightarrow \mathbf A_i), \qquad \rho_s = \bigwedge_s \rho_j$
+
+<p class="fragment" align="left">
+Let $S$ be a finite set of finite idempotent algebras that is closed 
+under taking subalgebras. 
+</p>
+
+<p class="fragment" align="left">
+Assume $\mathbb{V}(S)$ omits type 1.
+</p>
+
+<p class="fragment" align="left">
+Suppose there is a finite $\mathbf{B} \in \mathbb{V}(S)$ with type-2
+tails.
+</p>
 
 ---
 
-For $i \leq n$, let $\rho_i = ker (\mathbf B \twoheadrightarrow \mathbf A_i)$, so $\mathbf B \cong \mathbf{A}_i/\rho_i$.
+WLOG Assume $\mathbf B$ is a subdirect
+product of a finite number of members of $S$. 
 
-For a subset $\sigma \subseteq \underline{n}$, define
-\[
-\rho_\sigma := \bigwedge_{j\in \sigma} \rho_j,
-\]
-so, $\rho_{\underline{n}} = \bigwedge_{j\in \underline{n}}\rho_j = 0_{B}$.
+<p class="fragment" align="left">
+Choose $n$ minimal such that for
+some $\mathbf{A}_1$, $\mathbf{A}_2$, $\dots$, $\mathbf{A}_n$ in $S$,   
 
+$$\mathbf{B} \leq_s \prod \mathbf{A}_i$$
+</p>
 
-<div class="fragment" align="left">
+<p class="fragment" align="left">
+Under the assumption that $n > 1$ we will prove $n = 2$.
+</p>
+
+---
+
+### Minimality Assumptions
+
+For this $n$, select the $\mathbf{A}_i$ and $\mathbf{B}$ so that $|B|$ is as small as possible.
+
+Let $\alpha \prec \beta$ be a type-2 prime quotient of $\mathbf B$ 
+whose minimal sets have nonempty tails, and choose $\beta$ minimal with respect to this property.
+
+<p class="fragment" align="left">
+This implies $\beta$ is join 
+irreducible and $\alpha$ is its unique subcover (HM Lemma 6.2).
+</p>
+
+---
+
+### Fourfold Path to a Proof
+
+<a style="color:#e7ad52">**Lemma 1**</a>  
+Suppose $U$ is an $\langle \alpha, \beta \rangle$-minimal set and $0, 1 \in U$ and $(0,1) \in \beta - \alpha$ and $t \in Tail(U)$
+
+Then $\beta = \operatorname{Cg}(0,1)$ and $\mathbf B$ is generated by $\{0, 1, t\}$.
+
+<p class="fragment" align="left">
 <a style="color:#e7ad52">**Lemma 2**</a>  
-For every $\emptyset \subset \sigma \subset \undreline{n}$,
-  either $\beta \leq \rho_\sigma$ or $\alpha \join \rho_\sigma = 1_B$.
-</div>
+For every $s \subset [n]$,
+  either $\beta \leq \rho_s$ or $\alpha \vee \rho_s = 1_B$.
+</p>
 
-
----
-
-<div class="fragment" align="left">
+<p class="fragment" align="left">
 <a style="color:#e7ad52">**Lemma 3**</a>  
-  For every proper nonempty subset $\sigma$ of $\nn$,
-  for all $v\in B$, and for all $b\in \body(U)$, we have
-  $(v,b) \in \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta$.
-</div>
+$\forall \; s \subset [n], \quad
+\forall \; v\in B, \quad \forall \; b\in Body(U), \qquad (v,b) \in \beta \circ \rho_s \cap \rho_s \circ \beta$.
+</p>
 
----
-
-<div class="fragment" align="left">
+<p class="fragment" align="left">
 <a style="color:#e7ad52">**Lemma 4**</a>  
-  1. There exists $i$ such that $\alpha \join \rho_i = 1_B$
-  2. There exists $i$ such that $\alpha \join \rho_i < 1_B$.
-</div>
+There exist $i$ and $j$ such that $\alpha \vee \rho_i = 1_B$ and $\alpha \vee \rho_j < 1_B$.
+</p>
+
 
 ---
 
+## Theorem
 
-For $i \leq n$, let $\rho_i$ 
-denote the kernel of the projection of $\mathbf{B}$ onto $\mathbf{A}_i$,
-so $\mathbf{B} \cong \mathbf{A}_i/\rho_i$.
-For a subset $\sigma \subseteq [n]$, define
+Let $\mathcal V$ be the variety generated by a finite set $\mathcal S$ of finite idempotent algebras that is closed under taking subalgebras. 
 
-$\rho_\sigma := \bigwedge_{j\in \sigma} \rho_j.$
+<p class="fragment" align="left">
+Suppose $\mathcal V$ omits 1 and some finite member of $\mathcal V$ has a prime quotient of type 2 whose minimal sets have non-empty tails.
+</p>
 
-Consequently,
-
-$\rho_{[n]} = \bigwedge_{j\in [n]}\rho_j = 0_{B}$
-
-By minimality of $n$ we know that the intersection of any  proper subset of the $\rho_i$, $1 \leq i \leq n$ is strictly above $0_B$.  Thus, $0_B < \rho_\sigma < 1_B$ for all $\emptyset \subset \sigma\subset [n]$
-(by $\subset$ we mean \emph{proper} subset).
+<p class="fragment" align="left">
+Then there is some 3-generated algebra with this property that belongs to $\mathcal S$ or is a subdirect product of two algebras from $\mathcal S$. 
+</p>
 
 ---
 
-- For this $n$, select the $\mathbf{A}_i$ and $\mathbf{B}$ so that $|B|$ is as small as possible. <!-- .element: class="fragment" -->
-- Let $\alpha \prec \beta$ be a prime quotient of $\mathbf{B}$ of type~2 such that its minimal sets have non-empty tails, and choose $\beta$ minimal with this property. <!-- .element: class="fragment" -->
-- By HM, this implies $\beta$ is join irreducible and $\alpha$ is its unique subcover. Let $U$ be an $(\alpha, \beta)$-minimal set. <!-- .element: class="fragment" -->
+## Proof
+
+<p class="fragment" align="left">
+By Lemma 1, $\mathbf B$ is 3-generated. 
+</p>
+
+<p class="fragment" align="left">
+If $n > 1$ then Lemmas 2 and 4 imply $\exists$ $i, j$
+such that $\beta \leq \rho_i$ and $\alpha \vee \rho_j = 1_B$. 
+</p>
+
+<p class="fragment" align="left">
+If $n > 2$ then Lemma 2 applies to $\rho = \rho_i
+\wedge \rho_j$, so either   
+(1) $\beta \leq \rho$ or     
+(2) $\alpha \vee \rho = 1_B$.
+</p>
+
+<p class="fragment" align="left">
+(1) impossible, since $\beta \not\le \rho_j$   
+(2) impossible, since both $\alpha$ and $\rho$ are below $\rho_i$.    
+
+So, $n\leq 2$ and the theorem is proved.
+</p>
 
 ---
 
-<div class="fragment" align="left">
-<a style="color:#e7ad52">Proof Strategy</a>
-</div>
+## Future Work
 
-- WLOG $\mathbf{B}$ is a subdirect product of a finite subcollection of $\mathcal S$. <!-- .element: class="fragment" -->
-- Choose $n$ minimal such that for some $\mathbf{A}_0$, $\dots$, $\mathbf{A}_{n-1}$ in $\mathcal S$, there exists $\mathbf{B} \leq_{sd} \prod_{[n]} \mathbf{A}_i$ with a prime quotient of type 2 whose minimal sets have tails. <!-- .element: class="fragment" -->
-- Assuming $n > 1$, we prove that $n = 2$. <!-- .element: class="fragment" -->
+### Questions
 
----
+<p class="fragment" align="left">
+Is there a poly-time algorithm for producing a difference term when such a term is known to exist?
+</p>
 
-## Lemma 3.2
-  For every proper nonempty subset $\sigma \subset [n]$,
-  either $\beta \leq \rho_\sigma$ or $\alpha \vee \rho_\sigma = 1_B$.
+### Conjectures
 
-## Near Permutability Lemma
-
-For all $\sigma \subset [n]$, all $v\in B$, and all $c\in body(U)$, we have
-\begin{equation*}(v,c) \in \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta.\end{equation*}
-
-## Lemma 3.3
-
-1. There exists $0 \leq i < n$ such that $\alpha \vee \rho_i = 1_B$
-
-2. There exists $i$ such that $\alpha \vee \rho_i < 1_B$.
+<p class="fragment" align="left">
+This new test for existence of a difference term will soon appear in the *Idempotent* menu of UACalc.
+</p>
 
 ---
 
-## Theorem 3.4
-
-Let $\mathcal V$ be the variety generated by some finite set $\mathcal S$ of finite,
-idempotent algebras that is closed under taking subalgebras. If $\mathcal V$
-omits type 1 and some finite member of $\mathcal V$ has a prime quotient 
-of type 2 whose minimal sets have non-empty tails, then there is some
-3-generated algebra $\mathbf{B}$ with this property that belongs to $\mathcal S$ or 
-is a subdirect product of two algebras from $\mathcal S$. 
+## Thank you!
