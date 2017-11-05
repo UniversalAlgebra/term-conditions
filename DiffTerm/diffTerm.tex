@@ -1556,11 +1556,11 @@ Let $i \in \{0,1\}$.
 By a \defin{local difference term operation for $(a,b,i)$} 
 we mean a ternary term operation $t$ satisfying the following conditions:
 \begin{align}
-\text{ if $i=0$, then } & a \comr{\thetaab} t(a,b,b); \label{eq:diff-triple}\\
-\text{ if $i=1$, then } & t(a,a,b) = b. \nonumber
+\text{ if $i=0$, then } & a \comr{\thetaab} t(a,b,b); \label{eq:diff-triple1}\\
+\text{ if $i=1$, then } & t(a,a,b) = b. \label{eq:diff-triple2}
 \end{align}
-If $t$ satisfies~(\ref{eq:diff-triple}) for all triples
-in some subset $S\subseteq A^2 \times \{0,1\}$, then we call $t$
+If $t$ satisfies conditions~(\ref{eq:diff-triple1}) and~(\ref{eq:diff-triple2})
+for all triples in some subset $S\subseteq A^2 \times \{0,1\}$, then we call $t$
 a \defin{local difference term operation for $S$}.
 Throughout the remainder of the paper, we will 
 write ``\ld term'' as shorthand for
@@ -1568,54 +1568,38 @@ write ``\ld term'' as shorthand for
 
 Often we will take $S$ to be a finite list of elements of
 $A \times \{0,1\}$, and $|S|$ will denote the length of 
-the list. The definition above of a difference term for 
-a set has an obvious analog for a list: if $t$ satisfies~(\ref{eq:diff-triple}) for all triples $(a,b,i)$ appearing in 
-the list $S$, %\in \bigl(A^2 \times \{0,1\}\bigr)^n$, 
-then $t$ is called a \defin{local difference term operation for $S$}.
+the list. The definition above of a \ldt for 
+a set has an obvious analog for a list.
 
-% For example,
-% if $S = ((a_0, b_0, \chi_0), \dots, (a_n, b_n, \chi_n))$, then
-% $|S| = n+1$.  
-
+\newcommand\dtrel{\ensuremath{\mathrel{\mathcal{D}}}}
+\newcommand\dtr{\ensuremath{\mathcal{D}}}
 A few more notational conventions will come in handy below.
-Given a set (or list) $S$ whose elements belong to $A^2\times \{0,1\}$,
-and a set (or list) $T$ whose elements belong to
-$\Clo_3(\alg{A})$ (the set of ternary term operations of $\alg A$),
-we denote by $\ltimes$ the relation from $T$ to $S$ defined 
-by $t \ltimes (a,b,i)$ iff the relations~(\ref{eq:diff-triple})
-are satisfied.
-%% \begin{align*}
-%%   t \ltimes (a,b,i) \; \text{ iff } \;
-%%      & \text{ the following:}\\
-%%      & \text{ if $i=0$, then } a \comr{\theta_{ab}} t(a,b,b), \text{ and } \\
-%%      & \text{ if $i=1$, then } \; t(a,a,b)  = b. 
-%% \end{align*}
-% \begin{align*}
-% (\star) \quad \begin{cases}
-% \quad a \comr{\thetaab} t(a,b,b), &    \text{ if $i=0$,}  \\ 
-% \quad t(a,a,b)  = b, & \text{ if $i=1$.}
-% \end{cases}
-% \end{align*}
-Occasionally, $(a,b,i)\rtimes t$ will serve as a convenient and equivalent alternative to $t\ltimes (a,b,i)$.
+We will use the symbol
+$\dtr \subseteq A^2\times \{0,1\} \times \Clo_3(\alg{A})$
+to denote the relation that connects $(a, b, i)\in A^2\times \{0,1\}$
+with terms in $\Clo_3(\alg{A})$ that are \ldt for
+$(a, b, i)$.  That is,
+\[
+((a,b,i), t) \in \dtr \text{ iff conditions~(\ref{eq:diff-triple1}) and~(\ref{eq:diff-triple2})
+  are satisfied.}\]
 
-As a binary relation, $\ltimes$ induces an obvious Galois connection
+The relation $\dtr$ induces an obvious Galois connection
 from subsets of $A^2\times \{0,1\}$ to subsets
-of $\Clo_3(\alg{A})$.  Specifically, we define
-%% $(\Fix, \Inv)$---namely,
+of $\Clo_3(\alg{A})$.  If we permit ourselves to overload notation
+for the moment, then we could take
 \begin{align*}
-^{\rtimes} &\colon \sP(A^2 \times \{0,1\}) \to \sP(\Clo_3(\alg{A})) \text{ and }\\
-^{\ltimes} &\colon \sP(\Clo_3(\alg{A})) \to \sP(A^2\times \{0,1\})
+\dtr &\colon \sP(A^2 \times \{0,1\}) \to \sP(\Clo_3(\alg{A})) \text{ and }\\
+\breve{\dtr} &\colon \sP(\Clo_3(\alg{A})) \to \sP(A^2\times \{0,1\})
 \end{align*}
-as follows:
-for $S \subseteq A^2 \times \{0,1\}$ and $T \subseteq \Clo_3(\alg{A})$,
+to denote the maps defined as follows:
 \begin{align*}
-  S^{\rtimes} &= \{t \in \Clo_3(\alg{A}) \mid t \ltimes s
-  \text{ for all } s \in S\}, \\
-  T^{\ltimes} &= \{s \in A^2 \times \{0,1\} \mid t \ltimes s
-  \text{ for all } t \in T\}.
+  \text{for }\;  & S \subseteq A^2 \times \{0,1\}\; \text{ and } \;T \subseteq \Clo_3(\alg{A}),
+  \text{ let }\\
+  \dtr (S) &= \{t \in \Clo_3(\alg{A}) \mid (s,t) \in \dtr \text{ for all } s \in S\}, \text{ and }\\
+  \breve{\dtr}(T) &= \{s \in A^2 \times \{0,1\} \mid (s,t) \in \dtr \text{ for all } t \in T\}.
 \end{align*}
-In other words, $S^\rtimes$ is the set of \ld terms
-for $S$, and $T^\ltimes$ is the set of triples for which every $t\in T$ 
+In other words, $\dtr(S)$ is the set of \ld terms
+for $S$, and $\breve{\dtr}(T)$ is the set of triples for which every $t\in T$ 
 is an \ld term.  
 
 Now, suppose that every pair
@@ -1646,7 +1630,7 @@ every subset of $\AsqBool$ of size $k \leq n$ has an \ld term. Let
 S := \{(a_0, b_0, \chi_0), (a_1, b_1, \chi_1), \dots, 
         (a_{n}, b_{n},\chi_{n})\} \subseteq \AsqBool,
 \]
-so that $|S| = n+1$.  We prove $S$ has an \ld term. That is, $S^{\rtimes} \neq \emptyset$.
+so $|S| = n+1$.  We prove $S$ has an \ld term (i.e., $\dtr(S)$ is nonempty).
 
 Since $|S| \geq 3$, % and $\chi_i \in \{0,1\}$ for all $i$, 
 there exist indices $i\neq j$ such that $\chi_i = \chi_j$. 
@@ -1655,7 +1639,7 @@ and define the set
 \[
 S' := S \mysetminus \{(a_n, b_n, \chi_n)\}.
 \]
-Since $|S'| < |S|$, there exists $p \in S'^{\rtimes}$.
+Since $|S'| < |S|$, there exists $p \in \dtr(S')$.
 We split the remainder of the proof into two cases.
 
 \medskip
@@ -1671,7 +1655,7 @@ Without loss of generality, assume
 If we define %% $T$ to be the set
 \[S_0 := \{(a_0, b_0, 1), (a_1, b_1, 1),
 \dots, (a_{k-1}, b_{k-1}, 1), (a_n, p(a_n, b_n, b_n), 0)\},\] 
-then $|S_0| < |S|$, so there exists $q \in S_0^{\rtimes}$.
+then $|S_0| < |S|$, so $S_0$ has a \ldt term, $q \in \dtr(S_0)$.
 We now show that 
 \[
 d(x,y,z) := q(x, p(x,y,y), p(x,y,z))
@@ -1753,7 +1737,7 @@ $ d(a_n,a_n,b_n) = q(p(a_n,a_n,b_n), p(a_n,a_n,b_n), b_n) =b_n$.
 % \end{equation*}
 The last equality holds since 
 % $q \in \Inv{S_1}\subseteq \Inv{p(a_n, a_n, b_n), b_n, 1)}$.
-$q \ltimes (p(a_n, a_n, b_n), b_n, 1)$.
+$q$ is \ldt for $(p(a_n, a_n, b_n), b_n, 1)$.
 
 If $1\leq i \leq k$, then $\chi_i =0$. For these indices we must prove
 that $a_i$ is congruent to $d(a_i,b_i,b_i)$ modulo $\com{\thetai}$.
@@ -1791,16 +1775,17 @@ as desired.
   \label{cor:loc-diff-term}
   Let $\alg A$ be a finite idempotent algebra and suppose that 
   every pair $(s, s') \in (\AsqBool)^2$ has a local difference term operation.
-  Then $\Inv {\bigl(\AsqBool\bigr)} \neq \emptyset$,
-  and so $\alg{A}$ has a difference term operation.
+  Then $\Inv {\AsqBool} \neq \emptyset$,
+  so $\alg{A}$ has a difference term operation.
 \end{corollary}
 \begin{proof}
   Letting $S := \AsqBool$ in Theorem~\ref{thm:local-diff-terms} establishes
-  the existence of a term operation $d \in \Inv{S}$. Thus, for all $a, b \in A$, $a \comr{\thetaab} d(a,b,b)$, since 
+  the existence of a term operation $d \in \Inv{S}$.
+  Thus, for all $a, b \in A$, we have that $a \comr{\thetaab} d(a,b,b)$, since 
   % $d \in \Inv{(a,b,0)}$, 
-  $d \ltimes (a,b,0)$, and $d(a,a,b) = b$, since 
+  $d$ is \ldt for $(a,b,0)$, and $d(a,a,b) = b$, since 
   % $d\in \Inv{(a,b,1)}$.
-  $d\ltimes (a,b,1)$.
+  $d$ is \ldt for $(a,b,1)$.
 \end{proof}
 % 
 % \begin{corollary}
@@ -1887,7 +1872,11 @@ Here is the practical consequence of Theorem~\ref{thm:local-diff-terms}.
   subalgebra generation is polynomial has been known for a long time (see~\cite{MR0455543}).
   The time complexity of congruence generation is also known to be polynomial
   (see~\cite{MR2470585}).  The only operation whose tractability might be
-  called into question is the commutator, but there is a straight-forward polynomial-time algorithm for computing it (see, e.g.,~\cite{2017arXiv170302764D}).
+  called into question is the commutator, but, as we saw in the proof of
+  Proposition~\ref{speedprop} above, there is a straight-forward
+  polynomial-time algorithm for computing it.
+  %% or, for more details,
+  %% see~\cite{2017arXiv170302764D}).
 \end{proof}
 
 
@@ -2055,8 +2044,8 @@ which is a difference term operation for $\alg A$.
   \SetKwInOut{Input}{Input}
   \SetKwInOut{Output}{Output}
 
-  \caption{Return an \ldt for $\sA_{2k+1}$, given 
-  $\eta_{\kk}$ and an \ldt for $\sA_{2k}$.
+  \caption{Return \ldt for $\sA_{2k+1}$, given 
+  $\eta_{\kk}$ and \ldt for $\sA_{2k}$.
   \label{alg:stream-ldt1}  }
   \Input{$\eta_{\kk}$ and $s_{2k} \in \Inv { \sA_{2k} }$}
   \Output{$\eta_{\kplus}$ and $s_{2k+1} \in \Inv { \sA_{2k+1} }$}
