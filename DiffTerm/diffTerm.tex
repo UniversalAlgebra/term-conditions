@@ -631,7 +631,7 @@ $\op{Con}(\alg B)$ have empty tails.
 % \newcommand{\jtyp}{\textbf{j}}
 
 
-It follows from an observation of Bulatov that the problem of deciding if a finite idempotent algebra generates a variety that omits \tct-type \utyp is tractable (see Proposition 3.1 of \cite{MR2504025}). 
+It follows from an observation of Bulatov that the problem of deciding if a finite idempotent algebra generates a variety that omits \tct-type \utyp is tractable (see Proposition 3.1 of \cite{MR2504025}).
 In~\cite{Freese:2009}, the second and third authors solve an
 analogous problem by giving a positive answer to the following:
 \begin{prob}
@@ -765,11 +765,11 @@ some $\mathbf{j} \leq \mathbf{i}$ in $\sansH \sansS (\alg{A})$.
 The possible cases are
 % \begin{enumerate} %[(1)]
 \begin{itemize}
-\item[$\mid \mathbf{j} = 1$] $\;\Rightarrow \;\bS$ is term equivalent to a 2-element set
-\item[$\mid \mathbf{j} = 2$] $\;\Rightarrow \;\bS$ is term equivalent to the idempotent reduct of a module
-\item[$\mid \mathbf{j} = 3$] $\;\Rightarrow \;\bS$ is functionally complete
-\item[$\mid \mathbf{j} = 4$] $\;\Rightarrow \;\bS$ is polynomially equivalent to a 2-element lattice
-\item[$\mid \mathbf{j} = 5$] $\;\Rightarrow \;\bS$ is term equivalent to a 2-element semilattice.
+\item[$\bullet\  \mathbf{j} = 1$] $\;\Rightarrow \;\bS$ is term equivalent to a 2-element set
+\item[$\bullet\   \mathbf{j} = 2$] $\;\Rightarrow \;\bS$ is term equivalent to the idempotent reduct of a module
+\item[$\bullet\   \mathbf{j} = 3$] $\;\Rightarrow \;\bS$ is functionally complete
+\item[$\bullet\   \mathbf{j} = 4$] $\;\Rightarrow \;\bS$ is polynomially equivalent to a 2-element lattice
+\item[$\bullet\   \mathbf{j} = 5$] $\;\Rightarrow \;\bS$ is term equivalent to a 2-element semilattice.
 \end{itemize} %enumerate}
 \end{prop}
 \begin{proof}
@@ -972,7 +972,8 @@ by \cite[Lemma 2.19(9)]{MR3076179},
 which implies the
 types of the prime quotients occurring between $\alpha'$ and $\beta'$
 are~\utyp\ or \atyp.
-But since we are assuming $\alg B$ has a Taylor term,
+But since we are assuming % $\alg B$ has a Taylor term,
+that $\sV$ omits type~\utyp  and $\alg B \in \sV$ then
 they are all of type~\atyp.
 In particular, $\<\delta,\gamma\>$ has type~\atyp.
 
@@ -1274,8 +1275,9 @@ Let $\alg A$ be a finite idempotent algebra and let $\sV$ be the variety
 it generates. Then $\sV$ has a difference term if and only if the
 following conditions hold:
 \begin{enumerate}
-  \item \label{it:1}
-    $\alg A$ has a Taylor term.
+ 
+   % $\alg A$ has a Taylor term.
+   \item \label{it:1}$\sV$ omits TCT-type~\utyp.
   \item \label{it:2}
     There do not exist $a$, $b, c\in A$
     satisfying the following, where
@@ -1473,8 +1475,7 @@ term in time $crn^4m^4$.
 Theorem~\ref{thm:algorithm} gives a three-step
 algorithm to test
 if $\bbV (\alg A)$ has a difference term.
-The first step is to test if $\alg A$ has a Taylor
-term. This can be done in time $crn^3m$
+The first step is to test if $\bbV (\alg A)$ omits type~\utyp. This can be done in time $crn^3m$
 by~\cite[Theorem~6.3]{Freese:2009}.
 
 Looking now at part (3) of Theorem~\ref{thm:algorithm},
@@ -1484,7 +1485,7 @@ of these things can be constructed in time $crm^2$ and
 parts~(a) and~(b) can be executed in this time or less.
 For part~(c) we need to test if the type of $\beta$
 over $\alpha$ is \atyp. Since at this point in the
-algorithm we know that $\alg A$ has a Taylor term,
+algorithm we know that $\alg A$ omits type ~\utyp,
 we can test if the type is \atyp\ by testing if
 $[\beta,\beta] \le \alpha$. By Proposition~\ref{speedprop}
 this can be done in time $crm^4$. Since we need to do
@@ -1501,7 +1502,7 @@ the other terms, the bound of the theorem holds.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% wjd: NEW SECTION  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Difference Term Operations}
 Above we addressed the problem of deciding the existence of a difference term
-for a given (idempotent, locally finite) variety.  In this section we are
+for a given (idempotent, finitely generated) variety.  In this section we are
 concerned with the practical problem of finding a difference term
 \emph{operation} for a given (finite, idempotent) algebra.
 We describe algorithms for
@@ -1520,10 +1521,21 @@ problem~(\ref{item:a}).  However, a negative answer returned by the
 algorithm only tells us that $\bbV(\alg A)$ has no difference term.
 It does not tell us whether or not $\alg A$ has a difference term operation.
 
-\medskip
+\begin{example}
+  Let $\alg A$ be the idempotent algebra with universe $\{0,1,2\}$ with basic operation $x\cdot y$ defined by:
+  \[
+  \begin{array}{c|ccc}
+  \cdot&0&1&2\\\hline
+  0&0&0&1\\
+  1&0&1&1\\
+  2&0&2&2
+  \end{array}
+  \]
+  Then $\alg A$ is a simple algebra of type~\ltyp and so the ternary projection operation $p(x,y,z ) = z$ is a difference term operation for $\alg A$. On the other hand, since $\{1,2\}$ is a subuniverse of $\alg A$ and $x\cdot y = x$ on this subset then the variety generated by $\alg A$ cannot have a difference term.
+\end{example}
 
-\wjd{insert example: $\alg A$ has a diff term op, but
-  $\bbV(\alg A)$ has no diff term.}
+%\wjd{insert example: $\alg A$ has a diff term op, but
+ % $\bbV(\alg A)$ has no diff term.}
 
 \medskip
 
@@ -1532,7 +1544,7 @@ using methods that are entirely different than the ones used in the previous
 sections.
 (For example, we make no use of tame congruence theory.)
 In Subsection~\ref{sec:algor-1} we give a polynomial-time algorithm
-for deciding whether a given algebra $\alg A$ has a difference term operation.
+for deciding whether a given idempotent algebra $\alg A$ has a difference term operation.
 In Subsection~\ref{sec:comp-diff-term} we address problem~(\ref{item:b})
 by presenting an algorithm for constructing a difference term operation.
 However, this algorithm does not run in polynomial-time and, at the time
@@ -1816,15 +1828,16 @@ as desired.
 
 % \draftsecskip
 
-\subsection{Algorithm to test for existence of a difference term}
+\subsection{Algorithm to test for existence of a difference term operation}
 \label{sec:algor-1}
 %% In this subsection we prove the following:
 %% \subsection*{Algorithm 1: existence of a difference term operation}
-Here is the practical consequence of Theorem~\ref{thm:local-diff-terms}.
+
+Here is a practical consequence of Theorem~\ref{thm:local-diff-terms}.
 \begin{corollary}
   \label{cor:algor-1}
   There is a polynomial-time algorithm that takes as input
-  any finite idempotent algebra $\alg A $ and decides whether
+  any finite idempotent algebra $\alg A $ and decides if
   %% the variety $\bbV(\alg A )$ that it generates
   $\alg A $ has a difference term operation.
 \end{corollary}
