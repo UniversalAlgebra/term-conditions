@@ -420,6 +420,24 @@ MRREVIEWER = {Ivan Chajda},
 
 
 %%%%%%% wjd: added these packages vvvvvvvvvvvvvvvvvvvvvvvvv
+% PAGE GEOMETRY
+% These settings are for letter format
+\def\OPTpagesize{8.5in,11in}     % Page size
+\def\OPTtopmargin{0.75in}     % Margin at the top of the page
+\def\OPTbottommargin{0.75in}  % Margin at the bottom of the page
+%% \def\OPTinnermargin{0.5in}    % Margin on the inner side of the page
+\def\OPTinnermargin{1in}    % Margin on the inner side of the page
+\def\OPTbindingoffset{0.35in} % Extra offset on the inner side
+%% \def\OPToutermargin{0.75in}   % Margin on the outer side of the page
+\def\OPToutermargin{1in}   % Margin on the outer side of the page
+\usepackage[papersize={\OPTpagesize},
+            twoside,
+            includehead,
+            top=\OPTtopmargin,
+            bottom=\OPTbottommargin,
+            inner=\OPTinnermargin,
+            outer=\OPToutermargin,
+            bindingoffset=\OPTbindingoffset]{geometry}
 \usepackage{url,amssymb,enumerate,tikz,scalefnt}
 \usepackage[normalem]{ulem} % for \sout (strikeout)   wjd: could remove this in final draft
 \usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
