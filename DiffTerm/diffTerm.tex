@@ -1160,7 +1160,7 @@ let $p(x) = d(x,b',b)$, then (see~\cite[Lemma~4.20]{HM:1988})
 Since $(b',t') \in \rhosig$, we have $(b, t) = (p(b'), p(t')) \in \rhosig$.
 Since $b$ is in the body, there is an element $b''$ in the body with
 $(b,b'') \in \beta - \alpha$. By Lemma~\ref{lem:fv_3-1}, this implies
-$\alg{B} = \Sg^{\alg{B}}(\{b, b'', t'\})$.
+$\alg{B} = \Sg^{\alg{B}}(\{b, b'', t\})$.
 
 Finally, if $v \in B$, then $v = s^{\alg{B}}(b,b'',t)$ for
 some (idempotent) term $s$, so
@@ -1227,7 +1227,7 @@ Let $b \in \body(U)$ and $t \in \tail(U)$, and let $d(x,y,z)$
 denote the pseudo-\malcev operation introduced in the proof of Lemma~\ref{lem:nearperm}. By
 \cite[Lemma~4.25]{HM:1988},  $(b, d(b,t,t)) \notin \beta$.
 We will arrive at a contradiction by showing that
-$b = d(b,t,t)$. By Lemma~\ref{lem:nearperm}, for any $i \in \nn$,
+$b = d(b,t,t)$. By Lemma~\ref{lem:nearperm}, for every $i \in \nn$,
 $(b,t) \in \beta \circ \rho_i$ so
 there is an element $a \in B$ satisfying
 $b\mathrel\beta a \mathrel\rho_i t$. By applying the idempotent
@@ -1688,15 +1688,13 @@ $crm^2$ by part~\eqref{speed2}. The result follows.
 
 
 
-
-
-
 \begin{theorem}\label{thm:time}
 Let $\alg A$ be a finite idempotent algebra with parameters as
 above.
 Then one can determine if $\bbV(\alg A)$ has a difference
 term in time $c(rn^4m^4 + n^{14})$.
 \end{theorem}
+\rsf{See if we can omit $n^{14}$.}
 
 \begin{proof}
 Theorem~\ref{thm:algorithm} gives a three-step
@@ -1750,6 +1748,7 @@ problem~(\ref{item:a}).  However, a negative answer returned by the
 algorithm only tells us that $\bbV(\alg A)$ has no difference term.
 It does not tell us whether or not $\alg A$ has a difference term operation.
 
+\mav{Again, improve example (see Ex. 9).}
 \begin{example}
   Let $\alg A$ be the idempotent algebra with universe $\{0,1,2\}$ with basic operation $x\cdot y$ defined by:
   \[
@@ -2062,7 +2061,7 @@ as desired.
 %% In this subsection we prove the following:
 %% \subsection*{Algorithm 1: existence of a difference term operation}
 
-Here is a practical consequence of Theorem~\ref{thm:local-diff-terms}.
+Here are some practical consequences of Theorem~\ref{thm:local-diff-terms}.
 \begin{corollary}
   \label{cor:algor-1}
   There is a polynomial-time algorithm that takes as input
@@ -2070,6 +2069,8 @@ Here is a practical consequence of Theorem~\ref{thm:local-diff-terms}.
   %% the variety $\bbV(\alg A )$ that it generates
   $\alg A $ has a difference term operation.
 \end{corollary}
+\mav{Add Cor showing how to test if V(A) has a dt. (See Keith's proof.)}
+
 \begin{proof}
   %% and let  $\sV = \bbV(\alg A )$.
   We describe an efficient algorithm for deciding,
