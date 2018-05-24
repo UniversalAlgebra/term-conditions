@@ -311,26 +311,26 @@
 %%
 \usepackage{xargs}           % Use more than one optional parameter in a new commands
 \usepackage{datetime}
-\newdateformat{specialdate}{\twodigit\year-\twodigit\month-\twodigit\day}
+\newdateformat{specialdate}{\twodigit\month-\twodigit\day}
 \date{\specialdate\today}
 \usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
 
 %% William's margin notes:  \wjd{this is a note}
 \newcommandx{\wjd}[2][1=]{%
   \todo[linecolor=purple,backgroundcolor=purple!25,bordercolor=purple,#1]%
-       {{\bf wjd} \specialdate\today: #2}
+       {{\bf wjd} \today: #2}
 }
 
 %% Ralph's margin notes:  \rsf{this is a note}
 \newcommandx{\rf}[2][1=]{
   \todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]%
-       {{\bf rsf} \specialdate\today: #2}
+       {{\bf rsf} \today: #2}
 }
 
 %% Matt's margin notes:  \mav{this is a note}
-\newcommandx{\rf}[2][1=]{
+\newcommandx{\mav}[2][1=]{
   \todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]%
-       {{\bf mav} \specialdate\today: #2}
+       {{\bf mav} \today: #2}
 }
 
 \newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}

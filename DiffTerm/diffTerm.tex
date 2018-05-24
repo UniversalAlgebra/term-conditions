@@ -987,7 +987,7 @@ Let $U$ be an $\<\alpha, \beta\>$-minimal set.
 %and let $N$ be an
 % $(\alpha, \beta)$-trace of $U$. Let 0 and 1 be
 %two distinct members of $N$ with $(0, 1) \notin \alpha$.
-The next lemma follows from the same argument used to prove~\cite[Lemma~3.1]{Freese:2009}}, using the fact that since $\beta$ is abelian over $\alpha$ it follows that $\gamma$ over $\delta$ that appears in the proof will also have type 2.
+The next lemma follows from the same argument used to prove~\cite[Lemma~3.1]{Freese:2009}, using the fact that since $\beta$ is abelian over $\alpha$ it follows that $\gamma$ over $\delta$ that appears in the proof will also have type 2.
   
 \begin{lemma}[{\protect cf.~\cite[Lemma~3.1]{Freese:2009}}]
 \label{lem:fv_3-1}
@@ -1079,7 +1079,11 @@ $\emptyset \subset \sigma\subset \nn$.
   For every proper nonempty subset $\sigma$ of $\nn$,
   either $\beta \leq \rho_\sigma$ or $\alpha \join \rho_\sigma = 1_B$.
 \end{lemma}
-\begin{proof} Let $\rho = \rho_\sigma$.
+  This follows from the proof ~\cite[Lemma~3.2]{Freese:2009}.
+
+\begin{comment}
+\begin{proof}
+Let $\rho = \rho_\sigma$.
 Suppose that $\beta \not\le {\rho}$ (or equivalently $(0,1) \notin
 \rho$). Since $\beta$ is join irreducible, $\beta\meet\rho \le
 \alpha$ and so $\beta\meet \rho = \alpha \meet \rho$.  Furthermore,
@@ -1113,6 +1117,8 @@ Thus, there is some $t$ in the tail of $U$ with $(0,t) \in
 \alpha\join \rho$. Using Lemma~\ref{lem:fv_3-1} we conclude that $C =
 B$ since it contains $\{0,1,t\}$.  Thus, $\alpha \join \rho = 1_B$.
 \end{proof}
+
+\end{comment}
 
 \begin{lemma}\label{lem:nearperm}
   For every proper nonempty subset $\sigma$ of $\nn$,
@@ -1275,12 +1281,11 @@ since both $\alpha$ and $\rho$ are below $\rho_i$.
 So, the minimality of $n$ forces $n\le 2$ and the result follows.
 \end{proof}
 
-
-
+\mav{Improve Ex 9 (see comment below)}
 \begin{example}
-  Let $\alg{A}$ be the algebra with universe $\{0,1,2\}$ that has the ternary idempotent operation $f(x,y,z)$ such that on $\{0,1\}$ $f(x,y,z) = x \oplus y \oplus z$, on $\{0,2\}$, $f(x,y,z) = \min\{x,y,z\}$ and is equal to 0 otherwise.  Then $f$ is a cyclic operation and so $\alg{A}$ generates a variety that omits type~\utyp.  It can be checked that there is a 3 element subdirectly irreducible algebra in $\sansH \sansS (\alg{A}^2)$ that has a prime quotient of type~\atyp whose minimal sets have nonempty tails and  that no member of $\sansH \sansS (\alg{A})$ has this property.  This demonstrates that in general one must look for nonempty tails of minimal sets of type~\atyp in the square of a finite idempotent algebra.
+Let $\alg{A}$ be the algebra with universe $\{0,1,2\}$ that has the ternary idempotent operation $f(x,y,z)$ such that on $\{0,1\}$ $f(x,y,z) = x \oplus y \oplus z$, on $\{0,2\}$, $f(x,y,z) = \min\{x,y,z\}$ and is equal to 0 otherwise.  Then $f$ is a cyclic operation and so $\alg{A}$ generates a variety that omits type~\utyp.  It can be checked that there is a 3 element subdirectly irreducible algebra in $\sansH \sansS (\alg{A}^2)$ that has a prime quotient of type~\atyp whose minimal sets have nonempty tails and  that no member of $\sansH \sansS (\alg{A})$ has this property.  This demonstrates that in general one must look for nonempty tails of minimal sets of type~\atyp in the square of a finite idempotent algebra.
 \end{example}
-
+\mav{Find $\alg{A}$ st $\sV(\alg{A})$ omits 1, has no diff term, but $\alg{A}$ has a diff term op; or show $\exists$ is no such $\alg{A}$!}
 
 %\textcolor{purple}{This is the third version of our theorem presenting
 %our algorithm. Write an intro and explain K-K's idea. Define $\alpha_0$, $\alpha_1$.}
