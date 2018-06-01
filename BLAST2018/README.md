@@ -9,10 +9,11 @@ At BLAST 2017 we presented a positive answer to the following practical question
 
 
 **AUTHORS**
-| Name | Country | Institution | URL|
-| --- | --- | --- | --- |
-| William DeMeo | United States | University of Colorado, Boulder | http://williamdemeo.org |
-| Ralph Freese | United States | University of Hawaii, Manoa|  http://math.hawaii.edu/~ralph |
-|Matthew Valeriote | Canada | McMaster University | https://ms.mcmaster.ca/~matt |
+
+| Name | Country | Institution | URL |  
+| --- | --- | --- | --- |  
+| William DeMeo | United States | University of Colorado, Boulder |  http://williamdemeo.org |  
+| Ralph Freese | United States | University of Hawaii, Manoa |  http://math.hawaii.edu/~ralph |  
+| Matthew Valeriote | Canada | McMaster University | https://ms.mcmaster.ca/~matt |  
 
 **SUBMITTED** Jun 01, 05:31 GMT  
