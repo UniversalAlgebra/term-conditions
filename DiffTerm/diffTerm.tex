@@ -848,8 +848,11 @@ omitting types.
 
 \end{comment}
 
+
+
 We conclude this section with a result that will be useful in Section~\ref{sec:freese-valer-lemm}.
-\begin{corollary}[{\protect \cite[Corollary~2.2, Lemma~3.3]{Freese:2009}}]
+\rsf{did not see how FV 09 lemma 3.3 was used; eliminating it}
+\begin{corollary}[{\protect \cite[Corollary~2.2]{Freese:2009}}]
   \label{cor:2.2}
   Let $\alg{A}$ be a finite idempotent algebra and $T$ an order ideal in the
   lattice of types. Then $\bbV(\alg{A})$ omits $T$ if and only if $\sansS(\alg{A})$ does.
@@ -862,7 +865,7 @@ We conclude this section with a result that will be useful in Section~\ref{sec:f
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% \draftbreak
 
-\section{Prior Work}
+\section{The Characterization}
 \label{sec:freese-valer-lemm}
 In~\cite{Freese:2009}, Corollary~\ref{cor:2.2} is the starting point of the
 development of a polynomial-time algorithm that determines if a given finite
@@ -927,13 +930,16 @@ or else there are nonempty tails that are easy to find
 (since they occur in a 3-generated subalgebra of $\alg{A}^2$).
 It follows that Problem~\ref{prob:2} has a positive answer:
 deciding whether or not a finite idempotent algebra generates a congruence
-modular variety is tractable.\footnote{That is, there are positive integers
-  $C, n$, and an algorithm that takes
-  a finite idempotent algebra $\alg{A}$ as input and decides
-  in at most $C|\alg{A}|^n$ steps whether $\bbV(\alg{A})$ is congruence modular.
-  Here $|\alg{A}|$ denotes the number of bits required to encode the algebra $\alg{A}$.}
-%% polynomial-time algorithm to decide, for a finite idempotent algebra $\alg{A}$,
-%% whether $\bbV(\alg{A})$ is congruence modular.}
+modular variety is tractable.%
+%\footnote{That is, there are positive integers
+%$C, n$, and an algorithm that takes
+%a finite idempotent algebra $\alg{A}$ as input and decides
+%in at most $C|\alg{A}|^n$ steps whether $\bbV(\alg{A})$ is congruence modular.
+%Here $|\alg{A}|$ denotes the number of bits required to encode 
+%the algebra $\alg{A}$.}
+% polynomial-time algorithm to decide, 
+%for a finite idempotent algebra $\alg{A}$,
+% whether $\bbV(\alg{A})$ is congruence modular.}
 
 Our goal is to use the same strategy to solve Problem~\ref{prob:1}.
 As such, we revisit each of the lemmas in Section 3 of \cite{Freese:2009},
@@ -1605,7 +1611,7 @@ $\begin{bmatrix}
 x & y \\
 u & v\\
 \end{bmatrix} \in M(\alpha,\beta)$. If $x$ and $y$ are in the same
-block, we join the block containing $x$ and the one containing~$y$
+block, we join the block containing $u$ and the one containing~$v$
 into a single block. By the techniques of \cite{Freese2008},
 this can be done in constant time. Now we take the congruence generated
 by this partition. So, by \eqref{speed2} the time to compute
@@ -1616,6 +1622,8 @@ $rm^4 + n(n^4 + rm) = rm^4 + n^5 + nrm$.
 But since the commutator is trivial in unary algebras, we may
 assume $m \ge n^2$, and thus the time is bounded by a
 constant times $rm^4$, proving the first part of~\eqref{speed3}.
+This procedure for calculating the commutator is part 
+of Ross Willard's thesis.
 
 To see the other part,
 let $\alg A(\alpha)$ the subalgebra
@@ -1642,7 +1650,7 @@ then this modified procedure would also
 compute~$\delta$.
 
 While \eqref{deltaStatement} is not true in general even if
-$\alg A$ has a Taylor term (give an example), it is true when
+$\alg A$ has a Taylor term, it is true when
 $\alg A$ has a Taylor term and $[\alpha,\beta] = [\beta,\alpha]$.
 So assume $\alg A$ has a Taylor term and $[\alpha,\beta] = [\beta,\alpha]$.
 Under these conditions the commutator agrees with the
