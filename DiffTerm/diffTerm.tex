@@ -1898,11 +1898,11 @@ to denote the maps defined as follows:
 \begin{align*}
   \text{for }\;  & S \subseteq A^2 \times \{0,1\}\; \text{ and } \;T \subseteq \Clo_3(\alg{A}),
   \text{ let }\\
-  \dtr (S) &= \{t \in \Clo_3(\alg{A}) \mid (s,t) \in \dtr \text{ for all } s \in S\}, \text{ and }\\
-  \breve{\dtr}(T) &= \{s \in A^2 \times \{0,1\} \mid (s,t) \in \dtr \text{ for all } t \in T\}.
+  \dtr S &= \{t \in \Clo_3(\alg{A}) \mid (s,t) \in \dtr \text{ for all } s \in S\}, \text{ and }\\
+  \breve{\dtr} T &= \{s \in A^2 \times \{0,1\} \mid (s,t) \in \dtr \text{ for all } t \in T\}.
 \end{align*}
-In other words, $\dtr(S)$ is the set of \ldtos
-for $S$, and $\breve{\dtr}(T)$ is the set of triples for which every $t\in T$
+In other words, $\dtr S$ is the set of \ldtos
+for $S$, and $\breve{\dtr} T$ is the set of triples for which every $t\in T$
 is a \ldto.
 
 Now, suppose that every pair
@@ -1942,7 +1942,7 @@ and define the set
 \[
 S' := S \mysetminus \{(a_n, b_n, \chi_n)\}.
 \]
-Since $|S'| < |S|$, there exists $p \in \dtr(S')$.
+Since $|S'| < |S|$, there exists $p \in \dtr S'$.
 We split the remainder of the proof into two cases.
 
 \medskip
@@ -1958,7 +1958,7 @@ Without loss of generality, assume
 If we define %% $T$ to be the set
 \[S_0 := \{(a_0, b_0, 1), (a_1, b_1, 1),
 \dots, (a_{k-1}, b_{k-1}, 1), (a_n, p(a_n, b_n, b_n), 0)\},\]
-then $|S_0| < |S|$, so $S_0$ has a \ldto, $q \in \dtr(S_0)$.
+then $|S_0| < |S|$, so $S_0$ has a \ldto, $q \in \dtr S_0$.
 We now show that
 \[
 d(x,y,z) := q(x, p(x,y,y), p(x,y,z))
@@ -1993,7 +1993,7 @@ $d(a_i,a_i,b_i) = b_i$ for such $i$. Indeed,
 \]
 The first equation holds by definition of $d$, the second
 because $p$ is an idempotent \ldto for
-$S'$, and the third because $q \in \Inv{S_0}$.
+$S'$, and the third because $q \in \dtr S_0$.
 
 The remaining triples in our original set $S$
 have indices satisfying $k\leq j < n$ and $\chi_j = 0$.
@@ -2003,7 +2003,7 @@ by definition,
   \label{eq:450000}
 d(a_j,b_j,b_j) =q(a_j, p(a_j,b_j,b_j), p(a_j,b_j,b_j)),
 \end{equation}
-and, since $p \in \Inv{S'}$, we have
+and, since $p \in \dtr S'$, we have
 %% the pair $(p(a_j,b_j,b_j), a_j)$ belongs to $\com{\thetaj}$.
 $a_j \comr{\thetaj} p(a_j,b_j,b_j)$,
 so (\ref{eq:450000}) implies that
@@ -2027,7 +2027,7 @@ If
 $S_1 := \{(a_0, b_0, 0), (a_1, b_1 0), \dots, (a_{k-1}, b_{k-1}, 0),
         (p(a_n, a_n, b_n), b_n, 1)\}$,\\[3pt]
 %% \end{equation*}
-then $|S_1| < |S|$, so there exists $q \in \Inv{S_1}$.
+then $|S_1| < |S|$, so there exists $q \in \dtr S_1$.
 We claim  that
 \begin{equation*}
   d(x,y,z) := q(p(x,y,z), p(y,y,z), z)
@@ -2037,7 +2037,7 @@ is a \ldto for $S$. For $(a_n,b_n,\chi_n) \in S$ we have that
 d(a_n,a_n,b_n) = q(p(a_n,a_n,b_n), p(a_n,a_n,b_n), b_n) =b_n.
 \]
 % \end{equation*}
-The last equality holds since $q \in \Inv{S_1}$.
+The last equality holds since $q \in \dtr S_1$.
 %% $q$ is \ldto for $(p(a_n, a_n, b_n), b_n, 1)$.
 
 If $1\leq i < k$, then $\chi_i =0$. For these indices we must prove
@@ -2049,14 +2049,14 @@ Again, starting from the definition of $d$ and using idempotence of $p$, we have
   q(p(a_i,b_i,b_i), p(b_i,b_i,b_i), b_i)=
   q(p(a_i,b_i,b_i), b_i, b_i).
 \end{equation}
-Next, since $p \in \Inv{S'}$,
+Next, since $p \in \dtr S'$,
 \begin{equation}
   \label{eq:50000}
   q(p(a_i,b_i,b_i), b_i, b_i)
  \comr{\thetai}
  q(a_i, b_i, b_i).
 \end{equation}
-Since $q \in \Inv{S_1}$, we have
+Since $q \in \dtr S_1$, we have
 $q(a_i, b_i, b_i) \comr{\thetai} a_i$, so
 (\ref{eq:40000}) and (\ref{eq:50000}) imply
 $d(a_i,b_i,b_i) \comr{\thetai} a_i$, as desired.
@@ -2064,7 +2064,7 @@ $d(a_i,b_i,b_i) \comr{\thetai} a_i$, as desired.
 The remaining elements of $S$
 have indices satisfying $k\leq j < n$ and $\chi_j = 1$.
 For these we want $d(a_j,a_j,b_j) = b_j$.
-Since $p \in \Inv{S'}$, we have
+Since $p \in \dtr S'$, we have
 $p(a_j,a_j,b_j) = b_j$, and this plus idempotence of $q$ yields
 \begin{equation*}
  d(a_j,a_j,b_j) =  q(p(a_j,a_j,b_j), p(a_j,a_j,b_j), b_j)=  q(b_j, b_j, b_j) =b_j,
@@ -2076,17 +2076,18 @@ as desired.
   \label{cor:loc-diff-term}
   Let $\alg A$ be a finite idempotent algebra and suppose that
   every pair $(s, s') \in (\AsqBool)^2$ has a local difference term operation.
-  Then $\Inv {\AsqBool} \neq \emptyset$,
+  Then $\dtr (\AsqBool) \neq \emptyset$,
   so $\alg{A}$ has a difference term operation.
 \end{corollary}
 \begin{proof}
   Letting $S := \AsqBool$ in Theorem~\ref{thm:local-diff-terms} establishes
-  the existence of a term operation $d \in \Inv{S}$.
-  Thus, for all $a, b \in A$, we have that $a \comr{\thetaab} d(a,b,b)$, since
-  % $d \in \Inv{(a,b,0)}$,
-  $d$ is \ldto for $(a,b,0)$, and $d(a,a,b) = b$, since
-  % $d\in \Inv{(a,b,1)}$.
-  $d$ is \ldto for $(a,b,1)$.
+  the existence of a \ldto $d$ for $S$.  That is, $d \in \dtr S$.
+  It follows that $d$ is a difference
+  term operation for $A$. Indeed, for all $a, b \in A$, we have that
+  $a \comr{\thetaab} d(a,b,b)$, since $d \in \dtr S \subseteq \dtr \{(a,b,0)\}$,
+  %$d$ is \ldto for $(a,b,0)$,
+  and $d(a,a,b) = b$, since $d\in \dtr S \subseteq \dtr \{(a,b,1)\}$.
+  %$d$ is \ldto for $(a,b,1)$.
 \end{proof}
 %
 % \begin{corollary}
@@ -2139,7 +2140,7 @@ Here are some practical consequences of Theorem~\ref{thm:local-diff-terms}.
   then the third projection is a \ldto. The two remaining cases
   occur when $i\neq i'$. Without loss of generality, assume $i = 0$ and $i'=1$,
   so the given pair of triples is of the form $((a,b,0), (a',b',1))$.
-  By definition, $t \in \Inv{\{(a,b,0), (a',b',1)\}}$ iff
+  By definition, $t \in \dtr \{(a,b,0), (a',b',1)\}$ iff
   \[
   a\comr{\thetaab} t^{\alg A }(a,b,b) \; \text{ and } \;
   t^{\alg A }(a',a',b') = b'.
@@ -2148,13 +2149,13 @@ Here are some practical consequences of Theorem~\ref{thm:local-diff-terms}.
   \[t^{\alg{A} \times \alg{A} }((a,a'), (b,a'), (b,b')) =
   (t^{\alg A }(a,b,b),t^{\alg A }(a',a',b')),\]
   and that 
-  $t \in \Inv{\{(a,b,0), (a',b',1)\}}$ if and only if
+  $t \in \dtr \{(a,b,0), (a',b',1)\}$ if and only if
   \[
   t^{\alg A \times \alg A }((a,a'), (b,a'), (b,b'))\in a/\delta \times \{b'\},
   \]
   where $\delta = \com{\thetaab}$ and $a/\delta$ denotes the
   $\delta$-class containing $a$.
-  It follows that $\Inv { \{(a,b,0), (a',b',1)\} } \neq \emptyset$
+  It follows that $\dtr \{(a,b,0), (a',b',1)\} \neq \emptyset$
   %has a \ldto
   iff the subuniverse of $\alg A \times \alg A $ generated by
   $\{(a,a'), (b,a'), (b,b')\}$ intersects nontrivially with the subuniverse
@@ -2269,11 +2270,9 @@ Algorithm~\ref{alg:ld-2}, as described in the box below.
 
   \caption{Return a \ldto for $((a_0,b_0,0), (a_1, b_1, 1))$ \label{alg:ld-2}  }
   \Input{$S = ((a_0,b_0,0), (a_1, b_1, 1))$}
-  \Output{$t \in \Inv {S}$}
+  \Output{$t \in \dtr S$}
 
-  compute $\delta_0 = \com{ \theta_0 }$;
-
-  form $C_0= (a_0/\delta_0) \times \{b_1\}$;
+  compute $\delta_0 = \com{ \theta_0 }$ and form $C_0= (a_0/\delta_0) \times \{b_1\}$;
 
   compute $S_0=\Sg^{\alg{A}\times \alg{A}} ((a_0,a_1),(b_0,a_1),(b_0,b_1))$;
 
@@ -2285,21 +2284,25 @@ Algorithm~\ref{alg:ld-2}, as described in the box below.
 return $t$
 \end{algorithm}
 In practice, there are a number of different ways we could structure this
-algorithm when implementing it in software, and it should be obvious
-that the ordering of the first three steps is inconsequential.\footnote{
-  For instance, we might structure the algorithm in one of the following ways:
-  \begin{enumerate}
-    \item Compute $\delta_0 = \com{ \thetao }$, then
-    present $\Sg^{\alg{A}\times \alg{A}} ((a_0,a_1),(b_0,a_1),(b_0,b_1))$
-    as a stream $S_0$; filter $S_0$ against the predicate
-    $s \in (a_0/\delta_0) \times \{b_1\}$; the result is a stream from
-    which we take (compute) the first element.
-    \item Alternatively, while generating elements of $S_0$ in Step 3
-    of Algorithm~\ref{alg:ld-2}, we simultaneously check whether
-    any of these elements belongs to $C_0$.  If so, the algorithm
-    halts (without necessarily computing all of $S_0$).
-  \end{enumerate}  %% \textcolor{red}{(Should we say explicitly how to perform Step 4 of Algorithm~\ref{alg:ld-2}?)}
-  }
+algorithm when implementing it in software. In principle, the ordering of the
+first two steps is inconsequential.
+For instance, we might first present
+$\Sg^{\alg{A}\times \alg{A}} ((a_0,a_1),(b_0,a_1),(b_0,b_1))$
+as a stream $S_0$, then compute $\delta_0 = \com{ \thetao }$, and finally
+filter $S_0$ against the predicate $s \in (a_0/\delta_0) \times \{b_1\}$;
+the result is a stream of \ldtos.  This would be sufficient if our goal were merely
+to decide whether a difference term exists.  However, the algorithm calls for
+returning a term $t$, or at least the operation table for $t$.
+
+Therefore, we implement Algrithm~\ref{alg:ld-2} as follows: first compute
+$\delta_0 = \com{ \thetao }$ and form $C_0= (a_0/\delta_0) \times \{b_1\}$;
+then generate $S_0$ and, at every stage,
+(temporarily) store the term tree for each newly generated element of $S_0$;
+if an element of $S_0$ belongs to $C_0$, then the term tree that produced the
+element is a \ldto for $S_0$; in that case, compute and return the operation
+table of this term (without necessarily computing all of $S_0$).
+If a newly generated element of $S_0$ does not belong to $C_0$, then
+(discard the term tree and) continue generating $S_0$.
 
 \begin{comment}
 \noindent \underline{\textbf{Subroutine \ld-2'}}\\[4pt]
@@ -2327,36 +2330,26 @@ $((a_0, b_0, 1), (a_1, b_1, 0))$.
 \subsubsection{Induction step}
 \label{sec:induct}
 Here are some notational conventions we use in this section.
-% % we also take
-% $as = ((a_0, b_0), (a_1, b_1), \dots, (a_k, b_k))$
-% to be the list of all pairs in the set $A\times A$.
-% Also define
 \begin{align*}
 \sA_0 &:= \{(a_0, b_0, 0), (a_0, b_0, 1)\},\\
 \sA_1 &:= \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0)\},\\
-\sA_2 &:= \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0), (a_1,b_1,1)\},\\
-&\vdots\\
-\sA_{2k} &:= \{(a_0, b_0, 0), (a_0, b_0, 1), \dots, (a_k,b_k,0), (a_k,b_k,1)\}.
+\sA_2 &:= \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0), (a_1,b_1,1)\},\dots
 \end{align*}
-That is,
-$\sA_{2k} := \sA_{2k-1} \cup \{(a_k,b_k,1)\}$ and
+For $k > 0$, 
+%&\vdots\\
+$\sA_{2k} := \sA_{2k-1} \cup \{(a_k,b_k,1)\}$,
+%\{(a_0, b_0, 0), (a_0, b_0, 1), \dots, (a_k,b_k,0), (a_k,b_k,1)\}.
+%$\sA_{2k} := \sA_{2k-1} \cup \{(a_k,b_k,1)\}$ and
 $\sA_{2k+1} := \sA_{2k} \cup \{(a_{k+1},b_{k+1},0)\}$.
-Let
+For $i\geq 0$,
 \begin{align*}
-  \zeta_i &:= \Inv{\{(a_i, b_i, 0)\}}, \\% \quad \text{ and } \quad
+\zeta_i &:= \dtr \{(a_i, b_i, 0)\}, \\
   \zeta_{\kk} &:= \bigcap_{0\leq i < k}\zeta_i
-  %=\ld \{(a_i, b_i, 0) \mid 0\leq i<k\},
-  =\Inv { \{(a_0, b_0, 0), \dots, (a_{k-1}, b_{k-1}, 0)\} },\\
-  \eta_i &:= \Inv { \{(a_i, b_i, 1)\} },\\
-  %   \quad \text{ and } \quad
+  =\dtr \{(a_0, b_0, 0), (a_1, b_1, 0), \dots, (a_{k-1}, b_{k-1}, 0)\},\\
+  \eta_i &:= \dtr \{(a_i, b_i, 1)\},\\
   \eta_{\kk} &:= \bigcap_{0\leq i < k}\eta_i
-  % =\ld \{(a_i, b_i, 1) \mid 0\leq i<k\}.
-  =\Inv { \{(a_0, b_0, 1) , \dots, (a_{k-1}, b_{k-1}, 1) \} }.
+  =\dtr \{(a_0, b_0, 1), (a_1, b_1, 1), \dots, (a_{k-1}, b_{k-1}, 1) \}.
 \end{align*}
-% Evidently, $\zeta_{\kk} = \bigcap_{0\leq i < k}\zeta_i$ is the set of \ldtos
-% for $\{(a_i, b_i, 0) \mid 0\leq i<k\}$, while
-% $\eta_{\kk} = \bigcap_{0\leq i < k}\eta_i$ is the set of \ldtos
-% for $\{(a_i, b_i, 1) \mid 0\leq i<k\}$.
 
 Algorithm~\ref{alg:ld-2} serves as a base case, giving a \ldto for
 $\sA_0$ that we will use as input to Algorithm~\ref{alg:stream-ldt1}, the output of which is a \ldto for $\sA_1$.
@@ -2375,15 +2368,15 @@ which is a difference term operation for $\alg A$.
   \caption{Return \ldto for $\sA_{2k+1}$, given
   $\eta_{\kk}$ and \ldto for $\sA_{2k}$.
   \label{alg:stream-ldt1}  }
-  \Input{$\eta_{\kk}$ and $s_{2k} \in \Inv { \sA_{2k} }$}
-  \Output{$\eta_{\kplus}$ and $s_{2k+1} \in \Inv { \sA_{2k+1} }$}
+  \Input{$\eta_{\kk}$ and $s_{2k} \in \dtr \sA_{2k}$}
+  \Output{$\eta_{\kplus}$ and $s_{2k+1} \in \dtr \sA_{2k+1}$}
 
-  construct $p \in \eta_{\kk} \cap \Inv {\{ (a_{k+1}, s_{2k}(a_{k+1}, b_{k+1}, b_{k+1}), 0)\} }$
+  construct $p \in \eta_{\kk} \cap \dtr \{ (a_{k+1}, s_{2k}(a_{k+1}, b_{k+1}, b_{k+1}), 0)\}$
 
   construct $s_{2k+1}(x,y,z) = p(x, s_{2k}(x,y,y), s_{2k}(x,y,z))$;
 
   construct $\eta_{\kplus} = \eta_{\kk}
-              % \cap \Inv{ \{(a_k, b_k, 1)\} }$;
+              % \cap \dtr \{(a_k, b_k, 1)\}$;
               \cap \eta_k$;
 
   return $(s_{2k+1}, \eta_{\kplus})$.
@@ -2399,16 +2392,16 @@ which is a difference term operation for $\alg A$.
   \caption{Return a \ldto for $\sA_{2k}$ given $\zeta_{\kk}$ and
   a \ldto for $\sA_{2k-1}$.
   \label{alg:stream-ldt2}  }
-  \Input{$\zeta_{\kminus}$ and $s_{2k-1} \in \Inv{ \sA_{2k-1} }$}
-  \Output{$\zeta_{\kk}$ and $s_{2k} \in \Inv {\sA_{2k}}$}
+  \Input{$\zeta_{\kminus}$ and $s_{2k-1} \in \dtr \sA_{2k-1}$}
+  \Output{$\zeta_{\kk}$ and $s_{2k} \in \dtr \sA_{2k}$}
 
   construct $p \in \zeta_{\kminus} \cap
-          \Inv { \{(s_{2k-1}(a_k, a_k, b_k), b_k, 1) \} }$;
+          \dtr \{(s_{2k-1}(a_k, a_k, b_k), b_k, 1) \}$;
 
   construct $s_{2k}(x,y,z) = p(s_{2k-1}(x,y,z), s_{2k-1}(y,y,z),z)$;
 
   construct $\zeta_{\kk} = \zeta_{\kminus}
-            % \cap \Inv { \{(a_{k-1}, b_{k-1}, 0)\}}$;
+            % \cap \dtr \{(a_{k-1}, b_{k-1}, 0)\}$;
             \cap \zeta_{k-1}$
 
   return $(s_{2k}, \zeta_{\kk})$.
