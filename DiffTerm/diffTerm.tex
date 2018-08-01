@@ -2164,6 +2164,7 @@ Here are some practical consequences of Theorem~\ref{thm:local-diff-terms}.
   Thus, we take as input a finite idempotent algebra $\alg A $ and,
   for each element $((a,a'), (b,a'), (b,b'))$ of $(A\times A)^3$,
   \begin{enumerate}
+    \item compute $\thetaab$,
     \item compute $\delta = \com{\thetaab}$,
     \item compute $\bS = \Sg^{\alg A \times \alg A }\{(a,a'), (b,a'), (b,b')\}$,
     \item \label{item:a3} test whether $S \cap (a/\delta \times \{b'\})$ is empty.
@@ -2173,25 +2174,21 @@ Here are some practical consequences of Theorem~\ref{thm:local-diff-terms}.
   Otherwise the algorithm halts without witnessing an empty
   intersection, in which case $\alg A $ has a difference term operation.
 
-  Most of the operations carried out by this algorithm are well known to be
-  polynomial-time.  For example, the fact that the running time of
-  subalgebra generation is polynomial has been known for a long time (see~\cite{MR0455543}).
-  The time complexity of congruence generation is also known to be polynomial
-  (see~\cite{MR2470585}).  The only operation whose tractability might be
-  called into question is the commutator, but, as we saw in the proof of
-  Proposition~\ref{speedprop} above, there is a straight-forward
-  polynomial-time algorithm for computing it.
-  %% or, for more details,
-  %% see~\cite{2017arXiv170302764D}).
+  Finally, we analyze the time-complexity of the procedure just described.
+  The analysis follows that of Section~\ref{sec:algorithm-its-time} 
+  (especially the proof of Proposition~\ref{speedprop}).  Recall, $n = |A|$, and 
+  $m=\|\alg A\| = \sum_{i=0}^r k_i n^i$, where $k_i$ is the number of basic 
+  operations of arity~$i$, and $r$ is the largest arity of the basic 
+  operations of $\alg{A}$. The following complexity bounds are easily derivable 
+  from the proof of Proposition~\ref{speedprop}: $\thetaab$,
+  $\delta$, and $S$ are computable in time $O(rm)$, $O(rm^2 + n^5)$, 
+  and $O(rm^2)$, respectively; 
+  $\thetaab$ and $\delta$ are computed for each pair $(a,b) \in A^2$;
+  $S$ is computed for each triple of the form 
+  $((a,a'),(b,a'),(b,b'))\in (A\times A)^3$, and there are $n^4$ such triples.
+  Thus, the computational complexity of the above procedure is
+  $O(rm^2n^4 + n^7)$.
 \end{proof}
-
-
-More details on the complexity of operations carried out by the algorithm, and
-many other algebraic operations, can be found in the references mentioned in the
-preceding paragraph, but see also~\cite{MR1871085,MR1695293,Freese:2009}.
-It is also worth remarking that the algorithm above is ``embarrassingly parallel''
-since each pair of triples can be tested in isolation, on a single thread,
-without communicating with processes testing other triples.
 
 The following proposition provides another avenue for constructing a polynomial-time algorithm to decide if a finite idempotent algebra generates a variety that has a difference term (see Theorem~\ref{thm:time}).
 \begin{prop}
@@ -2210,18 +2207,23 @@ The following proposition provides another avenue for constructing a polynomial-
 \end{corollary}
 
 \begin{proof}
-  By the previous proposition, we only need to determine if each 3-generated subalgebra of $\alg A^2$ has a difference term operation.  So, we only need to apply the algorithm from Corollary~\ref{cor:algor-1} at most $\binom{n^2}{3}$ times, where $n = |A|$.
+  By the previous proposition, we only need to determine if each 3-generated subalgebra of 
+  $\alg A^2$ has a difference term operation. This could be accomplished by applying the 
+  algorithm from Corollary~\ref{cor:algor-1} at most $\binom{n^2}{3}$ ($\approx n^6$) times, 
+  for a total running time of $O(rm^2n^{10} + n^{13})$ (cf.~$O(rn^4m^4 + n^{14}),$ 
+  the difference term existence complexity bound from Theorem~\ref{thm:time}).
 \end{proof}
 
-\mav{If this is correct, should we say anything about the complexity of this algorithm?  Is it more efficient than the one from earlier in the paper?}
+% \mav{If this is correct, should we say anything about the complexity of this algorithm?  Is it more efficient than the one from earlier in the paper?}
 \subsection{Computing a difference term operation}
 \label{sec:comp-diff-term}
-Let $\alg{A} = \<A, \dots\>$ be a finite idempotent algebra and suppose we
-know that a difference term operation for $\alg{A}$ exists.  In this section we
-describe an algorithm for constructing a difference term operation
-(given that we know such an operation exists).\wjd{Does the alg ever use the fact that a \ldto exists?}
+Let $\alg{A} = \<A, \dots\>$ be a finite idempotent algebra.
+ and suppose we know that a difference term operation for $\alg{A}$ exists.  
+In this section we describe an algorithm for finding the operation table 
+of a difference term operation for $\alg{A}$.
+% (given that we know such an operation exists).\wjd{Does the alg ever use the fact that a \ldto exists?}
 
-\mav{It is the case that we can construct an operation table for a difference term operation in poly-time.  I think that we can essentially follow the steps from this subsection, but rather than recording the terms at each step, we record the tables for the corresponding operations.  Should we mention this?}
+% \mav{It is the case that we can construct an operation table for a difference term operation in poly-time.  I think that we can essentially follow the steps from this subsection, but rather than recording the terms at each step, we record the tables for the corresponding operations.  Should we mention this?}
 
 We present the algorithm in stages. 
 Algorithm~\ref{alg:ld-2} gives a procedure for finding a \ldto for sets
@@ -2259,44 +2261,122 @@ Algorithm~\ref{alg:ld-2}, as described in the box below.
   \SetKwInOut{Input}{Input}
   \SetKwInOut{Output}{Output}
 
-  \caption{Return the table of a \ldto for $\{(a_0,b_0,0), (a_1, b_1, 1)\}$ \label{alg:ld-2}  }
+  \caption{\ldto table for $\{(a_0,b_0,0), (a_1, b_1, 1)\}$\label{alg:ld-2}}
   \Input{$S = \{(a_0,b_0,0), (a_1, b_1, 1)\}$}
-  \Output{operation table for $t \in \dtr S$}
+  \Output{$(n\times n)^3$-array (table) for an operation in $\dtr S$}
 
   compute $\delta_0 = \com{ \theta_0 }$ and form $C_0= (a_0/\delta_0) \times \{b_1\}$;
 
   compute $S_0=\Sg^{\alg{A}\times \alg{A}} ((a_0,a_1),(b_0,a_1),(b_0,b_1))$;
 
-  find a term $t$ such that
-%\begin{equation*}%t^{\alg{A}\times\alg{A}}((a_0,a_1),(b_0,a_1),(b_0,b_1)) =
-  $(t^{\alg{A}}(a_0,b_0,b_0), t^{\alg{A}}(a_1,a_1,b_1)) \in C_0 \cap S_0$;
-%\end{equation*}
+  find an element $(u,v)  \in C_0 \cap S_0$;
 
-return the operation table for $t$
+  return the table for the operation that produced $(u,v)$. 
+  % in the $((a_0,a_1),(b_0,a_1),(b_0,b_1))$ position
+
 \end{algorithm}
-\begin{comment}
-In practice, there are a number of different ways we could structure this
-algorithm when implementing it in software. In principle, the ordering of the
-first two steps is inconsequential.
-For instance, we might first present
-$\Sg^{\alg{A}\times \alg{A}} ((a_0,a_1),(b_0,a_1),(b_0,b_1))$
-as a stream $S_0$, then compute $\delta_0 = \com{ \thetao }$, and finally
-filter $S_0$ against the predicate $s \in (a_0/\delta_0) \times \{b_1\}$;
-the result is a stream of \ldtos.  This would be sufficient if our goal were merely
-to decide whether a difference term exists.  However, the algorithm calls for
-returning the table of a \ldto $t$.
-Therefore,
-\end{comment}
-We now discuss the implementation details and computational cost of
-Algorithm~\ref{alg:ld-2}, using the notation introduced in
-Section~\ref{sec:algorithm-its-time}.  Recall,
-$n = |A|$, and $m=\|\alg A\| = \sum_{i=0}^r k_i n^i$,
-where $k_i$ is the number of basic operations of arity~$i$, and $r$
-is the largest arity of the basic operations of $\alg{A}$.
-The complexity bounds in this section are easily derivable 
-from Proposition~\ref{speedprop}.
+The table returned by Algorithm~\ref{alg:ld-2} represents a ternary operation
+$t : (A\times A)^3 \to A\times A$, and the value at 
+position $((a_0,a_1),(b_0,a_1),(b_0,b_1))$ of the table is an element $(u,v)$ belonging 
+to $C_0 \cap S_0$.
 
-Algorithm~\ref{alg:ld-2} could be implemented as follows:
+
+We postpone the implementation details and computational complexity analysis of 
+of Algorithm~\ref{alg:ld-2} (see Section~\ref{sec:cc-ld-2}) and 
+proceed directly to the inductive stage of our method,
+for which Algorithm~\ref{alg:ld-2} serves as a base case. 
+The following notation will be useful.
+\begin{align*}
+\sA_0 &:= \{(a_0, b_0, 0), (a_0, b_0, 1)\},\\
+\sA_1 &:= \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0)\},\\
+\sA_2 &:= \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0), (a_1,b_1,1)\},\dots
+\end{align*}
+% $\sA_0 := \{(a_0, b_0, 0), (a_0, b_0, 1)\}$, $\sA_1 := \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0)\}$;
+%$\sA_2 := \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0), (a_1,b_1,1)\}$, $\dots$,
+For $k > 0$, $\sA_{2k} := \sA_{2k-1} \cup \{(a_k,b_k,1)\}$  and $\sA_{2k+1} := \sA_{2k} \cup \{(a_{k+1},b_{k+1},0)\}$.
+
+The output of Algorithm~\ref{alg:ld-2} is the table of a 
+\ldto for $\sA_0$ which will be input to Algorithm~\ref{alg:stream-ldt1},
+the output of which is the table of a \ldto operation for $\sA_1$.
+The output of Algorithm~\ref{alg:stream-ldt1} is input to
+Algorithm~\ref{alg:stream-ldt2}, the result of which is
+the table of a \ldto for $\sA_2$.
+Thereafter, the process alternates between
+Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}.
+This procedure terminates when we find 
+the table of a \ldto operation for $\sA_{2n} = A^2 \times \{0,1\}$,
+since that will be the 
+table of a difference term operation for $\alg A$ (as we saw in 
+Corollary~\ref{cor:loc-diff-term} above).
+
+For $i\geq 0$, let
+\begin{align*}
+\zeta_i &:= \dtr \{(a_i, b_i, 0)\}, \\
+  \zeta_{\kk} &:= \bigcap_{0\leq i < k}\zeta_i
+  =\dtr \{(a_0, b_0, 0), (a_1, b_1, 0), \dots, (a_{k-1}, b_{k-1}, 0)\},\\
+  \eta_i &:= \dtr \{(a_i, b_i, 1)\},\\
+  \eta_{\kk} &:= \bigcap_{0\leq i < k}\eta_i
+  =\dtr \{(a_0, b_0, 1), (a_1, b_1, 1), \dots, (a_{k-1}, b_{k-1}, 1) \}.
+\end{align*}
+
+
+\RestyleAlgo{boxruled}
+\LinesNumbered
+\begin{algorithm}
+  \SetKwInOut{Input}{Input}
+  \SetKwInOut{Output}{Output}
+  \caption{\ldto table for $\sA_{2k+1}$ \label{alg:stream-ldt1} {\small ($k\geq 0$)}}
+  \Input{$\eta_{\kk}$ and $s_{2k} \in \dtr \sA_{2k}$}
+  \Output{$\eta_{\kplus}$ and $s_{2k+1} \in \dtr \sA_{2k+1}$}
+
+  construct $p \in \eta_{\kk} \cap \dtr \{ (a_{k+1}, s_{2k}(a_{k+1}, b_{k+1}, b_{k+1}), 0)\}$
+
+  construct $s_{2k+1}(x,y,z) = p(x, s_{2k}(x,y,y), s_{2k}(x,y,z))$;
+
+  construct $\eta_{\kplus} = \eta_{\kk}
+              % \cap \dtr \{(a_k, b_k, 1)\}$;
+              \cap \eta_k$;
+
+  return $(s_{2k+1}, \eta_{\kplus})$.
+\end{algorithm}
+
+
+\RestyleAlgo{boxruled}
+\LinesNumbered
+\begin{algorithm}
+  \SetKwInOut{Input}{Input}
+  \SetKwInOut{Output}{Output}
+  \caption{\ldto table for $\sA_{2k}$ \label{alg:stream-ldt2} {\small ($k> 0$)}}
+  \Input{$\zeta_{\kminus}$ and $s_{2k-1} \in \dtr \sA_{2k-1}$}
+  \Output{$\zeta_{\kk}$ and $s_{2k} \in \dtr \sA_{2k}$}
+
+  construct $p \in \zeta_{\kminus} \cap
+          \dtr \{(s_{2k-1}(a_k, a_k, b_k), b_k, 1) \}$;
+
+  construct $s_{2k}(x,y,z) = p(s_{2k-1}(x,y,z), s_{2k-1}(y,y,z),z)$;
+
+  construct $\zeta_{\kk} = \zeta_{\kminus}
+            % \cap \dtr \{(a_{k-1}, b_{k-1}, 0)\}$;
+            \cap \zeta_{k-1}$
+
+  return $(s_{2k}, \zeta_{\kk})$.
+\end{algorithm}
+
+\subsection{Computational Complexity of Algorithm~\ref{alg:ld-2}}
+\label{sec:cc-ld-2}
+% Here we discuss the implementation details and analyze the computational 
+% cost of Algorithm~\ref{alg:ld-2}, using the notation introduced in
+% Section~\ref{sec:algorithm-its-time}.  
+Recall the notation introduced in Section~\ref{sec:algorithm-its-time}: 
+\begin{align*}
+  n &= |A|, \quad m=\|\alg A\| = \sum_{i=0}^r k_i n^i,\\
+k_i&= \text{ the number of basic operations of arity~$i$},\\ 
+r &= \text{ the largest arity of the basic operations of $\alg{A}$.}
+\end{align*}
+% The complexity bounds in this section are easily derivable 
+% from Proposition~\ref{speedprop}.
+
+Algorithm~\ref{alg:ld-2} can be implemented as follows:
 \begin{enumerate}
 \item compute $\thetao$, in time $crm$;
 \item compute $C_0= a_0/\com{ \thetao } \times \{b_1\}$,
@@ -2331,7 +2411,6 @@ a single (arbitrary) triple of the form $((a,a'),(b,a'),(b,b'))$,
 we move on to Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}
 (below).
 
-
 (An equivalent approach, that may be easier to implement in software is
 to partially produce the subalgebra of $\alg{A}^{\alg{A}^3}$ generated by
 the three $|A|^3$-tuples
@@ -2348,8 +2427,8 @@ the table for a \ldto for $((a_0, b_0, 0), (a_1, b_1, 1))$ and we can stop.
 At the end of each of these closure steps, we check for 
 tuples $v = (v_0, v_1, \dots)$ for which the pair $(v_0, v_1)$ has not
 yet appeared.  If no new pairs of this form are found, the algorithm halts
-and we conclude that no \ldto exists for this pair.  The runtime of this
-procedure is bounded by $|A|^2$.)
+and we conclude that no \ldto exists for this pair.)
+  % The runtime of this procedure is bounded by $|A|^2$.)
 
 
 
@@ -2375,90 +2454,6 @@ Then $t$ is a \ldto for
 $((a_0, b_0, 1), (a_1, b_1, 0))$.
 \end{comment}
 
-We are now ready to describe the inductive stages of our algorithm,
-for which the following notation is useful:
-%% \begin{align*}
-%% \sA_0 &:= \{(a_0, b_0, 0), (a_0, b_0, 1)\},\\
-%% \sA_1 &:= \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0)\},\\
-%% \sA_2 &:= \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0), (a_1,b_1,1)\},\dots
-%% \end{align*}
-$\sA_0 := \{(a_0, b_0, 0), (a_0, b_0, 1)\}$, $\sA_1 := \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0)\}$;
-%$\sA_2 := \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0), (a_1,b_1,1)\}$, $\dots$,
-for $k > 0$, $\sA_{2k} := \sA_{2k-1} \cup \{(a_k,b_k,1)\}$  and $\sA_{2k+1} := \sA_{2k} \cup \{(a_{k+1},b_{k+1},0)\}$.
-For $i\geq 0$,
-\begin{align*}
-\zeta_i &:= \dtr \{(a_i, b_i, 0)\}, \\
-  \zeta_{\kk} &:= \bigcap_{0\leq i < k}\zeta_i
-  =\dtr \{(a_0, b_0, 0), (a_1, b_1, 0), \dots, (a_{k-1}, b_{k-1}, 0)\},\\
-  \eta_i &:= \dtr \{(a_i, b_i, 1)\},\\
-  \eta_{\kk} &:= \bigcap_{0\leq i < k}\eta_i
-  =\dtr \{(a_0, b_0, 1), (a_1, b_1, 1), \dots, (a_{k-1}, b_{k-1}, 1) \}.
-\end{align*}
-
-Algorithm~\ref{alg:ld-2} serves as a base case, giving a \ldto for
-$\sA_0$ that we will use as input to Algorithm~\ref{alg:stream-ldt1},
-the output of which is a \ldto for $\sA_1$.
-That output will serve in turn as input to
-Algorithm~\ref{alg:stream-ldt2} the result of which is
-a \ldto for $\sA_2$.
-Thereafter, this process alternates between
-Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}.
-Inductively, we obtain a single \ldto for all of $A^2 \times \{0,1\}$,
-which is a difference term operation for $\alg A$.
-
-\RestyleAlgo{boxruled}
-\LinesNumbered
-\begin{algorithm}
-  \SetKwInOut{Input}{Input}
-  \SetKwInOut{Output}{Output}
-  \caption{Return \ldto for $\sA_{2k+1}$, given
-  $\eta_{\kk}$ and \ldto for $\sA_{2k}$.
-  \label{alg:stream-ldt1}  }
-  \Input{$\eta_{\kk}$ and $s_{2k} \in \dtr \sA_{2k}$}
-  \Output{$\eta_{\kplus}$ and $s_{2k+1} \in \dtr \sA_{2k+1}$}
-
-  construct $p \in \eta_{\kk} \cap \dtr \{ (a_{k+1}, s_{2k}(a_{k+1}, b_{k+1}, b_{k+1}), 0)\}$
-
-  construct $s_{2k+1}(x,y,z) = p(x, s_{2k}(x,y,y), s_{2k}(x,y,z))$;
-
-  construct $\eta_{\kplus} = \eta_{\kk}
-              % \cap \dtr \{(a_k, b_k, 1)\}$;
-              \cap \eta_k$;
-
-  return $(s_{2k+1}, \eta_{\kplus})$.
-\end{algorithm}
-
-
-\RestyleAlgo{boxruled}
-\LinesNumbered
-\begin{algorithm}
-  \SetKwInOut{Input}{Input}
-  \SetKwInOut{Output}{Output}
-  \caption{Return a \ldto for $\sA_{2k}$ given $\zeta_{\kk}$ and
-  a \ldto for $\sA_{2k-1}$.
-  \label{alg:stream-ldt2}  }
-  \Input{$\zeta_{\kminus}$ and $s_{2k-1} \in \dtr \sA_{2k-1}$}
-  \Output{$\zeta_{\kk}$ and $s_{2k} \in \dtr \sA_{2k}$}
-
-  construct $p \in \zeta_{\kminus} \cap
-          \dtr \{(s_{2k-1}(a_k, a_k, b_k), b_k, 1) \}$;
-
-  construct $s_{2k}(x,y,z) = p(s_{2k-1}(x,y,z), s_{2k-1}(y,y,z),z)$;
-
-  construct $\zeta_{\kk} = \zeta_{\kminus}
-            % \cap \dtr \{(a_{k-1}, b_{k-1}, 0)\}$;
-            \cap \zeta_{k-1}$
-
-  return $(s_{2k}, \zeta_{\kk})$.
-\end{algorithm}
-
-
-
-
-
-
-
-
 
 %\bibliographystyle{amsplain} %% or amsalpha
 %% \bibliographystyle{alpha-url}
@@ -2472,6 +2467,22 @@ which is a difference term operation for $\alg A$.
 
 
 \end{document}
+
+
+
+\begin{comment}
+In practice, there are a number of different ways we could structure this
+algorithm when implementing it in software. In principle, the ordering of the
+first two steps is inconsequential.
+For instance, we might first present
+$\Sg^{\alg{A}\times \alg{A}} ((a_0,a_1),(b_0,a_1),(b_0,b_1))$
+as a stream $S_0$, then compute $\delta_0 = \com{ \thetao }$, and finally
+filter $S_0$ against the predicate $s \in (a_0/\delta_0) \times \{b_1\}$;
+the result is a stream of \ldtos.  This would be sufficient if our goal were merely
+to decide whether a difference term exists.  However, the algorithm calls for
+returning the table of a \ldto $t$.
+Therefore,
+\end{comment}
 
 
 
