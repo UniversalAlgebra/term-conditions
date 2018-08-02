@@ -1842,7 +1842,7 @@ a ``local Hagemann-Mitschke sequence'' which they use as the basis of
 an efficient algorithm for deciding for a given $n$ whether an idempotent
 variety is $n$-permutable.
 In~\cite{MR3109457}, Jonah Horowitz introduced similar
-``local-to-global'' methods for deciding when a given variety satisfies
+local methods for deciding when a given variety satisfies
 certain \malcev conditions.
 Inspired by these works, we now define a ``local difference term
 operation'' and use it to develop a polynomial-time algorithm for deciding
@@ -2174,13 +2174,13 @@ Here are some practical consequences of Theorem~\ref{thm:local-diff-terms}.
   Otherwise the algorithm halts without witnessing an empty
   intersection, in which case $\alg A $ has a difference term operation.
 
-  Finally, we analyze the time-complexity of the procedure just described.
-  The analysis follows that of Section~\ref{sec:algorithm-its-time} 
-  (especially the proof of Proposition~\ref{speedprop}).  Recall, $n = |A|$, and 
+  Finally, we analyze the time-complexity of the procedure just described,
+  using the same notation and complexity bounds as those appearing in
+  Section~\ref{sec:algorithm-its-time}.  Recall, $n = |A|$, and 
   $m=\|\alg A\| = \sum_{i=0}^r k_i n^i$, where $k_i$ is the number of basic 
   operations of arity~$i$, and $r$ is the largest arity of the basic 
-  operations of $\alg{A}$. The following complexity bounds are easily derivable 
-  from the proof of Proposition~\ref{speedprop}: $\thetaab$,
+  operations of $\alg{A}$. The following assertions follow from the 
+  proof of Proposition~\ref{speedprop}: $\thetaab$,
   $\delta$, and $S$ are computable in time $O(rm)$, $O(rm^2 + n^5)$, 
   and $O(rm^2)$, respectively; 
   $\thetaab$ and $\delta$ are computed for each pair $(a,b) \in A^2$;
@@ -2190,7 +2190,7 @@ Here are some practical consequences of Theorem~\ref{thm:local-diff-terms}.
   $O(rm^2n^4 + n^7)$.
 \end{proof}
 
-The following proposition provides another avenue for constructing a polynomial-time algorithm to decide if a finite idempotent algebra generates a variety that has a difference term (see Theorem~\ref{thm:time}).
+The following proposition provides another avenue for constructing a polynomial-time algorithm to decide if a finite idempotent algebra generates a variety that has a difference term (cf.~Theorem~\ref{thm:time}).
 \begin{prop}
   Let $\alg A$ be a finite idempotent algebra.  Then $\bbV (\alg A)$ has a difference term if and only if each 3-generated subalgebra of $\alg A^2$ has a difference term operation.
 \end{prop}
@@ -2217,14 +2217,10 @@ The following proposition provides another avenue for constructing a polynomial-
 % \mav{If this is correct, should we say anything about the complexity of this algorithm?  Is it more efficient than the one from earlier in the paper?}
 \subsection{Computing a difference term operation}
 \label{sec:comp-diff-term}
-Let $\alg{A} = \<A, \dots\>$ be a finite idempotent algebra.
- and suppose we know that a difference term operation for $\alg{A}$ exists.  
 In this section we describe an algorithm for finding the operation table 
-of a difference term operation for $\alg{A}$.
+of a difference term operation for a finite idempotent algebra.
 % (given that we know such an operation exists).\wjd{Does the alg ever use the fact that a \ldto exists?}
-
 % \mav{It is the case that we can construct an operation table for a difference term operation in poly-time.  I think that we can essentially follow the steps from this subsection, but rather than recording the terms at each step, we record the tables for the corresponding operations.  Should we mention this?}
-
 We present the algorithm in stages. 
 Algorithm~\ref{alg:ld-2} gives a procedure for finding a \ldto for sets
 of size 2, and Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}
@@ -2257,14 +2253,18 @@ Then there is a term $t$ of some arity $k$ that, when applied to a certain tuple
 generators $(x_1, \dots, x_k)$, produces $u$.  
 In this situation, we may ask for the operation table (or ``Cayley table'') 
 for $t^{\alg{A}}$, which is an $A^k$-dimensional array whose $(a_1, \dots, a_k)$-entry
-is the value $t^{\alg{A}}(a_1, \dots, a_k)$, and whose 
-$(x_1, \dots, x_k)$-entry is the value $t^{\alg{A}}(x_1, \dots, x_k) = u$.  
-Below we will encounter a situation in which we don't want to construct the syntactic
-term that produced the element $u$ from generators, but we do want to construct 
-the table of the corresponding term operation.
-That is, we want to know the value $t^{\alg{A}}(a_1, \dots, a_k)$ for all inputs from $A^k$.
-For this purpose, we will use the notation $\Cayley_{x_1,\dots, x_k \mid u}$ to 
-refer to such an operation table. 
+is the value $t^{\alg{A}}(a_1, \dots, a_k)$. 
+% and whose $(x_1, \dots, x_k)$-entry is the value $t^{\alg{A}}(x_1, \dots, x_k) = u$.
+If $\sansC$ is such a table, we will denote the 
+$(a_1, \dots, a_k)$-entry of the table by $\sansC[a_1, \dots, a_k]$.
+% Below we will encounter a situation in which we don't want to construct the syntactic
+% term that produced the element $u$ from generators, but we do want to construct 
+% the Cayley table of the term operation.
+% That is, we want to know the value $t^{\alg{A}}(a_1, \dots, a_k)$ for every tuple from $A^k$. 
+Alternatively, if we wish to emphasize the means by which 
+we arrived at the term that the table represents, we may use
+% $\Cayley_{x_1,\dots, x_k \mid u}[a_1, \dots, a_k]$, or simply
+$\Cayley_{x_1,\dots, x_k \mid u}$ to denote the table.
 % (This is simply a notational device, not a well-defined mathematical object.)
 
 % (In the following algorithm descriptions,
@@ -2290,7 +2290,7 @@ refer to such an operation table.
     }
   }
   \Return $L$.
-  \caption{\ldto tables for $\{(a_0,b_0,0), (a_1, b_1, 1)\}$}
+  \caption{Generate the list of all Cayley tables of \ldtos for $\{(a_0,b_0,0), (a_1, b_1, 1)\}$}
   \label{alg:ld-2}
   % in the $((a_0,a_1),(b_0,a_1),(b_0,b_1))$ position
 
@@ -2299,7 +2299,7 @@ Each table returned by Algorithm~\ref{alg:ld-2} represents a ternary operation o
 $(A\times A)^3 \to A\times A$, whose value at $((a_0,a_1),(b_0,a_1),(b_0,b_1))$ is 
 an element of $C_0 \cap S_0$.
 
-We postpone the implementation details and computational complexity analysis of 
+We postpone the implementation details and computational complexity analysis
 of Algorithm~\ref{alg:ld-2} (see Section~\ref{sec:cc-ld-2}) and 
 proceed directly to the inductive stage of our method,
 for which Algorithm~\ref{alg:ld-2} serves as a base case. 
@@ -2307,22 +2307,22 @@ The following notation will be useful.
 \begin{align*}
 \sA_0 &:= \{(a_0, b_0, 0), (a_0, b_0, 1)\},\\
 \sA_1 &:= \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0)\},\\
-\sA_2 &:= \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0), (a_1,b_1,1)\},\dots
+\sA_2 &:= \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0), (a_1,b_1,1)\},\dots,
 \end{align*}
 % $\sA_0 := \{(a_0, b_0, 0), (a_0, b_0, 1)\}$, $\sA_1 := \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0)\}$;
 %$\sA_2 := \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0), (a_1,b_1,1)\}$, $\dots$,
-For $k > 0$, $\sA_{2k} := \sA_{2k-1} \cup \{(a_k,b_k,1)\}$  and $\sA_{2k+1} := \sA_{2k} \cup \{(a_{k+1},b_{k+1},0)\}$.
+and for all $0< k < n^2-1$, $\sA_{2k} := \sA_{2k-1} \cup \{(a_k,b_k,1)\}$, and $\sA_{2k+1} := \sA_{2k} \cup \{(a_{k+1},b_{k+1},0)\}$.
 
 The output of Algorithm~\ref{alg:ld-2} is a list of Cayley tables of
 \ldtos for $\sA_0$, and this list is input to Algorithm~\ref{alg:stream-ldt1},
 the output of which is a list of Cayley tables of \ldtos for $\sA_1$.
-The latter will be input to Algorithm~\ref{alg:stream-ldt2}, the result of which is
+The latter is input to Algorithm~\ref{alg:stream-ldt2}, the result of which is
 a list of Cayley tables of \ldtos for $\sA_2$.
 Thereafter, the process alternates between
 Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}.
 This procedure terminates when we find 
-the Cayley table of a \ldto for $\sA_{2n} = A^2 \times \{0,1\}$,
-since that will represent a difference term operation for $\alg A$ (as noted
+the Cayley table of a \ldto for $\sA_{2n^2-1} = A^2 \times \{0,1\}$,
+since that will be the table of a difference term operation for $\alg A$ (as noted
 in Corollary~\ref{cor:loc-diff-term}).
 
 For $i\geq 0$, let
@@ -2334,6 +2334,8 @@ For $i\geq 0$, let
   \eta_{\kk} &:= \bigcap_{0\leq i < k}\eta_i
   =\dtr \{(a_0, b_0, 1), (a_1, b_1, 1), \dots, (a_{k-1}, b_{k-1}, 1) \}.
 \end{align*}
+For $\sS$ a set of term operations, let $\sC \sS$ denote the set of 
+all Cayley tables of operations in $\sS$. 
 
 
 \RestyleAlgo{boxruled}
@@ -2341,36 +2343,39 @@ For $i\geq 0$, let
 \begin{algorithm}
   \SetKwInOut{Input}{Input}
   \SetKwInOut{Output}{Output}
-  \caption{\ldto table for $\sA_{2k+1}$ \label{alg:stream-ldt1} {\small ($k\geq 0$)}}
-  \Input{$\eta_{\kk}$ and $s_{2k} \in \dtr \sA_{2k}$}
-  \Output{$\eta_{\kplus}$ and $s_{2k+1} \in \dtr \sA_{2k+1}$}
+  \caption{Generate the set of all Cayley tables of \ldtos for $\sA_{2k+1}$ \label{alg:stream-ldt1} {\small ($k\geq 0$)}}
+  \Input{$\sC \eta_{\kk}$ and $\sC \dtr \sA_{2k}$}
+  \Output{$\cC \eta_{\kplus}$ and $\sC \dtr \sA_{2k+1}$}
 
-  construct $p \in \eta_{\kk} \cap \dtr \{ (a_{k+1}, s_{2k}(a_{k+1}, b_{k+1}, b_{k+1}), 0)\}$
+  Build the set $\sG := \sC \eta_{\kk}  \cap \sC \dtr \{ (a_{k+1}, s_{2k}(a_{k+1}, b_{k+1}, b_{k+1}), 0)\}$.
 
-  construct $s_{2k+1}(x,y,z) = p(x, s_{2k}(x,y,y), s_{2k}(x,y,z))$;
+  For each $\sansG \in \sG$, define $\Cayley[x,y,z] = \sansG[x, s_{2k}(x,y,y), s_{2k}(x,y,z)]$; let 
+  $\sC \sA_{2k+1}$ be the set of tables so defined.
 
-  construct $\eta_{\kplus} = \eta_{\kk}
-              % \cap \dtr \{(a_k, b_k, 1)\}$;
-              \cap \eta_k$;
+  Build the set $\sC \eta_{\kplus} := \{\Cayley \in \eta_{\kplus} \mid \Cayley[a_k,a_k,b_k]= b_k \}$
 
-  return $(s_{2k+1}, \eta_{\kplus})$.
+  Return $\sC \eta_{\kplus}$ and $\sC \sA_{2k+1}$.
 \end{algorithm}
 
 \subsection{Implementation of Algorithm~\ref{alg:stream-ldt1}}
-We are given a list $L_k$ of Cayley tables of all operations in
-$\eta_{\kk} = \dtr \{(a_0, b_0, 1), \dots, (a_{k-1}, b_{k-1}, 1) \}$.
-We want to find the Cayley tables of all operations in  the set
-% $\eta_{\kk} \cap \dtr \{\}$.
+Given the set $\sC \eta_{\kk}$ of tables of all operations in
+$\eta_{\kk} = \dtr \{(a_0, b_0, 1), \dots, (a_{k-1}, b_{k-1}, 1) \}$, and
+the set $\sC \dtr \sA_{2k}$ of tables of all operations in $\dtr \sA_{2k}$,
+Algorithm~\ref{alg:stream-ldt1} should return the sets
+$\sC \eta_{\kplus}$ and $\sC \dtr \sA_{2k+1}$.
+To start we find tables of all operations in the set
+$\eta_{\kk}\cap \dtr \{ (a_{k+1}, s_{2k}(a_{k+1}, b_{k+1}, b_{k+1}), 0)\}$.
+% \[\dtr \{(a_0, b_0, 1), \dots, (a_{k-1}, b_{k-1}, 1), (a_{k+1}, s_{2k}(a_{k+1}, b_{k+1}, b_{k+1}), 0) \}.\]
+Let $\alpha := a_{k+1}$ and $\sigma := s_{2k}(a_{k+1}, b_{k+1}, b_{k+1})$ in the definition: 
 \[
-\dtr \{(a_0, b_0, 1), \dots, (a_{k-1}, b_{k-1}, 1), (a_{k+1}, s_{2k}(a_{k+1}, b_{k+1}, b_{k+1}), 0) \}.
+t \in \dtr \{(\alpha,\sigma,0)\} \quad \iff \quad \alpha \comr{\theta_{\alpha \sigma}} t^{\alg{A}}(\alpha, \sigma, \sigma).
 \]
-Let $a := a_{k+1}$ and $b := s_{2k}(a_{k+1}, b_{k+1}, b_{k+1})$ in the definition: 
-\[
-t \in \dtr \{(a,b,0)\} \quad \iff \quad a\comr{\thetaab} t^{\alg{A}}(a,b,b).
-\]
-Compute $\thetaab := \Cg^{\alg{A}} (a_{k+1}, s_{2k}(a_{k+1}, b_{k+1}, b_{k+1}) )$
-and $\delta_{ab} := \com{\thetaab}$, and then filter the list $L_k$ for those tables
-whose $(a, b, b)$-entry belongs to $a/\delta_{ab}$.
+Compute $\theta_{\alpha \sigma} := \Cg^{\alg{A}} (a_{k+1}, s_{2k}(a_{k+1}, b_{k+1}, b_{k+1}))$
+and $\delta_{\alpha\sigma} := \com{\theta_{\alpha\sigma}}$. 
+% Let $\mathbf{a} := (a_0, a_1, \dots, a_k, \alpha)$, $\mathbf{b} := (b_0, b_1, \dots, b_k, \sigma)$, $\mathbf{b'}:= (b_0, b_1, \dots, b_k, \sigma)$.
+% and compute $S_k = \Sg^{\alg{A}^{k+2}}\{\mathbf a, \mathbf b, \mathbf b'\}$.
+Then $\sC \dtr \sA_{2k+1} = \{\Cayley \in \sC \eta_{\kk} \mid  \alpha \mathrel{\delta_{\alpha \sigma}} \Cayley [\alpha, \sigma, \sigma] \}$.
+
 
 
 \RestyleAlgo{boxruled}
@@ -2378,20 +2383,18 @@ whose $(a, b, b)$-entry belongs to $a/\delta_{ab}$.
 \begin{algorithm}
   \SetKwInOut{Input}{Input}
   \SetKwInOut{Output}{Output}
-  \caption{\ldto table for $\sA_{2k}$ \label{alg:stream-ldt2} {\small ($k> 0$)}}
-  \Input{$\zeta_{\kminus}$ and $s_{2k-1} \in \dtr \sA_{2k-1}$}
-  \Output{$\zeta_{\kk}$ and $s_{2k} \in \dtr \sA_{2k}$}
+  \caption{Generate the set of Cayley tables of all \ldtos for $\sA_{2k}$ \label{alg:stream-ldt2} {\small ($k> 0$)}}
+  \Input{$\sC \zeta_{\kminus}$ and $\sC \dtr \sA_{2\kminus}$}
+  \Output{$\cC \zeta_{\kk}$ and $\sC \dtr \sA_{2k}$}
 
-  construct $p \in \zeta_{\kminus} \cap
-          \dtr \{(s_{2k-1}(a_k, a_k, b_k), b_k, 1) \}$;
+  Build the set $\sG := \sC \zeta_{\kminus}  \cap \sC \dtr \{(s_{2k-1}(a_k, a_k, b_k), b_k, 1) \}$.
 
-  construct $s_{2k}(x,y,z) = p(s_{2k-1}(x,y,z), s_{2k-1}(y,y,z),z)$;
+  For each $\sansG \in \sG$, let $\Cayley[x,y,z] = \sansG[s_{2k-1}(x,y,z), s_{2k-1}(y,y,z),z]$;
+  let $\sC \sA_{2k}$ be the set of tables so defined.
 
-  construct $\zeta_{\kk} = \zeta_{\kminus}
-            % \cap \dtr \{(a_{k-1}, b_{k-1}, 0)\}$;
-            \cap \zeta_{k-1}$
+  Build the set $\sC \zeta_{\kk} := \{\Cayley \in \zeta_{\kminus} \mid a_{k-1} \mathrel{\delta_{k-1}} \Cayley[a_{k-1},b_{k-1},b_{k-1}]\}$.
 
-  return $(s_{2k}, \zeta_{\kk})$.
+  Return $\sC \zeta_{\kk}$ and $\sC \sA_{2k}$.
 \end{algorithm}
 
 \subsection{Computational Complexity of Algorithm~\ref{alg:ld-2}}
@@ -2484,7 +2487,7 @@ and $R \subseteq A^{2n}\times A^{2n}$ as follows:
 where $\delta_k= \com{\theta_k}$.  We want a term $t$ such that $t^{\alg{A}^{2n}}(\mathbf{g}_0, \mathbf{g}_1, \mathbf{g}_2)\mathrel{R} \mathbf{c}$.
 In other terms, we want that $t^{\alg{A}^{2n}}(\mathbf{g}_0, \mathbf{g}_1, \mathbf{g}_2)$ belongs to the set
 \[
-\mathbf{C} := a_0/\delta_0 \times \{b_0\} \times a_1/\delta_1} \times \{b_1\} \times   \dots \times a_{n-1}/\delta_{n-1} \times \{b_{n-1}\}
+\mathbf{C} := a_0/\delta_0 \times \{b_0\} \times a_1/\delta_1 \times \{b_1\} \times   \dots \times a_{n-1}/\delta_{n-1} \times \{b_{n-1}\}
 \]
 \subsubsection{An {\small EXPTIME} algorithm}
  \begin{enumerate}
