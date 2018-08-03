@@ -2339,22 +2339,23 @@ For $i\geq 0$, let
 \RestyleAlgo{boxruled}
 \LinesNumbered
 \begin{algorithm}
-  \SetKwInOut{Input}{Input}
-  \SetKwInOut{Output}{Output}
-  \caption{Generate the set of all Cayley tables of \ldtos for $\sA_{2k+1}$ \label{alg:stream-ldt1} {\small ($k\geq 0$)}}
-  \Input{$\sC \eta_{\kk}$ and $\sC \dtr \sA_{2k}$}
-  \Output{$\cC \eta_{\kplus}$ and $\sC \dtr \sA_{2k+1}$}
+  \KwIn{$\sC \eta_{\kk}$ and $\sC \dtr \sA_{2k}$}
+  \KwOut{$\cC \eta_{\kplus}$ and $\sC \dtr \sA_{2k+1}$}
 
-  For each $\Cayley_j \in \sC \dtr \sA_{2k}$, form 
-  \[
-  \sG_j := \sC \eta_{\kk}  \cap \sC \dtr \{ (a_{k+1}, \Cayley_j[a_{k+1}, b_{k+1}, b_{k+1}], 0)\}.
-  \]
-
-  For each $\sansG_{j_i} \in \sG_j$, define the table $\Cayley_{j_i}$ as follows:
-  $\Cayley_{j_i}[x,y,z] :=  \sansG_{j_i}[x, \Cayley_j[x,y,y], \Cayley_j[x,y,z]]$. \\[5pt]
+  \ForAll{$\Cayley_j \in \sC \dtr \sA_{2k}$} {
+    compute the tables
+    \[
+    \sG_j := \sC \eta_{\kk}  \cap \sC \dtr \{ (a_{k+1}, \Cayley_j[a_{k+1}, b_{k+1}, b_{k+1}], 0)\}.
+    \]
+    \ForAll{$\sansG_{j_i} \in \sG_j$} {
+      define the table $\Cayley_{j_i}$ as follows:
+      $\Cayley_{j_i}[x,y,z] :=  \sansG_{j_i}[x, \Cayley_j[x,y,y], \Cayley_j[x,y,z]]$.
+    }
+  }
   Let $\sC \sA_{2k+1} := \{\Cayley_{j_i}: i, j\}$ be the set of all tables so defined.\\[5pt]
   Build the set $\sC \eta_{\kplus} := \{\Cayley \in \eta_{\kk} \colon \Cayley[a_k,a_k,b_k]= b_k \}$.\\[5pt]
-  Return $\sC \eta_{\kplus}$ and $\sC \sA_{2k+1}$.
+  \Return $\sC \eta_{\kplus}$ and $\sC \sA_{2k+1}$.
+  \caption{Generate the set of all Cayley tables of \ldtos for $\sA_{2k+1}$ \label{alg:stream-ldt1} {\small ($k\geq 0$)}}
 \end{algorithm}
 
 \subsubsection{Implementation of Algorithm~\ref{alg:stream-ldt1}}
@@ -2382,13 +2383,6 @@ The set of all tables so defined is $\sC \sA_{2k+1}$.
 
 
 
-
-
-
-
-
-
-
 \subsubsection{Induction Stage 2}
 For $i\geq 0$, let
 \begin{align*}
@@ -2400,27 +2394,28 @@ For $i\geq 0$, let
 \RestyleAlgo{boxruled}
 \LinesNumbered
 \begin{algorithm}
-  \SetKwInOut{Input}{Input}
-  \SetKwInOut{Output}{Output}
-  \caption{Generate the set of all Cayley tables of \ldtos for $\sA_{2k}$ \label{alg:stream-ldt2} {\small ($k> 0$)}}
-  \Input{$\sC \zeta_{\kminus}$ and $\sC \dtr \sA_{2k-1}$}
-  \Output{$\cC \zeta_{\kk}$ and $\sC \dtr \sA_{2k}$}
+  \KwIn{$\sC \zeta_{\kminus}$ and $\sC \dtr \sA_{2k-1}$}
+  \KwOut{$\cC \zeta_{\kk}$ and $\sC \dtr \sA_{2k}$}
 
-  For each $\Cayley_j \in \sC \dtr \sA_{2k-1}$, form 
-  \[
-  \sG_j := \sC \eta_{\kminus}  \cap \sC \dtr \{ (\Cayley_j[a_k, a_k, b_k], b_k, 1), 1)\}.
-  \]
-
-  For each $\sansG_{j_i} \in \sG_j$, define the table $\Cayley_{j_i}$ as follows:
-  $\Cayley_{j_i}[x,y,z] :=  \sansG_{j_i}[\Cayley_j[x,y,z], \Cayley_j[y,y,z], z]$. \\[5pt]
+  \ForAll{$\Cayley_j \in \sC \dtr \sA_{2k-1}$} {
+    compute the tables
+    \[
+    \sG_j := \sC \eta_{\kminus}  \cap \sC \dtr \{ (\Cayley_j[a_k, a_k, b_k], b_k, 1), 1)\}.
+    \]
+    \ForAll{$\sansG_{j_i} \in \sG_j$} {
+      define the table $\Cayley_{j_i}$ as follows:
+      $\Cayley_{j_i}[x,y,z] :=  \sansG_{j_i}[\Cayley_j[x,y,z], \Cayley_j[y,y,z], z]$. \\[5pt]
+    }
+  }
   Let $\sC \sA_{2k} := \{\Cayley_{j_i}: i, j\}$ be the set of all tables so defined.\\[5pt]
   Build the set $\sC \zeta_{\kk} := \{\Cayley \in \zeta_{\kminus} \colon a_{k-1} \mathrel{\delta_{k-1}} \Cayley[a_{k-1},b_{k-1},b_{k-1}] \}$.\\[5pt]
-  Return $\sC \zeta_{\kk}$ and $\sC \sA_{2k}$.
+  \Return $\sC \zeta_{\kk}$ and $\sC \sA_{2k}$.
+  \caption{Generate the set of all Cayley tables of \ldtos for $\sA_{2k}$ \label{alg:stream-ldt2} {\small ($k> 0$)}}
 \end{algorithm}
 
 \subsubsection{Implementation of Algorithm~\ref{alg:stream-ldt2}}
-Given the sets $\sC \zeta_{\kminus}$
-and $\sC \dtr \sA_{2k-1}$, of all tables of operations in 
+Given $\sC \zeta_{\kminus}$
+and $\sC \dtr \sA_{2k-1}$, the sets of all tables in
 $\zeta_{\kminus}$ and $\dtr \sA_{2k-1}$, respectively,
 Algorithm~\ref{alg:stream-ldt2} returns the sets
 $\sC \zeta_{\kk}$ and $\sC \sA_{2k}$.
