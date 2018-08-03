@@ -1888,8 +1888,8 @@ $(a, b, i)$.  That is,
 
 The relation $\dtr$ induces an obvious Galois connection
 from subsets of $A^2\times \{0,1\}$ to subsets
-of $\Clo_3(\alg{A})$.  If we permit ourselves to overload notation
-for the moment, then we could take
+of $\Clo_3(\alg{A})$.  Overloading the notation, 
+we will take
 \begin{align*}
 \dtr &\colon \sP(A^2 \times \{0,1\}) \to \sP(\Clo_3(\alg{A})) \text{ and }\\
 \breve{\dtr} &\colon \sP(\Clo_3(\alg{A})) \to \sP(A^2\times \{0,1\})
@@ -1903,7 +1903,8 @@ to denote the maps defined as follows:
 \end{align*}
 In other words, $\dtr S$ is the set of \ldtos
 for $S$, and $\breve{\dtr} T$ is the set of triples for which every $t\in T$
-is a \ldto.
+is a \ldto.  When the set $S$ is just a singleton, we write 
+$\dtr (a,b,\chi)$ instead of $\dtr \{(a,b,\chi)\}$.
 
 Now, suppose that every pair
 $(s_0, s_1)\in (\AsqBool)^2$ %$\AsqBool$
@@ -2084,9 +2085,9 @@ as desired.
   the existence of a \ldto $d$ for $S$.  That is, $d \in \dtr S$.
   It follows that $d$ is a difference
   term operation for $A$. Indeed, for all $a, b \in A$, we have that
-  $a \comr{\thetaab} d(a,b,b)$, since $d \in \dtr S \subseteq \dtr \{(a,b,0)\}$,
+  $a \comr{\thetaab} d(a,b,b)$, since $d \in \dtr S \subseteq \dtr (a,b,0)$,
   %$d$ is \ldto for $(a,b,0)$,
-  and $d(a,a,b) = b$, since $d\in \dtr S \subseteq \dtr \{(a,b,1)\}$.
+  and $d(a,a,b) = b$, since $d\in \dtr S \subseteq \dtr (a,b,1)$.
   %$d$ is \ldto for $(a,b,1)$.
 \end{proof}
 %
@@ -2255,8 +2256,8 @@ In this situation, we may ask for the operation table (or ``Cayley table'')
 for $t^{\alg{A}}$, which is an $A^k$-dimensional array whose $(a_1, \dots, a_k)$-entry
 is the value $t^{\alg{A}}(a_1, \dots, a_k)$. 
 % and whose $(x_1, \dots, x_k)$-entry is the value $t^{\alg{A}}(x_1, \dots, x_k) = u$.
-If $\sansC$ is such a table, we will denote the 
-$(a_1, \dots, a_k)$-entry of the table by $\sansC[a_1, \dots, a_k]$.
+If $\sanst$ is such a table, we will denote the 
+$(a_1, \dots, a_k)$-entry of the table by $\sanst[a_1, \dots, a_k]$.
 % Below we will encounter a situation in which we don't want to construct the syntactic
 % term that produced the element $u$ from generators, but we do want to construct 
 % the Cayley table of the term operation.
@@ -2264,16 +2265,14 @@ $(a_1, \dots, a_k)$-entry of the table by $\sansC[a_1, \dots, a_k]$.
 Alternatively, if we wish to emphasize the means by which 
 we arrived at the term that the table represents, we may use
 % $\Cayley_{x_1,\dots, x_k \mid u}[a_1, \dots, a_k]$, or simply
-$\Cayley_{x_1,\dots, x_k \mid u}$ to denote the table.
+$\sanst_{x_1,\dots, x_k \mid u}$ to denote the table.
 % (This is simply a notational device, not a well-defined mathematical object.)
 
 % (In the following algorithm descriptions,
 % we continue to use the shorthand notations established above,
 % such as $\thetaj := \Cg^{\alg{A}}(a_j, b_j)$.)
 
-% \RestyleAlgo{boxed}
-\RestyleAlgo{boxruled}
-\LinesNumbered
+\RestyleAlgo{boxruled}%\LinesNumbered
 \begin{algorithm}%[ht]
   % \SetKwInOut{Input}{Input}
   % \SetKwInOut{Output}{Output}
@@ -2284,153 +2283,165 @@ $\Cayley_{x_1,\dots, x_k \mid u}$ to denote the table.
   compute $\delta_0 = \com{ \theta_0 }$ and form $C_0= (a_0/\delta_0) \times \{b_1\}$\;
   compute $S_0=\Sg^{\alg{A}\times \alg{A}} ((a_0,a_1),(b_0,a_1),(b_0,b_1))$\;
   \ForAll{$(u,v)  \in S_0$} {
-    compute the table $\Cayley_{(a_0,a_1),(b_0,a_1),(b_0,b_1)\mid (u,v)}$\;
+    compute the table $\sanst_{(a_0,a_1),(b_0,a_1),(b_0,b_1)\mid (u,v)}$\;
     \If{$(u,v) \in C_0 \cap S_0$} {
-    add $\Cayley_{(a_0,a_1),(b_0,a_1),(b_0,b_1) \mid (u,v)}$ to list $L$\;
+    include $\sanst_{(a_0,a_1),(b_0,a_1),(b_0,b_1) \mid (u,v)}$ in the set $\sT$\;
     }
   }
-  \Return $L$.
-  \caption{Generate the list of all Cayley tables of \ldtos for $\{(a_0,b_0,0), (a_1, b_1, 1)\}$}
+  \Return $\sT$.
+  \caption{Generate the set of all Cayley tables of \ldtos for $\{(a_0,b_0,0), (a_1, b_1, 1)\}$}
   \label{alg:ld-2}
   % in the $((a_0,a_1),(b_0,a_1),(b_0,b_1))$ position
 
 \end{algorithm}
-Each table returned by Algorithm~\ref{alg:ld-2} represents a ternary operation of type
-$(A\times A)^3 \to A\times A$, whose value at $((a_0,a_1),(b_0,a_1),(b_0,b_1))$ is 
-an element of $C_0 \cap S_0$.
+Each table in the set $\sT$ returned by Algorithm~\ref{alg:ld-2} represents a 
+ternary operation of type $(A\times A)^3 \to A\times A$, whose value at 
+$((a_0,a_1),(b_0,a_1),(b_0,b_1))$ is an element of $C_0 \cap S_0$.
 
 We postpone the implementation details and computational complexity analysis
 of Algorithm~\ref{alg:ld-2} (see Section~\ref{sec:cc-ld-2}) and 
 proceed directly to the inductive stages of our method,
 for which Algorithm~\ref{alg:ld-2} serves as a base case. 
-The following notation will be useful.
+The following notation will be useful:
 \begin{align*}
-\sA_0 &:= \{(a_0, b_0, 0), (a_0, b_0, 1)\},\\
-\sA_1 &:= \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0)\},\\
-\sA_2 &:= \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0), (a_1,b_1,1)\},\dots,
+  \sA_0 &:=\dtr \{(a_0, b_0, 0), (a_0, b_0, 1)\},\\
+\sA_1 &:= \dtr\{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0)\},\\
+\sA_2 &:= \dtr\{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0), (a_1,b_1,1)\},\dots,
 \end{align*}
 % $\sA_0 := \{(a_0, b_0, 0), (a_0, b_0, 1)\}$, $\sA_1 := \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0)\}$;
 %$\sA_2 := \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0), (a_1,b_1,1)\}$, $\dots$,
-and for all $0< k < n^2-1$, $\sA_{2k} := \sA_{2k-1} \cup \{(a_k,b_k,1)\}$, and $\sA_{2k+1} := \sA_{2k} \cup \{(a_{k+1},b_{k+1},0)\}$.
+and for all $0< k < n^2-1$, $\sA_{2k} := \sA_{2k-1} \cap \dtr (a_k,b_k,1)$, 
+and $\sA_{2k+1} := \sA_{2k} \cap \dtr (a_{k+1},b_{k+1},0)$.
+For a set $\sS$ of operations, let $\sT\sS$ denote the set of 
+all Cayley tables representing operations in $\sS$. 
 
-The output of Algorithm~\ref{alg:ld-2} is a list of Cayley tables of
-\ldtos for $\sA_0$, and this list is input to Algorithm~\ref{alg:stream-ldt1},
-the output of which is a list of Cayley tables of \ldtos for $\sA_1$.
+The output of Algorithm~\ref{alg:ld-2} is the set $\sT \sA_0$ of all 
+Cayley tables of operations in $\sA_0$, the \ldtos for $\{(a_0, b_0, 0), (a_0, b_0, 1)\}$.
+The set $\sT \sA_0$ is input to Algorithm~\ref{alg:stream-ldt1},
+the output of which is the set $\sT \sA_1$ of all tables of 
+operations in $\sA_1$.
 The latter is input to Algorithm~\ref{alg:stream-ldt2}, the result of which is
-a list of Cayley tables of \ldtos for $\sA_2$.
+the set $\sT \sA_2$ of tables for $\sA_2$.
 Thereafter, the process alternates between
-Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}.
-This procedure terminates when we find 
-the Cayley table of a \ldto for $\sA_{2n^2-1} = A^2 \times \{0,1\}$,
-which is the table of a difference term operation for $\alg A$ (as noted
+Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}, and 
+terminates once we find the tables for $\sA_{2n^2-1} = A^2 \times \{0,1\}$,
+which are tables of a difference term operations for $\alg A$ (as noted
 in Corollary~\ref{cor:loc-diff-term}).
 
 \subsubsection{Induction Stage 1}
-For a set $\sS$ of term operations, let $\sC \sS$ denote the set of 
-all Cayley tables of operations in $\sS$. 
 For $i\geq 0$, let
 \begin{align*}
-  \eta_i &:= \dtr \{(a_i, b_i, 1)\},\\
+  \eta_i &:= \dtr (a_i, b_i, 1),\\
   \eta_{\kk} &:= \bigcap_{0\leq i < k}\eta_i
   =\dtr \{(a_0, b_0, 1), (a_1, b_1, 1), \dots, (a_{k-1}, b_{k-1}, 1) \}.
 \end{align*}
 
 
 \RestyleAlgo{boxruled}
-\LinesNumbered
+%\LinesNumbered
 \begin{algorithm}
-  \KwIn{$\sC \eta_{\kk}$ and $\sC \dtr \sA_{2k}$}
-  \KwOut{$\cC \eta_{\kplus}$ and $\sC \dtr \sA_{2k+1}$}
+  \KwIn{$\sT \eta_{\kk}$ and $\sT \sA_{2k}$}
 
-  \ForAll{$\Cayley_j \in \sC \dtr \sA_{2k}$} {
-    compute the tables
-    \[
-    \sG_j := \sC \eta_{\kk}  \cap \sC \dtr \{ (a_{k+1}, \Cayley_j[a_{k+1}, b_{k+1}, b_{k+1}], 0)\}.
-    \]
-    \ForAll{$\sansG_{j_i} \in \sG_j$} {
-      define the table $\Cayley_{j_i}$ as follows:
-      $\Cayley_{j_i}[x,y,z] :=  \sansG_{j_i}[x, \Cayley_j[x,y,y], \Cayley_j[x,y,z]]$.
+  \KwOut{$\sT \eta_{\kplus}$ and $\sT \sA_{2k+1}$}
+
+  \ForAll{$\sanst_j \in \sT \sA_{2k}$} {
+
+    $\sT_j := \sT \eta_{\kk} \cap \sT \dtr (a_{k+1}, \sanst_j[a_{k+1}, b_{k+1}, b_{k+1}], 0)$;
+
+    \ForAll{$\sanss_i \in \sT_j$} {
+      \ForAll {$x$, $y$, $z \in A$}  {
+        %define the table $\sanss_{j_i}$ as follows:
+        $\sansr_{ji}[x,y,z] :=  \sanss_i[x, \sanst_j[x,y,y], \sanst_j[x,y,z]]$;
+      }
+      include $\sansr_{ji}$ in the set $\sT$;
     }
   }
-  Let $\sC \dtr \sA_{2k+1} := \{\Cayley_{j_i}: i, j\}$ be the set of all tables so defined.\\[5pt]
-  Build the set $\sC \eta_{\kplus} := \{\Cayley \in \eta_{\kk} \colon \Cayley[a_k,a_k,b_k]= b_k \}$.\\[5pt]
-  \Return $\sC \eta_{\kplus}$ and $\sC \dtr \sA_{2k+1}$.
+%  Let $\sT[\sA_{2k+1}] := \{\sanss_{ji}: i, j\}$ be the set of all tables so defined.\\[5pt]
+  compute $\sS  := \bigl\{\sanst \in \sT \eta_{\kk} \colon \sanst[a_k,a_k,b_k]= b_k \bigr\}$;
+
+  \Return $\sS$ and $\sT$.
   \caption{Generate the set of all Cayley tables of \ldtos for $\sA_{2k+1}$ \label{alg:stream-ldt1} {\small ($k\geq 0$)}}
 \end{algorithm}
 
 \subsubsection{Implementation of Algorithm~\ref{alg:stream-ldt1}}
-Given the sets $\sC \eta_{\kk}$
-and $\sC \dtr \sA_{2k}$, of all tables of operations in 
-$\eta_{\kk}$ and $\dtr \sA_{2k}$, respectively,
+Given the sets $\sT \eta_{\kk}$
+and $\sT \sA_{2k}$, of all tables of operations in 
+$\eta_{\kk}$ and $\sA_{2k}$, respectively,
 Algorithm~\ref{alg:stream-ldt1} returns the sets
-$\sC \eta_{\kplus}$ and $\sC \dtr \sA_{2k+1}$.
-Building the set $\sC \eta_{\kplus}$ is trivial.  We simply remove 
-from $\sC \eta_{\kk}$ every table whose $(a_k,a_k,b_k)$-entry is not $b_k$.
-As for $\sC \dtr \sA_{2k+1}$,
-for each table $\Cayley_j \in \sC \dtr \sA_{2k}$,
+$\sT \eta_{\kplus}$ and $\sT \sA_{2k+1}$.
+Building the set $\sT \eta_{\kplus}$ is trivial.  We simply remove 
+from $\sT \eta_{\kk}$ every table whose $(a_k,a_k,b_k)$-entry is not $b_k$.
+As for $\sT \sA_{2k+1}$,
+for each table $\sanst_j \in \sT \sA_{2k}$,
 let 
-$c_j:= \Cayley_j[a_{k+1}, b_{k+1}, b_{k+1}]$ and compute
+$c_j:= \sanst_j[a_{k+1}, b_{k+1}, b_{k+1}]$, compute
 $\gamma := \Cg^{\alg{A}}(a_{k+1}, c_j)$ and $\delta := \com{\gamma}$. % (in $O(rm^2 + n^5)$ time).
-Next construct the tables in the set
-$\eta_{\kk}\cap \dtr \{ (a_{k+1}, c_j, 0)\}$, according to the usual
+Next construct the tables of operations in the set
+$\eta_{\kk}\cap \dtr (a_{k+1}, c_j, 0)$, according to the usual
 definition: 
-$t \in \dtr \{(a_{k+1},c_j,0)\}$ iff $a_{k+1} \comr{\gamma} t^{\alg{A}}(a_{k+1},c_j,c_j)$.
+$t \in \dtr (a_{k+1},c_j,0)$ iff $a_{k+1} \comr{\gamma} t^{\alg{A}}(a_{k+1},c_j,c_j)$.
 Thus 
-$\sG_j = \{\Cayley \in \sC \eta_{\kk} \colon  a_{k+1} \mathrel{\delta} \Cayley [a_{k+1}, c_j, c_j]\}$.
-For each $\sansG_{j_i} \in \sG_j$, define the operation table $\Cayley_{j_i}$ as follows:
-for all $x$, $y$, $z \in A$, $\Cayley_{j_i}[x,y,z] :=  \sansG_{j_i}[x, \Cayley_j[x,y,y], \Cayley_j[x,y,z]]$. 
-The set of all tables so defined is $\sC \sA_{2k+1}$.
+$\sT_j = \{\sanst \in \sT \eta_{\kk} \colon  a_{k+1} \mathrel{\delta} \sanst [a_{k+1}, c_j, c_j]\}$.
+For each $\sanss_{i} \in \sT_j$, define the operation table $\sansr_{ji}$ as follows:
+for all $x$, $y$, $z \in A$, $\sansr_{ji}[x,y,z] :=  \sanss_{i}[x, \sanst_j[x,y,y], \sanst_j[x,y,z]]$. 
+The set of all tables $\{\sansr_{ji} \colon i, j\}$ so defined is $\sT \sA_{2k+1}$.
 
 
 
 \subsubsection{Induction Stage 2}
 For $i\geq 0$, let
 \begin{align*}
-\zeta_i &:= \dtr \{(a_i, b_i, 0)\}, \\
+\zeta_i &:= \dtr (a_i, b_i, 0), \\
   \zeta_{\kk} &:= \bigcap_{0\leq i < k}\zeta_i
   =\dtr \{(a_0, b_0, 0), (a_1, b_1, 0), \dots, (a_{k-1}, b_{k-1}, 0)\}.
 \end{align*}
 
 \RestyleAlgo{boxruled}
-\LinesNumbered
+%\LinesNumbered
 \begin{algorithm}
-  \KwIn{$\sC \zeta_{\kminus}$ and $\sC \dtr \sA_{2k-1}$}
-  \KwOut{$\cC \zeta_{\kk}$ and $\sC \dtr \sA_{2k}$}
+  \KwIn{$\sT \zeta_{\kminus}$ and $\sT \sA_{2k-1}$}
+  \KwOut{$\sT \zeta_{\kk}$ and $\sT \sA_{2k}$}
 
-  \ForAll{$\Cayley_j \in \sC \dtr \sA_{2k-1}$} {
-    compute the tables
-    \[
-    \sG_j := \sC \eta_{\kminus}  \cap \sC \dtr \{ (\Cayley_j[a_k, a_k, b_k], b_k, 1), 1)\}.
-    \]
-    \ForAll{$\sansG_{j_i} \in \sG_j$} {
-      define the table $\Cayley_{j_i}$ as follows:
-      $\Cayley_{j_i}[x,y,z] :=  \sansG_{j_i}[\Cayley_j[x,y,z], \Cayley_j[y,y,z], z]$. \\[5pt]
+  \ForAll{$\sanst_j \in \sT \sA_{2k-1}$} {
+  
+    $\sT_j := \sT \eta_{\kminus}  \cap \sT \dtr (\sanst_j[a_k, a_k, b_k], b_k, 1)$;
+
+    \ForAll{$\sanss_{i} \in \sT_j$} {
+      \ForAll {$x$, $y$, $z \in A$}  {
+        $\sansr_{ji}[x,y,z] :=  \sanss_{i}[\sanst_j[x,y,z], \sanst_j[y,y,z], z]$;
+      }
+      include $\sansr_{ji}$ in the set $\sT$;
     }
   }
-  Let $\sC \dtr \sA_{2k} := \{\Cayley_{j_i}: i, j\}$ be the set of all tables so defined.\\[5pt]
-  Build the set $\sC \zeta_{\kk} := \{\Cayley \in \zeta_{\kminus} \colon a_{k-1} \mathrel{\delta_{k-1}} \Cayley[a_{k-1},b_{k-1},b_{k-1}] \}$.\\[5pt]
-  \Return $\sC \zeta_{\kk}$ and $\sC \dtr \sA_{2k}$.
+
+  compute $\sS := \{\sanst \in \sT \zeta_{\kminus} \colon a_{k-1} \mathrel{\delta_{k-1}} \sanst[a_{k-1},b_{k-1},b_{k-1}]\}$;
+
+  \Return $\sS$ and $\sT$.
+
   \caption{Generate the set of all Cayley tables of \ldtos for $\sA_{2k}$ \label{alg:stream-ldt2} {\small ($k> 0$)}}
 \end{algorithm}
 
+
+
+
 \subsubsection{Implementation of Algorithm~\ref{alg:stream-ldt2}}
-Given $\sC \zeta_{\kminus}$
-and $\sC \dtr \sA_{2k-1}$, the sets of all tables in
-$\zeta_{\kminus}$ and $\dtr \sA_{2k-1}$, respectively,
+Given $\sT \zeta_{\kminus}$
+and $\sT \sA_{2k-1}$, the sets of all tables in
+$\zeta_{\kminus}$ and $\sA_{2k-1}$, respectively,
 Algorithm~\ref{alg:stream-ldt2} returns the sets
-$\sC \zeta_{\kk}$ and $\sC \sA_{2k}$.
-To build $\sC \dtr \sA_{2k}$, take each table $\Cayley_j$ from $\sC \dtr \sA_{2k-1}$
-and set $c_j:= \Cayley_j[a_k, a_k, b_k]$. Then, let $\sG_j$ denote 
-the set of tables in $\sC \zeta_{\kminus}$ whose 
+$\sT \zeta_{\kk}$ and $\sT \sA_{2k}$.
+To build $\sT \sA_{2k}$, take each table $\sanst_j$ from $\sT \sA_{2k-1}$
+and set $c_j:= \sanst_j[a_k, a_k, b_k]$. Then, let $\sT_j$ denote 
+the set of tables in $\sT \zeta_{\kminus}$ whose 
 $(c_j, c_j, b_k)$-entry is equal to $b_k$. 
-For each $\sansG_{j_i} \in \sG_j$, define the operation table 
-$\Cayley_{j_i}$ as follows:
+For each $\sanss_{i} \in \sT_j$, define the operation table 
+$\sansr_{ji}$ as follows:
 for all $x$, $y$, $z \in A$, 
-$\Cayley_{j_i}[x,y,z] :=  \sansG_{j_i}[\Cayley_j[x,y,z], \Cayley_j[y,y,z], z]$. 
-The set of all tables so defined is $\sC \sA_{2k}$.
-Finally, to build the set $\sC \zeta_{\kk}$, we 
+$\sansr_{ji}[x,y,z] :=  \sanss_{j_i}[\sanst_j[x,y,z], \sanst_j[y,y,z], z]$. 
+The set of all tables so defined is $\sT \sA_{2k}$.
+Finally, to build the set $\sT \zeta_{\kk}$, we 
 compute $\gamma_{k-1} := \Cg^{\alg{A}}(a_{k-1}, b_{k-1})$ and $\delta := \com{\gamma_{k-1}}$,
-and then remove from $\sC \zeta_{\kminus}$ every table whose 
+and then remove from $\sT \zeta_{\kminus}$ every table whose 
 $(a_{k-1},b_{k-1},b_{k-1})$-entry is not congruent to $a_{k-1}$ modulo $\delta_{k-1}$.
 
 
