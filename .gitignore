@@ -3,3 +3,12 @@
 *.out
 *.blg
 *~
+DiffTerm/diffTerm.upa
+DiffTerm/diffTerm.pdf
+DiffTerm/diffTerm.log
+DiffTerm/diffTerm.out
+DiffTerm/diffTerm.bbl
+DiffTerm/diffTerm.fdb_latexmk
+DiffTerm/diffTerm.fls
+DiffTerm/inputs/refs.bib
+
