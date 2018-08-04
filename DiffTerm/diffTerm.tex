@@ -2216,92 +2216,112 @@ The following proposition provides another avenue for constructing a polynomial-
 \end{proof}
 
 % \mav{If this is correct, should we say anything about the complexity of this algorithm?  Is it more efficient than the one from earlier in the paper?}
-\subsection{Computing a difference term operation}
+\section{Efficiently computing difference term tables}
 \label{sec:comp-diff-term}
-In this section we describe an algorithm for finding the operation table 
-of a difference term operation for a finite idempotent algebra.
+In this section we present a polynomial-time algorithm that takes 
+a finite idempotent algebra and constructs the Cayley tables of 
+its difference term operations.
 % (given that we know such an operation exists).\wjd{Does the alg ever use the fact that a \ldto exists?}
 % \mav{It is the case that we can construct an operation table for a difference term operation in poly-time.  I think that we can essentially follow the steps from this subsection, but rather than recording the terms at each step, we record the tables for the corresponding operations.  Should we mention this?}
-We present the algorithm in stages. 
-Algorithm~\ref{alg:ld-2} gives a procedure for finding a \ldto for sets
+The method consists of three subroutines.
+Algorithm~\ref{alg:ld-2} finds a \ldto for sets
 of size 2, and Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}
 alternate and produce \ldtos for successively larger subsets of $A^2 \times \{0,1\}$.
 
-To begin, note that the first and third projections, $t(x,y,z) = x$ and  $t(x,y,z) = z$, are
-\ldtos for the sets $\{(a_0,b_0,1), (a_1, b_1, 1)\}$ and $\{(a_0,b_0,0), (a_1, b_1, 0)\}$,
-respectively.
-\begin{comment}
-\footnote{Moreover, if $a_0 = b_0$, then by idempotence every ternary term $t$
-satisfies $t(a_0, b_0, b_0) = a_0$; therefore, the third projection is a \ld
-term for the set $((a_0,b_0,\chi_0), (a_1, b_1, \chi_1))$,
-for all $\chi_0$, $\chi_1$ in $\{0,1\}$.
-Similarly, if $a_1 = b_1$, then $t(a_1, a_1, b_1) = b_1$ for all ternary $t$,
-so the third projection is a \ldto.
-Therefore, we need only consider sets of the form
-$((a_0,b_0, 0), (a_1, b_1, 1))$, where $a_0 \neq b_0$ and $a_1 \neq b_1$.
-We have relegated this observation to a footnote because it yields a
-computational that does not impact the overall complexity of the main
-algorithm.}
-\end{comment}
-The remaining sets of size 2 have the form
-$\{(a_0,b_0,0), (a_1, b_1, 1)\}$, and
-a \ldto for such sets can be computed by
-Algorithm~\ref{alg:ld-2}, described in the box below.
-
-\newcommand{\Cayley}{\ensuremath{\mathsf{C}}}
 Some new notation will be helpful here.  Suppose that $ u \in \Sg^{\alg{A}}(X)$.
 Then there is a term $t$ of some arity $k$ that, when applied to a certain tuple of 
 generators $(x_1, \dots, x_k)$, produces $u$.  
 In this situation, we may ask for the operation table (or ``Cayley table'') 
 for $t^{\alg{A}}$, which is an $A^k$-dimensional array whose $(a_1, \dots, a_k)$-entry
 is the value $t^{\alg{A}}(a_1, \dots, a_k)$. 
-% and whose $(x_1, \dots, x_k)$-entry is the value $t^{\alg{A}}(x_1, \dots, x_k) = u$.
 If $\sanst$ is such a table, we will denote the 
-$(a_1, \dots, a_k)$-entry of the table by $\sanst[a_1, \dots, a_k]$.
-% Below we will encounter a situation in which we don't want to construct the syntactic
-% term that produced the element $u$ from generators, but we do want to construct 
-% the Cayley table of the term operation.
-% That is, we want to know the value $t^{\alg{A}}(a_1, \dots, a_k)$ for every tuple from $A^k$. 
+entry at position $(a_1, \dots, a_k)$ of the table by $\sanst[a_1, \dots, a_k]$.
 Alternatively, if we wish to emphasize the means by which 
 we arrived at the term that the table represents, we may use
-% $\Cayley_{x_1,\dots, x_k \mid u}[a_1, \dots, a_k]$, or simply
 $\sanst_{x_1,\dots, x_k \mid u}$ to denote the table.
-% (This is simply a notational device, not a well-defined mathematical object.)
 
-% (In the following algorithm descriptions,
-% we continue to use the shorthand notations established above,
-% such as $\thetaj := \Cg^{\alg{A}}(a_j, b_j)$.)
+\newcommand{\triple}{\ensuremath{(a_0,a_0),(b_0,a_0),(b_0,b_0)}}
+
+\subsection{Algorithm~\ref{alg:ld-2}: implementation and complexity}
+\label{sec:cc-ld-2}
+
+The algorithm searches for term operations of type 
+$(A\times A)^3 \to A\times A$, whose value at 
+$(\triple)$ belongs to the set
+$a_0/\delta_0 \times \{b_0\} \cap \Sg^{\alg{A}\times \alg{A}} (\triple)$.
+When such an operation is found, its Cayley table
+$\sanst$---which is an $n^3$-dimensional array satisfying 
+$a_0 \mathrel{\delta_0}\sanst[a_0,b_0, b_0]$ and  $\sanst[a_0,a_0,b_0] = b_0$---is 
+included in the return set $\tabT$.
+% returned by Algorithm~\ref{alg:ld-2} represents an 
 
 \RestyleAlgo{boxruled}%\LinesNumbered
 \begin{algorithm}%[ht]
   % \SetKwInOut{Input}{Input}
   % \SetKwInOut{Output}{Output}
 
-  \KwIn{$S = \{(a_0,b_0,0), (a_1, b_1, 1)\}$}
-  \KwOut{$(n\times n)^3$-array (table) for an operation in $\dtr S$}
+  \KwIn{$S = \{(a_0,b_0,0), (a_0, b_0, 1)\}$}
+  \KwOut{Cayley tables for all operations in $\dtr S$}
 
-  compute $\delta_0 = \com{ \theta_0 }$ and form $C_0= (a_0/\delta_0) \times \{b_1\}$\;
-  compute $S_0=\Sg^{\alg{A}\times \alg{A}} ((a_0,a_1),(b_0,a_1),(b_0,b_1))$\;
+  compute $\delta_0 = \com{ \theta_0 }$ and form $C_0= (a_0/\delta_0) \times \{b_0\}$\;
+  compute $S_0=\Sg^{\alg{A}\times \alg{A}} (\triple)$\;
   \ForAll{$(u,v)  \in S_0$} {
-    compute the table $\sanst_{(a_0,a_1),(b_0,a_1),(b_0,b_1)\mid (u,v)}$\;
+    compute the table $\sanst_{\triple\mid (u,v)}$\;
     \If{$(u,v) \in C_0 \cap S_0$} {
-    include $\sanst_{(a_0,a_1),(b_0,a_1),(b_0,b_1) \mid (u,v)}$ in the set $\sT$\;
+    include $\sanst_{\triple \mid (u,v)}$ in the set $\tabT$\;
     }
   }
-  \Return $\sT$.
-  \caption{Generate the set of all Cayley tables of \ldtos for $\{(a_0,b_0,0), (a_1, b_1, 1)\}$}
+  \Return $\tabT$.
+  \caption{Generate the set of all Cayley tables of \ldtos for $\{(a_0,b_0,0), (a_0, b_0, 1)\}$}
   \label{alg:ld-2}
   % in the $((a_0,a_1),(b_0,a_1),(b_0,b_1))$ position
 
 \end{algorithm}
-Each table in the set $\sT$ returned by Algorithm~\ref{alg:ld-2} represents a 
-ternary operation of type $(A\times A)^3 \to A\times A$, whose value at 
-$((a_0,a_1),(b_0,a_1),(b_0,b_1))$ is an element of $C_0 \cap S_0$.
 
-We postpone the implementation details and computational complexity analysis
-of Algorithm~\ref{alg:ld-2} (see Section~\ref{sec:cc-ld-2}) and 
-proceed directly to the inductive stages of our method,
-for which Algorithm~\ref{alg:ld-2} serves as a base case. 
+
+Recall the notation introduced in Section~\ref{sec:algorithm-its-time}: 
+\begin{align*}
+  n &= |A|, \quad m=\|\alg A\| = \sum_{i=0}^r k_i n^i,\\
+k_i&= \text{ the number of basic operations of arity~$i$},\\ 
+r &= \text{ the largest arity of the basic operations of $\alg{A}$.}
+\end{align*}
+Also, $\sanst_{(a_0,a_0),(b_0,a_0),(b_0,b_0)|(u,v)}$ denotes the Cayley table of a
+term operation that generates $(u,v)$ from the set $\{(a_0,a_0),(b_0,a_0),(b_0,b_0)\}$.
+
+Algorithm~\ref{alg:ld-2} can be implemented as follows:
+\begin{enumerate}
+  \item compute $\thetao$, in time $O(rm)$;
+  \item compute $C_0= a_0/\com{ \thetao } \times \{b_0\}$,
+  in time $O(rm^2 + n^5)$;
+  \item generate $S_0=\Sg^{\alg{A}\times \alg{A}} \{(a_0,a_0),(b_0,a_0),(b_0,b_0)\}$,
+    in time $O(r m^2)$;\\
+    for each newly generated $(u,v) \in S_0$, 
+  \begin{itemize}
+    \item construct and store the table
+      $\sanst_{(a_0,a_0),(b_0,a_0),(b_0,b_0)|(u,v)}$;
+    \item if $(u,v) \in C_0$, then add $\sanst_{(a_0,a_0),(b_0,a_0),(b_0,b_0)|(u,v)}$
+     to the list of tables to be returned; 
+  \end{itemize}
+\end{enumerate}
+  
+Each element $(u,v)\in S_0$ is the result of applying some (say, $k$-ary)
+basic operation $f$ to previously generated pairs $(u_1, v_1)$, $\dots$, $(u_k,v_k)$
+from $S_0$, and the operation tables generating these pairs were
+already stored (the first bullet of Step 3).  Thus, to compute the table
+for the operation that produced $(u,v) = f((u_1,v_1),\dots, (u_k,v_k))$
+we simply compose $f$ with previously stored operation tables.
+Since all tables represent ternary operations, the time-complexity of this composition
+is $|A|^3$-steps multiplied by $k$ reads per step; that is,
+$kn^3 \leq rn^3$.
+  
+All told, the time-complexity of Algorithm~\ref{alg:ld-2} is %$O(rm + rm^2 + n^5 + r^2m^2n^3) = 
+$O(r^2m^2n^3 + n^5)$.
+We only need to run the algorithm once since, as soon as we find all the
+\ldto tables for elements generated by the single triple, $((a_0,a_0),(b_0,a_0),(b_0,b_0))$,
+we move on to Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}.
+
+
+\subsection{Algorithm~\ref{alg:stream-ldt1}: implementation details}
 The following notation will be useful:
 \begin{align*}
   \sA_0 &:=\dtr \{(a_0, b_0, 0), (a_0, b_0, 1)\},\\
@@ -2312,16 +2332,1280 @@ The following notation will be useful:
 %$\sA_2 := \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0), (a_1,b_1,1)\}$, $\dots$,
 and for all $0< k < n^2-1$, $\sA_{2k} := \sA_{2k-1} \cap \dtr (a_k,b_k,1)$, 
 and $\sA_{2k+1} := \sA_{2k} \cap \dtr (a_{k+1},b_{k+1},0)$.
-For a set $\sS$ of operations, let $\sT\sS$ denote the set of 
-all Cayley tables representing operations in $\sS$. 
+Also, define
+\begin{align*}
+\eta_0 &:= \dtr \{(a_0, b_0, 0), (a_0, b_0, 1)\} \\
+\eta_1 &:= \dtr (a_1, b_1, 1), \; \eta_2 := \dtr (a_2, b_2, 1), \dots, 
+\eta_i := \dtr (a_i, b_i, 1), \dots,\\
+\eta_{\kk} &:= \bigcap_{0\leq i < k}\eta_i
+  =\dtr \{(a_0, b_0, 0),(a_0, b_0, 1), (a_1, b_1, 1), \dots, (a_{k-1}, b_{k-1}, 1) \}.
+\end{align*}
+Finally, for a set $\sS$ of operations, let $\tabT\sS$ denote the set of 
+all Cayley tables that represent operations in $\sS$. 
 
-The output of Algorithm~\ref{alg:ld-2} is the set $\sT \sA_0$ of all 
+The output of Algorithm~\ref{alg:ld-2} is the set $\tabT \sA_0$ of all 
 Cayley tables of operations in $\sA_0$, the \ldtos for $\{(a_0, b_0, 0), (a_0, b_0, 1)\}$.
-The set $\sT \sA_0$ is input to Algorithm~\ref{alg:stream-ldt1},
-the output of which is the set $\sT \sA_1$ of all tables of 
+The set $\tabT \sA_0$ is input to Algorithm~\ref{alg:stream-ldt1},
+% A second input will be the set of all tables of operations in 
+% $\dtr (a_0, b_0, 1)$.  To form this set, we take all tables of ternary operations.
+% (There are $|A|^3$ such tables.) From these, we extract only those whose 
+% $(a_0, a_0, b_0)$-entry is $b_0$.
+the output of which is the set $\tabT \sA_1$ of all tables of 
 operations in $\sA_1$.
 The latter is input to Algorithm~\ref{alg:stream-ldt2}, the result of which is
-the set $\sT \sA_2$ of tables for $\sA_2$.
+the set $\tabT \sA_2$ of tables for $\sA_2$.
+Thereafter, the process alternates between
+Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}, and 
+terminates once we find the tables for $\sA_{2n^2-1} = A^2 \times \{0,1\}$,
+which are tables of a difference term operations for $\alg A$ (as noted
+in Corollary~\ref{cor:loc-diff-term}).
+  
+Before Algorithm~\ref{alg:stream-ldt1} is called, Algorithm~\ref{alg:ld-2} returns
+$\tabT \sA_0$, as well as $\tabT \eta_0$ (since these two sets are identical in the $k=0$ case).
+For the first iteration of Algorithm~\ref{alg:stream-ldt1}, we let $k=1$, so 
+$\tabT \eta_0$ and $\tabT \sA_0$ are input, and the algorithm computes
+$\tabT \eta_1$ and $\tabT \sA_1$.
+For larger values of $k$, given $\tabT \eta_{\kk}$ and $\tabT \sA_{2k}$, 
+Algorithm~\ref{alg:stream-ldt1} returns $\tabT \eta_{\kplus}$ and $\tabT \sA_{2k+1}$.
+
+\RestyleAlgo{boxruled}
+%\LinesNumbered
+\begin{algorithm}
+  \KwIn{$\tabT \eta_{\kk}$ and $\tabT \sA_{2k}$}
+
+  \KwOut{$\tabT \eta_{\kplus}$ and $\tabT \sA_{2k+1}$}
+  
+  \ForEach{$\sanst_i \in \tabT \sA_{2k}$} {
+  
+    $\tabT_i := \tabT \eta_{\kk} \cap \tabT \dtr (a_{k+1}, \sanst_i[a_{k+1}, b_{k+1}, b_{k+1}], 0)$;
+ 
+    \ForEach{$\sanss_j \in \tabT_i$} {
+      \ForAll {$x$, $y$, $z \in A$}  {
+        %define the table $\sanss_{j_i}$ as follows:
+        $\sansr_{ij}[x,y,z] :=  \sanss_j\bigl[x, \sanst_i[x,y,y], \sanst_i[x,y,z]\bigr]$;
+      }
+      include $\sansr_{ij}$ in the set $\tabT$;
+    }
+  }
+%  Let $\tabT[\sA_{2k+1}] := \{\sanss_{ji}: i, j\}$ be the set of all tables so defined.\\[5pt]
+  compute $\tabS  := \bigl\{\sanst \in \tabT \eta_{\kk} \colon \sanst[a_k,a_k,b_k]= b_k \bigr\}$;
+
+  \Return $\tabS$ and $\tabT$.
+  \caption{Generate the set of all Cayley tables of \ldtos for $\sA_{2k+1}$ \label{alg:stream-ldt1} {\small ($k\geq 0$)}}
+\end{algorithm}
+  
+
+Building the set $\tabT \eta_{\kplus}$ is trivial.  We simply remove 
+from $\tabT \eta_{\kk}$ every table whose $(a_k,a_k,b_k)$-entry is not $b_k$.
+As for $\tabT \sA_{2k+1}$,
+for each table $\sanst_i \in \tabT \sA_{2k}$,
+we let 
+$c_i:= \sanst_i[a_{k+1}, b_{k+1}, b_{k+1}]$, and compute
+$\gamma := \Cg^{\alg{A}}(a_{k+1}, c_i)$ and $\delta := \com{\gamma}$. % (in $O(rm^2 + n^5)$ time).
+Next we generate the tables of operations in the set
+$\eta_{\kk}\cap \dtr (a_{k+1}, c_i, 0)$, according to the usual
+definition: 
+$t \in \dtr (a_{k+1},c_i,0)$ iff $a_{k+1} \comr{\gamma} t^{\alg{A}}(a_{k+1},c_i,c_i)$.
+The set of such tables is
+$\tabT_i = \{\sanst \in \tabT \eta_{\kk} \colon  a_{k+1} \mathrel{\delta} \sanst [a_{k+1}, c_i, c_i]\}$.
+For each $\sanss_j \in \tabT_i$, define the operation table $\sansr_{ij}$ as follows:
+for all $x$, $y$, $z \in A$, $\sansr_{ij}[x,y,z] :=  \sanss_j[x, \sanst_i[x,y,y], \sanst_i[x,y,z]]$. 
+The set of all tables $\{\sansr_{ij} \colon i, j\}$ so defined is $\tabT \sA_{2k+1}$.
+
+
+
+\subsection{Algorithm~\ref{alg:stream-ldt2}: implementation}
+For $i\geq 0$, let
+\begin{align*}
+\zeta_i &:= \dtr (a_i, b_i, 0), \\
+  \zeta_{\kk} &:= \bigcap_{0\leq i < k}\zeta_i
+  =\dtr \{(a_0, b_0, 0), (a_1, b_1, 0), \dots, (a_{k-1}, b_{k-1}, 0)\}.
+\end{align*}
+
+Given $\tabT \zeta_{\kminus}$
+and $\tabT \sA_{2k-1}$---the sets of tables representing operations in
+$\zeta_{\kminus}$ and $\sA_{2k-1}$, respectively---Algorithm~\ref{alg:stream-ldt2} 
+returns the sets $\tabT \zeta_{\kk}$ and $\tabT \sA_{2k}$.
+To build $\tabT \sA_{2k}$, take each table $\sanst_i$ from $\tabT \sA_{2k-1}$
+and set $c_i:= \sanst_i[a_k, a_k, b_k]$. Then, let $\tabT_i$ denote 
+the set of tables in $\tabT \zeta_{\kminus}$ whose 
+$(c_i, c_i, b_k)$-entry is equal to $b_k$. 
+For each $\sanss_j \in \tabT_i$, define the operation table 
+$\sansr_{ij}$ as follows:
+for all $x$, $y$, $z \in A$, 
+$\sansr_{ij}[x,y,z] :=  \sanss_{j}\bigl[\sanst_i[x,y,z], \sanst_i[y,y,z], z\bigr]$. 
+The set of all tables so defined is $\tabT \sA_{2k}$.
+Finally, to build the set $\tabT \zeta_{\kk}$, we 
+compute $\gamma_{k-1} := \Cg^{\alg{A}}(a_{k-1}, b_{k-1})$ and $\delta := \com{\gamma_{k-1}}$,
+and then remove from $\tabT \zeta_{\kminus}$ every table whose 
+$(a_{k-1},b_{k-1},b_{k-1})$-entry is not congruent to $a_{k-1}$ modulo $\delta_{k-1}$.
+
+
+
+\RestyleAlgo{boxruled}
+%\LinesNumbered
+\begin{algorithm}
+  \KwIn{$\tabT \zeta_{\kminus}$ and $\tabT \sA_{2k-1}$}
+  \KwOut{$\tabT \zeta_{\kk}$ and $\tabT \sA_{2k}$}
+  
+  \ForEach{$\sanst_i \in \tabT \sA_{2k-1}$} {
+    
+    $\tabT_i := \tabT \zeta_{\kminus}  \cap \tabT \dtr (\sanst_i[a_k, a_k, b_k], b_k, 1)$;
+  
+    \ForEach{$\sanss_j \in \tabT_i$} {
+      \ForAll {$x$, $y$, $z \in A$}  {
+        $\sansr_{ij}[x,y,z] :=  \sanss_{j}\bigl[\sanst_i[x,y,z], \sanst_i[y,y,z], z\bigr]$;
+      }
+      include $\sansr_{ij}$ in the set $\tabT$;
+    }
+  }
+  
+  compute $\tabS := \{\sanst \in \tabT \zeta_{\kminus} \colon a_{k-1} \mathrel{\delta_{k-1}} \sanst[a_{k-1},b_{k-1},b_{k-1}]\}$;
+  
+  \Return $\tabS$ and $\tabT$.
+  
+  \caption{Generate the set of all Cayley tables of \ldtos for $\sA_{2k}$ \label{alg:stream-ldt2} {\small ($k> 0$)}}
+\end{algorithm}
+  
+
+\subsection{Complexity of Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}}
+We now show that Algorithm~\ref{alg:stream-ldt1} runs in polynomial-time.
+Proof that Algorithm~\ref{alg:stream-ldt2} is also polynomial-time is similar.
+
+To build the set $\tabT \eta_{\kplus}$, we remove 
+from $\tabT \eta_{\kk}$ every table $\sanst$ such that $\sanst[a_k,a_k,b_k]\neq b_k$.
+This requires one look-up for each table.  There are 
+at most $|A|^2$ tables in the set $\tabT \eta_{\kk}$
+(since $\tabT \eta_{\kk} \subseteq \tabT \eta_0 = \tabT \sA_0$, and 
+the latter clearly contains no more than $|S_0| \leq |A|^2$ tables).
+Therefore, reducing $\tabT \eta_{\kk}$ to $\tabT \eta_{\kplus}$ takes at most $n^2$ steps.
+
+To build $\tabT \sA_{2k+1}$,
+for each table $\sanst \in \tabT \sA_{2k}$ (there are at most $n^2$),
+%look up the $(a_{k+1}, b_{k+1}, b_{k+1})$-element of the table and call it 
+%$c_i:= \sanst_i[a_{k+1}, b_{k+1}, b_{k+1}]$
+compute $\gamma := \Cg^{\alg{A}}\bigl(a_{k+1}, \sanst[a_{k+1}, b_{k+1}, b_{k+1}]\bigr)$ and 
+$\delta := \com{\gamma}$, which takes
+$O(rm^2 + n^5)$-time.  Next, generate
+\[
+  \tabS = \{\sanss \in \tabT \eta_{\kk} \colon  a_{k+1} \mathrel{\delta} 
+  \sanss \bigl[a_{k+1},  \sanst[a_{k+1}, b_{k+1}, b_{k+1}],  \sanst[a_{k+1}, b_{k+1}, b_{k+1}]\bigr]\}.
+\]
+This is simply a filtering of the set $\tabT \eta_{\kk}$:
+include the table $\sanss$ in $\tabS$ iff the value in position 
+$\bigl(a_{k+1},  \sanst[a_{k+1}, b_{k+1}, b_{k+1}],  \sanst[a_{k+1}, b_{k+1}, b_{k+1}]\bigr)$
+of $\sanss$ belongs to the class $a_{k+1}/\gamma$.
+A test of membership in a set is (at worst) linear-time, and there are at 
+most $n^2$ tables to test, so (given $\delta$) the complexity of building 
+$\tabS$ is $O(n^3)$.
+Finally, for each table $\sanss \in \tabT$, we define the new table
+$\sansr$ as follows:
+$\forall x, y, z \in A$, $\sansr[x,y,z] :=  \sanss[x, \sanst[x,y,y], \sanst[x,y,z]]$. 
+This operation takes $O(n^3)$ per table, and there are at most $n^2$ tables, 
+so the complexity of this step is $O(n^5)$, and we do this once for each of the
+(at most $n^2$) tables in $\tabT \sA_{2k}$.  All told, computing 
+$\tabT \sA_{2k+1}$ is $O(rm^2n^2 + n^7)$.
+
+We run Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2} $n^2$ times each,
+so the total time-complexity of the inductive stage of our procedure is
+$O(rm^2n^4 + n^9)$. As this dominates the running time of the basis 
+stage (Algorithm~\ref{alg:ld-2}), it provides an upper bound on the 
+complexity of the whole procedure.
+
+
+  
+  %\bibliographystyle{amsplain} %% or amsalpha
+  %% \bibliographystyle{alpha-url}
+  %% \printbibliography
+  \bibliographystyle{alphaurl}
+  \bibliography{inputs/refs}
+
+  
+
+  \appendix  
+    
+    \section{Alternative approaches/algorithms/notes}
+    \subsection{A straight-forward (but intractable) algorithm}
+    Define $\mathbf{c}$, $\mathbf{g}_0$, $\mathbf{g}_1$, $\mathbf{g}_2 \in \alg{A}^{2n}$ 
+    and $R \subseteq A^{2n}\times A^{2n}$ as follows:
+    \begin{equation}
+    \begin{array}{cccccccccc}
+      \mathbf{g}_0 &= (a_0 & a_0 &a_1 &a_1 &a_2 &a_2 & \dots & a_{n-1} & a_{n-1}) \\
+      \mathbf{g}_1 &= (b_0 & a_0 &b_1 &a_1 &b_2 &a_2 & \dots & b_{n-1} & a_{n-1}) \\
+      \mathbf{g}_2 &= (b_0 & b_0 &b_1 &b_1 &b_2 &b_2 & \dots & b_{n-1} & b_{n-1})\\[4pt]
+        R  & = (\delta_0 & =  & \delta_1 & = & \delta_2 & = & \dots  & \delta_{n-1} & = \; )\\ [4pt]
+      \mathbf{c}            & = (a_0     & b_0       & a_1      & b_1      & a_2      & b_2      & \dots  & a_{n-1}, & b_{n-1}) \\
+    \end{array}
+    \end{equation}
+    where $\delta_k= \com{\theta_k}$.  We want a term $t$ such that $t^{\alg{A}^{2n}}(\mathbf{g}_0, \mathbf{g}_1, \mathbf{g}_2)\mathrel{R} \mathbf{c}$.
+    In other terms, we want that $t^{\alg{A}^{2n}}(\mathbf{g}_0, \mathbf{g}_1, \mathbf{g}_2)$ belongs to the set
+    \[
+    \mathbf{C} := a_0/\delta_0 \times \{b_0\} \times a_1/\delta_1 \times \{b_1\} \times   \dots \times a_{n-1}/\delta_{n-1} \times \{b_{n-1}\}
+    \]
+    
+    \noindent \textbf{An {\small EXPTIME} algorithm.}
+     \begin{enumerate}
+       \item For $0\leq k < n$,
+       \begin{enumerate}
+         \item compute $\theta_k:= \Cg^{\alg{A}}(a_k, b_k)$ in time $O(rmn)$;
+         \item compute $\com{ \theta_k }$ in time $O(rnm^2 + n^6)$;
+       \end{enumerate}
+    \item Generate $S=\Sg^{\alg{A}^{2n}} \{\mathbf{g}_0, \mathbf{g}_1, \mathbf{g}_2\}$,
+      in time $c r m^{2n}$ {\tiny {\color{red} $\quad \leftarrow$ EXPTIME}}\\
+    for each newly generated $\mathbf{u} \in S$, 
+      \begin{itemize}
+      \item construct/store the table
+        $\sanst_{\mathbf{g}_0, \mathbf{g}_1, \mathbf{g}_2|\mathbf{u}}$;
+      \item if $\mathbf{u} \in \mathbf{C}$, then return     $\sanst_{\mathbf{g}_0, \mathbf{g}_1, \mathbf{g}_2|\mathbf{u}}$;
+      \end{itemize}
+    \end{enumerate}
+    Notice that, if $\mathbf{u} \in \mathbf{C}$, then $\sanst_{\mathbf{g}_0, \mathbf{g}_1, \mathbf{g}_2|\mathbf{u}}$  is the table of a difference term operation.
+    
+    \subsection{Can we make the {\small EXPTIME} algorithm tractable?}
+    We could partially produce the subalgebra of $\alg{A}^{\alg{A}^3}$ generated by
+    the three $|A|^3$-tuples,
+    % $\mathbf{g}^+_0 = (a_0, a_1, \dots)$,
+    % $\mathbf{g}^+_1 = (b_0, a_1, \dots)$,
+    % $\mathbf{g}^+_2 = (b_0, b_1, \dots)$,
+    \begin{align*}
+    \mathbf{g}^+_0 &= (a_0, a_0, \dots) = \mathbf{g}_0 :: \dots,\\
+    \mathbf{g}^+_1 &= (b_0, a_0, \dots) = \mathbf{g}_1 :: \dots,\\
+    \mathbf{g}^+_2 &= (b_0, b_0, \dots) = \mathbf{g}_2 :: \dots.
+    \end{align*}
+    Each $\mathbf{g}_i$ $(i=0,1,2)$ is extended so that every 
+    triple from $A^3$ is represented as $(\mathbf{g}^+_0(i), \mathbf{g}^+_1(i), \mathbf{g}^+_2(i))$ for some 
+    unique $i$.  Producing the entire subuniverse will be expensive in 
+    general, but we only need to pay attention to the first $2n$ coordinates. 
+    At each step, we check for a tuple $\mathbf{u} = (u_0, u_1, u_2, \dots, u_{2n-1})\in \mathbf{C}$.  
+    If we find one, then the tuple $\mathbf{u}$ stores
+    the table for a difference term operation and we can stop.
+    
+    At the end of each of these closure steps, we check for 
+    tuples $v = (v_0, v_1, \dots)$ for which the pair $(v_0, v_1)$ has not
+    yet appeared.  If no new pairs of this form are found, the algorithm halts
+    and we conclude that no \ldto exists for this pair.
+      % The runtime of this procedure is bounded by $|A|^2$.)
+    
+  
+
+
+  \end{document}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%  END OF DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  \section{Other practical considerations}
+  \subsection{Simplified description of Section 5 procedure}
+  To start off the algorithm requires three initial steps.
+  \begin{enumerate}
+    \item Compute $\theta_0 := \Cg^{\alg{A}}(a_0, b_0)$ and $\delta_0 := \com{\theta_0}$.
+    \item Construct the list $L_0$ of all Cayley tables of operations $p$ 
+    such that $p(a_0, b_0, b_0) \mathrel{\delta_0} a_0$; that is, the 
+    $(a_0, b_0, b_0)$-entry in each operation table is congruent to $a_0$ modulo $\com{\theta_0}$.
+    \item Let $L_1$ be the list $L_0$ filtered on the predicate,
+    $\mathsf{C}[a_0, a_0, b_0] = b_0$, that the $(a_0, a_0, b_0)$-entry of 
+    the table is $b_0$.
+  \end{enumerate}
+    % \item Compute $\theta_1 := \Cg^{\alg{A}}(a_1, b_1)$ and $\delta_1 := \com{\theta_1}$.
+    % \item Let $L_2$ be the list $L_1$ filtered on the predicate 
+    % $\mathsf[a_1, b_1, b_1] \mathrel{\delta_1} a_1$.
+    % \item Let $L_3$ be the list $L_2$ filtered on the predicate,
+    % $\mathsf{C}[a_1, a_1, b_1] = b_1$.
+    % \item Compute $\theta_2 := \Cg^{\alg{A}}(a_2, b_2)$ and $\delta_2 := \com{\theta_2}$.
+    % \item Let $L_4$ be the list $L_3$ filtered on the predicate 
+    % $\mathsf[a_2, b_2, b_2] \mathrel{\delta_2} a_2$.
+    % \item Let $L_5$ be the list $L_4$ filtered on the predicate,
+    % $\mathsf{C}[a_2, a_2, b_2] = b_2$, $\dots$
+  Thereafter these three steps are iterated, for $k> 0$.
+  \begin{enumerate}
+    \item Compute $\theta_{k} := \Cg^{\alg{A}}(a_k, b_k)$ and $\delta_{k} := \com{\theta_{k}}$.
+    \item Let $L_{2k} := \{\mathsf{C} \in L_{2k-1} \colon \mathsf{C}[a_k, b_k, b_k] \mathrel{\delta_{k}} a_k \}$.
+    \item Let $L_{2k+1} := \mathbf{filter} \; L_{2k} \; \mathbf{with} \; \mathsf{C}[a_k, a_k, b_k] = b_k$.
+  \end{enumerate}
+  The second and third steps are simple filtering operations:
+  \begin{itemize}
+    \item Let $L_{2k} = \mathbf{filter}\; L_{2k-1} \; \mathbf{with} \; \mathsf{C}[a_k, b_k, b_k] \mathrel{\delta_{k}} a_k$.
+    \item Let $L_{2k+1} = \mathbf{filter} \; L_{2k} \; \mathbf{with} \; \mathsf{C}[a_k, a_k, b_k] = b_k$.
+  \end{itemize}
+  
+  This algorithm can be implemented as follows:
+   \begin{enumerate}
+  \item compute $\theta_0$ in time $crm$;
+  \item compute $\com{ \theta_0 }$ in time $c(rm^2 + n^5)$;
+  \item generate $S_0=\Sg^{\alg{A}\times \alg{A}} \{(a_0,a_1),(b_0,a_1),(b_0,b_1)\}$,
+    in time $c r m^2$;\\
+  for each newly generated $(u,v) \in S_0$, 
+    \begin{itemize}
+    \item construct and store the table
+      $\sanst_{(a_0,a_1),(b_0,a_1),(b_0,b_1)|(u,v)}$;
+    \item if $(u,v) \in C_0$, then add $\sanst_{(a_0,a_1),(b_0,a_1),(b_0,b_1)|(u,v)}$
+     to the list of tables to be returned; 
+    \end{itemize}
+  \end{enumerate}
+  
+  
+  
+  
+  \begin{comment}
+  \noindent \underline{\textbf{Subroutine \ld-2'}}\\[4pt]
+  To compute a \ldto for
+  $((a_0,b_0,1), (a_1, b_1, 0))$, obviously this is symmetric to
+  the situation handled in Subroutine LD2 and so the general algorithm
+  is the same.  Nonetheless, we include a listing of the computational
+  steps required so that later we can easily refer to this special case
+  of the general algorithm.
+  \begin{enumerate}[{\bf 1}]
+  \item Compute $\delta_1=\com{\thetaone}$;
+  \item form $C_1= \{b_0\}\times a_1/\delta_1 \leq \alg{A}\times\alg{A}$;
+  \item compute
+        $S_1=\Sg^{\alg{A}\times \alg{A}} ((a_0,a_1),(a_0,b_1),(b_0,b_1))$;
+  \item find a term operation $t$ of $\alg{A}$ satisfying
+  %\[t((a_0,a_1),(a_0,b_1),(b_0,b_1)) \in C \cap S.\]
+  \[t^{\alg{A}\times\alg{A}}((a_0,a_1),(a_0,b_1),(b_0,b_1)) =
+   (t^{\alg{A}}(a_0,a_0,b_0), t^{\alg{A}}(a_1,b_1,b_1)) \in C_1 \cap S_1.\]
+  \end{enumerate}
+  Then $t$ is a \ldto for
+  $((a_0, b_0, 1), (a_1, b_1, 0))$.
+  \end{comment}
+  
+  
+  
+  
+  \begin{comment}
+  In practice, there are a number of different ways we could structure this
+  algorithm when implementing it in software. In principle, the ordering of the
+  first two steps is inconsequential.
+  For instance, we might first present
+  $\Sg^{\alg{A}\times \alg{A}} ((a_0,a_1),(b_0,a_1),(b_0,b_1))$
+  as a stream $S_0$, then compute $\delta_0 = \com{ \thetao }$, and finally
+  filter $S_0$ against the predicate $s \in (a_0/\delta_0) \times \{b_1\}$;
+  the result is a stream of \ldtos.  This would be sufficient if our goal were merely
+  to decide whether a difference term exists.  However, the algorithm calls for
+  returning the table of a \ldto $t$.
+  Therefore,
+  \end{comment}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  \newpage
+  \appendix
+  
+  \section{Miscellaneous Proofs}
+  \subsection{Difference term identity verifications}
+  \label{app:dt-ids}
+  
+  \begin{lemma}[Verifies Subroutine \ild-0]
+  If $p$ is a \ldto for
+  \begin{equation*}
+  P_{j-1} = \{(a_0, b_0, 1), (a_1, b_1, 0), \dots, (a_{j-1}, b_{j-1}, 0)\}.
+  \end{equation*}
+  and $t$ is a \ldto for
+  \begin{equation*}
+  \{(a_0, b_0, 1), (a_j, p(a_j, b_j, b_j), 0)\},
+  \end{equation*}
+  then $d(x,y,z) = t(x, p(x,y,y), p(x,y,z))$ is a \ldto for
+  $P_{j} = P_{j-1}  \cup \{(a_j, b_j, 0)\}$.
+  \end{lemma}
+  
+  \begin{proof} There are three sorts of cases to check.
+  \begin{enumerate}[1.]
+  \item $(a_0, b_0, 1)$:
+  \begin{equation*}
+  d(a_0, a_0, b_0) =
+  t(a_0, p(a_0,a_0,a_0), p(a_0,a_0,b_0)) =
+  t(a_0, a_0, b_0) = b_0
+  \end{equation*}
+  
+  \item $(a_k, b_k, 0)$ $(1\leq k < j)$:
+  \begin{equation*}
+  d(a_k, b_k, b_k) =
+  t(a_k, p(a_k,b_k,b_k), p(a_k,b_k,b_k))
+  \comr{\thetak}
+  t(a_k, a_k, a_k)  = a_k
+  \end{equation*}
+  
+  \item $(a_j, b_j, 0)$:
+  If
+  $\thetaj := \Cg(a_j, b_j)$ and
+  $\gammaj := \Cg(a_j, p(a_j, b_j, b_j))$, then
+  \begin{equation*}
+  d(a_j, b_j, b_j) =
+  t(a_j, p(a_j,b_j,b_j), p(a_j,b_j,b_j))
+  \comr{\gammaj} a_j,
+  \end{equation*}
+  so
+  $d(a_j, b_j, b_j) \comr{\thetaj} a_j$,
+  since $\gammaj \leq \thetaj$.
+  \end{enumerate}
+  \end{proof}
+  
+  
+  \begin{lemma}[Verifies Subroutine \ild-1]
+  If $q$ is a \ldto for
+  \begin{equation*}
+  Q_{j-1} = \{(a_0, b_0, 0), (a_1, b_1, 1), \dots, (a_{j-1}, b_{j-1}, 1)\}.
+  \end{equation*}
+  and $t$ is a \ldto for
+  \begin{equation*}
+  \{(a_0, b_0, 0), (q(a_j, a_j, b_j), b_j, 1)\},
+  \end{equation*}
+  then $d(x,y,z) = t(q(x,y,z), q(y,y,z), z)$ is a \ldto for
+  $Q_{j} = Q_{j-1}  \cup \{(a_j, b_j, 1)\}$.
+  \end{lemma}
+  
+  \begin{proof} There are three sorts of cases to check.
+  \begin{enumerate}[1.]
+  \item $(a_0, b_0, 0)$:
+  \begin{equation*}
+  d(a_0, b_0, b_0) =
+  t(q(a_0,b_0,b_0), q(b_0,b_0,b_0), b_0)
+  \comr{\thetao}
+  t(a_0, b_0, b_0) \comr{\thetao}
+  a_0
+  \end{equation*}
+  
+  \item $(a_k, b_k, 1)$ $(1\leq k < j)$:
+  \begin{equation*}
+  d(a_k, a_k, b_k) =
+  t(q(a_k,a_k,b_k), q(a_k,a_k,b_k), b_k)
+  = t(b_k, b_k, b_k) = b_k
+  \end{equation*}
+  
+  \item $(a_j, b_j, 1)$:
+  \begin{equation*}
+  d(a_j, a_j, b_j) =
+  t(q(a_j,a_j,b_j), q(a_j,a_j,b_j), b_j) = b_j
+  \end{equation*}
+  \end{enumerate}
+  \end{proof}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  \subsection{Algorithm for constructing a difference term operation}
+  \label{sec:algor-2}
+  We are now in a position to describe a complete procedure for constructing
+  a difference term operation for a given algebra $\alg{A}$.
+  
+  In this section we work with \emph{lists}
+  (aka sequences, aka tuples) of triples,
+  such as $((a_0, b_0, 0), (a_1, b_1, 0))$, rather than \emph{sets} of triples,
+  simply because for practical (computer implementation) purposes lists are a little
+  easier to work with than sets.
+  % we refer to an ``\ldto for a tuple $(s_0)$
+  
+  First, let
+  % $\begin{equation}
+  %% $as = ((a_0, b_0), (a_1, b_1), \dots, (a_k, b_k))$
+  $((a_0, b_0), (a_1, b_1), \dots, (a_k, b_k))$
+  % \end{equation}
+  be a list of all pairs in the set $A\times A$.
+  % \footnote{Actually, we only need
+  % $(A \times A) \mysetminus \{(a,a) \mid a \in A\}$, but we will elide this
+  % detail in our description of the algorithm since it doesn't impact
+  % complexity.}
+  Let
+  \begin{equation*}
+  xs := %as \; zip \; (0,0,\dots, 0) =
+  ((a_0, b_0, 0), (a_1, b_1, 0), \dots, (a_k, b_k, 0)),
+  \end{equation*}
+  and let
+  % $xs_1 = xs \; zip \; (1,1, \dots, 1)$.
+  \begin{equation*}
+  ys := %as \; zip \; (1, 1, \dots, 1) =
+  ((a_0, b_0, 1), (a_1, b_1, 1), \dots, (a_k, b_k, 1)).
+  \end{equation*}
+  
+  
+  Using Alg~\ref{alg:ld-2} for the base case
+  and Alg~\ref{alg:ild1}
+  for the induction step,
+  we compute a \ldto $s_0$ for
+  \begin{equation*}
+  ((a_0, b_0, 0), (a_1, b_1, 1), (a_2, b_2, 1), \dots, (a_k, b_k, 1)),
+  \end{equation*}
+  and a \ldto $t_1$ for
+  \begin{equation*}
+  ((s_0(a_0, a_0, b_0), b_0, 1), (a_0, b_0, 0),(a_1, b_1, 0)).
+  \end{equation*}
+  The operation $s_1(x,y,z) := t_1(s_0(x,y,z), s_0(y,y,z), z)$ will then be
+  a \ldto for
+  % \begin{equation*}
+  $((a_0, b_0, 0), (a_1, b_1, 0)) :: ys$  (where $::$ denotes
+  list concatenation).
+  % \end{equation*}
+  
+  Next, using Alg~\ref{alg:ld-2} for the base case
+  and Alg~\ref{alg:ild0} for the induction step,
+  we compute a \ldto $t_2$ for
+  \begin{equation*}
+  ((s_1(a_0, a_0, b_0), b_0, 1), (a_0, b_0, 0),(a_1, b_1, 0),(a_2, b_2, 0)).
+  \end{equation*}
+  Then $s_2(x,y,z) := t_2(s_1(x,y,z), s_1(y,y,z), z)$ is a \ldto
+  for the elements of
+  % \begin{equation}
+  $((a_0, b_0, 0), (a_1, b_1, 0), (a_2, b_2, 0)) :: ys$.
+  % \end{equation}
+  
+  Proceeding inductively, for fixed $1<j\leq k$,
+  if $s_{j-1}$ is a \ldto
+  for the elements in the list
+  \begin{equation*}
+  ((a_0, b_0, 0), (a_1, b_1, 0), \dots, (a_{j-1}, b_{j-1}, 0)) :: ys,
+  \end{equation*}
+  and if we use Algorithms~\ref{alg:ild0} and~\ref{alg:ild1}
+  to compute a \ldto $t_j$ for
+  \begin{equation*}
+  ((s_{j-1}(a_0, a_0, b_0), b_0, 1), (a_0, b_0, 0),(a_1, b_1, 0),\dots,
+  (a_j, b_j, 0)),
+  \end{equation*}
+  then $s_j(x,y,z) := t_j(s_{j-1}(x,y,z), s_{j-1}(y,y,z), z)$ will be a
+  \ldto for
+  $((a_0, b_0, 0), (a_1, b_1, 0), \dots, (a_j, b_j, 0)) :: ys$.
+  In the end we arrive at a \ldto for $xs :: ys$, namely,
+  \begin{equation*}
+  d(x,y,z) = t_k(s_{k-1}(x,y,z), s_{k-1}(y,y,z), z).
+  \end{equation*}
+  Since $xs :: ys$ contains all of the triples $(a,b,\chi)$, where
+  $a, b \in A$ and $\chi \in \{0,1\}$,
+  $d(x,y,z)$ is the desired difference term operation for $\alg{A}$.
+  
+  
+  
+  
+  
+  
+  
+  compute $\delta_0$ and $\delta_1$ (see~(\ref{eqn:notation1}) for definition);
+  
+  compute the stream $\sS_0$ of term operations $s$ that satisfy $s(a_0,a_0,b_0) = b_0$;
+  
+  find a term operation $p$ in $\sS_0$ satisfying $p(a_0, b_0, b_0) \mathrel{\delta_0} a_0$;
+  
+  compute $c_1 = p(a_1,b_1,b_1)$;
+  
+  find a term operation $q$ in $\sS_0$ satisfying $q(a_1, c_1, c_1) \mathrel{\delta_1} a_1$;
+  
+  return $(s_0, \sS_0)$ where $s_0(x,y,z) = q(x,p(x,y,y),p(x,y,z))$
+  \end{algorithm}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  \subsection{A more efficient algorithm}
+  \label{sec:algor-3}
+  In this section we refine the algorithm from Section~\ref{sec:algor-2}
+  for constructing a difference term operation for a given finite idempotent
+  algebra $\alg{A}$.
+  The point here is to describe a version of the algorithm that is more practical
+  and resembles how we might realistically implement it in a computer
+  programming language.
+  
+  In addition to notational conventions above, such as
+  \begin{equation}
+  \label{eqn:notation1}
+  \thetai = \Cg^{\alg{A}}(a_i, b_i) \; \text{ and } \;
+  \deltai=\com{\thetai},
+  \end{equation}
+  we also take
+  $as = ((a_0, b_0), (a_1, b_1), \dots, (a_k, b_k))$
+  to be the list of all pairs in the set $A\times A$.
+  Also define
+  \begin{align*}
+  \sA_0 &= \{(a_0, b_0, 0), (a_0, b_0, 1)\},\\
+  \sA_1 &= \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0)\},\\
+  \sA_2 &= \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0), (a_1,b_1,1)\},\\
+  &\vdots\\
+  \sA_{2k} &= \{(a_0, b_0, 0), (a_0, b_0, 1), \dots, (a_k,b_k,0), (a_k,b_k,1)\}.
+  \end{align*}
+  That is,
+  $\sA_{2k} = \sA_{2k-1} \cup \{(a_k,b_k,1)\}$ and
+  $\sA_{2k+1} = \sA_{2k} \cup \{(a_{k+1},b_{k+1},0)\}$.
+  
+  \RestyleAlgo{boxruled}
+  \LinesNumbered
+  \begin{algorithm}%[ht]
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+  
+    \caption{return \ldto for $\sA_1$
+    \label{alg:stream-ldt1}  }
+  % \Input{$as$ = the list of all pairs in $A \times A$}
+  % \Output{a difference term operation for $\alg A$}
+  
+  compute $\delta_0$ and $\delta_1$ (see~(\ref{eqn:notation1}) for definition);
+  
+  compute the stream $\sS_0$ of term operations $s$ that satisfy $s(a_0,a_0,b_0) = b_0$;
+  
+  find a term operation $p$ in $\sS_0$ satisfying $p(a_0, b_0, b_0) \mathrel{\delta_0} a_0$;
+  
+  compute $c_1 = p(a_1,b_1,b_1)$;
+  
+  find a term operation $q$ in $\sS_0$ satisfying $q(a_1, c_1, c_1) \mathrel{\delta_1} a_1$;
+  
+  return $(s_0, \sS_0)$ where $s_0(x,y,z) = q(x,p(x,y,y),p(x,y,z))$
+  \end{algorithm}
+  
+  
+  % \RestyleAlgo{boxed}
+  \RestyleAlgo{boxruled}
+  \LinesNumbered
+  \begin{algorithm}
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+  
+    \caption{return \ldto for $\sA_2$
+    \label{alg:stream-ldt2}  }
+    \Input{$(s_0, \sS_0)$ (from Alg~\ref{alg:stream-ldt1})}
+    \Output{a \ldto for $\sA_2$}
+  
+  compute the stream $\sS_1$ of term operations $p$
+  that satisfy $p(s_0(a_1,a_1,b_1), s_0(a_1,a_1,b_1), b_1) = b_1$;
+  
+  find a term operation $p$ in $\sS_0 \cap \sS_1$ and compute $d_1 = p(a_1,b_1,b_1)$;
+  
+  find a term operation $q$ in $\sS_1$ satisfying $q(a_1, d_1, d_1) \mathrel{\delta_1} a_1$.
+  
+  return $(\sS_0, \sS_1, s_1)$ where $s_1(x,y,z) = q(x, p(x,y,y), p(x,y,z))$
+  \end{algorithm}
+  
+  
+  % \RestyleAlgo{boxed}
+  \RestyleAlgo{boxruled}
+  \LinesNumbered
+  \begin{algorithm}
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+  
+    \caption{return \ldto for $\sA_3$
+    \label{alg:stream-ldt3}  }
+    \Input{$(s_1, \sS_0, \sS_1)$ (from Alg~\ref{alg:stream-ldt2})}
+    \Output{a \ldto for $\sA_3$}
+  
+  compute $\delta_2$;
+  
+  compute the substream $\sS_2 \subseteq \sS_0$ of term operations satisfying
+   $p(a_1,a_1,b_1) = b_1$;
+  
+  compute $c_2 = s_1(a_2, b_2, b_2)$;
+  
+  find a term operation $p$ in $\sS_2$ satisfying
+  $p(a_2, c_2, c_2) \mathrel{\delta_2} a_2$;
+  
+  return $(s_2, \sS_0, \sS_1, \sS_2)$ where $s_2(x,y,z) = p(x, s_1(x,y,y), s_1(x,y,z))$
+  \end{algorithm}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  %%% OLD ALGORITHM June 2017
+  
+  \subsubsection{Induction steps}
+  \label{sec:induct}
+  
+  The next ingredient we need for our construction of a
+  difference term operation for $\alg{A}$
+  is
+  a way to produce a \ld
+  term operation for a set of the form  (for $j>1$)
+  \begin{equation}
+  \label{eqn:Pj}
+  P_j = \{(a_0, b_0, 1), (a_1, b_1, 0), (a_2, b_2, 0), \dots,
+  (a_j, b_j, 0)\},
+  \end{equation}
+  assuming we're given a \ldto for $P_{j-1} = P_{j} \mysetminus \{(a_j, b_j, 0)\}$.
+  
+  
+  \begin{comment}
+  \noindent \underline{\bf Subroutine \ild-0}\\[4pt]
+  The input, $p$,  is
+  a \ldto for $P_{j-1} = P_{j} \mysetminus \{(a_j, b_j, 0)\}$.
+  \begin{enumerate}[1.]
+  \item
+  Call Subroutine \ld-2 to
+  compute a \ldto $t$ for the set
+  \begin{equation*}
+  \{(a_0, b_0, 1), (a_j, p(a_j, b_j, b_j), 0)\}.
+  \end{equation*}
+  \item Return the following
+  \ldto for $P_j$:
+  \begin{equation}
+  d(x,y,z) = t(x, p(x,y,y), p(x,y,z)).
+  \label{eq:idl0-dto}
+  \end{equation}
+  \end{enumerate}
+  \qed
+  \end{comment}
+  
+  
+  
+  
+  % \RestyleAlgo{boxed}
+  \RestyleAlgo{boxruled}
+  \LinesNumbered
+  \begin{algorithm}%[ht]
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+  
+    % \caption{Given \ldto for $P_{j-1}$,
+  \caption{Return a \ldto for the set $P_j$ defined in~(\ref{eqn:Pj})
+  \label{alg:ild0}}
+  %   $P_{j-1}=\{(a_0, b_0, 1), (a_1, b_1, 0), (a_2, b_2, 0), \dots,
+  % (a_{j-1}, b_{j-1}, 0)\}$, compute a \ldto for
+   % = P_{j-1} \cup \{(a_j, b_j, 0)\}$
+  \Input{$p =$ a \ldto for $P_{j-1}$}
+  \Output{$d =$ a \ldto for $P_j$}
+  
+  compute a \ldto $t$ for $\{(a_0, b_0, 1), (a_j, p(a_j, b_j, b_j), 0)\}$;
+  
+  return $d(x,y,z) = t(x, p(x,y,y), p(x,y,z))$
+  
+  \end{algorithm}
+  
+  
+  We also need a way to produce a \ld
+  term operation for a set of the form  (for $j>1$)
+  \begin{equation}
+  \label{eqn:Qj}
+  Q_{j} = \{(a_0, b_0, 0), (a_1, b_1, 1), (a_2, b_2, 1), \dots,
+  (a_{j}, b_{j}, 1)\},
+  \end{equation}
+  assuming we're given a \ldto for
+  $Q_{j-1} = Q_j \mysetminus \{(a_j, b_j, 1)\}$.
+  
+  % \RestyleAlgo{boxed}
+  \RestyleAlgo{boxruled}
+  \LinesNumbered
+  \begin{algorithm}%[ht]
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+    \caption{Return a \ldto for the set $Q_j$ defined in~(\ref{eqn:Qj})
+    \label{alg:ild1}}
+    \Input{$q =$ a \ldto for $Q_{j-1}$}
+    \Output{$d =$ a \ldto for $Q_j$}
+  
+    compute a \ldto $t$ for $\{(a_0, b_0, 0), (q(a_j, a_j, b_j), b_j, 1)\}$;
+  
+    return $d(x,y,z) = t(q(x,y,z), q(y,y,z), z)$
+  \end{algorithm}
+  
+  \begin{remarks}\
+  \begin{enumerate}[1.]
+  \item In each of the Algorithms~\ref{alg:ild0} and \ref{alg:ild1},
+  the first step is a call to Algorithm~\ref{alg:ld-2}
+  for computing a \ldto for a pair of triples.
+  \item The easy verification that Algorithm~\ref{alg:ild0} returns
+  a \ldto for $P_j$ appears in Appendix Section~\ref{app:dt-ids}.
+  \textcolor{red}{(Decide whether to omit proof.)}
+  \item The easy verification that Algorithm~\ref{alg:ild1} returns
+  a \ldto for $Q_j$ appears in Appendix Section~\ref{app:dt-ids}.
+  \textcolor{red}{(Decide whether to omit proof.)}
+  \end{enumerate}
+  \end{remarks}
+  % (see Case $\chi_0=0$ in the proof of Theorem~\ref{thm:local-diff-terms}).
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  With notation and assumptions as above.
+  
+  \begin{theorem}[cf. Theorem 3.3 of \cite{FreeseValeriote2009}]
+  This is a test.
+  \end{theorem}
+  
+  
+  
+  
+  
+  
+  \bibliographystyle{rsfplain}
+  %\bibliography{\jobname}
+  \bibliography{/Users/ralph/tex/bib/Database/db}
+  
+  
+  
+  A \emph{minority term} (for an algebra or variety) is a
+  3-variable term $q(x,y,z)$ such if two of the variables
+  are equal, its value is the other one; that is,
+  \[
+  q(x,x,y) \approx q(x,y,x) \approx q(y,x,x) \approx y.
+  \]
+  We are interested in an algebraic description of varieties having
+  a minority term. One possible conjecture is:
+  \begin{conjecture}
+  $\mathcal V$ has a minority term if and only if it is CP and its
+  ring has characteristic~1 or~2.
+  \end{conjecture}
+  
+  
+  
+  \begin{fact}
+  If $\mathcal V$ has a minority term, then it is CP.
+  \end{fact}
+  
+  \begin{proof}
+  Clearly a minority term is a \malcev term.
+  \end{proof}
+  
+  \begin{fact}
+  A CD variety $\mathcal V$ has a minority term if and
+  only if it is CP.
+  \end{fact}
+  
+  \begin{proof}
+  A variety is CD and CP if and only if it has a Pixley term.
+  If $p(x,y,z)$ is a Pixley term then
+  \[
+  q(x,y,z) = p(p(x,y,z),x,p(x,z,y))
+  \]
+  is a minority term. The fact can be derived from these
+  observations.
+  \end{proof}
+  
+  \begin{fact}
+  A variety of groups has a minority term if and only
+  the variety has exponent 2 (well, or 1).
+  \end{fact}
+  
+  \begin{proof}
+  If a variety has exponent 2 then it is abelian and so,
+  using additive notation, $x + y + z$ is a minority term.
+  
+  If the exponent is not 2 then the variety contains a group
+  which contains an element of order $n$, where $n > 2$ (or
+  infinite). This element generates a cyclic group. In any
+  abelian algebra the \malcev term operation is unique and so
+  must be $x - y + z$. But one easily checks that this is not
+  a minority term when $n > 2$.
+  \end{proof}
+  
+  \begin{lemma}
+  Let $\mathcal V$ be a CP variety with a \malcev term $p(x,y.z)$.
+  The the following are equivalent:
+  \begin{enumerate}
+  \item
+  The ring $R(\mathcal V)$ of $\mathcal V$ has characteristic~2.
+  \item
+  On every block of every abelian congruence, $p$ restricted to the
+  block is a minority term; that is, satisfies $p(a,b,a) = b$.
+  \item
+  If $\theta = \textup{Cg}^{\alg F_{\mathcal V}(x,y)}(x,y)$, then,
+  on each block of $\theta/[\theta,\theta]$, $p$ is a minority term.
+  \end{enumerate}
+  If $\mathcal V$ has a minority term, then these conditions hold.
+  \end{lemma}
+  
+  \begin{proof}
+  By commutator theory (give some specific refs, also that the ring
+  is det by the strucure of $\theta/[\theta,\theta]$)
+  the \malcev term operation on an
+  abelian algebra, or even a block of an abelian congruence,
+  is unique and it is $p(x,y,z) = x - y + z$ for
+  some abelian group. It is easy that $x - y + z$ is a minority
+  if and only if the abelian group has exponent~2.
+  \end{proof}
+  
+  
+  
+  Let $\alg A$ be an algebra and let $S$ and $T$ be tolerances
+  on $\alg A$.
+  Let $M(S,T)$, or $M^{\alg A}(S,T)$ to emphasize $\alg A$,
+  be the set of all $2 \times 2$ matrices of the form
+  \begin{equation}\label{eq1}
+  \begin{bmatrix}
+  p&q\\
+  r&s
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+  f(\mathbf{a},\mathbf{u})&f(\mathbf{a},\mathbf{v})\\
+  f(\mathbf{b},\mathbf{u})&f(\mathbf{b},\mathbf{v})
+  \end{bmatrix}
+  \end{equation}
+  where $f(\mathbf{x},\mathbf{y})$ is an $(m+n)$-ary polynomial of
+  $\alg A$, $\mathbf{a} \mathrel{S} \mathbf{b}$, and
+  $\mathbf{u} \mathrel{T} \mathbf{v}$
+  (componentwise, of course). The members of $M(S,T)$ are called
+  \emph{$S,T$-matrices}.
+  
+  The first exercise gives an efficient way to find $M(S,T)$.
+  
+  \section*{Exercises}
+  
+  \begin{exercises}
+  
+  \prob
+  Show that $M(S,T)$ is the subalgebra of $\alg A^4$ generated by
+  \[
+  \left\{
+  \begin{bmatrix}
+  a&a\\
+  b&b
+  \end{bmatrix} : a \mathrel{S} b\right\}
+  \union
+  \left\{
+  \begin{bmatrix}
+  c&d\\
+  c&d
+  \end{bmatrix} : c \mathrel{T} d\right\}
+  \]
+  
+  \prob
+  Use the symmetry of $S$ and $T$ to show the matrix obtained from an
+  $S,T$-matrix by interchanging the rows or columns (or both) is also
+  in $M(S,T)$.
+  
+  \prob
+  $M(T,T)$ is closed under taking transposes.
+  
+  \end{exercises}
+  
+  \section*{Centrality Relations}
+  
+  We define four kinds of centrality, called centrality, strong
+  centrality, weak centrality, and strong rectularity. The is a fifth
+  centrality condition known as rectangularity which we will save for
+  later.
+  
+  Let $\delta$ be a congruence and $S$ and $T$ be
+  tolerance relations on  $\alg A$. The above centrality relations
+  are denoted $\alg C(S,T;\delta)$ (centrality),
+  $\alg S(S,T;\delta)$ (strong centrality),
+  $\alg W(S,T;\delta)$ (weak centrality),  and
+  $\alg SR(S,T;\delta)$ (strong rectangularity). They hold if the
+  appropriate implication below holds for all
+  \[
+  \begin{bmatrix}
+  p&q\\
+  r&s
+  \end{bmatrix} \in M(S,T)
+  \]
+  \begin{itemize}
+  \item centrality:
+  $p \mathrel{\delta} q \implies r \mathrel{\delta} s$.
+  \item strong rectangularity:
+  $p \mathrel{\delta} s \implies r \mathrel{\delta} s$.
+  \item weak centrality:
+  $p \mathrel{\delta} q \mathrel{\delta} s \implies r \mathrel{\delta} s$.
+  \item strong centrality holds if both centrality and strong
+  rectangularity hold.
+  \end{itemize}
+  
+  Using the exercises it is easy to see that the implication defining
+  $\alg C(S,T;\delta)$ can be replaced by
+  $r \mathrel{\delta} s \implies p \mathrel{\delta} q$ and this is
+  equivalent to
+  \[
+  p \mathrel{\delta} q \Longleftrightarrow r \mathrel{\delta} s.
+  \]
+  Similar statements hold for the other conditions: weak centrality
+  is equivalent to saying that if any three of $p$, $q$, $r$ and $s$
+  are $\delta$ related, then they all are. And strong rectangularity
+  says that if the elements of the main diagonal, or of the sinister
+  diagonal, are $\delta$ related, then all four are.
+  
+  The \emph{$S,T$-term condition} is the condition $\alg C(S,T,0)$,
+  usually expressed using the right-hand matrix in~\eqref{eq1}.
+  Other kinds of term conditions are defined similarly.
+  
+  If $\alg C(S,T;\delta_i)$ holds for all $i \in I$, then
+  $\alg C(S,T;\Meet_{i\in I}\delta_i)$ holds. Similar statements hold
+  for the other centrality conditions. So there is a least $\delta$
+  such that $\alg C(S,T;\delta)$ holds. This $\delta$ is the
+  \emph{commutator} of $S$ and $T$, and is denoted $[S,T]$. The
+  commutators for the other centrality relations are denoted
+  $[S,T]_{\alg S}$, $[S,T]_{\alg {SR}}$, and $[S,T]_{\alg W}$.
+  
+  The properties of these centrality relations are coverered in
+  Theorem~2.19 and Theorem~3.4 of~\cite{KearnesKiss2013}. Much stronger
+  properties hold in congruence modular varieties;
+  see~\cite{FreeseMcKenzie1987}.
+  
+  \section*{Exercises}
+  
+  \begin{exercises}
+  
+  \prob
+  As defined in \cite{HobbyMcKenzie1988}, $\beta$ is \emph{strongly
+  Abelian} over $\delta$ ($\delta \leq \beta$, both congruences on $\alg A$)
+  if the following implication holds for all polynomials $f$ and all
+  elements $x_0, \ldots, x_{n-1}$, $y_0, \ldots, y_{n-1}$, and
+  $z_1, \ldots, z_{n-1}$ with $x_0 \mathrel\beta y_0$ and
+  $x_i \mathrel\beta y_i \mathrel\beta z_i$, $i = 1, \ldots n-1$.
+  \begin{align*}
+  f(x_0,\ldots,&x_{n-1}) \mathrel\delta f(y_0,\ldots,y_{n-1}) \\
+  &\implies
+  f(x_0, z_1,\ldots,z_{n-1}) \mathrel\delta f(y_0, z_1,\ldots,z_{n-1})
+  \end{align*}
+  Show that $\beta$ is strongly
+  Abelian over $\delta$ if and only if $\alg S(\beta,\beta;\delta)$
+  holds, and also show this is in turn equivalent to
+  $\alg {SR}(\beta,\beta;\delta)$.
+  \end{exercises}
+  
+  
+  
+  %%%%%%% wjd: old stuff (will delete eventually)%%%%%%%%%%%%%%%%%
+  
+  \noindent \emph{TODO: the remaining sections about the algorithm will be completely
+  rewritten and mostly deleted.  Obviously we don't want to build up the
+  algorithm in the way described.  Instead, we'll use recursion.}
+  
+  \subsection{Sets of size three}
+  a \ldto for the set
+  \begin{equation*}
+  \{(a_0,b_0, 0), (a_1, b_1, 0), (a_2, b_2, 0)\}
+  \end{equation*}
+  is the first projection, $t(x,y,z) = x$.
+  a \ldto for the set
+  \begin{equation*}
+  \{(a_0,b_0,1), (a_1, b_1, 1), (a_2, b_2, 1)\}
+  \end{equation*}
+  is the third projection, $t(x,y,z) = y$.
+  There are two other forms of 3-sets to consider.
+  We label these $P_3$ and $Q_3$ and handle them with
+  the following subroutines.
+  % They are
+  % \begin{align*}
+  % P &= \{(a_0, b_0, 0), (a_1, b_1, 0),  (a_2, b_2, 1)\} \text{ and }\\
+  % Q &= \{(a_0, b_0, 1), (a_1, b_1, 1), (a_2, b_2, 0)\}.
+  % \end{align*}
+  % $P = \{(a_0, b_0, 0), (a_1, b_1, 0),  (a_2, b_2, 1)\}$
+  % and $Q = \{(a_0, b_0, 1), (a_1, b_1, 1), (a_2, b_2, 0)\}$.
+  
+  
+  \noindent \underline{\textbf{Subroutine \ld-3.0}}\\[4pt]
+  To find a \ldto for
+  $P_3:=\{(a_0, b_0, 0), (a_1, b_1, 0),  (a_2, b_2, 1)\}$,
+  % $\{(a_0, b_0, 0), (a_1, b_1, 1),  (a_2, b_2, 0)\}$,
+  \begin{enumerate}
+  \item use Subroutine \ld-2 to compute a \ldto $s$ for
+  \begin{equation*}
+  \{(a_1, b_1, 0), (a_2, b_2, 1)\};
+  \end{equation*}
+  \item use Subroutine \ld-2 to compute a \ldto $t$ for
+  \begin{equation*}
+  \{(a_0, s(a_0, b_0, b_0), 0), (a_2, b_2, 1)\}.
+  \end{equation*}
+  \end{enumerate}
+  It is easy to check that
+  $d(x,y,z) = t(x, s(x,y,y), s(x,y,z))$
+  is then a \ldto for $P_3$
+  (see Case $\chi_0=0$ in the proof of Theorem~\ref{thm:local-diff-terms}).
+  
+  
+  \noindent \underline{\textbf{Subroutine \ld-3.1}}\\[4pt]
+  To find a \ldto for
+  $Q_3 := \{(a_0, b_0, 1), (a_1, b_1, 1), (a_2, b_2, 0)\}$,
+  \begin{enumerate}
+  \item \label{item:001-1}
+  use Subroutine \ld-2 to compute a \ldto $s$ for the set
+  \begin{equation*}
+  \{(a_1, b_1, 1), (a_2, b_2, 0)\};
+  \end{equation*}
+  \item \label{item:001-2} use Subroutine \ld-2 to compute a \ldto $t$
+  for the set
+  \begin{equation*}
+  \{(s(a_0, a_0, b_0), b_0, 1),  (a_2,a_2,0)\}.
+  \end{equation*}
+  \end{enumerate}
+  Then
+  %%%
+  $d(x,y,z) = t(s(x,y,z), s(y,y,z),z)$
+  %%%
+  is a \ldto  for $Q_3$ (see Case $\chi_0=1$ in the proof of Theorem~\ref{thm:local-diff-terms}).
+  
+  \subsection{Sets of Size 4} We handle one more case before
+  using induction to give a general recursive algorithm.
+  The nontrivial forms of 4-sets are
+  \begin{align*}
+  P_4 &:= \{(a_0, b_0, 0), (a_1, b_1, 0),  (a_2, b_2, 0),  (a_3, b_3, 1)\},\\
+  Q_4 &:= \{(a_0, b_0, 1), (a_1, b_1, 1), (a_2, b_2, 1), (a_3, b_3, 0)\},\\
+  R_4 &:= \{(a_0, b_0, 0), (a_1, b_1, 0),  (a_2, b_2, 1),  (a_3, b_3, 1)\}.
+  \end{align*}
+  
+  \medskip
+  
+  \noindent \underline{\textbf{Subroutine \ld-4.0}}\\[4pt]
+  To find a \ldto for a set like $P_4$,
+  % $\{(a_0, b_0, 0), (a_1, b_1, 1),  (a_2, b_2, 0)\}$,
+  \begin{enumerate}
+  \item use Subroutine \ld-3.0 to compute a \ldto $s$ for
+  \begin{equation*}
+  \{(a_1, b_1, 0),  (a_2, b_2, 0),  (a_3, b_3, 1)\};
+  \end{equation*}
+  \item use Subroutine \ld-2 to compute a \ldto $t$ for
+  \begin{equation*}
+  \{(a_0, s(a_0, b_0, b_0), 0), (a_3, b_3, 1)\}.
+  \end{equation*}
+  \end{enumerate}
+  It is easy to check that
+  $d(x,y,z) = t(x, s(x,y,y), s(x,y,z))$
+  is then a \ldto for $P_4$
+  (see Case $\chi_0=0$ in the proof of Theorem~\ref{thm:local-diff-terms}).
+  
+  \medskip
+  
+  \noindent \underline{\textbf{Subroutine \ld-4.1}}\\[4pt]
+  To find a \ldto for a set like $Q_4$
+  % $\{(a_0, b_0, 0), (a_1, b_1, 1),  (a_2, b_2, 1)\}$,
+  \begin{enumerate}
+  \item
+  use Subroutine \ld-3.1 to compute a \ldto $s$ for the set
+  \begin{equation*}
+  \{(a_1, b_1, 1), (a_2, b_2, 1), (a_3, b_3, 0)\};
+  \end{equation*}
+  \item  use Subroutine \ld-2 to compute a \ldto $t$
+  for the set
+  \begin{equation*}
+  \{(s(a_0, a_0, b_0), b_0, 1),  (a_3,a_3,0)\}.
+  \end{equation*}
+  \end{enumerate}
+  Then
+  %%%
+  $d(x,y,z) = t(s(x,y,z), s(y,y,z),z)$
+  %%%
+  is a \ldto  for $Q_4$ (see Case $\chi_0=1$ in the proof of Theorem~\ref{thm:local-diff-terms}).
+  
+  
+  \medskip
+  
+  \noindent \underline{\textbf{Subroutine \ld-4.2}}\\[4pt]
+  To find a \ldto for a set like $R_4$
+  % $\{(a_0, b_0, 0), (a_1, b_1, 1),  (a_2, b_2, 1)\}$,
+  \begin{enumerate}
+  \item
+  use Subroutine \ld-3.1 to compute a \ldto $s$ for the set
+  \begin{equation*}
+  \{(a_1, b_1, 0), (a_2, b_2, 1), (a_3, b_3, 1)\};
+  \end{equation*}
+  \item use Subroutine \ld-2 to compute a \ldto $t$ for
+  \begin{equation*}
+  \{(a_0, s(a_0, b_0, b_0), 0), (a_3, b_3, 1)\}.
+  \end{equation*}
+  \end{enumerate}
+  Then
+  $d(x,y,z) = t(x, s(x,y,y), s(x,y,z))$
+  is a \ldto for $P_4$.
+  The output of Algorithm~\ref{alg:ld-2} is the set $\tabT \sA_0$ of all 
+Cayley tables of operations in $\sA_0$, the \ldtos for $\{(a_0, b_0, 0), (a_0, b_0, 1)\}$.
+The set $\tabT \sA_0$ is input to Algorithm~\ref{alg:stream-ldt1}.
+A second input will be the set of all tables of operations in 
+$\dtr (a_0, b_0, 1)$.  To form this set, we take all tables of ternary operations.
+(There are $|A|^3$ such tables.) From these, we extract only those whose 
+$(a_0, a_0, b_0)$-entry is $b_0$.
+
+the output of which is the set $\tabT \sA_1$ of all tables of 
+operations in $\sA_1$.
+The latter is input to Algorithm~\ref{alg:stream-ldt2}, the result of which is
+the set $\tabT \sA_2$ of tables for $\sA_2$.
 Thereafter, the process alternates between
 Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}, and 
 terminates once we find the tables for $\sA_{2n^2-1} = A^2 \times \{0,1\}$,
@@ -2329,62 +3613,61 @@ which are tables of a difference term operations for $\alg A$ (as noted
 in Corollary~\ref{cor:loc-diff-term}).
 
 \subsubsection{Induction Stage 1}
-For $i\geq 0$, let
+Let $\eta_0 := \dtr \{(a_0, b_0, 0), (a_0, b_0, 1)\}$ and, for $0 < i < n^2$, let
 \begin{align*}
   \eta_i &:= \dtr (a_i, b_i, 1),\\
   \eta_{\kk} &:= \bigcap_{0\leq i < k}\eta_i
-  =\dtr \{(a_0, b_0, 1), (a_1, b_1, 1), \dots, (a_{k-1}, b_{k-1}, 1) \}.
+  =\dtr \{(a_0, b_0, 0),(a_0, b_0, 1), (a_1, b_1, 1), \dots, (a_{k-1}, b_{k-1}, 1) \}.
 \end{align*}
-
 
 \RestyleAlgo{boxruled}
 %\LinesNumbered
 \begin{algorithm}
-  \KwIn{$\sT \eta_{\kk}$ and $\sT \sA_{2k}$}
+  \KwIn{$\tabT \eta_{\kk}$ and $\tabT \sA_{2k}$}
 
-  \KwOut{$\sT \eta_{\kplus}$ and $\sT \sA_{2k+1}$}
+  \KwOut{$\tabT \eta_{\kplus}$ and $\tabT \sA_{2k+1}$}
 
-  \ForAll{$\sanst_j \in \sT \sA_{2k}$} {
+  \ForEach{$\sanst_i \in \tabT \sA_{2k}$} {
 
-    $\sT_j := \sT \eta_{\kk} \cap \sT \dtr (a_{k+1}, \sanst_j[a_{k+1}, b_{k+1}, b_{k+1}], 0)$;
+    $\tabT_i := \tabT \eta_{\kk} \cap \tabT \dtr (a_{k+1}, \sanst_i[a_{k+1}, b_{k+1}, b_{k+1}], 0)$;
 
-    \ForAll{$\sanss_i \in \sT_j$} {
+    \ForEach{$\sanss_j \in \tabT_i$} {
       \ForAll {$x$, $y$, $z \in A$}  {
         %define the table $\sanss_{j_i}$ as follows:
-        $\sansr_{ji}[x,y,z] :=  \sanss_i[x, \sanst_j[x,y,y], \sanst_j[x,y,z]]$;
+        $\sansr_{ij}[x,y,z] :=  \sanss_j[x, \sanst_i[x,y,y], \sanst_i[x,y,z]]$;
       }
-      include $\sansr_{ji}$ in the set $\sT$;
+      include $\sansr_{ij}$ in the set $\tabT$;
     }
   }
-%  Let $\sT[\sA_{2k+1}] := \{\sanss_{ji}: i, j\}$ be the set of all tables so defined.\\[5pt]
-  compute $\sS  := \bigl\{\sanst \in \sT \eta_{\kk} \colon \sanst[a_k,a_k,b_k]= b_k \bigr\}$;
+%  Let $\tabT[\sA_{2k+1}] := \{\sanss_{ji}: i, j\}$ be the set of all tables so defined.\\[5pt]
+  compute $\tabS  := \bigl\{\sanst \in \tabT \eta_{\kk} \colon \sanst[a_k,a_k,b_k]= b_k \bigr\}$;
 
-  \Return $\sS$ and $\sT$.
+  \Return $\tabS$ and $\tabT$.
   \caption{Generate the set of all Cayley tables of \ldtos for $\sA_{2k+1}$ \label{alg:stream-ldt1} {\small ($k\geq 0$)}}
 \end{algorithm}
 
 \subsubsection{Implementation of Algorithm~\ref{alg:stream-ldt1}}
-Given the sets $\sT \eta_{\kk}$
-and $\sT \sA_{2k}$, of all tables of operations in 
+Given the sets $\tabT \eta_{\kk}$
+and $\tabT \sA_{2k}$, of all tables of operations in 
 $\eta_{\kk}$ and $\sA_{2k}$, respectively,
 Algorithm~\ref{alg:stream-ldt1} returns the sets
-$\sT \eta_{\kplus}$ and $\sT \sA_{2k+1}$.
-Building the set $\sT \eta_{\kplus}$ is trivial.  We simply remove 
-from $\sT \eta_{\kk}$ every table whose $(a_k,a_k,b_k)$-entry is not $b_k$.
-As for $\sT \sA_{2k+1}$,
-for each table $\sanst_j \in \sT \sA_{2k}$,
+$\tabT \eta_{\kplus}$ and $\tabT \sA_{2k+1}$.
+Building the set $\tabT \eta_{\kplus}$ is trivial.  We simply remove 
+from $\tabT \eta_{\kk}$ every table whose $(a_k,a_k,b_k)$-entry is not $b_k$.
+As for $\tabT \sA_{2k+1}$,
+for each table $\sanst_i \in \tabT \sA_{2k}$,
 let 
-$c_j:= \sanst_j[a_{k+1}, b_{k+1}, b_{k+1}]$, compute
-$\gamma := \Cg^{\alg{A}}(a_{k+1}, c_j)$ and $\delta := \com{\gamma}$. % (in $O(rm^2 + n^5)$ time).
+$c_i:= \sanst_i[a_{k+1}, b_{k+1}, b_{k+1}]$, compute
+$\gamma := \Cg^{\alg{A}}(a_{k+1}, c_i)$ and $\delta := \com{\gamma}$. % (in $O(rm^2 + n^5)$ time).
 Next construct the tables of operations in the set
-$\eta_{\kk}\cap \dtr (a_{k+1}, c_j, 0)$, according to the usual
+$\eta_{\kk}\cap \dtr (a_{k+1}, c_i, 0)$, according to the usual
 definition: 
-$t \in \dtr (a_{k+1},c_j,0)$ iff $a_{k+1} \comr{\gamma} t^{\alg{A}}(a_{k+1},c_j,c_j)$.
+$t \in \dtr (a_{k+1},c_i,0)$ iff $a_{k+1} \comr{\gamma} t^{\alg{A}}(a_{k+1},c_i,c_i)$.
 Thus 
-$\sT_j = \{\sanst \in \sT \eta_{\kk} \colon  a_{k+1} \mathrel{\delta} \sanst [a_{k+1}, c_j, c_j]\}$.
-For each $\sanss_{i} \in \sT_j$, define the operation table $\sansr_{ji}$ as follows:
-for all $x$, $y$, $z \in A$, $\sansr_{ji}[x,y,z] :=  \sanss_{i}[x, \sanst_j[x,y,y], \sanst_j[x,y,z]]$. 
-The set of all tables $\{\sansr_{ji} \colon i, j\}$ so defined is $\sT \sA_{2k+1}$.
+$\tabT_i = \{\sanst \in \tabT \eta_{\kk} \colon  a_{k+1} \mathrel{\delta} \sanst [a_{k+1}, c_i, c_i]\}$.
+For each $\sanss_j \in \tabT_i$, define the operation table $\sansr_{ij}$ as follows:
+for all $x$, $y$, $z \in A$, $\sansr_{ij}[x,y,z] :=  \sanss_j[x, \sanst_i[x,y,y], \sanst_i[x,y,z]]$. 
+The set of all tables $\{\sansr_{ij} \colon i, j\}$ so defined is $\tabT \sA_{2k+1}$.
 
 
 
@@ -2399,24 +3682,24 @@ For $i\geq 0$, let
 \RestyleAlgo{boxruled}
 %\LinesNumbered
 \begin{algorithm}
-  \KwIn{$\sT \zeta_{\kminus}$ and $\sT \sA_{2k-1}$}
-  \KwOut{$\sT \zeta_{\kk}$ and $\sT \sA_{2k}$}
+  \KwIn{$\tabT \zeta_{\kminus}$ and $\tabT \sA_{2k-1}$}
+  \KwOut{$\tabT \zeta_{\kk}$ and $\tabT \sA_{2k}$}
 
-  \ForAll{$\sanst_j \in \sT \sA_{2k-1}$} {
+  \ForEach{$\sanst_i \in \tabT \sA_{2k-1}$} {
   
-    $\sT_j := \sT \eta_{\kminus}  \cap \sT \dtr (\sanst_j[a_k, a_k, b_k], b_k, 1)$;
+    $\tabT_i := \tabT \zeta_{\kminus}  \cap \tabT \dtr (\sanst_i[a_k, a_k, b_k], b_k, 1)$;
 
-    \ForAll{$\sanss_{i} \in \sT_j$} {
+    \ForEach{$\sanss_j \in \tabT_i$} {
       \ForAll {$x$, $y$, $z \in A$}  {
-        $\sansr_{ji}[x,y,z] :=  \sanss_{i}[\sanst_j[x,y,z], \sanst_j[y,y,z], z]$;
+        $\sansr_{ij}[x,y,z] :=  \sanss_{j}[\sanst_i[x,y,z], \sanst_i[y,y,z], z]$;
       }
-      include $\sansr_{ji}$ in the set $\sT$;
+      include $\sansr_{ij}$ in the set $\tabT$;
     }
   }
 
-  compute $\sS := \{\sanst \in \sT \zeta_{\kminus} \colon a_{k-1} \mathrel{\delta_{k-1}} \sanst[a_{k-1},b_{k-1},b_{k-1}]\}$;
+  compute $\tabS := \{\sanst \in \tabT \zeta_{\kminus} \colon a_{k-1} \mathrel{\delta_{k-1}} \sanst[a_{k-1},b_{k-1},b_{k-1}]\}$;
 
-  \Return $\sS$ and $\sT$.
+  \Return $\tabS$ and $\tabT$.
 
   \caption{Generate the set of all Cayley tables of \ldtos for $\sA_{2k}$ \label{alg:stream-ldt2} {\small ($k> 0$)}}
 \end{algorithm}
@@ -2425,23 +3708,22 @@ For $i\geq 0$, let
 
 
 \subsubsection{Implementation of Algorithm~\ref{alg:stream-ldt2}}
-Given $\sT \zeta_{\kminus}$
-and $\sT \sA_{2k-1}$, the sets of all tables in
-$\zeta_{\kminus}$ and $\sA_{2k-1}$, respectively,
-Algorithm~\ref{alg:stream-ldt2} returns the sets
-$\sT \zeta_{\kk}$ and $\sT \sA_{2k}$.
-To build $\sT \sA_{2k}$, take each table $\sanst_j$ from $\sT \sA_{2k-1}$
-and set $c_j:= \sanst_j[a_k, a_k, b_k]$. Then, let $\sT_j$ denote 
-the set of tables in $\sT \zeta_{\kminus}$ whose 
-$(c_j, c_j, b_k)$-entry is equal to $b_k$. 
-For each $\sanss_{i} \in \sT_j$, define the operation table 
-$\sansr_{ji}$ as follows:
+Given $\tabT \zeta_{\kminus}$
+and $\tabT \sA_{2k-1}$---the sets of tables representing operations in
+$\zeta_{\kminus}$ and $\sA_{2k-1}$, respectively---Algorithm~\ref{alg:stream-ldt2} 
+returns the sets $\tabT \zeta_{\kk}$ and $\tabT \sA_{2k}$.
+To build $\tabT \sA_{2k}$, take each table $\sanst_i$ from $\tabT \sA_{2k-1}$
+and set $c_i:= \sanst_i[a_k, a_k, b_k]$. Then, let $\tabT_i$ denote 
+the set of tables in $\tabT \zeta_{\kminus}$ whose 
+$(c_i, c_i, b_k)$-entry is equal to $b_k$. 
+For each $\sanss_j \in \tabT_i$, define the operation table 
+$\sansr_{ij}$ as follows:
 for all $x$, $y$, $z \in A$, 
-$\sansr_{ji}[x,y,z] :=  \sanss_{j_i}[\sanst_j[x,y,z], \sanst_j[y,y,z], z]$. 
-The set of all tables so defined is $\sT \sA_{2k}$.
-Finally, to build the set $\sT \zeta_{\kk}$, we 
+$\sansr_{ij}[x,y,z] :=  \sanss_{j}[\sanst_i[x,y,z], \sanst_i[y,y,z], z]$. 
+The set of all tables so defined is $\tabT \sA_{2k}$.
+Finally, to build the set $\tabT \zeta_{\kk}$, we 
 compute $\gamma_{k-1} := \Cg^{\alg{A}}(a_{k-1}, b_{k-1})$ and $\delta := \com{\gamma_{k-1}}$,
-and then remove from $\sT \zeta_{\kminus}$ every table whose 
+and then remove from $\tabT \zeta_{\kminus}$ every table whose 
 $(a_{k-1},b_{k-1},b_{k-1})$-entry is not congruent to $a_{k-1}$ modulo $\delta_{k-1}$.
 
 
