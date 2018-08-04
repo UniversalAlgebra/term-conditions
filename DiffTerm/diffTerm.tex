@@ -1866,35 +1866,34 @@ If $t$ satisfies conditions~(\ref{eq:diff-triple1}) and~(\ref{eq:diff-triple2})
 for all triples in some subset $S\subseteq A^2 \times \{0,1\}$, then we call $t$
 a \defin{local difference term operation for $S$}.
 Throughout the remainder of the paper, we will
-write ``\ldto'' as shorthand for
+write ``\ldto'' as a shorthand for
 ``local difference term operation.''
 
-Often we will take $S$ to be a finite list of elements of
-$A^2 \times \{0,1\}$, and $|S|$ will denote the length of
-the list. The definition above of a \ldto for
-a set has an obvious analog for a list.
+% Often we will take $S$ to be a finite list of elements of
+% $A^2 \times \{0,1\}$, and $|S|$ will denote the length of
+% the list. The definition above of a \ldto for
+% a set has an obvious analog for a list.
 
 \newcommand\dtrel{\ensuremath{\mathrel{\mathcal{D}}}}
 \newcommand\dtr{\ensuremath{\mathcal{D}}}
 A few more notational conventions will come in handy below.
-We will use the symbol
-$\dtr \subseteq A^2\times \{0,1\} \times \Clo_3(\alg{A})$
-to denote the relation that connects $(a, b, i)\in A^2\times \{0,1\}$
-with operations in $\Clo_3(\alg{A})$ that are \ldtos for
+Let $\Clo_3(\alg{A})$ denote the set of all ternary term operations of $\alg{A}$,
+and let 
+$\dtr \subseteq \bigl(A^2\times \{0,1\}\bigr) \times \Clo_3(\alg{A})$
+denote the relation that associates $(a, b, i)$
+with the operations in $\Clo_3(\alg{A})$ that are \ldtos for
 $(a, b, i)$.  That is,
-\[
-((a,b,i), t) \in \dtr \text{ iff conditions~(\ref{eq:diff-triple1}) and~(\ref{eq:diff-triple2})
-  are satisfied.}\]
-
+$((a,b,i), t) \in \dtr$ iff conditions~(\ref{eq:diff-triple1}) 
+and~(\ref{eq:diff-triple2}) are satisfied.
 The relation $\dtr$ induces an obvious Galois connection
 from subsets of $A^2\times \{0,1\}$ to subsets
-of $\Clo_3(\alg{A})$.  Overloading the notation, 
-we will take
+of $\Clo_3(\alg{A})$.  Overloading the symbol $\dtr$, 
+we take
 \begin{align*}
 \dtr &\colon \sP(A^2 \times \{0,1\}) \to \sP(\Clo_3(\alg{A})) \text{ and }\\
 \breve{\dtr} &\colon \sP(\Clo_3(\alg{A})) \to \sP(A^2\times \{0,1\})
 \end{align*}
-to denote the maps defined as follows:
+to be the maps defined as follows:
 \begin{align*}
   \text{for }\;  & S \subseteq A^2 \times \{0,1\}\; \text{ and } \;T \subseteq \Clo_3(\alg{A}),
   \text{ let }\\
@@ -2111,10 +2110,7 @@ as desired.
 
 \subsection{Test for existence of a difference term operation}
 \label{sec:algor-1}
-%% In this subsection we prove the following:
-%% \subsection*{Algorithm 1: existence of a difference term operation}
-
-Here are some practical consequences of Theorem~\ref{thm:local-diff-terms}.
+Here is a practical consequence of Theorem~\ref{thm:local-diff-terms}.
 \begin{corollary}
   \label{cor:algor-1}
   There is a polynomial-time algorithm that takes as input
@@ -2191,6 +2187,8 @@ Here are some practical consequences of Theorem~\ref{thm:local-diff-terms}.
   $O(rm^2n^4 + n^7)$.
 \end{proof}
 
+\subsection{Test for existence of a difference term}
+\label{sec:diffterm-test}
 The following proposition provides another avenue for constructing a polynomial-time algorithm to decide if a finite idempotent algebra generates a variety that has a difference term (cf.~Theorem~\ref{thm:time}).
 \begin{prop}
   Let $\alg A$ be a finite idempotent algebra.  Then $\bbV (\alg A)$ has a difference term if and only if each 3-generated subalgebra of $\alg A^2$ has a difference term operation.
@@ -2224,7 +2222,7 @@ its difference term operations.
 % (given that we know such an operation exists).\wjd{Does the alg ever use the fact that a \ldto exists?}
 % \mav{It is the case that we can construct an operation table for a difference term operation in poly-time.  I think that we can essentially follow the steps from this subsection, but rather than recording the terms at each step, we record the tables for the corresponding operations.  Should we mention this?}
 The method consists of three subroutines.
-Algorithm~\ref{alg:ld-2} finds a \ldto for sets
+Algorithm~\ref{alg:ld-2} finds \ldtos for sets
 of size 2, and Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}
 alternate and produce \ldtos for successively larger subsets of $A^2 \times \{0,1\}$.
 
@@ -2250,8 +2248,8 @@ $(A\times A)^3 \to A\times A$, whose value at
 $(\triple)$ belongs to the set
 $a_0/\delta_0 \times \{b_0\} \cap \Sg^{\alg{A}\times \alg{A}} (\triple)$.
 When such an operation is found, its Cayley table
-$\sanst$---which is an $n^3$-dimensional array satisfying 
-$a_0 \mathrel{\delta_0}\sanst[a_0,b_0, b_0]$ and  $\sanst[a_0,a_0,b_0] = b_0$---is 
+$\sanst$---a $3$-dimensional array satisfying 
+$\sanst[a_0,b_0, b_0] \mathrel{\delta_0} a_0$ and  $\sanst[a_0,a_0,b_0] = b_0$---is 
 included in the return set $\tabT$.
 % returned by Algorithm~\ref{alg:ld-2} represents an 
 
@@ -2356,8 +2354,8 @@ The latter is input to Algorithm~\ref{alg:stream-ldt2}, the result of which is
 the set $\tabT \sA_2$ of tables for $\sA_2$.
 Thereafter, the process alternates between
 Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}, and 
-terminates once we find the tables for $\sA_{2n^2-1} = A^2 \times \{0,1\}$,
-which are tables of a difference term operations for $\alg A$ (as noted
+terminates once we find the Cayley tables for $\sA_{2n^2} = A^2 \times \{0,1\}$,
+which represent difference term operations for $\alg A$ (as noted
 in Corollary~\ref{cor:loc-diff-term}).
   
 Before Algorithm~\ref{alg:stream-ldt1} is called, Algorithm~\ref{alg:ld-2} returns
@@ -2415,11 +2413,13 @@ The set of all tables $\{\sansr_{ij} \colon i, j\}$ so defined is $\tabT \sA_{2k
 
 
 \subsection{Algorithm~\ref{alg:stream-ldt2}: implementation}
-For $i\geq 0$, let
+Define
 \begin{align*}
-\zeta_i &:= \dtr (a_i, b_i, 0), \\
-  \zeta_{\kk} &:= \bigcap_{0\leq i < k}\zeta_i
-  =\dtr \{(a_0, b_0, 0), (a_1, b_1, 0), \dots, (a_{k-1}, b_{k-1}, 0)\}.
+\zeta_0 &:= \eta_0 = \dtr \{(a_0, b_0, 1), (a_0, b_0, 0)\}, \\
+\zeta_1 &:= \dtr (a_1, b_1, 0), \; \zeta_2 := \dtr (a_2, b_2, 0), \dots, \;
+\zeta_i := \dtr (a_i, b_i, 0), \dots,\\
+\zeta_{\kk} &:= \bigcap_{0\leq i < k}\zeta_i
+  =\dtr \{(a_0, b_0, 1), (a_0, b_0, 0), (a_1, b_1, 0), \dots, (a_{k-1}, b_{k-1}, 0) \}.
 \end{align*}
 
 Given $\tabT \zeta_{\kminus}$
