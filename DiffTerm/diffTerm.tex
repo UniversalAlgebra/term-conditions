@@ -2326,28 +2326,22 @@ The following notation will be useful:
 \sA_1 &:= \dtr\{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0)\},\\
 \sA_2 &:= \dtr\{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0), (a_1,b_1,1)\},\dots,
 \end{align*}
-% $\sA_0 := \{(a_0, b_0, 0), (a_0, b_0, 1)\}$, $\sA_1 := \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0)\}$;
-%$\sA_2 := \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0), (a_1,b_1,1)\}$, $\dots$,
-and for all $0< k < n^2-1$, $\sA_{2k} := \sA_{2k-1} \cap \dtr (a_k,b_k,1)$, 
-and $\sA_{2k+1} := \sA_{2k} \cap \dtr (a_{k+1},b_{k+1},0)$.
-Also, define
+and for all $0< k < n^2-1$,
 \begin{align*}
-\eta_0 &:= \dtr \{(a_0, b_0, 0), (a_0, b_0, 1)\} \\
-\eta_1 &:= \dtr (a_1, b_1, 1), \; \eta_2 := \dtr (a_2, b_2, 1), \dots, 
-\eta_i := \dtr (a_i, b_i, 1), \dots,\\
-\eta_{\kk} &:= \bigcap_{0\leq i < k}\eta_i
-  =\dtr \{(a_0, b_0, 0),(a_0, b_0, 1), (a_1, b_1, 1), \dots, (a_{k-1}, b_{k-1}, 1) \}.
+\sA_{2k} &:= \sA_{2k-1} \cap \dtr (a_k,b_k,1),\\[4pt]
+\sA_{2k+1} &:= \sA_{2k} \cap \dtr (a_{k+1},b_{k+1},0). 
 \end{align*}
+Also, define $\eta_i := \dtr (a_i, b_i, 1)$, and for all $0\leq k \leq n^2$,
+\[
+  \eta_{\kk} := \bigcap_{0\leq i < k}\eta_i
+    =\dtr \{(a_0, b_0, 1), (a_1, b_1, 1), \dots, (a_{k-1}, b_{k-1}, 1) \}.
+\]
 Finally, for a set $\sS$ of operations, let $\tabT\sS$ denote the set of 
 all Cayley tables that represent operations in $\sS$. 
 
 The output of Algorithm~\ref{alg:ld-2} is the set $\tabT \sA_0$ of all 
 Cayley tables of operations in $\sA_0$, the \ldtos for $\{(a_0, b_0, 0), (a_0, b_0, 1)\}$.
 The set $\tabT \sA_0$ is input to Algorithm~\ref{alg:stream-ldt1},
-% A second input will be the set of all tables of operations in 
-% $\dtr (a_0, b_0, 1)$.  To form this set, we take all tables of ternary operations.
-% (There are $|A|^3$ such tables.) From these, we extract only those whose 
-% $(a_0, a_0, b_0)$-entry is $b_0$.
 the output of which is the set $\tabT \sA_1$ of all tables of 
 operations in $\sA_1$.
 The latter is input to Algorithm~\ref{alg:stream-ldt2}, the result of which is
@@ -2358,24 +2352,17 @@ terminates once we find the Cayley tables for $\sA_{2n^2} = A^2 \times \{0,1\}$,
 which represent difference term operations for $\alg A$ (as noted
 in Corollary~\ref{cor:loc-diff-term}).
   
-Before Algorithm~\ref{alg:stream-ldt1} is called, Algorithm~\ref{alg:ld-2} returns
-$\tabT \sA_0$, as well as $\tabT \eta_0$ (since these two sets are identical in the $k=0$ case).
-For the first iteration of Algorithm~\ref{alg:stream-ldt1}, we let $k=1$, so 
-$\tabT \eta_0$ and $\tabT \sA_0$ are input, and the algorithm computes
-$\tabT \eta_1$ and $\tabT \sA_1$.
-For larger values of $k$, given $\tabT \eta_{\kk}$ and $\tabT \sA_{2k}$, 
-Algorithm~\ref{alg:stream-ldt1} returns $\tabT \eta_{\kplus}$ and $\tabT \sA_{2k+1}$.
-
 \RestyleAlgo{boxruled}
 %\LinesNumbered
 \begin{algorithm}
-  \KwIn{$\tabT \eta_{\kk}$ and $\tabT \sA_{2k}$}
+  % \KwIn{$\tabT \eta_{\kk}$ and $\tabT \sA_{2k}$}
+  \KwIn{$\tabT \sA_{2k}$}
 
-  \KwOut{$\tabT \eta_{\kplus}$ and $\tabT \sA_{2k+1}$}
+  \KwOut{$\tabT \sA_{2k+1}$}
   
   \ForEach{$\sanst_i \in \tabT \sA_{2k}$} {
   
-    $\tabT_i := \tabT \eta_{\kk} \cap \tabT \dtr (a_{k+1}, \sanst_i[a_{k+1}, b_{k+1}, b_{k+1}], 0)$;
+    $\tabT_i := \tabT \bigl(\eta_{\kk} \cap \dtr (a_{k+1}, \sanst_i[a_{k+1}, b_{k+1}, b_{k+1}], 0)\bigr)$;
  
     \ForEach{$\sanss_j \in \tabT_i$} {
       \ForAll {$x$, $y$, $z \in A$}  {
@@ -2386,46 +2373,42 @@ Algorithm~\ref{alg:stream-ldt1} returns $\tabT \eta_{\kplus}$ and $\tabT \sA_{2k
     }
   }
 %  Let $\tabT[\sA_{2k+1}] := \{\sanss_{ji}: i, j\}$ be the set of all tables so defined.\\[5pt]
-  compute $\tabS  := \bigl\{\sanst \in \tabT \eta_{\kk} \colon \sanst[a_k,a_k,b_k]= b_k \bigr\}$;
+  % compute $\tabS  := \bigl\{\sanst \in \tabT \eta_{\kk} \colon \sanst[a_k,a_k,b_k]= b_k \bigr\}$;
 
-  \Return $\tabS$ and $\tabT$.
+  \Return $\tabT$. %$\tabS$ and 
   \caption{Generate the set of all Cayley tables of \ldtos for $\sA_{2k+1}$ \label{alg:stream-ldt1} {\small ($k\geq 0$)}}
 \end{algorithm}
   
-
-Building the set $\tabT \eta_{\kplus}$ is trivial.  We simply remove 
-from $\tabT \eta_{\kk}$ every table whose $(a_k,a_k,b_k)$-entry is not $b_k$.
-As for $\tabT \sA_{2k+1}$,
-for each table $\sanst_i \in \tabT \sA_{2k}$,
-we let 
-$c_i:= \sanst_i[a_{k+1}, b_{k+1}, b_{k+1}]$, and compute
-$\gamma := \Cg^{\alg{A}}(a_{k+1}, c_i)$ and $\delta := \com{\gamma}$. % (in $O(rm^2 + n^5)$ time).
-Next we generate the tables of operations in the set
-$\eta_{\kk}\cap \dtr (a_{k+1}, c_i, 0)$, according to the usual
-definition: 
-$t \in \dtr (a_{k+1},c_i,0)$ iff $a_{k+1} \comr{\gamma} t^{\alg{A}}(a_{k+1},c_i,c_i)$.
-The set of such tables is
-$\tabT_i = \{\sanst \in \tabT \eta_{\kk} \colon  a_{k+1} \mathrel{\delta} \sanst [a_{k+1}, c_i, c_i]\}$.
-For each $\sanss_j \in \tabT_i$, define the operation table $\sansr_{ij}$ as follows:
-for all $x$, $y$, $z \in A$, $\sansr_{ij}[x,y,z] :=  \sanss_j[x, \sanst_i[x,y,y], \sanst_i[x,y,z]]$. 
-The set of all tables $\{\sansr_{ij} \colon i, j\}$ so defined is $\tabT \sA_{2k+1}$.
-
+We now describe how the algorithm builds the set 
+$\tabT \sA_{2k+1}$ of tables representing operations in $\sA_{2k+1}$, given the set
+$\tabT \sA_{2k}$.
+For each table $\sanst_i \in \tabT \sA_{2k}$,
+let $c_i:= \sanst_i[a_{k+1}, b_{k+1}, b_{k+1}]$, and compute
+$\gamma_i := \Cg^{\alg{A}}(a_{k+1}, c_i)$ and $\delta_i := \com{\gamma_i}$. % (in $O(rm^2 + n^5)$ time).
+Next, generate the subalgebra $S:=\Sg^{\alg{A}^2}\{(a_0,a_{k+1}), (a_0,c_i), (b_0,c_i)\}$.
+For each $(u,v) \in S$ if $u=b_0$ and $v \mathrel{\delta_i} a_{k+1}$, then 
+form the operation table $\sanss$ of the term that generated $(u,v)$.  
+Then, by construction, $\sanss[a_0, a_0, b_0] = b_0$ and 
+$\sanss[a_{k+1},c_i,c_i] \mathrel{\delta_i} a_{k+1}$.  
+Finally (to satisfy membership in $\eta_{\kk}$), 
+check whether $\sanss[a_i, a_i, b_i] = b_i$ holds for all $0< i< k$.  
+If so, include in $\tabT$ the table $\sansr$ defined as follows:
+$\forall x$, $y$, $z \in A$, 
+  $\sansr[x,y,z] :=  \sanss\bigl[x, \sanst_i[x,y,y], \sanst_i[x,y,z]\bigr]$.
+Carry out the foregoing procedure for every $\sanst_i \in \tabT \sA_{2k}$, 
+and then return $\tabT$.
 
 
 \subsection{Algorithm~\ref{alg:stream-ldt2}: implementation}
-Define
-\begin{align*}
-\zeta_0 &:= \eta_0 = \dtr \{(a_0, b_0, 1), (a_0, b_0, 0)\}, \\
-\zeta_1 &:= \dtr (a_1, b_1, 0), \; \zeta_2 := \dtr (a_2, b_2, 0), \dots, \;
-\zeta_i := \dtr (a_i, b_i, 0), \dots,\\
-\zeta_{\kk} &:= \bigcap_{0\leq i < k}\zeta_i
-  =\dtr \{(a_0, b_0, 1), (a_0, b_0, 0), (a_1, b_1, 0), \dots, (a_{k-1}, b_{k-1}, 0) \}.
-\end{align*}
-
-Given $\tabT \zeta_{\kminus}$
-and $\tabT \sA_{2k-1}$---the sets of tables representing operations in
-$\zeta_{\kminus}$ and $\sA_{2k-1}$, respectively---Algorithm~\ref{alg:stream-ldt2} 
-returns the sets $\tabT \zeta_{\kk}$ and $\tabT \sA_{2k}$.
+Define $\zeta_i := \dtr (a_i, b_i, 0)$ and for all $0\leq k \leq n^2$,
+\[
+  \zeta_{\kk} := \bigcap_{0\leq i < k}\zeta_i
+    =\dtr \{(a_0, b_0, 0), (a_1, b_1, 0), \dots, (a_{k-1}, b_{k-1}, 0) \}.
+\]
+\wjd{FIX THIS SECTION! We don't want to generate the sets $\tabT \zeta_{\kk}$; they're too big!}
+Given the set $\tabT \sA_{2k-1}$ of tables representing operations in
+$\sA_{2k-1}$, Algorithm~\ref{alg:stream-ldt2} 
+returns the set $\tabT \sA_{2k}$.
 To build $\tabT \sA_{2k}$, take each table $\sanst_i$ from $\tabT \sA_{2k-1}$
 and set $c_i:= \sanst_i[a_k, a_k, b_k]$. Then, let $\tabT_i$ denote 
 the set of tables in $\tabT \zeta_{\kminus}$ whose 
@@ -2445,12 +2428,12 @@ $(a_{k-1},b_{k-1},b_{k-1})$-entry is not congruent to $a_{k-1}$ modulo $\delta_{
 \RestyleAlgo{boxruled}
 %\LinesNumbered
 \begin{algorithm}
-  \KwIn{$\tabT \zeta_{\kminus}$ and $\tabT \sA_{2k-1}$}
-  \KwOut{$\tabT \zeta_{\kk}$ and $\tabT \sA_{2k}$}
+  \KwIn{$\tabT \sA_{2k-1}$}
+  \KwOut{$\tabT \sA_{2k}$}
   
   \ForEach{$\sanst_i \in \tabT \sA_{2k-1}$} {
     
-    $\tabT_i := \tabT \zeta_{\kminus}  \cap \tabT \dtr (\sanst_i[a_k, a_k, b_k], b_k, 1)$;
+    $\tabT_i := \tabT \bigl( \zeta_{\kminus}  \cap \dtr (\sanst_i[a_k, a_k, b_k], b_k, 1)\bigr)$;
   
     \ForEach{$\sanss_j \in \tabT_i$} {
       \ForAll {$x$, $y$, $z \in A$}  {
@@ -2460,9 +2443,9 @@ $(a_{k-1},b_{k-1},b_{k-1})$-entry is not congruent to $a_{k-1}$ modulo $\delta_{
     }
   }
   
-  compute $\tabS := \{\sanst \in \tabT \zeta_{\kminus} \colon a_{k-1} \mathrel{\delta_{k-1}} \sanst[a_{k-1},b_{k-1},b_{k-1}]\}$;
+%%  compute $\tabS := \{\sanst \in \tabT \zeta_{\kminus} \colon a_{k-1} \mathrel{\delta_{k-1}} \sanst[a_{k-1},b_{k-1},b_{k-1}]\}$;
   
-  \Return $\tabS$ and $\tabT$.
+  \Return $\tabT$.
   
   \caption{Generate the set of all Cayley tables of \ldtos for $\sA_{2k}$ \label{alg:stream-ldt2} {\small ($k> 0$)}}
 \end{algorithm}
