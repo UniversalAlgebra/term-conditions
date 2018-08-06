@@ -2219,8 +2219,7 @@ The following proposition provides another avenue for constructing a polynomial-
 In this section we present a polynomial-time algorithm that takes 
 a finite idempotent algebra and constructs the Cayley tables of 
 its difference term operations.
-% (given that we know such an operation exists).\wjd{Does the alg ever use the fact that a \ldto exists?}
-% \mav{It is the case that we can construct an operation table for a difference term operation in poly-time.  I think that we can essentially follow the steps from this subsection, but rather than recording the terms at each step, we record the tables for the corresponding operations.  Should we mention this?}
+
 The method consists of three subroutines.
 Algorithm~\ref{alg:ld-2} finds \ldtos for sets
 of size 2, and Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}
@@ -2238,18 +2237,17 @@ Alternatively, if we wish to emphasize the means by which
 we arrived at the term that the table represents, we may use
 $\sanst_{x_1,\dots, x_k \mid u}$ to denote the table.
 
-\newcommand{\triple}{\ensuremath{(a_0,a_0),(b_0,a_0),(b_0,b_0)}}
+\newcommand{\triple}{\ensuremath{(a_0,a_1),(b_0,a_1),(b_0,b_1)}}
 
-\subsection{Algorithm~\ref{alg:ld-2}: implementation and complexity}
+\subsection{Base step} %Algorithm~\ref{alg:ld-2}: implementation and complexity}
 \label{sec:cc-ld-2}
-
-The algorithm searches for term operations of type 
+The first stage of our method finds a term operation of type 
 $(A\times A)^3 \to A\times A$, whose value at 
 $(\triple)$ belongs to the set
-$a_0/\delta_0 \times \{b_0\} \cap \Sg^{\alg{A}\times \alg{A}} (\triple)$.
+$a_0/\delta_0 \times \{b_1\} \cap \Sg^{\alg{A}\times \alg{A}} (\triple)$.
 When such an operation is found, its Cayley table
 $\sanst$---a $3$-dimensional array satisfying 
-$\sanst[a_0,b_0, b_0] \mathrel{\delta_0} a_0$ and  $\sanst[a_0,a_0,b_0] = b_0$---is 
+$\sanst[a_0,b_0, b_0] \mathrel{\delta_0} a_0$ and  $\sanst[a_1,a_1,b_1] = b_1$---is 
 included in the return set $\tabT$.
 % returned by Algorithm~\ref{alg:ld-2} represents an 
 
@@ -2258,19 +2256,19 @@ included in the return set $\tabT$.
   % \SetKwInOut{Input}{Input}
   % \SetKwInOut{Output}{Output}
 
-  \KwIn{$S = \{(a_0,b_0,0), (a_0, b_0, 1)\}$}
+  \KwIn{$S = \{(a_0,b_0,0), (a_1, b_1, 1)\}$}
   \KwOut{Cayley tables for all operations in $\dtr S$}
 
-  compute $\delta_0 = \com{ \theta_0 }$ and form $C_0= (a_0/\delta_0) \times \{b_0\}$\;
-  compute $S_0=\Sg^{\alg{A}\times \alg{A}} (\triple)$\;
-  \ForAll{$(u,v)  \in S_0$} {
+  compute $\delta = \com{ \theta_0 }$ and form $C= (a_0/\delta) \times \{b_0\}$\;
+  compute $S=\Sg^{\alg{A}\times \alg{A}} (\triple)$\;
+  \ForAll{$(u,v)  \in S$} {
     compute the table $\sanst_{\triple\mid (u,v)}$\;
-    \If{$(u,v) \in C_0 \cap S_0$} {
+    \If{$(u,v) \in C \cap S$} {
     include $\sanst_{\triple \mid (u,v)}$ in the set $\tabT$\;
     }
   }
   \Return $\tabT$.
-  \caption{Generate the set of all Cayley tables of \ldtos for $\{(a_0,b_0,0), (a_0, b_0, 1)\}$}
+  \caption{Generate the set of all Cayley tables of \ldtos for $\{(a_0,b_0,0), (a_1, b_1, 1)\}$}
   \label{alg:ld-2}
   % in the $((a_0,a_1),(b_0,a_1),(b_0,b_1))$ position
 
@@ -2283,222 +2281,150 @@ Recall the notation introduced in Section~\ref{sec:algorithm-its-time}:
 k_i&= \text{ the number of basic operations of arity~$i$},\\ 
 r &= \text{ the largest arity of the basic operations of $\alg{A}$.}
 \end{align*}
-Also, $\sanst_{(a_0,a_0),(b_0,a_0),(b_0,b_0)|(u,v)}$ denotes the Cayley table of a
-term operation that generates $(u,v)$ from the set $\{(a_0,a_0),(b_0,a_0),(b_0,b_0)\}$.
+Also, $\sanst_{\triple |(u,v)}$ denotes the Cayley table of a
+term operation that generates $(u,v)$ from the set $\{\triple \}$.
 
 Algorithm~\ref{alg:ld-2} can be implemented as follows:
 \begin{enumerate}
   \item compute $\thetao$, in time $O(rm)$;
-  \item compute $C_0= a_0/\com{ \thetao } \times \{b_0\}$,
+  \item compute $C= a_0/\com{ \thetao } \times \{b_0\}$,
   in time $O(rm^2 + n^5)$;
-  \item generate $S_0=\Sg^{\alg{A}\times \alg{A}} \{(a_0,a_0),(b_0,a_0),(b_0,b_0)\}$,
+  \item generate $S=\Sg^{\alg{A}\times \alg{A}} \{\triple\}$,
     in time $O(r m^2)$;\\
-    for each newly generated $(u,v) \in S_0$, 
+    for each newly generated $(u,v) \in S$, 
   \begin{itemize}
     \item construct and store the table
-      $\sanst_{(a_0,a_0),(b_0,a_0),(b_0,b_0)|(u,v)}$;
-    \item if $(u,v) \in C_0$, then add $\sanst_{(a_0,a_0),(b_0,a_0),(b_0,b_0)|(u,v)}$
+      $\sanst_{\triple |(u,v)}$;
+    \item if $(u,v) \in C$, then add $\sanst_{\triple |(u,v)}$
      to the list of tables to be returned; 
   \end{itemize}
 \end{enumerate}
   
-Each element $(u,v)\in S_0$ is the result of applying some (say, $k$-ary)
+Each element $(u,v)\in S$ is the result of applying some (say, $k$-ary)
 basic operation $f$ to previously generated pairs $(u_1, v_1)$, $\dots$, $(u_k,v_k)$
-from $S_0$, and the operation tables generating these pairs were
+from $S$, and the operation tables generating these pairs were
 already stored (the first bullet of Step 3).  Thus, to compute the table
 for the operation that produced $(u,v) = f((u_1,v_1),\dots, (u_k,v_k))$
 we simply compose $f$ with previously stored operation tables.
 Since all tables represent ternary operations, the time-complexity of this composition
 is $|A|^3$-steps multiplied by $k$ reads per step; that is,
 $kn^3 \leq rn^3$.
-  
 All told, the time-complexity of Algorithm~\ref{alg:ld-2} is %$O(rm + rm^2 + n^5 + r^2m^2n^3) = 
 $O(r^2m^2n^3 + n^5)$.
-We only need to run the algorithm once since, as soon as we find all the
-\ldto tables for elements generated by the single triple, $((a_0,a_0),(b_0,a_0),(b_0,b_0))$,
-we move on to Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}.
 
 
-\subsection{Algorithm~\ref{alg:stream-ldt1}: implementation details}
-The following notation will be useful:
-\begin{align*}
-  \sA_0 &:=\dtr \{(a_0, b_0, 0), (a_0, b_0, 1)\},\\
-\sA_1 &:= \dtr\{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0)\},\\
-\sA_2 &:= \dtr\{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0), (a_1,b_1,1)\},\dots,
-\end{align*}
-and for all $0< k < n^2-1$,
-\begin{align*}
-\sA_{2k} &:= \sA_{2k-1} \cap \dtr (a_k,b_k,1),\\[4pt]
-\sA_{2k+1} &:= \sA_{2k} \cap \dtr (a_{k+1},b_{k+1},0). 
-\end{align*}
-Also, define $\eta_i := \dtr (a_i, b_i, 1)$, and for all $0\leq k \leq n^2$,
+
+\subsection{Two inductive stages}
+The method is based on the proof of Theorem~\ref{thm:local-diff-terms} and consists of two 
+stages, each of which makes $n^2$ calls to Algorithm~\ref{alg:ld-2}.
+
+Define $\ell := 2n^2-1$ and let
 \[
-  \eta_{\kk} := \bigcap_{0\leq i < k}\eta_i
-    =\dtr \{(a_0, b_0, 1), (a_1, b_1, 1), \dots, (a_{k-1}, b_{k-1}, 1) \}.
+  \{(a_0, b_0, 0), (a_0, b_0, 1), (a_1, b_1, 0),(a_1, b_1, 1), \dots,
+  (a_{\ell-1}, b_{\ell-1},0), (a_{\ell}, b_{\ell},1)\},
 \]
-Finally, for a set $\sS$ of operations, let $\tabT\sS$ denote the set of 
-all Cayley tables that represent operations in $\sS$. 
+be an enumeration of the entire set $A^2 \times \{0,1\}$.
+The first inductive stage of our procedure computes the Cayley table of a \ldto for 
+the set $S_\ell := \{(a_0, b_0, 1), (a_1, b_1, 1), \dots,
+(a_{\ell-1}, b_{\ell-1},1), (a_{\ell}, b_{\ell},0)\}$.
+Call the resulting \ldto $p$.  The second stage computes the Cayley table of a \ldto for
+\[T_\ell := \{(a_0, b_0, 0), \dots,
+(a_{\ell-1}, b_{\ell-1},0), (a_{\ell}, b_{\ell},0), (p(a_{\ell}, a_{\ell}, b_{\ell}), b_\ell, 1)\}.
+\]
+Call this \ldto $q$. Finally, we construct the Cayley table of the operation
+$d(x,y,z) := q(p(x,y,z), p(y,y,z), z)$.
+As we saw in the proof of Theorem~\ref{thm:local-diff-terms}, this is a 
+\ldto for $A^2 \times \{0,1\}$, hence a difference term operation for $\alg{A}$.
 
-The output of Algorithm~\ref{alg:ld-2} is the set $\tabT \sA_0$ of all 
-Cayley tables of operations in $\sA_0$, the \ldtos for $\{(a_0, b_0, 0), (a_0, b_0, 1)\}$.
-The set $\tabT \sA_0$ is input to Algorithm~\ref{alg:stream-ldt1},
-the output of which is the set $\tabT \sA_1$ of all tables of 
-operations in $\sA_1$.
-The latter is input to Algorithm~\ref{alg:stream-ldt2}, the result of which is
-the set $\tabT \sA_2$ of tables for $\sA_2$.
-Thereafter, the process alternates between
-Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}, and 
-terminates once we find the Cayley tables for $\sA_{2n^2} = A^2 \times \{0,1\}$,
-which represent difference term operations for $\alg A$ (as noted
-in Corollary~\ref{cor:loc-diff-term}).
-  
+We now describe the two inductive stages in more detail and show that each can be completed in 
+$n^2$ calls to Algorithm~\ref{alg:ld-2}.
+Define 
+\begin{align*} 
+S_1 &:= \{(a_0, b_0, 1),(a_{\ell}, b_{\ell},0)\},\\
+S_2 &:= \{(a_0, b_0, 1), (a_1, b_1, 1), (a_{\ell}, b_{\ell},0)\},\\
+& \vdots\\
+S_\ell &:= \{(a_0, b_0, 1), (a_1, b_1, 1), \dots,
+(a_{\ell-1}, b_{\ell-1},1), (a_{\ell}, b_{\ell},0)\}.
+\end{align*}
+Each of the enumerated steps below requires a single call to Alg.~\ref{alg:ld-2}.
+\begin{enumerate}[1.]
+  \item Compute $p_1 \in \dtr S_1$ (i.e.~$p_1$ is a \ldto for $S_1$); % for $\{(a_0, b_0, 1), (a_{\ell}, b_{\ell},0)\}$.    
+  \item compute $q_1\in \dtr \{(p_1(a_1, a_1, b_1), b_1, 1), (a_{\ell}, b_{\ell},0)\}$; \\
+  form $p_2(x,y,z) = q_1(p_1(x,y,z), p_1(y,y,z), z) \in \dtr S_2$; %\{(a_0, b_0, 1), (a_1, b_1, 1),(a_{\ell}, b_{\ell},0)\}$.
+  \item compute $q_2\in \dtr \{(p_2(a_2, a_2, b_2), b_2, 1), (a_{\ell}, b_{\ell},0)\}$; \\
+  form $p_3(x,y,z) = q_2(p_2(x,y,z), p_2(y,y,z), z) \in \dtr S_3$;\\
+    % \item compute $q_3\in \dtr \{(p_3(a_3, a_3, b_3), b_3, 1), (a_{\ell}, b_{\ell},0)\}$; \\
+  % form $p_4(x,y,z) = q_3(p_3(x,y,z), p_3(y,y,z), z) \in \dtr S_4$;\\
+  $\vdots$
+  \item[$\ell$.] compute $q_{\ell-1}\in \dtr \{ (p_{\ell-1}(a_{\ell-1}, a_{\ell-1}, b_{\ell-1}), b_{\ell-1}, 1), (a_{\ell}, b_{\ell},0)\}$; \\
+  form
+  $p(x,y,z) = q_{\ell-1}(p_{\ell-1}(x,y,z), p_{\ell-1}(y,y,z), z) \in \dtr S_\ell$;
+\end{enumerate}
+
 \RestyleAlgo{boxruled}
 %\LinesNumbered
 \begin{algorithm}
   % \KwIn{$\tabT \eta_{\kk}$ and $\tabT \sA_{2k}$}
-  \KwIn{$\tabT \sA_{2k}$}
-
-  \KwOut{$\tabT \sA_{2k+1}$}
+  \KwOut{$p \in \dtr S_{\ell}$}
   
-  \ForEach{$\sanst_i \in \tabT \sA_{2k}$} {
+  compute $p_1 \in \dtr S_1$. % for $\{(a_0, b_0, 1), (a_{\ell}, b_{\ell},0)\}$.    
   
-    $\tabT_i := \tabT \bigl(\eta_{\kk} \cap \dtr (a_{k+1}, \sanst_i[a_{k+1}, b_{k+1}, b_{k+1}], 0)\bigr)$;
- 
-    \ForEach{$\sanss_j \in \tabT_i$} {
-      \ForAll {$x$, $y$, $z \in A$}  {
-        %define the table $\sanss_{j_i}$ as follows:
-        $\sansr_{ij}[x,y,z] :=  \sanss_j\bigl[x, \sanst_i[x,y,y], \sanst_i[x,y,z]\bigr]$;
-      }
-      include $\sansr_{ij}$ in the set $\tabT$;
-    }
+  \For {$1\leq i < \ell$} {
+    compute $q_i\in \dtr \{(p_i(a_i, a_i, b_i), b_i, 1), (a_{\ell}, b_{\ell},0)\}$;
+  
+    form $p_{i+1}(x,y,z) = q_i(p_i(x,y,z), p_i(y,y,z), z)$;
   }
-%  Let $\tabT[\sA_{2k+1}] := \{\sanss_{ji}: i, j\}$ be the set of all tables so defined.\\[5pt]
-  % compute $\tabS  := \bigl\{\sanst \in \tabT \eta_{\kk} \colon \sanst[a_k,a_k,b_k]= b_k \bigr\}$;
 
-  \Return $\tabT$. %$\tabS$ and 
-  \caption{Generate the set of all Cayley tables of \ldtos for $\sA_{2k+1}$ \label{alg:stream-ldt1} {\small ($k\geq 0$)}}
+  \Return $p_\ell$
+  \caption{Compute a \ldto for $S_\ell$\label{alg:new-2-1}}
 \end{algorithm}
-  
-We now describe how the algorithm builds the set 
-$\tabT \sA_{2k+1}$ of tables representing operations in $\sA_{2k+1}$, given the set
-$\tabT \sA_{2k}$.
-For each table $\sanst_i \in \tabT \sA_{2k}$,
-let $c_i:= \sanst_i[a_{k+1}, b_{k+1}, b_{k+1}]$, and compute
-$\gamma_i := \Cg^{\alg{A}}(a_{k+1}, c_i)$ and $\delta_i := \com{\gamma_i}$. % (in $O(rm^2 + n^5)$ time).
-Next, generate the subalgebra $S:=\Sg^{\alg{A}^2}\{(a_0,a_{k+1}), (a_0,c_i), (b_0,c_i)\}$.
-For each $(u,v) \in S$ if $u=b_0$ and $v \mathrel{\delta_i} a_{k+1}$, then 
-form the operation table $\sanss$ of the term that generated $(u,v)$.  
-Then, by construction, $\sanss[a_0, a_0, b_0] = b_0$ and 
-$\sanss[a_{k+1},c_i,c_i] \mathrel{\delta_i} a_{k+1}$.  
-Finally (to satisfy membership in $\eta_{\kk}$), 
-check whether $\sanss[a_i, a_i, b_i] = b_i$ holds for all $0< i< k$.  
-If so, include in $\tabT$ the table $\sansr$ defined as follows:
-$\forall x$, $y$, $z \in A$, 
-  $\sansr[x,y,z] :=  \sanss\bigl[x, \sanst_i[x,y,y], \sanst_i[x,y,z]\bigr]$.
-Carry out the foregoing procedure for every $\sanst_i \in \tabT \sA_{2k}$, 
-and then return $\tabT$.
 
 
-\subsection{Algorithm~\ref{alg:stream-ldt2}: implementation}
-Define $\zeta_i := \dtr (a_i, b_i, 0)$ and for all $0\leq k \leq n^2$,
-\[
-  \zeta_{\kk} := \bigcap_{0\leq i < k}\zeta_i
-    =\dtr \{(a_0, b_0, 0), (a_1, b_1, 0), \dots, (a_{k-1}, b_{k-1}, 0) \}.
-\]
-\wjd{FIX THIS SECTION! We don't want to generate the sets $\tabT \zeta_{\kk}$; they're too big!}
-Given the set $\tabT \sA_{2k-1}$ of tables representing operations in
-$\sA_{2k-1}$, Algorithm~\ref{alg:stream-ldt2} 
-returns the set $\tabT \sA_{2k}$.
-To build $\tabT \sA_{2k}$, take each table $\sanst_i$ from $\tabT \sA_{2k-1}$
-and set $c_i:= \sanst_i[a_k, a_k, b_k]$. Then, let $\tabT_i$ denote 
-the set of tables in $\tabT \zeta_{\kminus}$ whose 
-$(c_i, c_i, b_k)$-entry is equal to $b_k$. 
-For each $\sanss_j \in \tabT_i$, define the operation table 
-$\sansr_{ij}$ as follows:
-for all $x$, $y$, $z \in A$, 
-$\sansr_{ij}[x,y,z] :=  \sanss_{j}\bigl[\sanst_i[x,y,z], \sanst_i[y,y,z], z\bigr]$. 
-The set of all tables so defined is $\tabT \sA_{2k}$.
-Finally, to build the set $\tabT \zeta_{\kk}$, we 
-compute $\gamma_{k-1} := \Cg^{\alg{A}}(a_{k-1}, b_{k-1})$ and $\delta := \com{\gamma_{k-1}}$,
-and then remove from $\tabT \zeta_{\kminus}$ every table whose 
-$(a_{k-1},b_{k-1},b_{k-1})$-entry is not congruent to $a_{k-1}$ modulo $\delta_{k-1}$.
+The second inductive stage is similar. Define
+\begin{align*} 
+  T_1 &:= \{(a_0, b_0, 0), (p(a_{\ell}, a_{\ell}, b_{\ell}), b_{\ell}, 1)\},\\
+  T_2 &:= \{(a_0, b_0, 0), (a_1, b_1, 0), (p(a_{\ell}, a_{\ell}, b_{\ell}), b_\ell, 1)\},\\ 
+  & \vdots\\
+  T_\ell &:= \{(a_0, b_0, 0), \dots,
+(a_{\ell-1}, b_{\ell-1},0), (a_{\ell}, b_{\ell},0), (p(a_{\ell}, a_{\ell}, b_{\ell}), b_\ell, 1)\}.
+\end{align*}
 
-
+Each of the enumerated steps below requires a single call to Alg.~\ref{alg:ld-2}.
+\begin{enumerate}[1.]
+  \item Compute $p_1 \in \dtr T_1$ (i.e.~$p_1$ is a \ldto for $T_1$);
+  \item compute $q_1\in \dtr \{(a_1, p_1(a_1, b_1, b_1), 0), (p(a_{\ell}, a_{\ell}, b_{\ell}), b_{\ell}, 1)\}$; \\
+  form $p_2(x,y,z) = q_1(x, p_1(x,y,y), p_1(x,y,z)) \in \dtr (T_2\cap S_2)$;
+  \item compute $q_2\in \dtr \{(a_2, p_2(a_2, b_2, b_2), 0), (p(a_{\ell}, a_{\ell}, b_{\ell}), b_{\ell}, 1)\}$; \\
+  form $p_3(x,y,z) = q_2(x, p_2(x,y,y), p_2(x,y,z)) \in \dtr (T_3\cap S_3)$;\\
+  $\vdots$
+  \item[$\ell$.] compute $q_{\ell-1}\in \dtr \{(a_{\ell-1}, p_{\ell-1}(a_{\ell-1}, b_{\ell-1}, b_{\ell-1}),0), (p(a_{\ell},a_{\ell}, b_{\ell}),  b_{\ell},1)\}$; \\
+  form
+  $d(x,y,z) = q_{\ell-1}(x, p_{\ell-1}(x,y,y), p_{\ell-1}(x,y,z)) \in \dtr (T_\ell \cap S_\ell)$;
+\end{enumerate}
 
 \RestyleAlgo{boxruled}
 %\LinesNumbered
 \begin{algorithm}
-  \KwIn{$\tabT \sA_{2k-1}$}
-  \KwOut{$\tabT \sA_{2k}$}
+  % \KwIn{$\tabT \eta_{\kk}$ and $\tabT \sA_{2k}$}
+  \KwOut{$p \in \dtr (T_{\ell}\cap S_\ell)$}
   
-  \ForEach{$\sanst_i \in \tabT \sA_{2k-1}$} {
-    
-    $\tabT_i := \tabT \bigl( \zeta_{\kminus}  \cap \dtr (\sanst_i[a_k, a_k, b_k], b_k, 1)\bigr)$;
+  compute $p_1 \in \dtr T_1$. % for $\{(a_0, b_0, 1), (a_{\ell}, b_{\ell},0)\}$.    
   
-    \ForEach{$\sanss_j \in \tabT_i$} {
-      \ForAll {$x$, $y$, $z \in A$}  {
-        $\sansr_{ij}[x,y,z] :=  \sanss_{j}\bigl[\sanst_i[x,y,z], \sanst_i[y,y,z], z\bigr]$;
-      }
-      include $\sansr_{ij}$ in the set $\tabT$;
-    }
+  \For {$1\leq i < \ell$} {
+    compute $q_i\in \dtr \{(a_i, p_i(a_i, b_i, b_i), 0), (p(a_{\ell}, a_{\ell}, b_{\ell}), b_{\ell}, 1)\}$;
+  
+    form $p_{i+1}(x,y,z) = q_i(x, p_i(x,y,y), p_i(x,y,z))$;
   }
-  
-%%  compute $\tabS := \{\sanst \in \tabT \zeta_{\kminus} \colon a_{k-1} \mathrel{\delta_{k-1}} \sanst[a_{k-1},b_{k-1},b_{k-1}]\}$;
-  
-  \Return $\tabT$.
-  
-  \caption{Generate the set of all Cayley tables of \ldtos for $\sA_{2k}$ \label{alg:stream-ldt2} {\small ($k> 0$)}}
+
+  \Return $p_\ell$
+  \caption{Compute a \ldto for $S_\ell$\label{alg:new-2-2}}
 \end{algorithm}
+
+~
+\wjd{TODO: summarize and discuss complexity.}
   
 
-\subsection{Complexity of Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}}
-We now show that Algorithm~\ref{alg:stream-ldt1} runs in polynomial-time.
-Proof that Algorithm~\ref{alg:stream-ldt2} is also polynomial-time is similar.
-
-To build the set $\tabT \eta_{\kplus}$, we remove 
-from $\tabT \eta_{\kk}$ every table $\sanst$ such that $\sanst[a_k,a_k,b_k]\neq b_k$.
-This requires one look-up for each table.  There are 
-at most $|A|^2$ tables in the set $\tabT \eta_{\kk}$
-(since $\tabT \eta_{\kk} \subseteq \tabT \eta_0 = \tabT \sA_0$, and 
-the latter clearly contains no more than $|S_0| \leq |A|^2$ tables).
-Therefore, reducing $\tabT \eta_{\kk}$ to $\tabT \eta_{\kplus}$ takes at most $n^2$ steps.
-
-To build $\tabT \sA_{2k+1}$,
-for each table $\sanst \in \tabT \sA_{2k}$ (there are at most $n^2$),
-%look up the $(a_{k+1}, b_{k+1}, b_{k+1})$-element of the table and call it 
-%$c_i:= \sanst_i[a_{k+1}, b_{k+1}, b_{k+1}]$
-compute $\gamma := \Cg^{\alg{A}}\bigl(a_{k+1}, \sanst[a_{k+1}, b_{k+1}, b_{k+1}]\bigr)$ and 
-$\delta := \com{\gamma}$, which takes
-$O(rm^2 + n^5)$-time.  Next, generate
-\[
-  \tabS = \{\sanss \in \tabT \eta_{\kk} \colon  a_{k+1} \mathrel{\delta} 
-  \sanss \bigl[a_{k+1},  \sanst[a_{k+1}, b_{k+1}, b_{k+1}],  \sanst[a_{k+1}, b_{k+1}, b_{k+1}]\bigr]\}.
-\]
-This is simply a filtering of the set $\tabT \eta_{\kk}$:
-include the table $\sanss$ in $\tabS$ iff the value in position 
-$\bigl(a_{k+1},  \sanst[a_{k+1}, b_{k+1}, b_{k+1}],  \sanst[a_{k+1}, b_{k+1}, b_{k+1}]\bigr)$
-of $\sanss$ belongs to the class $a_{k+1}/\gamma$.
-A test of membership in a set is (at worst) linear-time, and there are at 
-most $n^2$ tables to test, so (given $\delta$) the complexity of building 
-$\tabS$ is $O(n^3)$.
-Finally, for each table $\sanss \in \tabT$, we define the new table
-$\sansr$ as follows:
-$\forall x, y, z \in A$, $\sansr[x,y,z] :=  \sanss[x, \sanst[x,y,y], \sanst[x,y,z]]$. 
-This operation takes $O(n^3)$ per table, and there are at most $n^2$ tables, 
-so the complexity of this step is $O(n^5)$, and we do this once for each of the
-(at most $n^2$) tables in $\tabT \sA_{2k}$.  All told, computing 
-$\tabT \sA_{2k+1}$ is $O(rm^2n^2 + n^7)$.
-
-We run Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2} $n^2$ times each,
-so the total time-complexity of the inductive stage of our procedure is
-$O(rm^2n^4 + n^9)$. As this dominates the running time of the basis 
-stage (Algorithm~\ref{alg:ld-2}), it provides an upper bound on the 
-complexity of the whole procedure.
-
-
-  
-  
-  
+\newpage
   \appendix  
     
     \section{Alternative approaches/algorithms/notes}
@@ -2600,6 +2526,198 @@ complexity of the whole procedure.
 
 
 
+  \newpage
+
+
+
+
+
+  OLD STUFF
+  
+  % (given that we know such an operation exists).\wjd{Does the alg ever use the fact that a \ldto exists?}
+  % \mav{It is the case that we can construct an operation table for a difference term operation in poly-time.  I think that we can essentially follow the steps from this subsection, but rather than recording the terms at each step, we record the tables for the corresponding operations.  Should we mention this?}
+  
+  
+  
+  
+  \subsection{Algorithm~\ref{alg:stream-ldt1}: implementation details}
+  The following notation will be useful:
+  \begin{align*}
+    \sA_0 &:=\dtr \{(a_0, b_0, 0), (a_0, b_0, 1)\},\\
+  \sA_1 &:= \dtr\{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0)\},\\
+  \sA_2 &:= \dtr\{(a_0, b_0, 0), (a_0, b_0, 1), (a_1,b_1,0), (a_1,b_1,1)\},\dots,
+  \end{align*}
+  and for all $0< k < n^2-1$,
+  \begin{align*}
+  \sA_{2k} &:= \sA_{2k-1} \cap \dtr (a_k,b_k,1),\\[4pt]
+  \sA_{2k+1} &:= \sA_{2k} \cap \dtr (a_{k+1},b_{k+1},0). 
+  \end{align*}
+  Also, define $\eta_i := \dtr (a_i, b_i, 1)$, and for all $0\leq k \leq n^2$,
+  \[
+    \eta_{\kk} := \bigcap_{0\leq i < k}\eta_i
+      =\dtr \{(a_0, b_0, 1), (a_1, b_1, 1), \dots, (a_{k-1}, b_{k-1}, 1) \}.
+  \]
+  Finally, for a set $\sS$ of operations, let $\tabT\sS$ denote the set of 
+  all Cayley tables that represent operations in $\sS$. 
+  
+  The output of Algorithm~\ref{alg:ld-2} is the set $\tabT \sA_0$ of all 
+  Cayley tables of operations in $\sA_0$, the \ldtos for $\{(a_0, b_0, 0), (a_0, b_0, 1)\}$.
+  The set $\tabT \sA_0$ is input to Algorithm~\ref{alg:stream-ldt1},
+  the output of which is the set $\tabT \sA_1$ of all tables of 
+  operations in $\sA_1$.
+  The latter is input to Algorithm~\ref{alg:stream-ldt2}, the result of which is
+  the set $\tabT \sA_2$ of tables for $\sA_2$.
+  Thereafter, the process alternates between
+  Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}, and 
+  terminates once we find the Cayley tables for $\sA_{2n^2} = A^2 \times \{0,1\}$,
+  which represent difference term operations for $\alg A$ (as noted
+  in Corollary~\ref{cor:loc-diff-term}).
+    
+  \RestyleAlgo{boxruled}
+  %\LinesNumbered
+  \begin{algorithm}
+    % \KwIn{$\tabT \eta_{\kk}$ and $\tabT \sA_{2k}$}
+    \KwIn{$\tabT \sA_{2k}$}
+  
+    \KwOut{$\tabT \sA_{2k+1}$}
+    
+    \ForEach{$\sanst_i \in \tabT \sA_{2k}$} {
+    
+      $\tabT_i := \tabT \bigl(\eta_{\kk} \cap \dtr (a_{k+1}, \sanst_i[a_{k+1}, b_{k+1}, b_{k+1}], 0)\bigr)$;
+   
+      \ForEach{$\sanss_j \in \tabT_i$} {
+        \ForAll {$x$, $y$, $z \in A$}  {
+          %define the table $\sanss_{j_i}$ as follows:
+          $\sansr_{ij}[x,y,z] :=  \sanss_j\bigl[x, \sanst_i[x,y,y], \sanst_i[x,y,z]\bigr]$;
+        }
+        include $\sansr_{ij}$ in the set $\tabT$;
+      }
+    }
+  %  Let $\tabT[\sA_{2k+1}] := \{\sanss_{ji}: i, j\}$ be the set of all tables so defined.\\[5pt]
+    % compute $\tabS  := \bigl\{\sanst \in \tabT \eta_{\kk} \colon \sanst[a_k,a_k,b_k]= b_k \bigr\}$;
+  
+    \Return $\tabT$. %$\tabS$ and 
+    \caption{Generate the set of all Cayley tables of \ldtos for $\sA_{2k+1}$ \label{alg:stream-ldt1} {\small ($k\geq 0$)}}
+  \end{algorithm}
+    
+  We now describe how the algorithm builds the set 
+  $\tabT \sA_{2k+1}$ of tables representing operations in $\sA_{2k+1}$, given the set
+  $\tabT \sA_{2k}$.
+  For each table $\sanst_i \in \tabT \sA_{2k}$,
+  let $c_i:= \sanst_i[a_{k+1}, b_{k+1}, b_{k+1}]$, and compute
+  $\gamma_i := \Cg^{\alg{A}}(a_{k+1}, c_i)$ and $\delta_i := \com{\gamma_i}$. % (in $O(rm^2 + n^5)$ time).
+  Next, generate the subalgebra $S:=\Sg^{\alg{A}^2}\{(a_0,a_{k+1}), (a_0,c_i), (b_0,c_i)\}$.
+  For each $(u,v) \in S$ if $u=b_0$ and $v \mathrel{\delta_i} a_{k+1}$, then 
+  form the operation table $\sanss$ of the term that generated $(u,v)$.  
+  Then, by construction, $\sanss[a_0, a_0, b_0] = b_0$ and 
+  $\sanss[a_{k+1},c_i,c_i] \mathrel{\delta_i} a_{k+1}$.  
+  Finally (to satisfy membership in $\eta_{\kk}$), 
+  check whether $\sanss[a_i, a_i, b_i] = b_i$ holds for all $0< i< k$.  
+  If so, include in $\tabT$ the table $\sansr$ defined as follows:
+  $\forall x$, $y$, $z \in A$, 
+    $\sansr[x,y,z] :=  \sanss\bigl[x, \sanst_i[x,y,y], \sanst_i[x,y,z]\bigr]$.
+  Carry out the foregoing procedure for every $\sanst_i \in \tabT \sA_{2k}$, 
+  and then return $\tabT$.
+  
+  
+  \subsection{Algorithm~\ref{alg:stream-ldt2}: implementation}
+  Define $\zeta_i := \dtr (a_i, b_i, 0)$ and for all $0\leq k \leq n^2$,
+  \[
+    \zeta_{\kk} := \bigcap_{0\leq i < k}\zeta_i
+      =\dtr \{(a_0, b_0, 0), (a_1, b_1, 0), \dots, (a_{k-1}, b_{k-1}, 0) \}.
+  \]
+  \wjd{FIX THIS SECTION! We don't want to generate the sets $\tabT \zeta_{\kk}$; they're too big!}
+  Given the set $\tabT \sA_{2k-1}$ of tables representing operations in
+  $\sA_{2k-1}$, Algorithm~\ref{alg:stream-ldt2} 
+  returns the set $\tabT \sA_{2k}$.
+  To build $\tabT \sA_{2k}$, take each table $\sanst_i$ from $\tabT \sA_{2k-1}$
+  and set $c_i:= \sanst_i[a_k, a_k, b_k]$. Then, let $\tabT_i$ denote 
+  the set of tables in $\tabT \zeta_{\kminus}$ whose 
+  $(c_i, c_i, b_k)$-entry is equal to $b_k$. 
+  For each $\sanss_j \in \tabT_i$, define the operation table 
+  $\sansr_{ij}$ as follows:
+  for all $x$, $y$, $z \in A$, 
+  $\sansr_{ij}[x,y,z] :=  \sanss_{j}\bigl[\sanst_i[x,y,z], \sanst_i[y,y,z], z\bigr]$. 
+  The set of all tables so defined is $\tabT \sA_{2k}$.
+  Finally, to build the set $\tabT \zeta_{\kk}$, we 
+  compute $\gamma_{k-1} := \Cg^{\alg{A}}(a_{k-1}, b_{k-1})$ and $\delta := \com{\gamma_{k-1}}$,
+  and then remove from $\tabT \zeta_{\kminus}$ every table whose 
+  $(a_{k-1},b_{k-1},b_{k-1})$-entry is not congruent to $a_{k-1}$ modulo $\delta_{k-1}$.
+  
+  
+  
+  \RestyleAlgo{boxruled}
+  %\LinesNumbered
+  \begin{algorithm}
+    \KwIn{$\tabT \sA_{2k-1}$}
+    \KwOut{$\tabT \sA_{2k}$}
+    
+    \ForEach{$\sanst_i \in \tabT \sA_{2k-1}$} {
+      
+      $\tabT_i := \tabT \bigl( \zeta_{\kminus}  \cap \dtr (\sanst_i[a_k, a_k, b_k], b_k, 1)\bigr)$;
+    
+      \ForEach{$\sanss_j \in \tabT_i$} {
+        \ForAll {$x$, $y$, $z \in A$}  {
+          $\sansr_{ij}[x,y,z] :=  \sanss_{j}\bigl[\sanst_i[x,y,z], \sanst_i[y,y,z], z\bigr]$;
+        }
+        include $\sansr_{ij}$ in the set $\tabT$;
+      }
+    }
+    
+  %%  compute $\tabS := \{\sanst \in \tabT \zeta_{\kminus} \colon a_{k-1} \mathrel{\delta_{k-1}} \sanst[a_{k-1},b_{k-1},b_{k-1}]\}$;
+    
+    \Return $\tabT$.
+    
+    \caption{Generate the set of all Cayley tables of \ldtos for $\sA_{2k}$ \label{alg:stream-ldt2} {\small ($k> 0$)}}
+  \end{algorithm}
+    
+  
+  \subsection{Complexity of Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}}
+  We now show that Algorithm~\ref{alg:stream-ldt1} runs in polynomial-time.
+  Proof that Algorithm~\ref{alg:stream-ldt2} is also polynomial-time is similar.
+  
+  To build the set $\tabT \eta_{\kplus}$, we remove 
+  from $\tabT \eta_{\kk}$ every table $\sanst$ such that $\sanst[a_k,a_k,b_k]\neq b_k$.
+  This requires one look-up for each table.  There are 
+  at most $|A|^2$ tables in the set $\tabT \eta_{\kk}$
+  (since $\tabT \eta_{\kk} \subseteq \tabT \eta_0 = \tabT \sA_0$, and 
+  the latter clearly contains no more than $|S_0| \leq |A|^2$ tables).
+  Therefore, reducing $\tabT \eta_{\kk}$ to $\tabT \eta_{\kplus}$ takes at most $n^2$ steps.
+  
+  To build $\tabT \sA_{2k+1}$,
+  for each table $\sanst \in \tabT \sA_{2k}$ (there are at most $n^2$),
+  %look up the $(a_{k+1}, b_{k+1}, b_{k+1})$-element of the table and call it 
+  %$c_i:= \sanst_i[a_{k+1}, b_{k+1}, b_{k+1}]$
+  compute $\gamma := \Cg^{\alg{A}}\bigl(a_{k+1}, \sanst[a_{k+1}, b_{k+1}, b_{k+1}]\bigr)$ and 
+  $\delta := \com{\gamma}$, which takes
+  $O(rm^2 + n^5)$-time.  Next, generate
+  \[
+    \tabS = \{\sanss \in \tabT \eta_{\kk} \colon  a_{k+1} \mathrel{\delta} 
+    \sanss \bigl[a_{k+1},  \sanst[a_{k+1}, b_{k+1}, b_{k+1}],  \sanst[a_{k+1}, b_{k+1}, b_{k+1}]\bigr]\}.
+  \]
+  This is simply a filtering of the set $\tabT \eta_{\kk}$:
+  include the table $\sanss$ in $\tabS$ iff the value in position 
+  $\bigl(a_{k+1},  \sanst[a_{k+1}, b_{k+1}, b_{k+1}],  \sanst[a_{k+1}, b_{k+1}, b_{k+1}]\bigr)$
+  of $\sanss$ belongs to the class $a_{k+1}/\gamma$.
+  A test of membership in a set is (at worst) linear-time, and there are at 
+  most $n^2$ tables to test, so (given $\delta$) the complexity of building 
+  $\tabS$ is $O(n^3)$.
+  Finally, for each table $\sanss \in \tabT$, we define the new table
+  $\sansr$ as follows:
+  $\forall x, y, z \in A$, $\sansr[x,y,z] :=  \sanss[x, \sanst[x,y,y], \sanst[x,y,z]]$. 
+  This operation takes $O(n^3)$ per table, and there are at most $n^2$ tables, 
+  so the complexity of this step is $O(n^5)$, and we do this once for each of the
+  (at most $n^2$) tables in $\tabT \sA_{2k}$.  All told, computing 
+  $\tabT \sA_{2k+1}$ is $O(rm^2n^2 + n^7)$.
+  
+  We run Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2} $n^2$ times each,
+  so the total time-complexity of the inductive stage of our procedure is
+  $O(rm^2n^4 + n^9)$. As this dominates the running time of the basis 
+  stage (Algorithm~\ref{alg:ld-2}), it provides an upper bound on the 
+  complexity of the whole procedure.
+  
+  
+  
 
 
 
