@@ -2222,8 +2222,8 @@ its difference term operations.
 
 The method consists of three subroutines.
 Algorithm~\ref{alg:ld-2} finds \ldtos for sets
-of size 2, and Algorithms~\ref{alg:stream-ldt1} and~\ref{alg:stream-ldt2}
-alternate and produce \ldtos for successively larger subsets of $A^2 \times \{0,1\}$.
+of size 2, and Algorithms~\ref{alg:new-2-1} and~\ref{alg:new-2-2}
+produce \ldtos for successively larger subsets of $A^2 \times \{0,1\}$.
 
 Some new notation will be helpful here.  Suppose that $ u \in \Sg^{\alg{A}}(X)$.
 Then there is a term $t$ of some arity $k$ that, when applied to a certain tuple of 
@@ -2318,7 +2318,8 @@ $O(r^2m^2n^3 + n^5)$.
 The method is based on the proof of Theorem~\ref{thm:local-diff-terms} and consists of two 
 stages, each of which makes $n^2$ calls to Algorithm~\ref{alg:ld-2}.
 
-Let $\ell := n^2 -1$ and let $\{(a_0, b_0), (a_1, b_1), (a_2, b_2), \dots, (a_{\ell}, b_{\ell})\}$
+\renewcommand{\l}{\ensuremath{\ell}}
+Let $\l := n^2 -1$ and let $\{(a_0, b_0), (a_1, b_1), (a_2, b_2), \dots, (a_{\ell}, b_{\ell})\}$
 be an enumeration of the set $A^2$.
 For all $0\leq k < n^2$, define 
 \begin{align*}
@@ -2335,35 +2336,34 @@ and each step requiring a single call to Algorithm~\ref{alg:ld-2}.
 Therefore, we will make $n^4$ calls to Algorithm~\ref{alg:ld-2}, and
 the total running-time will be on the order of $r^2m^2n^7 + n^9$.
 
-Here are the steps that Stage 1 makes in order to compute a \ldto for 
+Here are the steps that Stage 1 takes in order to compute a \ldto for 
 $\{(a_0, b_0,0),(a_0, b_0,1),(a_1, b_1,1), \dots, (a_{\ell}, b_{\ell},1)\}$.
 \begin{enumerate}
-  \item Compute $p_1 \in \dtr S_1 ( = \dtr \{(a_0, b_0, 0), (a_0, b_0, 1)\})$.    
+  \item Compute $p_1 \in \dtr \{(a_0, b_0, 0), (a_0, b_0, 1)\}$.\\[-8pt]    
   \item compute $q_1\in \dtr \{(a_0, b_0, 0), (p_1(a_1, a_1, b_1), b_1, 1)\}$; \\
-  form $p_2(x,y,z) = q_1(p_1(x,y,z), p_1(y,y,z), z)$; % \in \dtr S_2$; %\{(a_0, b_0, 1), (a_1, b_1, 1),(a_{\ell}, b_{\ell},0)\}$.
+  form $p_2(x,y,z) = q_1(p_1(x,y,z), p_1(y,y,z), z)$;\\[-8pt]    
   \item compute $q_2\in \dtr \{(a_0, b_0, 0), (p_2(a_2, a_2, b_2), b_2, 1)\}$; \\
-    form $p_3(x,y,z) = q_2(p_2(x,y,z), p_2(y,y,z), z)$;\\ % \in \dtr S_3$;\\
+    form $p_3(x,y,z) = q_2(p_2(x,y,z), p_2(y,y,z), z)$;\\
   $\vdots$
-  \item[($n^2$)] compute $q_{\ell}\in \dtr \{(a_0, b_0, 0),  (p_{\ell}(a_{\ell}, a_{\ell}, b_{\ell}), b_{\ell}, 1)\}$; \\
-  form
-  $p_{n^2}(x,y,z) = q_{\ell}(p_{\ell}(x,y,z), p_{\ell}(y,y,z), z)$;
+  \item[($n^2$)] compute $q_{\l}\in \dtr \{(a_0, b_0, 0),  (p_{\l}(a_{\l}, a_{\l}, b_{\l}), b_{\l}, 1)\}$; \\
+  form $p_{n^2}(x,y,z) = q_{\l}(p_{\l}(x,y,z), p_{\l}(y,y,z), z)$.
 \end{enumerate}
 Let $s_0 := p_{n^2}$ denote the final result of Stage 1.
-We prove below that $s_0 \in \dtr (Z_0 \cup U_\ell)$.
+We prove below that $s_0 \in \dtr (Z_0 \cup U_\l)$.
 
 Stage 2 is very similar to Stage 1; however, our goal is to arrive at $s'_1 \in 
-\dtr \bigl((a_1, s_0(a_1, b_1, b_1), 0) \cup U_{\ell}\bigr)$. If we can generate 
+\dtr \bigl((a_1, s_0(a_1, b_1, b_1), 0) \cup U_{\l}\bigr)$. If we can generate 
 such an operation, then we will define $s_1(x,y,z) := s'_1(x, s_0(x,y,y), s_0(x,y,z))$, which will
-belong to $\dtr \bigl(Z_1 \cup U_{\ell}\bigr)$ (as we prove below).
+belong to $\dtr \bigl(Z_1 \cup U_{\l}\bigr)$ (as we prove below).
 We continue in this way for $n^2$ stages of $n^2$ steps each, until we arrive at 
-our goal: $d \in \dtr \bigl(Z_{\ell} \cup U_{\ell}\bigr)$.
+our goal: $d \in \dtr \bigl(Z_{\l} \cup U_{\l}\bigr)$.
 
 Without further ado, here is a precise description of the Stage 1 algorithm.
 \RestyleAlgo{boxruled}
 %\LinesNumbered
 \begin{algorithm}
   % \KwIn{$\tabT \eta_{\kk}$ and $\tabT \sA_{2k}$}
-  \KwOut{$p_{n^2} \in \dtr (Z_0 \cup U_{\ell})$}
+  \KwOut{$p_{n^2} \in \dtr (Z_0 \cup U_{\l})$}
   
   compute $p_1 \in \dtr \{(a_0, b_0, 0), (a_0, b_0, 1)\}$;
   
@@ -2374,14 +2374,14 @@ Without further ado, here is a precise description of the Stage 1 algorithm.
   }
 
   \Return $s_0:=p_{n^2}$
-  \caption{(Stage 1) compute \ldto for $Z_0 \cup U_{\ell}$\label{alg:new-2-1}}
+  \caption{(Stage 1) compute \ldto for $Z_0 \cup U_{\l}$\label{alg:new-2-1}}
 \end{algorithm}  
 
 
 \begin{lemma}
+  \label{lem:19}
   The operation $s_0$ returned by Algorithm~\ref{alg:new-2-1} is a \ldto for
-  $Z_0 \cup U_{\ell}:=  \{(a_0, b_0,0),(a_0, b_0,1)(a_1, b_1,1), \dots, (a_{\ell}, b_{\ell}, 1)\}$.
-
+  $Z_0 \cup U_{\l}:=  \{(a_0, b_0,0),(a_0, b_0,1)(a_1, b_1,1), \dots, (a_{\l}, b_{\l}, 1)\}$.
 \end{lemma}
 
 \begin{proof}
@@ -2391,45 +2391,43 @@ $s_0(x,y,z):= q_\ell(p_\ell(x,y,z), p_\ell(y,y,z), z)$, so
   s_0(a_0,b_0,b_0)&= q_\ell(p_\ell(a_0,b_0,b_0), p_\ell(b_0,b_0,b_0), b_0);\\
   &= q_\ell(p_\ell(a_0,b_0,b_0), b_0, b_0);
 \end{align*}
-\underline{Subclaim}: If $0 < k < n^2$, then $p_k \in \dtr (a_0, b_0, 0)$.\\
-\emph{Proof:} By construction, $p_1 \in \dtr \{(a_0, b_0, 0), (a_0, b_0, 1)\} \subseteq \dtr (a_0, b_0, 0)$.
-We show, if $p_{k-1} \in \dtr (a_0, b_0, 0)$, 
-then $p_{k} \in \dtr (a_0, b_0, 0)$.  
-Assume $p_{k-1} \in \dtr (a_0, b_0, 0)$; equivalently,
-$a_0 \comr{\thetao} p_{k-1}(a_0,b_0,b_0)$.  Then
-\[
-  p_k(a_0,b_0,b_0) = q_{k-1}(p_{k-1}(a_0,b_0,b_0), b_0, b_0) \comr{\thetao} 
-  q_{k-1}(a_0, b_0, b_0).
-\]
+\underline{Claim 1}: If $0 < k < n^2$, then $a_0 \comr{\thetao} p_k(a_0, b_0, b_0)$.\\
+\emph{Proof:} Clearly $a_0 \comr{\thetao} p_1(a_0, b_0, b_0)$, since $p_1 \in \dtr (a_0, b_0, 0)$.
+Fix $k < n^2$ and assume $p_{k-1} \in \dtr (a_0, b_0, 0)$; that is, 
+$a_0 \comr{\thetao} p_{k-1}(a_0,b_0,b_0)$. Then
+$p_k(a_0,b_0,b_0) = q_{k-1}(p_{k-1}(a_0,b_0,b_0), b_0, b_0) \comr{\thetao} 
+  q_{k-1}(a_0, b_0, b_0)$.
 The latter is congruent to  $a_0$ modulo $\com{\thetao}$, since 
-$q_k\in \dtr \{(a_0, b_0, 0)\}$ for all $0< k < n^2$. This proves the subclaim.
+$q_k\in \dtr \{(a_0, b_0, 0)\}$ for all $0< k < n^2$. This proves the claim, from which it follows that 
+$s_0(a_0,b_0,b_0) \comr{\thetao} q_\ell(a_0, b_0, b_0) \comr{\thetao} a_0$, as desired.
 
 Next, we show for $0 < k < n^2$ that $s_0(a_k, a_k, b_k) = b_k$.
 By definition
-\[
-  s_0(a_k, a_k, b_k) = q_\ell(p_\ell(a_k,a_k,b_k), p_\ell(a_k,a_k,b_k), b_k).
-\]
-\underline{Subclaim}: If $0 = i< k$ or $0 \leq i\leq k < n^2$, then $p_k(a_i, a_i, b_i) = b_i$.\\
-  \emph{Proof:} By construction, $p_1 (a_0, a_0, b_0) = b_0$.  Fix $0\leq i\leq k < n^2$.
-  Assume $p_k(a_i, a_i, b_i) = b_i$. Then, since $q_k \in \dtr (p_{k}(a_k, a_k, b_k),b_k, 1)$,
+\begin{equation*}
+%\label{eq:s0-2}  
+s_0(a_k, a_k, b_k) = q_\ell(p_\ell(a_k,a_k,b_k), p_\ell(a_k,a_k,b_k), b_k).
+\end{equation*}
+\underline{Claim 2}: If $0 = k< j$ or $0 \leq k\leq j < n^2$, then $p_j(a_k, a_k, b_k) = b_k$.\\
+  \emph{Proof:} By construction, $p_1 (a_0, a_0, b_0) = b_0$.  Fix $j$ and $k$ such that $0\leq k\leq j < n^2$.
+  Assume $p_j(a_k, a_k, b_k) = b_k$. Then, since $q_j$ belongs to $\dtr (p_{j}(a_j, a_j, b_j),b_j, 1)$, we have
   \begin{align*}
-    p_{k+1}(a_i, a_i, b_i) &= 
-    q_{k}(p_{k}(a_i, a_i, b_i), p_{k}(a_i, a_i, b_i), b_i) b_i)\\
+    p_{j+1}(a_k, a_k, b_k) &= 
+    q_{j}(p_{j}(a_k, a_k, b_k), p_{j}(a_k, a_k, b_k), b_k)\\
     &=\begin{cases}
-      q_{k}(b_i, b_i, b_i), & i<k,\\
-      b_k, & i=k.
+      q_{j}(b_k, b_k, b_k), & k<j\\
+      b_k, & k=j
     \end{cases}\\
-    &= b_i.
+    &= b_k.
   \end{align*}
-      
-  
+Claim 2 is now proved, from which it follows that $s_0(a_k, a_k, b_k) = b_k$. This completes the proof of 
+Lemma~\ref{lem:19}.
 \end{proof}
 
 
 
 \begin{algorithm}  
   \KwIn{$s_{k-1} \in \dtr (Z_{k-1} \cup U_{\ell})$}
-  \KwOut{$p_{n^2} \in \dtr \bigl\{(a_k, s_{k-1}(a_k, b_k, b_k), 0) \cup U_{\ell}\bigr\}$}
+  \KwOut{$s'_{k} \in \dtr \bigl\{(a_k, s_{k-1}(a_k, b_k, b_k), 0) \cup U_{\ell}\bigr\}$}
   
   compute $p_1 \in \dtr \{(a_k, s_{k-1}(a_k,b_k,b_k), 0), (a_0, b_0, 1)\}$;
   
@@ -2439,11 +2437,83 @@ By definition
     form $p_{i+1}(x,y,z) = q_i(p_i(x,y,z), p_i(y,y,z), z)$;
   }
   
-  \Return $p_{n^2}$
+  \Return $s'_k := p_{n^2}$
   \caption{(Stage $k$) \ldt op for $\{(a_k, s_{k-1}(a_k, b_k, b_k), 0)\} \cup U_{\ell}$\label{alg:new-2-2}}
 \end{algorithm}
 
+\begin{lemma}
+  \label{lem:20}
+  If $s'_k:=p_{n^2}$ is the output of Algorithm~\ref{alg:new-2-2}, then 
+  \begin{enumerate}[i.]
+    \item \label{item:1}
+    $s'_k$ is a \ldto for $\{(a_k, s_{k-1}(a_k, b_k, b_k), 0)\} \cup U_\l$;
+    \item \label{item:2}
+    $s_k(x,y,z):= s'_k(x,s_{k-1}(x,y,y),s_{k-1}(x,y,z))$ is a \ldto for $Z_k \cup U_{\ell}$.
+  \end{enumerate}
+  \end{lemma}
+  \begin{proof}
+    Let $c_k := s_{k-1}(a_k, b_k, b_k)$ and $\gamma_k:= \Cg^{\alg{A}}(a_k, c_k)$.  
+    We want to show
+    $s'_k(a_k, c_k, c_k) \comr{\gamma_k} a_k$, and 
+    $s'_k(a_i, a_i, b_i) = b_i$ $(0\leq i < n^2)$.
+    If follows from the definition of $s'_k$ that 
+    \begin{align}
+      s'_k(a_k, c_k, c_k) &=  
+      q_{\l}( p_{\l}(a_k, c_k, c_k),   p_{\l}(c_k, c_k, c_k), c_k )\nonumber\\
+      &=q_{\l}( p_{\l}(a_k, c_k, c_k),   c_k, c_k ).\label{eq:00010}
+    \end{align}
+    
+  \noindent \underline{Claim 1}: For $1\leq i < n^2$, 
+  $a_k \comr{\gamma_k} p_i(a_k, c_k,c_k)$.\\[4pt]
+  \emph{Proof:} This holds for $i=1$ by choice of $p_1$.  Fix $i>1$ and assume the claim holds 
+  for $p_{i-1}$.  Then, since $q_{i-1}\in \dtr (a_k, c_k, 0)$, we have
+  \begin{align*}
+    p_i(a_k, c_k, c_k)&= 
+    q_{i-1}(p_{i-1}(a_k, c_k, c_k), p_{i-1}(c_k, c_k, c_k), c_k)\\
+    & \comr{\gamma_k} q_{i-1}(a_k, c_k, c_k) \comr{\gamma_k}  a_k,
+  \end{align*}
+  which proves the claim. 
+  
+  Taking $i=\ell$ in Claim 1 yields
+  $p_\l(a_k, c_k, c_k)\comr{\gamma_k} a_k$, and plugging this into~(\ref{eq:00010}) yields
+  %Since $q_{\l}\in \dtr (a_k, c_k, 0)$,  %implies
+  $s'_k(a_k, c_k, c_k) \comr{\gamma_k} q_{\l}( a_k, c_k, c_k ) \comr{\gamma_k} a_k$, as desired.
+  
+  Next, consider 
+$s'_k(a_i, a_i, b_i) =  
+    q_{\l}( p_{\l}(a_i, a_i, b_i),   p_{\l}(a_i, a_i, b_i), b_i )$.
+  As in the proof of Lemma~\ref{lem:19}, we have $p_j(a_k, a_k, b_k) = b_k$
+  for all $0 \leq k\leq j < n^2$, so 
+  $s'_k(a_i, a_i, b_i) =  q_{\l}( b_i,  b_i, b_i ) = b_i$, as desired.
+This completes the proof of~(\ref{item:1}).
 
+We prove assertion~(\ref{item:2}). The fact that 
+$s_k \in \dtr U_\ell$ readily follows from\\[4pt]
+\noindent \underline{Claim 2}: For $0\leq i \leq k$, $q_k(p_k(a_i, a_i,b_i), p_k(a_i, a_i,b_i), b_i) = b_i$.\\[4pt]
+\emph{Proof:} If $k=i$, the claim follows from 
+$q_k \in \dtr (p_i(a_i, a_i, b_i), b_i, 1)$, and if $0=i<k=1$, then it follows from
+$p_1 \in \dtr (a_0, b_0, 1)$.  Let $0<i<k$, and assume 
+the claim holds for indices $0 \leq k-1$. Then,
+\[
+  p_k(a_i, a_i,b_i) = q_{k-1}(p_{k-1}(a_i, a_i,b_i), p_{k-1}(a_i, a_i,b_i), b_i) = q_{k-1}(b_i, b_i, b_i),      
+\]
+so $q_k(p_k(a_i, a_i,b_i), p_k(a_i, a_i,b_i), b_i) = q_k(b_i, b_i, b_i) = b_i$, 
+proving Claim 2.
+%notice that $s_1 \in \dtr \bigl(Z_1 \cup U_\ell)$.  Indeed,
+
+To complete the proof of~(\ref{item:2}), 
+we must show that $s_k \in \dtr Z_k$.   
+We already have $s_0\in \dtr Z_0$, by Lemma~\ref{lem:19},
+so it suffices to show that $s_j \in \dtr Z_j$ implies 
+$s_{j+1} \in \dtr Z_{j+1}$.
+Fix $1\leq j < n^2$ and assume $s_j \in \dtr Z_j$.
+By definition, 
+$s_{j+1}(a_i, b_i, b_i) =  s'_{j+1}(a_i,s_{j}(a_i,b_i,b_i),s_{j}(a_i,a_i,a_i))$, and
+$a_i \comr{\theta_i} s_j(a_i, b_i, b_i)$ by the inductive hypothesis. Therefore,
+$s_{j+1}(a_i, b_i, b_i) \comr{\theta_i} s'_{j+1}(a_i,a_i,a_i) = a_i$, as desired.
+    
+  \end{proof}
+  
 
 \begin{algorithm}  
 \KwOut{$s_{n^2} \in \dtr (Z_{\ell} \cup U_{\ell})$}
@@ -2462,29 +2532,25 @@ By definition
 \end{algorithm}
 
 
-
-
-
-\begin{lemma}
-The operation $s_k$ returned by Algorithm~\ref{alg:new-2-2}
-is a \ldto for $\bigl((a_k, s_{k-1}(a_k, b_k, b_k), 0) \cup U_\ell\bigr)$.
-\end{lemma}
-\begin{proof}
-\end{proof}
-
 \begin{prop}
-  The operation $p_{\ell}$ returned by Algorithm~\ref{alg:new-2-2} is a \ldto for $A^2 \times \{0,1\}$, hence a difference term operation for $\alg{A}$.
+  The operation $s_{n^2}$ returned by Algorithm~\ref{alg:new-2-3} is a \ldto for $A^2 \times \{0,1\}$, hence a difference term operation for $\alg{A}$.
 \end{prop}
-    
+   
 \begin{proof}
-  \wjd{TODO: fill in these proofs!}
+This follows immediately from Lemmas~\ref{lem:19} and~\ref{lem:20}.
 \end{proof}
 
-
-\wjd{TODO: summarize and discuss complexity.}
   
+  %\bibliographystyle{amsplain} %% or amsalpha
+  %% \bibliographystyle{alpha-url}
+  %% \printbibliography
+  \bibliographystyle{alphaurl}
+  \bibliography{inputs/refs}
 
-\newpage
+\end{document}
+
+
+  \newpage
   \appendix  
     
     \section{Alternative approaches/algorithms/notes}
@@ -2550,19 +2616,6 @@ is a \ldto for $\bigl((a_k, s_{k-1}(a_k, b_k, b_k), 0) \cup U_\ell\bigr)$.
       % The runtime of this procedure is bounded by $|A|^2$.)
     
   
-
-
-
-  
-  %\bibliographystyle{amsplain} %% or amsalpha
-  %% \bibliographystyle{alpha-url}
-  %% \printbibliography
-  \bibliographystyle{alphaurl}
-  \bibliography{inputs/refs}
-
-  
-
-
 
 
 
