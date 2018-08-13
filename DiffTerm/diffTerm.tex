@@ -2377,8 +2377,8 @@ We continue in this way for $n^2$ stages of $n^2$ steps each, until we reach
 our goal: $\sansd:=\sansd_{n^2}$, the Cayley table of 
 a \ldto for $Z_{n^2} \cup U_{n^2}$.
 
-Without further ado, here is a precise description of an algorithm that carries out each of the
-first $n^2$ stages.
+Without further ado, here is a precise description of an algorithm that carries out any one 
+of the $n^2$ stages; the argument $(a,b)$ determines which stage is executed.
 \RestyleAlgo{boxruled}
 %\LinesNumbered
 \begin{algorithm}
@@ -2389,8 +2389,8 @@ first $n^2$ stages.
 
   \ForAll {$1\leq i < {n^2}$} {
     Use Alg.~\ref{alg:ld-2} to compute the table $\sanss_i$ of a \ldto for $\{(a,b, 0), (\sanst_i[a_i, a_i, b_i], b_i, 1)\}$\\[6pt]
-    Form the table $\sanst_{i+1}$, defined as follows:\\
-    $\quad \sanst_{i+1}[x,y,z] = \sanss_i\bigl[\sanst_i[x,y,z], \sanst_i[y,y,z], z\bigr]$ $(\forall x,y,z)$;
+    Form the table $\sanst_{i+1}$, defined as follows: $\forall x,y,z$,\\
+    $\quad \sanst_{i+1}[x,y,z] = \sanss_i\bigl[\sanst_i[x,y,z], \sanst_i[y,y,z], z\bigr]$\;
   }
 
   \Return $\sanst_{n^2}$
@@ -2418,8 +2418,8 @@ first $n^2$ stages.
 
     Use Alg.~\ref{alg:new-2-1} compute the table $\sansd'_{k+1}$ of a \ldto for $\{(a_k, \sansd_{k}[a_k, b_k, b_k], 0)\} \cup U_{n^2}$;\\[4pt]
     %(Alg.~\ref{alg:new-2-1});\\[4pt]
-    Form the table $\sansd_{k+1}$, defined as follows:\\
-    $\quad \sansd_{k+1}[x,y,z] := \sansd'_{k+1}\bigl[x, \sansd_{k}[x,y,y], \sansd_{k}[x,y,z]\bigr]$ 
+    Form the table $\sansd_{k+1}$, defined as follows: $\forall x,y,z$,\\
+    $\quad \sansd_{k+1}[x,y,z] := \sansd'_{k+1}\bigl[x, \sansd_{k}[x,y,y], \sansd_{k}[x,y,z]\bigr]$\; 
   }
   \Return $\sansd_{n^2}$
   \caption{Return the Cayley table of a difference term operation for $\alg{A}$\label{alg:new-2-3}}
