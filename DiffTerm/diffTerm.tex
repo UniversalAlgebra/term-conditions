@@ -2219,13 +2219,16 @@ The following proposition provides another avenue for constructing a polynomial-
 \section{Efficiently computing difference term tables}
 \label{sec:comp-diff-term}
 In this section we present a polynomial-time algorithm that takes
-a finite idempotent algebra and constructs the Cayley table of
-a difference term operation for it, if it has one.
+a finite idempotent algebra $\alg{A}$ and constructs the Cayley table of
+a difference term operation for $\alg{A}$, if such a term exists.
 
 The method consists of three subroutines.
-Algorithm~\ref{alg:ld-2} finds \ldtos for sets
-of size 2, and Algorithms~\ref{alg:new-2-1} and~\ref{alg:new-2-2}
-produce \ldtos for successively larger subsets of $A^2 \times \{0,1\}$.
+Algorithm~\ref{alg:ld-2} finds Cayley tables of \ldtos for sets of size 2, 
+and Algorithm~\ref{alg:new-2-1} calls Algorithm~\ref{alg:ld-2} repeatedly to find 
+tables of \ldtos for larger and larger sets up to size $n^2+1$.
+Finally, Algorithm~\ref{alg:new-2-3} 
+calls these subroutines in order to produce \ldtos for larger subsets of 
+$A^2 \times \{0,1\}$.
 
 Some new notation will be helpful here.  Suppose that $ u \in \Sg^{\alg{A}}(X)$.
 Then there is a term $t$ of some arity $k$ that, when applied to a certain tuple of
@@ -2382,12 +2385,12 @@ first $n^2$ stages.
   \KwIn{A pair $(a,b) \in A^2$}
   \KwOut{The Cayley table of a \ldt op for $\{(a,b, 0)\} \cup U_{n^2}$.}
 
-  Compute the table $\sanst_1$ of a \ldt op for $\{(a,b, 0), (a_0, b_0, 1)\}$; %(Alg.~\ref{alg:ld-2});
+  Use Alg.~\ref{alg:ld-2} to compute the table $\sanst_1$ of a \ldto for $\{(a,b, 0), (a_0, b_0, 1)\}$\; 
 
   \ForAll {$1\leq i < {n^2}$} {
-    compute the table $\sanss_i$ of a \ldto for $\{(a,b, 0), (\sanst_i[a_i, a_i, b_i], b_i, 1)\}$;
-
-    form $\sanst_{i+1}[x,y,z] = \sanss_i\bigl[\sanst_i[x,y,z], \sanst_i[y,y,z], z\bigr]$ $(\forall x,y,z)$;
+    Use Alg.~\ref{alg:ld-2} to compute the table $\sanss_i$ of a \ldto for $\{(a,b, 0), (\sanst_i[a_i, a_i, b_i], b_i, 1)\}$\\[6pt]
+    Form the table $\sanst_{i+1}$, defined as follows:\\
+    $\quad \sanst_{i+1}[x,y,z] = \sanss_i\bigl[\sanst_i[x,y,z], \sanst_i[y,y,z], z\bigr]$ $(\forall x,y,z)$;
   }
 
   \Return $\sanst_{n^2}$
@@ -2406,16 +2409,17 @@ first $n^2$ stages.
 \end{proof}
 
 \begin{algorithm}
-\KwOut{$\sansd_{n^2}$, the Cayley table of a \ld op for $A^2 \times \{0,1\}$}
+\KwOut{$\sansd_{n^2}$, the Cayley table of a \ldt op for $A^2 \times \{0,1\}$}
 
-  Compute table $\sansd_0$ of a \ldt op for $Z_0 \cup U_{n^2}$ (Alg.~\ref{alg:new-2-1});
+  Use Alg.~\ref{alg:new-2-1} to compute the table $\sansd_0$ of a \ldt op for 
+  $Z_0 \cup U_{n^2}$\; %(Alg.~\ref{alg:new-2-1});
 
   \ForAll {$1\leq k <{n^2}$} {
 
-    compute the table $\sansd'_{k+1}$ of a \ldto for $\{(a_k, \sansd_{k}[a_k, b_k, b_k], 0)\} \cup U_{n^2}$;\\[4pt]
+    Use Alg.~\ref{alg:new-2-1} compute the table $\sansd'_{k+1}$ of a \ldto for $\{(a_k, \sansd_{k}[a_k, b_k, b_k], 0)\} \cup U_{n^2}$;\\[4pt]
     %(Alg.~\ref{alg:new-2-1});\\[4pt]
-
-    form $\sansd_{k+1}[x,y,z] := \sansd'_{k+1}\bigl[x, \sansd_{k}[x,y,y], \sansd_{k}[x,y,z]\bigr]$ $(\forall x,y,z)$;
+    Form the table $\sansd_{k+1}$, defined as follows:\\
+    $\quad \sansd_{k+1}[x,y,z] := \sansd'_{k+1}\bigl[x, \sansd_{k}[x,y,y], \sansd_{k}[x,y,z]\bigr]$ 
   }
   \Return $\sansd_{n^2}$
   \caption{Return the Cayley table of a difference term operation for $\alg{A}$\label{alg:new-2-3}}
@@ -2427,7 +2431,7 @@ first $n^2$ stages.
 \end{prop}
 
 \begin{proof}
-This follows easily from Lemma~\ref{lem:19} and the proof of Theorem~\ref{thm:local-diff-terms}. 
+This follows from Lemma~\ref{lem:19} and the proof of Theorem~\ref{thm:local-diff-terms}. 
 \end{proof}
 
 
