@@ -865,7 +865,7 @@ omitting types.
 
 
 We conclude this section with a result that will be useful in Section~\ref{sec:freese-valer-lemm}.
-\rsf{did not see how FV 09 lemma 3.3 was used; eliminating it}
+%% \rsf{did not see how FV 09 lemma 3.3 was used; eliminating it}
 \begin{corollary}[{\protect \cite[Corollary~2.2]{Freese:2009}}]
   \label{cor:2.2}
   Let $\alg{A}$ be a finite idempotent algebra and $T$ an order ideal in the
@@ -1554,8 +1554,10 @@ $c\, r\, ||\alg A|| = crm$ time.
 \item \label{speed3}
 If $\alpha$ and $\beta$ are congruences of $\alg A$,
 then $[\alpha,\beta]$ can be computed in time $crm^4$.
-If $\alg A$ has a Taylor term and $[\alpha,\beta] = [\beta,\alpha]$,
-\mav{Should we define what a Taylor term is or replace this the omitting type 1 equivalence?}
+If $\alg A$ has a so called \emph{Taylor term} 
+(see e.g.~\ref{MR3076179} or~\ref{HM:1988} for the definition),
+and if $[\alpha,\beta] = [\beta,\alpha]$,
+%%\mav{Should we define what a Taylor term is or replace this the omitting type 1 equivalence?}
 then $[\alpha,\beta]$ can be computed in time $c(rm^2 + n^5)$.
 In particular, $[\beta,\beta]$ can be computed in this time.
 \end{enumerate}
@@ -1754,7 +1756,7 @@ above.
 Then one can determine if $\bbV(\alg A)$ has a difference
 term in time $c(rn^4m^4 + n^{14})$.
 \end{theorem}
-\rsf{See if we can omit $n^{14}$.}
+%% \rsf{See if we can omit $n^{14}$.}
 
 \begin{proof}
 Theorem~\ref{thm:algorithm} gives a three-step
@@ -1774,7 +1776,11 @@ over $\alpha$ is \atyp. Since at this point in the
 algorithm we know that $\alg A$ omits type ~\utyp,
 we can test if the type is \atyp\ by testing if
 $[\beta,\beta] \le \alpha$. By Proposition~\ref{speedprop}
-\mav{could we test for 2-snags in $\beta\setminus\alpha$ instead?  Is this any faster? (I'm pretty sure that we've already considered this, so probably not.)}
+%% \mav{could we test for 2-snags in $\beta\setminus\alpha$ instead?  Is this any faster? (I'm pretty sure that we've already considered this, so probably not.)}
+%% Ralph's response as to whether 2-snags might be faster:
+%%   The best I know for an algebra A is m^3, while using the commutator is m^2 + n^5. 
+%%   Since the questions we are concerned with are trivial for unary algebras, 
+%%   m \ge n^2. So 2-snags aren’t as good.
 this can be done in time $c(rm^4 + n^{10})$.
 Since we need to do
 this for all $x_0$, $x_1$, $y_0$ and $y_1$, the total
@@ -2198,15 +2204,57 @@ Here is a practical consequence of Theorem~\ref{thm:local-diff-terms}.
 
 \subsection{Test for existence of a difference term}
 \label{sec:diffterm-test}
-The following proposition provides another avenue for constructing a polynomial-time algorithm to decide if a finite idempotent algebra generates a variety that has a difference term (cf.~Theorem~\ref{thm:time}).
-\begin{prop}
+The main result of this subsection is Proposition~\ref{prop:alt-poly-alg}, which provides another avenue for constructing a polynomial-time algorithm to decide if a finite idempotent algebra generates a variety that has a difference term (cf.~Theorem~\ref{thm:time}).
+One step of the proof requires a minor technical lemma, so we dispense with that obligation first.
+\begin{lemma} \label{lem:dt-quotients}
+  Let $\alg A$ be a finite idempotent algebra.
+  If $\alg A$ has a difference term operation then so does every quotient of $\alg A$.
+\end{lemma}
+\begin{proof}
+Let $t^{\alg A}$ be a difference term operation for $\alg A$.  Fix $\gamma \in \Con \alg A$.
+We show $t^{\alg A/\gamma}$ is a difference term operation for $\alg A/\gamma$.
+Obviously, $t^{\alg A}(a,a,b) = b$  implies 
+$t^{\alg A/\gamma}(a/\gamma, a/\gamma, b/\gamma) = b/\gamma$.
+For $R \subseteq A\times A$, define $\pi_\gamma R = \{(r/\gamma, r'/\gamma) : (r, r') \in R\}$.
+Fix $a$, $b \in A$ and let $\theta:= \Cg^{\alg A}(a,b)$.
+Then $(a, t^{\alg A}(a,b,b)) \in \com{\theta}$, so 
+$(a/\gamma, t^{\alg A}(a,b,b)/\gamma) \in \pi_\gamma \com{\theta} \subseteq \com{\pi_\gamma \theta}$.
+The last inclusion follows from~\cite[Theorem 2.10]{MR1358491}.  Next note that 
+$\pi_\gamma \theta \subseteq \Cg^{\alg A/\gamma}(a/\gamma, b/\gamma)$. Indeed, 
+if $(u,v) \in \pi_\gamma \theta$, then $(u,v)  = (x/\gamma, y/\gamma)$ for some 
+$(x,y) \in \Cg^{\alg A}(a,b)$, so by Malcev's criterion there are sequences 
+$x = c_0$, $c_1$, $\dots$, $c_{m-1}$, $c_{m} = y$ and $f_0$, $f_1$, $\dots$, $f_{m-1}$ satisfying
+$\{f^{\alg A}_i(a), f^{\alg A}_i(b)\} = \{c_i, c_{i+1}\}$, for all $0\leq i< m$;
+the sequence 
+$x/\gamma = c_0/\gamma$, $c_1/\gamma$, $\dots$, $c_{m-1}/\gamma$, $c_{m}/\gamma = y/\gamma$ 
+satisfies
+$\{f^{\alg A/\gamma}_i(a/\gamma), f^{\alg A/\gamma}_i(b/\gamma)\} = \{c_i/\gamma, c_{i+1}/\gamma\}$, 
+for all $0\leq i< m$, so $(x/\gamma, y/\gamma) \in \Cg^{\alg A/\gamma}(a/\gamma, b/\gamma)$.
+
+Define $\delta_\gamma := \Cg^{\alg A/\gamma}(a/\gamma, b/\gamma)$.
+By the foregoing, and monotinicity of the commutator, we have
+$[\pi_\gamma \theta, \pi_\gamma \theta] \subseteq [\delta_\gamma, \delta_\gamma]$.
+Therefore, $a/\gamma$ is congruent to $t^{\alg A/\gamma}(a/\gamma,b/\gamma,b/\gamma)$ modulo
+$[\delta_\gamma, \delta_\gamma]$, as desired.
+\end{proof}
+
+
+\begin{prop}\label{prop:alt-poly-alg}
   Let $\alg A$ be a finite idempotent algebra.  Then $\bbV (\alg A)$ has a difference term if and only if each 3-generated subalgebra of $\alg A^2$ has a difference term operation.
 \end{prop}
 
 \begin{proof}
-  Of course if $\bbV (\alg A)$ has a difference term then each 3-generated subalgebra of $\alg A^2$ has a difference term operation. For the converse, we refer to the proof of Theorem~\ref{thm:KearnesThm}~\cite[Theorem 3.8]{MR1358491}.  One part of this theorem establishes that if an algebra $\alg B$ is in a variety that has a difference term, then all type~\atyp minimal sets of $\alg B$ have empty tails.  A careful reading of the proof of this fact shows that a weaker hypothesis will suffice, namely that all quotients of $\alg B$ have difference term operations.  This is equivalent to just $\alg B$ having a difference term operation, since this property is preserved under taking quotients.
-  %\mav{This is true, I think.  Should it be mentioned somewhere, as part of a general discussion of difference term operations?}
-
+  Of course if $\bbV (\alg A)$ has a difference term then each 3-generated subalgebra of 
+  $\alg A^2$ has a difference term operation. For the converse, we refer to the proof of 
+  Theorem~\ref{thm:KearnesThm}~\cite[Theorem 3.8]{MR1358491}.  One part of this theorem 
+  establishes that if an algebra $\alg B$ is in a variety that has a difference term, 
+  then all type~\atyp minimal sets of $\alg B$ have empty tails.  A careful reading of the 
+  proof of this fact shows that a weaker hypothesis will suffice, namely that all quotients 
+  of $\alg B$ have difference term operations.  By Lemma~\ref{lem:dt-quotients}, this is 
+  equivalent to just $\alg B$ having a difference term operation. 
+  %% since this property is preserved under taking quotients. 
+  %% \mav{This is true, I think.  Should it be mentioned somewhere, as part of a general discussion of difference term operations?}
+  
   To complete the proof of this proposition, we use Corollary~\ref{cor:diffterm}. Suppose that each 3-generated subalgebra of $\alg A^2$ has a difference term operation.  Then, in particular, each 2-generated subalgebra of $\alg A$ does.  This rules out that $\sansH \sansS (\alg{A})$ contains an algebra that is term equivalent to the 2-element set.  It also follows, from the previous paragraph, that no 3-generated subalgebra of $\alg A^2$ has a prime quotient of type~\atyp whose minimal sets have nonempty tails.
 \end{proof}
 
@@ -2282,6 +2330,7 @@ returned.
     \If{$(u,v) \in C$} {
       \Return $\sanst_{\triptik \mid (u,v)}$\;
     }
+  \Return false (i.e., there is no difference term operation)
   }
 
   \caption{Generate the Cayley table of a \ldto for $\{\pairtik \}$}
@@ -2350,7 +2399,7 @@ So $Z_{n^2} \cup U_{n^2} = A^2 \times \{0,1\}$.
 The first stage of our procedure computes the Cayley table of a \ldto for
 $Z_1 \cup U_{n^2}:= \{(a_0, b_0, 0)\} \cup A^2 \times \{1\}$.
 The second stage does the same for
-$Z_2 \cup U_{n^2} := Z_1 \cup U_\ell \cup \{(a_1, b_1, 0)\}$.
+$Z_2 \cup U_{n^2} := \{(a_1, b_1, 0) \} \cup Z_1 \cup U_{n^2}$.
 This continues for $n^2$ stages, after which we obtain a Cayley table of a \ldto for
 $Z_{n^2} \cup U_{n^2} = A^2 \times \{0,1\}$.
 There are $n^2$ stages, each stage consisting of $n^2$ steps (described below),
@@ -2358,7 +2407,7 @@ and each step requiring a single call to Algorithm~\ref{alg:ld-2}.
 Thus, the procedure makes $n^4$ calls to Algorithm~\ref{alg:ld-2}, and
 the total running-time is on the order of $r^2m^2n^7 + n^9$.
 
-Here are the steps that Stage 1 takes in order to compute a \ldto for
+Here are the steps taken in Stage 1 in order to compute a \ldto for
 $\{(a_0, b_0,0),(a_0, b_0,1),(a_1, b_1,1), \dots, (a_{\ell}, b_{\ell},1)\}$.
 \begin{enumerate}
   \item Compute the table $\sanst_1$ of a \ldt op for $\{(a_0, b_0, 0), (a_0, b_0, 1)\}$;\\[-8pt]
@@ -2380,9 +2429,9 @@ Stage 2 is very similar to Stage 1; however, we first produce the table, $\sansd
 $\{(a_1, \sansd_1[a_1, b_1, b_1], 0)\} \cup U_{n^2}$, and then form the table
 $\sansd_2[x,y,z] := \sansd'_2\bigl[x, \sansd_1[x,y,y], \sansd_1[x,y,z]\bigr]$ ($\forall x,y,z \in A$),
 which will be the table of a \ldto for $Z_2 \cup U_{n^2}$.
-We continue in this way for $n^2$ stages of $n^2$ steps each, until we reach
+We continue in this way for $n^2$ stages, of $n^2$ steps each, until we reach
 our goal: $\sansd:=\sansd_{n^2}$, the Cayley table of
-a \ldto for $Z_{n^2} \cup U_{n^2}$.
+a \ldto for $Z_{n^2} \cup U_{n^2} = A^2 \times \{0,1\}$.
 
 Without further ado, here is a precise description of an algorithm that carries out any one
 of the $n^2$ stages; the argument $(a,b)$ determines which stage is executed.
@@ -2448,7 +2497,99 @@ This follows from Lemma~\ref{lem:19} and the proof of Theorem~\ref{thm:local-dif
   \bibliographystyle{alphaurl}
   \bibliography{inputs/refs}
 
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%  END OF DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%  END OF DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%  END OF DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%  END OF DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%  END OF DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%  END OF DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  \newpage
+
+  \appendix
+
+\section{Miscellaneous Lemmata}
+\begin{lemma}
+  \label{lem:F}
+Let $\sV$ be a variety and $\bF = \bF_{\sV}(2)$, the 2-generated
+free algebra in $\sV$. The following are equivalent:
+\begin{enumerate}[(i)]
+\item \label{item:1}
+  $\sV$ has a difference term;
+\item \label{item:3}
+  $\bF$ has a difference term operation.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+  The implication
+  (\ref{item:1}) $\Rightarrow$ (\ref{item:3}) is
+  obvious. We prove
+  (\ref{item:3}) $\Rightarrow$  (\ref{item:1}) by contraposition.
+  Suppose $\sV$ has no difference term. 
+  % (We show $\bF$ has no difference term operation.)
+  Let $d$ be an arbitrary ternary term of $\sV$.  Let $\bA\in \sV$ be such that
+  $d^{\bA}(x,y,z)$ is not a difference term operation in $\bA$.
+  Choose $a, b \in A$ witnessing this fact.  Then either
+  \begin{enumerate}
+  \item\label{item:4} $d^{\bA}(a,a,b) \neq b$, or
+  \item\label{item:5} $(d^{\bA}(a,b,b), a) \notin [\Cg^{\bA} (a, b), \Cg^{\bA} (a,b)]$.
+  \end{enumerate}
+  Let $\bB = \Sg^{\bA} (\{a, b\})$.  In case
+  (\ref{item:4}), 
+  $d^{\bB}(a,a,b) = d^{\bA}(a,a,b) \neq b$, so $d^{\bB}(x,y,z)$ is not a difference
+  term operation for $\bB$.
+  In case (\ref{item:5}), observe that
+  $(d^{\bB}(a,b,b), a)=(d^{\bA}(a,b,b), a)\notin [\Cg^{\bA} (a, b), \Cg^{\bA} (a,b)]$, 
+  and the latter contains 
+  $[\Cg^{\bB} (a, b), \Cg^{\bB} (a,b)]$, so
+  \[(d^{\bB}(a,b,b), a) \notin [\Cg^{\bB} (a, b), \Cg^{\bB} (a,b)].\]
+  Again we conclude that $d^{\bB}(x,y,z)$ is not a difference term operation for $\bB$.
+  Since there is a surjective homomorphism from $\bF$ to $\bB$,
+  it follows that $d^{\bF}(x,y,z)$ cannot be a difference term operation for $\bF$.
+  Finally, recall that $d(x,y,z)$ was an arbitrary ternary term of $\sV$, so
+  $\bF$ has no difference term operation whatsoever.
+  %% , as we set out to prove.
+\end{proof}
+
 
 
   \newpage
@@ -2515,19 +2656,6 @@ This follows from Lemma~\ref{lem:19} and the proof of Theorem~\ref{thm:local-dif
     yet appeared.  If no new pairs of this form are found, the algorithm halts
     and we conclude that no \ldto exists for this pair.
       % The runtime of this procedure is bounded by $|A|^2$.)
-
-
-
-
-
-
-
-  \end{document}
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%  END OF DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 
 
 
