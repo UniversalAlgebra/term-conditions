@@ -562,7 +562,7 @@ Difference Term in an Idempotent Variety}
 CAN}
 
 \thanks{The first and second authors were supported by the National
-Science Foundation under Grant Numbers 1500218 and 1500235; the third author was supported by a grant from the National Science and Engineering Research Council of Canada.}
+Science Foundation under Grant Numbers 1500218 and 1500235; the third author was supported by a grant from the Natural Sciences and Engineering Research Council of Canada.}
 
 \date{\today}
 
@@ -1554,8 +1554,8 @@ $c\, r\, ||\alg A|| = crm$ time.
 \item \label{speed3}
 If $\alpha$ and $\beta$ are congruences of $\alg A$,
 then $[\alpha,\beta]$ can be computed in time $crm^4$.
-If $\alg A$ has a so called \emph{Taylor term} 
-(see e.g.~\ref{MR3076179} or~\ref{HM:1988} for the definition),
+If $\alg A$ has a so called \emph{Taylor term}
+(see e.g.~\cite{MR3076179} or~\cite{HM:1988} for the definition),
 and if $[\alpha,\beta] = [\beta,\alpha]$,
 %%\mav{Should we define what a Taylor term is or replace this the omitting type 1 equivalence?}
 then $[\alpha,\beta]$ can be computed in time $c(rm^2 + n^5)$.
@@ -1778,8 +1778,8 @@ we can test if the type is \atyp\ by testing if
 $[\beta,\beta] \le \alpha$. By Proposition~\ref{speedprop}
 %% \mav{could we test for 2-snags in $\beta\setminus\alpha$ instead?  Is this any faster? (I'm pretty sure that we've already considered this, so probably not.)}
 %% Ralph's response as to whether 2-snags might be faster:
-%%   The best I know for an algebra A is m^3, while using the commutator is m^2 + n^5. 
-%%   Since the questions we are concerned with are trivial for unary algebras, 
+%%   The best I know for an algebra A is m^3, while using the commutator is m^2 + n^5.
+%%   Since the questions we are concerned with are trivial for unary algebras,
 %%   m \ge n^2. So 2-snags aren’t as good.
 this can be done in time $c(rm^4 + n^{10})$.
 Since we need to do
@@ -2213,22 +2213,22 @@ One step of the proof requires a minor technical lemma, so we dispense with that
 \begin{proof}
 Let $t^{\alg A}$ be a difference term operation for $\alg A$.  Fix $\gamma \in \Con \alg A$.
 We show $t^{\alg A/\gamma}$ is a difference term operation for $\alg A/\gamma$.
-Obviously, $t^{\alg A}(a,a,b) = b$  implies 
+Obviously, $t^{\alg A}(a,a,b) = b$  implies
 $t^{\alg A/\gamma}(a/\gamma, a/\gamma, b/\gamma) = b/\gamma$.
 For $R \subseteq A\times A$, define $\pi_\gamma R = \{(r/\gamma, r'/\gamma) : (r, r') \in R\}$.
 Fix $a$, $b \in A$ and let $\theta:= \Cg^{\alg A}(a,b)$.
-Then $(a, t^{\alg A}(a,b,b)) \in \com{\theta}$, so 
+Then $(a, t^{\alg A}(a,b,b)) \in \com{\theta}$, so
 $(a/\gamma, t^{\alg A}(a,b,b)/\gamma) \in \pi_\gamma \com{\theta} \subseteq \com{\pi_\gamma \theta}$.
-The last inclusion follows from~\cite[Theorem 2.10]{MR1358491}.  Next note that 
-$\pi_\gamma \theta \subseteq \Cg^{\alg A/\gamma}(a/\gamma, b/\gamma)$. Indeed, 
-if $(u,v) \in \pi_\gamma \theta$, then $(u,v)  = (x/\gamma, y/\gamma)$ for some 
-$(x,y) \in \Cg^{\alg A}(a,b)$, so by Malcev's criterion there are sequences 
+The last inclusion follows from~\cite[Theorem 2.10]{MR1358491}.  Next note that
+$\pi_\gamma \theta \subseteq \Cg^{\alg A/\gamma}(a/\gamma, b/\gamma)$. Indeed,
+if $(u,v) \in \pi_\gamma \theta$, then $(u,v)  = (x/\gamma, y/\gamma)$ for some
+$(x,y) \in \Cg^{\alg A}(a,b)$, so by Malcev's criterion there are sequences
 $x = c_0$, $c_1$, $\dots$, $c_{m-1}$, $c_{m} = y$ and $f_0$, $f_1$, $\dots$, $f_{m-1}$ satisfying
 $\{f^{\alg A}_i(a), f^{\alg A}_i(b)\} = \{c_i, c_{i+1}\}$, for all $0\leq i< m$;
-the sequence 
-$x/\gamma = c_0/\gamma$, $c_1/\gamma$, $\dots$, $c_{m-1}/\gamma$, $c_{m}/\gamma = y/\gamma$ 
+the sequence
+$x/\gamma = c_0/\gamma$, $c_1/\gamma$, $\dots$, $c_{m-1}/\gamma$, $c_{m}/\gamma = y/\gamma$
 satisfies
-$\{f^{\alg A/\gamma}_i(a/\gamma), f^{\alg A/\gamma}_i(b/\gamma)\} = \{c_i/\gamma, c_{i+1}/\gamma\}$, 
+$\{f^{\alg A/\gamma}_i(a/\gamma), f^{\alg A/\gamma}_i(b/\gamma)\} = \{c_i/\gamma, c_{i+1}/\gamma\}$,
 for all $0\leq i< m$, so $(x/\gamma, y/\gamma) \in \Cg^{\alg A/\gamma}(a/\gamma, b/\gamma)$.
 
 Define $\delta_\gamma := \Cg^{\alg A/\gamma}(a/\gamma, b/\gamma)$.
@@ -2244,17 +2244,17 @@ $[\delta_\gamma, \delta_\gamma]$, as desired.
 \end{prop}
 
 \begin{proof}
-  Of course if $\bbV (\alg A)$ has a difference term then each 3-generated subalgebra of 
-  $\alg A^2$ has a difference term operation. For the converse, we refer to the proof of 
-  Theorem~\ref{thm:KearnesThm}~\cite[Theorem 3.8]{MR1358491}.  One part of this theorem 
-  establishes that if an algebra $\alg B$ is in a variety that has a difference term, 
-  then all type~\atyp minimal sets of $\alg B$ have empty tails.  A careful reading of the 
-  proof of this fact shows that a weaker hypothesis will suffice, namely that all quotients 
-  of $\alg B$ have difference term operations.  By Lemma~\ref{lem:dt-quotients}, this is 
-  equivalent to just $\alg B$ having a difference term operation. 
-  %% since this property is preserved under taking quotients. 
+  Of course if $\bbV (\alg A)$ has a difference term then each 3-generated subalgebra of
+  $\alg A^2$ has a difference term operation. For the converse, we refer to the proof of
+  Theorem~\ref{thm:KearnesThm}~\cite[Theorem 3.8]{MR1358491}.  One part of this theorem
+  establishes that if an algebra $\alg B$ is in a variety that has a difference term,
+  then all type~\atyp minimal sets of $\alg B$ have empty tails.  A careful reading of the
+  proof of this fact shows that a weaker hypothesis will suffice, namely that all quotients
+  of $\alg B$ have difference term operations.  By Lemma~\ref{lem:dt-quotients}, this is
+  equivalent to just $\alg B$ having a difference term operation.
+  %% since this property is preserved under taking quotients.
   %% \mav{This is true, I think.  Should it be mentioned somewhere, as part of a general discussion of difference term operations?}
-  
+
   To complete the proof of this proposition, we use Corollary~\ref{cor:diffterm}. Suppose that each 3-generated subalgebra of $\alg A^2$ has a difference term operation.  Then, in particular, each 2-generated subalgebra of $\alg A$ does.  This rules out that $\sansH \sansS (\alg{A})$ contains an algebra that is term equivalent to the 2-element set.  It also follows, from the previous paragraph, that no 3-generated subalgebra of $\alg A^2$ has a prime quotient of type~\atyp whose minimal sets have nonempty tails.
 \end{proof}
 
@@ -2564,7 +2564,7 @@ free algebra in $\sV$. The following are equivalent:
   (\ref{item:1}) $\Rightarrow$ (\ref{item:3}) is
   obvious. We prove
   (\ref{item:3}) $\Rightarrow$  (\ref{item:1}) by contraposition.
-  Suppose $\sV$ has no difference term. 
+  Suppose $\sV$ has no difference term.
   % (We show $\bF$ has no difference term operation.)
   Let $d$ be an arbitrary ternary term of $\sV$.  Let $\bA\in \sV$ be such that
   $d^{\bA}(x,y,z)$ is not a difference term operation in $\bA$.
@@ -2574,12 +2574,12 @@ free algebra in $\sV$. The following are equivalent:
   \item\label{item:5} $(d^{\bA}(a,b,b), a) \notin [\Cg^{\bA} (a, b), \Cg^{\bA} (a,b)]$.
   \end{enumerate}
   Let $\bB = \Sg^{\bA} (\{a, b\})$.  In case
-  (\ref{item:4}), 
+  (\ref{item:4}),
   $d^{\bB}(a,a,b) = d^{\bA}(a,a,b) \neq b$, so $d^{\bB}(x,y,z)$ is not a difference
   term operation for $\bB$.
   In case (\ref{item:5}), observe that
-  $(d^{\bB}(a,b,b), a)=(d^{\bA}(a,b,b), a)\notin [\Cg^{\bA} (a, b), \Cg^{\bA} (a,b)]$, 
-  and the latter contains 
+  $(d^{\bB}(a,b,b), a)=(d^{\bA}(a,b,b), a)\notin [\Cg^{\bA} (a, b), \Cg^{\bA} (a,b)]$,
+  and the latter contains
   $[\Cg^{\bB} (a, b), \Cg^{\bB} (a,b)]$, so
   \[(d^{\bB}(a,b,b), a) \notin [\Cg^{\bB} (a, b), \Cg^{\bB} (a,b)].\]
   Again we conclude that $d^{\bB}(x,y,z)$ is not a difference term operation for $\bB$.
