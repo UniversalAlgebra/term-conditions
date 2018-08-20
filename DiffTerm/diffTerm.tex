@@ -2407,10 +2407,10 @@ and each step requiring a single call to Algorithm~\ref{alg:ld-2}.
 Thus, the procedure makes $n^4$ calls to Algorithm~\ref{alg:ld-2}, and
 the total running-time is on the order of $r^2m^2n^7 + n^9$.
 
-Here are the steps taken in Stage 1 in order to compute a \ldto for
-$\{(a_0, b_0,0),(a_0, b_0,1),(a_1, b_1,1), \dots, (a_{\ell}, b_{\ell},1)\}$.
-\begin{enumerate}
-  \item Compute the table $\sanst_1$ of a \ldt op for $\{(a_0, b_0, 0), (a_0, b_0, 1)\}$;\\[-8pt]
+The following is a list of steps taken in Stage 1 in order to compute a \ldto for
+$\{(a_0, b_0,0),(a_0, b_0,1),(a_1, b_1,1), \dots, (a_{\ell}, b_{\ell},1)\}$:
+\begin{enumerate}[1.]
+  \item compute the table $\sanst_1$ of a \ldt op for $\{(a_0, b_0, 0), (a_0, b_0, 1)\}$;\\[-8pt]
   \item compute the table $\sanss_1$ of a \ldt op for $\{(a_0, b_0, 0), (\sanst_1[a_1, a_1, b_1], b_1, 1)\}$; \\
   form the table $\sanst_2[x,y,z] = \sanss_1\bigl[\sanst_1[x,y,z], \sanst_1[y,y,z], z\bigr]$
   ($\forall x,y,z$);
@@ -2418,7 +2418,7 @@ $\{(a_0, b_0,0),(a_0, b_0,1),(a_1, b_1,1), \dots, (a_{\ell}, b_{\ell},1)\}$.
   \item compute the table $\sanss_2$ of a \ldt op for $\{(a_0, b_0, 0), (\sanst_2[a_2, a_2, b_2], b_2, 1)\}$; \\
     form the table $\sanst_3[x,y,z] = \sanss_2\bigl[\sanst_2[x,y,z], \sanst_2[y,y,z], z\bigr]$  ($\forall x,y,z$);\\
   $\vdots$
-  \item[($n^2$)] compute a table $\sanss_{\l}$ of a \ldt op for $\{(a_0, b_0, 0),  (\sanst_{\l}[a_{\l}, a_{\l}, b_{\l}], b_{\l}, 1)\}$; \\
+  \item[~\hskip-5mm$n^2$\!.] compute a table $\sanss_{\l}$ of a \ldt op for $\{(a_0, b_0, 0),  (\sanst_{\l}[a_{\l}, a_{\l}, b_{\l}], b_{\l}, 1)\}$; \\
   form the table $\sanst_{n^2}[x,y,z] = \sanss_{\l}\bigl[\sanst_{\l}[x,y,z], \sanst_{\l}[y,y,z], z\bigr]$
   ($\forall x,y,z$).
 \end{enumerate}
