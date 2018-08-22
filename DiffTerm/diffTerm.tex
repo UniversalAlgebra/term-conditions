@@ -1304,12 +1304,12 @@ and $j < n$ with $\alpha \join \rho_i < 1_B$ and $\alpha \join \rho_j =
 1_B$. If $n > 2$ then Lemma~\ref{lem:fv_3-2} applies to $\rho = \rho_i
 \meet \rho_j$ and so we know that either $\beta \le \rho$ or $\alpha
 \join \rho = 1_B$. This yields a contradiction as the former is not
-possible, since then 
+possible, since then
 \[
-\alpha \join \rho_j \le \beta \join \rho_j \le \rho \join \rho_j = \rho_j < 1_B. 
+\alpha \join \rho_j \le \beta \join \rho_j \le \rho \join \rho_j = \rho_j < 1_B.
 \]%$\beta \not\le \rho_j$ and
 The latter can't hold
-since  $\alpha \join \rho  = 1_B$ implies that $\alpha \join \rho_i = 1_B$. 
+since  $\alpha \join \rho  = 1_B$ implies that $\alpha \join \rho_i = 1_B$.
 So, the minimality of $n$ forces $n\le 2$ and the result follows.
 \end{proof}
 
@@ -1508,7 +1508,7 @@ we have $\rho_1 \ge \beta$.
 This implies that $0$ and $1$ have the same second coordinate; that is,
 $0 = (x_0,x_1)$ and $1 = (y_0,x_1)$ for some $x_0$, $y_0$ and $x_1\in A$.
 By Lemma~\ref{lem:nearperm}, $(0,t) \in \rho_0 \circ \beta$
-so $0 \mathrel {\rho_0} t' \mathrel{\beta} t$. Let $U = e(B)$
+so $0 \mathrel {\rho_0} t' \mathrel{\beta} t$ for some $t' \in B$. Let $U = e(B)$
 where $e$ is an idempotent polynomial. Then
 $0 \mathrel {\rho_0} e(t') \mathrel{\beta} t$. This gives
 that $e(t')$ is in the tail of $U$ and
@@ -1531,11 +1531,12 @@ $A$ and $||\alg A||$ be the \emph{input size}; that is,
 ||\alg A|| = \sum_{i=0}^r k_i n^i
 \]
 where, $k_i$ is the number of basic operations of arity~$i$ and $r$
-is the largest arity. We let
-\begin{align*}
-n &= |\alg A|  \qquad m = ||\alg A|| \\
-r &= \text{the largest arity of the operations of $\alg A$}
-\end{align*}
+is the largest arity of the basic operations of $\alg A$. We set
+$n = |\alg A|$ and $m = ||\alg A||$.
+%\begin{align*}
+%n &= |\alg A|  \qquad m = ||\alg A|| \\
+%r &= \text{the largest arity of the operations of $\alg A$}
+%\end{align*}
 
 %Throughout this section we let $c$ denote a constant independent of
 %these parameters.
