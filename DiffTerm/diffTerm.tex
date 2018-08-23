@@ -2220,33 +2220,53 @@ One step of the proof requires a minor technical lemma, so we dispense with that
   Let $\alg A$ be a finite idempotent algebra.
   If $\alg A$ has a difference term operation then so does every quotient of $\alg A$.
 \end{lemma}
+
 \begin{proof}
-Let $t^{\alg A}$ be a difference term operation for $\alg A$.  Fix $\gamma \in \Con \alg A$.
-We show $t^{\alg A/\gamma}$ is a difference term operation for $\alg A/\gamma$.
+  Let $t^{\alg A}$ be a difference term operation for $\alg A$.  Fix $\gamma \in \Con \alg A$.
+We show $t^{\alg A/\gamma}$ is a difference term operation for $\alg A/\gamma$.  Let $a$, $b \in A$ and let $\theta:= \Cg^{\alg A}(a,b)$ and $\theta_\gamma := \Cg^{\alg A/\gamma}(a/\gamma, b/\gamma)$.
 Obviously, $t^{\alg A}(a,a,b) = b$  implies
 $t^{\alg A/\gamma}(a/\gamma, a/\gamma, b/\gamma) = b/\gamma$.
-For $R \subseteq A\times A$, define $\pi_\gamma R = \{(r/\gamma, r'/\gamma) : (r, r') \in R\}$.
-Fix $a$, $b \in A$ and let $\theta:= \Cg^{\alg A}(a,b)$.
-Then $(a, t^{\alg A}(a,b,b)) \in \com{\theta}$, so
-$(a/\gamma, t^{\alg A}(a,b,b)/\gamma) \in \pi_\gamma \com{\theta} \subseteq \com{\pi_\gamma \theta}$.
-The last inclusion follows from~\cite[Theorem 2.10]{MR1358491}.  Next note that
-$\pi_\gamma \theta \subseteq \Cg^{\alg A/\gamma}(a/\gamma, b/\gamma)$. Indeed,
-if $(u,v) \in \pi_\gamma \theta$, then $(u,v)  = (x/\gamma, y/\gamma)$ for some
-$(x,y) \in \Cg^{\alg A}(a,b)$, so by Malcev's criterion there are sequences
-$x = c_0$, $c_1$, $\dots$, $c_{m-1}$, $c_{m} = y$ and $f_0$, $f_1$, $\dots$, $f_{m-1}$ satisfying
-$\{f^{\alg A}_i(a), f^{\alg A}_i(b)\} = \{c_i, c_{i+1}\}$, for all $0\leq i< m$;
-the sequence
-$x/\gamma = c_0/\gamma$, $c_1/\gamma$, $\dots$, $c_{m-1}/\gamma$, $c_{m}/\gamma = y/\gamma$
-satisfies
-$\{f^{\alg A/\gamma}_i(a/\gamma), f^{\alg A/\gamma}_i(b/\gamma)\} = \{c_i/\gamma, c_{i+1}/\gamma\}$,
-for all $0\leq i< m$, so $(x/\gamma, y/\gamma) \in \Cg^{\alg A/\gamma}(a/\gamma, b/\gamma)$.
 
-Define $\delta_\gamma := \Cg^{\alg A/\gamma}(a/\gamma, b/\gamma)$.
-By the foregoing, and monotinicity of the commutator, we have
-$[\pi_\gamma \theta, \pi_\gamma \theta] \subseteq [\delta_\gamma, \delta_\gamma]$.
-Therefore, $a/\gamma$ is congruent to $t^{\alg A/\gamma}(a/\gamma,b/\gamma,b/\gamma)$ modulo
-$[\delta_\gamma, \delta_\gamma]$, as desired.
+We need to show that $(a/\gamma, t^{\alg A}(a,b,b)/\gamma) \in \com{\theta_\gamma}$.  It will suffice to show that if $\beta \in \con(\alg A/\gamma)$  is such that $C(\theta_\gamma, \theta_\gamma; \beta)$ then $(a/\gamma, t^{\alg A}(a,b,b)/\gamma) \in \beta$.  But such a congruence $\beta$ is of the form $\delta/\gamma$ for some $\delta \in \con(\alg A)$ with $\delta \ge \gamma$. Also, the congruence $\theta_\gamma$ is equal to $(\gamma \join \theta)/\gamma$ and so the condition $C(\theta_\gamma, \theta_\gamma; \beta)$ can be restated as 
+\[
+C((\gamma \join \theta)/\gamma, (\gamma \join \theta)/\gamma; \delta/\gamma).
+\]
+By Proposition 3.4 (5) of~\cite{HM:1988}, this is equivalent to
+\[
+C((\gamma \join \theta), (\gamma \join \theta); \delta).
+\]
+From this condition, we can use the monotonicity of the centrality condition (see Proposition 3.4 (1) of~\cite{HM:1988}) to deduce that $C(\theta, \theta; \delta)$. Since $t$ is a difference term operation for $\alg A$ then $(a, t^{\alg A}(a,b,b)) \in \delta$ and so $(a/\gamma, t^{\alg A}(a,b,b)/\gamma) \in  \delta/\gamma = \beta$ as required.
 \end{proof}
+%
+%
+%
+%\begin{proof}
+%Let $t^{\alg A}$ be a difference term operation for $\alg A$.  Fix $\gamma \in \Con \alg A$.
+%We show $t^{\alg A/\gamma}$ is a difference term operation for $\alg A/\gamma$.
+%Obviously, $t^{\alg A}(a,a,b) = b$  implies
+%$t^{\alg A/\gamma}(a/\gamma, a/\gamma, b/\gamma) = b/\gamma$.
+%For $R \subseteq A\times A$, define $\pi_\gamma R = \{(r/\gamma, r'/\gamma) : (r, r') \in R\}$.
+%Fix $a$, $b \in A$ and let $\theta:= \Cg^{\alg A}(a,b)$.
+%Then $(a, t^{\alg A}(a,b,b)) \in \com{\theta}$, so
+%$(a/\gamma, t^{\alg A}(a,b,b)/\gamma) \in \pi_\gamma \com{\theta} \subseteq \com{\pi_\gamma \theta}$.
+%The last inclusion follows from~\cite[Theorem 2.10]{MR1358491}.  Next note that
+%$\pi_\gamma \theta \subseteq \Cg^{\alg A/\gamma}(a/\gamma, b/\gamma)$. Indeed,
+%if $(u,v) \in \pi_\gamma \theta$, then $(u,v)  = (x/\gamma, y/\gamma)$ for some
+%$(x,y) \in \Cg^{\alg A}(a,b)$, so by Malcev's criterion there are sequences
+%$x = c_0$, $c_1$, $\dots$, $c_{m-1}$, $c_{m} = y$ and $f_0$, $f_1$, $\dots$, $f_{m-1}$ satisfying
+%$\{f^{\alg A}_i(a), f^{\alg A}_i(b)\} = \{c_i, c_{i+1}\}$, for all $0\leq i< m$;
+%the sequence
+%$x/\gamma = c_0/\gamma$, $c_1/\gamma$, $\dots$, $c_{m-1}/\gamma$, $c_{m}/\gamma = y/\gamma$
+%satisfies
+%$\{f^{\alg A/\gamma}_i(a/\gamma), f^{\alg A/\gamma}_i(b/\gamma)\} = \{c_i/\gamma, c_{i+1}/\gamma\}$,
+%for all $0\leq i< m$, so $(x/\gamma, y/\gamma) \in \Cg^{\alg A/\gamma}(a/\gamma, b/\gamma)$.
+%
+%Define $\delta_\gamma := \Cg^{\alg A/\gamma}(a/\gamma, b/\gamma)$.
+%By the foregoing, and monotinicity of the commutator, we have
+%$[\pi_\gamma \theta, \pi_\gamma \theta] \subseteq [\delta_\gamma, \delta_\gamma]$.
+%Therefore, $a/\gamma$ is congruent to $t^{\alg A/\gamma}(a/\gamma,b/\gamma,b/\gamma)$ modulo
+%$[\delta_\gamma, \delta_\gamma]$, as desired.
+%\end{proof}
 
 
 \begin{prop}\label{prop:alt-poly-alg}
