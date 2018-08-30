@@ -610,16 +610,20 @@ There are many reasons to study difference terms, but
 one obvious reason is because if we know that a variety
 has a difference term, this fact allows us to deduce some useful
 properties of the algebras inhabiting that variety.
-Any variety that has a \malcev\ term or for which the commutator operation satisfies $[\alpha, \beta] = \alpha \meet \beta$ has a difference term.
-%Roughly speaking, having a difference term is slightly stronger than having
-%a Taylor term and slightly weaker than having a \malcev term.
-(Note that if
-$\alg{A}$ is an \defn{abelian} algebra, which means
-that $[1_A, 1_A] = 0_A$, then, by
-the monotonicity of the commutator,
-$[\theta, \theta] = 0_A$ for all $\theta \in \Con \alg{A}$,
-in which case % $\textbf{A}$
-(\ref{eq:3}) says that $d^{\alg{A}}$ is a \malcev term operation.)
+In particular, varieties with a difference term have a commutator that behaves nicely.  
+
+The class of varieties that have a difference term is fairly broad and includes those varieties that are congruence modular or congruence meet-semidistributive. Since the commutator of two congruences of an algebra in a congruence meet-semidistributive variety is just their intersection~\cite{MR1663558}, it follows that the term $d(x,y,z) := z$ is a difference term for such varieties.  A special type of difference term $d(x,y,z)$ is one that satisfies the equations $d(x,x,y) = y$ and $d(x,y,y) = x$.  Such terms are called \emph{\malcev\ terms}. So if $\alg A$ lies in a variety that has a difference term $d(x,y,z)$ and if $\alg A$ is \emph{abelian} (i.e., $[1_A, 1_A] = 0_A$), then $d$ will be a \malcev\ term for $\alg A$.
+
+%Any variety that has a \malcev\ term or for which the commutator operation satisfies $[\alpha, \beta] = \alpha \meet \beta$ has a difference term.
+%%Roughly speaking, having a difference term is slightly stronger than having
+%%a Taylor term and slightly weaker than having a \malcev term.
+%(Note that if
+%$\alg{A}$ is an \defn{abelian} algebra, which means
+%that $[1_A, 1_A] = 0_A$, then, by
+%the monotonicity of the commutator,
+%$[\theta, \theta] = 0_A$ for all $\theta \in \Con \alg{A}$,
+%in which case % $\textbf{A}$
+%(\ref{eq:3}) says that $d^{\alg{A}}$ is a \malcev term operation.)
 
 Difference terms also play a role in recent work of Keith Kearnes,
 Agnes Szendrei, and Ross Willard.
@@ -1155,24 +1159,24 @@ B$ since it contains $\{0,1,t\}$.  Thus, $\alpha \join \rho = 1_B$.
 \end{comment}
 
 \begin{lemma}\label{lem:nearperm}
-Assume $\Gamma$.   For every proper nonempty subset $\sigma$ of $\nn$,
+Assume $\Gamma$.  If $\rho \in \Con(\alg{B})$ with $\beta \join \rho = 1_B$ then
   for all $v\in B$, and for all $b\in \body(U)$, we have
-  $(v,b) \in (\beta \circ \rho_\sigma) \cap (\rho_\sigma \circ \beta)$.
+  $(v,b) \in (\beta \circ \rho) \cap (\rho \circ \beta)$.
 \end{lemma}
 
 %\smallskip
 %% \newcommand\rhosig{\ensuremath{\rho_\sigma}}
 \newcommand\rhosig{\ensuremath{\rho}}
 \begin{proof}
-\noindent Let $\rho = \rho_\sigma$. Note that
-$\beta \join \rhosig = 1_B$ implies
-$\restr{\beta}{U} \join \restr{\rhosig}{U} = \restr{1_B}{U} = 1_U$,
+\noindent Note that
+$\beta \join \rho = 1_B$ implies
+$\restr{\beta}{U} \join \restr{\rho}{U} = \restr{1_B}{U} = 1_U$,
 since $U = e(B)$, for some idempotent unary polynomial~$e$.
 Now, for all $x$, $y \in U$, if $x\in \body(U)$ and $y\in \tail(U)$, then
 $(x,y) \notin \beta$.  Therefore,
-$(x, y) \in  1_U = \restr{\beta}{U} \join \restr{\rhosig}{U}$ implies
+$(x, y) \in  1_U = \restr{\beta}{U} \join \restr{\rho}{U}$ implies
 there must be some $b' \in \body(U)$ and $t'\in \tail(U)$ such that
-$b' \mathrel{\rhosig} t'$.
+$b' \mathrel{\rho} t'$.
 
 Now, let $d(x,y,z)$ be a pseudo-\malcev polynomial for $U$,
 which exists by~\cite[Lemma~4.20]{HM:1988}.
@@ -1191,7 +1195,7 @@ let $p(x) = d(x,b',b)$, then (see~\cite[Lemma~4.20]{HM:1988})
 \item $p(b') = d(b',b',b) = b \in \body(U)$, and
 \item  $t:=p(t')\in \tail(U)$, since $t'\in \tail(U)$.
 \end{itemize}
-Since $(b',t') \in \rhosig$, we have $(b, t) = (p(b'), p(t')) \in \rhosig$.
+Since $(b',t') \in \rho$, we have $(b, t) = (p(b'), p(t')) \in \rho$.
 Since $b$ is in the body, there is an element $b''$ in the body with
 $(b,b'') \in \beta - \alpha$. By Lemma~\ref{lem:fv_3-1}, this implies
 $\alg{B} = \Sg^{\alg{B}}(\{b, b'', t\})$.
@@ -1200,17 +1204,17 @@ Finally, if $v \in B$, then $v = s^{\alg{B}}(b,b'',t)$ for
 some (idempotent) term $s$, so
 \[
 v = s^{\alg{B}}(b,b'',t)
-\mathrel{\rhosig} s^{\alg{B}}(b,b'',b)
+\mathrel{\rho} s^{\alg{B}}(b,b'',b)
 \mathrel{\beta} s^{\alg{B}}(b,b,b) = b,
 \]
 and
 \[
 v = s^{\alg{B}}(b,b'',t)
 \mathrel{\beta}  s^{\alg{B}}(b,b,t)
-\mathrel{\rhosig}s^{\alg{B}}(b,b, b)  = b.
+\mathrel{\rho}s^{\alg{B}}(b,b, b)  = b.
 \]
 Therefore,
-$(v,b) \in  (\beta \circ \rhosig) \cap (\rhosig \circ \beta)$.
+$(v,b) \in  (\beta \circ \rho) \cap (\rho \circ \beta)$.
 Since $v \in B$ and $b\in \body(U)$ were aribitrary,
 this completes the proof.
 \end{proof}
@@ -1236,33 +1240,15 @@ have $\beta \leq \rho_i$ for all $i$, and that
 would imply $\beta = 0_B$.
   %%\item %\label{item:7} There exists $i$ such that $\alpha \join \rho_i < 1_B$.
 
-To see \eqref{item:7}, assume
-\begin{equation} \label{eq:4}
-\alpha \join \rho_i = 1_B \; \text{ for all $i$.}
-\end{equation}
-Take a nonempty proper subset $\sigma \subset \nn$ of indices and let
-$\rho_\sigma = \bigwedge_{j\in \sigma} \rho_j$.
-Then $\beta \join \rho_\sigma = 1_B$. (Otherwise,
-$\alpha \join \rho_\sigma \leq \beta \join \rho_\sigma < 1_B$,
-and it would follow from Lemma~\ref{lem:fv_3-2} that
-$\alpha \leq \beta \leq \rho_\sigma \leq \rho_i$ for all $i \in \sigma$,
-but then $\alpha \join \rho_i = \rho_i < 1_B$, contradicting (\ref{eq:4}).)
-% Therefore, $\beta \join \rho_\sigma = 1_B$.
-
-%\smallskip
-
-
-%We conclude from the foregoing that,
-%for all nonempty proper subsets $\sigma \subset n$,
-%for all $a\in \body(U)$ and all $v\in B$, we have
-%$(a, v) \in \beta \circ \rho_\sigma \cap \rho_\sigma \circ \beta$,
-%proving the subclaim.
-
+To see \eqref{item:7}, assume that
+$\alpha \join \rho_i = 1_B$ for all $i$.  Then $\beta \join \rho_i = 1_B$ for all $i$ as well.
 Let $b \in \body(U)$ and $t \in \tail(U)$, and let $d(x,y,z)$
 denote the pseudo-\malcev operation introduced in the proof of Lemma~\ref{lem:nearperm}. By
 \cite[Lemma~4.25]{HM:1988},  $(b, d(b,t,t)) \notin \beta$.
 We will arrive at a contradiction by showing that
-$b = d(b,t,t)$. By Lemma~\ref{lem:nearperm}, for every $i \in \nn$,
+$b = d(b,t,t)$. To accomplish this we will show that $d(b,t,t) \rho_i b$ for all $i$ and use that $\bigwedge \rho_i = 0_B$.
+
+If $i \in \nn$ then by Lemma~\ref{lem:nearperm},
 $(b,t) \in \beta \circ \rho_i$ so
 there is an element $a \in B$ satisfying
 $b\mathrel\beta a \mathrel\rho_i t$. By applying the idempotent
@@ -2227,7 +2213,7 @@ We show $t^{\alg A/\gamma}$ is a difference term operation for $\alg A/\gamma$. 
 Obviously, $t^{\alg A}(a,a,b) = b$  implies
 $t^{\alg A/\gamma}(a/\gamma, a/\gamma, b/\gamma) = b/\gamma$.
 
-We need to show that $(a/\gamma, t^{\alg A}(a,b,b)/\gamma) \in \com{\theta_\gamma}$.  It will suffice to show that if $\beta \in \con(\alg A/\gamma)$  is such that $C(\theta_\gamma, \theta_\gamma; \beta)$ then $(a/\gamma, t^{\alg A}(a,b,b)/\gamma) \in \beta$.  But such a congruence $\beta$ is of the form $\delta/\gamma$ for some $\delta \in \con(\alg A)$ with $\delta \ge \gamma$. Also, the congruence $\theta_\gamma$ is equal to $(\gamma \join \theta)/\gamma$ and so the condition $C(\theta_\gamma, \theta_\gamma; \beta)$ can be restated as 
+We need to show that $(a/\gamma, t^{\alg A}(a,b,b)/\gamma) \in \com{\theta_\gamma}$.  It will suffice to show that if $\beta \in \con(\alg A/\gamma)$  is such that $C(\theta_\gamma, \theta_\gamma; \beta)$ then $(a/\gamma, t^{\alg A}(a,b,b)/\gamma) \in \beta$.  But such a congruence $\beta$ is of the form $\delta/\gamma$ for some $\delta \in \con(\alg A)$ with $\delta \ge \gamma$. Also, the congruence $\theta_\gamma$ is equal to $(\gamma \join \theta)/\gamma$ and so the condition $C(\theta_\gamma, \theta_\gamma; \beta)$ can be restated as
 \[
 C((\gamma \join \theta)/\gamma, (\gamma \join \theta)/\gamma; \delta/\gamma).
 \]
